@@ -165,7 +165,7 @@ For submitting your work, you should follow these steps:
 
 - Create a pull request with your code. 
 - Target your main branch of the repository 
-[baz-ios-capstone-project-c1-2022](https://github.com/wizelineacademy/baz-ios-capstone-project-c1-2022).
+[baz-ios-project-c1-2022](https://github.com/wizelineacademy/baz-ios-project-c1-2022).
 
 
 # TheMovieDb API
