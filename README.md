@@ -2,24 +2,24 @@
 
 Gracias por participar en este curso de Wizeline Academy!
 
-Este archivo README contiene instrucciones de como completar tu proyecto final.
+Este archivo README contiene instrucciones de cómo completar tu proyecto final.
 
 ## Tabla de Contenidos
 
 * [Introducción](#introduccion)
 * [El Proyecto](#el-proyecto)
 * [Requerimientos](#requerimientos)
-* [Por donde empezar](#por-donde-empezar)
+* [Por dónde empezar](#por-donde-empezar)
 * [Contenido de la Aplicación](#contenido-de-la-aplicacion)
 * [Entregables](#entregables)
 * [TheMovieDb API](#themoviedb-api)
 
 ## Introducción
 
-Este curos de iOS esta enfocado en mejorar tus habilidades técnicas.
+Este curso de iOS está enfocado en mejorar tus habilidades técnicas.
 
-Al finalizar el curso, habrás ganado la experiencia en las tencologias cubiertas en este curso, 
-como aplicarlas, y las tecnicas para agilizar y eficientar tus tareas. 
+Al finalizar el curso, habrás ganado la experiencia en las tecnologías cubiertas en este curso, 
+cómo aplicarlas, y las técnicas para agilizar y eficientar tus tareas. 
 
 Además, conocerás el funcionamiento interno de las tecnologías y las mejores prácticas.
 
@@ -39,7 +39,7 @@ El objetivo  es constriur una aplicación que consuma `TheMovieDB` API.
 > \*_NOTA:_ Incluye `f6cd5c1a9e6c6b965fdcab0fa6ddd38a` como `api_key` en tus peticiones (la credencial para consumir la API) \*
 
 Usa esta API de películas como una guía para iniciar tus ideas. 
-Recuerda que este es **Tu** proyecto y puedes ser tan creativo como tu desees.
+Recuerda que este es **Tu** proyecto y puedes ser tan creativo como tú desees.
 
 ## Requerimientos
 
@@ -60,14 +60,14 @@ Estos son los requerimientos principales para la evaluación de tu entrega final
 - UITableView y UICollectionView
 - Servicios REST
 
-## Por donde empezar
+## Por dónde empezar
 
 En este repositorio incluimos un proyecto de Xcode.
 
-En el existen componentes básicos que puedes usar para estructurar tu aplicación.
+En él existen componentes básicos que puedes usar para estructurar tu aplicación.
 Siéntete libre de agrerar, modificar o remover según consideres necesario.
 
-Para empezar, sigue los siguientes pasos:
+Para empezar, sigue los estos pasos:
 
 **Paso 1:** Clona este repositorio a tu máquina local. [Guía de configuración de Github](https://docs.github.com/get-started/quickstart/set-up-git)
 
@@ -109,14 +109,14 @@ Muestra la informacion de una película específica como:
     - Reparto de actores
     - Películas similares
     - Películas recomendadas
-    - Reseñas de la pelíucla
+    - Reseñas de la película
 
 ## Entregables
 
 Hemos determinado fechas para que planees tus entregables. Te recomendamos trabajar continuamente y hacer progresos constantes.
 No dejes todo para el final.
 
-Cabe mencionar que puedes recibir retroalimentacion de parte de un mentor para tu primer y segundo entregable, 
+Cabe mencionar que puedes recibir retroalimentación de parte de un mentor para tu primer y segundo entregable, 
 dandote la oportunidad de corregir y mejorar tu código base. 
 
 Para la entrega final tambien puedes solicitar retroalimentación, pero no hay fecha nueva de revisión.
@@ -126,7 +126,7 @@ Si tienes problemas y necesitas ayuda no dudes en solicitar un mentor en el cana
 
 ### Primer entregable
 
-Construye una aplicacion con las siguientes caracteristicas:
+Construye una aplicacion con las siguientes características:
 
 * Clona este repositorio con tu cuenta de github.
 * Completa y consume la TheMovieDB API.
@@ -142,7 +142,7 @@ el dia martes 20 de septiembre - 2pm CT
 
 Usando lo construido en tu entregable anterior:
 
-* Usa para mostrar la informacion de las películas
+* Muestra la información de las películas
 * Declara vistas con archivos xibs y Storyboard
 * Implementa un UICollectionView en al menos una pantalla
 * Introduce navegación en entre tus pantallas
@@ -167,11 +167,11 @@ el dia martes 4 de octubre - 2pm CT
 
 ## Presentando tus entregables
 
-Para presentar cada uno de tus entregables, sigue los siguientes pasos:
-* Empuja tu rama de desarrollo al repo remoto
+Para presentar cada uno de tus entregables, sigue estos pasos:
+* Haz `push` de tu rama de desarrollo al repositorio remoto
 * Crea un [Pull Request para fusionar](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request-with-a-merge-queue) tus cambios a tu rama principal 
 * Agrega a los mentores para que revisen tu código
-* Copia la url de tu Pull Request e ingresala en este [formulario](https://forms.gle/oZtRk3QknRFLpgQu9)
+* Copia la url de tu Pull Request e ingrésala en este [formulario](https://forms.gle/oZtRk3QknRFLpgQu9)
 * Resuelve cualquier comentario que te dejen para mejorar tu código
 * Haz `merge` para incorporar tus cambios a tu rama principal y continua con tu siguiente entregable
 > \*_Importante:_ Si tienes problemas con conflictos en tus ramas no dudes en pedirle ayuda a tu mentor\*
@@ -206,4 +206,4 @@ https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
 
 Accede a la [documentación](https://developers.themoviedb.org/3/getting-started/images) para conocer su funcionamiento.
 
-> \*_Importante:_ No olvides incluir cualquier informacion necesaria para correr tu proyecto. Credenciales, varaibles de ambiente, archivos de configuración, etc. 
+> \*_Importante:_ No olvides incluir cualquier informacion necesaria para correr tu proyecto. Credenciales, variables de ambiente, archivos de configuración, etc. 
