@@ -132,6 +132,12 @@ Construye una aplicacion con las siguientes caracteristicas:
 * Completa y consume la TheMovieDB API.
 * Implementa los principios de diseño
 
+Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
+el día jueves 15 de septiembre - 2pm CT
+
+Puedes hacer cambios segun los comentarios antes de la entrega:
+el dia martes 20 de septiembre - 2pm CT
+
 ### Segundo entregable 
 
 Usando lo construido en tu entregable anterior:
@@ -142,6 +148,12 @@ Usando lo construido en tu entregable anterior:
 * Introduce navegación en entre tus pantallas
 * Carga las imágenes asíncronamente
 
+Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
+el día viernes 23 de septiembre - 2pm CT
+
+Puedes hacer cambios segun los comentarios antes de la entrega:
+el dia martes 27 de septiembre - 2pm CT
+
 ### Entregable Final 
 
 Termina o implementa la funcionalidad restante y resuelve cualquier comentario pendiente que hayas recibido.
@@ -150,6 +162,8 @@ Termina o implementa la funcionalidad restante y resuelve cualquier comentario p
 * Implementa el centro de notificaciones
 * Completa todos los requerimientos del proyecto
 
+Deberás subir tu entrega final:
+el dia martes 4 de octubre - 2pm CT
 
 ## Presentando tus entregables
 
