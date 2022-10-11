@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  BAZProjectC1
+//  BAZProject
 //
 //
 

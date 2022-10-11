@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  BAZProjectC1
+//  BAZProject
 //
 //
 

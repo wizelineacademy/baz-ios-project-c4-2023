@@ -1,6 +1,6 @@
 //
 //  TrendingViewController.swift
-//  BAZProjectC1
+//  BAZProject
 //
 //
 

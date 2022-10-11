@@ -1,6 +1,6 @@
 //
 //  MovieAPI.swift
-//  BAZProjectC1
+//  BAZProject
 //
 //
 

@@ -1,6 +1,6 @@
 //
 //  Movie.swift
-//  BAZProjectC1
+//  BAZProject
 //
 //
 
