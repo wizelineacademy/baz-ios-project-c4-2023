@@ -133,10 +133,10 @@ Construye una aplicacion con las siguientes características:
 * Implementa los principios de diseño
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día jueves 15 de septiembre - 2pm CT
+el día Viernes 28 de Octubre - 2pm CT
 
-Puedes hacer cambios segun los comentarios antes de la entrega:
-el dia martes 20 de septiembre - 2pm CT
+Sube tu entregable con correcciones antes de:
+el dia Martes 1ro de Noviembre - 2pm CT
 
 ### Segundo entregable 
 
@@ -149,10 +149,10 @@ Usando lo construido en tu entregable anterior:
 * Carga las imágenes asíncronamente
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día viernes 23 de septiembre - 2pm CT
+el día Viernes 4 de Noviembre - 2pm CT
 
-Puedes hacer cambios segun los comentarios antes de la entrega:
-el dia martes 27 de septiembre - 2pm CT
+Sube tu entregable con correcciones antes de:
+el dia Martes 8 de Noviembre - 2pm CT
 
 ### Entregable Final 
 
@@ -163,7 +163,7 @@ Termina o implementa la funcionalidad restante y resuelve cualquier comentario p
 * Completa todos los requerimientos del proyecto
 
 Deberás subir tu entrega final:
-el dia martes 4 de octubre - 2pm CT
+el dia Martes 15 de Noviembre - 2pm CT
 
 ## Presentando tus entregables
 
