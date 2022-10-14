@@ -129,8 +129,18 @@ Si tienes problemas y necesitas ayuda no dudes en solicitar un mentor en el cana
 Construye una aplicacion con las siguientes características:
 
 * Clona este repositorio con tu cuenta de github.
-* Completa y consume la TheMovieDB API.
+    - Crea y sube tus ramas `dev` y `main` a github.
+    - Sigue la guía [Por dónde empezar](#por-donde-empezar)
+* Completa y usa la TheMovieDB API.
+    - La clase `MovieAPI` debe tener al menos 2 propiedades
+    - La clase `MovieAPI` debe tener al menos 2 funciones
+    - Agrega las otras propiedades de `Movie` (popularity, release_date, vote_average, etc.)
 * Implementa los principios de diseño
+    - Manten responsabilidades pequeñas en tus funciones
+    - Usa buenas prácticas al nombrar tus propiedades y funciones
+    - Usa buenas prácticas en el manejo de opcionales
+    
+Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
 el día Viernes 28 de Octubre - 2pm CT
@@ -143,10 +153,14 @@ el dia Martes 1ro de Noviembre - 2pm CT
 Usando lo construido en tu entregable anterior:
 
 * Muestra la información de las películas
-* Declara vistas con archivos xibs y Storyboard
-* Implementa un UICollectionView en al menos una pantalla
-* Introduce navegación en entre tus pantallas
-* Carga las imágenes asíncronamente
+    - Crea un `UIViewController` para mostrar el detalle de película
+    - Utiliza el `Interface Builder` para posicionar los elementos gráficos
+* Crea un buscador de películas
+    - Implementa un `UICollectionView` para los resultados de búsqueda
+    - Declara vistas con archivos xibs y Storyboard
+    - Introduce navegación para ver el detalle de los resultados de búsqueda
+
+Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
 el día Viernes 4 de Noviembre - 2pm CT
@@ -159,8 +173,14 @@ el dia Martes 8 de Noviembre - 2pm CT
 Termina o implementa la funcionalidad restante y resuelve cualquier comentario pendiente que hayas recibido.
 
 * Haz uso de protocolos y delegados
+    - Crea un protocolo delegado para recibir los resultados de `MovieAPI`
 * Implementa el centro de notificaciones
+    - Publica una notificación cuando el detalle de una película se muestra
+    - Subscribete a esta notificacion para mantener un contador de peliculas visualizadas en toda tu app
 * Completa todos los requerimientos del proyecto
+    - [Home, Search, Movie Details](#contenido-de-la-aplicacion)
+
+Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tu entrega final:
 el dia Martes 15 de Noviembre - 2pm CT
