@@ -124,6 +124,8 @@ Si tienes problemas y necesitas ayuda no dudes en solicitar un mentor en el cana
 
 > \*_Importante:_ esta lista en los entregables es solo una guía para ayudarte a distribuir la carga de trabajo; puedes extender funcionalidad como lo veas necesario \*
 
+> \*_IMPORTANTE PARA TUS ENTREGABLES:_ Una vez hayas terminado tu entregable y crees que está listo para su revisión definitiva por parte de tu mentor, deberás mergearlo a tu rama `dev`. Esta será la rama que tus mentores revisarán en cada entregable. \*
+
 ### Primer entregable
 
 Construye una aplicacion con las siguientes características:
