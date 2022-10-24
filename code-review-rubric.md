@@ -34,12 +34,30 @@ El código necesia ser legible tanto para ti como para un tercero. Esto incluye:
         - `let closure: (String)** -> **Void`
         - `func method(param: Type)** -> **Void`
     * 1 linea entre methodos:
+
 ```   
     func one() { }\n
     \n
     func two() { }\n
 ```
 
-
-Consulta las guí de estilo para Swift:
+Consulta las guías de estilo para Swift:
 - [Swift Style Guide](https://google.github.io/swift/)
+
+### Documentación
+Cada archivo debe contener al inicio un comentario de cabecera. Que cuando menos debe contener el nombre del archivo y modulo, el nombre del autor, 
+una descripción del código que incluye y que hace. Otros detalles pueden incliur la fecha en la que fue creado, descipcion sobre el funcionamiento interno del código,
+comentarios para pruebas o explicacion de conceptos complejos, referencias necesarias para correrco o recursos que te ayudaron a escribirlo.
+
+El código mismo también debe ser documentado a través de comentarios. Esto requere un balance entre comentar todo, que puede agregar ruido y confundir mas al lector,
+y no comentar nada, que lleva al lector a asumir o requerir ayuda para navegar las partes mas complejas. Como regla general agrega un comentario describiendo declaraciones,
+y fragmentos de código que realicen varias operaciones no intuitivas.
+
+### Eficiencia de código
+Hay varias formas de escribir un programa que cumpla con la especificacion. Pero asi como algunas pueden ahorrarte tiempo copiando y pegando una accion en varias secciones de tu proyecto,
+otra podria ser mover la tarea a una funcion y mandarla llamar en tu proyecto. La segunda opcion es la preferida no solo por la eficiencia en tiempo de ejecuccion, 
+sino tambien por su accesibilidad y mantenibilidad.   
+
+### Especificaciones del proyecto
+Las especificaciones suelen tener requerimientos fuera del programa mismo. Algunas tareas incluyen como nombrar y donde colocar archivos, buenas prácticas para el versionamiento de código,
+como se implementa el programa dentro de tu proyecto, etc. 
