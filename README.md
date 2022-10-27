@@ -193,7 +193,7 @@ Para presentar cada uno de tus entregables, sigue estos pasos:
 * Haz `push` de tu rama de desarrollo al repositorio remoto
 * Crea un [Pull Request para fusionar](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request-with-a-merge-queue) tus cambios a tu rama principal 
 * Agrega a los mentores para que revisen tu código
-* Copia la url de tu Pull Request e ingrésala en este [formulario](https://forms.gle/88qQwJTCdzuhnxm86)
+* Copia la url de tu Pull Request e ingrésala en este [formulario](https://forms.gle/1zzgvEjftSm1NacY9)
 * Resuelve cualquier comentario que te dejen para mejorar tu código
 * Haz `merge` para incorporar tus cambios a tu rama principal y continua con tu siguiente entregable
 > \*_Importante:_ Si tienes problemas con conflictos en tus ramas no dudes en pedirle ayuda a tu mentor\*
