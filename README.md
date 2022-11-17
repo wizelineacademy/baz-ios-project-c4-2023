@@ -145,10 +145,10 @@ Construye una aplicacion con las siguientes características:
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día Viernes 28 de Octubre - 2pm CT
+el día TODO: - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia Martes 1ro de Noviembre - 2pm CT
+el dia TODO: - 2pm CT
 
 ### Segundo entregable 
 
@@ -165,10 +165,10 @@ Usando lo construido en tu entregable anterior:
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día Viernes 4 de Noviembre - 2pm CT
+el día TODO: - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia Martes 8 de Noviembre - 2pm CT
+el dia TODO: - 2pm CT
 
 ### Entregable Final 
 
