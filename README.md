@@ -45,20 +45,18 @@ Recuerda que este es **Tu** proyecto y puedes ser tan creativo como tú desees.
 
 Estos son los requerimientos principales para la evaluación de tu entrega final:
 
-- Variables, Constantes, y tipos de datos
-- Funciones y bloques (closures)
-- Encadenado opcional y enlazado opcional. 
-- Collecciones en Swift 
-- Ambiente de desarrollo integrado Xcode (IDE)  
-- Versionamiento de código con git 
-- Propiedades por tipo y por valor
-- Herencia, protocolos y extensiones 
-- Ciclo de vida de interfaz
-- Vistas en archivos XIBs y Storyboard
-- Elementos visuales y controles básicos (UIKit)
-- Centro de notificaciones
-- UITableView y UICollectionView
-- Servicios REST
+- Pruebas unitarias
+- Injeccion de dependencias
+- Herencia y composición de protocolos 
+- Genericos en funciones, definiciones y protocolos  
+- Concurrencia 
+- Structural design pattern (MVVM, VIPER)
+- UserDefaults 
+- KeyChain Service
+- Persistance
+- Core Location
+- MapKit
+- AVFoundation
 
 ## Por dónde empezar
 
@@ -133,59 +131,52 @@ Construye una aplicacion con las siguientes características:
 * Clona este repositorio con tu cuenta de github.
     - Crea y sube tus ramas `dev` y `main` a github.
     - Sigue la guía [Por dónde empezar](#por-donde-empezar)
-* Completa y usa la TheMovieDB API.
-    - La clase `MovieAPI` debe tener al menos 2 propiedades
-    - La clase `MovieAPI` debe tener al menos 2 funciones
-    - Agrega las otras propiedades de `Movie` (popularity, release_date, vote_average, etc.)
-* Implementa los principios de diseño
-    - Manten responsabilidades pequeñas en tus funciones
-    - Usa buenas prácticas al nombrar tus propiedades y funciones
-    - Usa buenas prácticas en el manejo de opcionales
+* Agrega Injeccion de dependencias
+    - Remueve las dependencias de modelo de datos (eg. `Movie`) en las vistas (eg. `TrendingViewController`)
+    - Desacopla la peticiones a internet de la `MovieApi`
+* Configura tu proyecto
+    - Incluye un target para pruebas unitarias
+
+* Manten una covertura de prueba de almenos 50%
     
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día TODO: - 2pm CT
+el día Viernes 21 de Abril - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia TODO: - 2pm CT
+el dia Martes 25 de abril - 2pm CT
 
 ### Segundo entregable 
 
 Usando lo construido en tu entregable anterior:
 
-* Muestra la información de las películas
-    - Crea un `UIViewController` para mostrar el detalle de película
-    - Utiliza el `Interface Builder` para posicionar los elementos gráficos
-* Crea un buscador de películas
-    - Implementa un `UICollectionView` para los resultados de búsqueda
-    - Declara vistas con archivos xibs y Storyboard
-    - Introduce navegación para ver el detalle de los resultados de búsqueda
+* Haz uso de protocolos en el buscador de peliculas
+* Implenenta genericos en las funciones de busqueda y API
+* Implementa la arquitectura MVVM o VIPER en la aplicacion
+    
+* Manten una covertura de prueba de almenos 80%
 
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día TODO: - 2pm CT
+el día Viernes 28 de abril - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia TODO: - 2pm CT
+el dia Martes 2 de Mayo: - 2pm CT
 
 ### Entregable Final 
 
 Termina o implementa la funcionalidad restante y resuelve cualquier comentario pendiente que hayas recibido.
 
-* Haz uso de protocolos y delegados
-    - Crea un protocolo delegado para recibir los resultados de `MovieAPI`
-* Implementa el centro de notificaciones
-    - Publica una notificación cuando el detalle de una película se muestra
-    - Subscribete a esta notificacion para mantener un contador de peliculas visualizadas en toda tu app
+* Utiliza persistencia de datos para guardar las peliculas favoritas
 * Completa todos los requerimientos del proyecto
     - [Home, Search, Movie Details](#contenido-de-la-aplicacion)
 
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tu entrega final:
-el dia Martes 15 de Noviembre - 2pm CT
+el dia Martes 9 de mayo - 2pm CT
 
 ## Presentando tus entregables
 
