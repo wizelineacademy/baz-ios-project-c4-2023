@@ -1,4 +1,4 @@
-# BAZ Proyecto Final iOS C1 2022
+# BAZ Proyecto Final iOS Bloque 4 2024
 
 Gracias por participar en este curso de Wizeline Academy!
 
