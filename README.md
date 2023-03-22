@@ -1,4 +1,4 @@
-# BAZ Proyecto Final iOS Bloque 4 2024
+# BAZ Proyecto Final iOS C4 2023
 
 Gracias por participar en este curso de Wizeline Academy!
 
@@ -73,15 +73,18 @@ Para empezar, sigue los estos pasos:
 
 **Paso 3:** Crea tu rama de desarrollo `dev` con tu nombre `dev-(nombre)-(apellido)`, ejemplo: dev-steve-jobs
 
-**Paso 4:** Crea tus ramas en cada tarea usando `task-(nombre)-(apellido)-descripcion`, ejemplo: task-steve-jobs-nueva-capa-de-network
-Debes crear un PR para mezclar tus cambios a tu rama de desarrollo.
+**Paso 4:** Eres libre de crear task branches y mezclarlas a tu dev branch sin pull request y sin revisión.
 
 **Paso 5:** Crea y empuja tus cambios (Commits) periodicamente.
 
-**Paso 6:** Cuando tus entregables esten listos crea un Pull Request de tu rama de desarrollo a tu rama principal.
+**Paso 6:** Cuando tus entregables estén listos crea un Pull Request de tu rama de desarrollo a tu rama principal.
 `main-(nombre)-(apellido) < dev-(nombre)-(apellido)`
 
-**Paso 7:** No olvides diviértete!
+**Paso 7:** Una vez que tu mentor evalúe y mezcle tus cambios a `main`, no olvides actualizar tu rama `dev` para tener los últimos cambios. 
+
+**Paso 8:** No olvides, diviértete!
+
+<img width="100%" alt="Example Git Workflow" src="git-workflow.png">
 
 > \*_NOTA:_ Sigue este flujo de trabajo para tus colaboraciones 
 [https://docs.github.com/get-started/quickstart/github-flow](https://docs.github.com/get-started/quickstart/github-flow) \*
@@ -137,15 +140,15 @@ Construye una aplicacion con las siguientes características:
 * Configura tu proyecto
     - Incluye un target para pruebas unitarias
 
-* Manten una covertura de prueba de almenos 50%
+* Manten una cobertura de prueba de al menos 50%
     
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día Viernes 21 de Abril - 2pm CT
+el día Viernes 31 de Marzo - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia Martes 25 de abril - 2pm CT
+el día Martes 11 de Abril - 2pm CT
 
 ### Segundo entregable 
 
@@ -154,16 +157,16 @@ Usando lo construido en tu entregable anterior:
 * Haz uso de protocolos en el buscador de peliculas
 * Implenenta genericos en las funciones de busqueda y API
 * Implementa la arquitectura MVVM o VIPER en la aplicacion
-    
-* Manten una covertura de prueba de almenos 80%
+
+* Manten una cobertura de prueba de al menos 80%
 
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tus cambios y crear un Pull request con tu mentor a más tardar:
-el día Viernes 28 de abril - 2pm CT
+el día Viernes 21 de abril - 2pm CT
 
 Sube tu entregable con correcciones antes de:
-el dia Martes 2 de Mayo: - 2pm CT
+el día Martes 25 de Abril: - 2pm CT
 
 ### Entregable Final 
 
@@ -173,10 +176,12 @@ Termina o implementa la funcionalidad restante y resuelve cualquier comentario p
 * Completa todos los requerimientos del proyecto
     - [Home, Search, Movie Details](#contenido-de-la-aplicacion)
 
+* Manten una cobertura de prueba de al menos 80%
+
 Recuerda documentar, mantener buena legibilidad de código y otros [criterios de evaluación](code-review-rubric.md)
 
 Deberás subir tu entrega final:
-el dia Martes 9 de mayo - 2pm CT
+el día Lunes 8 de mayo - 2pm CT
 
 ## Presentando tus entregables
 
