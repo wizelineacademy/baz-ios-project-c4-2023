@@ -22,6 +22,8 @@
 		217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */; };
 		217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */; };
 		217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */; };
+		217F380729D37F1900ACA6C4 /* TrendingBarInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */; };
+		217F380A29D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380929D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDataManager.swift; sourceTree = "<group>"; };
 		217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDispatchDecorator.swift; sourceTree = "<group>"; };
 		217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSHeetAlerts.swift; sourceTree = "<group>"; };
+		217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarInteractorTests.swift; sourceTree = "<group>"; };
+		217F380929D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRemoteDataManagerMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +96,9 @@
 		217F37CE29D1FA1E00ACA6C4 /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				217F380829D37FDF00ACA6C4 /* Mocks */,
 				217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */,
+				217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -197,6 +203,14 @@
 				217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		217F380829D37FDF00ACA6C4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				217F380929D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		C30893A128A2F42B004B1860 = {
@@ -336,6 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217F380729D37F1900ACA6C4 /* TrendingBarInteractorTests.swift in Sources */,
+				217F380A29D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift in Sources */,
 				217F37D029D1FA1E00ACA6C4 /* BAZProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
