@@ -1,12 +1,12 @@
 //
-//  TrendingViewController.swift
+//  TrendingMoviesViewController.swift
 //  BAZProject
 //
 //
 
 import UIKit
 
-class TrendingViewController: UITableViewController {
+class TrendingMoviesViewController: UITableViewController {
 
     var movies: [Movie] = []
 
@@ -28,7 +28,7 @@ class TrendingViewController: UITableViewController {
 
 // MARK: - TableView's DataSource
 
-extension TrendingViewController {
+extension TrendingMoviesViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
@@ -42,7 +42,7 @@ extension TrendingViewController {
 
 // MARK: - TableView's Delegate
 
-extension TrendingViewController {
+extension TrendingMoviesViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
