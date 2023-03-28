@@ -9,12 +9,17 @@ import UIKit
 final class TrendingViewController: UITableViewController {
     
     var presenter: TrendingBarPresenterProtocol?
+    let child = SpinnerViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Filtro", style: .done, target: self, action: #selector(self.filterBy(sender:)))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
-        presenter?.willFetchTrendingMovies()
+        presenter?.willFetchMovieList()
+    }
+    
+    @objc func filterBy(sender: UIBarButtonItem) {
+        presenter?.prepareActionSheet()
     }
 
 }
@@ -65,5 +70,24 @@ extension TrendingViewController: TrendingBarViewControllerProtocol {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+    func showAlert(withTitle title: String, withMessage message: String, withActions actions: [(String, UIAlertAction.Style)]) {
+        Alerts.showActionsheet(viewController: self, title: title, message: message, actions: actions) { [weak self] index in
+            self?.presenter?.search(byFilter: index)
+        }
+    }
+    
+    func showLoadingView() {
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func dismissLoadingView() {
+        child.willMove(toParent: nil)
+        child.view.removeFromSuperview()
+        child.removeFromParent()
     }
 }

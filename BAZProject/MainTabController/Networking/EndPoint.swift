@@ -13,6 +13,10 @@ enum Endpoint {
     static let baseURL = "https://api.themoviedb.org/3/"
     
     case trending
+    case nowPlaying
+    case popular
+    case topRated
+    case upcoming
 }
 
 extension Endpoint {
@@ -20,16 +24,21 @@ extension Endpoint {
         switch self {
         case .trending:
             return MainConstants.trendingEndPoint
+        case .nowPlaying:
+            return MainConstants.nowPlayingEndPoint
+        case .popular:
+            return MainConstants.popularEndPoint
+        case .topRated:
+            return MainConstants.topRatedEndPoint
+        case .upcoming:
+            return MainConstants.upcomingEndPoint
         }
     }
     
     var request: URLRequest {
-        switch self {
-        case .trending:
-            let url: URL = URL(string: Endpoint.baseURL + string) ?? URL(fileURLWithPath: "")
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            return request
-        }
+        let url: URL = URL(string: Endpoint.baseURL + string) ?? URL(fileURLWithPath: "")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        return request
     }
 }

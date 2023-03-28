@@ -16,8 +16,8 @@ class TrendingBarInteractor {
 }
 
 extension TrendingBarInteractor: TrendingBarInteractorInputProtocol {
-    func fetchTrendingList(_ urlString: String?) {
-        remoteData?.requestTrendingList(urlString)
+    func fetchMovieList(_ endPoint: Endpoint) {
+        remoteData?.requestMovieList(byEndPoint: endPoint)
     }
 }
 
@@ -33,6 +33,7 @@ extension TrendingBarInteractor: TrendingBarRemoteDataOutputProtocol {
     }
     
     private func createTrendingModel(with trendingList: TrendingMoviesResult, completion: @escaping ([Movie?]) -> Void) {
+        self.trendingModel.removeAll()
         if let movies = trendingList.results {
             let myTrendingGroup = DispatchGroup()
             for movie in movies {

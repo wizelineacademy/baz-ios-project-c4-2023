@@ -17,8 +17,8 @@ final class TrendingBarDataManager {
 }
 
 extension TrendingBarDataManager: TrendingBarRemoteDataInputProtocol {
-    func requestTrendingList(_ urlString: String?) {
-        service.get(Endpoint.trending) { [weak self] (result: Result<TrendingMoviesResult, Error>) in
+    func requestMovieList(byEndPoint endPoint: Endpoint) {
+        service.get(endPoint) { [weak self] (result: Result<TrendingMoviesResult, Error>) in
             switch result {
             case .success(let trendingList):
                 self?.interactor?.handleTrendingFetchedList(trendingList)

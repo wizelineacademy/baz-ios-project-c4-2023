@@ -21,6 +21,8 @@
 		217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F629D2340F00ACA6C4 /* ServiceError.swift */; };
 		217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */; };
 		217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */; };
+		217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */; };
+		217F380529D2A01200ACA6C4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380429D2A01200ACA6C4 /* SpinnerViewController.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 		217F37F629D2340F00ACA6C4 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDataManager.swift; sourceTree = "<group>"; };
 		217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDispatchDecorator.swift; sourceTree = "<group>"; };
+		217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSHeetAlerts.swift; sourceTree = "<group>"; };
+		217F380429D2A01200ACA6C4 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				217F37F029D232D900ACA6C4 /* MainConstants.swift */,
+				217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */,
+				217F380429D2A01200ACA6C4 /* SpinnerViewController.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -351,11 +357,13 @@
 				217F37EC29D22A9900ACA6C4 /* TrendingBarPresenter.swift in Sources */,
 				217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */,
 				217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */,
+				217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				217F37EE29D2326200ACA6C4 /* EndPoint.swift in Sources */,
 				217F37E829D227D600ACA6C4 /* TrendingBarRouter.swift in Sources */,
 				217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */,
 				217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */,
+				217F380529D2A01200ACA6C4 /* SpinnerViewController.swift in Sources */,
 				217F37EA29D2298900ACA6C4 /* TrendingBarInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
