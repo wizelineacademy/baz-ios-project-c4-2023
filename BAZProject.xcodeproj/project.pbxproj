@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217F37D029D1FA1E00ACA6C4 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */; };
+		217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */; };
+		217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */; };
+		217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E529D2265500ACA6C4 /* TrendingEntity.swift */; };
+		217F37E829D227D600ACA6C4 /* TrendingBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E729D227D600ACA6C4 /* TrendingBarRouter.swift */; };
+		217F37EA29D2298900ACA6C4 /* TrendingBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E929D2298900ACA6C4 /* TrendingBarInteractor.swift */; };
+		217F37EC29D22A9900ACA6C4 /* TrendingBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37EB29D22A9900ACA6C4 /* TrendingBarPresenter.swift */; };
+		217F37EE29D2326200ACA6C4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37ED29D2326200ACA6C4 /* EndPoint.swift */; };
+		217F37F129D232D900ACA6C4 /* MainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F029D232D900ACA6C4 /* MainConstants.swift */; };
+		217F37F329D233CE00ACA6C4 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F229D233CE00ACA6C4 /* ServiceAPI.swift */; };
+		217F37F529D233F400ACA6C4 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F429D233F400ACA6C4 /* ServiceProtocols.swift */; };
+		217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F629D2340F00ACA6C4 /* ServiceError.swift */; };
+		217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */; };
+		217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -14,12 +28,35 @@
 		C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */; };
 		C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893C328A2F845004B1860 /* TrendingViewController.swift */; };
 		C30893DB28A42481004B1860 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C30893DA28A42481004B1860 /* README.md */; };
-		C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E028A425E1004B1860 /* MovieAPI.swift */; };
-		C30893E328A425E1004B1860 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */ = {isa = PBXBuildFile; fileRef = C383356D28CA917400FCE0D5 /* code-review-rubric.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		217F37D129D1FA1E00ACA6C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C30893A228A2F42B004B1860 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C30893A928A2F42B004B1860;
+			remoteInfo = BAZProject;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
+		217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarProtocols.swift; sourceTree = "<group>"; };
+		217F37E529D2265500ACA6C4 /* TrendingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEntity.swift; sourceTree = "<group>"; };
+		217F37E729D227D600ACA6C4 /* TrendingBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRouter.swift; sourceTree = "<group>"; };
+		217F37E929D2298900ACA6C4 /* TrendingBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarInteractor.swift; sourceTree = "<group>"; };
+		217F37EB29D22A9900ACA6C4 /* TrendingBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarPresenter.swift; sourceTree = "<group>"; };
+		217F37ED29D2326200ACA6C4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		217F37F029D232D900ACA6C4 /* MainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConstants.swift; sourceTree = "<group>"; };
+		217F37F229D233CE00ACA6C4 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
+		217F37F429D233F400ACA6C4 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		217F37F629D2340F00ACA6C4 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDataManager.swift; sourceTree = "<group>"; };
+		217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDispatchDecorator.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,12 +66,17 @@
 		C30893BB28A2F42D004B1860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C30893C328A2F845004B1860 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		C30893DA28A42481004B1860 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C30893E028A425E1004B1860 /* MovieAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
-		C30893E128A425E1004B1860 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		C383356D28CA917400FCE0D5 /* code-review-rubric.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "code-review-rubric.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		217F37CA29D1FA1D00ACA6C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C30893A728A2F42B004B1860 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,12 +87,122 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		217F37CE29D1FA1E00ACA6C4 /* BAZProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */,
+			);
+			path = BAZProjectTests;
+			sourceTree = "<group>";
+		};
+		217F37D629D20A5B00ACA6C4 /* MainTabController */ = {
+			isa = PBXGroup;
+			children = (
+				217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */,
+				217F37EF29D232C300ACA6C4 /* Reusables */,
+				217F37DB29D2157000ACA6C4 /* Networking */,
+				217F37D729D20A8400ACA6C4 /* TrendingModule */,
+			);
+			path = MainTabController;
+			sourceTree = "<group>";
+		};
+		217F37D729D20A8400ACA6C4 /* TrendingModule */ = {
+			isa = PBXGroup;
+			children = (
+				217F37DC29D21B5700ACA6C4 /* Protocols */,
+				217F37DD29D21B5E00ACA6C4 /* DataManager */,
+				217F37DE29D21B6B00ACA6C4 /* View */,
+				217F37DF29D21B9300ACA6C4 /* Interactor */,
+				217F37E029D21B9E00ACA6C4 /* Presenter */,
+				217F37E129D21BB500ACA6C4 /* Entity */,
+				217F37E229D21BC100ACA6C4 /* Router */,
+			);
+			path = TrendingModule;
+			sourceTree = "<group>";
+		};
+		217F37DB29D2157000ACA6C4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				217F37ED29D2326200ACA6C4 /* EndPoint.swift */,
+				217F37F229D233CE00ACA6C4 /* ServiceAPI.swift */,
+				217F37F429D233F400ACA6C4 /* ServiceProtocols.swift */,
+				217F37F629D2340F00ACA6C4 /* ServiceError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		217F37DC29D21B5700ACA6C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		217F37DD29D21B5E00ACA6C4 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */,
+				217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		217F37DE29D21B6B00ACA6C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		217F37DF29D21B9300ACA6C4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				217F37E929D2298900ACA6C4 /* TrendingBarInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		217F37E029D21B9E00ACA6C4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				217F37EB29D22A9900ACA6C4 /* TrendingBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		217F37E129D21BB500ACA6C4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				217F37E529D2265500ACA6C4 /* TrendingEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		217F37E229D21BC100ACA6C4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				217F37E729D227D600ACA6C4 /* TrendingBarRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		217F37EF29D232C300ACA6C4 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				217F37F029D232D900ACA6C4 /* MainConstants.swift */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
 		C30893A128A2F42B004B1860 = {
 			isa = PBXGroup;
 			children = (
 				C30893DA28A42481004B1860 /* README.md */,
 				C383356D28CA917400FCE0D5 /* code-review-rubric.md */,
 				C30893AC28A2F42B004B1860 /* BAZProject */,
+				217F37CE29D1FA1E00ACA6C4 /* BAZProjectTests */,
 				C30893AB28A2F42B004B1860 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				C30893AA28A2F42B004B1860 /* BAZProject.app */,
+				217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,11 +219,9 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				217F37D629D20A5B00ACA6C4 /* MainTabController */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
-				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
-				C30893E128A425E1004B1860 /* Movie.swift */,
-				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				C30893B328A2F42B004B1860 /* Main.storyboard */,
 				C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */,
 				C30893B628A2F42D004B1860 /* Assets.xcassets */,
@@ -82,6 +233,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		217F37CC29D1FA1D00ACA6C4 /* BAZProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 217F37D529D1FA1E00ACA6C4 /* Build configuration list for PBXNativeTarget "BAZProjectTests" */;
+			buildPhases = (
+				217F37C929D1FA1D00ACA6C4 /* Sources */,
+				217F37CA29D1FA1D00ACA6C4 /* Frameworks */,
+				217F37CB29D1FA1D00ACA6C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				217F37D229D1FA1E00ACA6C4 /* PBXTargetDependency */,
+			);
+			name = BAZProjectTests;
+			productName = BAZProjectTests;
+			productReference = 217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C30893A928A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C30893BE28A2F42D004B1860 /* Build configuration list for PBXNativeTarget "BAZProject" */;
@@ -106,9 +275,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					217F37CC29D1FA1D00ACA6C4 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = C30893A928A2F42B004B1860;
+					};
 					C30893A928A2F42B004B1860 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -128,11 +301,19 @@
 			projectRoot = "";
 			targets = (
 				C30893A928A2F42B004B1860 /* BAZProject */,
+				217F37CC29D1FA1D00ACA6C4 /* BAZProjectTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		217F37CB29D1FA1D00ACA6C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C30893A828A2F42B004B1860 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,19 +329,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		217F37C929D1FA1D00ACA6C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				217F37D029D1FA1E00ACA6C4 /* BAZProjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C30893A628A2F42B004B1860 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217F37F529D233F400ACA6C4 /* ServiceProtocols.swift in Sources */,
+				217F37F329D233CE00ACA6C4 /* ServiceAPI.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */,
+				217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				217F37F129D232D900ACA6C4 /* MainConstants.swift in Sources */,
+				217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */,
+				217F37EC29D22A9900ACA6C4 /* TrendingBarPresenter.swift in Sources */,
+				217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */,
+				217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
-				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
-				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
+				217F37EE29D2326200ACA6C4 /* EndPoint.swift in Sources */,
+				217F37E829D227D600ACA6C4 /* TrendingBarRouter.swift in Sources */,
+				217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */,
+				217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */,
+				217F37EA29D2298900ACA6C4 /* TrendingBarInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		217F37D229D1FA1E00ACA6C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C30893A928A2F42B004B1860 /* BAZProject */;
+			targetProxy = 217F37D129D1FA1E00ACA6C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C30893B328A2F42B004B1860 /* Main.storyboard */ = {
@@ -182,6 +390,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		217F37D329D1FA1E00ACA6C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4F4D8862P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com..courses.max.app.BAZProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BAZProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BAZProject";
+			};
+			name = Debug;
+		};
+		217F37D429D1FA1E00ACA6C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4F4D8862P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com..courses.max.app.BAZProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BAZProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BAZProject";
+			};
+			name = Release;
+		};
 		C30893BC28A2F42D004B1860 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -355,6 +603,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		217F37D529D1FA1E00ACA6C4 /* Build configuration list for PBXNativeTarget "BAZProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				217F37D329D1FA1E00ACA6C4 /* Debug */,
+				217F37D429D1FA1E00ACA6C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C30893A528A2F42B004B1860 /* Build configuration list for PBXProject "BAZProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
