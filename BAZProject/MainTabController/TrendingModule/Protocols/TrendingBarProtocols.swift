@@ -23,8 +23,6 @@ protocol TrendingBarViewControllerProtocol: AnyObject {
     func fillTrendingList()
     func reload(with error: Error)
     func showAlert(withTitle title: String, withMessage message: String, withActions actions: [(String, UIAlertAction.Style)])
-    func showLoadingView()
-    func dismissLoadingView()
 }
 
 // Presenter > View
@@ -53,7 +51,7 @@ protocol TrendingBarInteractorInputProtocol: AnyObject {
     var remoteData: TrendingBarRemoteDataInputProtocol? { get set }
     
     func fetchMovieList(_ endPoint: Endpoint)
-    
+    func fetchImageFrom(_ movie: MovieResult)
     func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol)
 }
 
@@ -68,7 +66,8 @@ extension TrendingBarInteractorInputProtocol {
 protocol TrendingBarInteractorOutputProtocol: AnyObject {
     var interactor: TrendingBarInteractorInputProtocol? { get set }
     
-    func onReceivedTrendingList(with trendingModel: [Movie])
+    func onReceivedTrendingList(with trendingList: TrendingMoviesResult)
+    func onReceivedMovie(with movie: Movie)
     func onReceived(with error: Error)
 }
 

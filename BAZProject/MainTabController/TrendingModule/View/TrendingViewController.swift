@@ -9,7 +9,6 @@ import UIKit
 final class TrendingViewController: UITableViewController {
     
     var presenter: TrendingBarPresenterProtocol?
-    let child = SpinnerViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,18 +75,5 @@ extension TrendingViewController: TrendingBarViewControllerProtocol {
         Alerts.showActionsheet(viewController: self, title: title, message: message, actions: actions) { [weak self] index in
             self?.presenter?.search(byFilter: index)
         }
-    }
-    
-    func showLoadingView() {
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-    }
-    
-    func dismissLoadingView() {
-        child.willMove(toParent: nil)
-        child.view.removeFromSuperview()
-        child.removeFromParent()
     }
 }

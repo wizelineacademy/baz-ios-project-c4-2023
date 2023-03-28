@@ -21,8 +21,8 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
     }
     
     func willFetchMovieList() {
+        self.trendingModel.removeAll()
         interactor?.fetchMovieList(Endpoint.trending)
-        view?.showLoadingView()
     }
     
     func prepareActionSheet() {
@@ -37,6 +37,7 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
     }
     
     func search(byFilter filter: Int) {
+        self.trendingModel.removeAll()
         var endPoint = Endpoint.trending
         guard let action = AlertSheetActions(rawValue: filter) else {
             endPoint = .trending
@@ -57,15 +58,19 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
         }
         
         interactor?.fetchMovieList(endPoint)
-        view?.showLoadingView()
     }
 }
 
 extension TrendingBarPresenter: TrendingBarInteractorOutputProtocol {
-    func onReceivedTrendingList(with trendingModel: [Movie]) {
-        self.trendingModel.removeAll()
-        self.trendingModel = trendingModel
-        view?.dismissLoadingView()
+    func onReceivedTrendingList(with trendingList: TrendingMoviesResult) {
+        guard let movieList = trendingList.results else { return }
+        for movie in movieList {
+            interactor?.fetchImageFrom(movie)
+        }
+    }
+    
+    func onReceivedMovie(with movie: Movie) {
+        self.trendingModel.append(movie)
         view?.fillTrendingList()
     }
     
