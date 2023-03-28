@@ -45,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B37398029D395900056041F /* TrendingMoviesModule */ = {
+			isa = PBXGroup;
+			children = (
+				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
+			);
+			path = TrendingMoviesModule;
+			sourceTree = "<group>";
+		};
 		C30893A128A2F42B004B1860 = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +74,9 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				4B37398029D395900056041F /* TrendingMoviesModule */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
-				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 				C30893E128A425E1004B1860 /* Movie.swift */,
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				C30893B328A2F42B004B1860 /* Main.storyboard */,
