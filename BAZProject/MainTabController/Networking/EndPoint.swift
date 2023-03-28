@@ -10,13 +10,14 @@ import Foundation
 // "https://api.themoviedb.org/3/trending/movie/day?api_key=\(MainConstants.apiKey)"
 
 enum Endpoint {
-    static let baseURL = "https://api.themoviedb.org/3/"
+    static var baseURL = "https://api.themoviedb.org/3/"
     
     case trending
     case nowPlaying
     case popular
     case topRated
     case upcoming
+    case fake
 }
 
 extension Endpoint {
@@ -32,6 +33,8 @@ extension Endpoint {
             return MainConstants.topRatedEndPoint
         case .upcoming:
             return MainConstants.upcomingEndPoint
+        case .fake:
+            return "fake"
         }
     }
     
