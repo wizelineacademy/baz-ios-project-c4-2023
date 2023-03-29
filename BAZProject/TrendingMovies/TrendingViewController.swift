@@ -8,16 +8,14 @@ import UIKit
 
 class TrendingViewController: UITableViewController {
 
-    var movies: [Movie] = []
+    
+    var myTredingArray: [Movie] = []
+    let trendingModel = myTredingModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let movieApi = MovieAPI()
-        
-        movieApi.getMovies { movies in
-            self.movies = movies
-            
+        trendingModel.getmovies { movies in
+            self.myTredingArray = movies
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -31,7 +29,7 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        myTredingArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +44,7 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
+        config.text = myTredingArray[indexPath.row].title
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }
