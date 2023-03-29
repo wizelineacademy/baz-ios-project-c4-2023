@@ -60,6 +60,5 @@ struct MovieResult: Decodable {
 struct Movie {
     let id: Int
     let title: String
-//    let posterPath: String
     let posterPath: Data
 }
