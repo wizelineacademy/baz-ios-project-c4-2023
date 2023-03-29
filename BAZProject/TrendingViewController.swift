@@ -9,19 +9,12 @@ import UIKit
 class TrendingViewController: UITableViewController {
 
     var movies: [Movie] = []
+    private lazy var serviceApi = ServiceApi(serviceDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let movieApi = MovieAPI()
+        serviceApi.search(forPath: "/trending/movie/day")
         
-        movieApi.getMovies { movies in
-            self.movies = movies
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
     }
 
 }
@@ -51,4 +44,30 @@ extension TrendingViewController {
         cell.contentConfiguration = config
     }
 
+}
+
+extension TrendingViewController : ServiceApiProtocol{
+    func serviceFinished(withResult result: Result<[String : Any], Error>) {
+        switch result {
+        case .success(let success):
+            configureMovies(fromResponse: success)
+        case .failure(let failure):
+            print(failure.localizedDescription)
+        }
+    }
+    
+    private func configureMovies(fromResponse dctResponse : [String : Any]){
+        guard let results = dctResponse["results"] as? [[String : Any]] else { return }
+        for result in results {
+            if let id = result["id"] as? Int,
+               let title = result["title"] as? String,
+               let poster_path = result["poster_path"] as? String {
+                movies.append(Movie(id: id, title: title, poster_path: poster_path))
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }

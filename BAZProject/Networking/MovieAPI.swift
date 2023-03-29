@@ -8,9 +8,10 @@ import Foundation
 
 class MovieAPI {
 
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    private lazy var serviceApi = ServiceApi(serviceDelegate: self)
 
     func getMovies(completion: @escaping ([Movie]) -> Void) {
+        /*
         guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(apiKey)")
         else {
             return completion([])
@@ -34,6 +35,13 @@ class MovieAPI {
                 }
             }
         }.resume()
+         */
     }
 
+}
+
+extension MovieAPI : ServiceApiProtocol{
+    func serviceFinished(withResult result: Result<[String : Any], Error>) {
+        
+    }
 }
