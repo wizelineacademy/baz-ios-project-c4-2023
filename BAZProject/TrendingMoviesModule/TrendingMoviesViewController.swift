@@ -30,11 +30,10 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         view.backgroundColor = .systemBackground
-        let movieApi = MovieAPI()
+        let movieApi = TrendingAPIService()
         
         movieApi.getMovies { movies in
             self.movies = movies
-            
             DispatchQueue.main.async {
                 self.moviesTableView.reloadData()
             }
