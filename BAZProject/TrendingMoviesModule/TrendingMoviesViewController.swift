@@ -15,12 +15,13 @@ class TrendingMoviesViewController: UIViewController {
         return tableView
     }()
 
-    var movies: [Movie] = []
+    var model: TrendingMoviesModel?
     
     static func getInstance() -> TrendingMoviesViewController {
         let vc = TrendingMoviesViewController()
         vc.title = "Trending"
         vc.tabBarItem = UITabBarItem(title: vc.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
+        vc.model = TrendingMoviesModel()
         return vc
     }
 
@@ -30,13 +31,8 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         view.backgroundColor = .systemBackground
-        let movieApi = TrendingAPIService()
-        
-        movieApi.getMovies { movies in
-            self.movies = movies
-            DispatchQueue.main.async {
-                self.moviesTableView.reloadData()
-            }
+        model?.getMovies { [weak self] in
+            self?.moviesTableView.reloadData()
         }
     }
     
@@ -55,11 +51,11 @@ class TrendingMoviesViewController: UIViewController {
 extension TrendingMoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        return model?.movies?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
+        return tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
     }
 
 }
@@ -69,12 +65,11 @@ extension TrendingMoviesViewController: UITableViewDataSource {
 extension TrendingMoviesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
-        config.image = UIImage(named: "poster") ?? UIImage(systemName: "photo")
+        var config = model?.getCellConfiguration(row: indexPath.row) ?? UIListContentConfiguration.cell()
         config.imageProperties.maximumSize = CGSize(width: 50, height: 50)
         cell.indentationLevel = 1
         cell.indentationWidth = 0
+        config.image = UIImage(named: "poster") ?? UIImage(systemName: "photo")
         cell.contentConfiguration = config
     }
 
