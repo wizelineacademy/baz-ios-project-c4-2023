@@ -13,7 +13,14 @@ class TrendingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let movieApi = MovieAPI()
+        let movieApi = TrendingMovies()
+        movieApi.get (){ (result, error) in
+            if .success {
+                movies = result
+            }else{
+                
+            }
+        }
         
         movieApi.getMovies { movies in
             self.movies = movies
