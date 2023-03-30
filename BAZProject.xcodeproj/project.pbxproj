@@ -99,10 +99,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		859D2DCB29D5EC91008AF807 /* Views */ = {
+		859D2DCB29D5EC91008AF807 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		859D2DCC29D5F80C008AF807 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */,
+				C30893B328A2F42B004B1860 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,14 +139,13 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				859D2DCB29D5EC91008AF807 /* Views */,
 				859D2DCA29D5EC7F008AF807 /* Services */,
+				859D2DCB29D5EC91008AF807 /* Controllers */,
 				859D2DC929D5EC64008AF807 /* Models */,
+				859D2DCC29D5F80C008AF807 /* Views */,
 				859D2DC629D5EB4D008AF807 /* ViewModels */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
-				C30893B328A2F42B004B1860 /* Main.storyboard */,
-				C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */,
 				C30893B628A2F42D004B1860 /* Assets.xcassets */,
 				C30893BB28A2F42D004B1860 /* Info.plist */,
 			);
