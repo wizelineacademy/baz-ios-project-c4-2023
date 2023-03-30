@@ -16,7 +16,7 @@ enum MovieEndpoint: EndpointProtocol {
     
     private var builtURL: URL? {
         switch self {
-        case .trending: return URL(string: "\(Endpoint.mainURL)trending/movie/day?api_key=\(Endpoint.apiKey)")
+        case .trending: return URL(string: "\(MovieEndpoint.mainURL)trending/movie/day?api_key=\(MovieEndpoint.apiKey)")
         }
     }
     

@@ -16,28 +16,18 @@ class RequestHandler {
             return
         }
         
-        DispatchQueue.global().async {
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error as? NSError {
-                    DispatchQueue.main.async {
-                        completion(.failure(.serviceError(error)))
-                    }
-                    return
-                }
-                
-                guard let data = data else {
-                    DispatchQueue.main.async {
-                        completion(.failure(.nullData))
-                    }
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    completion(.success(data))
-                }
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error as? NSError {
+                completion(.failure(.serviceError(error)))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(.nullData))
+                return
+            }
+            completion(.success(data))
                       
-            }.resume()
-        }
+        }.resume()
     }
     
 }

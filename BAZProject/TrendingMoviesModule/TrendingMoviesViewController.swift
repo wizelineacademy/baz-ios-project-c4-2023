@@ -32,7 +32,9 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.dataSource = self
         view.backgroundColor = .systemBackground
         model?.getMovies { [weak self] in
-            self?.moviesTableView.reloadData()
+            DispatchQueue.main.async {
+                self?.moviesTableView.reloadData()
+            }
         }
     }
     
