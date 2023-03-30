@@ -12,6 +12,7 @@
 		2157047D29D60ABB00801FA9 /* TrendingBarPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157047C29D60ABB00801FA9 /* TrendingBarPresenterMock.swift */; };
 		2157048129D6133F00801FA9 /* TrendingBarRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */; };
 		2157048429D614A900801FA9 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048329D614A900801FA9 /* NavigationControllerSpy.swift */; };
+		2157048629D632F400801FA9 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048529D632F400801FA9 /* ReusableIdentifier.swift */; };
 		217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */; };
 		217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */; };
 		217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E529D2265500ACA6C4 /* TrendingEntity.swift */; };
@@ -63,6 +64,7 @@
 		2157047C29D60ABB00801FA9 /* TrendingBarPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarPresenterMock.swift; sourceTree = "<group>"; };
 		2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRouterTests.swift; sourceTree = "<group>"; };
 		2157048329D614A900801FA9 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
+		2157048529D632F400801FA9 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
 		217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarProtocols.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				217F37F029D232D900ACA6C4 /* MainConstants.swift */,
 				217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */,
+				2157048529D632F400801FA9 /* ReusableIdentifier.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */,
 				217F37EC29D22A9900ACA6C4 /* TrendingBarPresenter.swift in Sources */,
 				217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */,
+				2157048629D632F400801FA9 /* ReusableIdentifier.swift in Sources */,
 				217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */,
 				217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
