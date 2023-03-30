@@ -9,7 +9,7 @@ import Foundation
 
 class RequestHandler {
     
-    func get(_ endpoint: Endpoint, completion: @escaping (Result<Data , RequestHandlerError>) -> Void) {
+    func get(_ endpoint: EndpointProtocol, completion: @escaping (Result<Data , RequestHandlerError>) -> Void) {
         
         guard let request = endpoint.request else {
             completion(.failure(.requestBuilder))
