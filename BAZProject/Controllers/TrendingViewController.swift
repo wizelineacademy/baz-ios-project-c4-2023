@@ -21,8 +21,8 @@ extension TrendingViewController {
     public func setup() {
         let movieApi = MovieAPI()
         
-        movieApi.getMovies { movies in
-            self.moviesListVM = MovieListViewModel(movies: movies)
+        movieApi.getMovies(url: "https://api.themoviedb.org/3/trending/movie/day") { movies in
+            self.moviesListVM = MovieListViewModel(movies: movies ?? [])
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
