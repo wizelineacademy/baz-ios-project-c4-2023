@@ -21,4 +21,16 @@ final class TrendingBarRouter: TrendingBarRouterProtocol {
         remoteData.interactor = interactor
         return view
     }
+    
+    func presentSearchViewController(from view: TrendingBarViewControllerProtocol?) {
+        guard let viewController = view as? UIViewController else { return }
+        let searchViewController  = SearchMoviesViewController()
+        viewController.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
+    func presentMovieDetailController(from view: TrendingBarViewControllerProtocol?) {
+        guard let viewController = view as? UIViewController else { return }
+        let detailViewController  = MovieDetailViewController()
+        viewController.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }

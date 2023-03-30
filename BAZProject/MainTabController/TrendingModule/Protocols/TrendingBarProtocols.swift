@@ -12,6 +12,8 @@ import UIKit
 // Presenter > Router
 protocol TrendingBarRouterProtocol: AnyObject {
     func createTrendingModule() -> UIViewController
+    func presentSearchViewController(from view: TrendingBarViewControllerProtocol?)
+    func presentMovieDetailController(from view: TrendingBarViewControllerProtocol?)
 }
 
 // View > Presenter
@@ -35,6 +37,8 @@ protocol TrendingBarPresenterProtocol: AnyObject {
     func reloadInfo()
     func prepareActionSheet()
     func search(byFilter filter: Int)
+    func presentSearchView()
+    func didSelectRowAt(_ indexPath: IndexPath)
 }
 
 extension TrendingBarPresenterProtocol {

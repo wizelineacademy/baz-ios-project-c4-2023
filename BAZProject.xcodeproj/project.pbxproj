@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		217F37D029D1FA1E00ACA6C4 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */; };
+		2157047929D5F6AB00801FA9 /* TrendingBarPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157047829D5F6AB00801FA9 /* TrendingBarPresenterTests.swift */; };
+		2157047B29D5F6EB00801FA9 /* TrendingBarViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157047A29D5F6EB00801FA9 /* TrendingBarViewControllerMock.swift */; };
+		2157047D29D60ABB00801FA9 /* TrendingBarPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157047C29D60ABB00801FA9 /* TrendingBarPresenterMock.swift */; };
+		2157048129D6133F00801FA9 /* TrendingBarRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */; };
+		2157048429D614A900801FA9 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048329D614A900801FA9 /* NavigationControllerSpy.swift */; };
 		217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */; };
 		217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */; };
 		217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E529D2265500ACA6C4 /* TrendingEntity.swift */; };
@@ -30,6 +34,9 @@
 		217F381429D3AA4700ACA6C4 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F381329D3AA4700ACA6C4 /* URLSessionMock.swift */; };
 		217F381629D3AAB400ACA6C4 /* TrendingBarInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F381529D3AAB400ACA6C4 /* TrendingBarInteractorMock.swift */; };
 		217F381829D3AC9100ACA6C4 /* TrendingBarRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F381729D3AC9100ACA6C4 /* TrendingBarRemoteDataTests.swift */; };
+		217F382029D4B35200ACA6C4 /* SearchMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F381F29D4B35100ACA6C4 /* SearchMoviesViewController.swift */; };
+		217F382829D4B51200ACA6C4 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F382729D4B51200ACA6C4 /* MovieDetailViewController.swift */; };
+		21E5F76929D5EF560095D61A /* TrendingBarRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E5F76829D5EF560095D61A /* TrendingBarRouterMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -51,8 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2157047829D5F6AB00801FA9 /* TrendingBarPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarPresenterTests.swift; sourceTree = "<group>"; };
+		2157047A29D5F6EB00801FA9 /* TrendingBarViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarViewControllerMock.swift; sourceTree = "<group>"; };
+		2157047C29D60ABB00801FA9 /* TrendingBarPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarPresenterMock.swift; sourceTree = "<group>"; };
+		2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRouterTests.swift; sourceTree = "<group>"; };
+		2157048329D614A900801FA9 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
 		217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarProtocols.swift; sourceTree = "<group>"; };
 		217F37E529D2265500ACA6C4 /* TrendingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEntity.swift; sourceTree = "<group>"; };
@@ -75,6 +86,9 @@
 		217F381329D3AA4700ACA6C4 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		217F381529D3AAB400ACA6C4 /* TrendingBarInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarInteractorMock.swift; sourceTree = "<group>"; };
 		217F381729D3AC9100ACA6C4 /* TrendingBarRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRemoteDataTests.swift; sourceTree = "<group>"; };
+		217F381F29D4B35100ACA6C4 /* SearchMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesViewController.swift; sourceTree = "<group>"; };
+		217F382729D4B51200ACA6C4 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		21E5F76829D5EF560095D61A /* TrendingBarRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRouterMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,14 +119,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2157048229D6148D00801FA9 /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				2157048329D614A900801FA9 /* NavigationControllerSpy.swift */,
+			);
+			path = Spies;
+			sourceTree = "<group>";
+		};
 		217F37CE29D1FA1E00ACA6C4 /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				2157048229D6148D00801FA9 /* Spies */,
 				217F380B29D3A80300ACA6C4 /* Fakes */,
 				217F380829D37FDF00ACA6C4 /* Mocks */,
-				217F37CF29D1FA1E00ACA6C4 /* BAZProjectTests.swift */,
 				217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */,
 				217F381729D3AC9100ACA6C4 /* TrendingBarRemoteDataTests.swift */,
+				2157047829D5F6AB00801FA9 /* TrendingBarPresenterTests.swift */,
+				2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -124,6 +148,8 @@
 				217F37EF29D232C300ACA6C4 /* Reusables */,
 				217F37DB29D2157000ACA6C4 /* Networking */,
 				217F37D729D20A8400ACA6C4 /* TrendingModule */,
+				217F381929D4B26F00ACA6C4 /* MovieSearch */,
+				217F382129D4B4B000ACA6C4 /* MovieDetail */,
 			);
 			path = MainTabController;
 			sourceTree = "<group>";
@@ -226,6 +252,9 @@
 				217F381129D3A9F700ACA6C4 /* MovieServiceMock.swift */,
 				217F381329D3AA4700ACA6C4 /* URLSessionMock.swift */,
 				217F381529D3AAB400ACA6C4 /* TrendingBarInteractorMock.swift */,
+				21E5F76829D5EF560095D61A /* TrendingBarRouterMock.swift */,
+				2157047A29D5F6EB00801FA9 /* TrendingBarViewControllerMock.swift */,
+				2157047C29D60ABB00801FA9 /* TrendingBarPresenterMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -245,6 +274,102 @@
 				217F380D29D3A8B300ACA6C4 /* movieResult.json */,
 			);
 			path = JsonFiles;
+			sourceTree = "<group>";
+		};
+		217F381929D4B26F00ACA6C4 /* MovieSearch */ = {
+			isa = PBXGroup;
+			children = (
+				217F381E29D4B31300ACA6C4 /* View */,
+				217F381D29D4B30C00ACA6C4 /* Interactor */,
+				217F381C29D4B2F200ACA6C4 /* Present */,
+				217F381B29D4B2E600ACA6C4 /* Entity */,
+				217F381A29D4B2C600ACA6C4 /* Router */,
+			);
+			path = MovieSearch;
+			sourceTree = "<group>";
+		};
+		217F381A29D4B2C600ACA6C4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		217F381B29D4B2E600ACA6C4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		217F381C29D4B2F200ACA6C4 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		217F381D29D4B30C00ACA6C4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		217F381E29D4B31300ACA6C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				217F381F29D4B35100ACA6C4 /* SearchMoviesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		217F382129D4B4B000ACA6C4 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				217F382629D4B4E600ACA6C4 /* View */,
+				217F382529D4B4DF00ACA6C4 /* Interactor */,
+				217F382429D4B4D800ACA6C4 /* Presenter */,
+				217F382329D4B4D300ACA6C4 /* Entity */,
+				217F382229D4B4CB00ACA6C4 /* Router */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		217F382229D4B4CB00ACA6C4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		217F382329D4B4D300ACA6C4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		217F382429D4B4D800ACA6C4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		217F382529D4B4DF00ACA6C4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		217F382629D4B4E600ACA6C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				217F382729D4B51200ACA6C4 /* MovieDetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C30893A128A2F42B004B1860 = {
@@ -386,13 +511,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				217F381829D3AC9100ACA6C4 /* TrendingBarRemoteDataTests.swift in Sources */,
+				2157047B29D5F6EB00801FA9 /* TrendingBarViewControllerMock.swift in Sources */,
 				217F381429D3AA4700ACA6C4 /* URLSessionMock.swift in Sources */,
 				217F380729D37F1900ACA6C4 /* TrendingBarInteractorTests.swift in Sources */,
+				2157048429D614A900801FA9 /* NavigationControllerSpy.swift in Sources */,
 				217F381229D3A9F700ACA6C4 /* MovieServiceMock.swift in Sources */,
 				217F381029D3A90D00ACA6C4 /* MovieFakes.swift in Sources */,
 				217F380A29D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift in Sources */,
-				217F37D029D1FA1E00ACA6C4 /* BAZProjectTests.swift in Sources */,
+				2157047D29D60ABB00801FA9 /* TrendingBarPresenterMock.swift in Sources */,
+				2157047929D5F6AB00801FA9 /* TrendingBarPresenterTests.swift in Sources */,
+				21E5F76929D5EF560095D61A /* TrendingBarRouterMock.swift in Sources */,
 				217F381629D3AAB400ACA6C4 /* TrendingBarInteractorMock.swift in Sources */,
+				2157048129D6133F00801FA9 /* TrendingBarRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,9 +543,11 @@
 				217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				217F37EE29D2326200ACA6C4 /* EndPoint.swift in Sources */,
+				217F382829D4B51200ACA6C4 /* MovieDetailViewController.swift in Sources */,
 				217F37E829D227D600ACA6C4 /* TrendingBarRouter.swift in Sources */,
 				217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */,
 				217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */,
+				217F382029D4B35200ACA6C4 /* SearchMoviesViewController.swift in Sources */,
 				217F37EA29D2298900ACA6C4 /* TrendingBarInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

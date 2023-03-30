@@ -59,6 +59,14 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
         
         interactor?.fetchMovieList(endPoint)
     }
+    
+    func presentSearchView() {
+        router?.presentSearchViewController(from: view)
+    }
+    
+    func didSelectRowAt(_ indexPath: IndexPath) {
+        router?.presentMovieDetailController(from: view)
+    }
 }
 
 extension TrendingBarPresenter: TrendingBarInteractorOutputProtocol {

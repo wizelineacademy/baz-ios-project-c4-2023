@@ -17,7 +17,6 @@ enum Endpoint {
     case popular
     case topRated
     case upcoming
-    case fake
 }
 
 extension Endpoint {
@@ -33,8 +32,6 @@ extension Endpoint {
             return MainConstants.topRatedEndPoint
         case .upcoming:
             return MainConstants.upcomingEndPoint
-        case .fake:
-            return "fake"
         }
     }
     

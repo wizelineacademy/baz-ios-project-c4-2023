@@ -12,7 +12,8 @@ final class TrendingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Filtro", style: .done, target: self, action: #selector(self.filterBy(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Filter", style: .done, target: self, action: #selector(self.filterBy(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Search", style: .done, target: self, action: #selector(self.goToSearchView(sender:)))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
         presenter?.willFetchMovieList()
     }
@@ -21,6 +22,9 @@ final class TrendingViewController: UITableViewController {
         presenter?.prepareActionSheet()
     }
 
+    @objc func goToSearchView(sender: UIBarButtonItem) {
+        presenter?.presentSearchView()
+    }
 }
 
 // MARK: - TableView's DataSource
@@ -52,6 +56,10 @@ extension TrendingViewController {
         config.text = presenter?.trendingModel[indexPath.row].title
         config.image = UIImage(data: presenter?.trendingModel[indexPath.row].posterPath ?? Data())
         cell.contentConfiguration = config
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRowAt(indexPath)
     }
 
 }
