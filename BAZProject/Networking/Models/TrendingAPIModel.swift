@@ -13,4 +13,8 @@ struct TrendingAPIModel: Decodable {
     private enum CodingKeys: String, CodingKey {
         case results = "results"
     }
+    
+    static func decode(from data: Data) -> TrendingAPIModel? {
+        return try? JSONDecoder().decode(self, from: data)
+    }
 }

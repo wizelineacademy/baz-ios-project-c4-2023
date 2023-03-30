@@ -9,7 +9,7 @@ import Foundation
 
 class RequestHandler {
     
-    func get<T: Decodable>(_ endpoint: Endpoint, completion: @escaping (Result<T , RequestHandlerError>) -> Void) {
+    func get(_ endpoint: Endpoint, completion: @escaping (Result<Data , RequestHandlerError>) -> Void) {
         
         guard let request = endpoint.request else {
             completion(.failure(.requestBuilder))
@@ -32,14 +32,8 @@ class RequestHandler {
                     return
                 }
                 
-                guard let decodedData: T = try? JSONDecoder().decode(T.self, from: data) else {
-                    DispatchQueue.main.async {
-                        completion(.failure(.parsing))
-                    }
-                    return
-                }
                 DispatchQueue.main.async {
-                    completion(.success(decodedData))
+                    completion(.success(data))
                 }
                       
             }.resume()
