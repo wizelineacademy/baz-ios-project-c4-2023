@@ -15,13 +15,13 @@ class TrendingMoviesViewController: UIViewController {
         return tableView
     }()
 
-    var model: TrendingMoviesModel?
+    var model: TrendingMoviesViewModel?
     
     static func getInstance() -> TrendingMoviesViewController {
         let vc = TrendingMoviesViewController()
         vc.title = "Trending"
         vc.tabBarItem = UITabBarItem(title: vc.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
-        vc.model = TrendingMoviesModel()
+        vc.model = TrendingMoviesViewModel()
         return vc
     }
 

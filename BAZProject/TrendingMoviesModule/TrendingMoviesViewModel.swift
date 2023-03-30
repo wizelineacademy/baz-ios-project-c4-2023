@@ -1,5 +1,5 @@
 //
-//  TrendingMoviesModel.swift
+//  TrendingMoviesViewModel.swift
 //  BAZProject
 //
 //  Created by gescarcega on 29/03/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrendingMoviesModel {
+class TrendingMoviesViewModel {
     var movies: [Movie]?
     
     func getMovies(completion: @escaping () -> Void ) {
