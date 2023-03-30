@@ -30,7 +30,7 @@ class MovieAPI {
                 if let id = result.object(forKey: "id") as? Int,
                    let title = result.object(forKey: "title") as? String,
                    let poster_path = result.object(forKey: "poster_path") as? String {
-                    movies.append(Movie(id: id, title: title, poster_path: poster_path))
+//                    movies.append(Movie(id: id, title: title, poster_path: poster_path))
                 }
             }
         }.resume()

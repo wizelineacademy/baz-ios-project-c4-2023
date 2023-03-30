@@ -46,7 +46,7 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
+//        config.text = movies[indexPath.row].title
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }
