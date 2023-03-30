@@ -99,12 +99,12 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		859D2DCB29D5EC91008AF807 /* Controllers */ = {
+		859D2DCB29D5EC91008AF807 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 			);
-			path = Controllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C30893A128A2F42B004B1860 = {
@@ -130,7 +130,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				859D2DCB29D5EC91008AF807 /* Controllers */,
+				859D2DCB29D5EC91008AF807 /* Views */,
 				859D2DCA29D5EC7F008AF807 /* Services */,
 				859D2DC929D5EC64008AF807 /* Models */,
 				859D2DC629D5EB4D008AF807 /* ViewModels */,
