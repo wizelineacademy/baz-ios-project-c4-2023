@@ -8,7 +8,8 @@
 import UIKit
 
 class TrendingMoviesViewModel {
-    var movies: [Movie]?
+    
+    private var movies: [Movie]?
     
     func getMovies(completion: @escaping () -> Void ) {
         TrendingAPIService().getMovies { [weak self] movies in
@@ -24,4 +25,9 @@ class TrendingMoviesViewModel {
         }
         return configuration
     }
+    
+    func getRowCount() -> Int? {
+        return movies?.count ?? 0
+    }
+    
 }
