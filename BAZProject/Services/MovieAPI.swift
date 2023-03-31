@@ -6,31 +6,19 @@
 
 import Foundation
 
-class MovieAPI {
+struct Resource<T> {
+    let url: URL
+    let parse: (Data) -> T?
+}
 
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-
-    func getMovies(url: String, completion: @escaping ([Movie]?) -> ()) {
-        guard let url = URL(string: "\(url)?api_key=\(apiKey)")
-        else {
-            return completion([])
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil)
-            } else if let data = data {
-
-                let movieList = try? JSONDecoder().decode(MovieList.self, from: data)
-
-                if let movieList = movieList {
-                    completion(movieList.results)
+final class MovieAPI {
+    func load<T>(resource: Resource<T>, completion: @escaping (T?) -> ()) {
+        URLSession.shared.dataTask(with: resource.url) { data, response, error in
+            if let data = data {
+                DispatchQueue.main.async {
+                     completion(resource.parse(data))
                 }
-                
-                print(movieList?.results)
             }
         }.resume()
     }
-
 }
