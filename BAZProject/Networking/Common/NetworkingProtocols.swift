@@ -8,15 +8,21 @@
 import Foundation
  
 protocol RequestSessionProtocol {
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol
 }
 
 extension URLSession: RequestSessionProtocol {
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return dataTask(with: request, completionHandler: completionHandler)
+    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol {
+        return dataTask(with: request, completionHandler: completionHandler) as DataTaskProtocol
     }
 }
 
 protocol EndpointProtocol {
     var request: URLRequest? { get }
 }
+
+protocol DataTaskProtocol {
+    func resume()
+}
+
+extension URLSessionDataTask: DataTaskProtocol {}

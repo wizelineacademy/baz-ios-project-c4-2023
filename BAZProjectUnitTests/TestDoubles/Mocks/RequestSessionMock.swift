@@ -11,11 +11,12 @@ import Foundation
 @testable import BAZProject
 
 class RequestSessionMock: RequestSessionProtocol {
+    
     var data: Data?
     var urlResponse: URLResponse?
     var error: Error?
     
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol {
         completionHandler(data, urlResponse, error)
         return SessionDataTaskMock()
     }

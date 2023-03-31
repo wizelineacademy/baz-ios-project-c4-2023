@@ -8,7 +8,7 @@ import UIKit
 
 class TrendingMoviesViewController: UIViewController {
     
-    private var moviesTableView: UITableView = {
+    lazy var moviesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,11 +17,11 @@ class TrendingMoviesViewController: UIViewController {
 
     var model: TrendingMoviesViewModel?
     
-    static func getInstance() -> TrendingMoviesViewController {
+    static func getInstance(with model: TrendingMoviesViewModel) -> TrendingMoviesViewController {
         let vc = TrendingMoviesViewController()
         vc.title = "Trending"
         vc.tabBarItem = UITabBarItem(title: vc.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
-        vc.model = TrendingMoviesViewModel()
+        vc.model = model
         return vc
     }
 

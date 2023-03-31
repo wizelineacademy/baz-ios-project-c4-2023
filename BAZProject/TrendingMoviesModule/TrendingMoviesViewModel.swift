@@ -9,7 +9,7 @@ import UIKit
 
 class TrendingMoviesViewModel {
     
-    private var movies: [Movie]?
+    var movies: [Movie]?
     
     func getMovies(completion: @escaping () -> Void ) {
         TrendingAPIService().getMovies { [weak self] movies in

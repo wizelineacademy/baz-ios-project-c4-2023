@@ -8,6 +8,14 @@
 import Foundation
 @testable import BAZProject
 
-struct EndpointMock: EndpointProtocol {
-    var request: URLRequest? = URLRequest(url: URL(string: "https://fakeurl.com")!)
+enum EndpointMock: EndpointProtocol {
+    
+    case forRequestFailure, forOtherTests
+    
+    var request: URLRequest? {
+        switch self {
+        case .forRequestFailure: return nil
+        case .forOtherTests: return URLRequest(url: URL(string: "file://")!)
+        }
+    }
 }

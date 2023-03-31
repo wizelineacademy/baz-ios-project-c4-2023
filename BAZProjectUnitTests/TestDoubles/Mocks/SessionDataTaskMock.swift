@@ -6,7 +6,8 @@
 //
 
 import Foundation
+@testable import BAZProject
 
-class SessionDataTaskMock: URLSessionDataTask {
-    override func resume() { return }
+class SessionDataTaskMock: DataTaskProtocol {
+    func resume() { return }
 }
