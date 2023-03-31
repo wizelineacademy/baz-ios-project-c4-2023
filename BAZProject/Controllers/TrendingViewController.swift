@@ -20,9 +20,7 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
     public func setup() {
 
-        let urlForTrendingMovieDay = URL(string: Constants.Paths.urlForTrendingMovieDay)!
-
-        let trendingMovieDayResource = Resource<MovieList>(url: urlForTrendingMovieDay) { data in
+        let trendingMovieDayResource = Resource<MovieList>(url: Endpoint.trendingMovieDay.url) { data in
             return try? JSONDecoder().decode(MovieList.self, from: data)
         }
         
