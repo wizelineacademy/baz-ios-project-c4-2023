@@ -17,7 +17,7 @@ final class TrendingBarDispatchDecorator: Service {
         self.session = decoratee.session
     }
 
-    func get<T: Decodable>(_ endpoint: Endpoint, callback: @escaping (Result<T,Error>) -> Void) {
+    func get<T: Decodable>(_ endpoint: EndPointProtocol, callback: @escaping (Result<T,Error>) -> Void) {
         decoratee.get(endpoint) { [weak self] result in
             self?.guaranteeMainThread {
                 callback(result)

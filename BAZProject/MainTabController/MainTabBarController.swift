@@ -17,6 +17,10 @@ class MainTabBarController: UITabBarController {
         initializeViewControllers()
     }
     
+    /**
+     Function to initialize viewControllers of tabBarController and set the order of tabBarViewControllers
+     */
+    
     private func initializeViewControllers() {
         var arrControllers:[UIViewController] = []
         

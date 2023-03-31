@@ -22,7 +22,7 @@ class ServiceAPI: Service {
         self.session = session
     }
     
-    func get<T: Decodable>(_ endpoint: Endpoint, callback: @escaping (Result<T,Error>) -> Void) {
+    func get<T: Decodable>(_ endpoint: EndPointProtocol, callback: @escaping (Result<T,Error>) -> Void) {
         let request = endpoint.request
         DispatchQueue.global().async {
             let task = self.session.performDataTask(with: request) { (data, response, error) in

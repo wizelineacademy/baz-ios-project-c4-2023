@@ -7,8 +7,6 @@
 
 import Foundation
 
-// "https://api.themoviedb.org/3/trending/movie/day?api_key=\(MainConstants.apiKey)"
-
 enum Endpoint {
     static var baseURL = "https://api.themoviedb.org/3/"
     
@@ -19,7 +17,7 @@ enum Endpoint {
     case upcoming
 }
 
-extension Endpoint {
+extension Endpoint: EndPointProtocol {
     var string: String {
         switch self {
         case .trending:
