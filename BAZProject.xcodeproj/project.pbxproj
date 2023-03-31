@@ -22,6 +22,8 @@
 		E5B8F1F629D4AE9A001A0EBA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */; };
 		E5B8F1F829D4B208001A0EBA /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */; };
 		E5C8EDEF29D5FF01009AB8DA /* MoviesViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */; };
+		E5FE22E429D769BB0029AB50 /* ServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E329D769BB0029AB50 /* ServiceMocks.swift */; };
+		E5FE22E629D76B3A0029AB50 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E529D76B3A0029AB50 /* URLSessionMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModels.swift; sourceTree = "<group>"; };
+		E5FE22E329D769BB0029AB50 /* ServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMocks.swift; sourceTree = "<group>"; };
+		E5FE22E529D76B3A0029AB50 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 		E50FC49029D3C5EA00897519 /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				E5FE22E229D769A00029AB50 /* ServiceMocks */,
 				E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */,
 			);
 			path = BAZProjectTests;
@@ -151,6 +156,15 @@
 				C30893E128A425E1004B1860 /* Movie.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E5FE22E229D769A00029AB50 /* ServiceMocks */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22E329D769BB0029AB50 /* ServiceMocks.swift */,
+				E5FE22E529D76B3A0029AB50 /* URLSessionMock.swift */,
+			);
+			path = ServiceMocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5FE22E629D76B3A0029AB50 /* URLSessionMock.swift in Sources */,
 				E50FC49229D3C5EA00897519 /* BAZProjectTests.swift in Sources */,
+				E5FE22E429D769BB0029AB50 /* ServiceMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

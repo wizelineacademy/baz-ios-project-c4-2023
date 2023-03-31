@@ -12,7 +12,10 @@ class TrendingViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        callServiceMovieAPI()
+    }
+    
+    func callServiceMovieAPI(){
         let getService = MovieAPI(session: URLSession.shared)
         getService.getMovies(.getMovies){ [weak self] (result: Result< Movie, Error>) in
             switch result {
@@ -25,7 +28,6 @@ class TrendingViewController: UITableViewController {
                 self?.present(CWAlert.simpleWith(message: "Error al realizar"), animated: true)
             }
         }
-        
     }
 
 }
