@@ -6,22 +6,25 @@
 
 import UIKit
 
-class TrendingViewController: UITableViewController {
+final class TrendingViewController: UITableViewController {
 
     
-    var myTredingArray: [Movie] = []
-    let trendingModel = myTredingModel()
+   private var myTredingArray: [ListMoviesProtocol] = []
+   private let trendingModel = TredingViewViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getMovieArray()
+    }
+    
+    func getMovieArray() {
         trendingModel.getmovies { movies in
             self.myTredingArray = movies
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
             }
         }
     }
-
 }
 
 // MARK: - TableView's DataSource
