@@ -16,8 +16,10 @@ extension MovieListViewModel {
         return self.movies.count
     }
     
-    func movieAtIndex(_ index: Int) -> MovieViewModel {
-        let movie = self.movies[index]
+    func movieAtIndex(_ index: Int) -> MovieViewModel? {
+        guard let movie = self.movies[safe: index] else {
+            return nil
+        }
         return MovieViewModel(movie)
     }
 }

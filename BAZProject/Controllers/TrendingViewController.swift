@@ -54,14 +54,14 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
         
-        let movieVM = self.moviesListVM.movieAtIndex(indexPath.row)
-        
-        config.text = movieVM.title
-        
-        if let url = URL(string: movieVM.poster_path), let data = try? Data(contentsOf: url) {
-            config.image = UIImage(data: data)
-        } else {
-            config.image = UIImage(named: "poster")
+        if let movieVM = self.moviesListVM.movieAtIndex(indexPath.row) {
+            config.text = movieVM.title
+            
+            if let url = URL(string: movieVM.poster_path), let data = try? Data(contentsOf: url) {
+                config.image = UIImage(data: data)
+            } else {
+                config.image = UIImage(named: "poster")
+            }
         }
         
         cell.contentConfiguration = config
