@@ -6,18 +6,10 @@
 //
 
 import XCTest
-@testable import BAZProject
+import BAZProject
 
 final class ServiceApiTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
     func test_UrlWasConfigured_InServiceAPI(){
         //Given
         let strFinalURL : String = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"

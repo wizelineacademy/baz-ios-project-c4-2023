@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ServiceApiProtocol : AnyObject{
+public protocol ServiceApiProtocol : AnyObject{
     func serviceFinished(withResult result : Result<[String : Any], ErrorApi>)
 }
 
@@ -16,7 +16,7 @@ protocol NetworkingProtocol : AnyObject{
     func search(forPath strPath : String)
 }
 
-enum ErrorApi : Error{
+public enum ErrorApi : Error{
     case badURL
     case badJSON
     
@@ -31,14 +31,14 @@ enum ErrorApi : Error{
     }
 }
 
-class ServiceApi : NetworkingProtocol{
+public class ServiceApi : NetworkingProtocol{
     
     private let strBaseURL : String = "https://api.themoviedb.org/3"
-    private let strTokenKey : String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    private let strTokenKey : String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"//URLCOMPONENTS
     
-    weak var serviceDelegate : ServiceApiProtocol?
+    public weak var serviceDelegate : ServiceApiProtocol?
     
-    init(serviceDelegate: ServiceApiProtocol? = nil) {
+    public init(serviceDelegate: ServiceApiProtocol? = nil) {
         self.serviceDelegate = serviceDelegate
     }
     
@@ -64,7 +64,7 @@ class ServiceApi : NetworkingProtocol{
         }.resume()
     }
     
-    func configureURL(forPath strPath : String) -> String{
+    public func configureURL(forPath strPath : String) -> String{
         return "\(strBaseURL)\(strPath)\(strTokenKey)"
     }
     
