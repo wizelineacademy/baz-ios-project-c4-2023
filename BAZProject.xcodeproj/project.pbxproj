@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		859D2DC029D569A1008AF807 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2DBF29D569A1008AF807 /* BAZProjectTests.swift */; };
 		859D2DC829D5EB84008AF807 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2DC729D5EB84008AF807 /* MovieViewModel.swift */; };
+		859D2DCF29D6037D008AF807 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2DCE29D6037D008AF807 /* Constants.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		859D2DBD29D569A1008AF807 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		859D2DBF29D569A1008AF807 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		859D2DC729D5EB84008AF807 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		859D2DCE29D6037D008AF807 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		859D2DCD29D6036E008AF807 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				859D2DCE29D6037D008AF807 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C30893A128A2F42B004B1860 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				859D2DCD29D6036E008AF807 /* Utils */,
 				859D2DCA29D5EC7F008AF807 /* Services */,
 				859D2DCB29D5EC91008AF807 /* Controllers */,
 				859D2DC929D5EC64008AF807 /* Models */,
@@ -267,6 +278,7 @@
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
+				859D2DCF29D6037D008AF807 /* Constants.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
 				859D2DC829D5EB84008AF807 /* MovieViewModel.swift in Sources */,
 			);
