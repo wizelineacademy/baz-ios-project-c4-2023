@@ -17,8 +17,14 @@ class TrendingViewController: UITableViewController {
 
 }
 
+// MARK: - Functions
+
 extension TrendingViewController {
-    public func setup() {
+    
+    /**
+     Configures the view controller by loading trending movies for the day and populating the table view with the results.
+    */
+    private func setup() {
 
         let trendingMovieDayResource = Resource<MovieList>(url: Endpoint.trendingMovieDay.url) { data in
             return try? JSONDecoder().decode(MovieList.self, from: data)
