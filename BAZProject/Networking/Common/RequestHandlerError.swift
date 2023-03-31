@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RequestHandlerError: LocalizedError {
+enum RequestHandlerError: LocalizedError, Equatable {
     case requestBuilder, nullData, serviceError(NSError)
     
     var errorDescription: String? {

@@ -9,6 +9,12 @@ import Foundation
 
 class RequestHandler {
     
+    var urlSession: RequestSessionProtocol
+    
+    init(withSession urlSessions: RequestSessionProtocol) {
+        self.urlSession = urlSessions
+    }
+    
     func get(_ endpoint: EndpointProtocol, completion: @escaping (Result<Data , RequestHandlerError>) -> Void) {
         
         guard let request = endpoint.request else {
@@ -16,7 +22,7 @@ class RequestHandler {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        urlSession.customDataTask(with: request) { data, response, error in
             if let error = error as? NSError {
                 completion(.failure(.serviceError(error)))
                 return
