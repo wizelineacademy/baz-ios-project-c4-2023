@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
-    internal var firstController : UINavigationController?
+    var firstController : UINavigationController?
     var positionSelected: Int?
 
     override func viewDidLoad() {
@@ -20,7 +20,6 @@ class MainTabBarController: UITabBarController {
     /**
      Function to initialize viewControllers of tabBarController and set the order of tabBarViewControllers
      */
-    
     private func initializeViewControllers() {
         var arrControllers:[UIViewController] = []
         
@@ -34,5 +33,4 @@ class MainTabBarController: UITabBarController {
         
         viewControllers = arrControllers
     }
-
 }

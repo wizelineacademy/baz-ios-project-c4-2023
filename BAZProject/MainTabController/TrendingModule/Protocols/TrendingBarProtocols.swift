@@ -18,30 +18,27 @@ protocol TrendingBarRouterProtocol: AnyObject {
          - UIViewController: view 
      */
     func createTrendingModule() -> UIViewController
+    
     /**
      Function that perform a pushed method.
      
      - Parameters:
-         - view: UIViewController that is going to push to SearchViewController.
+         - view: UIViewController that is going to push to nextView.
+         - nextView: new principal user UIViewController
      */
-    func presentSearchViewController(from view: TrendingBarViewControllerProtocol?)
-    /**
-     Function that perform a pushed method.
-     
-     - Parameters:
-         - view: UIViewController that is going to push to MovieDetailController.
-     */
-    func presentMovieDetailController(from view: TrendingBarViewControllerProtocol?)
+    func presentNextViewController(from view: TrendingBarViewControllerProtocol?, to nextView: UIViewController)
 }
 
 // View > Presenter
 protocol TrendingBarViewControllerProtocol: AnyObject {
     var presenter: TrendingBarPresenterProtocol? { get set }
+    
     /**
      Function that reload the view.
      */
     func reloadTendingInfo()
     func fillTrendingList()
+    
     /**
      Function that reload the view with an specific error.
      
@@ -66,14 +63,6 @@ protocol TrendingBarPresenterProtocol: AnyObject {
     func didSelectRowAt(_ indexPath: IndexPath)
 }
 
-extension TrendingBarPresenterProtocol {
-    func linkDependencies(view: TrendingBarViewControllerProtocol, router: TrendingBarRouterProtocol, interactor: TrendingBarInteractorInputProtocol) {
-        self.view = view
-        (self as? TrendingBarInteractorOutputProtocol)?.interactor = interactor
-        self.router = router
-    }
-}
-
 // Presenter > Interactor
 protocol TrendingBarInteractorInputProtocol: AnyObject {
     var presenter: TrendingBarInteractorOutputProtocol? { get set }
@@ -82,13 +71,6 @@ protocol TrendingBarInteractorInputProtocol: AnyObject {
     func fetchMovieList(_ endPoint: Endpoint)
     func fetchImageFrom(_ movie: MovieResult)
     func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol)
-}
-
-extension TrendingBarInteractorInputProtocol {
-    func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol) {
-        self.presenter = presenter
-        self.remoteData = remoteData
-    }
 }
 
 // Interactor > Presenter

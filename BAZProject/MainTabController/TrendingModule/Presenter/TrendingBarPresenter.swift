@@ -61,11 +61,13 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
     }
     
     func presentSearchView() {
-        router?.presentSearchViewController(from: view)
+        let searchViewController = SearchMoviesViewController()
+        router?.presentNextViewController(from: view, to: searchViewController)
     }
     
     func didSelectRowAt(_ indexPath: IndexPath) {
-        router?.presentMovieDetailController(from: view)
+        let detailViewController = MovieDetailViewController()
+        router?.presentNextViewController(from: view, to: detailViewController)
     }
 }
 

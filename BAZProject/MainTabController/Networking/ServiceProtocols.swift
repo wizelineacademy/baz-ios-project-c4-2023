@@ -17,6 +17,7 @@ protocol Service {
          - completion: Returns a generic value or an error.
      */
     func get<T: Decodable>(_ endpoint: EndPointProtocol, callback: @escaping (Result<T,Error>) -> Void)
+    
     /**
      Function that perform an request to download an image data from an Url.
      

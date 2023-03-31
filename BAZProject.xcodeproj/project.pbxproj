@@ -13,6 +13,11 @@
 		2157048129D6133F00801FA9 /* TrendingBarRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */; };
 		2157048429D614A900801FA9 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048329D614A900801FA9 /* NavigationControllerSpy.swift */; };
 		2157048629D632F400801FA9 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157048529D632F400801FA9 /* ReusableIdentifier.swift */; };
+		215704C629D7527400801FA9 /* AlertSheetActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215704C529D7527400801FA9 /* AlertSheetActions.swift */; };
+		215704C929D75E0E00801FA9 /* TrendingBarPresenterProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215704C829D75E0E00801FA9 /* TrendingBarPresenterProtocolExtension.swift */; };
+		215704CB29D75E3C00801FA9 /* TrendingBarInteractorInputProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215704CA29D75E3C00801FA9 /* TrendingBarInteractorInputProtocolExtension.swift */; };
+		215704CD29D75EEF00801FA9 /* EndpointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215704CC29D75EEF00801FA9 /* EndpointExtension.swift */; };
+		215704CF29D75F3000801FA9 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215704CE29D75F3000801FA9 /* URLSessionExtension.swift */; };
 		217F37DA29D2140B00ACA6C4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */; };
 		217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */; };
 		217F37E629D2265500ACA6C4 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37E529D2265500ACA6C4 /* TrendingEntity.swift */; };
@@ -26,7 +31,7 @@
 		217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F629D2340F00ACA6C4 /* ServiceError.swift */; };
 		217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */; };
 		217F37FB29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */; };
-		217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */; };
+		217F380329D28FA000ACA6C4 /* GenericSheetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380229D28FA000ACA6C4 /* GenericSheetAlerts.swift */; };
 		217F380729D37F1900ACA6C4 /* TrendingBarInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */; };
 		217F380A29D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F380929D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift */; };
 		217F380E29D3A8B300ACA6C4 /* movieResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 217F380D29D3A8B300ACA6C4 /* movieResult.json */; };
@@ -65,6 +70,11 @@
 		2157048029D6133F00801FA9 /* TrendingBarRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRouterTests.swift; sourceTree = "<group>"; };
 		2157048329D614A900801FA9 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
 		2157048529D632F400801FA9 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
+		215704C529D7527400801FA9 /* AlertSheetActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSheetActions.swift; sourceTree = "<group>"; };
+		215704C829D75E0E00801FA9 /* TrendingBarPresenterProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarPresenterProtocolExtension.swift; sourceTree = "<group>"; };
+		215704CA29D75E3C00801FA9 /* TrendingBarInteractorInputProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarInteractorInputProtocolExtension.swift; sourceTree = "<group>"; };
+		215704CC29D75EEF00801FA9 /* EndpointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointExtension.swift; sourceTree = "<group>"; };
+		215704CE29D75F3000801FA9 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		217F37CD29D1FA1D00ACA6C4 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		217F37E329D21DA800ACA6C4 /* TrendingBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarProtocols.swift; sourceTree = "<group>"; };
@@ -79,7 +89,7 @@
 		217F37F629D2340F00ACA6C4 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		217F37F829D237BD00ACA6C4 /* TrendingBarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDataManager.swift; sourceTree = "<group>"; };
 		217F37FA29D2387100ACA6C4 /* TrendingBarDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarDispatchDecorator.swift; sourceTree = "<group>"; };
-		217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSHeetAlerts.swift; sourceTree = "<group>"; };
+		217F380229D28FA000ACA6C4 /* GenericSheetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSheetAlerts.swift; sourceTree = "<group>"; };
 		217F380629D37F1900ACA6C4 /* TrendingBarInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarInteractorTests.swift; sourceTree = "<group>"; };
 		217F380929D3800300ACA6C4 /* TrendingBarRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBarRemoteDataManagerMock.swift; sourceTree = "<group>"; };
 		217F380D29D3A8B300ACA6C4 /* movieResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movieResult.json; sourceTree = "<group>"; };
@@ -129,6 +139,17 @@
 			path = Spies;
 			sourceTree = "<group>";
 		};
+		215704C729D75DE300801FA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				215704C829D75E0E00801FA9 /* TrendingBarPresenterProtocolExtension.swift */,
+				215704CA29D75E3C00801FA9 /* TrendingBarInteractorInputProtocolExtension.swift */,
+				215704CC29D75EEF00801FA9 /* EndpointExtension.swift */,
+				215704CE29D75F3000801FA9 /* URLSessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		217F37CE29D1FA1E00ACA6C4 /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +167,7 @@
 		217F37D629D20A5B00ACA6C4 /* MainTabController */ = {
 			isa = PBXGroup;
 			children = (
+				215704C729D75DE300801FA9 /* Extensions */,
 				217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */,
 				217F37EF29D232C300ACA6C4 /* Reusables */,
 				217F37DB29D2157000ACA6C4 /* Networking */,
@@ -242,8 +264,9 @@
 			isa = PBXGroup;
 			children = (
 				217F37F029D232D900ACA6C4 /* MainConstants.swift */,
-				217F380229D28FA000ACA6C4 /* GenericSHeetAlerts.swift */,
+				217F380229D28FA000ACA6C4 /* GenericSheetAlerts.swift */,
 				2157048529D632F400801FA9 /* ReusableIdentifier.swift */,
+				215704C529D7527400801FA9 /* AlertSheetActions.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -533,8 +556,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215704CD29D75EEF00801FA9 /* EndpointExtension.swift in Sources */,
 				217F37F529D233F400ACA6C4 /* ServiceProtocols.swift in Sources */,
 				217F37F329D233CE00ACA6C4 /* ServiceAPI.swift in Sources */,
+				215704C629D7527400801FA9 /* AlertSheetActions.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */,
 				217F37E429D21DA800ACA6C4 /* TrendingBarProtocols.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
@@ -543,9 +568,12 @@
 				217F37EC29D22A9900ACA6C4 /* TrendingBarPresenter.swift in Sources */,
 				217F37F929D237BD00ACA6C4 /* TrendingBarDataManager.swift in Sources */,
 				2157048629D632F400801FA9 /* ReusableIdentifier.swift in Sources */,
+				215704C929D75E0E00801FA9 /* TrendingBarPresenterProtocolExtension.swift in Sources */,
 				217F37F729D2340F00ACA6C4 /* ServiceError.swift in Sources */,
-				217F380329D28FA000ACA6C4 /* GenericSHeetAlerts.swift in Sources */,
+				217F380329D28FA000ACA6C4 /* GenericSheetAlerts.swift in Sources */,
+				215704CF29D75F3000801FA9 /* URLSessionExtension.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				215704CB29D75E3C00801FA9 /* TrendingBarInteractorInputProtocolExtension.swift in Sources */,
 				217F37EE29D2326200ACA6C4 /* EndPoint.swift in Sources */,
 				217F382829D4B51200ACA6C4 /* MovieDetailViewController.swift in Sources */,
 				217F37E829D227D600ACA6C4 /* TrendingBarRouter.swift in Sources */,

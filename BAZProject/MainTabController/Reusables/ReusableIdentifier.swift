@@ -7,10 +7,10 @@
 
 import Foundation
 
-protocol ReusableIdentifier {
+protocol ReusableIdentifierProtocol {
     static var reusableIdentifier: String { get }
 }
 
-extension ReusableIdentifier {
+extension ReusableIdentifierProtocol {
     static var reusableIdentifier: String { String(describing: self) }
 }

@@ -16,7 +16,7 @@ final class ServiceMock: Service {
         self.session = sessionMock
     }
     
-    func get<T>(_ endpoint: Endpoint, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    func get<T>(_ endpoint: EndPointProtocol, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
         ServiceAPI(session: session).get(endpoint, callback: callback)
     }
 

@@ -37,13 +37,13 @@ final class TrendingBarPresenterTests: XCTestCase {
         
         sut.didSelectRowAt(indexPath)
         
-        XCTAssertEqual(routerMock.calls, [.presentMovieDetailController])
+        XCTAssertEqual(routerMock.calls, [.presentNextViewController])
     }
     
     func test_presentSearchView_callsRouter() {
         sut.presentSearchView()
         
-        XCTAssertEqual(routerMock.calls, [.presentSearchViewController])
+        XCTAssertEqual(routerMock.calls, [.presentNextViewController])
     }
     
     func test_reloadInfo_callsReloadTendingInfo() {

@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class TrendingViewController: UITableViewController {
+final class TrendingViewController: UITableViewController, ReusableIdentifierProtocol {
     
     var presenter: TrendingBarPresenterProtocol?
 
@@ -14,7 +14,7 @@ final class TrendingViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Filter", style: .done, target: self, action: #selector(self.filterBy(sender:)))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Search", style: .done, target: self, action: #selector(self.goToSearchView(sender:)))
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TrendingViewController.reusableIdentifier)
         presenter?.willFetchMovieList()
     }
     
@@ -39,7 +39,7 @@ extension TrendingViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
+        tableView.dequeueReusableCell(withIdentifier: TrendingViewController.reusableIdentifier) ?? UITableViewCell()
     }
 
 }

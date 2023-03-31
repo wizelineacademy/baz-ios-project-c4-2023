@@ -10,8 +10,7 @@ import UIKit
 
 enum TrendingBarRouterMockCalls {
     case createTrendingModule
-    case presentSearchViewController
-    case presentMovieDetailController
+    case presentNextViewController
 }
 
 final class TrendingBarRouterMock: TrendingBarRouterProtocol {
@@ -22,11 +21,7 @@ final class TrendingBarRouterMock: TrendingBarRouterProtocol {
         return UIViewController() as! TrendingViewController
     }
     
-    func presentSearchViewController(from view: BAZProject.TrendingBarViewControllerProtocol?) {
-        calls.append(.presentSearchViewController)
-    }
-    
-    func presentMovieDetailController(from view: BAZProject.TrendingBarViewControllerProtocol?) {
-        calls.append(.presentMovieDetailController)
+    func presentNextViewController(from view: BAZProject.TrendingBarViewControllerProtocol?, to nextView: UIViewController) {
+        calls.append(.presentNextViewController)
     }
 }

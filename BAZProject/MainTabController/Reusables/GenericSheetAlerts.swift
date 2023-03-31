@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Alerts {
+final class Alerts {
     /**
      Function to create a UIAlertController.
      

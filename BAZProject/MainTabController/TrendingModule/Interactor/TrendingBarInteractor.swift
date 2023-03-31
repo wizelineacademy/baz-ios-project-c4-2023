@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TrendingBarInteractor {
+final class TrendingBarInteractor {
     weak var presenter: TrendingBarInteractorOutputProtocol?
     var remoteData: TrendingBarRemoteDataInputProtocol?
     
