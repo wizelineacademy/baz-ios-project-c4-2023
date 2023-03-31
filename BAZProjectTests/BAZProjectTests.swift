@@ -6,23 +6,56 @@
 //
 
 import XCTest
+@testable import BAZProject
 
 class BAZProjectTests: XCTestCase {
+    
+    var ApiMock: MovieApiMock?
+    
 
     override func setUp(){
         super.setUp()
+        ApiMock = MovieApiMock()
     }
 
     override func tearDown(){
         super.tearDown()
+        ApiMock = nil
     }
 
-    func testExample(){
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_DataMovieResponse(){
+        //Give
+        var expetationMovies: [Movie] = []
+        ApiMock?.getMovies(completion: { movies in
+            expetationMovies = movies
+        })
+        //When
+        var result: [Movie] = []
+        let realApi = MovieApi()
+        realApi.getMovies { movies in
+            result = movies
+        }
+        //Then
+        XCTAssertEqual(expetationMovies, result)
+    }
+    
+    func test_Data_NotNil(){
+        //Give
+        //When
+        var result: [Movie] = []
+        let realApi = MovieApi()
+        realApi.getMovies { movies in
+            result = movies
+        }
+        //Then
+        XCTAssertNotNil(result)
     }
 
 }
+
+
+/*func test_DataMovie(){
+    //Give
+    //When
+    //Then
+}*/

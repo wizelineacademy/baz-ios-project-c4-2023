@@ -90,7 +90,6 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
 
                 do {
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
-                    print(decodedData)
                     callback(.success(decodedData))
                 } catch {
                     callback(.failure(ServiceError.parsingData))
