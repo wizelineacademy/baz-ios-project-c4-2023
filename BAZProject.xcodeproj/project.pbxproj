@@ -93,12 +93,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		859D2DCA29D5EC7F008AF807 /* Services */ = {
+		859D2DCA29D5EC7F008AF807 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 			);
-			path = Services;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		859D2DCB29D5EC91008AF807 /* Controllers */ = {
@@ -150,7 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				859D2DCD29D6036E008AF807 /* Utils */,
-				859D2DCA29D5EC7F008AF807 /* Services */,
+				859D2DCA29D5EC7F008AF807 /* Networking */,
 				859D2DCB29D5EC91008AF807 /* Controllers */,
 				859D2DC929D5EC64008AF807 /* Models */,
 				859D2DCC29D5F80C008AF807 /* Views */,
