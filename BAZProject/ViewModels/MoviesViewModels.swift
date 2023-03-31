@@ -9,31 +9,36 @@ import Foundation
 import UIKit
 
 struct MoviesViewModels{
-    private let movie: Movie
+    private let movie: MoviesResult
 }
 
 extension MoviesViewModels{
-    init(_ movie: Movie) {
+    init(_ movie: MoviesResult) {
         self.movie = movie
     }
 }
 
 extension MoviesViewModels{
     var title: String {
-        return self.movie.title
+        return self.movie.strTitle ?? ""
     }
     
-    var poster_path: Data {
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(self.movie.poster_path)") else { return Data() }
-        if let data = try? Data(contentsOf: url){
-            return data
+    func getImage(completion: @escaping(UIImage) ->()){
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(self.movie.strPosterPath ?? "")") else { return }
+        let globalQueue = DispatchQueue.global()
+        globalQueue.async {
+            if let data = try? Data(contentsOf: url){
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    completion(image ?? UIImage())
+                }
+            }
         }
-        return Data()
     }
 }
 
 struct MoviesListViewModel{
-    let movies: [Movie]
+    let movies: [MoviesResult]
 }
 
 extension MoviesListViewModel {

@@ -18,6 +18,7 @@
 		C30893E328A425E1004B1860 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */ = {isa = PBXBuildFile; fileRef = C383356D28CA917400FCE0D5 /* code-review-rubric.md */; };
 		E50FC49229D3C5EA00897519 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */; };
+		E5AD4E0A29D6931A0077BB60 /* CWAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD4E0929D6931A0077BB60 /* CWAlert.swift */; };
 		E5B8F1F629D4AE9A001A0EBA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */; };
 		E5B8F1F829D4B208001A0EBA /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */; };
 		E5C8EDEF29D5FF01009AB8DA /* MoviesViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */; };
@@ -48,6 +49,7 @@
 		C383356D28CA917400FCE0D5 /* code-review-rubric.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "code-review-rubric.md"; sourceTree = "<group>"; };
 		E50FC48F29D3C5EA00897519 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
+		E5AD4E0929D6931A0077BB60 /* CWAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWAlert.swift; sourceTree = "<group>"; };
 		E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModels.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				E5AD4E0829D692DB0077BB60 /* Alert */,
 				E5C8EDF129D60A16009AB8DA /* Models */,
 				E5C8EDED29D5FEE3009AB8DA /* ViewModels */,
 				E5B8F1F429D4AE85001A0EBA /* Networking */,
@@ -114,6 +117,14 @@
 				E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */,
 			);
 			path = BAZProjectTests;
+			sourceTree = "<group>";
+		};
+		E5AD4E0829D692DB0077BB60 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E5AD4E0929D6931A0077BB60 /* CWAlert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		E5B8F1F429D4AE85001A0EBA /* Networking */ = {
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5AD4E0A29D6931A0077BB60 /* CWAlert.swift in Sources */,
 				E5B8F1F629D4AE9A001A0EBA /* EndPoint.swift in Sources */,
 				E5C8EDEF29D5FF01009AB8DA /* MoviesViewModels.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */,

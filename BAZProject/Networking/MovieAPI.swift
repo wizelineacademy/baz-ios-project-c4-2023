@@ -19,25 +19,14 @@ class MovieAPI: Service{
         self.session = session
     }
     
-    func getMovies(_ endpoint: Endpoint, callback: @escaping (Result<[Movie], Error>) -> Void) {
+    func getMovies<T:Decodable>(_ endpoint: Endpoint, callback: @escaping (Result<T, Error>) -> Void) {
         let request = endpoint.request
         DispatchQueue.global().async {
             let task = self.session.performDataTask(with: request) { (data, response, error) in
-                var movies: [Movie] = []
+                guard let data: Data = data else { return callback(.failure(error ?? NSError())) }
                 do {
-                    guard let data = data,
-                          let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                          let results = json.object(forKey: "results") as? [NSDictionary]
-                    else { return }
-
-                    for result in results {
-                        if let id = result.object(forKey: "id") as? Int,
-                           let title = result.object(forKey: "title") as? String,
-                           let poster_path = result.object(forKey: "poster_path") as? String {
-                            movies.append(Movie(id: id, title: title, poster_path: poster_path))
-                        }
-                    }
-                    callback(.success(movies))
+                    let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+                    callback(.success(decodedData))
                 } catch {
                     callback(.failure(error))
                 }

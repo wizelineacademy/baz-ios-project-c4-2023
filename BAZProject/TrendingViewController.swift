@@ -14,12 +14,15 @@ class TrendingViewController: UITableViewController {
         super.viewDidLoad()
         
         let getService = MovieAPI(session: URLSession.shared)
-        getService.getMovies(.getMovies){ [weak self] (result: Result< [Movie], Error>) in
+        getService.getMovies(.getMovies){ [weak self] (result: Result< Movie, Error>) in
             switch result {
             case .success(let moviesReponse):
-                self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse)
+                self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse.arrMovies!)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             default:
-                print("Error.....")
+                self?.present(CWAlert.simpleWith(message: "Error al realizar"), animated: true)
             }
         }
         
@@ -42,13 +45,14 @@ extension TrendingViewController {
 
 // MARK: - TableView's Delegate
 extension TrendingViewController {
-
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
         let infoMovieCell = moviesListViewModel?.movieAtIndex(indexPath.row)
         config.text = infoMovieCell?.title
-        config.image = UIImage(data: infoMovieCell?.poster_path ?? Data())
+        infoMovieCell?.getImage(){ image in
+            config.image = image
+            cell.contentConfiguration = config
+        }
         cell.contentConfiguration = config
     }
-
 }
