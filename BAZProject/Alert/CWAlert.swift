@@ -6,6 +6,17 @@
 //
 
 import UIKit
+
+///   /// UIAlertAction - AlertGeneric
+///
+///  alert generic to be reusable an alert message to user.
+///
+/// - Parameters:
+///   - title: title to be displayed in the alert by default is error
+///   - message:  message to be displayed in the alert
+///   - actionTitle: Title for the button that appears in the alert, by default it is Accept.
+///
+/// - Returns: An UIAlertController
 class CWAlert{
     
     static public func simpleWith(title        : String? = "Error",

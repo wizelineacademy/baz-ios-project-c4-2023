@@ -5,7 +5,7 @@
 //
 
 import Foundation
-//Movie
+
 struct Movie: Decodable {
     public var arrMovies: [MoviesResult]?
     

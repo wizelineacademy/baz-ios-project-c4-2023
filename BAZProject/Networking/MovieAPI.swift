@@ -19,6 +19,17 @@ class MovieAPI: Service{
         self.session = session
     }
     
+    /**
+    This Function is generic, makes a request to a service,
+    
+    - Parameters:
+       - endpoint: Is an enum that indicates what request it sends.
+    
+    - Returns:
+       - T: return The type of the value to decode from the supplied JSON object.
+       - Error: returns the service error
+    */
+    
     func getMovies<T:Decodable>(_ endpoint: Endpoint, callback: @escaping (Result<T, Error>) -> Void) {
         let request = endpoint.request
         DispatchQueue.global().async {
