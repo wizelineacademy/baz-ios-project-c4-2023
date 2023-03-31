@@ -12,10 +12,6 @@ struct MovieListViewModel {
 }
 
 extension MovieListViewModel {
-    var numberOfSections: Int {
-        return 1
-    }
-    
     func numberOfRowsInSection(_ section: Int) -> Int {
         return self.movies.count
     }
