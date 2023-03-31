@@ -20,6 +20,14 @@ class Movie: Decodable,Viewable {
     var poster_path: String?
     var release_date: String?
     
+    init(id: Int? = nil, original_title: String? = nil, overview: String? = nil, poster_path: String? = nil, release_date: String? = nil) {
+        self.id = id
+        self.original_title = original_title
+        self.overview = overview
+        self.poster_path = poster_path
+        self.release_date = release_date
+    }
+    
     func getTitle() -> String {
         guard let title = original_title else { return "" }
         return title
