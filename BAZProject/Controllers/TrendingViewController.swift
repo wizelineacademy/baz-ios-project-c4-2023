@@ -59,7 +59,7 @@ extension TrendingViewController {
         config.text = movieVM.title
         
         if let url = URL(string: movieVM.poster_path), let data = try? Data(contentsOf: url) {
-             config.image = UIImage(data: data)
+            config.image = UIImage(data: data)
         } else {
             config.image = UIImage(named: "poster")
         }
