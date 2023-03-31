@@ -15,15 +15,8 @@ final class MovieListViewModelTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let trendingMovieDayResource = Resource<MovieList>(url: Endpoint.trendingMovieDay.url) { data in
-            return try? JSONDecoder().decode(MovieList.self, from: data)
-        }
-        
-        MovieAPI().load(resource: trendingMovieDayResource) { (result) in
-            if let movieList = result {
-                self.sut = MovieListViewModel(movies: movieList.results)
-            }
-        }
+        let moveListFake = try! JSONDecoder().decode(MovieList.self, from: MovieFakes().trendingMovieDay)
+        self.sut = MovieListViewModel(movies: moveListFake.results)
     }
     
     override func tearDown() {
@@ -31,20 +24,23 @@ final class MovieListViewModelTest: XCTestCase {
         self.sut = nil
     }
     
-    func test_should_return_correct_display_name_for_fahrenheit() {
-        
-        
-        XCTAssert(true)
+    func testMovieList_whenReadFromMock_checkNumberOfMovies() {
+        let resultExpected = 20
+        let result = sut.numberOfRowsInSection(0)
+
+        XCTAssertEqual(result, resultExpected)
     }
     
-    func test_should_make_sure_that_default_selected_unit_is_fahrenheit() {
-        XCTAssert(true)
+    func testMovieList_whenSpecifyValidIndex_isNotNil() {
+        let result = sut.movieAtIndex(0)
+
+        XCTAssertNotNil(result)
     }
     
-    func test_should_be_able_to_save_user_unit_selection() {
-        
-        XCTAssert(true)
-        
+    func testMovieList_whenSpecifyInvalidIndex_isNil() {
+        let result = sut.movieAtIndex(100)
+
+        XCTAssertNil(result)
     }
 
 }
