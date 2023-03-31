@@ -80,7 +80,11 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
                 }
 
                 do {
+                    //let result = try? JSONSerialization.jsonObject(with: data) as? NSDictionary
+                    //print(result)
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+                    
+                    //let results = decodedData.object(forKey: "results") as? [NSDictionary]
                     callback(.success(decodedData))
                 } catch {
                     callback(.failure(ServiceError.parsingData))
