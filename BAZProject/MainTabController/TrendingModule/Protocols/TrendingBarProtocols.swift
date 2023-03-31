@@ -11,18 +11,43 @@ import UIKit
 
 // Presenter > Router
 protocol TrendingBarRouterProtocol: AnyObject {
+    /**
+     Function that create a UIViewController.
+     
+     - Returns:
+         - UIViewController: view 
+     */
     func createTrendingModule() -> UIViewController
+    /**
+     Function that perform a pushed method.
+     
+     - Parameters:
+         - view: UIViewController that is going to push to SearchViewController.
+     */
     func presentSearchViewController(from view: TrendingBarViewControllerProtocol?)
+    /**
+     Function that perform a pushed method.
+     
+     - Parameters:
+         - view: UIViewController that is going to push to MovieDetailController.
+     */
     func presentMovieDetailController(from view: TrendingBarViewControllerProtocol?)
 }
 
 // View > Presenter
 protocol TrendingBarViewControllerProtocol: AnyObject {
     var presenter: TrendingBarPresenterProtocol? { get set }
-//    var trendingList: [TrendingCellModel] { get set }
-    
+    /**
+     Function that reload the view.
+     */
     func reloadTendingInfo()
     func fillTrendingList()
+    /**
+     Function that reload the view with an specific error.
+     
+     - Parameters:
+         - error: Service module error.
+     */
     func reload(with error: Error)
     func showAlert(withTitle title: String, withMessage message: String, withActions actions: [(String, UIAlertAction.Style)])
 }
