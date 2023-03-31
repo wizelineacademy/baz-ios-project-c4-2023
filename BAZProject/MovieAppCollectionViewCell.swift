@@ -10,7 +10,6 @@ import UIKit
 class MovieAppCollectionViewCell: UICollectionViewCell {
     
     // MARK: UIElements
-    
     @IBOutlet weak var cellBottomView: UIView!
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!

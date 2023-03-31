@@ -4,6 +4,8 @@
 //
 //
 
+// TODO: (SDA) Erase class
+
 import Foundation
 
 class MovieAPI {

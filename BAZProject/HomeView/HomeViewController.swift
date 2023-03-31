@@ -11,6 +11,10 @@ protocol HomeToViewProtocol {
     var interactor: PresenterToInteractor? { get set }
     
     func getMoviesData()
+    
+    func getNumberOfItems() -> Int
+    
+    func setModel(cell: MovieAppCollectionViewCell, index: IndexPath) -> MovieAppCollectionViewCell
 }
 
 class HomeViewController: UIViewController {
@@ -18,6 +22,7 @@ class HomeViewController: UIViewController {
     // MARK: Variables
     
     var presenter: HomeToViewProtocol?
+    
     
     // MARK: UIElements
     
@@ -30,11 +35,24 @@ class HomeViewController: UIViewController {
         collectionView_Home.register(UINib(nibName: "MovieAppCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "HomeViewCellId")
         collectionView_Home.dataSource = self
         
-        // TODO: (SDA) La diguiente línea es equivalente a poner view.presenter = self, pero en la clase del Presenter, como no tenemos un inicializador o el router que arme todo, pues lo hacemos aqui, y con esta línea decimos que quien conforma el protocolo de comunicación es el presenter
-        presenter = Presenter()
-        presenter?.interactor = Interactor()
+        // TODO: (SDA) Provisional function to ensamble the to be Viper module
+        self.ensambleModule()
+        
         print("Se pide al presenter que se obtengan los datos...")
         presenter?.getMoviesData()
+    }
+    
+    // MARK: Ensambling provisional "Module"
+    private func ensambleModule() {
+        let presenterInstance = Presenter()
+        presenter = presenterInstance
+        
+        let interactorInstance = Interactor()
+        presenterInstance.interactor = interactorInstance
+        
+        interactorInstance.presenter = presenterInstance
+        
+        presenterInstance.view = self
     }
 }
 
@@ -42,12 +60,21 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        guard let numberOfItems = presenter?.getNumberOfItems() else { return 0 }
+        return numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeViewCellId", for: indexPath) as? MovieAppCollectionViewCell else { return UICollectionViewCell() }
-        return cell
+        guard let settedCell = presenter?.setModel(cell: cell, index: indexPath) else { return UICollectionViewCell() }
+        return settedCell
+    }
+}
+
+// MARK: PresenterToViewProtocol Extension
+extension HomeViewController: PresenterToViewProtocol {
+    func reloadView() {
+        collectionView_Home.reloadData()
     }
 }
 

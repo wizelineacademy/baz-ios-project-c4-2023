@@ -7,18 +7,24 @@
 
 import Foundation
 
+protocol InteractorToPresenter {
+    func manageResponse(results: [Viewable])
+}
+
+///Enumeration that stores the diferent urls used for the project
 enum serviceUrls: String {
-    case base = "https://api.themoviedb.org/3"
-    case trending = "/trending/movie/day"
-    case key = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    case trending = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
 
 class Interactor: PresenterToInteractor {
     
+    // MARK: Variables
+    var presenter: InteractorToPresenter?
+    
     func consultTheMovieApi() {
         print("Aqui va la implementación para consultar la Api, desde el Interactor")
         
-        let urlString = ((serviceUrls.base.rawValue).appending(serviceUrls.trending.rawValue)).appending(serviceUrls.key.rawValue)
+        let urlString = (serviceUrls.trending.rawValue)
         guard let url = URL(string: urlString) else {
             // TODO: (SDA) Presentar un error al formar la url
             return
@@ -37,7 +43,14 @@ class Interactor: PresenterToInteractor {
                 return
             }
             // TODO: (SDA) Qué hacer son el response
-            print(response.results)
+            DispatchQueue.main.async {
+                guard let movies = response.results else { return }
+                
+                print("Estando en el interactor ya tenemos el modelo y se ve como sigue:")
+                print(movies)
+                print("Se manda al presenter para que maneje los datos")
+                self.presenter?.manageResponse(results: movies)
+            }
         }
         task.resume()
     }

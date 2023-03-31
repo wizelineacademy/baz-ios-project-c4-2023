@@ -4,6 +4,7 @@
 //
 //
 
+// TODO: (SDA) Erase class and its storyboard
 import UIKit
 
 class TrendingViewController: UITableViewController {
