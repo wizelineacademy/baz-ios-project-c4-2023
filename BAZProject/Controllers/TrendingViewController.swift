@@ -19,12 +19,16 @@ class TrendingViewController: UITableViewController {
 
 extension TrendingViewController {
     public func setup() {
-        let movieApi = MovieAPI()
+
+        let urlForTrendingMovieDay = URL(string: Constants.Paths.urlForTrendingMovieDay)!
+
+        let trendingMovieDayResource = Resource<MovieList>(url: urlForTrendingMovieDay) { data in
+            return try? JSONDecoder().decode(MovieList.self, from: data)
+        }
         
-        movieApi.getMovies(url: "https://api.themoviedb.org/3/trending/movie/day") { movies in
-            self.moviesListVM = MovieListViewModel(movies: movies ?? [])
-            
-            DispatchQueue.main.async {
+        MovieAPI().load(resource: trendingMovieDayResource) { (result) in
+            if let movieList = result {
+                self.moviesListVM = MovieListViewModel(movies: movieList.results)
                 self.tableView.reloadData()
             }
         }
