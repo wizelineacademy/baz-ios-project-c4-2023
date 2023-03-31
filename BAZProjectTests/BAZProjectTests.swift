@@ -6,30 +6,52 @@
 //
 
 import XCTest
+@testable import BAZProject
 
 final class BAZProjectTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var sut: TrendingViewController!
+    var model: MovieListProtocol!
+    
+    override func setUp() {
+        super.setUp()
+        sut = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as? TrendingViewController)
+        model = TrendingViewModel()
+        sut?.trendingModel = model
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+        model = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testTredingViewModel_hasData() {
+        // Given
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", poster_path: "")]
+        // Then
+        model.movies = expectedResult
+        let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 10)
+        // When
+        XCTAssertEqual(rowCount, expectedResult.count)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testTredingViewModelTitle_hasData() {
+        // Given
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", poster_path: "")]
+        // Then
+        model.movies = expectedResult
+        // When
+        XCTAssertNotNil(sut.trendingModel.getTitle(index: 0))
+    }
+    
+    func testTredingViewModel_PosterPath_hasData() {
+        // Given
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 4, title: "Dragon Ball Z", poster_path: "225252341tfrt433.jpg")]
+        // Then
+        model.movies = expectedResult
+        // When
+        XCTAssertNotNil(sut.trendingModel.getPosterPath(index: 0))
     }
 
 }

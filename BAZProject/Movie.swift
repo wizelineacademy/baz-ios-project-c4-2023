@@ -6,8 +6,14 @@
 
 import Foundation
 
-struct Movie {
-    let id: Int
-    let title: String
-    let poster_path: String
+protocol ListMovieProtocol {
+    var id: Int { get set }
+    var title: String { get set }
+    var poster_path: String { get set }
+}
+
+struct Movie: ListMovieProtocol{
+    var id: Int
+    var title: String
+    var poster_path: String
 }

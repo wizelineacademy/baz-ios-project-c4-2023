@@ -5,21 +5,18 @@
 //
 
 import UIKit
+import Foundation
 
 class TrendingViewController: UITableViewController {
 
-    var movies: [Movie] = []
+    var trendingModel: MovieListProtocol = TrendingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let movieApi = MovieAPI()
-        
-        movieApi.getMovies { movies in
-            self.movies = movies
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        trendingModel.getDataMovies {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
             }
         }
     }
@@ -31,11 +28,11 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        return trendingModel.getRowCount()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
+        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
     }
 
 }
@@ -46,8 +43,12 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
-        config.image = UIImage(named: "poster")
+        config.text = trendingModel.getTitle(index: indexPath.row)
+        if let imageUrl = URL(string: trendingModel.getPosterPath(index: indexPath.row) ?? ""), let data = try? Data(contentsOf: imageUrl) {
+            config.image = UIImage(data: data)
+        } else {
+            config.image = UIImage(named: "poster")
+        }
         cell.contentConfiguration = config
     }
 

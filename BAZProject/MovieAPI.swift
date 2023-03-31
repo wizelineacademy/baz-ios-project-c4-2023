@@ -5,13 +5,19 @@
 //
 
 import Foundation
+import UIKit
+
+struct MovieAPIConstans {
+    static var baseURL = "https://api.themoviedb.org/3/"
+    static var trending = "trending/movie/day"
+    static var apiKey = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    static var baseUrlImage = "https://image.tmdb.org/t/p/w500"
+}
 
 class MovieAPI {
 
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-
     func getMovies(completion: @escaping ([Movie]) -> Void) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(apiKey)")
+        guard let url = URL(string: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)")
         else {
             return completion([])
         }
@@ -35,5 +41,5 @@ class MovieAPI {
             }
         }.resume()
     }
-
 }
+
