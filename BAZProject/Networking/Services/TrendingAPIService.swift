@@ -8,7 +8,7 @@ import Foundation
 
 class TrendingAPIService {
 
-    private let requestHandler = RequestHandler()
+    private let requestHandler = RequestHandler(withSession: URLSession.shared)
 
     func getMovies(completion: @escaping ([Movie]) -> Void) {
         requestHandler.get(MovieEndpoint.trending) { result in
