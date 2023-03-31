@@ -22,7 +22,6 @@ class Interactor: PresenterToInteractor {
     var presenter: InteractorToPresenter?
     
     func consultTheMovieApi() {
-        print("Aqui va la implementación para consultar la Api, desde el Interactor")
         
         let urlString = (serviceUrls.trending.rawValue)
         guard let url = URL(string: urlString) else {
@@ -45,10 +44,6 @@ class Interactor: PresenterToInteractor {
             // TODO: (SDA) Qué hacer son el response
             DispatchQueue.main.async {
                 guard let movies = response.results else { return }
-                
-                print("Estando en el interactor ya tenemos el modelo y se ve como sigue:")
-                print(movies)
-                print("Se manda al presenter para que maneje los datos")
                 self.presenter?.manageResponse(results: movies)
             }
         }
@@ -57,8 +52,6 @@ class Interactor: PresenterToInteractor {
     
     // MARK: PresenterToInteractor methods
     func getMoviesData() {
-        print("Aqui, en el Interactor, llega la petición del presenter para consumir el api de TheMovieDB")
-        print("Se lanza la función para traer los datos")
         self.consultTheMovieApi()
     }
 }

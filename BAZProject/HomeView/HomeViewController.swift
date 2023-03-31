@@ -35,10 +35,8 @@ class HomeViewController: UIViewController {
         collectionView_Home.register(UINib(nibName: "MovieAppCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "HomeViewCellId")
         collectionView_Home.dataSource = self
         
-        // TODO: (SDA) Provisional function to ensamble the to be Viper module
+        // TODO: (SDA) Refactor provisional function to ensamble the to be Viper module
         self.ensambleModule()
-        
-        print("Se pide al presenter que se obtengan los datos...")
         presenter?.getMoviesData()
     }
     
