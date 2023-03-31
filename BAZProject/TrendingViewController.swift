@@ -22,7 +22,6 @@ class TrendingViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
         
     }

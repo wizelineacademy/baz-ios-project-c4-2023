@@ -19,29 +19,13 @@ class MovieApi: MovieDataProvider {
         let coordinator = GeneralTaskCoordinator(session: session)
         coordinator.urlPath = "trending/movie/day"
                 
-        coordinator.get{(result: Result<TradingMovieResult, Error>) in
+        coordinator.get{(result: Result<TrendingMovieResult, Error>) in
             switch result {
-                case .success(let movies):
-                handler(movies.results)
+                case .success(let trendingMovies):
+                handler(trendingMovies.results)
                 case .failure(let error):
                 print(error.localizedDescription.description)
             }
         }
     }
 }
-
-
-//let session = URLSession.shared
-//        let coordinator = GeneralTaskCoordinator(session: session)
-//
-//        coordinator.getMovies { [weak self] result in
-//            switch result {
-//            case .success(let movies):
-//                DispatchQueue.main.async {
-//                    self?.movies = movies
-//                    self?.tableView.reloadData()
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }

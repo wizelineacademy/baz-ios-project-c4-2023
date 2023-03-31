@@ -12,6 +12,6 @@ struct Movie: Decodable {
     let poster_path: String
 }
 
-struct TradingMovieResult: Decodable{
+struct TrendingMovieResult: Decodable{
     let results:  [Movie]
 }

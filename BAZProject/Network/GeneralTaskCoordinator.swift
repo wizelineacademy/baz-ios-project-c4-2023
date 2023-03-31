@@ -9,8 +9,19 @@ import Foundation
 //ServiceProtocols
 protocol GeneralTaskCoordinatorProtocol{
     var session: URLSessionProtocol { get }
+    var urlBase: String {get}
     var urlPath: String {get set}
+    var apiURL: String {get}
+    var apiKey: String {get}
+    var urlRegion: String {get}
     func get<T: Decodable>(callback: @escaping (Result<T,Error>) -> Void)
+}
+
+extension GeneralTaskCoordinatorProtocol {
+    var urlBase     : String {return "https://api.themoviedb.org/3/"}
+    var apiURL      : String {return "?api_key="}
+    var apiKey      : String {return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"}
+    var urlRegion   : String {return "&language=es&region=MX&page=1"}
 }
 
 protocol URLSessionDataTaskProtocol {
@@ -40,12 +51,10 @@ extension URLSession: URLSessionProtocol {
 }
 
 class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
+    
+    var urlPath: String = ""
+    
     var session: URLSessionProtocol
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-    private let urlBase: String = "https://api.themoviedb.org/3/"
-    public var urlPath: String = ""
-    private var apiURL: String = "?api_key="
-    public var urlRegion: String = "&language=es&region=MX&page=1"
     
     init(session: URLSessionProtocol) {
         self.session = session
@@ -80,11 +89,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
                 }
 
                 do {
-                    //let result = try? JSONSerialization.jsonObject(with: data) as? NSDictionary
-                    //print(result)
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
-                    
-                    //let results = decodedData.object(forKey: "results") as? [NSDictionary]
+                    print(decodedData)
                     callback(.success(decodedData))
                 } catch {
                     callback(.failure(ServiceError.parsingData))
@@ -94,30 +100,4 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         }
         
     }
-
-//    func get(url completion: @escaping ([Movie]) -> Void) {
-//        guard let url = URL(string: "\(urlBase)\(urlPath)\(apiURL)\(apiKey)\(urlRegion)")
-//        else {
-//            return completion([])
-//        }
-//
-//        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
-//            var movies: [Movie] = []
-//            defer {
-//                completion(movies)
-//            }
-//            guard let data = data,
-//                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-//                  let results = json.object(forKey: "results") as? [NSDictionary]
-//            else { return }
-//
-//            for result in results {
-//                if let id = result.object(forKey: "id") as? Int,
-//                   let title = result.object(forKey: "title") as? String,
-//                   let poster_path = result.object(forKey: "poster_path") as? String {
-//                    movies.append(Movie(id: id, title: title, poster_path: poster_path))
-//                }
-//            }
-//        }.resume()
-//    }
 }
