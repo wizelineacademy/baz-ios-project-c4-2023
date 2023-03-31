@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-/// Protocol to is used to get a UIImage from remote url
+/// Protocol used to get a UIImage from a remote URL asynchronously
 protocol ImageLoadable {
     func loadIamge(from url: URL, callBack: @escaping (UIImage?) -> Void)
 }
 
+/// structure that is decoupled by conforming to ImageLoadable protocol
 struct ImageLoader: ImageLoadable {
     
     private let global = DispatchQueue.global()

@@ -6,12 +6,14 @@
 
 import Foundation
 
+/// Protocol used to decouple the Movie structure
 protocol ListMovieProtocol {
     var id: Int { get set }
     var title: String { get set }
     var poster_path: String { get set }
 }
 
+/// Structure that contains the data that will be used in the view
 struct Movie: ListMovieProtocol{
     var id: Int
     var title: String

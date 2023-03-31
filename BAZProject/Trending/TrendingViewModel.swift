@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 
+/// Protocol that is responsible for having the logic of movies to be called in the view
 protocol MovieListProtocol {
     var movies: [ListMovieProtocol]? { get set }
     func getDataMovies(_ Completion: @escaping () -> Void)
@@ -16,6 +17,7 @@ protocol MovieListProtocol {
     func getPosterPath(index: Int) -> String?
 }
 
+/// Structure that conforms to the MovieListProtocol protocol
 class TrendingViewModel: MovieListProtocol {
     
     var movies: [ListMovieProtocol]?
