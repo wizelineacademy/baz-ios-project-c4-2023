@@ -39,7 +39,7 @@ extension TrendingPresenter: TrendingInteractorOutputProtocol {
         view?.reloadTable()
     }
     
-    func serviceFailed(withError error: NSError?) {
-        router?.showAlert(withMessage: error?.localizedDescription ?? "Un error en el servicio", from: view)
+    func serviceFailed(withError error: ErrorApi) {
+        router?.showAlert(withMessage: error.getMessage(), from: view)
     }
 }

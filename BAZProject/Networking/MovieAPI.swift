@@ -41,7 +41,7 @@ class MovieAPI {
 }
 
 extension MovieAPI : ServiceApiProtocol{
-    func serviceFinished(withResult result: Result<[String : Any], Error>) {
+    func serviceFinished(withResult result: Result<[String : Any], ErrorApi>) {
         
     }
 }

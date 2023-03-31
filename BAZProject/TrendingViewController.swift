@@ -47,7 +47,7 @@ extension TrendingViewController {
 }
 
 extension TrendingViewController : ServiceApiProtocol{
-    func serviceFinished(withResult result: Result<[String : Any], Error>) {
+    func serviceFinished(withResult result: Result<[String : Any], ErrorApi>) {
         switch result {
         case .success(let success):
             configureMovies(fromResponse: success)

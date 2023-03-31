@@ -25,7 +25,7 @@ protocol TrendingViewProtocol: AnyObject {
 /// Interactor -> Presenter
 protocol TrendingInteractorOutputProtocol: AnyObject {
     func serviceRespondedSuccess()
-    func serviceFailed(withError error : NSError?)
+    func serviceFailed(withError error : ErrorApi)
 }
 
 /// Presenter -> Interactor
@@ -75,7 +75,7 @@ protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
 /// Remote data manager -> Interactor
 protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
     func moviesObtained(with arrMovies : [Movie]?)
-    func serviceDidFail(with error : NSError?)
+    func serviceDidFail(with error : ErrorApi)
 }
 
 /// Interactor -> Local data manager

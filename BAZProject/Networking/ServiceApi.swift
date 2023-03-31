@@ -8,15 +8,35 @@
 import Foundation
 
 protocol ServiceApiProtocol : AnyObject{
-    func serviceFinished(withResult result : Result<[String : Any], Error>)
+    func serviceFinished(withResult result : Result<[String : Any], ErrorApi>)
 }
 
-class ServiceApi{
+protocol NetworkingProtocol : AnyObject{
+    var serviceDelegate : ServiceApiProtocol? { get set }
+    func search(forPath strPath : String)
+}
+
+enum ErrorApi : Error{
+    case badURL
+    case badJSON
+    
+    
+    func getMessage() -> String{
+        switch self {
+        case .badURL:
+            return "No se pudo crear la URL"
+        case .badJSON:
+            return "El json no se pudo parsear"
+        }
+    }
+}
+
+class ServiceApi : NetworkingProtocol{
     
     private let strBaseURL : String = "https://api.themoviedb.org/3"
     private let strTokenKey : String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
     
-    private weak var serviceDelegate : ServiceApiProtocol?
+    weak var serviceDelegate : ServiceApiProtocol?
     
     init(serviceDelegate: ServiceApiProtocol? = nil) {
         self.serviceDelegate = serviceDelegate
@@ -24,8 +44,7 @@ class ServiceApi{
     
     func search(forPath strPath : String){
         guard let url = URL(string: configureURL(forPath: strPath)) else {
-            let error = NSError(domain: "", code: -616)
-            serviceDelegate?.serviceFinished(withResult: .failure(error))
+            serviceDelegate?.serviceFinished(withResult: .failure(.badURL))
             return
         }
         
@@ -37,7 +56,7 @@ class ServiceApi{
             guard let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any]
             else {
-                self?.serviceDelegate?.serviceFinished(withResult: .failure(error!))
+                self?.serviceDelegate?.serviceFinished(withResult: .failure(.badJSON))
                 return
             }
             dctResponse = json

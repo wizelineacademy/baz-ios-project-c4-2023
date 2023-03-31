@@ -40,7 +40,7 @@ extension TrendingInteractor: TrendingRemoteDataManagerOutputProtocol {
         presenter?.serviceRespondedSuccess()
     }
     
-    func serviceDidFail(with error: NSError?) {
+    func serviceDidFail(with error: ErrorApi) {
         presenter?.serviceFailed(withError: error)
     }
     
