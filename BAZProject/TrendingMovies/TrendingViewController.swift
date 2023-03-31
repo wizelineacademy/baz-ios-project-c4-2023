@@ -8,18 +8,15 @@ import UIKit
 
 final class TrendingViewController: UITableViewController {
 
-    
-   private var myTredingArray: [ListMoviesProtocol] = []
-   private let trendingModel = TredingViewViewModel()
+    var trendingModel: MoviesListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getMovieArray()
     }
     
-    func getMovieArray() {
-        trendingModel.getmovies { movies in
-            self.myTredingArray = movies
+    func getMovieArray() { // se guarda la respuesta del servicio en el arreglo y se recarga la tabla
+        trendingModel.getmovies {
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
             }
@@ -32,7 +29,7 @@ final class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        myTredingArray.count
+        trendingModel.getMovieCount()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,7 +44,7 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = myTredingArray[indexPath.row].title
+        config.text = trendingModel.getTitle(index: indexPath.row)
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }

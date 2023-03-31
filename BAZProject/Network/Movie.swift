@@ -7,7 +7,7 @@
 import Foundation
 
 
-protocol ListMoviesProtocol {
+protocol ListMoviesProtocol { 
     var id: Int { get set }
     var title: String { get set }
     var poster_path: String { get set }

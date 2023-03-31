@@ -7,13 +7,35 @@
 
 import Foundation
 
-class TredingViewViewModel {
-        
-    func getmovies(_ contiue: @escaping ([ListMoviesProtocol]) -> Void) {
+protocol MoviesListProtocol {
+    var movies: [ListMoviesProtocol]? { get set }
+    func getmovies(_ Completion: @escaping () -> Void)
+    func getMovieCount() -> Int
+    func getTitle(index: Int) -> String?
+}
+
+class TrendingViewModel: MoviesListProtocol {
+   
+    var movies: [ListMoviesProtocol]?
+    
+    func getmovies(_ Completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.getMovies {  moviearray in
-            contiue(moviearray)
+            self.movies = moviearray
+            Completion()
         }
     }
     
+    func getMovieCount() -> Int {
+        movies?.count ?? 0
+    }
+    
+    func getTitle(index: Int) -> String? {
+        movies?[index].title
+    }
+    
 }
+
+
+
+
