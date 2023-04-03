@@ -13,7 +13,7 @@ public protocol ServiceApiProtocol: AnyObject {
 
 protocol NetworkingProtocol: AnyObject {
     var serviceDelegate: ServiceApiProtocol? { get set }
-    func search(forPath strPath: String)
+    func search(forPath path: Paths)
 }
 
 public enum ErrorApi: Error {
@@ -38,6 +38,13 @@ public class ServiceApi: NetworkingProtocol {
     
     private let strBaseURL: String = "https://api.themoviedb.org/3"
     private let strTokenKey: String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"//URLCOMPONENTS
+    private var strCurrentLocale: String {
+        if #available(iOS 16.0, *){
+            return Locale.current.language.languageCode?.identifier ?? ""
+        }else{
+            return Locale.current.identifier
+        }
+    }
     
     public weak var serviceDelegate: ServiceApiProtocol?
     
@@ -45,8 +52,8 @@ public class ServiceApi: NetworkingProtocol {
         self.serviceDelegate = serviceDelegate
     }
     
-    func search(forPath strPath: String) {
-        guard let url = URL(string: configureURL(forPath: strPath)) else {
+    public func search(forPath path: Paths) {
+        guard let url = configureURL(forPath: path) else {
             serviceDelegate?.serviceFinished(withResult: .failure(.badURL))
             return
         }
@@ -70,9 +77,13 @@ public class ServiceApi: NetworkingProtocol {
         }.resume()
     }
     
-    public func configureURL(forPath strPath: String) -> String {
-        return "\(strBaseURL)\(strPath)\(strTokenKey)"
+    public func configureURL(forPath path: Paths) -> URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.themoviedb.org"
+        components.path = "/3\(path.rawValue)"
+        components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
+                                 URLQueryItem(name: "language", value: strCurrentLocale)]
+        return components.url
     }
-    
-    
 }
