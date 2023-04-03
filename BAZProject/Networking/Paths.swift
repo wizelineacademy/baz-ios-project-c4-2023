@@ -32,7 +32,6 @@ public struct URLConfiguration{
         components.path = path.rawValue
         components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
                                  URLQueryItem(name: "language", value: strCurrentLocale)]
-        let url = components.url
         
         return components.url
     }
