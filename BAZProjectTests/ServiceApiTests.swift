@@ -10,15 +10,42 @@ import BAZProject
 
 final class ServiceApiTests: XCTestCase {
 
-    func test_UrlWasConfigured_InServiceAPI() {
-        //Given
-        let strFinalURL: String = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
-        let urlFinal = URL(string: strFinalURL)
-        //When
-        let service = ServiceApi()
-        let urlServiceURL = service.configureURL(forPath: Paths.trending)
-        //Then
-        XCTAssertEqual(urlFinal, urlServiceURL)
+    var errorType : ErrorApi?
+    var exp: XCTestExpectation?
+    
+    override func setUp() {
+        super.setUp()
+        exp = expectation(description: "This is the failure")
     }
+    
+    override func tearDown() {
+        super.tearDown()
+        exp = nil
+        errorType = nil
+    }
+    
+    func test_BadURL_ReturnURLError() {
+        let strBadHost = "Esto es un mal host"
+        let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
+        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        //When
+        sut.search()
+        //Then
+        waitForExpectations(timeout: 1.0)
+        XCTAssertEqual(errorType, ErrorApi.badResponse)
+    }
+    
+}
 
+extension ServiceApiTests: ServiceApiProtocol{
+    
+    func serviceFinished(withResult result: Result<[String : Any], BAZProject.ErrorApi>) {
+        switch result{
+        case .failure(let error):
+            exp?.fulfill()
+            errorType = error
+        default:
+            return
+        }
+    }
 }

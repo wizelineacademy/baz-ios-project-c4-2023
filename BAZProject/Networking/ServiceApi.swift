@@ -11,9 +11,10 @@ public protocol ServiceApiProtocol: AnyObject {
     func serviceFinished(withResult result: Result<[String : Any], ErrorApi>)
 }
 
-protocol NetworkingProtocol: AnyObject {
+public protocol NetworkingProtocol: AnyObject {
     var serviceDelegate: ServiceApiProtocol? { get set }
-    func search(forPath path: Paths)
+    var configuration : URLConfiguration { get set }
+    func search()
 }
 
 public enum ErrorApi: Error {
@@ -36,24 +37,16 @@ public enum ErrorApi: Error {
 
 public class ServiceApi: NetworkingProtocol {
     
-    private let strBaseURL: String = "https://api.themoviedb.org/3"
-    private let strTokenKey: String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"//URLCOMPONENTS
-    private var strCurrentLocale: String {
-        if #available(iOS 16.0, *){
-            return Locale.current.language.languageCode?.identifier ?? ""
-        }else{
-            return Locale.current.identifier
-        }
-    }
-    
     public weak var serviceDelegate: ServiceApiProtocol?
+    public var configuration : URLConfiguration
     
-    public init(serviceDelegate: ServiceApiProtocol? = nil) {
+    public init(serviceDelegate: ServiceApiProtocol? = nil, configuration: URLConfiguration) {
         self.serviceDelegate = serviceDelegate
+        self.configuration = configuration
     }
     
-    public func search(forPath path: Paths) {
-        guard let url = configureURL(forPath: path) else {
+    public func search() {
+        guard let url = configuration.configureURL() else {
             serviceDelegate?.serviceFinished(withResult: .failure(.badURL))
             return
         }
@@ -75,15 +68,5 @@ public class ServiceApi: NetworkingProtocol {
             
 
         }.resume()
-    }
-    
-    public func configureURL(forPath path: Paths) -> URL? {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.themoviedb.org"
-        components.path = "/3\(path.rawValue)"
-        components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
-                                 URLQueryItem(name: "language", value: strCurrentLocale)]
-        return components.url
     }
 }

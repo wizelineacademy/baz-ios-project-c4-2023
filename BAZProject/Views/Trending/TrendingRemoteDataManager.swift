@@ -14,7 +14,7 @@ class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
     var serviceApi: NetworkingProtocol?
     
     func getMovies() {
-        serviceApi?.search(forPath: Paths.trending)
+        serviceApi?.search()
     }
     
 }
