@@ -8,15 +8,14 @@
 import Foundation
 import UIKit
 
-final class TabBarManagerViewController : UITabBarController{
-    
+final class TabBarManagerViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
     }
     
-    private func setUpViews(){
+    private func setUpViews() {
         viewControllers = [createNavController(for: TrendingRouter.createTrendingModule(), title: "Trending", image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill"))]
     }
     
