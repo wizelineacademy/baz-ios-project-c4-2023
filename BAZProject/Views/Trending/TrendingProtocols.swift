@@ -67,6 +67,7 @@ protocol TrendingRouterProtocol: AnyObject {
 /// Interactor -> Remote data manager
 protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol? { get set }
+    var serviceApi: NetworkingProtocol? { get set }
     
     func getMovies()
 }

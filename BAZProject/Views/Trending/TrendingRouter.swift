@@ -15,8 +15,9 @@ class TrendingRouter: TrendingRouterProtocol {
         let view = TrendingView()
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
         let interactor: TrendingInteractorInputProtocol & TrendingRemoteDataManagerOutputProtocol = TrendingInteractor()
-        let remoteDataManager: TrendingRemoteDataManagerInputProtocol = TrendingRemoteDataManager()
+        let remoteDataManager: TrendingRemoteDataManagerInputProtocol & ServiceApiProtocol = TrendingRemoteDataManager()
         let router: TrendingRouterProtocol = TrendingRouter()
+        let serviceApi: NetworkingProtocol = ServiceApi(serviceDelegate: remoteDataManager)
         
         view.presenter = presenter
         presenter.view = view
@@ -26,6 +27,7 @@ class TrendingRouter: TrendingRouterProtocol {
         interactor.remoteDatamanager = remoteDataManager
         interactor.entity = entity
         remoteDataManager.remoteRequestHandler = interactor
+        remoteDataManager.serviceApi = serviceApi
         
         return view
     }

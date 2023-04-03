@@ -11,10 +11,10 @@ import Foundation
 class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
     
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol?
-    private lazy var serviceApi = ServiceApi(serviceDelegate: self)
+    var serviceApi: NetworkingProtocol?
     
     func getMovies() {
-        serviceApi.search(forPath: "/trending/movie/day")
+        serviceApi?.search(forPath: "/trending/movie/day")
     }
     
 }
