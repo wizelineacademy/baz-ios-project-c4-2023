@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum CellTypes : String{
+enum CellTypes: String {
     case imageTextCell = "ImageTextTableViewCell"
 }

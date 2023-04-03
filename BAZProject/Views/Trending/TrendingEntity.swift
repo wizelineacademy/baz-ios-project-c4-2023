@@ -10,18 +10,18 @@ import Foundation
 
 struct TrendingEntity {
     
-    var strNavBarTitle : String = "Trending"
-    private var arrMovies : [Movie]?
+    var strNavBarTitle: String = "Trending"
+    private var arrMovies: [Movie]?
     
-    mutating func updateMovies(with arrMovies : [Movie]?){
+    mutating func updateMovies(with arrMovies: [Movie]?) {
         self.arrMovies = arrMovies
     }
     
-    func getNumberOfRows() -> Int?{
+    func getNumberOfRows() -> Int? {
         return arrMovies?.count
     }
     
-    func getMovie(forRow iRow : Int) -> Movie?{
+    func getMovie(forRow iRow: Int) -> Movie? {
         return arrMovies?[iRow]
     }
 }

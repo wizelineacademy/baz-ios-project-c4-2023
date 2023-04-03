@@ -9,8 +9,8 @@ import UIKit
 
 class ImageTextTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblTitle : UILabel!
-    @IBOutlet weak var imgPoster : UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var imgPoster: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -19,7 +19,7 @@ class ImageTextTableViewCell: UITableViewCell {
     }
     
     
-    func set(title strTitle : String, andImage strUrl : String){
+    func set(title strTitle: String, andImage strUrl: String) {
         lblTitle.text = strTitle
     }
 }

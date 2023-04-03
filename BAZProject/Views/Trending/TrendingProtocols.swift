@@ -31,7 +31,6 @@ protocol TrendingInteractorOutputProtocol: AnyObject {
 /// Presenter -> Interactor
 protocol TrendingInteractorInputProtocol: AnyObject {
     var presenter: TrendingInteractorOutputProtocol? { get set }
-    var localDatamanager: TrendingLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol? { get set }
     var entity: TrendingEntity? { get set }
     
@@ -76,8 +75,4 @@ protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
 protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
     func moviesObtained(with arrMovies : [Movie]?)
     func serviceDidFail(with error : ErrorApi)
-}
-
-/// Interactor -> Local data manager
-protocol TrendingLocalDataManagerInputProtocol: AnyObject {
 }

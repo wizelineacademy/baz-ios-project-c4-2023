@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrendingRemoteDataManager:TrendingRemoteDataManagerInputProtocol {
+class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
     
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol?
     private lazy var serviceApi = ServiceApi(serviceDelegate: self)
@@ -19,7 +19,7 @@ class TrendingRemoteDataManager:TrendingRemoteDataManagerInputProtocol {
     
 }
 
-extension TrendingRemoteDataManager : ServiceApiProtocol{
+extension TrendingRemoteDataManager: ServiceApiProtocol {
     func serviceFinished(withResult result: Result<[String : Any], ErrorApi>) {
         DispatchQueue.main.async{[weak self] in
             switch result {
@@ -31,8 +31,8 @@ extension TrendingRemoteDataManager : ServiceApiProtocol{
         }
     }
     
-    private func parse(response dctResponse : [String : Any]) -> [Movie]?{
-        var arrMovies : [Movie] = [Movie]()
+    private func parse(response dctResponse: [String : Any]) -> [Movie]? {
+        var arrMovies: [Movie] = [Movie]()
         guard let results = dctResponse["results"] as? [[String : Any]] else { return nil }
         for result in results {
             if let id = result["id"] as? Int,

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */; };
-		3343AD4029D4A58D00F4CAB9 /* TrendingLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3729D4A58D00F4CAB9 /* TrendingLocalDataManager.swift */; };
 		3343AD4129D4A58D00F4CAB9 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */; };
 		3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */; };
 		3343AD4329D4A58D00F4CAB9 /* TrendingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3A29D4A58D00F4CAB9 /* TrendingInteractor.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenter.swift; sourceTree = "<group>"; };
-		3343AD3729D4A58D00F4CAB9 /* TrendingLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingLocalDataManager.swift; sourceTree = "<group>"; };
 		3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRouter.swift; sourceTree = "<group>"; };
 		3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProtocols.swift; sourceTree = "<group>"; };
 		3343AD3A29D4A58D00F4CAB9 /* TrendingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractor.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */,
 				3343AD3A29D4A58D00F4CAB9 /* TrendingInteractor.swift */,
 				3343AD3C29D4A58D00F4CAB9 /* TrendingRemoteDataManager.swift */,
-				3343AD3729D4A58D00F4CAB9 /* TrendingLocalDataManager.swift */,
 				3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */,
 				3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */,
 				3343AD3E29D4A58D00F4CAB9 /* TrendingEntity.swift */,
@@ -295,7 +292,6 @@
 				3343AD4429D4A58D00F4CAB9 /* TrendingView.swift in Sources */,
 				33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */,
 				3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */,
-				3343AD4029D4A58D00F4CAB9 /* TrendingLocalDataManager.swift in Sources */,
 				3343AD4329D4A58D00F4CAB9 /* TrendingInteractor.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TrendingPresenter  {
+class TrendingPresenter {
     
     // MARK: Properties
     weak var view: TrendingViewProtocol?

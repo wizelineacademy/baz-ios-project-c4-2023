@@ -12,11 +12,10 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: TrendingInteractorOutputProtocol?
-    var localDatamanager: TrendingLocalDataManagerInputProtocol?
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?
     var entity: TrendingEntity?
 
-    func getNavTitle() -> String?{
+    func getNavTitle() -> String? {
         return entity?.strNavBarTitle
     }
     

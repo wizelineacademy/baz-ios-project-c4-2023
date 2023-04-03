@@ -7,21 +7,21 @@
 
 import Foundation
 
-public protocol ServiceApiProtocol : AnyObject{
-    func serviceFinished(withResult result : Result<[String : Any], ErrorApi>)
+public protocol ServiceApiProtocol: AnyObject {
+    func serviceFinished(withResult result: Result<[String : Any], ErrorApi>)
 }
 
-protocol NetworkingProtocol : AnyObject{
-    var serviceDelegate : ServiceApiProtocol? { get set }
-    func search(forPath strPath : String)
+protocol NetworkingProtocol: AnyObject {
+    var serviceDelegate: ServiceApiProtocol? { get set }
+    func search(forPath strPath: String)
 }
 
-public enum ErrorApi : Error{
+public enum ErrorApi: Error {
     case badURL
     case badJSON
     
     
-    func getMessage() -> String{
+    func getMessage() -> String {
         switch self {
         case .badURL:
             return "No se pudo crear la URL"
@@ -31,25 +31,25 @@ public enum ErrorApi : Error{
     }
 }
 
-public class ServiceApi : NetworkingProtocol{
+public class ServiceApi: NetworkingProtocol {
     
-    private let strBaseURL : String = "https://api.themoviedb.org/3"
-    private let strTokenKey : String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"//URLCOMPONENTS
+    private let strBaseURL: String = "https://api.themoviedb.org/3"
+    private let strTokenKey: String = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"//URLCOMPONENTS
     
-    public weak var serviceDelegate : ServiceApiProtocol?
+    public weak var serviceDelegate: ServiceApiProtocol?
     
     public init(serviceDelegate: ServiceApiProtocol? = nil) {
         self.serviceDelegate = serviceDelegate
     }
     
-    func search(forPath strPath : String){
+    func search(forPath strPath: String) {
         guard let url = URL(string: configureURL(forPath: strPath)) else {
             serviceDelegate?.serviceFinished(withResult: .failure(.badURL))
             return
         }
         
         URLSession.shared.dataTask(with: .init(url: url)) {[weak self] data, response, error in
-            var dctResponse : [String : Any] = [String : Any]()
+            var dctResponse: [String : Any] = [String : Any]()
             defer {
                 self?.serviceDelegate?.serviceFinished(withResult: .success(dctResponse))
             }
@@ -64,7 +64,7 @@ public class ServiceApi : NetworkingProtocol{
         }.resume()
     }
     
-    public func configureURL(forPath strPath : String) -> String{
+    public func configureURL(forPath strPath: String) -> String {
         return "\(strBaseURL)\(strPath)\(strTokenKey)"
     }
     

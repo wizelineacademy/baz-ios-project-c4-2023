@@ -13,8 +13,8 @@ class TrendingView: UIViewController {
 
     // MARK: Properties
     var presenter: TrendingPresenterProtocol?
-    @IBOutlet weak var tblMovies : UITableView!{
-        didSet{
+    @IBOutlet weak var tblMovies: UITableView! {
+        didSet {
             tblMovies.dataSource = self
             tblMovies.delegate = self
         }
@@ -29,7 +29,7 @@ class TrendingView: UIViewController {
 }
 
 extension TrendingView: TrendingViewProtocol {
-    func setNavigationTitle(for strTitle: String?){
+    func setNavigationTitle(for strTitle: String?) {
         navigationItem.title = strTitle
     }
     
@@ -43,7 +43,7 @@ extension TrendingView: TrendingViewProtocol {
     }
 }
 
-extension TrendingView : UITableViewDataSource{
+extension TrendingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getNumberOfRows() ?? 0
     }
@@ -59,7 +59,7 @@ extension TrendingView : UITableViewDataSource{
     
 }
 
-extension TrendingView : UITableViewDelegate{
+extension TrendingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
