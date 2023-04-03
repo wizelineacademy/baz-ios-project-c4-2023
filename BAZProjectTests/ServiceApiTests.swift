@@ -25,6 +25,20 @@ final class ServiceApiTests: XCTestCase {
     }
     
     func test_BadURL_ReturnURLError() {
+        //Given
+        let strHostVoid = ""
+        let configuration = URLConfiguration(strHost: strHostVoid, path: .noPath)
+        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        //When
+        sut.search()
+        //Then
+        waitForExpectations(timeout: 1.0)
+        XCTAssertEqual(errorType, ErrorApi.badURL)
+        
+    }
+    
+    func test_MalformedURL_ReturnBadResponseError() {
+        //Given
         let strBadHost = "Esto es un mal host"
         let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
         let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)

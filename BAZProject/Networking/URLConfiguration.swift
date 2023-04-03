@@ -25,15 +25,24 @@ public struct URLConfiguration{
         self.path = path
     }
     
+    public mutating func updateHost(with strHost: String) {
+        self.strHost = strHost
+    }
+    
     public func configureURL() -> URL? {
-        var components = URLComponents()
-        components.scheme = strMethod
-        components.host = strHost
-        components.path = path.rawValue
-        components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
-                                 URLQueryItem(name: "language", value: strCurrentLocale)]
+        if strHost.count > 0 {
+            var components = URLComponents()
+            components.scheme = strMethod
+            components.host = strHost
+            components.path = path.rawValue
+            components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
+                                     URLQueryItem(name: "language", value: strCurrentLocale)]
+            
+            return components.url
+        }
         
-        return components.url
+        return nil
+        
     }
 }
 
