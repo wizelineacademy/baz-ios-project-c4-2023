@@ -19,6 +19,7 @@ protocol NetworkingProtocol: AnyObject {
 public enum ErrorApi: Error {
     case badURL
     case badJSON
+    case badResponse
     
     
     func getMessage() -> String {
@@ -27,6 +28,8 @@ public enum ErrorApi: Error {
             return NSLocalizedString("There was a problem creating the url", comment: "There was a problem creating the url")
         case .badJSON:
             return NSLocalizedString("There was a problem parsing the json", comment: "There was a problem parsing the json")
+        case .badResponse:
+            return NSLocalizedString("The service didn't respond", comment: "The service didn't respond")
         }
     }
 }
@@ -53,13 +56,16 @@ public class ServiceApi: NetworkingProtocol {
             defer {
                 self?.serviceDelegate?.serviceFinished(withResult: .success(dctResponse))
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any]
-            else {
-                self?.serviceDelegate?.serviceFinished(withResult: .failure(.badJSON))
+            guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                self?.serviceDelegate?.serviceFinished(withResult: .failure(.badResponse))
                 return
             }
-            dctResponse = json
+            if let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any]{
+                dctResponse = json
+            }else{
+                self?.serviceDelegate?.serviceFinished(withResult: .failure(.badJSON))
+            }
+            
 
         }.resume()
     }
