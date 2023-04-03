@@ -10,7 +10,7 @@ import Foundation
 
 struct TrendingEntity {
     
-    var strNavBarTitle: String = "Trending"
+    var strNavBarTitle: String = NSLocalizedString("Trending", comment: "Trending")
     private var arrMovies: [Movie]?
     
     mutating func updateMovies(with arrMovies: [Movie]?) {

@@ -1,0 +1,11 @@
+/* 
+  String.strings
+  BAZProject
+
+  Created by Daniel Alberto Vazquez Rodriguez on 03/04/23.
+  
+*/
+
+"Trending" = "Novedades";
+"There was a problem creating the url" = "No se pudo crear la URL";
+"There was a problem parsing the json" = "El json no se pudo parsear";

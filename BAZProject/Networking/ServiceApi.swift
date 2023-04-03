@@ -24,9 +24,9 @@ public enum ErrorApi: Error {
     func getMessage() -> String {
         switch self {
         case .badURL:
-            return "No se pudo crear la URL"
+            return NSLocalizedString("There was a problem creating the url", comment: "There was a problem creating the url")
         case .badJSON:
-            return "El json no se pudo parsear"
+            return NSLocalizedString("There was a problem parsing the json", comment: "There was a problem parsing the json")
         }
     }
 }
