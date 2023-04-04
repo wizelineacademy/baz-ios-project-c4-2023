@@ -167,13 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				217F37D929D2140B00ACA6C4 /* MainTabBarController.swift */,
-				21D5D93B29DCA5AA004E4D61 /* Helpers */,
-				215704C729D75DE300801FA9 /* Extensions */,
-				217F37EF29D232C300ACA6C4 /* Reusables */,
-				217F37DB29D2157000ACA6C4 /* Networking */,
 				217F37D729D20A8400ACA6C4 /* TrendingModule */,
-				217F381929D4B26F00ACA6C4 /* MovieSearch */,
-				217F382129D4B4B000ACA6C4 /* MovieDetail */,
+				217F381929D4B26F00ACA6C4 /* MovieSearchModule */,
+				217F382129D4B4B000ACA6C4 /* MovieDetailModule */,
 			);
 			path = MainTabController;
 			sourceTree = "<group>";
@@ -302,7 +298,7 @@
 			path = JsonFiles;
 			sourceTree = "<group>";
 		};
-		217F381929D4B26F00ACA6C4 /* MovieSearch */ = {
+		217F381929D4B26F00ACA6C4 /* MovieSearchModule */ = {
 			isa = PBXGroup;
 			children = (
 				217F381E29D4B31300ACA6C4 /* View */,
@@ -311,7 +307,7 @@
 				217F381B29D4B2E600ACA6C4 /* Entity */,
 				217F381A29D4B2C600ACA6C4 /* Router */,
 			);
-			path = MovieSearch;
+			path = MovieSearchModule;
 			sourceTree = "<group>";
 		};
 		217F381A29D4B2C600ACA6C4 /* Router */ = {
@@ -350,7 +346,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		217F382129D4B4B000ACA6C4 /* MovieDetail */ = {
+		217F382129D4B4B000ACA6C4 /* MovieDetailModule */ = {
 			isa = PBXGroup;
 			children = (
 				217F382629D4B4E600ACA6C4 /* View */,
@@ -359,7 +355,7 @@
 				217F382329D4B4D300ACA6C4 /* Entity */,
 				217F382229D4B4CB00ACA6C4 /* Router */,
 			);
-			path = MovieDetail;
+			path = MovieDetailModule;
 			sourceTree = "<group>";
 		};
 		217F382229D4B4CB00ACA6C4 /* Router */ = {
@@ -448,6 +444,10 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				21D5D93B29DCA5AA004E4D61 /* Helpers */,
+				215704C729D75DE300801FA9 /* Extensions */,
+				217F37EF29D232C300ACA6C4 /* Reusables */,
+				217F37DB29D2157000ACA6C4 /* Networking */,
 				217F37D629D20A5B00ACA6C4 /* MainTabController */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,

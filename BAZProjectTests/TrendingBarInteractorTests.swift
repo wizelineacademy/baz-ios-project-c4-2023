@@ -31,13 +31,17 @@ final class TrendingBarInteractorTests: XCTestCase {
 
     func testRequestMovieList() {
         let endPoint: Endpoint = .trending
+        
         sut.fetchMovieList(endPoint)
+        
         XCTAssert(remoteDataManager.calls.contains(.requestMovieList))
     }
     
     func testRequestImageData() {
         let movie = MovieFakes().movieResult.results![0]
+        
         sut.fetchImageFrom(movie)
+        
         XCTAssert(remoteDataManager.calls.contains(.requestImageData))
     }
     

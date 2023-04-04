@@ -66,7 +66,6 @@ final class TrendingBarRemoteDataTests: XCTestCase {
             sessionMock.expectation = expectation
             
             sut.requestMovieList(byEndPoint: endPoint)
-
             
             wait(for: [expectation], timeout: 0.1)
             XCTAssert(interactorMock.calls.contains(.handleTrendingFetchedList))
