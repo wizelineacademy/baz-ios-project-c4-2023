@@ -21,7 +21,6 @@
 		4B3BBE8929D658E2001F4E85 /* EndpointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */; };
 		4B3BBE8E29D69CFE001F4E85 /* TrendingMoviesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8D29D69CFE001F4E85 /* TrendingMoviesViewControllerTests.swift */; };
 		4B3BBE9029D69D46001F4E85 /* TrendingMoviesViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */; };
-		4B3BBE9229D6A34E001F4E85 /* TrendingMoviesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE9129D6A34E001F4E85 /* TrendingMoviesProtocol.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C30893B628A2F42D004B1860 /* Assets.xcassets */; };
@@ -59,7 +58,6 @@
 		4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointMock.swift; sourceTree = "<group>"; };
 		4B3BBE8D29D69CFE001F4E85 /* TrendingMoviesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingMoviesViewControllerTests.swift; path = BAZProjectUnitTests/TrendingMoviesViewControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewModelMock.swift; sourceTree = "<group>"; };
-		4B3BBE9129D6A34E001F4E85 /* TrendingMoviesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesProtocol.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			children = (
 				C30893C328A2F845004B1860 /* TrendingMoviesViewController.swift */,
 				4B37399329D4BA560056041F /* TrendingMoviesViewModel.swift */,
-				4B3BBE9129D6A34E001F4E85 /* TrendingMoviesProtocol.swift */,
 			);
 			path = TrendingMoviesModule;
 			sourceTree = "<group>";
@@ -327,7 +324,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3BBE9229D6A34E001F4E85 /* TrendingMoviesProtocol.swift in Sources */,
 				4B37398A29D4A5670056041F /* MovieEndpoint.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingMoviesViewController.swift in Sources */,
 				4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */,
