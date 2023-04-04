@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8C13BEFF29D5E09E00732B79 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C13BEFE29D5E09E00732B79 /* BAZProjectTests.swift */; };
+		8C28975F29DC986500DA4FB3 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C28975E29DC986500DA4FB3 /* URLSessionMock.swift */; };
+		8C546C4F29DC931F001BD303 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C546C4E29DC931F001BD303 /* ServiceError.swift */; };
+		8C546C5229DC96AD001BD303 /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C546C5129DC96AD001BD303 /* ServiceMock.swift */; };
 		8C66813D29DB2AF700FE1B73 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66813C29DB2AF700FE1B73 /* EndpointProtocol.swift */; };
 		8C66814329DB2DB100FE1B73 /* MovieEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66814229DB2DB100FE1B73 /* MovieEndpoints.swift */; };
 		8C66814B29DB4C6C00FE1B73 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66814A29DB4C6C00FE1B73 /* Movie.swift */; };
@@ -36,6 +39,9 @@
 /* Begin PBXFileReference section */
 		8C13BEFC29D5E09E00732B79 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C13BEFE29D5E09E00732B79 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
+		8C28975E29DC986500DA4FB3 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		8C546C4E29DC931F001BD303 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		8C546C5129DC96AD001BD303 /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 		8C66813C29DB2AF700FE1B73 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
 		8C66814229DB2DB100FE1B73 /* MovieEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndpoints.swift; sourceTree = "<group>"; };
 		8C66814A29DB4C6C00FE1B73 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -74,9 +80,19 @@
 		8C13BEFD29D5E09E00732B79 /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C546C5029DC9672001BD303 /* Mocks */,
 				8C13BEFE29D5E09E00732B79 /* BAZProjectTests.swift */,
 			);
 			path = BAZProjectTests;
+			sourceTree = "<group>";
+		};
+		8C546C5029DC9672001BD303 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8C546C5129DC96AD001BD303 /* ServiceMock.swift */,
+				8C28975E29DC986500DA4FB3 /* URLSessionMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		8C66813929D7650E00FE1B73 /* Network */ = {
@@ -85,6 +101,7 @@
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				8C66813C29DB2AF700FE1B73 /* EndpointProtocol.swift */,
 				8C66814229DB2DB100FE1B73 /* MovieEndpoints.swift */,
+				8C546C4E29DC931F001BD303 /* ServiceError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -245,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C28975F29DC986500DA4FB3 /* URLSessionMock.swift in Sources */,
 				8C13BEFF29D5E09E00732B79 /* BAZProjectTests.swift in Sources */,
+				8C546C5229DC96AD001BD303 /* ServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +278,7 @@
 				8C66814E29DB591F00FE1B73 /* MoviesViewModels.swift in Sources */,
 				8C66814329DB2DB100FE1B73 /* MovieEndpoints.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				8C546C4F29DC931F001BD303 /* ServiceError.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 			);
