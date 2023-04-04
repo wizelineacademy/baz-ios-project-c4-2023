@@ -7,19 +7,27 @@
 import UIKit
 
 class TrendingViewController: UITableViewController {
-
-    var movies: [Movie] = []
+    
+    private var moviesListViewModel: MoviesListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let movieApi = MovieAPI()
-        
-        movieApi.getMovies { movies in
-            self.movies = movies
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        callServiceMovieAPI()
+         
+    }
+    
+    func callServiceMovieAPI(){
+        let getService = MovieAPI(session: URLSession.shared)
+        getService.getMovies(.getMovies){ [weak self] (result: Result< Movie, Error>) in
+            switch result {
+            case .success(let moviesReponse):
+                self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse.movies!)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            default:
+                //self?.present(CWAlert.simpleWith(message: "Error al realizar"), animated: true)
+                print("Error")
             }
         }
     }
@@ -31,7 +39,7 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        moviesListViewModel?.movies.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,8 +54,13 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
-        config.image = UIImage(named: "poster")
+        let MovieCell = moviesListViewModel?.movieAtIndex(indexPath.row)
+        config.text = MovieCell?.title
+        //config.image = UIImage(named: "poster")
+        MovieCell?.getImage(completion: { image in
+            config.image = image
+            cell.contentConfiguration = config
+        })
         cell.contentConfiguration = config
     }
 
