@@ -12,7 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let auth = Auth(apiKey: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a")
+        KeychainHelper.standard.save(auth)
+        
         return true
     }
 

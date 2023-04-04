@@ -12,6 +12,6 @@ final class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Movie Detail"
+        title = NSLocalizedString(MainLocalizableString.detailScreenTitle.rawValue, comment: "")
     }
 }

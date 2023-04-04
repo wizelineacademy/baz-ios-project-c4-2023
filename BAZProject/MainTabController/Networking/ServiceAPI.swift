@@ -7,6 +7,16 @@
 
 import Foundation
 
+/**
+ Class in charge to perform the network data transfer tasks.
+ 
+ ### Declaration Example: ###
+ ````
+ let serviceApi = ServiceAPI(session: URLSession.shared)
+ ````
+ 
+ - Version: 1.0.0
+ */
 final class ServiceAPI: Service {
     let session: URLSessionProtocol
     

@@ -10,7 +10,7 @@ import UIKit
 // MARK: - VIPER protocols
 
 // Presenter > Router
-protocol TrendingBarRouterProtocol: AnyObject {
+protocol TrendingBarRouterProtocol {
     /**
      Function that create a UIViewController.
      
@@ -63,6 +63,14 @@ protocol TrendingBarPresenterProtocol: AnyObject {
     func didSelectRowAt(_ indexPath: IndexPath)
 }
 
+extension TrendingBarPresenterProtocol {
+    func linkDependencies(view: TrendingBarViewControllerProtocol, router: TrendingBarRouterProtocol, interactor: TrendingBarInteractorInputProtocol) {
+        self.view = view
+        (self as? TrendingBarInteractorOutputProtocol)?.interactor = interactor
+        self.router = router
+    }
+}
+
 // Presenter > Interactor
 protocol TrendingBarInteractorInputProtocol: AnyObject {
     var presenter: TrendingBarInteractorOutputProtocol? { get set }
@@ -71,6 +79,13 @@ protocol TrendingBarInteractorInputProtocol: AnyObject {
     func fetchMovieList(_ endPoint: Endpoint)
     func fetchImageFrom(_ movie: MovieResult)
     func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol)
+}
+
+extension TrendingBarInteractorInputProtocol {
+    func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol) {
+        self.presenter = presenter
+        self.remoteData = remoteData
+    }
 }
 
 // Interactor > Presenter

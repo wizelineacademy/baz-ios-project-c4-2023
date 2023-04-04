@@ -12,6 +12,6 @@ final class SearchMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Search Movies"
+        title = NSLocalizedString(MainLocalizableString.searchScreenTitle.rawValue, comment: "")
     }
 }

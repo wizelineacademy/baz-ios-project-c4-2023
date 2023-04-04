@@ -36,9 +36,9 @@ final class TrendingBarRemoteDataTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for request movie list completion")
         sessionMock.data = Data()
         let endPoint: Endpoint = .trending
+        sessionMock.expectation = expectation
         
         sut.requestMovieList(byEndPoint: endPoint)
-        expectation.fulfill()
         
         wait(for: [expectation], timeout: 0.2)
         XCTAssert(interactorMock.calls.contains(.handleServiceError))
@@ -47,9 +47,9 @@ final class TrendingBarRemoteDataTests: XCTestCase {
     func testRequestMovieList_whenNoDataError_callsInteractorHandler() {
         let expectation = XCTestExpectation(description: "Wait for request movie list completion")
         let endPoint: Endpoint = .trending
+        sessionMock.expectation = expectation
 
         sut.requestMovieList(byEndPoint: endPoint)
-        expectation.fulfill()
 
         wait(for: [expectation], timeout: 0.2)
         XCTAssert(interactorMock.calls.contains(.handleServiceError))

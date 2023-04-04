@@ -12,8 +12,8 @@ final class TrendingViewController: UITableViewController, ReusableIdentifierPro
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Filter", style: .done, target: self, action: #selector(self.filterBy(sender:)))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Search", style: .done, target: self, action: #selector(self.goToSearchView(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(MainLocalizableString.filterButtonTitle.rawValue, comment: ""), style: .done, target: self, action: #selector(self.filterBy(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString(MainLocalizableString.searchButtonTitle.rawValue, comment: ""), style: .done, target: self, action: #selector(self.goToSearchView(sender:)))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TrendingViewController.reusableIdentifier)
         presenter?.willFetchMovieList()
     }

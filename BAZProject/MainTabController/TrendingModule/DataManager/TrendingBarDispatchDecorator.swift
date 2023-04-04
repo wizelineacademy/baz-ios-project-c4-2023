@@ -7,6 +7,16 @@
 
 import Foundation
 
+/**
+ Class in charge to ensure all the service calls are requested on the main thread .
+ 
+ ### Declaration Example: ###
+ ````
+ TrendingBarDispatchDecorator(decoratee: ServiceAPI(session: URLSession.shared))
+ ````
+ 
+ - Version: 1.0.0
+ */
 final class TrendingBarDispatchDecorator: Service {
     var session: URLSessionProtocol
 

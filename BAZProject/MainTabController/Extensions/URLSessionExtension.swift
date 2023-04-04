@@ -14,3 +14,8 @@ extension URLSession: URLSessionProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
     }
 }
+
+postfix operator ~
+postfix func ~ (string: String) -> String {
+    return NSLocalizedString(string, comment: "")
+}

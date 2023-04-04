@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  BAZProject
+
+  Created by 989438 on 04/04/23.
+  
+*/
+
+"detail_screen_title" = "Movie Detail";
+"search_screen_title" = "Search Movies";
+"search_button" = "Search";
+"filter_button" = "Filter";

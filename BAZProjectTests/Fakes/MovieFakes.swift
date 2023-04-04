@@ -6,9 +6,11 @@
 //
 
 import Foundation
+@testable import BAZProject
 
 class MovieFakes {
     var movieList: Data { getDataFrom(json: "movieResult") }
+    var movieResult: TrendingMoviesResult { getObject() }
     
     // MARK: - Private methods
     private func getDataFrom(json file: String) -> Data {
@@ -17,5 +19,11 @@ class MovieFakes {
         }
         let data: Data = try! Data(contentsOf: URL(fileURLWithPath: path))
         return data
+    }
+    
+    private func getObject() -> TrendingMoviesResult {
+        let data = getDataFrom(json: "movieResult")
+        let jsonData = try! JSONDecoder().decode(TrendingMoviesResult.self, from: data)
+        return jsonData
     }
 }
