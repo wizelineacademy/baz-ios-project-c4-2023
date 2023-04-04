@@ -26,7 +26,6 @@ class TrendingViewController: UITableViewController {
                     self?.tableView.reloadData()
                 }
             default:
-                //self?.present(CWAlert.simpleWith(message: "Error al realizar"), animated: true)
                 print("Error")
             }
         }
@@ -56,7 +55,6 @@ extension TrendingViewController {
         var config = UIListContentConfiguration.cell()
         let MovieCell = moviesListViewModel?.movieAtIndex(indexPath.row)
         config.text = MovieCell?.title
-        //config.image = UIImage(named: "poster")
         MovieCell?.getImage(completion: { image in
             config.image = image
             cell.contentConfiguration = config
