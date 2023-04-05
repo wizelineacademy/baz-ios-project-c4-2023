@@ -10,16 +10,22 @@ import UIKit
 
 class ReusableCollectionViewCell<U>: UICollectionViewCell {
 
+    // MARK: - Variables
+
     var item:U!
+
+    // MARK: - Override Functions
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
 
-    func setupViews() {}
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Publics Functions
+
+    func setupViews() {}
 }

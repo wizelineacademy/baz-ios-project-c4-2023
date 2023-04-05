@@ -8,22 +8,26 @@
 import Foundation
 import UIKit
 
+// MARK: View
 protocol MovieListsViewProtocol: AnyObject {
     var presenter: MovieListsPresenterProtocol? { get set }
     func showMovies(_ movies: [Movie])
 }
 
+// MARK: Interceptor
 protocol MovieListsInteractorProtocol: AnyObject {
     var presenter: MovieListsPresenterProtocol? { get set }
     func getMovies()
 }
 
+// MARK: Presenter
 protocol MovieListsPresenterProtocol: AnyObject {
     var view: MovieListsViewProtocol? { get set }
     func loadMovies()
     func successFetchMovies(_ movies: [Movie])
 }
 
+// MARK: Router
 protocol MovieListsRouterProtocol: AnyObject {
     static func createModule() -> UIViewController
 }

@@ -46,8 +46,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-    
-    private func goToMainView(_ scene: UIWindowScene){
+
+    private func goToMainView(_ scene: UIWindowScene) {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = MovieListRouter.createModule()
         window?.makeKeyAndVisible()

@@ -12,5 +12,5 @@ protocol CellReusable {
 }
 
 extension CellReusable {
-    var identifierCellReusable: String { String(describing: self)}
+    var identifierCellReusable: String { String(describing: self) }
 }

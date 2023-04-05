@@ -9,6 +9,8 @@ import UIKit
 
 class ReusableViewController: UIViewController {
 
+    // MARK: - Override Functions
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -18,6 +20,8 @@ class ReusableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - Publics Functions
 
     func setupView(){
         view.backgroundColor = .white

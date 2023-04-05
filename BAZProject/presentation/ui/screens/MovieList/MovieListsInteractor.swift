@@ -9,8 +9,12 @@ import Foundation
 
 class MovieListsInteractor: MovieListsInteractorProtocol {
 
+    // MARK: - Variables
+
     var presenter: MovieListsPresenterProtocol?
     var repository: MovieRepository?
+
+    // MARK: - Protocols Functions
 
     func getMovies() {
         repository?.getAllMovie { [self] movies in

@@ -10,9 +10,12 @@ import UIKit
 
 class MovieListViewController: ReusableTableViewController<MovieItemCell, Movie>, MovieListsViewProtocol {
 
+    // MARK: - Variables
+
     var presenter: MovieListsPresenterProtocol?
 
     // MARK: - Override Functions
+
     override func setupView() {
         super.setupView()
     }
@@ -20,21 +23,18 @@ class MovieListViewController: ReusableTableViewController<MovieItemCell, Movie>
     override func configTableView() {
         super.configTableView()
         height = 110
-        table_view.separatorStyle = .none
+        reusableTableView.separatorStyle = .none
         presenter?.loadMovies()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt : \(items[indexPath.row])")
-    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 
     // MARK: - Protocols Functions
+
     func showMovies(_ movies: [Movie]) {
         items = movies
         DispatchQueue.main.async {
-            self.table_view.reloadData()
+            self.reusableTableView.reloadData()
         }
     }
-
-    // MARK: - Private Functions
 }

@@ -10,8 +10,6 @@ import UIKit
 
 class MovieItemCell: ReusableTableViewCell<Movie>{
 
-    // MARK: - Variables
-
     // MARK: - Input/View and Constraints
 
     private lazy var imgvPorter:UIImageView = {
@@ -23,10 +21,10 @@ class MovieItemCell: ReusableTableViewCell<Movie>{
 
     private func imgvPorterConstraints(){
         addSubview(imgvPorter)
-        imgvPorter.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        imgvPorter.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imgvPorter.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
-        imgvPorter.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        imgvPorter.widthAnchor.constraint(equalToConstant: .dim75).isActive = true
+        imgvPorter.heightAnchor.constraint(equalToConstant: .dim100).isActive = true
+        imgvPorter.topAnchor.constraint(equalTo: topAnchor, constant: .dim4).isActive = true
+        imgvPorter.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .dim8).isActive = true
     }
 
     private lazy var lblTitle: UILabel = {
@@ -39,16 +37,18 @@ class MovieItemCell: ReusableTableViewCell<Movie>{
 
     private func lblTitleConstraints(){
         addSubview(lblTitle)
-        lblTitle.leadingAnchor.constraint(equalTo: imgvPorter.trailingAnchor, constant: 8).isActive = true
+        lblTitle.leadingAnchor.constraint(equalTo: imgvPorter.trailingAnchor, constant: .dim8).isActive = true
         lblTitle.centerYAnchor.constraint(equalTo: imgvPorter.centerYAnchor).isActive = true
     }
 
 
     // MARK: - Override Functions/Variables
 
-    override var item: Movie!{
+    override var item: Movie! {
         didSet {
-            imgvPorter.image = UIImage(named: "poster")
+            let placeHolder = UIImage(named: "poster")
+            let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.poster_path)"
+            imgvPorter.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)
             lblTitle.text = item.title
         }
     }

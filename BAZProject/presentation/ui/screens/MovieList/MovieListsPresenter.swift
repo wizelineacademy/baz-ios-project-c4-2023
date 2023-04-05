@@ -9,6 +9,8 @@ import Foundation
 
 class MovieListsPresenter: MovieListsPresenterProtocol {
 
+    // MARK: - Variables
+
     var view: MovieListsViewProtocol?
     var interactor: MovieListsInteractorProtocol?
 
@@ -16,6 +18,8 @@ class MovieListsPresenter: MovieListsPresenterProtocol {
         self.view = interface
         self.interactor = interactor
     }
+
+    // MARK: - Protocols Functions
 
     func loadMovies() {
         interactor?.getMovies()

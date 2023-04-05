@@ -9,8 +9,7 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    private var movieNav:UINavigationController?
-    //private var trendingNav:UINavigationController?
+    private var movieNav: UINavigationController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
