@@ -5,9 +5,8 @@
 //
 
 import UIKit
-import Foundation
 
-class TrendingViewController: UITableViewController {
+final class TrendingViewController: UITableViewController {
     
     var trendingModel: MovieListProtocol = TrendingViewModel()
     
@@ -42,18 +41,17 @@ extension TrendingViewController {
 extension TrendingViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let imageLoader: ImageLoader = ImageLoader()
         var config = UIListContentConfiguration.cell()
         config.text = trendingModel.getTitle(index: indexPath.row)
         if let imageUrl = URL(string: trendingModel.getPosterPath(index: indexPath.row) ?? "") {
-            imageLoader.loadIamge(from: imageUrl) { image in
-                config.image = image
+            trendingModel.getRemoteImage(from: imageUrl) { [weak self] urlImage in
+                config.image = urlImage
                 cell.contentConfiguration = config
             }
         } else {
             config.image = UIImage(named: "poster")
+            cell.contentConfiguration = config
         }
-        cell.contentConfiguration = config
     }
     
 }

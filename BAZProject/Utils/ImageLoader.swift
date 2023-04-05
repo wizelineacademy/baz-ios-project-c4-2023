@@ -5,12 +5,11 @@
 //  Created by jehernandezg on 31/03/23.
 //
 
-import Foundation
 import UIKit
 
 /// Protocol used to get a UIImage from a remote URL asynchronously
 protocol ImageLoadable {
-    func loadIamge(from url: URL, callBack: @escaping (UIImage?) -> Void)
+    func loadImage(from url: URL, callBack: @escaping (UIImage?) -> Void)
 }
 
 /// structure that is decoupled by conforming to ImageLoadable protocol
@@ -18,7 +17,11 @@ struct ImageLoader: ImageLoadable {
     
     private let global = DispatchQueue.global()
     
-    func loadIamge(from url: URL, callBack: @escaping (UIImage?) -> Void) {
+    ///Function to transform the url image to a UIImage and return it
+    ///Parama url: The url image
+    ///Param callBack: The completion whit image
+    ///Return the image from data
+    func loadImage(from url: URL, callBack: @escaping (UIImage?) -> Void) {
         global.async {
             let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {

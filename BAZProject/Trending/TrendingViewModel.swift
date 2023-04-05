@@ -6,27 +6,27 @@
 //
 
 import UIKit
-import Foundation
 
 /// Protocol that is responsible for having the logic of movies to be called in the view
 protocol MovieListProtocol {
     var movies: [ListMovieProtocol]? { get set }
-    func getDataMovies(_ Completion: @escaping () -> Void)
+    func getDataMovies(_ completion: @escaping () -> Void)
     func getRowCount() -> Int
     func getTitle(index: Int) -> String?
     func getPosterPath(index: Int) -> String?
+    func getRemoteImage(from url: URL, completion: @escaping (UIImage?) -> Void)
 }
 
 /// Structure that conforms to the MovieListProtocol protocol
-class TrendingViewModel: MovieListProtocol {
+final class TrendingViewModel: MovieListProtocol {
     
-    var movies: [ListMovieProtocol]?
+    var movies: [ListMovieProtocol]? = []
     
-    func getDataMovies(_ Completion: @escaping () -> Void) {
+    func getDataMovies(_ completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.getMovies { [weak self] moviesList in
             self?.movies = moviesList
-            Completion()
+            completion()
         }
     }
     
@@ -39,7 +39,14 @@ class TrendingViewModel: MovieListProtocol {
     }
     
     func getPosterPath(index: Int) -> String? {
-        "\(MovieAPIConstans.baseUrlImage)\(movies?[index].poster_path ?? "")"
+        "\(MovieAPIConstans.baseUrlImage)\(movies?[index].posterPath ?? "")"
+    }
+    
+    func getRemoteImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let imageLoader: ImageLoader = ImageLoader()
+        imageLoader.loadImage(from: url) { [weak self] image in
+            completion(image)
+        }
     }
     
 }

@@ -12,10 +12,11 @@ final class BAZProjectTests: XCTestCase {
 
     var sut: TrendingViewController!
     var model: MovieListProtocol!
+    var instance = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as? TrendingViewController)
     
     override func setUp() {
         super.setUp()
-        sut = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as? TrendingViewController)
+        sut = instance
         model = TrendingViewModel()
         sut?.trendingModel = model
     }
@@ -28,7 +29,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", poster_path: "")]
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", posterPath: "")]
         // Then
         model.movies = expectedResult
         let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 10)
@@ -38,7 +39,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModelTitle_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", poster_path: "")]
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", posterPath: "")]
         // Then
         model.movies = expectedResult
         // When
@@ -47,11 +48,24 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_PosterPath_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 4, title: "Dragon Ball Z", poster_path: "225252341tfrt433.jpg")]
+        let expectedResult: [ListMovieProtocol] = [Movie(id: 4, title: "Dragon Ball Z", posterPath: "225252341tfrt433.jpg")]
         // Then
         model.movies = expectedResult
         // When
         XCTAssertNotNil(sut.trendingModel.getPosterPath(index: 0))
+    }
+    
+    func testTredingViewModel_ImageLoader() {
+        // Given
+        var testImage = UIImage()
+        // Then
+        if let testURL = URL(string: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg") {
+            model.getRemoteImage(from: testURL) { [weak self] urlImage in
+                testImage = urlImage ?? UIImage()
+                // When
+                XCTAssertNotNil(testImage)
+            }
+        }
     }
 
 }
