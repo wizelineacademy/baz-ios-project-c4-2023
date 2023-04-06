@@ -21,7 +21,7 @@ class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
 
 extension TrendingRemoteDataManager: ServiceApiProtocol {
     func serviceFinished(withResult result: Result<[String : Any], ErrorApi>) {
-        DispatchQueue.main.async{[weak self] in
+        DispatchQueue.main.async{ [weak self] in
             switch result {
             case .success(let success):
                 self?.remoteRequestHandler?.moviesObtained(with: self?.parse(response: success))

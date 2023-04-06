@@ -51,7 +51,7 @@ public class ServiceApi: NetworkingProtocol {
             return
         }
         
-        URLSession.shared.dataTask(with: .init(url: url)) {[weak self] data, response, error in
+        URLSession.shared.dataTask(with: .init(url: url)) { [weak self] data, response, error in
             var dctResponse: [String : Any] = [String : Any]()
             defer {
                 self?.serviceDelegate?.serviceFinished(withResult: .success(dctResponse))
