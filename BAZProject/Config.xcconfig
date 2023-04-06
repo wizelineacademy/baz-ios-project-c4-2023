@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  BAZProject
+//
+//  Created by 989438 on 05/04/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = f6cd5c1a9e6c6b965fdcab0fa6ddd38a

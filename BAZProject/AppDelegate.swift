@@ -12,8 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let auth = Auth(apiKey: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a")
-        KeychainHelper.standard.save(auth)
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            let auth = Auth(apiKey: apiKey)
+            KeychainHelper.standard.save(auth)
+        }
         
         return true
     }
