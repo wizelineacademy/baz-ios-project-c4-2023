@@ -11,6 +11,7 @@
 		231F913D29D5F23000FF054B /* MovieListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F913C29D5F23000FF054B /* MovieListRouter.swift */; };
 		231F913F29D5FA4200FF054B /* MovieListsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F913E29D5FA4200FF054B /* MovieListsInteractor.swift */; };
 		231F914129D5FA6200FF054B /* MovieListsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F914029D5FA6200FF054B /* MovieListsPresenter.swift */; };
+		231F915629D60C8100FF054B /* BAZProjectUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F915529D60C8100FF054B /* BAZProjectUnitTests.swift */; };
 		231FF3C229D4D42B008F58FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF3C129D4D42B008F58FF /* MainViewController.swift */; };
 		231FF3C429D4E628008F58FF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF3C329D4E628008F58FF /* Reusable.swift */; };
 		231FF3C629D4EE60008F58FF /* ReusableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231FF3C529D4EE60008F58FF /* ReusableCollectionViewController.swift */; };
@@ -53,6 +54,7 @@
 		231F913E29D5FA4200FF054B /* MovieListsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListsInteractor.swift; sourceTree = "<group>"; };
 		231F914029D5FA6200FF054B /* MovieListsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListsPresenter.swift; sourceTree = "<group>"; };
 		231F915329D60C8100FF054B /* BAZProjectUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		231F915529D60C8100FF054B /* BAZProjectUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectUnitTests.swift; sourceTree = "<group>"; };
 		231FF3C129D4D42B008F58FF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		231FF3C329D4E628008F58FF /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		231FF3C529D4EE60008F58FF /* ReusableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCollectionViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		231F915429D60C8100FF054B /* BAZProjectUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				231F915529D60C8100FF054B /* BAZProjectUnitTests.swift */,
 			);
 			path = BAZProjectUnitTests;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231F915629D60C8100FF054B /* BAZProjectUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
