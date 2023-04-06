@@ -14,8 +14,22 @@ protocol ListMovieProtocol {
 }
 
 /// Structure that contains the data that will be used in the view
-struct Movie: ListMovieProtocol {
+struct Movie: Codable {
+    let results: [MovieResult]?
+
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
+}
+
+// MARK: - Result
+struct MovieResult: Codable, ListMovieProtocol {
     var id: Int
     var title: String
     var posterPath: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, title
+        case posterPath = "poster_path"
+    }
 }

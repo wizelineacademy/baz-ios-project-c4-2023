@@ -24,9 +24,14 @@ final class TrendingViewModel: MovieListProtocol {
     
     func getDataMovies(_ completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
-        movieApi.getMovies { [weak self] moviesList in
-            self?.movies = moviesList
-            completion()
+        movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
+            switch result {
+            case .failure(let fail):
+                print(fail)
+            case .success(let response):
+                self?.movies = response.results
+                completion()
+            }
         }
     }
     

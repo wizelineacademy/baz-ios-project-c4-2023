@@ -14,57 +14,23 @@ struct MovieAPIConstans {
 }
 
 final class MovieAPI {
-
-    func getMovies(completion: @escaping ([Movie]) -> Void) {
-        guard let url = URL(string: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)")
-        else {
-            return completion([])
-        }
+    
+    func fetchData<T: Decodable>(model: T.Type, urlPath: String, onFinished: @escaping (Result<T, Error>) -> Void) {
+        guard let url = URL(string: urlPath) else { return }
         
-        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
-            var movies: [Movie] = []
-            defer {
-                completion(movies)
-            }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
-
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let title = result.object(forKey: "title") as? String,
-                   let posterPath = result.object(forKey: "poster_path") as? String {
-                    movies.append(Movie(id: id, title: title, posterPath: posterPath))
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode(model, from: data) {
+                    DispatchQueue.main.async {
+                        onFinished(.success(decodedResponse))
+                    }
+                    return
                 }
             }
+            onFinished(.failure(error ?? NSError()))
         }.resume()
     }
     
-    func getMoviesNew(completion: @escaping ([Movie]) -> Void) {
-        guard let url = URL(string: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)")
-        else {
-            return completion([])
-        }
-        
-        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
-            var movies: [Movie] = []
-            defer {
-                completion(movies)
-            }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
-
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let title = result.object(forKey: "title") as? String,
-                   let posterPath = result.object(forKey: "poster_path") as? String {
-                    movies.append(Movie(id: id, title: title, posterPath: posterPath))
-                }
-            }
-        }.resume()
-    }
 }
 
