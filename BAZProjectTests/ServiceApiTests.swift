@@ -10,7 +10,7 @@ import BAZProject
 
 final class ServiceApiTests: XCTestCase {
 
-    var errorType : ErrorApi?
+    var errorType: ErrorApi?
     var exp: XCTestExpectation?
     
     override func setUp() {

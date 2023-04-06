@@ -25,7 +25,7 @@ protocol TrendingViewProtocol: AnyObject {
 /// Interactor -> Presenter
 protocol TrendingInteractorOutputProtocol: AnyObject {
     func serviceRespondedSuccess()
-    func serviceFailed(withError error : ErrorApi)
+    func serviceFailed(withError error: ErrorApi)
 }
 
 /// Presenter -> Interactor
@@ -37,7 +37,7 @@ protocol TrendingInteractorInputProtocol: AnyObject {
     func getNavTitle() -> String?
     func getMovies()
     func getNumberOfRows() -> Int?
-    func getMovie(forRow iRow : Int) -> Movie?
+    func getMovie(forRow iRow: Int) -> Movie?
 }
 
 //MARK: - Presenter
@@ -50,7 +50,7 @@ protocol TrendingPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func getNumberOfRows() -> Int?
-    func getMovie(forRow iRow : Int) -> Movie?
+    func getMovie(forRow iRow: Int) -> Movie?
 }
 
 //MARK: - Router
@@ -59,7 +59,7 @@ protocol TrendingPresenterProtocol: AnyObject {
 protocol TrendingRouterProtocol: AnyObject {
     static func createTrendingModule(withEntity entity: TrendingEntity) -> UIViewController
     
-    func showAlert(withMessage strMessage : String, from view : TrendingViewProtocol?)
+    func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?)
 }
 
 //MARK: - Data Manager
@@ -74,6 +74,6 @@ protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
 
 /// Remote data manager -> Interactor
 protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
-    func moviesObtained(with arrMovies : [Movie]?)
-    func serviceDidFail(with error : ErrorApi)
+    func moviesObtained(with arrMovies: [Movie]?)
+    func serviceDidFail(with error: ErrorApi)
 }
