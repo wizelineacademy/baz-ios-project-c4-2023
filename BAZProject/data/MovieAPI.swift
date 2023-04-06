@@ -8,14 +8,16 @@ import Foundation
 
 class MovieAPI {
 
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-
+    /// Servicio que consume de la API DB movie
+    /// - Parameters:
+    ///   - completion: El closure a llamar una vez que se completa la operación.
+    ///   El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
     func getMovies(completion: @escaping ([Movie]) -> Void) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(apiKey)")
+        guard let url = URL(string: "\(Consts.END_POINTS.URL)day?api_key=\(Consts.END_POINTS.API_KEY)")
         else {
             return completion([])
         }
-        
+
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
             var movies: [Movie] = []
             defer {
@@ -35,5 +37,4 @@ class MovieAPI {
             }
         }.resume()
     }
-
 }

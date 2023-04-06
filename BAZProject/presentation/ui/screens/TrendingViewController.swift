@@ -23,7 +23,6 @@ class TrendingViewController: UITableViewController {
             }
         }
     }
-
 }
 
 // MARK: - TableView's DataSource
@@ -37,7 +36,6 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
     }
-
 }
 
 // MARK: - TableView's Delegate
@@ -50,5 +48,4 @@ extension TrendingViewController {
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }
-
 }
