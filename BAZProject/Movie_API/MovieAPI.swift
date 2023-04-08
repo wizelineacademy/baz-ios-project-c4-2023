@@ -13,17 +13,22 @@ class MovieAPI {
         else {
             return completion([])
         }
-        
-        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
-            guard let data = data,
-                  let response = try? JSONDecoder().decode(ServiceResponse<[Movie]>.self, from: data),
-                  let arrMovies = response.result
-            else {
-                completion(nil)
-                return
-            }
-            completion(arrMovies)
-        }.resume()
+        DispatchQueue.global().async {
+            URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+                guard let data = data,
+                      let response = try? JSONDecoder().decode(ServiceResponse<[Movie]>.self, from: data),
+                      let arrMovies = response.result
+                else {
+                    DispatchQueue.main.async(execute: {
+                        completion(nil)
+                    })
+                    return
+                }
+                DispatchQueue.main.async(execute: {
+                    completion(arrMovies)
+                })
+            }.resume()
+        }
     }
 
 }
