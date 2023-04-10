@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */; };
 		4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398529D3B1980056041F /* MainTabBarController.swift */; };
-		4B37398A29D4A5670056041F /* MovieEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398929D4A5670056041F /* MovieEndpoint.swift */; };
 		4B37398C29D4A88B0056041F /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398B29D4A88B0056041F /* RequestHandler.swift */; };
 		4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398D29D4A9DC0056041F /* RequestHandlerError.swift */; };
 		4B37399229D4B4550056041F /* TrendingAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37399129D4B4550056041F /* TrendingAPIModel.swift */; };
@@ -43,8 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEndpoint.swift; sourceTree = "<group>"; };
 		4B37398529D3B1980056041F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		4B37398929D4A5670056041F /* MovieEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndpoint.swift; sourceTree = "<group>"; };
 		4B37398B29D4A88B0056041F /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		4B37398D29D4A9DC0056041F /* RequestHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerError.swift; sourceTree = "<group>"; };
 		4B37399129D4B4550056041F /* TrendingAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPIModel.swift; sourceTree = "<group>"; };
@@ -89,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B09466329DCEC80001CB55F /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				C30893E028A425E1004B1860 /* TrendingAPIService.swift */,
+				4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */,
+				4B37399129D4B4550056041F /* TrendingAPIModel.swift */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
 		4B37398029D395900056041F /* TrendingMoviesModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +111,6 @@
 		4B37398729D4A4E90056041F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4B37398929D4A5670056041F /* MovieEndpoint.swift */,
 				4B37398B29D4A88B0056041F /* RequestHandler.swift */,
 				4B37398D29D4A9DC0056041F /* RequestHandlerError.swift */,
 				4B3BBE8029D65674001F4E85 /* NetworkingProtocols.swift */,
@@ -123,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				C30893E128A425E1004B1860 /* Movie.swift */,
-				4B37399129D4B4550056041F /* TrendingAPIModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,7 +139,7 @@
 		4B37399029D4B3D60056041F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C30893E028A425E1004B1860 /* TrendingAPIService.swift */,
+				4B09466329DCEC80001CB55F /* Trending */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -324,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B37398A29D4A5670056041F /* MovieEndpoint.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingMoviesViewController.swift in Sources */,
 				4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
@@ -333,6 +340,7 @@
 				4B37399429D4BA560056041F /* TrendingMoviesViewModel.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				4B3A946529D609F100C25BF4 /* Decodable.swift in Sources */,
+				4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */,
 				C30893E228A425E1004B1860 /* TrendingAPIService.swift in Sources */,
 				4B37398C29D4A88B0056041F /* RequestHandler.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,

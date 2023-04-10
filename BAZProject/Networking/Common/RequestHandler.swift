@@ -17,7 +17,7 @@ class RequestHandler {
     
     func get(_ endpoint: EndpointProtocol, completion: @escaping (Result<Data , RequestHandlerError>) -> Void) {
         
-        guard let request = endpoint.request else {
+        guard let request = endpoint.getRequest() else {
             completion(.failure(.requestBuilder))
             return
         }

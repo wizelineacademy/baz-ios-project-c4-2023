@@ -9,13 +9,15 @@ import Foundation
 @testable import BAZProject
 
 enum EndpointMock: EndpointProtocol {
-    
     case forRequestFailure, forOtherTests
     
-    var request: URLRequest? {
+    var path: String {
         switch self {
-        case .forRequestFailure: return nil
-        case .forOtherTests: return URLRequest(url: URL(string: "file://")!)
+        case .forOtherTests: return ""
+        case .forRequestFailure: return "//"
         }
     }
+    var scheme: String? { return nil }
+    var key: String? { return nil }
+    var host: String? { return nil }
 }
