@@ -4,13 +4,13 @@
 //
 //
 
-import UIKit
 import Foundation
 
-class MovieAPI {
+final class MovieAPI {
 
     private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 
+    // Function that get movies from themoviedb API and return it in a completion of type [MovieProtocol]
     func getMovies(completion: @escaping ([MovieProtocol]) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(apiKey)")
         else {

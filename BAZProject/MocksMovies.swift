@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct MoviesFecth {
     static let moviesFecth: [Movie] =  [Movie(id: 100, title: "Avengers", poster_path: "path/avengers"),

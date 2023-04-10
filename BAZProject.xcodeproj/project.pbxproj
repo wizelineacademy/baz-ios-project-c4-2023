@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C2AC3CA29DB476100901729 /* MovieProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2AC3C929DB476100901729 /* MovieProtocol.swift */; };
+		6C2AC3CE29DB480C00901729 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2AC3CD29DB480C00901729 /* ImageLoader.swift */; };
 		6C56607E29D68B0700C7DD4D /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C56607D29D68B0700C7DD4D /* BAZProjectTests.swift */; };
 		6C56608529D6F6D600C7DD4D /* MocksMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C56608429D6F6D600C7DD4D /* MocksMovies.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C2AC3C929DB476100901729 /* MovieProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieProtocol.swift; sourceTree = "<group>"; };
+		6C2AC3CD29DB480C00901729 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		6C56607B29D68B0700C7DD4D /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C56607D29D68B0700C7DD4D /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		6C56608429D6F6D600C7DD4D /* MocksMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksMovies.swift; sourceTree = "<group>"; };
@@ -98,16 +102,18 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
-				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
+				6C56608429D6F6D600C7DD4D /* MocksMovies.swift */,
 				C30893E128A425E1004B1860 /* Movie.swift */,
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
+				6C2AC3C929DB476100901729 /* MovieProtocol.swift */,
+				6C2AC3CD29DB480C00901729 /* ImageLoader.swift */,
+				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
+				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
 				C30893B328A2F42B004B1860 /* Main.storyboard */,
 				C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */,
 				C30893B628A2F42D004B1860 /* Assets.xcassets */,
 				C30893BB28A2F42D004B1860 /* Info.plist */,
-				6C56608429D6F6D600C7DD4D /* MocksMovies.swift */,
 			);
 			path = BAZProject;
 			sourceTree = "<group>";
@@ -229,6 +235,8 @@
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				6C56608529D6F6D600C7DD4D /* MocksMovies.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
+				6C2AC3CE29DB480C00901729 /* ImageLoader.swift in Sources */,
+				6C2AC3CA29DB476100901729 /* MovieProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

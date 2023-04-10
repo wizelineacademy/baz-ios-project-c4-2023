@@ -17,7 +17,7 @@ final class BAZProjectTests: XCTestCase {
     override func setUp() {
         super.setUp()
         sut = TrendingViewController()
-        sut.movies = principalMovies()
+        sut.movies = getPopularMovies()
     }
     
     override func tearDown() {
@@ -62,10 +62,10 @@ final class BAZProjectTests: XCTestCase {
     
     func testId_getMoviesId_IdValid() {
         // Given
-        let expectedId = 1
+        let expectedId = 100
         let expectedValidation = true
         // When
-        sut.movies = principalMovies()
+        sut.movies = getPopularMovies()
         // Then
         // With protocol with protocols we avoid data type errors
         XCTAssertTrue(sut.movies.count > 0 )
@@ -88,13 +88,6 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut.movies.last?.title, titleExpected)
     }
     
-    // Mock of principal movies
-    func principalMovies() -> [MovieProtocol] {
-        var moviesMock: [MovieProtocol] = []
-        moviesMock.append(PrincipalMockMoviesData(id: 1, title: "Inception", poster_path: "path/url", image: UIImage(named: "poster") ?? UIImage()))
-        return moviesMock
-    }
-    
     // Mock of popular movies
     func getPopularMovies() -> [MovieProtocol] {
         let popularMovies: [MovieProtocol] = [Movie(id: 100, title: "Avengers", poster_path: "path/avengers"),
@@ -113,26 +106,7 @@ final class BAZProjectTests: XCTestCase {
            XCTAssertNotNil(movies)
         }
     }
- 
-    // This is a Mock struct for model principal movies that extends of protocol MovieProtocol
-    private struct PrincipalMockMoviesData: MovieProtocol  {
-        var id: Int
-        var title: String
-        var poster_path: String
-        var image: UIImage
-        var adult: Bool?
-        var backdrop_path: String?
-        var genre_ids: [Int]?
-        var media_type: String?
-        var original_language: String?
-        var original_title: String?
-        var overview: String?
-        var popularity: String?
-        var release_date: String?
-        var video: Bool?
-        var vote_average: String?
-        var vote_count: String?
-    }
+
     // This is a Mock struct for model popular movies that extends of protocol MovieProtocol
     private struct PopularMockMoviesData: MovieProtocol  {
         var id: Int

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class TrendingViewController: UITableViewController {
+final class TrendingViewController: UITableViewController {
 
     var movies: [MovieProtocol] = []
     // Instance of a struct that define loaderImage method
@@ -35,7 +35,7 @@ class TrendingViewController: UITableViewController {
          */
     }
     
-    // verify movie informaation for show at least one movie
+    // Verify movie information for show at least one movie receiving an Array of Movies and return if can show table movies
     func verifyInformation(movies: [MovieProtocol]) -> Bool {
         if movies.count > 0 {
             return true
@@ -43,7 +43,7 @@ class TrendingViewController: UITableViewController {
         return false
     }
     
-    // verify id of movie
+    // Verify id of movie is valid, if the index movie doesn´t return false
     func verificationId(movieIndex: Int) -> Bool {
         if movieIndex <= movies.count {
             return movies[movieIndex].id > 0
@@ -51,6 +51,7 @@ class TrendingViewController: UITableViewController {
         return false
     }
     
+    // Get a compplete URL, having a base url we can complete de URL with poster_path and return it
     func getURLImage(poster_path: String) -> URL? {
         let base = "https://image.tmdb.org/t/p/w500"
         return URL(string: base + poster_path)
