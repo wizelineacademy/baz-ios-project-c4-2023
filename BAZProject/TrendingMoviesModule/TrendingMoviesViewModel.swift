@@ -9,22 +9,21 @@ import UIKit
 
 class TrendingMoviesViewModel {
     
-    var movies: [Movie]?
+    private var movies = [Movie]()
     
     func getMovies() async throws {
-        movies = try await TrendingAPIService().getMovies()
+        movies = try await TrendingMoviesRemoteData().getMovies() ?? []
     }
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
         var configuration = UIListContentConfiguration.cell()
-        if let movie = movies?[row] {
-            configuration.text = movie.title
-        }
+        let movie = movies[row]
+        configuration.text = movie.title
         return configuration
     }
     
-    func getRowCount() -> Int? {
-        return movies?.count ?? 0
+    func getRowCount() -> Int {
+        return movies.count
     }
     
 }
