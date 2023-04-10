@@ -9,7 +9,7 @@ import UIKit
 
 class TrendingMoviesViewModel {
     
-    private var movies = [Movie]()
+    var movies = [Movie]()
     
     func getMovies() async throws {
         movies = try await TrendingMoviesRemoteData().getMovies() ?? []
