@@ -8,11 +8,9 @@
 import Foundation
 @testable import BAZProject
 
-class TrendingViewModelMock: TrendingViewModel {
+final class TrendingViewModelMock: TrendingViewModel {
     
    override func getmovies(_ Completion: @escaping () -> Void) {
         Completion()
     }
-    
-    
 }

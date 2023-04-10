@@ -7,22 +7,16 @@
 
 import Foundation
 
-protocol MoviesListProtocol {
-    var movies: [ListMoviesProtocol]? { get set }
-    func getmovies(_ Completion: @escaping () -> Void)
-    func getMovieCount() -> Int
-    func getTitle(index: Int) -> String?
-}
 
 class TrendingViewModel: MoviesListProtocol {
    
     var movies: [ListMoviesProtocol]?
     
-    func getmovies(_ Completion: @escaping () -> Void) {
+    func getmovies(_ completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
-        movieApi.getMovies {  moviearray in
-            self.movies = moviearray
-            Completion()
+        movieApi.getMovies { [weak self] moviearray in
+            self?.movies = moviearray
+            completion()
         }
     }
     
@@ -35,7 +29,3 @@ class TrendingViewModel: MoviesListProtocol {
     }
     
 }
-
-
-
-

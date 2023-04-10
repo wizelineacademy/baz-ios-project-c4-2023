@@ -8,7 +8,7 @@
 import XCTest
 @testable import BAZProject
 
-class TrendingViewModelTests: XCTestCase {
+final class TrendingViewModelTests: XCTestCase {
     
     var sut: TrendingViewModel?
 
@@ -33,7 +33,4 @@ class TrendingViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(count, movies.count)
     }
-
-
-
 }

@@ -8,7 +8,7 @@ import Foundation
 
 class MovieAPI {
 
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" // llave para peticion de peliculas
 
     func getMovies(completion: @escaping ([ListMoviesProtocol]) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(apiKey)")
@@ -23,10 +23,10 @@ class MovieAPI {
             }
             guard let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
+                  let results = json.object(forKey: "results") as? [NSDictionary]  // Se recibe el Json con la lista de elementos
             else { return }
 
-            for result in results {
+            for result in results { //Se parsea el resultado a las variables que necesitamos para mostrar los datos.
                 if let id = result.object(forKey: "id") as? Int,
                    let title = result.object(forKey: "title") as? String,
                    let poster_path = result.object(forKey: "poster_path") as? String {
@@ -35,5 +35,4 @@ class MovieAPI {
             }
         }.resume()
     }
-
 }

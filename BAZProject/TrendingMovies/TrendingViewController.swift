@@ -17,8 +17,8 @@ final class TrendingViewController: UITableViewController {
     
     func getMovieArray() { // se guarda la respuesta del servicio en el arreglo y se recarga la tabla
         trendingModel.getmovies {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
@@ -35,7 +35,6 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
     }
-
 }
 
 // MARK: - TableView's Delegate
@@ -48,5 +47,4 @@ extension TrendingViewController {
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }
-
 }

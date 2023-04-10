@@ -8,7 +8,7 @@
 import XCTest
 @testable import BAZProject
 
-class BAZProjectTests: XCTestCase {
+final class BAZProjectTests: XCTestCase {
     
     var sut: TrendingViewController!
     var model: MoviesListProtocol!

@@ -13,7 +13,7 @@ protocol ListMoviesProtocol {
     var poster_path: String { get set }
 }
 
-struct Movie: ListMoviesProtocol{
+struct Movie: ListMoviesProtocol {
     var id: Int
     var title: String
     var poster_path: String

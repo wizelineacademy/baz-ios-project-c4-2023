@@ -20,6 +20,7 @@
 		E0558CE629D6917800DF5AA1 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0558CE529D6917800DF5AA1 /* BAZProjectTests.swift */; };
 		E0558CED29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0558CEC29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift */; };
 		E0558CEF29D6AD1200DF5AA1 /* TrendingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0558CEE29D6AD1200DF5AA1 /* TrendingViewModelTests.swift */; };
+		E070192D29E492F400111F2B /* TrendingViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070192C29E492F400111F2B /* TrendingViewProtocols.swift */; };
 		E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		E0558CE529D6917800DF5AA1 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		E0558CEC29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewControllerMock.swift; sourceTree = "<group>"; };
 		E0558CEE29D6AD1200DF5AA1 /* TrendingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModelTests.swift; sourceTree = "<group>"; };
+		E070192C29E492F400111F2B /* TrendingViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewProtocols.swift; sourceTree = "<group>"; };
 		E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 			children = (
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 				E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */,
+				E070192C29E492F400111F2B /* TrendingViewProtocols.swift */,
 			);
 			path = TrendingMovies;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
+				E070192D29E492F400111F2B /* TrendingViewProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
