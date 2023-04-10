@@ -8,12 +8,12 @@
 import Foundation
  
 protocol RequestSessionProtocol {
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol
+    func customData(for request: URLRequest) async throws -> (Data, URLResponse)
 }
 
 extension URLSession: RequestSessionProtocol {
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol {
-        return dataTask(with: request, completionHandler: completionHandler) as DataTaskProtocol
+    func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
+        return try await data(for: request)
     }
 }
 

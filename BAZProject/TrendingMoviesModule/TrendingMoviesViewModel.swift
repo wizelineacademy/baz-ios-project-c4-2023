@@ -11,11 +11,8 @@ class TrendingMoviesViewModel {
     
     var movies: [Movie]?
     
-    func getMovies(completion: @escaping () -> Void ) {
-        TrendingAPIService().getMovies { [weak self] movies in
-            self?.movies = movies
-            completion()
-        }
+    func getMovies() async throws {
+        movies = try await TrendingAPIService().getMovies()
     }
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {

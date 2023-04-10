@@ -31,9 +31,12 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         view.backgroundColor = .systemBackground
-        model?.getMovies { [weak self] in
-            DispatchQueue.main.async {
-                self?.moviesTableView.reloadData()
+        Task {
+            do {
+                try await model?.getMovies()
+                self.moviesTableView.reloadData()
+            } catch {
+                presentError(message: error.localizedDescription)
             }
         }
     }
@@ -44,6 +47,12 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         moviesTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         moviesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+    }
+    
+    private func presentError(message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(alert, animated: true)
     }
 
 }

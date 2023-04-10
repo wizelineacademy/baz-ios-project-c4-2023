@@ -8,13 +8,12 @@
 import Foundation
 
 enum RequestHandlerError: LocalizedError, Equatable {
-    case requestBuilder, nullData, serviceError(NSError)
+    case requestBuilder, badResponse
     
     var errorDescription: String? {
         switch self {
         case .requestBuilder: return NSLocalizedString("Could not build request from provided URL", comment: "Request Error")
-        case .nullData: return NSLocalizedString("Received data is nil", comment: "No Data Received")
-        case .serviceError(let error): return error.localizedDescription
+        case .badResponse: return NSLocalizedString("HTTP Unexpected Response", comment: "")
         }
     }
 }

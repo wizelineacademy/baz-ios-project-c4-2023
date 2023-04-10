@@ -10,8 +10,7 @@ import Foundation
 
 class TrendingMoviesViewModelMock: TrendingMoviesViewModel {
     
-    override func getMovies(completion: @escaping () -> Void ) {
-        completion()
+    override func getMovies() async throws {
+        return
     }
-    
 }

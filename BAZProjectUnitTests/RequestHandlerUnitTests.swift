@@ -23,73 +23,44 @@ final class RequestHandlerUnitTests: XCTestCase {
         sut = nil
         super.tearDown()
     }
-
-    func test_get_ErrorShouldBeNullData() throws {
-        //Given
-        var errorThrown: RequestHandlerError?
-        
-        //When
-        sut.get(EndpointMock.forOtherTests) { (result) in
-            switch result {
-            case .failure(let error): errorThrown = error
-            case .success: XCTFail("Should be null data error")
-            }
-        }
-        
-        //Then
-        XCTAssertEqual(errorThrown, .nullData)
-    }
     
-    func test_get_ErrorShouldBeRequestBuilder() throws {
+    func test_get_ErrorShouldBeRequestBuilder() async throws {
         //Given
-        var errorThrown: RequestHandlerError?
+        var errorThrown: RequestHandlerError!
         
         //When
-        sut.get(EndpointMock.forRequestFailure) { (result) in
-            switch result {
-            case .failure(let error): errorThrown = error
-            case .success: XCTFail("Should be request builder error")
-            }
+        do {
+            let _ = try await sut.get(EndpointMock.forRequestFailure)
+            XCTFail("Should throw request builder error error")
+        } catch {
+            errorThrown = (error as! RequestHandlerError)
         }
         
         //Then
         XCTAssertEqual(errorThrown, .requestBuilder)
     }
     
-    func test_get_ErrorShouldBeServiceError() throws {
+    func test_get_ErrorShouldBeServiceError() async {
         //Given
-        var errorThrown: RequestHandlerError?
-        let injectedError = NSError(domain: "", code: -1, userInfo: nil)
+        var errorThrown: RequestHandlerError!
+        let injectedError = HTTPURLResponse(url: URL(string: "file://")!, statusCode: 404, httpVersion: nil, headerFields: nil)!
         
         //When
-        requestSessionMock.error = injectedError
-        sut.get(EndpointMock.forOtherTests) { (result) in
-            switch result {
-            case .failure(let error): errorThrown = error
-            case .success: XCTFail("Should be service error")
-            }
+        requestSessionMock.urlResponse = injectedError
+        do {
+            let _ = try await sut.get(EndpointMock.forOtherTests)
+            XCTFail("Should throe badResponse error")
+        } catch {
+            errorThrown = (error as! RequestHandlerError)
         }
         
         //Then
-        XCTAssertEqual(errorThrown, .serviceError(injectedError))
+        XCTAssertEqual(errorThrown, .badResponse)
     }
     
-    func test_get_ShouldSucceed() throws {
+    func test_get_ShouldSucceed() async throws {
         //Given
-        var errorThrown: RequestHandlerError?
-        let injectedData = Data()
-        
-        //When
-        requestSessionMock.data = injectedData
-        sut.get(EndpointMock.forOtherTests) { (result) in
-            switch result {
-            case .failure(let error): errorThrown = error
-            case .success: return
-            }
-        }
-        
-        //Then
-        XCTAssertNil(errorThrown)
+        let _ = try await sut.get(EndpointMock.forOtherTests)
     }
 
 }

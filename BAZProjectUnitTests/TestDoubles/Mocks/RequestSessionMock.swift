@@ -12,12 +12,9 @@ import Foundation
 
 class RequestSessionMock: RequestSessionProtocol {
     
-    var data: Data?
-    var urlResponse: URLResponse?
-    var error: Error?
+    var urlResponse = HTTPURLResponse(url: URL(string: "file://")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     
-    func customDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskProtocol {
-        completionHandler(data, urlResponse, error)
-        return SessionDataTaskMock()
+    func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
+        return (Data(), urlResponse)
     }
 }
