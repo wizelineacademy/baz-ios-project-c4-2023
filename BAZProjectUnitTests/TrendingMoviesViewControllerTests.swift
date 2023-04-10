@@ -30,7 +30,7 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
         
         //When
         viewModel.movies = movies
-        sut.viewDidLoad()
+        sut.loadViewIfNeeded()
         let rows = sut.tableView(sut.moviesTableView, numberOfRowsInSection: 0)
         
         //Then
