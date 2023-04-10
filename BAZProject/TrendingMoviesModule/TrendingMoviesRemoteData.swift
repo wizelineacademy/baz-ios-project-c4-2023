@@ -6,7 +6,7 @@
 
 import Foundation
 
-class TrendingAPIService {
+class TrendingMoviesRemoteData {
 
     private let requestHandler = RequestHandler(withSession: URLSession.shared)
 
