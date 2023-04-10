@@ -16,7 +16,7 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel = TrendingMoviesViewModelMock()
-        sut = TrendingMoviesViewController.getInstance(with: viewModel)
+        sut = TrendingMoviesViewController(model: viewModel)
     }
 
     override func tearDown() {

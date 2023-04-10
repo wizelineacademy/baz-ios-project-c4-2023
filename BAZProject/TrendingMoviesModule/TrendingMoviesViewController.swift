@@ -15,14 +15,17 @@ class TrendingMoviesViewController: UIViewController {
         return tableView
     }()
 
-    var model: TrendingMoviesViewModel?
+    var model: TrendingMoviesViewModel
     
-    static func getInstance(with model: TrendingMoviesViewModel) -> TrendingMoviesViewController {
-        let vc = TrendingMoviesViewController()
-        vc.title = "Trending"
-        vc.tabBarItem = UITabBarItem(title: vc.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
-        vc.model = model
-        return vc
+    init(model: TrendingMoviesViewModel) {
+        self.model = model
+        super.init(nibName: nil, bundle: nil)
+        self.title = "Trending"
+        self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -33,7 +36,7 @@ class TrendingMoviesViewController: UIViewController {
         view.backgroundColor = .systemBackground
         Task {
             do {
-                try await model?.getMovies()
+                try await model.getMovies()
                 self.moviesTableView.reloadData()
             } catch {
                 presentError(message: error.localizedDescription)
@@ -62,7 +65,7 @@ class TrendingMoviesViewController: UIViewController {
 extension TrendingMoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.getRowCount() ?? 0
+        return model.getRowCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +79,7 @@ extension TrendingMoviesViewController: UITableViewDataSource {
 extension TrendingMoviesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = model?.getCellConfiguration(row: indexPath.row) ?? UIListContentConfiguration.cell()
+        var config = model.getCellConfiguration(row: indexPath.row)
         config.imageProperties.maximumSize = CGSize(width: 50, height: 50)
         cell.indentationLevel = 1
         cell.indentationWidth = 0
