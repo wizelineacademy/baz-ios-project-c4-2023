@@ -8,38 +8,35 @@
 import Foundation
 
 struct MovieListViewModel {
-    let movies: [Movie]
+    private let movies: [Movie]
+    
+    init(movies: [Movie]) {
+        self.movies = movies
+    }
 }
 
 extension MovieListViewModel {
+    
     func numberOfRowsInSection(_ section: Int) -> Int {
-        return self.movies.count
+        movies.count
     }
     
     func movieAtIndex(_ index: Int) -> MovieViewModel? {
-        guard let movie = self.movies[safe: index] else {
-            return nil
-        }
+        guard let movie = self.movies[safe: index] else { return nil }
+        
         return MovieViewModel(movie)
     }
 }
 
 struct MovieViewModel {
     private let movie:Movie
-}
-
-extension MovieViewModel {
+    
     init(_ movie: Movie) {
         self.movie = movie
     }
 }
 
 extension MovieViewModel {
-    var title: String {
-        return self.movie.title
-    }
-    
-    var poster_path: String {
-        return "https://image.tmdb.org/t/p/w500/\(self.movie.poster_path)"
-    }
+    var title: String { movie.title }
+    var poster_path: String { "https://image.tmdb.org/t/p/w500/\(self.movie.poster_path)" }
 }
