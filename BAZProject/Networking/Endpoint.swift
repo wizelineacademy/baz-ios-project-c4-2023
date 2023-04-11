@@ -15,10 +15,10 @@ enum Endpoint {
 }
 
 extension Endpoint {
-    var url: URL {
+    var url: URL? {
         switch self {
         case .trendingMovieDay:
-            return URL(string: "\(Endpoint.base)/trending/movie/day\(Endpoint.apiKey)")!
+            return URL(string: "\(Endpoint.base)/trending/movie/day\(Endpoint.apiKey)")
         }
     }
 }
