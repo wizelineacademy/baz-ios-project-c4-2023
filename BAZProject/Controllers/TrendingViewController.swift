@@ -6,18 +6,16 @@
 
 import UIKit
 
-class TrendingViewController: UITableViewController {
-    
+final class TrendingViewController: UITableViewController {
     private var moviesListVM: MovieListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
-
 }
 
-// MARK: - Functions
+// MARK: - Methods
 
 extension TrendingViewController {
     
@@ -30,10 +28,10 @@ extension TrendingViewController {
             return try? JSONDecoder().decode(MovieList.self, from: data)
         }
         
-        MovieAPI().load(resource: trendingMovieDayResource) { (result) in
+        MovieAPI().load(resource: trendingMovieDayResource) { [weak self] result in
             if let movieList = result {
-                self.moviesListVM = MovieListViewModel(movies: movieList.results)
-                self.tableView.reloadData()
+                self?.moviesListVM = MovieListViewModel(movies: movieList.results)
+                self?.tableView.reloadData()
             }
         }
     }
@@ -44,13 +42,12 @@ extension TrendingViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.moviesListVM?.numberOfRowsInSection(section) ?? 0
+        moviesListVM?.numberOfRowsInSection(section) ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
+        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
     }
-
 }
 
 // MARK: - TableView's Delegate
@@ -60,7 +57,7 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
         
-        if let movieVM = self.moviesListVM.movieAtIndex(indexPath.row) {
+        if let movieVM = moviesListVM.movieAtIndex(indexPath.row) {
             config.text = movieVM.title
             
             if let url = URL(string: movieVM.poster_path), let data = try? Data(contentsOf: url) {
@@ -73,5 +70,4 @@ extension TrendingViewController {
         
         cell.contentConfiguration = config
     }
-
 }
