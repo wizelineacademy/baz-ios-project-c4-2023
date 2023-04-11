@@ -15,7 +15,7 @@ import Foundation
  parse: A function that converts the data from the resource to a generic type T.
 */
 struct Resource<T> {
-    let url: URL
+    let url: URL?
     let parse: (Data) -> T?
 }
 
@@ -24,7 +24,10 @@ final class MovieAPI {
       Loading a resource and parsing it into a generic type T.
     */
     func load<T>(resource: Resource<T>, completion: @escaping (T?) -> ()) {
-        URLSession.shared.dataTask(with: resource.url) { data, response, error in
+        
+        guard let url =  resource.url else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
                 DispatchQueue.main.async {
                      completion(resource.parse(data))
