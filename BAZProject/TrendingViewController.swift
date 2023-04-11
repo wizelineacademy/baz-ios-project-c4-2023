@@ -20,7 +20,7 @@ class TrendingViewController: UITableViewController {
     }
     
     func configView() {
-        self.tableView.register(MovieListCell.self, forCellReuseIdentifier: MovieListCell.reusableIdentifier)
+        self.tableView.register(UINib(nibName: "MovieListCell", bundle: nil), forCellReuseIdentifier: MovieListCell.reusableIdentifier)
     }
 
     fileprivate func reloadMoviesData() {
@@ -41,6 +41,11 @@ class TrendingViewController: UITableViewController {
         }
     }
     
+    /**
+     Set movies object into viewController.
+     - Parameters:
+        - arrMovies: An array of objects of type `MovieInfo` protocol.
+     */
     private func updateMovies(_ arrMovies: [MovieInfo]) {
         self.movies = arrMovies
     }

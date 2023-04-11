@@ -8,7 +8,15 @@ import Foundation
 
 class MovieAPI {
 
-    func getMovies(completion: @escaping ([MovieInfo]?) -> Void) {
+    /**
+     Get trending movies for day.
+     
+     The completion handler takes the following parameters:
+     
+     - Parameters:
+        - arrMovies: Return an array of  type`MovieInfo` protocol.
+     */
+    func getMovies(completion: @escaping (_ arrMovies: [MovieInfo]?) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/trending/movie/day?api_key=\(APIConfig.accessKey)")
         else {
             return completion([])

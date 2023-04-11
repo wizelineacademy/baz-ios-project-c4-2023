@@ -9,6 +9,9 @@ import UIKit
 
 class MovieListCell: UITableViewCell, ReusableCell {
     
+    @IBOutlet private weak var lblTitle: UILabel!
+    @IBOutlet private weak var imgCover: UIImageView!
+    
     private var movieInfo: MovieInfo? {
         didSet {
             self.updateView()
@@ -21,15 +24,13 @@ class MovieListCell: UITableViewCell, ReusableCell {
     
     func updateView() {
         guard let movieInfo = self.movieInfo else { return }
-        var config = UIListContentConfiguration.cell()
-        config.text = movieInfo.title
+        lblTitle.text = movieInfo.title
         ResourcesManager().downloadImage(from: movieInfo.posterPath) { image in
             if let image = image {
-                config.image = image
+                self.imgCover.image = image
             } else {
-                config.image = UIImage(named: "poster")
+                self.imgCover.image = UIImage(named: "poster")
             }
-            self.contentConfiguration = config
         }
     }
 }
