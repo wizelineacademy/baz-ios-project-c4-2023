@@ -6,6 +6,7 @@
 
 import Foundation
 
+// Movie implements the protocol for use properties and add some more optionals
 struct Movie: MovieProtocol {
 
     var id: Int

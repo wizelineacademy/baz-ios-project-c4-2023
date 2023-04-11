@@ -25,6 +25,7 @@ final class BAZProjectTests: XCTestCase {
         sut = nil
     }
     
+    // test number of movies and not nil array for show
     func testMovies_isNotNil_countMovies() {
         // Given
         let expectedMovies = 6
@@ -35,6 +36,7 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut.movies.count, expectedMovies)
     }
     
+    // test method that verify information to show
     func testIsAvailableMovies_getMovies_movieToShow() {
         // this function depends of testMovies_isNotNil_countMovies result
         // Given
@@ -46,6 +48,7 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut.verifyInformation(movies: sut.movies), isAvailableExpected)
     }
     
+    // test for know if image of the movie is available
     func testMoviesImages_getMoviesInfoPicture_isAvailable() {
         // this function depends of testIsAvailableMovies_getMovies_movieToShow result
         // Given
@@ -60,6 +63,7 @@ final class BAZProjectTests: XCTestCase {
         }
     }
     
+    // test if the movie id is valid for access
     func testId_getMoviesId_IdValid() {
         // Given
         let expectedId = 100
@@ -73,6 +77,7 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut.movies[0].id, expectedId)
     }
     
+    // test show in a table the information of the movie
     func testTableView_numberOfRows_isGreaterThanZeroAndEqualToMovies() {
         sut.loadViewIfNeeded()
         

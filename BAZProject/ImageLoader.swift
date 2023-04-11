@@ -10,6 +10,7 @@ import UIKit
 struct ImageLoader {
     
     // loadImage get the image (poster) when URL is valid.
+    // need a urlData for fecth the image of the movie. and returns it.
     func loadImage(urlData: URL, completion: @escaping (UIImage?) -> Void) {
         let globalQueue = DispatchQueue.global(qos: .utility)
         globalQueue.async {

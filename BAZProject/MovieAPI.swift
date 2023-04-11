@@ -16,7 +16,6 @@ final class MovieAPI {
         else {
             return completion([])
         }
-        
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
             var movies: [MovieProtocol] = []
             defer {
@@ -26,7 +25,6 @@ final class MovieAPI {
                   let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
                   let results = json.object(forKey: "results") as? [NSDictionary]
             else { return }
-
             for result in results {
                 if let id = result.object(forKey: "id") as? Int,
                    let title = result.object(forKey: "title") as? String,
