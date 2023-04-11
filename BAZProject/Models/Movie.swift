@@ -6,11 +6,11 @@
 
 import Foundation
 
-struct MovieList: Codable {
+struct MovieList: Decodable {
     let results: [Movie]
 }
 
-struct Movie: Codable {
+struct Movie: Decodable {
     let id: Int
     let title: String
     let poster_path: String
