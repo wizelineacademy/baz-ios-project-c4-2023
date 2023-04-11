@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol InteractorToPresenter {
-    func manageResponse(results: [Viewable])
-}
-
 ///Enumeration that stores the diferent urls used for the project
 enum serviceUrls: String {
     case trending = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"

@@ -12,34 +12,43 @@ class MovieApiResult: Decodable {
     var results: [Movie]?
 }
 
-///Model that stores a movie information, it comforms Viewable protocol so it can be shown in a Cell
+///Model that stores a movie information, such as id, original title, overview, poster path and release date
 class Movie: Decodable,Viewable {
-    var id: Int?
-    var original_title: String?
-    var overview: String?
-    var poster_path: String?
-    var release_date: String?
+    var id: Int
+    var originalTitle: String
+    var overview: String
+    var posterPath: String?
+    var releaseDate: String
     
-    init(id: Int? = nil, original_title: String? = nil, overview: String? = nil, poster_path: String? = nil, release_date: String? = nil) {
-        self.id = id
-        self.original_title = original_title
-        self.overview = overview
-        self.poster_path = poster_path
-        self.release_date = release_date
+    ///Enumeration to get rid of underscores
+    enum CodingKeys: String, CodingKey {
+        case id
+        case originalTitle = "original_title"
+        case overview
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+    }
+    
+    ///Initializer to create an instance from Decoder
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decodeIfPresent(Int.self, forKey: .id) ?? 0
+        originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle) ?? ""
+        overview = try container.decodeIfPresent(String.self, forKey: .overview) ?? ""
+        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
+        releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate) ?? ""
     }
     
     func getTitle() -> String {
-        guard let title = original_title else { return "" }
-        return title
+        return originalTitle
     }
     
     func getImagePath() -> String {
-        guard let path = poster_path else { return "" }
+        guard let path = posterPath else { return "" }
         return path
     }
-}
-
-protocol Viewable {
-    func getTitle() -> String
-    func getImagePath() -> String
+    
+    func getReleaseData() -> String {
+        return releaseDate
+    }
 }

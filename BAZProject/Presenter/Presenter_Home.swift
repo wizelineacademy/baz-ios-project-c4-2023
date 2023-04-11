@@ -7,22 +7,18 @@
 
 import Foundation
 
-protocol PresenterToInteractor {
-    func getMoviesData()
-}
-
-protocol PresenterToViewProtocol {
-    func reloadView()
-}
-
-class Presenter: HomeToViewProtocol, InteractorToPresenter {
+class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
     
     // MARK: Variables
     var interactor: PresenterToInteractor?
     var view: PresenterToViewProtocol?
     
-    var movies: [Viewable] = []
-    
+    var movies: [Viewable] = [] {
+        didSet {
+            view?.reloadView()
+        }
+    }
+
     // MARK: HomeToViewProtocol Methods
     func getMoviesData() {
         interactor?.getMoviesData()
@@ -32,15 +28,12 @@ class Presenter: HomeToViewProtocol, InteractorToPresenter {
         return movies.count
     }
     
-    func setModel(cell: MovieAppCollectionViewCell, index: IndexPath) -> MovieAppCollectionViewCell {
-        cell.cellLabel.text = movies[index.row].getTitle()
-        return cell
+    func getCellText(index: IndexPath) -> String {
+        return movies[index.row].getReleaseData()
     }
     
     // MARK: InteractorToPresenter Methods
     func manageResponse(results: [Viewable]) {
-        print(results)
         movies = results
-        view?.reloadView()
     }
 }

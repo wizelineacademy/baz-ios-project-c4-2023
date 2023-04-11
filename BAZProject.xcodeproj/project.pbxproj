@@ -12,6 +12,7 @@
 		A70C75FC29D4AB0F001004BA /* Presenter_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C75FB29D4AB0F001004BA /* Presenter_Home.swift */; };
 		A70C75FF29D4AE96001004BA /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C75FE29D4AE96001004BA /* Interactor.swift */; };
 		A70C760229D4B7BB001004BA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C760129D4B7BB001004BA /* Models.swift */; };
+		A714CF7029E5265A00D1AE22 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A714CF6F29E5265A00D1AE22 /* Protocols.swift */; };
 		A721069F29D6BEFB00824E59 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721069E29D6BEFB00824E59 /* BAZProjectTests.swift */; };
 		A7AB63BA29D3AF3900D37546 /* MovieAppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB63B829D3AF3900D37546 /* MovieAppCollectionViewCell.swift */; };
 		A7AB63BB29D3AF3900D37546 /* MovieAppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AB63B929D3AF3900D37546 /* MovieAppCollectionViewCell.xib */; };
@@ -42,6 +43,7 @@
 		A70C75FB29D4AB0F001004BA /* Presenter_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter_Home.swift; sourceTree = "<group>"; };
 		A70C75FE29D4AE96001004BA /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		A70C760129D4B7BB001004BA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A714CF6F29E5265A00D1AE22 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A721069C29D6BEFB00824E59 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A721069E29D6BEFB00824E59 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		A7AB63B829D3AF3900D37546 /* MovieAppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A70C760129D4B7BB001004BA /* Models.swift */,
+				A714CF6F29E5265A00D1AE22 /* Protocols.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				A70C75FF29D4AE96001004BA /* Interactor.swift in Sources */,
 				A7AB63BA29D3AF3900D37546 /* MovieAppCollectionViewCell.swift in Sources */,
+				A714CF7029E5265A00D1AE22 /* Protocols.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				A70C75F729D3C471001004BA /* HomeViewController.swift in Sources */,
 				A70C75FC29D4AB0F001004BA /* Presenter_Home.swift in Sources */,

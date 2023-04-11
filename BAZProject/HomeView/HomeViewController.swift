@@ -7,34 +7,28 @@
 
 import UIKit
 
-protocol HomeToViewProtocol {
-    var interactor: PresenterToInteractor? { get set }
-    
-    func getMoviesData()
-    
-    func getNumberOfItems() -> Int
-    
-    func setModel(cell: MovieAppCollectionViewCell, index: IndexPath) -> MovieAppCollectionViewCell
+protocol Viewable {
+    func getTitle() -> String
+    func getImagePath() -> String
+    func getReleaseData() -> String
 }
 
 class HomeViewController: UIViewController {
     
     // MARK: Variables
-    
-    var presenter: HomeToViewProtocol?
-    
+    var presenter: ViewToPresenterProtocol?
     
     // MARK: UIElements
-    
     @IBOutlet weak var collectionView_Home: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // MARK: Initial configuration
+        initialConfiguration()
+    }
+    
+    private func initialConfiguration(){
         collectionView_Home.register(UINib(nibName: "MovieAppCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "HomeViewCellId")
         collectionView_Home.dataSource = self
-        
         // TODO: (SDA) Refactor provisional function to ensamble the to be Viper module
         self.ensambleModule()
         presenter?.getMoviesData()
@@ -43,19 +37,16 @@ class HomeViewController: UIViewController {
     // MARK: Ensambling provisional "Module"
     private func ensambleModule() {
         let presenterInstance = Presenter()
-        presenter = presenterInstance
-        
         let interactorInstance = Interactor()
+        
+        presenter = presenterInstance
         presenterInstance.interactor = interactorInstance
-        
         interactorInstance.presenter = presenterInstance
-        
         presenterInstance.view = self
     }
 }
 
 // MARK: Data source extension
-
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let numberOfItems = presenter?.getNumberOfItems() else { return 0 }
@@ -64,8 +55,8 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeViewCellId", for: indexPath) as? MovieAppCollectionViewCell else { return UICollectionViewCell() }
-        guard let settedCell = presenter?.setModel(cell: cell, index: indexPath) else { return UICollectionViewCell() }
-        return settedCell
+        cell.cellLabel.text = presenter?.getCellText(index: indexPath)
+        return cell
     }
 }
 

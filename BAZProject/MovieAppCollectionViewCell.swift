@@ -16,9 +16,11 @@ class MovieAppCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        initialConfiguration()
+    }
+    
+    private func initialConfiguration(){
         contentView.layer.cornerRadius = 10.0
         contentView.layer.masksToBounds = true
     }
-
 }
