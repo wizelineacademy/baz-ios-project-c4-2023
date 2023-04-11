@@ -8,10 +8,10 @@
 import XCTest
 @testable import BAZProject
 
-class BAZProjectTests: XCTestCase {
+final class BAZProjectTests: XCTestCase {
 
     private var sut: ServiceMocks!
-    private var sessionMock: URLSessionMock!
+    private var sessionMock = URLSessionMock()
     
     override func setUp() {
         super.setUp()
@@ -20,7 +20,17 @@ class BAZProjectTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
-        sessionMock = nil
+    }
+    
+    func testGetApiMovie_Has_Information(){
+        sut.getMovies(.getMovieDay){ (result: Result< [Movie], Error>) in
+            switch result {
+            case .success(let moviesReponse):
+                XCTAssertNotNil(moviesReponse)
+            case .failure(_):
+                XCTFail("error.....")
+            }
+        }
     }
 
 }

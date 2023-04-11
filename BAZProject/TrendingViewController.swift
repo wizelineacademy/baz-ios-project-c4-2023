@@ -6,23 +6,36 @@
 
 import UIKit
 
-class TrendingViewController: UITableViewController {
+final class TrendingViewController: UITableViewController, Storyboard {
 
-    private var moviesListViewModel: MoviesListViewModel?
+    private var movies      : [MovieData] = []
+    var movieApi            : MovieAPI? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callServiceMovieAPI()
     }
     
-    func callServiceMovieAPI(){
-        let getService = MovieAPI(session: URLSession.shared)
-        getService.getMovies(.getMovies){ [weak self] (result: Result< Movie, Error>) in
+    /**
+     This function returns a success or error.
+     
+    - Returns:
+       - success: return The type of the value to decode from the supplied JSON object.
+       - error: returns the service error.
+    */
+    private func callServiceMovieAPI(){
+        movieApi?.getMovies(.getMovieDay){ [weak self] (result: Result< MoviesResult, Error>) in
             switch result {
             case .success(let moviesReponse):
-                self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse.arrMovies!)
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+                if let arrMovies = moviesReponse.arrMovies{
+                    for resultArrMovies in arrMovies{
+                        self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
+                                                                    poster_path: resultArrMovies.posterPath ?? ""))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
                 }
             default:
                 self?.present(CWAlert.simpleWith(message: "Error al realizar"), animated: true)
@@ -36,7 +49,7 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        moviesListViewModel?.movies.count ?? 0
+        movies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,10 +62,10 @@ extension TrendingViewController {
 extension TrendingViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        let infoMovieCell = moviesListViewModel?.movieAtIndex(indexPath.row)
-        config.text = infoMovieCell?.title
-        infoMovieCell?.getImage(){ image in
-            config.image = image
+        let infoMovieCell = movies[indexPath.row]
+        config.text = infoMovieCell.title
+        infoMovieCell.getImage(){ imagen in
+            config.image = imagen
             cell.contentConfiguration = config
         }
         cell.contentConfiguration = config

@@ -8,7 +8,7 @@
 import Foundation
 protocol Service {
     var session: URLSessionProtocol { get }
-    func getMovies(_ endpoint: Endpoint, callback: @escaping (Result<[Movie],Error>) -> Void)
+    func getMovies(_ endpoint: OptionMovie, callback: @escaping (Result<[Movie],Error>) -> Void)
 }
 
 protocol URLSessionDataTaskProtocol {

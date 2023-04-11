@@ -11,7 +11,7 @@ extension URLSession: URLSessionProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
     }
 }
-class MovieAPI: Service{
+final class MovieAPI: Service{
     
     let session: URLSessionProtocol
     
@@ -29,21 +29,18 @@ class MovieAPI: Service{
        - T: return The type of the value to decode from the supplied JSON object.
        - Error: returns the service error
     */
-    
-    func getMovies<T:Decodable>(_ endpoint: Endpoint, callback: @escaping (Result<T, Error>) -> Void) {
+    func getMovies<T:Decodable>(_ endpoint: OptionMovie, callback: @escaping (Result<T, Error>) -> Void) {
         let request = endpoint.request
-        DispatchQueue.global().async {
-            let task = self.session.performDataTask(with: request) { (data, response, error) in
-                guard let data: Data = data else { return callback(.failure(error ?? NSError())) }
-                do {
-                    let decodedData: T = try JSONDecoder().decode(T.self, from: data)
-                    callback(.success(decodedData))
-                } catch {
-                    callback(.failure(error))
-                }
+        let task = self.session.performDataTask(with: request) { (data, response, error) in
+            guard let data: Data = data else { return callback(.failure(error ?? NSError())) }
+            do {
+                let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+                callback(.success(decodedData))
+            } catch {
+                callback(.failure(error))
             }
-            task.resume()
         }
+        task.resume()
     }
     
 }

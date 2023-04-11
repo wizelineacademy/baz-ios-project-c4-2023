@@ -16,7 +16,7 @@ final class ServiceMocks: Service {
         self.session = sessionMock
     }
     
-    func getMovies(_ endpoint: Endpoint, callback: @escaping (Result<[Movie], Error>) -> Void) {
+    func getMovies(_ endpoint: OptionMovie, callback: @escaping (Result<[Movie], Error>) -> Void) {
         MovieAPI(session: session).getMovies(endpoint, callback: callback)
     }
     
