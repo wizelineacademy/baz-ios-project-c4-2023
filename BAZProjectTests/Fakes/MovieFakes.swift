@@ -12,9 +12,14 @@ class MovieFakes {
     
     private func getDataFrom(_ file: String) -> Data {
         guard let path = Bundle(for: type(of: self)).path(forResource: file, ofType: "json") else {
-            fatalError("No en encontro el json especificado!!")
+            fatalError("No se en encontro el archivo del json especificado!!")
         }
         
-        return try! Data(contentsOf: URL(fileURLWithPath: path))
+        do {
+            return try Data(contentsOf: URL(fileURLWithPath: path))
+        } catch {
+            print("Error al leer la información de \(file).json")
+            return Data()
+        }
     }
 }
