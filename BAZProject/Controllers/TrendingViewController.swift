@@ -24,7 +24,7 @@ extension TrendingViewController {
     */
     private func setup() {
 
-        let trendingMovieDayResource = Resource<MovieList>(url: Endpoint.trendingMovieDay.url) { data in
+        let trendingMovieDayResource = Resource<MovieList>(url: Endpoint.trending.url) { data in
             return try? JSONDecoder().decode(MovieList.self, from: data)
         }
         
