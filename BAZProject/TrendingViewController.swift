@@ -9,19 +9,21 @@ import UIKit
 class TrendingViewController: UITableViewController {
 
     var movies: [Movie] = []
+    var movieDataProvider: MovieDataProvider?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let movieApi = MovieAPI()
-        
-        movieApi.getMovies { movies in
+        // Inicializa la clase MovieApi como el proveedor de datos por defecto
+        self.movieDataProvider = MovieApi()
+        // Obtiene la lista de películas usando el proveedor de datos
+        self.movieDataProvider?.getMovies { movies in
             self.movies = movies
-            
+                   
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
     }
 
 }
