@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="46" id="KGk-i7-Jjw" customClass="MovieListCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-xy-Ake">
+                        <rect key="frame" x="16" y="11" width="40" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="fco-Hp-sqM"/>
+                            <constraint firstAttribute="height" priority="750" constant="24" placeholder="YES" id="ia4-Z5-lck"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZy-8n-Vg2">
+                        <rect key="frame" x="64" y="12.666666666666664" width="240" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LWV-xy-Ake" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="7b2-ap-tHr"/>
+                    <constraint firstItem="GZy-8n-Vg2" firstAttribute="leading" secondItem="LWV-xy-Ake" secondAttribute="trailing" constant="8" symbolic="YES" id="TAx-Dw-Cty"/>
+                    <constraint firstAttribute="trailing" secondItem="GZy-8n-Vg2" secondAttribute="trailing" constant="16" id="jcM-nv-PlR"/>
+                    <constraint firstAttribute="bottom" secondItem="LWV-xy-Ake" secondAttribute="bottom" constant="11" id="nvt-iM-smX"/>
+                    <constraint firstItem="LWV-xy-Ake" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="ur8-rW-7Gb"/>
+                    <constraint firstItem="GZy-8n-Vg2" firstAttribute="centerY" secondItem="LWV-xy-Ake" secondAttribute="centerY" id="yuC-ud-3JR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgCover" destination="LWV-xy-Ake" id="kiA-hJ-fqD"/>
+                <outlet property="lblTitle" destination="GZy-8n-Vg2" id="1kY-3R-GA5"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="-10.563380281690142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="photo" width="128" height="128"/>
+    </resources>
+</document>
