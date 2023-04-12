@@ -37,11 +37,8 @@ class Interactor: PresenterToInteractor {
                 // TODO: (SDA) Presentar un error al decodificar la información
                 return
             }
-            // TODO: (SDA) Qué hacer son el response
-            DispatchQueue.main.async {
-                guard let movies = response.results else { return }
-                self.presenter?.manageResponse(results: movies)
-            }
+            guard let movies = response.results else { return }
+            self.presenter?.manageResponse(results: movies)
         }
         task.resume()
     }

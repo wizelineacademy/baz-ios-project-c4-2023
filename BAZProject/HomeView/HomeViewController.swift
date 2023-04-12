@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: (SDA) Moverlo al archivo de protocolos? !!!!
 protocol Viewable {
     func getTitle() -> String
     func getImagePath() -> String
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfiguration()
+        presenter?.getMoviesData()
     }
     
     private func initialConfiguration(){
@@ -31,7 +33,6 @@ class HomeViewController: UIViewController {
         collectionView_Home.dataSource = self
         // TODO: (SDA) Refactor provisional function to ensamble the to be Viper module
         self.ensambleModule()
-        presenter?.getMoviesData()
     }
     
     // MARK: Ensambling provisional "Module"
@@ -63,7 +64,9 @@ extension HomeViewController: UICollectionViewDataSource {
 // MARK: PresenterToViewProtocol Extension
 extension HomeViewController: PresenterToViewProtocol {
     func reloadView() {
-        collectionView_Home.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView_Home.reloadData()
+        }
     }
 }
 

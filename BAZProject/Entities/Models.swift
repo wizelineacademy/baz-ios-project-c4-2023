@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 ///Model that stores the response from TheMobieDB
 class MovieApiResult: Decodable {
     var results: [Movie]?
