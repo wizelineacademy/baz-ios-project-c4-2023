@@ -11,7 +11,8 @@ class MainTabBarController: UITabBarController {
     
     static func getInstance() -> MainTabBarController {
         let tabBarVC = MainTabBarController()
-        tabBarVC.setViewControllers([TrendingMoviesViewController(model: TrendingMoviesViewModel())], animated: true)
+        let trendingMoviesModel = TrendingMoviesViewModel(remoteData: TrendingMoviesRemoteData())
+        tabBarVC.setViewControllers([TrendingMoviesViewController(model: trendingMoviesModel)], animated: true)
         return tabBarVC
     }
 

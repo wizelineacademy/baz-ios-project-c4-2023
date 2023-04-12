@@ -10,11 +10,6 @@ struct Movie: Decodable {
     
     var id: Int?
     var title: String?
-    var posterURL: String?
+    var posterPath: String?
     
-    private enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case posterURL = "poster_path"
-    }
 }

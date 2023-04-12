@@ -10,7 +10,9 @@ import Foundation
 extension Decodable {
     
     init?(data: Data) throws {
-        self = try JSONDecoder().decode(Self.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        self = try decoder.decode(Self.self, from: data)
     }
 
 }

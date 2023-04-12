@@ -10,9 +10,15 @@ import UIKit
 class TrendingMoviesViewModel {
     
     var movies = [Movie]()
+    var remoteData: TrendingMoviesRemoteData
+    
+    init(movies: [Movie] = [], remoteData: TrendingMoviesRemoteData) {
+        self.movies = movies
+        self.remoteData = remoteData
+    }
     
     func getMovies() async throws {
-        movies = try await TrendingMoviesRemoteData().getMovies() ?? []
+        movies = try await remoteData.getMovies() ?? []
     }
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
