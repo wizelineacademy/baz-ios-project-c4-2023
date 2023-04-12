@@ -17,7 +17,7 @@ final class URLSessionMock : URLSessionProtocol {
     
     var dataTask = URLSessionDataTaskDummy()
     
-    func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+    func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocols {
         completionHandler(data, urlREsponse , error)
         expected?.fulfill()
         return dataTask
@@ -25,6 +25,6 @@ final class URLSessionMock : URLSessionProtocol {
     
 }
 
-class  URLSessionDataTaskDummy: URLSessionDataTaskProtocol {
+class  URLSessionDataTaskDummy: URLSessionDataTaskProtocols {
     func resume() {}
 }

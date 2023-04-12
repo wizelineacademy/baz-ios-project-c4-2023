@@ -10,9 +10,9 @@ import Foundation
 @testable import BAZProject
 
 final class ServiceMock: Service {
-    var session: URLSessionProtocol
+    var session: URLSessionProtocols
     
-    init(sessionMock: URLSessionProtocol) {
+    init(sessionMock: URLSessionProtocols) {
         self.session = sessionMock
     }
     
