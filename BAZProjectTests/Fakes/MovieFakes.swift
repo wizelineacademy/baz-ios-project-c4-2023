@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieFakes {
-    var trendingMovieDay: Data { getDataFrom("trending_movie_day") }
+    var trending: Data { getDataFrom("trending_movie_day") }
     
     private func getDataFrom(_ file: String) -> Data {
         guard let path = Bundle(for: type(of: self)).path(forResource: file, ofType: "json") else {
