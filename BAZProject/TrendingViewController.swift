@@ -8,7 +8,7 @@ import UIKit
 
 final class TrendingViewController: UITableViewController, Storyboard {
 
-    private var movies      : [MovieData] = []
+    var movies              : [MovieData] = []
     var movieApi            : MovieAPI? = nil
     
     override func viewDidLoad() {
