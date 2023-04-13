@@ -14,13 +14,3 @@ struct Movie: Decodable {
         case movies = "results"
     }
 }
-
-struct MoviesResult: Decodable {
-    let title: String?
-    let PosterPath: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case PosterPath = "poster_path"
-    }
-}

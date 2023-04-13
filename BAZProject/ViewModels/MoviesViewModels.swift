@@ -8,22 +8,22 @@
 import Foundation
 import UIKit
 
-struct MoviesViewModels{
+struct MoviesViewModels {
     private let movie: MoviesResult
 }
 
-extension MoviesViewModels{
+extension MoviesViewModels {
     init(_ movie: MoviesResult) {
         self.movie = movie
     }
 }
 
-extension MoviesViewModels{
+extension MoviesViewModels {
     var title: String {
         return self.movie.title ?? ""
     }
     
-    func getImage(completion: @escaping(UIImage) ->()){
+    func getImage(completion: @escaping(UIImage) ->()) {
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(self.movie.PosterPath ?? "")") else { return }
         let globalQueue = DispatchQueue.global()
         globalQueue.async {
@@ -37,7 +37,7 @@ extension MoviesViewModels{
     }
 }
 
-struct MoviesListViewModel{
+struct MoviesListViewModel {
     let movies: [MoviesResult]
 }
 
@@ -47,7 +47,7 @@ extension MoviesListViewModel {
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        return self.movies.count
+        movies.count
     }
     
     func movieAtIndex(_ index: Int) -> MoviesViewModels {

@@ -1,0 +1,238 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/wybmSmviUXxlBmX44gtpow5Y9TB.jpg",
+            "id": 594767,
+            "title": "Shazam! Fury of the Gods",
+            "original_language": "en",
+            "original_title": "Shazam! Fury of the Gods",
+            "overview": "Billy Batson and his foster siblings, who transform into superheroes by saying \"Shazam!\", are forced to get back into action and fight the Daughters of Atlas, who they must stop from using a weapon that could destroy the world.",
+            "poster_path": "/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                35,
+                14
+            ],
+            "popularity": 4162.423,
+            "release_date": "2023-03-15",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 709
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/eSVu1FvGPy86TDo4hQbpuHx55DJ.jpg",
+            "id": 700391,
+            "title": "65",
+            "original_language": "en",
+            "original_title": "65",
+            "overview": "65 million years ago, the only 2 survivors of a spaceship from Somaris that crash-landed on Earth must fend off dinosaurs and reach the escape vessel in time before an imminent asteroid strike threatens to destroy the planet.",
+            "poster_path": "/rzRb63TldOKdKydCvWJM8B6EkPM.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                12,
+                53,
+                28
+            ],
+            "popularity": 1370.433,
+            "release_date": "2023-03-02",
+            "video": false,
+            "vote_average": 6.354,
+            "vote_count": 415
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+            "id": 502356,
+            "title": "The Super Mario Bros. Movie",
+            "original_language": "en",
+            "original_title": "The Super Mario Bros. Movie",
+            "overview": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+            "poster_path": "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                12,
+                10751,
+                14,
+                35
+            ],
+            "popularity": 9513.942,
+            "release_date": "2023-04-05",
+            "video": false,
+            "vote_average": 7.548,
+            "vote_count": 597
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ytdebEE0ndYLSTEctPgh8e0vaBs.jpg",
+            "id": 76600,
+            "title": "Avatar: The Way of Water",
+            "original_language": "en",
+            "original_title": "Avatar: The Way of Water",
+            "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+            "poster_path": "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                12,
+                28
+            ],
+            "popularity": 5473.256,
+            "release_date": "2022-12-14",
+            "video": false,
+            "vote_average": 7.743,
+            "vote_count": 6933
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/i8dshLvq4LE3s0v8PrkDdUyb1ae.jpg",
+            "id": 603692,
+            "title": "John Wick: Chapter 4",
+            "original_language": "en",
+            "original_title": "John Wick: Chapter 4",
+            "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+            "poster_path": "/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                53,
+                80
+            ],
+            "popularity": 1924.929,
+            "release_date": "2023-03-22",
+            "video": false,
+            "vote_average": 8.012,
+            "vote_count": 952
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg",
+            "id": 640146,
+            "title": "Ant-Man and the Wasp: Quantumania",
+            "original_language": "en",
+            "original_title": "Ant-Man and the Wasp: Quantumania",
+            "overview": "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
+            "poster_path": "/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                12,
+                28
+            ],
+            "popularity": 931.022,
+            "release_date": "2023-02-15",
+            "video": false,
+            "vote_average": 6.305,
+            "vote_count": 1229
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/umhjSTT9qDBZFJUUYQ2kVpOkQpY.jpg",
+            "id": 1067282,
+            "title": "Demon Slayer: Kimetsu no Yaiba -To the Swordsmith Village-",
+            "original_language": "ja",
+            "original_title": "「鬼滅の刃」上弦集結、そして刀鍛冶の里へ",
+            "overview": "After his family is viciously murdered, a kind-hearted boy named Tanjiro Kamado resolves to become a Demon Slayer in hopes of turning his younger sister Nezuko back into a human.  Together with his comrades, Zenitsu and Inosuke, along with one of the top-ranking members of the Demon Slayer Corps, Tengen Uzui, Tanjiro embarks on a mission within the Entertainment District, where they encounter the formidable, high-ranking demons, Daki and Gyutaro.",
+            "poster_path": "/o8DB5825myndApdQQHbf4bv1mzL.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                16,
+                14
+            ],
+            "popularity": 1197.057,
+            "release_date": "2023-02-03",
+            "video": true,
+            "vote_average": 7.149,
+            "vote_count": 101
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5i6SjyDbDWqyun8klUuCxrlFbyw.jpg",
+            "id": 677179,
+            "title": "Creed III",
+            "original_language": "en",
+            "original_title": "Creed III",
+            "overview": "After dominating the boxing world, Adonis Creed has been thriving in both his career and family life. When a childhood friend and former boxing prodigy, Damien Anderson, resurfaces after serving a long sentence in prison, he is eager to prove that he deserves his shot in the ring. The face-off between former friends is more than just a fight. To settle the score, Adonis must put his future on the line to battle Damien — a fighter who has nothing to lose.",
+            "poster_path": "/cvsXj3I9Q2iyyIo95AecSd1tad7.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                28
+            ],
+            "popularity": 6029.319,
+            "release_date": "2023-03-01",
+            "video": false,
+            "vote_average": 7.3,
+            "vote_count": 917
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fh7aM10THQzivGU7kAkgKrgzot4.jpg",
+            "id": 493529,
+            "title": "Dungeons & Dragons: Honor Among Thieves",
+            "original_language": "en",
+            "original_title": "Dungeons & Dragons: Honor Among Thieves",
+            "overview": "A charming thief and a band of unlikely adventurers undertake an epic heist to retrieve a lost relic, but things go dangerously awry when they run afoul of the wrong people.",
+            "poster_path": "/fCbmaavb52cabO4OfrjrbzfokfL.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                14,
+                35
+            ],
+            "popularity": 420.77,
+            "release_date": "2023-03-23",
+            "video": false,
+            "vote_average": 7.533,
+            "vote_count": 316
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/2NiCNTFWsg7ckRwyN6cYng7bE8Z.jpg",
+            "id": 958196,
+            "title": "Inside",
+            "original_language": "en",
+            "original_title": "Inside",
+            "overview": "An art thief becomes trapped in a New York penthouse after his heist goes awry. Imprisoned with nothing but priceless works of art, he must use all his cunning and invention to survive.",
+            "poster_path": "/rpeFbH71EQVJmNuA9KSboR3YaZS.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                53
+            ],
+            "popularity": 198.171,
+            "release_date": "2023-03-09",
+            "video": false,
+            "vote_average": 6.16,
+            "vote_count": 53
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5Y5pz0NX7SZS9036I733F7uNcwK.jpg",
+            "id": 758323,
+            "title": "The Pope's Exorcist",
+            "original_language": "en",
+            "original_title": "The Pope's Exorcist",
+            "overview": "Father Gabriele Amorth, Chief Exorcist of the Vatican, investigates a young boy's terrifying possession and ends up uncovering a centuries-old conspiracy the Vatican has desperately tried to keep hidden.",
+            "poster_path": "/9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                9648
+            ],
+            "popularity": 1959.766,
+            "release_date": "2023-04-05",
+            "video": false,
+            "vote_average": 7.456,
+            "vote_count": 34
+        }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+}

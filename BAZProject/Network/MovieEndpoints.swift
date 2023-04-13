@@ -13,7 +13,7 @@ enum Endpoint {
     
     case getMovies
 }
-extension Endpoint{
+extension Endpoint {
     var request: URLRequest {
         switch self {
         case .getMovies:

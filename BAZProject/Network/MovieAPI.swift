@@ -13,7 +13,8 @@ extension URLSession: URLSessionProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
     }
 }
-class MovieAPI: Service{
+
+class MovieAPI: Service {
     
     let session: URLSessionProtocol
     
@@ -57,5 +58,4 @@ class MovieAPI: Service{
             task.resume()
         }
     }
-    
 }

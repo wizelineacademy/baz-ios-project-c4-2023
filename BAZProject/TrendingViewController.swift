@@ -9,16 +9,25 @@ import UIKit
 class TrendingViewController: UITableViewController {
     
     private var moviesListViewModel: MoviesListViewModel?
-
+    
+    init(moviesListViewModel: MoviesListViewModel) {
+        self.moviesListViewModel = moviesListViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         callServiceMovieAPI()
-         
     }
     
-    func callServiceMovieAPI(){
+    func callServiceMovieAPI() {
         let getService = MovieAPI(session: URLSession.shared)
-        getService.getMovies(.getMovies){ [weak self] (result: Result< Movie, Error>) in
+        getService.getMovies(.getMovies) { [weak self] (result: Result< Movie, Error>) in
             switch result {
             case .success(let moviesReponse):
                 self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse.movies!)
@@ -30,7 +39,6 @@ class TrendingViewController: UITableViewController {
             }
         }
     }
-
 }
 
 // MARK: - TableView's DataSource
@@ -44,7 +52,6 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
     }
-
 }
 
 // MARK: - TableView's Delegate
@@ -61,5 +68,4 @@ extension TrendingViewController {
         })
         cell.contentConfiguration = config
     }
-
 }
