@@ -28,9 +28,17 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strHostVoid = ""
         let configuration = URLConfiguration(strHost: strHostVoid, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
-        sut.search()
+        sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let failure):
+                self?.errorType = failure
+            }
+            self?.exp?.fulfill()
+        }
         //Then
         waitForExpectations(timeout: 1.0)
         XCTAssertEqual(errorType, ErrorApi.badURL)
@@ -41,25 +49,20 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strBadHost = "Esto es un mal host"
         let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
-        sut.search()
+        sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let failure):
+                self?.errorType = failure
+            }
+            self?.exp?.fulfill()
+        }
         //Then
         waitForExpectations(timeout: 1.0)
         XCTAssertEqual(errorType, ErrorApi.badResponse)
     }
     
-}
-
-extension ServiceApiTests: ServiceApiProtocol{
-    
-    func serviceFinished(withResult result: Result<[String : Any], BAZProject.ErrorApi>) {
-        switch result{
-        case .failure(let error):
-            exp?.fulfill()
-            errorType = error
-        default:
-            return
-        }
-    }
 }

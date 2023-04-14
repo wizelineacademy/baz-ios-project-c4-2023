@@ -12,7 +12,7 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: TrendingInteractorOutputProtocol?
-    var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?
+    var serviceApi: NetworkingProtocol?
     var entity: TrendingEntity?
 
     func getNavTitle() -> String? {
@@ -20,7 +20,18 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
     }
     
     func getMovies() {
-        remoteDatamanager?.getMovies()
+        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.presenter?.serviceFailed(withError: error)
+                }
+            case .success(let movies):
+                if let arrResponse = movies.results, arrResponse.count > 0{
+                    self?.updateMovies(with: arrResponse)
+                }
+            }
+        })
     }
     
     func getNumberOfRows() -> Int? {
@@ -31,16 +42,17 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
         return entity?.getMovie(forRow: iRow)
     }
     
-}
-
-extension TrendingInteractor: TrendingRemoteDataManagerOutputProtocol {
-    func moviesObtained(with arrMovies: [Movie]?) {
-        entity?.updateMovies(with: arrMovies)
-        presenter?.serviceRespondedSuccess()
-    }
-    
-    func serviceDidFail(with error: ErrorApi) {
-        presenter?.serviceFailed(withError: error)
+    private func updateMovies(with arrResponse: [MovieDetailService]) {
+        var arrMovies: [Movie] = [Movie]()
+        for movie in arrResponse {
+            if let movie = movie.convertToMovieApp(){
+                arrMovies.append(movie)
+            }
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.entity?.updateMovies(with: arrMovies)
+            self?.presenter?.serviceRespondedSuccess()
+        }
     }
     
 }

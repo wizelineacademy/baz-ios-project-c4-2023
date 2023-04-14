@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct URLConfiguration{
+public struct URLConfiguration {
     var strMethod: String
     var strHost: String
     var path: Paths
     private var strCurrentLocale: String {
-        if #available(iOS 16.0, *){
+        if #available(iOS 16.0, *) {
             return Locale.current.language.languageCode?.identifier ?? ""
         }else{
             return Locale.current.identifier
@@ -30,23 +30,37 @@ public struct URLConfiguration{
     }
     
     public func configureURL() -> URL? {
-        if strHost.count > 0 {
-            var components = URLComponents()
-            components.scheme = strMethod
-            components.host = strHost
-            components.path = path.rawValue
+        
+        guard !strHost.isEmpty else { return nil }
+        var components = URLComponents()
+        components.scheme = strMethod
+        components.host = strHost
+        components.path = path.getString()
+        switch path {
+        case .trending:
             components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
                                      URLQueryItem(name: "language", value: strCurrentLocale)]
-            
-            return components.url
+        default:
+            break
         }
-        
-        return nil
+        return components.url
         
     }
 }
 
-public enum Paths: String {
-    case trending = "/3/trending/movie/day"
-    case noPath = ""
+public enum Paths {
+    case trending
+    case image(strFile: String)
+    case noPath
+    
+    func getString() -> String{
+        switch self {
+        case .trending:
+            return "/3/trending/movie/day"
+        case .image(let strFile):
+            return "/t/p/w500\(strFile)"
+        case .noPath:
+            return ""
+        }
+    }
 }

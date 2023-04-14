@@ -10,32 +10,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="ImageTextTableViewCell" customModule="BAZProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="341" height="77"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="226" id="KGk-i7-Jjw" customClass="ImageTextTableViewCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="226"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="341" height="77"/>
+                <rect key="frame" x="0.0" y="0.0" width="341" height="226"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="sTu-wy-M2Y">
-                        <rect key="frame" x="20" y="13.666666666666664" width="40" height="50"/>
+                        <rect key="frame" x="20" y="27" width="50" height="90"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="U7F-Rw-Aqj"/>
-                            <constraint firstAttribute="width" constant="40" id="V4P-6i-Ggi"/>
+                            <constraint firstAttribute="height" constant="90" id="U7F-Rw-Aqj"/>
+                            <constraint firstAttribute="width" constant="50" id="V4P-6i-Ggi"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="映画" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slc-Eg-1S1">
-                        <rect key="frame" x="68" y="16" width="253" height="45"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                        <rect key="frame" x="78" y="59.000000000000007" width="243" height="26.333333333333336"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBI-yq-EMC">
+                        <rect key="frame" x="20" y="125" width="301" height="74"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="slc-Eg-1S1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="UN2-mQ-he7"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xBI-yq-EMC" secondAttribute="bottom" constant="16" id="1On-Sd-xJ3"/>
+                    <constraint firstItem="xBI-yq-EMC" firstAttribute="top" secondItem="sTu-wy-M2Y" secondAttribute="bottom" constant="8" symbolic="YES" id="Hh6-WK-6w6"/>
+                    <constraint firstItem="sTu-wy-M2Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="MPu-Xg-eM4"/>
+                    <constraint firstItem="slc-Eg-1S1" firstAttribute="centerY" secondItem="sTu-wy-M2Y" secondAttribute="centerY" id="P18-YL-Z9s"/>
                     <constraint firstAttribute="trailing" secondItem="slc-Eg-1S1" secondAttribute="trailing" constant="20" symbolic="YES" id="dtw-MS-ZFk"/>
-                    <constraint firstAttribute="bottom" secondItem="slc-Eg-1S1" secondAttribute="bottom" constant="16" id="kyi-Fq-i5r"/>
-                    <constraint firstItem="sTu-wy-M2Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="li1-FS-v7d"/>
+                    <constraint firstItem="xBI-yq-EMC" firstAttribute="trailing" secondItem="slc-Eg-1S1" secondAttribute="trailing" id="eEX-pR-DQq"/>
+                    <constraint firstItem="xBI-yq-EMC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="txT-DJ-X9G"/>
                     <constraint firstItem="sTu-wy-M2Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="vkc-54-OJw"/>
                     <constraint firstItem="slc-Eg-1S1" firstAttribute="leading" secondItem="sTu-wy-M2Y" secondAttribute="trailing" constant="8" symbolic="YES" id="x3H-mw-bMs"/>
                 </constraints>
@@ -43,9 +52,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imgPoster" destination="sTu-wy-M2Y" id="oOa-Ol-6ld"/>
+                <outlet property="lblOverView" destination="xBI-yq-EMC" id="OWi-cl-vPQ"/>
                 <outlet property="lblTitle" destination="slc-Eg-1S1" id="tGK-By-rsL"/>
             </connections>
-            <point key="canvasLocation" x="52.671755725190835" y="31.338028169014088"/>
+            <point key="canvasLocation" x="52.671755725190835" y="83.098591549295776"/>
         </tableViewCell>
     </objects>
     <resources>

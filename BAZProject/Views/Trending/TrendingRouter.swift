@@ -14,20 +14,17 @@ class TrendingRouter: TrendingRouterProtocol {
     class func createTrendingModule(withEntity entity: TrendingEntity = TrendingEntity()) -> UIViewController {
         let view = TrendingView()
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
-        let interactor: TrendingInteractorInputProtocol & TrendingRemoteDataManagerOutputProtocol = TrendingInteractor()
-        let remoteDataManager: TrendingRemoteDataManagerInputProtocol & ServiceApiProtocol = TrendingRemoteDataManager()
+        let interactor: TrendingInteractorInputProtocol = TrendingInteractor()
         let router: TrendingRouterProtocol = TrendingRouter()
-        let serviceApi: NetworkingProtocol = ServiceApi(serviceDelegate: remoteDataManager, configuration: URLConfiguration(path: .trending))
+        let serviceApi: NetworkingProtocol = ServiceApi<MovieService>(configuration: URLConfiguration(path: .trending))
         
         view.presenter = presenter
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor
         interactor.presenter = presenter
-        interactor.remoteDatamanager = remoteDataManager
         interactor.entity = entity
-        remoteDataManager.remoteRequestHandler = interactor
-        remoteDataManager.serviceApi = serviceApi
+        interactor.serviceApi = serviceApi
         
         return view
     }

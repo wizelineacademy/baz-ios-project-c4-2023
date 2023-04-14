@@ -21,5 +21,15 @@ final class URLConfigurationTest: XCTestCase {
         XCTAssertEqual(urlFinal, urlServiceURL)
     }
 
+    func test_URLForImage() {
+        //Given
+        let strDownloadURL = "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg"
+        let urlFinal = URL(string: strDownloadURL)
+        let sut = URLConfiguration(strHost: "image.tmdb.org", path: .image(strFile: "/kqjL17yufvn9OVLyXYpvtyrFfak.jpg"))
+        //When
+        let urlFromConfiguration = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlFromConfiguration)
+    }
 
 }
