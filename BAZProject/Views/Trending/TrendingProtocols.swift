@@ -23,7 +23,7 @@ protocol TrendingViewProtocol: AnyObject {
 //MARK: - Interactor
 
 /// Interactor -> Presenter
-protocol TrendingInteractorOutputProtocol: AnyObject {
+public protocol TrendingInteractorOutputProtocol: AnyObject {
     func serviceRespondedSuccess()
     func serviceFailed(withError error: ErrorApi)
 }

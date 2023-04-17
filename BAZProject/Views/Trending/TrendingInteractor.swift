@@ -8,24 +8,28 @@
 
 import Foundation
 
-class TrendingInteractor: TrendingInteractorInputProtocol {
+public class TrendingInteractor: TrendingInteractorInputProtocol {
 
     // MARK: Properties
-    weak var presenter: TrendingInteractorOutputProtocol?
-    var serviceApi: NetworkingProtocol?
-    var entity: TrendingEntity?
+    weak public var presenter: TrendingInteractorOutputProtocol?
+    public var serviceApi: NetworkingProtocol?
+    public var entity: TrendingEntity?
+    
+    public init(presenter: TrendingInteractorOutputProtocol? = nil, serviceApi: NetworkingProtocol? = nil, entity: TrendingEntity? = nil) {
+        self.presenter = presenter
+        self.serviceApi = serviceApi
+        self.entity = entity
+    }
 
     func getNavTitle() -> String? {
         return entity?.strNavBarTitle
     }
     
-    func getMovies() {
+    public func getMovies() {
         serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
             switch result {
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.presenter?.serviceFailed(withError: error)
-                }
+                self?.presenter?.serviceFailed(withError: error)
             case .success(let movies):
                 if let arrResponse = movies.results, arrResponse.count > 0{
                     self?.updateMovies(with: arrResponse)
@@ -34,11 +38,11 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
         })
     }
     
-    func getNumberOfRows() -> Int? {
+    public func getNumberOfRows() -> Int? {
         return entity?.getNumberOfRows()
     }
     
-    func getMovie(forRow iRow: Int) -> Movie? {
+    public func getMovie(forRow iRow: Int) -> Movie? {
         return entity?.getMovie(forRow: iRow)
     }
     
@@ -49,10 +53,8 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
                 arrMovies.append(movie)
             }
         }
-        DispatchQueue.main.async { [weak self] in
-            self?.entity?.updateMovies(with: arrMovies)
-            self?.presenter?.serviceRespondedSuccess()
-        }
+        entity?.updateMovies(with: arrMovies)
+        presenter?.serviceRespondedSuccess()
     }
     
 }

@@ -6,9 +6,9 @@
 
 import Foundation
 
-struct Movie: ImageTextTableViewProtocol {
+public struct Movie: ImageTextTableViewProtocol {
     let id: Int
-    let title: String
+    public let title: String
     let poster_path: String
     let overview: String
     

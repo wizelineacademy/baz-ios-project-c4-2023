@@ -17,7 +17,9 @@ public struct MovieDetailService: Decodable{
     var title: String?
     var poster_path: String?
     var overview: String?
-    
+}
+
+extension MovieDetailService {
     func convertToMovieApp() -> Movie? {
         guard let id = id, let title = title, let poster_path = poster_path, let overview = overview else{ return nil }
         return Movie(id: id, title: title, poster_path: poster_path, overview: overview)

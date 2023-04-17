@@ -22,6 +22,9 @@
 		334CD8C229DB4B03006D99EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 334CD8C429DB4B03006D99EA /* Localizable.strings */; };
 		334CD8C729DB80EE006D99EA /* URLConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CD8C629DB80EE006D99EA /* URLConfiguration.swift */; };
 		334CD8CB29DB8C1C006D99EA /* URLConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CD8CA29DB8C1C006D99EA /* URLConfigurationTest.swift */; };
+		336DDA9A29E8D30900E9ACBF /* TrendingInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */; };
+		336DDA9C29E8D32900E9ACBF /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDA9B29E8D32900E9ACBF /* MockService.swift */; };
+		336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 336DDAA029E8D79500E9ACBF /* responseMock.json */; };
 		33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9F7E129D21D28008FCEEA /* ServiceApi.swift */; };
 		33C9F7E529D21DA3008FCEEA /* ServiceApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */; };
 		33E7CEAB29E8750A00681265 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7CEAA29E8750A00681265 /* MovieService.swift */; };
@@ -62,6 +65,9 @@
 		334CD8C529DB4B07006D99EA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		334CD8C629DB80EE006D99EA /* URLConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfiguration.swift; sourceTree = "<group>"; };
 		334CD8CA29DB8C1C006D99EA /* URLConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurationTest.swift; sourceTree = "<group>"; };
+		336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractorTest.swift; sourceTree = "<group>"; };
+		336DDA9B29E8D32900E9ACBF /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		336DDAA029E8D79500E9ACBF /* responseMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseMock.json; sourceTree = "<group>"; };
 		33C9F7D829D20ED7008FCEEA /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C9F7E129D21D28008FCEEA /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
 		33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApiTests.swift; sourceTree = "<group>"; };
@@ -146,11 +152,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		336DDA9D29E8D4EF00E9ACBF /* NetworkingMocks */ = {
+			isa = PBXGroup;
+			children = (
+				336DDAA029E8D79500E9ACBF /* responseMock.json */,
+				336DDA9B29E8D32900E9ACBF /* MockService.swift */,
+			);
+			path = NetworkingMocks;
+			sourceTree = "<group>";
+		};
 		33C9F7D929D20ED7008FCEEA /* BAZProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				336DDA9D29E8D4EF00E9ACBF /* NetworkingMocks */,
 				33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */,
 				334CD8CA29DB8C1C006D99EA /* URLConfigurationTest.swift */,
+				336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -291,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +335,8 @@
 			files = (
 				334CD8CB29DB8C1C006D99EA /* URLConfigurationTest.swift in Sources */,
 				33C9F7E529D21DA3008FCEEA /* ServiceApiTests.swift in Sources */,
+				336DDA9A29E8D30900E9ACBF /* TrendingInteractorTest.swift in Sources */,
+				336DDA9C29E8D32900E9ACBF /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

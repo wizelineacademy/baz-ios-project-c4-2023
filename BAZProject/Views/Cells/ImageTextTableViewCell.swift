@@ -28,7 +28,7 @@ class ImageTextTableViewCell: UITableViewCell {
         imgPoster.image = UIImage(named: "poster")
     }
     
-    func setInfo(_ info: ImageTextTableViewProtocol){
+    func setInfo(_ info: ImageTextTableViewProtocol) {
         lblTitle.text = info.strTitle
         lblOverView.text = info.strOverView
         if let url = info.urlConfiguration.configureURL() {

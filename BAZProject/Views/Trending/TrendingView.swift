@@ -49,7 +49,7 @@ extension TrendingView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellTypes.imageTextCell.rawValue, for: indexPath) as? ImageTextTableViewCell, let movie = presenter?.getMovie(forRow: indexPath.row){
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CellTypes.imageTextCell.rawValue, for: indexPath) as? ImageTextTableViewCell, let movie = presenter?.getMovie(forRow: indexPath.row) {
             cell.setInfo(movie)
             return cell
         }
