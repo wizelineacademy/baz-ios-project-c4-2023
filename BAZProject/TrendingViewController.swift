@@ -7,23 +7,38 @@
 import UIKit
 
 class TrendingViewController: UITableViewController {
-
-    var movies: [Movie] = []
-
+    
+    private var moviesListViewModel: MoviesListViewModel?
+    
+    init(moviesListViewModel: MoviesListViewModel) {
+        self.moviesListViewModel = moviesListViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let movieApi = MovieAPI()
-        
-        movieApi.getMovies { movies in
-            self.movies = movies
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        callServiceMovieAPI()
+    }
+    
+    func callServiceMovieAPI() {
+        let getService = MovieAPI(session: URLSession.shared)
+        getService.getMovies(.getMovies) { [weak self] (result: Result< Movie, Error>) in
+            switch result {
+            case .success(let moviesReponse):
+                self?.moviesListViewModel = MoviesListViewModel(movies: moviesReponse.movies!)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            default:
+                print("Error")
             }
         }
     }
-
 }
 
 // MARK: - TableView's DataSource
@@ -31,13 +46,12 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        moviesListViewModel?.movies.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
     }
-
 }
 
 // MARK: - TableView's Delegate
@@ -46,9 +60,12 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
-        config.image = UIImage(named: "poster")
+        let MovieCell = moviesListViewModel?.movieAtIndex(indexPath.row)
+        config.text = MovieCell?.title
+        MovieCell?.getImage(completion: { image in
+            config.image = image
+            cell.contentConfiguration = config
+        })
         cell.contentConfiguration = config
     }
-
 }
