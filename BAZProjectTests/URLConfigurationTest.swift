@@ -31,5 +31,27 @@ final class URLConfigurationTest: XCTestCase {
         //Then
         XCTAssertEqual(urlFinal, urlFromConfiguration)
     }
+    
+    func testSearchUrl() {
+        //Given
+        let strUrl = "https://api.themoviedb.org/3/search/movie?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es&query=Matrix"
+        let finalUrl = URL(string: strUrl)
+        let sut = URLConfiguration(path: .search(strQuery: "Matrix"))
+        //When
+        let urlFromConfiguration = sut.configureURL()
+        //Then
+        XCTAssertEqual(finalUrl, urlFromConfiguration)
+    }
+    
+    func testQueryWithSpaces() {
+        //Given
+        let strUrl = "https://api.themoviedb.org/3/search/movie?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es&query=Matrix%20revolutions"
+        let finalUrl = URL(string: strUrl)
+        let sut = URLConfiguration(path: .search(strQuery: "Matrix revolutions"))
+        //When
+        let urlFromConfiguration = sut.configureURL()
+        //Then
+        XCTAssertEqual(finalUrl, urlFromConfiguration)
+    }
 
 }

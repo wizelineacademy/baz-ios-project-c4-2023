@@ -10,3 +10,4 @@
 "There was a problem creating the url" = "No se pudo crear la URL";
 "There was a problem parsing the json" = "El json no se pudo parsear";
 "The service didn't respond" = "El servicio no respondió";
+"Search" = "Buscar";

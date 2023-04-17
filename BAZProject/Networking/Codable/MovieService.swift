@@ -17,6 +17,7 @@ public struct MovieDetailService: Decodable{
     var title: String?
     var poster_path: String?
     var overview: String?
+    var release_date: String?
 }
 
 extension MovieDetailService {

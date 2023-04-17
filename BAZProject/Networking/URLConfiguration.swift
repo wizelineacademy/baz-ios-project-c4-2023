@@ -38,19 +38,28 @@ public struct URLConfiguration {
         components.path = path.getString()
         switch path {
         case .trending:
-            components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
-                                     URLQueryItem(name: "language", value: strCurrentLocale)]
+            components.queryItems = configureKeyAndLanguage()
+        case .search(let strQuery):
+            var arrComponents = configureKeyAndLanguage()
+            arrComponents.append(URLQueryItem(name: "query", value: strQuery))
+            components.queryItems = arrComponents
         default:
             break
         }
         return components.url
         
     }
+    
+    private func configureKeyAndLanguage() -> [URLQueryItem] {
+        return [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
+                URLQueryItem(name: "language", value: strCurrentLocale)]
+    }
 }
 
 public enum Paths {
     case trending
     case image(strFile: String)
+    case search(strQuery: String)
     case noPath
     
     func getString() -> String{
@@ -59,6 +68,8 @@ public enum Paths {
             return "/3/trending/movie/day"
         case .image(let strFile):
             return "/t/p/w500\(strFile)"
+        case .search(strQuery: _):
+            return "/3/search/movie"
         case .noPath:
             return ""
         }
