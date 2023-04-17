@@ -44,7 +44,7 @@ extension TrendingViewController {
         var config = UIListContentConfiguration.cell()
         config.text = trendingModel.getTitle(index: indexPath.row)
         if let imageUrl = URL(string: trendingModel.getPosterPath(index: indexPath.row) ?? "") {
-            trendingModel.getRemoteImage(from: imageUrl) { [weak self] urlImage in
+            trendingModel.getRemoteImage(from: imageUrl) { urlImage in
                 config.image = urlImage
                 cell.contentConfiguration = config
             }

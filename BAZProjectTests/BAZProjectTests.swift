@@ -29,7 +29,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", posterPath: "")]
+        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 7, title: "Dragon Ball", posterPath: "")]
         // Then
         model.movies = expectedResult
         let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 10)
@@ -39,7 +39,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModelTitle_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 7, title: "Dragon Ball", posterPath: "")]
+        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 4, title: "DragonBall", posterPath: "")]
         // Then
         model.movies = expectedResult
         // When
@@ -48,7 +48,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_PosterPath_hasData() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [Movie(id: 4, title: "Dragon Ball Z", posterPath: "225252341tfrt433.jpg")]
+        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 8, title: "Dragon Ball Z", posterPath: "225252341tfrt433.jpg")]
         // Then
         model.movies = expectedResult
         // When
@@ -57,15 +57,18 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_ImageLoader() {
         // Given
+        let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
         var testImage = UIImage()
         // Then
         if let testURL = URL(string: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg") {
-            model.getRemoteImage(from: testURL) { [weak self] urlImage in
+            model.getRemoteImage(from: testURL) { urlImage in
                 testImage = urlImage ?? UIImage()
                 // When
                 XCTAssertNotNil(testImage)
+                expectation.fulfill()
             }
         }
+        wait(for: [expectation], timeout: 10.0)
     }
 
 }

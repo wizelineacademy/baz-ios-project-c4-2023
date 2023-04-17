@@ -49,7 +49,7 @@ final class TrendingViewModel: MovieListProtocol {
     
     func getRemoteImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         let imageLoader: ImageLoader = ImageLoader()
-        imageLoader.loadImage(from: url) { [weak self] image in
+        imageLoader.loadImage(from: url) { image in
             completion(image)
         }
     }
