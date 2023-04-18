@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +19,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Z5u-gS-PNA" kind="relationship" relationship="viewControllers" id="5Rs-jK-EFi"/>
-                        <segue destination="c7T-UX-UAE" kind="relationship" relationship="viewControllers" id="yXF-dq-J4D"/>
+                        <segue destination="fAs-pC-2N3" kind="relationship" relationship="viewControllers" id="b9d-D7-AD6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZs-3s-K8D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -30,7 +29,7 @@
         <!--Trending Movies-->
         <scene sceneID="Jof-f8-uDg">
             <objects>
-                <tableViewController storyboardIdentifier="TrendingViewController" title="Trending Movies" id="DF1-ZG-ayL" customClass="MoviesViewController" customModule="BAZProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MoviesViewController" title="Trending Movies" id="DF1-ZG-ayL" customClass="MoviesViewController" customModule="BAZProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="7Ys-l1-YLU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,45 +45,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="KhA-3B-BQB"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnFilter" destination="tvE-lb-IFR" id="ATK-o7-bZs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inw-fF-zPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="390" y="990"/>
-        </scene>
-        <!--Prueba-->
-        <scene sceneID="2Cd-8O-jUQ">
-            <objects>
-                <viewController id="00O-j3-IUn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ewx-p1-mYI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="bYN-U1-HUX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Prueba" id="TVo-md-GaK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aqj-nF-bIg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1829" y="990"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="NZg-aQ-MWY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c7T-UX-UAE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" id="VoZ-sf-SHR"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7sq-po-uWs">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="00O-j3-IUn" kind="relationship" relationship="rootViewController" id="khr-o1-6IX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M7Z-9v-CBd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1830" y="269"/>
         </scene>
         <!--Movies-->
         <scene sceneID="Q3a-eL-lyj">
@@ -104,6 +71,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GvE-Me-xts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="391" y="269"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="2SR-16-b9Z">
+            <objects>
+                <tableViewController storyboardIdentifier="FavoritesViewController" title="Favorites" id="EaY-Gt-4p2" customClass="FavoritesViewController" customModule="BAZProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jCH-Mv-tWh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="EaY-Gt-4p2" id="uAD-jR-QXP"/>
+                            <outlet property="delegate" destination="EaY-Gt-4p2" id="Itn-k2-sAU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="KM4-zg-eIz"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5A-CO-E2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="982"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="LoN-gM-grB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fAs-pC-2N3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" id="vDo-jt-PT8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="HTN-me-sfr">
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EaY-Gt-4p2" kind="relationship" relationship="rootViewController" id="k5A-J6-yuh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7H7-O2-rCO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="269"/>
         </scene>
     </scenes>
     <resources>
