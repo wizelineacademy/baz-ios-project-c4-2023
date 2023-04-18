@@ -40,7 +40,18 @@ final class TrendingInteractorTest: XCTestCase {
         sut.serviceApi = mockServer
         //Then
         sut.getMovies()
-        XCTAssertEqual(errorExpected, errorThrown)
+        XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
+    }
+    
+    func testBadJsonIsCalledCorrectly() {
+        //Given
+        let errorExpected: ErrorApi = .badJSON
+        //When
+        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badJSON))
+        sut.serviceApi = mockServer
+        //Then
+        sut.getMovies()
+        XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
     }
     
     func testMoviesGotSuccessfully() {

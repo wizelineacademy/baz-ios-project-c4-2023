@@ -87,7 +87,7 @@ final class SearchInteractorTest: XCTestCase {
         //When
         sut?.search(withParams: "jaklfakdja")
         //Then
-        XCTAssertEqual(expectedError, searchError)
+        XCTAssertEqual(expectedError.getString(), searchError?.getString())
     }
 }
 

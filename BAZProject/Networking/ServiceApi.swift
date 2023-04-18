@@ -25,7 +25,7 @@ public enum ErrorApi: Error {
     case badResponse
     
     
-    func getMessage() -> String {
+    public func getMessage() -> String {
         switch self {
         case .badURL:
             return NSLocalizedString("There was a problem creating the url", comment: "There was a problem creating the url")

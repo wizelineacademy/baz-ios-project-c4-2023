@@ -13,14 +13,14 @@ public protocol ImageTextTableViewProtocol {
     var urlConfiguration: URLConfiguration { get }
 }
 
-public class ImageTextTableViewCell: UITableViewCell {
+class ImageTextTableViewCell: UITableViewCell {
 
-    @IBOutlet public weak var lblTitle: UILabel!
-    @IBOutlet public weak var lblOverView: UILabel!
-    @IBOutlet public weak var imgPoster: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblOverView: UILabel!
+    @IBOutlet weak var imgPoster: UIImageView!
     private var downloadTask: URLSessionDownloadTask?
     
-    public override func prepareForReuse() {
+    override func prepareForReuse() {
         super.prepareForReuse()
         downloadTask?.cancel()
         downloadTask = nil
@@ -28,7 +28,7 @@ public class ImageTextTableViewCell: UITableViewCell {
         imgPoster.image = UIImage(named: "poster")
     }
     
-    public func setInfo(_ info: ImageTextTableViewProtocol) {
+    func setInfo(_ info: ImageTextTableViewProtocol) {
         lblTitle.text = info.strTitle
         lblOverView.text = info.strOverView
         if let url = info.urlConfiguration.configureURL() {
