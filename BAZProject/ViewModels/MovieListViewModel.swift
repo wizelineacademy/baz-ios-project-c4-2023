@@ -7,19 +7,19 @@
 
 import UIKit
 
-enum MovieFilters: String {
-    case trending = "Treanding"
+enum Enum_MovieFilters: String {
+    case trending   = "Treanding"
     case nowPlaying = "Now Playing"
-    case popular = "Popular"
-    case topRated = "Top Rated"
-    case upcoming = "Upcoming"
+    case popular    = "Popular"
+    case topRated   = "Top Rated"
+    case upcoming   = "Upcoming"
 }
 
 class MovieListViewModel {
-    private var filterType: MovieFilters = MovieFilters.trending
+    private var filterType: Enum_MovieFilters = Enum_MovieFilters.trending
     private var movies: [Movie] = []
     
-    init(_ filterType: MovieFilters) {
+    init(_ filterType: Enum_MovieFilters) {
         self.filterType = filterType
     }
     
@@ -45,15 +45,14 @@ extension MovieListViewModel {
         self.movies = movies
     }
     
-    func filter(_ filter: MovieFilters? = nil, completion: @escaping () -> ()) {
-        var filterType = self.filterType
+    func applyFilter(_ filterType: Enum_MovieFilters? = nil, completion: @escaping () -> ()) {
         var url: URL?
         
-        if let filter = filter {
-            filterType = filter
+        if let filterType = filterType {
+            self.filterType = filterType
         }
         
-        switch filterType {
+        switch self.filterType {
         case .trending:
             url = Endpoint.trending.url
         case .nowPlaying:
@@ -71,7 +70,6 @@ extension MovieListViewModel {
         }
         
         MovieAPI().load(resource: resource) { [weak self] result in
-            
             if let movieList = result {
                 self?.setMovies(movieList.results)
                 completion()
