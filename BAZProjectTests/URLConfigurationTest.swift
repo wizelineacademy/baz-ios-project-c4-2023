@@ -53,5 +53,29 @@ final class URLConfigurationTest: XCTestCase {
         //Then
         XCTAssertEqual(finalUrl, urlFromConfiguration)
     }
+    
+    func testForUpdatingPath() {
+        //Given
+        let strFinalURL: String = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalURL)
+        var sut = URLConfiguration(path: .noPath)
+        //When
+        sut.updatePath(with: .trending)
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
+    
+    func testUpdateSearch() {
+        //Given
+        let strUrl = "https://api.themoviedb.org/3/search/movie?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es&query=Matrix"
+        let urlFinal = URL(string: strUrl)
+        var sut = URLConfiguration(path: .noPath)
+        //When
+        sut.updatePath(with: .search(strQuery: "Matrix"))
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
 
 }

@@ -10,6 +10,13 @@ import Foundation
 public protocol NetworkingProtocol: AnyObject {
     var configuration : URLConfiguration { get set }
     func search<T: Decodable>(withCompletionHandler handler: @escaping (Result<T, ErrorApi>) -> Void)
+    func updatePath(with path: Paths)
+}
+
+extension NetworkingProtocol {
+    public func updatePath(with path: Paths) {
+        configuration.updatePath(with: path)
+    }
 }
 
 public enum ErrorApi: Error {

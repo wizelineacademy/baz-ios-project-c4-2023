@@ -7,7 +7,10 @@
 */
 
 "Trending" = "Novedades";
-"There was a problem creating the url" = "No se pudo crear la URL";
-"There was a problem parsing the json" = "El json no se pudo parsear";
-"The service didn't respond" = "El servicio no respondió";
+"There was a problem creating the url" = "No se pudo crear la URL.";
+"There was a problem parsing the json" = "El json no se pudo parsear.";
+"The service didn't respond" = "El servicio no respondió.";
 "Search" = "Buscar";
+"Search by movie or artist" = "Busca por película o artista.";
+"Please, provide a term to search." = "Por favor proporcione un término para buscar.";
+"No results found" = "No se encontraron resultados.";

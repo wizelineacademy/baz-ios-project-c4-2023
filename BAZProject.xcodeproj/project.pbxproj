@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3319B75329E7B9D600AC1B25 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319B75229E7B9D600AC1B25 /* UIImageView+Download.swift */; };
+		3327F7EC29EEE57C00F46759 /* responseSearchMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 3327F7EB29EEE57C00F46759 /* responseSearchMock.json */; };
+		3327F7EE29EEEE3100F46759 /* searchVoid.json in Resources */ = {isa = PBXBuildFile; fileRef = 3327F7ED29EEEE3100F46759 /* searchVoid.json */; };
+		3327F7F029EEF49A00F46759 /* EmptySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327F7EF29EEF49A00F46759 /* EmptySearch.swift */; };
+		3327F7F229EEFC3C00F46759 /* SearchPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327F7F129EEFC3C00F46759 /* SearchPresenterTest.swift */; };
+		332AD74029EE347400279703 /* SearchEnumError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AD73F29EE347400279703 /* SearchEnumError.swift */; };
+		332AD74229EE34F700279703 /* SearchInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AD74129EE34F700279703 /* SearchInteractorTest.swift */; };
 		3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */; };
 		3343AD4129D4A58D00F4CAB9 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */; };
 		3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */; };
@@ -25,8 +31,8 @@
 		336DDA9A29E8D30900E9ACBF /* TrendingInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */; };
 		336DDA9C29E8D32900E9ACBF /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDA9B29E8D32900E9ACBF /* MockService.swift */; };
 		336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 336DDAA029E8D79500E9ACBF /* responseMock.json */; };
+		339D474B29EDAA2F00B68FA9 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339D474D29EDAA2F00B68FA9 /* SearchViewController.xib */; };
 		33ACA7A929ECFE0F00FD0421 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7A729ECFE0F00FD0421 /* SearchViewController.swift */; };
-		33ACA7AA29ECFE0F00FD0421 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33ACA7A829ECFE0F00FD0421 /* SearchViewController.xib */; };
 		33ACA7AC29ECFF7B00FD0421 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AB29ECFF7B00FD0421 /* SearchInteractor.swift */; };
 		33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AD29ECFF8800FD0421 /* SearchPresenter.swift */; };
 		33ACA7B029ED004500FD0421 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AF29ED004500FD0421 /* SearchRouter.swift */; };
@@ -54,6 +60,12 @@
 
 /* Begin PBXFileReference section */
 		3319B75229E7B9D600AC1B25 /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
+		3327F7EB29EEE57C00F46759 /* responseSearchMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseSearchMock.json; sourceTree = "<group>"; };
+		3327F7ED29EEEE3100F46759 /* searchVoid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searchVoid.json; sourceTree = "<group>"; };
+		3327F7EF29EEF49A00F46759 /* EmptySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearch.swift; sourceTree = "<group>"; };
+		3327F7F129EEFC3C00F46759 /* SearchPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTest.swift; sourceTree = "<group>"; };
+		332AD73F29EE347400279703 /* SearchEnumError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEnumError.swift; sourceTree = "<group>"; };
+		332AD74129EE34F700279703 /* SearchInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTest.swift; sourceTree = "<group>"; };
 		3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenter.swift; sourceTree = "<group>"; };
 		3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRouter.swift; sourceTree = "<group>"; };
 		3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProtocols.swift; sourceTree = "<group>"; };
@@ -73,8 +85,8 @@
 		336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractorTest.swift; sourceTree = "<group>"; };
 		336DDA9B29E8D32900E9ACBF /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		336DDAA029E8D79500E9ACBF /* responseMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseMock.json; sourceTree = "<group>"; };
+		339D474C29EDAA2F00B68FA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchViewController.xib; sourceTree = "<group>"; };
 		33ACA7A729ECFE0F00FD0421 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		33ACA7A829ECFE0F00FD0421 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		33ACA7AB29ECFF7B00FD0421 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		33ACA7AD29ECFF8800FD0421 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		33ACA7AF29ED004500FD0421 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -166,6 +178,8 @@
 		336DDA9D29E8D4EF00E9ACBF /* NetworkingMocks */ = {
 			isa = PBXGroup;
 			children = (
+				3327F7ED29EEEE3100F46759 /* searchVoid.json */,
+				3327F7EB29EEE57C00F46759 /* responseSearchMock.json */,
 				336DDAA029E8D79500E9ACBF /* responseMock.json */,
 				336DDA9B29E8D32900E9ACBF /* MockService.swift */,
 			);
@@ -185,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				C30893E128A425E1004B1860 /* Movie.swift */,
+				332AD73F29EE347400279703 /* SearchEnumError.swift */,
+				3327F7EF29EEF49A00F46759 /* EmptySearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +208,7 @@
 		33ACA7A629ECFDD500FD0421 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				33ACA7A829ECFE0F00FD0421 /* SearchViewController.xib */,
+				339D474D29EDAA2F00B68FA9 /* SearchViewController.xib */,
 				33ACA7A729ECFE0F00FD0421 /* SearchViewController.swift */,
 				33ACA7AB29ECFF7B00FD0421 /* SearchInteractor.swift */,
 				33ACA7AD29ECFF8800FD0421 /* SearchPresenter.swift */,
@@ -208,6 +224,8 @@
 				33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */,
 				334CD8CA29DB8C1C006D99EA /* URLConfigurationTest.swift */,
 				336DDA9929E8D30900E9ACBF /* TrendingInteractorTest.swift */,
+				332AD74129EE34F700279703 /* SearchInteractorTest.swift */,
+				3327F7F129EEFC3C00F46759 /* SearchPresenterTest.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -347,6 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3327F7EC29EEE57C00F46759 /* responseSearchMock.json in Resources */,
+				3327F7EE29EEEE3100F46759 /* searchVoid.json in Resources */,
 				336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +381,7 @@
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
 				334CD8C229DB4B03006D99EA /* Localizable.strings in Resources */,
-				33ACA7AA29ECFE0F00FD0421 /* SearchViewController.xib in Resources */,
+				339D474B29EDAA2F00B68FA9 /* SearchViewController.xib in Resources */,
 				3343AD4629D4A58D00F4CAB9 /* TrendingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +395,9 @@
 			files = (
 				334CD8CB29DB8C1C006D99EA /* URLConfigurationTest.swift in Sources */,
 				33C9F7E529D21DA3008FCEEA /* ServiceApiTests.swift in Sources */,
+				3327F7F229EEFC3C00F46759 /* SearchPresenterTest.swift in Sources */,
 				336DDA9A29E8D30900E9ACBF /* TrendingInteractorTest.swift in Sources */,
+				332AD74229EE34F700279703 /* SearchInteractorTest.swift in Sources */,
 				336DDA9C29E8D32900E9ACBF /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,12 +409,14 @@
 				3343AD4729D4A58D00F4CAB9 /* TrendingEntity.swift in Sources */,
 				3343AD4F29D4ADCF00F4CAB9 /* ImageTextTableViewCell.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				3327F7F029EEF49A00F46759 /* EmptySearch.swift in Sources */,
 				33ACA7A929ECFE0F00FD0421 /* SearchViewController.swift in Sources */,
 				3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */,
 				33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */,
 				3319B75329E7B9D600AC1B25 /* UIImageView+Download.swift in Sources */,
 				3343AD4929D4A63500F4CAB9 /* TabBarManagerViewController.swift in Sources */,
 				334CD8C729DB80EE006D99EA /* URLConfiguration.swift in Sources */,
+				332AD74029EE347400279703 /* SearchEnumError.swift in Sources */,
 				3343AD4429D4A58D00F4CAB9 /* TrendingView.swift in Sources */,
 				33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */,
 				3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */,
@@ -425,6 +449,14 @@
 				334CD8C529DB4B07006D99EA /* es */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		339D474D29EDAA2F00B68FA9 /* SearchViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				339D474C29EDAA2F00B68FA9 /* Base */,
+			);
+			name = SearchViewController.xib;
 			sourceTree = "<group>";
 		};
 		C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */ = {

@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol ImageTextTableViewProtocol {
+public protocol ImageTextTableViewProtocol {
     var strTitle: String { get }
     var strOverView: String { get }
     var urlConfiguration: URLConfiguration { get }
 }
 
-class ImageTextTableViewCell: UITableViewCell {
+public class ImageTextTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblOverView: UILabel!
-    @IBOutlet weak var imgPoster: UIImageView!
+    @IBOutlet public weak var lblTitle: UILabel!
+    @IBOutlet public weak var lblOverView: UILabel!
+    @IBOutlet public weak var imgPoster: UIImageView!
     private var downloadTask: URLSessionDownloadTask?
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         downloadTask?.cancel()
         downloadTask = nil
@@ -28,7 +28,7 @@ class ImageTextTableViewCell: UITableViewCell {
         imgPoster.image = UIImage(named: "poster")
     }
     
-    func setInfo(_ info: ImageTextTableViewProtocol) {
+    public func setInfo(_ info: ImageTextTableViewProtocol) {
         lblTitle.text = info.strTitle
         lblOverView.text = info.strOverView
         if let url = info.urlConfiguration.configureURL() {

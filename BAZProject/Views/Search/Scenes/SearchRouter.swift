@@ -15,9 +15,11 @@ class SearchRouter {
         let interactor = SearchInteractor()
         let presenter = SearchPresenter()
         let router = SearchRouter()
+        let serviceApi = ServiceApi<MovieService>(configuration: URLConfiguration(path: .noPath))
         view.interactor = interactor
         view.router = router
         interactor.presenter = presenter
+        interactor.networkingSearch = serviceApi
         presenter.view = view
         return view
     }

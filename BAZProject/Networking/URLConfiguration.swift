@@ -8,6 +8,7 @@
 import Foundation
 
 public struct URLConfiguration {
+    
     var strMethod: String
     var strHost: String
     var path: Paths
@@ -25,8 +26,8 @@ public struct URLConfiguration {
         self.path = path
     }
     
-    public mutating func updateHost(with strHost: String) {
-        self.strHost = strHost
+    public mutating func updatePath(with path: Paths) {
+        self.path = path
     }
     
     public func configureURL() -> URL? {

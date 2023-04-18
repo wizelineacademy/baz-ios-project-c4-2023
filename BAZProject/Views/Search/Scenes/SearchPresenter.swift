@@ -7,14 +7,33 @@
 
 import Foundation
 
-protocol SearchPresentationLogic {
+public protocol SearchPresentationLogic {
     var view: SearchDisplayLogic? { get }
+    
+    func search(FailedWith error: SearchEnumError)
+    func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol])
 }
 
-class SearchPresenter {
-    weak var view: SearchDisplayLogic?
+public class SearchPresenter {
+    public weak var view: SearchDisplayLogic?
+    
+    public init(view: SearchDisplayLogic? = nil) {
+        self.view = view
+    }
 }
 
 extension SearchPresenter: SearchPresentationLogic {
+    public func search(FailedWith error: SearchEnumError) {
+        if error == .noResultsFound {
+            searchDidBrougntResults(in: [EmptySearch()])
+        }else {
+            view?.placeInLabel(message: error.getString())
+        }
+        
+    }
     
+    public func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol]) {
+        view?.placeInLabel(message: "")
+        view?.showResults(in: arrResults)
+    }
 }
