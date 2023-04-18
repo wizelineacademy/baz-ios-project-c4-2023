@@ -45,6 +45,10 @@ final class TrendingViewController: UITableViewController, Storyboard {
             }
         }
     }
+    
+    private func setNavTitle(with title: String){
+        self.title = title
+    }
 
     // btnAction - send you the next 'search view'
     @IBAction func searchMovie(_ sender: Any) {
@@ -55,11 +59,26 @@ final class TrendingViewController: UITableViewController, Storyboard {
     // btnAction - options with the different search filters
     func setup(){
         var optionsItems: [UIAction]{
-            return [ UIAction(title: "Treanding", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getMovieDay)}),
-                     UIAction(title: "Now Playing", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getNowPlaying)}),
-                     UIAction(title: "Popular", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getPopular)}),
-                     UIAction(title: "Top Rated", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getTopRated)}),
-                     UIAction(title: "Upcoming", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getUpcoming)})]
+            return [ UIAction(title: "Treanding", handler: { [weak self] _ in
+                self?.callServiceMovieAPI(optionFilter: .getMovieDay)
+                self?.setNavTitle(with: "Treanding")
+            }),
+                     UIAction(title: "Now Playing", handler: { [weak self] _ in
+                self?.callServiceMovieAPI(optionFilter: .getNowPlaying)
+                self?.setNavTitle(with: "Now Playing")
+            }),
+                     UIAction(title: "Popular", handler: { [weak self] _ in
+                self?.callServiceMovieAPI(optionFilter: .getPopular)
+                self?.setNavTitle(with: "Popular")
+            }),
+                     UIAction(title: "Top Rated", handler: { [weak self] _ in
+                self?.callServiceMovieAPI(optionFilter: .getTopRated)
+                self?.setNavTitle(with: "Top Rated")
+            }),
+                     UIAction(title: "Upcoming", handler: { [weak self] _ in
+                self?.callServiceMovieAPI(optionFilter: .getUpcoming)
+                self?.setNavTitle(with: "Upcoming")
+            })]
         }
         btnOptionsFilterMovies.menu = UIMenu(title: "Selecciona una opción", children: optionsItems)
     }
