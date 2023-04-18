@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let movieApi = MovieAPI(session: URLSession.shared)
         let viewController = TrendingViewController.instantiate()
         viewController?.movieApi = movieApi
-        window.rootViewController = viewController
+        let navigation = UINavigationController(rootViewController: viewController ?? UIViewController())
+        window.rootViewController = navigation
         self.window = window
         window.makeKeyAndVisible()
     }

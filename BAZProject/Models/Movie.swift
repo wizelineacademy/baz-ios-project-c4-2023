@@ -51,3 +51,17 @@ struct Movie: Decodable{
     }
     
 }
+struct MoviesSearchResult: Decodable {
+    var arrMovies       : [Movie]?
+    var page            : Int?
+    var totalPages      : Int?
+    var totalResults    : Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case arrMovies      = "results"
+        case page
+        case totalPages     = "total_pages"
+        case totalResults   = "total_results"
+    }
+    
+}

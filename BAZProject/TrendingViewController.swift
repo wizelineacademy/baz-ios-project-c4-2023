@@ -8,12 +8,14 @@ import UIKit
 
 final class TrendingViewController: UITableViewController, Storyboard {
 
+    @IBOutlet weak var btnOptionsFilterMovies: UIBarButtonItem!
     var movies              : [MovieData] = []
     var movieApi            : MovieAPI? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callServiceMovieAPI()
+        setup()
+        callServiceMovieAPI(optionFilter: .getMovieDay)
     }
     
     /**
@@ -23,10 +25,11 @@ final class TrendingViewController: UITableViewController, Storyboard {
        - success: return The type of the value to decode from the supplied JSON object.
        - error: returns the service error.
     */
-    private func callServiceMovieAPI(){
-        movieApi?.getMovies(.getMovieDay){ [weak self] (result: Result< MoviesResult, Error>) in
+    private func callServiceMovieAPI(optionFilter : OptionMovie){
+        movieApi?.getMovies(optionFilter){ [weak self] (result: Result< MoviesResult, Error>) in
             switch result {
             case .success(let moviesReponse):
+                self?.movies.removeAll()
                 if let arrMovies = moviesReponse.arrMovies{
                     for resultArrMovies in arrMovies{
                         self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
@@ -43,6 +46,24 @@ final class TrendingViewController: UITableViewController, Storyboard {
         }
     }
 
+    // btnAction - send you the next 'search view'
+    @IBAction func searchMovie(_ sender: Any) {
+        let viewController = MoviesRouter.createModule()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // btnAction - options with the different search filters
+    func setup(){
+        var optionsItems: [UIAction]{
+            return [ UIAction(title: "Treanding", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getMovieDay)}),
+                     UIAction(title: "Now Playing", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getNowPlaying)}),
+                     UIAction(title: "Popular", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getPopular)}),
+                     UIAction(title: "Top Rated", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getTopRated)}),
+                     UIAction(title: "Upcoming", handler: { [weak self] _ in self?.callServiceMovieAPI(optionFilter: .getUpcoming)})]
+        }
+        btnOptionsFilterMovies.menu = UIMenu(title: "Selecciona una opción", children: optionsItems)
+    }
+    
 }
 
 // MARK: - TableView's DataSource
@@ -70,4 +91,12 @@ extension TrendingViewController {
         }
         cell.contentConfiguration = config
     }
+}
+
+enum OptionsFilterMovies {
+    case trending
+    case nowPlaying
+    case popular
+    case topRated
+    case upcoming
 }
