@@ -7,27 +7,6 @@
 
 import Foundation
 
-struct MovieListViewModel {
-    private let movies: [Movie]
-    
-    init(movies: [Movie]) {
-        self.movies = movies
-    }
-}
-
-extension MovieListViewModel {
-    
-    func numberOfRowsInSection(_ section: Int) -> Int {
-        movies.count
-    }
-    
-    func movieAtIndex(_ index: Int) -> MovieViewModel? {
-        guard let movie = self.movies[safe: index] else { return nil }
-        
-        return MovieViewModel(movie)
-    }
-}
-
 struct MovieViewModel {
     private let movie:Movie
     
