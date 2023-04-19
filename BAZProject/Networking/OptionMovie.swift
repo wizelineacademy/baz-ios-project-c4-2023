@@ -15,10 +15,6 @@ enum OptionMovie {
 }
 extension OptionMovie: Endpoint{
     
-    var baseURL: String {
-        return "https://api.themoviedb.org"
-    }
-    
     var path: String {
         switch self {
         case .getMovieDay: return "/3/trending/movie/day"
@@ -28,11 +24,6 @@ extension OptionMovie: Endpoint{
         case .getUpcoming: return "/3/movie/upcoming"
         case .searchMovie: return "/3/search/movie"
         }
-    }
-    
-    private var apiKey: URLQueryItem {
-        return URLQueryItem(name: "api_key",
-                            value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a")
     }
     
     var request: URLRequest {

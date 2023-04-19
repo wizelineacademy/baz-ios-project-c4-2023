@@ -26,7 +26,11 @@ extension MoviesInteractor: MoviesInteractorInputProtocol{
             DispatchQueue.main.async {
                 switch result {
                 case .success(let moviesReponse):
-                    self?.setMovies(with: moviesReponse)
+                    if moviesReponse.arrMovies?.count ?? 0 > 0{
+                        self?.setMovies(with: moviesReponse.arrMovies)
+                    }else{
+                        self?.presenter?.setError()
+                    }
                 default:
                     self?.presenter?.setError()
                 }
@@ -34,15 +38,13 @@ extension MoviesInteractor: MoviesInteractorInputProtocol{
         }
     }
     
-    private func setMovies(with moviesResult: MoviesSearchResult){
+    private func setMovies(with moviesResult: [Movie]?){
         var movies              : [MovieData] = []
-        if let arrMovies = moviesResult.arrMovies{
-            for resultArrMovies in arrMovies{
-                movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
-                                               poster_path: resultArrMovies.posterPath ?? ""))
-            }
-            presenter?.setResponseMovies(with: movies)
+        for resultArrMovies in moviesResult ?? [Movie](){
+            movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
+                                           poster_path: resultArrMovies.posterPath ?? ""))
         }
+        presenter?.setResponseMovies(with: movies)
     }
     
 }
