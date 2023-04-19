@@ -34,7 +34,7 @@ final class BAZProjectTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for requestMovieAPIBlock completion")
         sut2.movies = getMovies()
         //When
-        sut.getMovies(.getMovieDay){ (result: Result< [Movie], Error>) in
+        sut.getMovies(OptionMovie.getMovieDay.request){ (result: Result< [Movie], Error>) in
             switch result {
             case .success(let success):
                 self.arrResults = success
