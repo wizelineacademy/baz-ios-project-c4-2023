@@ -1,5 +1,5 @@
 //
-//  TrendingAPIModel.swift
+//  MovieArray.swift
 //  BAZProject
 //
 //  Created by gescarcega on 29/03/23.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct TrendingAPIModel: Decodable {
+struct MovieArray: Decodable {
     var results: [Movie]
 }
