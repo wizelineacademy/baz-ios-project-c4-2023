@@ -21,7 +21,6 @@ class TrendingView: UIViewController {
     }
 
     // MARK: Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()

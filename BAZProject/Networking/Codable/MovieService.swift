@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct MovieService: Decodable{
+public struct MovieService: Decodable {
     var page: Int?
     public var results: [MovieDetailService]?
 }
 
-public struct MovieDetailService: Decodable{
+public struct MovieDetailService: Decodable {
     var id: Int?
     var title: String?
     var poster_path: String?

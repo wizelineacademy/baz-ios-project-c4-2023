@@ -25,7 +25,7 @@ public struct Movie: ImageTextTableViewProtocol {
     public var strOverView: String{
         return overview
     }
-    public var urlConfiguration: URLConfiguration{
+    public var urlConfiguration: URLConfiguration {
         let urlConfiguration = URLConfiguration(strHost: "image.tmdb.org", path: .image(strFile: poster_path))
         return urlConfiguration
     }

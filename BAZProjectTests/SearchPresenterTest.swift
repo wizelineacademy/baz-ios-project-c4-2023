@@ -53,7 +53,7 @@ final class SearchPresenterTest: XCTestCase {
         sut?.search(FailedWith: .noResultsFound)
         //Then
         let firstElement = arrCellInfo?.first as? EmptySearch
-        XCTAssertEqual(emptySearch, firstElement)
+        XCTAssertEqual(emptySearch.strTitle, firstElement?.strTitle)
     }
     
     func testSuccessfullSearchArrCount() {

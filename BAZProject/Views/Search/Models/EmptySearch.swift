@@ -7,15 +7,15 @@
 
 import Foundation
 
-public struct EmptySearch: ImageTextTableViewProtocol, Equatable {
+public struct EmptySearch: ImageTextTableViewProtocol {
     
-    public var strTitle: String{
+    public var strTitle: String {
         return NSLocalizedString("No results found", comment: "No results found")
     }
-    public var strOverView: String{
+    public var strOverView: String {
         return ""
     }
-    public var urlConfiguration: URLConfiguration{
+    public var urlConfiguration: URLConfiguration {
         return URLConfiguration(path: .noPath)
     }
     

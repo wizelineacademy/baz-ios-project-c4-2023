@@ -60,9 +60,9 @@ public class ServiceApi<T: Decodable>: NetworkingProtocol {
                 return
             }
             DispatchQueue.main.async {
-                if let json = try? JSONDecoder().decode(T.self, from: data){
+                if let json = try? JSONDecoder().decode(T.self, from: data) {
                     handler(.success(json))
-                }else{
+                } else {
                     handler(.failure(.badJSON))
                 }
             }

@@ -15,7 +15,7 @@ public struct URLConfiguration {
     private var strCurrentLocale: String {
         if #available(iOS 16.0, *) {
             return Locale.current.language.languageCode?.identifier ?? ""
-        }else{
+        } else {
             return Locale.current.identifier
         }
     }
@@ -63,7 +63,7 @@ public enum Paths {
     case search(strQuery: String)
     case noPath
     
-    func getString() -> String{
+    func getString() -> String {
         switch self {
         case .trending:
             return "/3/trending/movie/day"

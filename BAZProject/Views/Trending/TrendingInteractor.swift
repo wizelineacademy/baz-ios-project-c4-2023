@@ -31,7 +31,7 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
             case .failure(let error):
                 self?.presenter?.serviceFailed(withError: error)
             case .success(let movies):
-                if let arrResponse = movies.results, arrResponse.count > 0{
+                if let arrResponse = movies.results, arrResponse.count > 0 {
                     self?.updateMovies(with: arrResponse)
                 }
             }
