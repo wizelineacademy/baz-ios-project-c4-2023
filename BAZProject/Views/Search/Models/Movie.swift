@@ -19,13 +19,13 @@ public struct Movie: ImageTextTableViewProtocol {
         self.overview = overview
     }
     
-    public var strTitle: String{
+    public var strTitle: String {
         return title
     }
-    public var strOverView: String{
+    public var strOverView: String? {
         return overview
     }
-    public var urlConfiguration: URLConfiguration {
+    public var urlConfiguration: URLConfiguration? {
         let urlConfiguration = URLConfiguration(strHost: "image.tmdb.org", path: .image(strFile: poster_path))
         return urlConfiguration
     }

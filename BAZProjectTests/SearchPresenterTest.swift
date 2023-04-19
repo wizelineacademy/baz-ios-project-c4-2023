@@ -74,7 +74,7 @@ final class SearchPresenterTest: XCTestCase {
         let firstElement = arrCellInfo?.first as? EmptySearch
         XCTAssertEqual(emptySearch.strTitle, firstElement?.strTitle)
         XCTAssertEqual(emptySearch.strOverView, firstElement?.strOverView)
-        XCTAssertNotNil(emptySearch.urlConfiguration)
+        XCTAssertNil(emptySearch.urlConfiguration)
     }
 }
 

@@ -9,8 +9,8 @@ import UIKit
 
 public protocol ImageTextTableViewProtocol {
     var strTitle: String { get }
-    var strOverView: String { get }
-    var urlConfiguration: URLConfiguration { get }
+    var strOverView: String? { get }
+    var urlConfiguration: URLConfiguration? { get }
 }
 
 class ImageTextTableViewCell: UITableViewCell {
@@ -31,8 +31,9 @@ class ImageTextTableViewCell: UITableViewCell {
     func setInfo(_ info: ImageTextTableViewProtocol) {
         lblTitle.text = info.strTitle
         lblOverView.text = info.strOverView
-        if let url = info.urlConfiguration.configureURL() {
-            downloadTask = imgPoster.loadImage(url: url)
+        if let urlConfiguration = info.urlConfiguration {
+            downloadTask = imgPoster.loadImage(urlConfiguration: urlConfiguration)
         }
+        
     }
 }
