@@ -22,6 +22,7 @@ class TrendingMoviesViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.title = "Trending"
         self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
+        self.bindings()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +38,6 @@ class TrendingMoviesViewController: UIViewController {
         Task {
             do {
                 try await model.getMovies()
-                self.moviesTableView.reloadData()
             } catch {
                 presentError(message: error.localizedDescription)
             }
@@ -56,6 +56,14 @@ class TrendingMoviesViewController: UIViewController {
         let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
+    }
+    
+    private func bindings() {
+        model.bindMovies { [weak self] in
+            DispatchQueue.main.async {
+                self?.moviesTableView.reloadData()
+            }
+        }
     }
 
 }

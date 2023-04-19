@@ -9,27 +9,31 @@ import UIKit
 
 class TrendingMoviesViewModel {
     
-    var movies = [Movie]()
+    var movies = Box([Movie]())
     var remoteData: TrendingMoviesRemoteData
     
     init(movies: [Movie] = [], remoteData: TrendingMoviesRemoteData) {
-        self.movies = movies
+        self.movies.value = movies
         self.remoteData = remoteData
     }
     
+    func bindMovies(_ handler: @escaping () -> Void) {
+        movies.bind(handler)
+    }
+    
     func getMovies() async throws {
-        movies = try await remoteData.getMovies() ?? []
+        movies.value = try await remoteData.getMovies() ?? []
     }
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
         var configuration = UIListContentConfiguration.cell()
-        let movie = movies[row]
+        let movie = movies.value[row]
         configuration.text = movie.title
         return configuration
     }
     
     func getRowCount() -> Int {
-        return movies.count
+        return movies.value.count
     }
     
 }
