@@ -10,6 +10,12 @@
 		10059BD629D602A70012D295 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10059BD529D602A70012D295 /* BAZProjectTests.swift */; };
 		10059C0029D6A8A90012D295 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10059BFF29D6A8A90012D295 /* TrendingViewModel.swift */; };
 		10367A4F29D7629300B27A20 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10367A4E29D7629300B27A20 /* ImageLoader.swift */; };
+		10B1C36D29EF5AE1007D5789 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36829EF5AE1007D5789 /* HomePresenter.swift */; };
+		10B1C36E29EF5AE1007D5789 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36929EF5AE1007D5789 /* HomeRouter.swift */; };
+		10B1C36F29EF5AE1007D5789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36A29EF5AE1007D5789 /* HomeViewController.swift */; };
+		10B1C37029EF5AE1007D5789 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */; };
+		10B1C37129EF5AE1007D5789 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */; };
+		10B1C37429EF8861007D5789 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C37329EF8861007D5789 /* HomeCell.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -37,6 +43,12 @@
 		10059BD529D602A70012D295 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		10059BFF29D6A8A90012D295 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		10367A4E29D7629300B27A20 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		10B1C36829EF5AE1007D5789 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		10B1C36929EF5AE1007D5789 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		10B1C36A29EF5AE1007D5789 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		10B1C37329EF8861007D5789 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +106,27 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		10B1C36729EF5A6C007D5789 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				10B1C37229EF8817007D5789 /* Cell */,
+				10B1C36829EF5AE1007D5789 /* HomePresenter.swift */,
+				10B1C36929EF5AE1007D5789 /* HomeRouter.swift */,
+				10B1C36A29EF5AE1007D5789 /* HomeViewController.swift */,
+				10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */,
+				10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		10B1C37229EF8817007D5789 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10B1C37329EF8861007D5789 /* HomeCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C30893A128A2F42B004B1860 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +150,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				10B1C36729EF5A6C007D5789 /* Home */,
 				10367A4D29D7620D00B27A20 /* Utils */,
 				10059BFE29D6A8540012D295 /* Trending */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
@@ -245,10 +279,16 @@
 				10367A4F29D7629300B27A20 /* ImageLoader.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */,
 				10059C0029D6A8A90012D295 /* TrendingViewModel.swift in Sources */,
+				10B1C37129EF5AE1007D5789 /* HomeInteractor.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				10B1C37029EF5AE1007D5789 /* HomeProtocols.swift in Sources */,
+				10B1C37429EF8861007D5789 /* HomeCell.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				10B1C36F29EF5AE1007D5789 /* HomeViewController.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
+				10B1C36E29EF5AE1007D5789 /* HomeRouter.swift in Sources */,
+				10B1C36D29EF5AE1007D5789 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +494,7 @@
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -486,7 +526,7 @@
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
