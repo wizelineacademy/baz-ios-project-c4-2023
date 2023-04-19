@@ -44,14 +44,24 @@ class TrendingMoviesViewController: UIViewController {
         setView()
         setTableView()
         setSearchBar()
-        loadData()
+        loadInitialData()
     }
     
     // MARK: - ViewModel Calls
-    private func loadData() {
+    private func loadInitialData() {
         Task {
             do {
                 try await model.getMovies()
+            } catch {
+                presentError(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func searchData() {
+        Task {
+            do {
+                try await model.searchMovies(searchBar.text ?? "")
             } catch {
                 presentError(message: error.localizedDescription)
             }
@@ -123,10 +133,11 @@ extension TrendingMoviesViewController: UITableViewDelegate {
 extension TrendingMoviesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        searchData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadInitialData()
         searchBar.resignFirstResponder()
     }
     

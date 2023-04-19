@@ -25,6 +25,10 @@ class TrendingMoviesViewModel {
         movies.value = try await remoteData.getMovies() ?? []
     }
     
+    func searchMovies(_ searchText: String) async throws {
+        movies.value = try await remoteData.searchMovies(searchText) ?? []
+    }
+    
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
         var configuration = UIListContentConfiguration.cell()
         let movie = movies.value[row]
