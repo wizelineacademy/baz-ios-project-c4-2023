@@ -34,14 +34,11 @@ class TrendingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setTableViewContstraints()
+        setTableView()
         loadData()
     }
     
-    private func setView() {
-        view.backgroundColor = .systemBackground
-    }
-    
+    // MARK: - ViewModel Calls
     private func loadData() {
         Task {
             do {
@@ -52,7 +49,20 @@ class TrendingMoviesViewController: UIViewController {
         }
     }
     
-    private func setTableViewContstraints() {
+    private func bindings() {
+        model.bindMovies { [weak self] in
+            DispatchQueue.main.async {
+                self?.moviesTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Visuals
+    private func setView() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func setTableView() {
         view.addSubview(moviesTableView)
         moviesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         moviesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -64,14 +74,6 @@ class TrendingMoviesViewController: UIViewController {
         let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
-    }
-    
-    private func bindings() {
-        model.bindMovies { [weak self] in
-            DispatchQueue.main.async {
-                self?.moviesTableView.reloadData()
-            }
-        }
     }
 
 }
