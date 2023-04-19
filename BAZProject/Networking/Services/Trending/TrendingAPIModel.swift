@@ -9,8 +9,4 @@ import Foundation
 
 struct TrendingAPIModel: Decodable {
     var results: [Movie]
-    
-    private enum CodingKeys: String, CodingKey {
-        case results = "results"
-    }
 }
