@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */; };
 		4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA18D29EF6AB7006BD0EC /* Box.swift */; };
+		4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */; };
 		4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398529D3B1980056041F /* MainTabBarController.swift */; };
 		4B37398C29D4A88B0056041F /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398B29D4A88B0056041F /* RequestHandler.swift */; };
 		4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37398D29D4A9DC0056041F /* RequestHandlerError.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEndpoint.swift; sourceTree = "<group>"; };
 		4B2DA18D29EF6AB7006BD0EC /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
 		4B37398529D3B1980056041F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		4B37398B29D4A88B0056041F /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		4B37398D29D4A9DC0056041F /* RequestHandlerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerError.swift; sourceTree = "<group>"; };
@@ -94,7 +96,6 @@
 		4B09466329DCEC80001CB55F /* Trending */ = {
 			isa = PBXGroup;
 			children = (
-				4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */,
 				4B37399129D4B4550056041F /* TrendingAPIModel.swift */,
 			);
 			path = Trending;
@@ -106,6 +107,15 @@
 				4B2DA18D29EF6AB7006BD0EC /* Box.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4B2DA18F29EF7DC5006BD0EC /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */,
+				4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		4B37398029D395900056041F /* TrendingMoviesModule */ = {
@@ -149,6 +159,7 @@
 		4B37399029D4B3D60056041F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4B2DA18F29EF7DC5006BD0EC /* Endpoints */,
 				4B09466329DCEC80001CB55F /* Trending */,
 			);
 			path = Services;
@@ -345,6 +356,7 @@
 			files = (
 				C30893C428A2F845004B1860 /* TrendingMoviesViewController.swift in Sources */,
 				4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */,
+				4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */,
 				4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */,
