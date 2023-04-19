@@ -12,6 +12,8 @@ class TrendingMoviesViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
         return tableView
     }()
 
@@ -31,10 +33,16 @@ class TrendingMoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
         setTableViewContstraints()
-        moviesTableView.delegate = self
-        moviesTableView.dataSource = self
+        loadData()
+    }
+    
+    private func setView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func loadData() {
         Task {
             do {
                 try await model.getMovies()
