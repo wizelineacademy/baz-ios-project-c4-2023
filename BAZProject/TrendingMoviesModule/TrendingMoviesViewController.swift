@@ -19,9 +19,9 @@ class TrendingMoviesViewController: UIViewController {
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.showsCancelButton = true
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self
+        searchBar.searchTextField.delegate = self
         return searchBar
     }()
 
@@ -130,7 +130,11 @@ extension TrendingMoviesViewController: UITableViewDelegate {
 
 }
 
-extension TrendingMoviesViewController: UISearchBarDelegate {
+extension TrendingMoviesViewController: UISearchBarDelegate, UISearchTextFieldDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchData()
@@ -138,7 +142,14 @@ extension TrendingMoviesViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadInitialData()
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
         searchBar.resignFirstResponder()
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        loadInitialData()
+        return true
     }
     
 }
