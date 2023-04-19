@@ -8,14 +8,21 @@
 import Foundation
 
 class MoviesInteractor {
+    
     // MARK: - Properties
     weak var presenter  : MoviesInteractorOutputProtocol?
-    var movieApi        = MovieAPI(session: URLSession.shared)
+    var movieApi        : Service
+    
+    init(movieApi: Service) {
+        self.movieApi = movieApi
+    }
+    
 }
+// MARK: Extension
 extension MoviesInteractor: MoviesInteractorInputProtocol{
     
     func consultServiceSearch(with word: String) {
-        movieApi.getMovies(.searchMovie(word)){ [weak self] (result: Result< MoviesSearchResult, Error>) in
+        movieApi.getMovies(OptionMovie.searchMovie(word).request){ [weak self] (result: Result< MoviesSearchResult, Error>) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let moviesReponse):

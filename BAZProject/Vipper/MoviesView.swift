@@ -48,6 +48,7 @@ class MoviesView: UIViewController{
     }
     
 }
+//MARK: - Delegate UISearchBar
 extension MoviesView: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -59,6 +60,7 @@ extension MoviesView: UISearchBarDelegate{
     }
     
 }
+//MARK: - Delegate TableView
 extension MoviesView: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {

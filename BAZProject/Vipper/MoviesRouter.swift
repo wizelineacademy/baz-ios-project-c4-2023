@@ -10,12 +10,14 @@ import UIKit
 
 class MoviesRouter: MoviesRouterProtocol{
     
+    // MARK: Properties
     weak var view: MoviesView?
     
     //MARK: Functions
     static func createModule() -> MoviesView {
+        let movieApi = MovieAPI(session: URLSession.shared)
         let view        = MoviesView()
-        let interactor  = MoviesInteractor()
+        let interactor  = MoviesInteractor(movieApi: movieApi)
         let router      = MoviesRouter()
         
         let presenter = MoviesPresenter(view: view, interactor: interactor, router: router)
@@ -25,10 +27,8 @@ class MoviesRouter: MoviesRouterProtocol{
         return view
     }
     
-    func presentAlert(_ alert: UIAlertController, from view: MoviesViewInputProtocol) {
-        if let view = view as? MoviesView{
-            view.present(alert, animated: true)
-        }
+    func presentAlert(_ alert: UIAlertController) {
+        view?.present(alert, animated: true)
     }
     
 }

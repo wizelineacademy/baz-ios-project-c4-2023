@@ -9,6 +9,7 @@ import Foundation
 
 class MoviesPresenter {
     
+    // MARK: Properties
     weak var view       : MoviesViewInputProtocol?
     var interactor      : MoviesInteractorInputProtocol
     var router          : MoviesRouterProtocol
@@ -37,9 +38,7 @@ extension MoviesPresenter: MoviesInteractorOutputProtocol{
     }
     
     func setError() {
-        if let view = view{
-            router.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"), from: view)
-        }
+        router.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"))
     }
     
 }

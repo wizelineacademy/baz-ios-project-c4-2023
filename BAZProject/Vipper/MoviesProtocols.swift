@@ -35,7 +35,7 @@ protocol MoviesRouterProtocol {
     
     var view        : MoviesView? { get }
     
-    func presentAlert(_ alert : UIAlertController, from view: MoviesViewInputProtocol)
+    func presentAlert(_ alert : UIAlertController)
     
 }
 

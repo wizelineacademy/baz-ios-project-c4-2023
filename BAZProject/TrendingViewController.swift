@@ -15,7 +15,7 @@ final class TrendingViewController: UITableViewController, Storyboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        callServiceMovieAPI(optionFilter: .getMovieDay)
+        callServiceMovieAPI(request: OptionMovie.getMovieDay.request)
     }
     
     /**
@@ -25,8 +25,8 @@ final class TrendingViewController: UITableViewController, Storyboard {
        - success: return The type of the value to decode from the supplied JSON object.
        - error: returns the service error.
     */
-    private func callServiceMovieAPI(optionFilter : OptionMovie){
-        movieApi?.getMovies(optionFilter){ [weak self] (result: Result< MoviesResult, Error>) in
+    private func callServiceMovieAPI(request : URLRequest){
+        movieApi?.getMovies(request){ [weak self] (result: Result< MoviesResult, Error>) in
             switch result {
             case .success(let moviesReponse):
                 self?.movies.removeAll()
@@ -58,29 +58,23 @@ final class TrendingViewController: UITableViewController, Storyboard {
     
     // btnAction - options with the different search filters
     func setup(){
-        var optionsItems: [UIAction]{
-            return [ UIAction(title: "Treanding", handler: { [weak self] _ in
-                self?.callServiceMovieAPI(optionFilter: .getMovieDay)
-                self?.setNavTitle(with: "Treanding")
-            }),
-                     UIAction(title: "Now Playing", handler: { [weak self] _ in
-                self?.callServiceMovieAPI(optionFilter: .getNowPlaying)
-                self?.setNavTitle(with: "Now Playing")
-            }),
-                     UIAction(title: "Popular", handler: { [weak self] _ in
-                self?.callServiceMovieAPI(optionFilter: .getPopular)
-                self?.setNavTitle(with: "Popular")
-            }),
-                     UIAction(title: "Top Rated", handler: { [weak self] _ in
-                self?.callServiceMovieAPI(optionFilter: .getTopRated)
-                self?.setNavTitle(with: "Top Rated")
-            }),
-                     UIAction(title: "Upcoming", handler: { [weak self] _ in
-                self?.callServiceMovieAPI(optionFilter: .getUpcoming)
-                self?.setNavTitle(with: "Upcoming")
-            })]
+        let categories: [(String, OptionMovie)] = [
+            ("Trending",.getMovieDay),
+            ("Now Playing",.getNowPlaying),
+            ("Popular",.getPopular),
+            ("Top Rated", .getTopRated),
+            ("Upcoming", .getUpcoming)]
+        let optionsItems: [UIAction] = categories.map {
+            self.createUIAction(with: $0.0, option: $0.1)
         }
         btnOptionsFilterMovies.menu = UIMenu(title: "Selecciona una opción", children: optionsItems)
+    }
+    
+    private func createUIAction(with title: String, option: OptionMovie) -> UIAction{
+        return UIAction(title: title, handler: { [weak self] _ in
+            self?.callServiceMovieAPI(request: option.request)
+            self?.setNavTitle(with: title)
+        })
     }
     
 }
@@ -110,12 +104,4 @@ extension TrendingViewController {
         }
         cell.contentConfiguration = config
     }
-}
-
-enum OptionsFilterMovies {
-    case trending
-    case nowPlaying
-    case popular
-    case topRated
-    case upcoming
 }
