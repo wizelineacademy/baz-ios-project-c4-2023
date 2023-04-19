@@ -16,6 +16,13 @@ class TrendingMoviesViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
+    
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.delegate = self
+        return searchBar
+    }()
 
     var model: TrendingMoviesViewModel
     
@@ -70,6 +77,10 @@ class TrendingMoviesViewController: UIViewController {
         moviesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
     }
     
+    private func setSearchBar() {
+        navigationItem.titleView = searchBar
+    }
+    
     private func presentError(message: String) {
         let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
@@ -105,4 +116,11 @@ extension TrendingMoviesViewController: UITableViewDelegate {
         cell.contentConfiguration = config
     }
 
+}
+
+extension TrendingMoviesViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
 }
