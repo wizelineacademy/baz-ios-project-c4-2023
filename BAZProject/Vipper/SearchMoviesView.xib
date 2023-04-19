@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesView" customModule="BAZProject" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchMoviesView" customModule="BAZProject" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="DVR-01-sBP" id="yfy-dm-5Vl"/>
                 <outlet property="tblSearch" destination="4hK-xF-kHW" id="VTJ-Mz-9Wf"/>

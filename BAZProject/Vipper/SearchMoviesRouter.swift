@@ -1,5 +1,5 @@
 //
-//  MoviesRouter.swift
+//  SearchMoviesRouter.swift
 //  BAZProject
 //
 //  Created by nmorenoa on 14/04/23.
@@ -8,19 +8,19 @@
 import Foundation
 import UIKit
 
-class MoviesRouter: MoviesRouterProtocol{
+class SearchMoviesRouter: SearchMoviesRouterProtocol{
     
     // MARK: Properties
-    weak var view: MoviesView?
+    weak var view: SearchMoviesView?
     
     //MARK: Functions
-    static func createModule() -> MoviesView {
+    static func createModule() -> SearchMoviesView {
         let movieApi = MovieAPI(session: URLSession.shared)
-        let view        = MoviesView()
-        let interactor  = MoviesInteractor(movieApi: movieApi)
-        let router      = MoviesRouter()
+        let view        = SearchMoviesView()
+        let interactor  = SearchMoviesInteractor(movieApi: movieApi)
+        let router      = SearchMoviesRouter()
         
-        let presenter = MoviesPresenter(view: view, interactor: interactor, router: router)
+        let presenter = SearchMoviesPresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter
         interactor.presenter = presenter
         router.view = view

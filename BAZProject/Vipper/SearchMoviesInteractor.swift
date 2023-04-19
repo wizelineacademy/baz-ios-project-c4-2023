@@ -1,5 +1,5 @@
 //
-//  MoviesInteractor.swift
+//  SearchMoviesInteractor.swift
 //  BAZProject
 //
 //  Created by nmorenoa on 14/04/23.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-class MoviesInteractor {
+class SearchMoviesInteractor {
     
     // MARK: - Properties
-    weak var presenter  : MoviesInteractorOutputProtocol?
+    weak var presenter  : SearchMoviesInteractorOutputProtocol?
     var movieApi        : Service
     
     init(movieApi: Service) {
@@ -19,7 +19,7 @@ class MoviesInteractor {
     
 }
 // MARK: Extension
-extension MoviesInteractor: MoviesInteractorInputProtocol{
+extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
     
     func consultServiceSearch(with word: String) {
         movieApi.getMovies(OptionMovie.searchMovie(word).request){ [weak self] (result: Result< MoviesSearchResult, Error>) in

@@ -1,5 +1,5 @@
 //
-//  MoviesPresenter.swift
+//  SearchMoviesPresenter.swift
 //  BAZProject
 //
 //  Created by nmorenoa on 14/04/23.
@@ -7,16 +7,16 @@
 
 import Foundation
 
-class MoviesPresenter {
+class SearchMoviesPresenter {
     
     // MARK: Properties
-    weak var view       : MoviesViewInputProtocol?
-    var interactor      : MoviesInteractorInputProtocol
-    var router          : MoviesRouterProtocol
+    weak var view       : SearchMoviesViewInputProtocol?
+    var interactor      : SearchMoviesInteractorInputProtocol
+    var router          : SearchMoviesRouterProtocol
     
-    init(view: MoviesViewInputProtocol,
-         interactor: MoviesInteractorInputProtocol,
-         router: MoviesRouterProtocol) {
+    init(view: SearchMoviesViewInputProtocol,
+         interactor: SearchMoviesInteractorInputProtocol,
+         router: SearchMoviesRouterProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -24,14 +24,14 @@ class MoviesPresenter {
     
 }
 // MARK: Extension
-extension MoviesPresenter: MoviesViewOutputProtocol{
+extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol{
     
     func searchMoview(with word: String) {
         interactor.consultServiceSearch(with: word)
     }
     
 }
-extension MoviesPresenter: MoviesInteractorOutputProtocol{
+extension SearchMoviesPresenter: SearchMoviesInteractorOutputProtocol{
     
     func setResponseMovies(with moviesData: [MovieData]) {
         view?.showResultMovies(with: moviesData)

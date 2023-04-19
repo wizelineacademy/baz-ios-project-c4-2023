@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-class MoviesView: UIViewController{
+class SearchMoviesView: UIViewController{
     
     @IBOutlet weak var tblSearch: UITableView!{
         didSet{
@@ -20,7 +20,7 @@ class MoviesView: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Properties
-    var presenter           : MoviesViewOutputProtocol?
+    var presenter           : SearchMoviesViewOutputProtocol?
     var movies              : [MovieData] = []
     
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class MoviesView: UIViewController{
     
 }
 //MARK: - Delegate UISearchBar
-extension MoviesView: UISearchBarDelegate{
+extension SearchMoviesView: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
@@ -61,7 +61,7 @@ extension MoviesView: UISearchBarDelegate{
     
 }
 //MARK: - Delegate TableView
-extension MoviesView: UITableViewDelegate, UITableViewDataSource{
+extension SearchMoviesView: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -84,7 +84,7 @@ extension MoviesView: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
-extension MoviesView: MoviesViewInputProtocol{
+extension SearchMoviesView: SearchMoviesViewInputProtocol{
     func showResultMovies(with moviesData: [MovieData]) {
         self.movies.removeAll()
         self.movies = moviesData

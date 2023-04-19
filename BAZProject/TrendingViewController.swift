@@ -52,7 +52,7 @@ final class TrendingViewController: UITableViewController, Storyboard {
 
     // btnAction - send you the next 'search view'
     @IBAction func searchMovie(_ sender: Any) {
-        let viewController = MoviesRouter.createModule()
+        let viewController = SearchMoviesRouter.createModule()
         navigationController?.pushViewController(viewController, animated: true)
     }
     
