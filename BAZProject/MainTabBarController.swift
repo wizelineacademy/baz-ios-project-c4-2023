@@ -9,11 +9,14 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    static func getInstance() -> MainTabBarController {
-        let tabBarVC = MainTabBarController()
+    override func viewDidLoad() {
+        let trendingTab = getTrendingTab()
+        setViewControllers([trendingTab], animated: false)
+    }
+    
+    private func getTrendingTab() -> UIViewController {
         let trendingMoviesModel = TrendingMoviesViewModel(remoteData: TrendingMoviesRemoteData())
-        tabBarVC.setViewControllers([TrendingMoviesViewController(model: trendingMoviesModel)], animated: true)
-        return tabBarVC
+        return UINavigationController(rootViewController: TrendingMoviesViewController(model: trendingMoviesModel))
     }
 
 }
