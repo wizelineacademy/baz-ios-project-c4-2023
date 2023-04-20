@@ -8,6 +8,7 @@
 import Foundation
 
 enum RequestHandlerError: LocalizedError, Equatable {
+    
     case requestBuilder, badResponse
     
     var errorDescription: String? {
@@ -16,4 +17,5 @@ enum RequestHandlerError: LocalizedError, Equatable {
         case .badResponse: return NSLocalizedString("HTTP Unexpected Response", comment: "")
         }
     }
+    
 }

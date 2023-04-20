@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         let trendingTab = getTrendingTab()
         setViewControllers([trendingTab], animated: false)
@@ -17,4 +18,5 @@ class MainTabBarController: UITabBarController {
         let trendingMoviesModel = TrendingMoviesViewModel(remoteData: TrendingMoviesRemoteData())
         return UINavigationController(rootViewController: TrendingMoviesViewController(viewModel: trendingMoviesModel))
     }
+    
 }

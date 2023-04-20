@@ -8,6 +8,7 @@
 import UIKit
 
 class TrendingMoviesViewModel {
+    
     var movies = Box([Movie]())
     var error: Box<Error> = Box(nil)
     var remoteData: TrendingMoviesRemoteData
@@ -60,4 +61,5 @@ class TrendingMoviesViewModel {
     func getRowCount() -> Int {
         return movies.value?.count ?? 0
     }
+    
 }

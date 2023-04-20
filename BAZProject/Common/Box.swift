@@ -8,6 +8,7 @@
 import Foundation
 
 struct Box<T> {
+    
     private var listener: (() -> Void)?
 
     var value: T? {
@@ -24,4 +25,5 @@ struct Box<T> {
         self.listener = listener
         self.listener?()
     }
+    
 }

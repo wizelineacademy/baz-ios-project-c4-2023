@@ -8,25 +8,32 @@
 import Foundation
  
 protocol RequestSessionProtocol {
+    
     func customData(for request: URLRequest) async throws -> (Data, URLResponse)
+    
 }
 
 extension URLSession: RequestSessionProtocol {
+    
     func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
         return try await data(for: request)
     }
+    
 }
 
 protocol EndpointProtocol {
+    
     var path: String { get }
     var scheme: String? { get }
     var host: String? { get }
     var key: String? { get }
     var queries: [URLQueryItem]? { get set }
     func getRequest() -> URLRequest?
+    
 }
 
 extension EndpointProtocol {
+    
     var scheme: String? { return "https" }
     var host: String? { return "api.themoviedb.org" }
     var key: String? { return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" }
@@ -49,4 +56,5 @@ extension EndpointProtocol {
         guard let url = components.url else { return nil }
         return URLRequest(url: url)
     }
+    
 }
