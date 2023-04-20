@@ -27,7 +27,7 @@ protocol EndpointProtocol {
     var scheme: String? { get }
     var host: String? { get }
     var key: String? { get }
-    var queries: [URLQueryItem]? { get set }
+    var queries: [URLQueryItem]? { get }
     func getRequest() -> URLRequest?
     
 }
