@@ -27,7 +27,6 @@ protocol EndpointProtocol {
 }
 
 extension EndpointProtocol {
-    
     var scheme: String? { return "https" }
     var host: String? { return "api.themoviedb.org" }
     var key: String? { return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" }
@@ -50,11 +49,4 @@ extension EndpointProtocol {
         guard let url = components.url else { return nil }
         return URLRequest(url: url)
     }
-
 }
-
-protocol DataTaskProtocol {
-    func resume()
-}
-
-extension URLSessionDataTask: DataTaskProtocol {}

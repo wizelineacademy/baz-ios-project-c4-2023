@@ -8,7 +8,6 @@
 import Foundation
 
 class RequestHandler {
-    
     var urlSession: RequestSessionProtocol
     
     init(withSession urlSessions: RequestSessionProtocol) {
@@ -21,5 +20,4 @@ class RequestHandler {
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw RequestHandlerError.badResponse }
         return data
     }
-    
 }
