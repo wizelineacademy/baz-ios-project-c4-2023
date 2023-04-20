@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrendingLocalDataManager:TrendingLocalDataManagerInputProtocol {
-    
-    
-}
+//class TrendingLocalDataManager:TrendingLocalDataManagerInputProtocol {
+//    
+//    
+//}

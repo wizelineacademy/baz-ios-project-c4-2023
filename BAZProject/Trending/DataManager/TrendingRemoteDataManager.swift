@@ -12,7 +12,7 @@ class TrendingRemoteDataManager:TrendingRemoteDataManagerInputProtocol {
     
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol?
     
-    func getMovies(completion handler: @escaping ([Movie]) -> Void) {
+    func getMovies() {
         let session = URLSession.shared
         let coordinator = GeneralTaskCoordinator(session: session)
         coordinator.urlPath = "trending/movie/day"
@@ -20,9 +20,9 @@ class TrendingRemoteDataManager:TrendingRemoteDataManagerInputProtocol {
         coordinator.get{(result: Result<TrendingMovieResult, Error>) in
             switch result {
                 case .success(let trendingMovies):
-                    handler(trendingMovies.results)
+                    self.remoteRequestHandler?.handleGetMovies(trendingMovies.results)
                 case .failure(let error):
-                    print(error.localizedDescription.description)
+                    self.remoteRequestHandler?.handleGetErrorServiceMovies(error)
             }
         }
     }

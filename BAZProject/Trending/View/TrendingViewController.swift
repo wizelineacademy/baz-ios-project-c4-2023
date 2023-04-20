@@ -10,25 +10,21 @@ import UIKit
 class TrendingViewController: UITableViewController {
     
     var presenter: TrendingPresenterProtocol?
-        
-    var movies: [Movie] = []
-    var movieDataProvider: MovieDataProvider?
+    var entity: TrendingEntity?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshDetail()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
-        // Inicializa la clase MovieApi como el proveedor de datos por defecto
-        self.movieDataProvider = MovieApi()
-        // Obtiene la lista de películas usando el proveedor de datos
-        self.movieDataProvider?.getMovies { movies in
-            self.movies = movies
-                   
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
         
+    }
+    
+    func refreshDetail(){
+        presenter?.willFetchMovies()
     }
 
 }
@@ -38,7 +34,7 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        entity?.result?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +54,7 @@ extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
+        config.text = entity?.result?[indexPath.row].title
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
     }
@@ -70,4 +66,19 @@ extension TrendingViewController: TrendingViewProtocol {
     func setNavigationTitle(for strTitle: String?){
         navigationItem.title = strTitle
     }
+    
+    func updateData(with result: [Movie]) {
+        self.entity?.result = result
+    }
+    
+    func updataView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func registrerCell(){
+        tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
+    }
+    
 }

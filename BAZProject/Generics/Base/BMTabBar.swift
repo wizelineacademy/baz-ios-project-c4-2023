@@ -9,7 +9,7 @@ import UIKit
 
 class BMTabBar: UITabBarController {
 
-    let Trending = UINavigationController(rootViewController: TrendingViewController())
+    let Trending = UINavigationController(rootViewController: TrendingRouter.createTrendingModule(entity: TrendingEntity(strNavBarTitle: "Trending")))
     let Search = UINavigationController(rootViewController: SearchRouter.createSearchModule(withEntity: SearchEntity(strNavBarTitle: "Search")))
     var arrViews: [UIViewController] =  []
     

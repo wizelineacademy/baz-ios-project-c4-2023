@@ -11,21 +11,22 @@ import UIKit
 
 class TrendingRouter: TrendingRouterProtocol {
 
-    class func createTrendingModule() -> UIViewController {
+    class func createTrendingModule(entity: TrendingEntity) -> UIViewController {
         let view = TrendingViewController()
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
         let interactor: TrendingInteractorInputProtocol & TrendingRemoteDataManagerOutputProtocol = TrendingInteractor()
-        let localDataManager: TrendingLocalDataManagerInputProtocol = TrendingLocalDataManager()
+//        let localDataManager: TrendingLocalDataManagerInputProtocol = TrendingLocalDataManager()
         let remoteDataManager: TrendingRemoteDataManagerInputProtocol = TrendingRemoteDataManager()
-        let entity: TrendingEntity = TrendingEntity()
+        let entity: TrendingEntity = entity
         let router: TrendingRouterProtocol = TrendingRouter()
         
         view.presenter = presenter
+        view.entity = entity
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor
         interactor.presenter = presenter
-        interactor.localDatamanager = localDataManager
+//        interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
         interactor.entity = entity
         remoteDataManager.remoteRequestHandler = interactor

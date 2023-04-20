@@ -19,12 +19,27 @@ class TrendingPresenter  {
 }
 
 extension TrendingPresenter: TrendingPresenterProtocol {
+    
     // TODO: implement presenter methods
     func viewDidLoad() {
         view?.setNavigationTitle(for: interactor?.getNavTitle())
+        view?.registrerCell()
+    }
+    
+    func willFetchMovies() {
+        interactor?.fetchMovies()
     }
 }
 
 extension TrendingPresenter: TrendingInteractorOutputProtocol {
+    func onReceivedMovies(_ result: [Movie]) {
+        self.view?.updateData(with: result)
+        self.view?.updataView()
+    }
+    
+    func showMoviesError(_ error: Error) {
+        print(error)
+    }
+    
     // TODO: implement interactor output methods
 }
