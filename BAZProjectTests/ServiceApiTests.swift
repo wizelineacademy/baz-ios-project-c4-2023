@@ -33,13 +33,7 @@ final class ServiceApiTests: XCTestCase {
         let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(let failure):
-                self?.errorType = failure
-            }
-            self?.exp?.fulfill()
+            self?.handleService(result)
         }
         //Then
         waitForExpectations(timeout: 1.0)
@@ -54,13 +48,7 @@ final class ServiceApiTests: XCTestCase {
         let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
-            switch result {
-            case .success(_):
-                break
-            case .failure(let failure):
-                self?.errorType = failure
-            }
-            self?.exp?.fulfill()
+            self?.handleService(result)
         }
         //Then
         waitForExpectations(timeout: 1.0)
@@ -73,17 +61,21 @@ final class ServiceApiTests: XCTestCase {
         let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
-            switch result {
-            case .success(let result):
-                self?.result = result
-            case .failure(_):
-                break
-            }
-            self?.exp?.fulfill()
+            self?.handleService(result)
         }
         //Then
         waitForExpectations(timeout: 2.5)
         XCTAssertNotNil(result)
+    }
+    
+    private func handleService(_ result: Result<MovieService, ErrorApi>) {
+        switch result {
+        case .success(let result):
+            self.result = result
+        case .failure(let failure):
+            errorType = failure
+        }
+        exp?.fulfill()
     }
     
 }

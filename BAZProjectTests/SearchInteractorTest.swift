@@ -81,13 +81,13 @@ final class SearchInteractorTest: XCTestCase {
     
     func testServiceRespondButResultsWereEmpty() {
         //Given
-        let expectedError: SearchEnumError = .noResultsFound
         mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "jaklfakdja")
         //Then
-        XCTAssertEqual(expectedError.getString(), searchError?.getString())
+        XCTAssertTrue(arrResults?.isEmpty ?? false)
+        
     }
 }
 

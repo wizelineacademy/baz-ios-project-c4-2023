@@ -37,28 +37,27 @@ extension SearchInteractor: SearchBusinessLogic {
     
     private func searchMovies(withParams strParams: String) {
         networkingSearch?.updatePath(with: .search(strQuery: strParams))
-        networkingSearch?.search(withCompletionHandler: {[weak self] (result: Result<MovieService, ErrorApi>)  in
-            switch result{
+        networkingSearch?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>)  in
+            switch result {
             case .success(let response):
-                if let arrResponseMovies = response.results, arrResponseMovies.count > 0 {
-                    self?.fillArrMovies(withResponse: arrResponseMovies)
-                }else{
-                    self?.presenter?.search(FailedWith: .noResultsFound)
-                }
-            case .failure(_):
+                self?.fillArrMovies(withResponse: response.results)
+            case .failure:
                 self?.presenter?.search(FailedWith: .serviceProblem)
             }
         })
     }
     
-    private func fillArrMovies(withResponse arrResponse: [MovieDetailService]) {
+    private func fillArrMovies(withResponse arrResponse: [MovieDetailService]?) {
         arrMovies = nil
         arrMovies = [Movie]()
-        for response in arrResponse {
-            if let movie = response.convertToMovieApp() {
-                arrMovies?.append(movie)
+        if let arrResponse = arrResponse, !arrResponse.isEmpty {
+            for response in arrResponse {
+                if let movie = response.convertToMovieApp() {
+                    arrMovies?.append(movie)
+                }
             }
         }
+        
         
         presenter?.searchDidBrougntResults(in: arrMovies ?? [Movie]())
     }

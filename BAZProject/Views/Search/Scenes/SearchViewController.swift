@@ -24,9 +24,10 @@ public class SearchViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var txfSearch: UITextField!{
+    @IBOutlet public weak var txfSearch: UITextField!{
         didSet{
             txfSearch.placeholder = NSLocalizedString("Search by movie or artist", comment: "Search by movie or artist")
+            txfSearch.delegate = self
         }
     }
     @IBOutlet public weak var lblErrorMessage: UILabel! {
@@ -48,6 +49,7 @@ public class SearchViewController: UIViewController {
     }
     
     @IBAction func buttonSearchTapped(_ sender: Any) {
+        txfSearch.resignFirstResponder()
         interactor?.search(withParams: txfSearch.text)
     }
     
@@ -83,5 +85,17 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        placeInLabel(message: "")
+        return true
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        buttonSearchTapped(textField)
+        return true
     }
 }

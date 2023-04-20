@@ -50,7 +50,7 @@ final class SearchPresenterTest: XCTestCase {
         //Given
         let emptySearch = EmptySearch()
         //When
-        sut?.search(FailedWith: .noResultsFound)
+        sut?.searchDidBrougntResults(in: [Movie]())
         //Then
         let firstElement = arrCellInfo?.first as? EmptySearch
         XCTAssertEqual(emptySearch.strTitle, firstElement?.strTitle)
@@ -69,7 +69,7 @@ final class SearchPresenterTest: XCTestCase {
         //Given
         let emptySearch = EmptySearch()
         //When
-        sut?.search(FailedWith: .noResultsFound)
+        sut?.searchDidBrougntResults(in: [Movie]())
         //Then
         let firstElement = arrCellInfo?.first as? EmptySearch
         XCTAssertEqual(emptySearch.strTitle, firstElement?.strTitle)

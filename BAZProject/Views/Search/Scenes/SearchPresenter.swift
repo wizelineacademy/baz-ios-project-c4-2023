@@ -24,16 +24,14 @@ public class SearchPresenter {
 
 extension SearchPresenter: SearchPresentationLogic {
     public func search(FailedWith error: SearchEnumError) {
-        if error == .noResultsFound {
-            searchDidBrougntResults(in: [EmptySearch()])
-        }else {
-            view?.placeInLabel(message: error.getString())
-        }
+        view?.placeInLabel(message: error.getString())
         
     }
     
     public func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol]) {
         view?.placeInLabel(message: "")
-        view?.showResults(in: arrResults)
+        
+        view?.showResults(in: arrResults.isEmpty ? [EmptySearch()] : arrResults)
+        
     }
 }
