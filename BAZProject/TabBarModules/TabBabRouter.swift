@@ -12,10 +12,10 @@ class MainTabBarRouter {
     class func createMainTabBarModule() -> UITabBarController {
         let mainTabBar = UITabBarController()
         let trendingView = TrendingRouter.createTrendingModule()
-        let recentView = RecentWireFrame.createRecentModule()
+        let recentView = RecentRouter.createRecentModule()
         let topRatedView = TopRatedRouter.createTopRatedModule()
         let searchingView = SearchRouter.createSearchModule()
-        let upcomingView = UpcomingWireFrame.createUpcomingModule()
+        let upcomingView = UpcomingRouter.createUpcomingModule()
         mainTabBar.viewControllers = [trendingView, recentView, upcomingView, topRatedView, searchingView,]
         return mainTabBar
     }

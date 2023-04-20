@@ -215,13 +215,13 @@
 		8C8C68C229E606CD00936CE2 /* UpcomingModule */ = {
 			isa = PBXGroup;
 			children = (
-				8C8C68C329E606E700936CE2 /* UpcomingPresenter.swift */,
-				8C8C68C429E606E700936CE2 /* UpcomingLocalDataManager.swift */,
-				8C8C68C529E606E700936CE2 /* UpcomingProtocols.swift */,
-				8C8C68C629E606E700936CE2 /* UpcomingInteractor.swift */,
 				8C8C68C729E606E700936CE2 /* UpcomingView.swift */,
-				8C8C68C829E606E700936CE2 /* UpcomingRemoteDataManager.swift */,
+				8C8C68C629E606E700936CE2 /* UpcomingInteractor.swift */,
+				8C8C68C329E606E700936CE2 /* UpcomingPresenter.swift */,
 				8C8C68C929E606E700936CE2 /* UpcomingWireFrame.swift */,
+				8C8C68C529E606E700936CE2 /* UpcomingProtocols.swift */,
+				8C8C68C829E606E700936CE2 /* UpcomingRemoteDataManager.swift */,
+				8C8C68C429E606E700936CE2 /* UpcomingLocalDataManager.swift */,
 			);
 			path = UpcomingModule;
 			sourceTree = "<group>";

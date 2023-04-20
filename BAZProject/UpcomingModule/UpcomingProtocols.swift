@@ -6,32 +6,37 @@
 //  
 //
 
-import Foundation
+
 import UIKit
 
 protocol UpcomingViewProtocol: AnyObject {
     var presenter: UpcomingPresenterProtocol? { get set }
+    
+    func reloadData()
 }
 
-protocol UpcomingWireFrameProtocol: AnyObject {
+protocol UpcomingRouterProtocol: AnyObject {
     static func createUpcomingModule() -> UIViewController
 }
 
 protocol UpcomingPresenterProtocol: AnyObject {
     var view: UpcomingViewProtocol? { get set }
     var interactor: UpcomingInteractorInputProtocol? { get set }
-    var wireFrame: UpcomingWireFrameProtocol? { get set }
+    var router: UpcomingRouterProtocol? { get set }
+    var movies: [Movie]? { get set }
     
-    func viewDidLoad()
+    func notifyViewLoaded()
 }
 
 protocol UpcomingInteractorOutputProtocol: AnyObject {
+    func moviesFetched(movies: [Movie])
 }
 
 protocol UpcomingInteractorInputProtocol: AnyObject {
     var presenter: UpcomingInteractorOutputProtocol? { get set }
-    var localDatamanager: UpcomingLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: UpcomingRemoteDataManagerInputProtocol? { get set }
+    
+    func fetchMovies()
 }
 
 protocol UpcomingDataManagerInputProtocol: AnyObject {
@@ -39,10 +44,10 @@ protocol UpcomingDataManagerInputProtocol: AnyObject {
 
 protocol UpcomingRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: UpcomingRemoteDataManagerOutputProtocol? { get set }
+    
+    func fetchMovies()
 }
 
 protocol UpcomingRemoteDataManagerOutputProtocol: AnyObject {
-}
-
-protocol UpcomingLocalDataManagerInputProtocol: AnyObject {
+    func moviesFetched(_ movies: [Movie])
 }

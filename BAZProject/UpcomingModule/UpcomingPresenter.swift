@@ -6,23 +6,27 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 class UpcomingPresenter  {
     
     // MARK: Properties
     weak var view: UpcomingViewProtocol?
     var interactor: UpcomingInteractorInputProtocol?
-    var wireFrame: UpcomingWireFrameProtocol?
+    var router: UpcomingRouterProtocol?
+    var movies: [Movie]?
     
 }
 
 extension UpcomingPresenter: UpcomingPresenterProtocol {
-    // TODO: implement presenter methods
-    func viewDidLoad() {
+    func notifyViewLoaded() {
+        self.interactor?.fetchMovies()
     }
 }
 
 extension UpcomingPresenter: UpcomingInteractorOutputProtocol {
-    // TODO: implement interactor output methods
+    func moviesFetched(movies: [Movie]) {
+        self.movies = movies
+        self.view?.reloadData()
+    }
 }

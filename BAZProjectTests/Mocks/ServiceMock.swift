@@ -6,18 +6,18 @@
 //
 
 import Foundation
-
 @testable import BAZProject
 
-final class ServiceMock: Service {
-    var session: URLSessionProtocols
+final class ServiceMock: ServiceProtocol {
     
-    init(sessionMock: URLSessionProtocols) {
+    var session: URLSessionProtocol
+    
+    init(sessionMock: URLSessionProtocol) {
         self.session = sessionMock
     }
     
-    func getMovies(_ endpoint: Endpoint, callback: @escaping (Result<[Movie], Error>) -> Void) {
-        MovieAPI(session: session).getMovies(endpoint, callback: callback)
+    func get<T>(_ endpoint: URL, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+        ServiceAPI(session: session).get(endpoint, callback: callback)
     }
     
 }

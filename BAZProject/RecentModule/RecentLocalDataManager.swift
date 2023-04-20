@@ -8,7 +8,3 @@
 
 import Foundation
 
-class RecentLocalDataManager:RecentLocalDataManagerInputProtocol {
-    
-    
-}

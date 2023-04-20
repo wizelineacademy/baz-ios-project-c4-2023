@@ -5,33 +5,36 @@
 //  Created by Ricardo Omar Martinez Nava on 11/04/23.
 //  
 //
-
-import Foundation
 import UIKit
 
 protocol RecentViewProtocol: AnyObject {
     var presenter: RecentPresenterProtocol? { get set }
+    
+    func reloadData()
 }
 
-protocol RecentWireFrameProtocol: AnyObject {
+protocol RecentRouterProtocol: AnyObject {
     static func createRecentModule() -> UIViewController
 }
 
 protocol RecentPresenterProtocol: AnyObject {
     var view: RecentViewProtocol? { get set }
     var interactor: RecentInteractorInputProtocol? { get set }
-    var wireFrame: RecentWireFrameProtocol? { get set }
+    var router: RecentRouterProtocol? { get set }
+    var movies: [Movie]? { get set }
     
-    func viewDidLoad()
+    func notifyViewLoaded()
 }
 
 protocol RecentInteractorOutputProtocol: AnyObject {
+    func moviesFetched(movies: [Movie])
 }
 
 protocol RecentInteractorInputProtocol: AnyObject {
     var presenter: RecentInteractorOutputProtocol? { get set }
-    var localDatamanager: RecentLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: RecentRemoteDataManagerInputProtocol? { get set }
+    
+    func fetchMovies()
 }
 
 protocol RecentDataManagerInputProtocol: AnyObject {
@@ -39,10 +42,10 @@ protocol RecentDataManagerInputProtocol: AnyObject {
 
 protocol RecentRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: RecentRemoteDataManagerOutputProtocol? { get set }
+    
+    func fetchMovies()
 }
 
 protocol RecentRemoteDataManagerOutputProtocol: AnyObject {
-}
-
-protocol RecentLocalDataManagerInputProtocol: AnyObject {
+    func moviesFetched(_ movies: [Movie])
 }

@@ -8,15 +8,20 @@
 
 import Foundation
 
-class RecentInteractor: RecentInteractorInputProtocol {
+class  RecentInteractor: RecentInteractorInputProtocol {
+    func fetchMovies() {
+        self.remoteDatamanager?.fetchMovies()
+    }
+    
 
     // MARK: Properties
     weak var presenter: RecentInteractorOutputProtocol?
-    var localDatamanager: RecentLocalDataManagerInputProtocol?
-    var remoteDatamanager: RecentRemoteDataManagerInputProtocol?
+    var remoteDatamanager:  RecentRemoteDataManagerInputProtocol?
 
 }
 
-extension RecentInteractor: RecentRemoteDataManagerOutputProtocol {
-    // TODO: Implement use case methods
+extension  RecentInteractor: RecentRemoteDataManagerOutputProtocol {
+    func moviesFetched(_ movies: [Movie]) {
+        self.presenter?.moviesFetched(movies: movies)
+    }
 }

@@ -6,23 +6,28 @@
 //  
 //
 
-import Foundation
+import UIKit
 
-class RecentPresenter  {
+class RecentPresenter {
     
     // MARK: Properties
     weak var view: RecentViewProtocol?
     var interactor: RecentInteractorInputProtocol?
-    var wireFrame: RecentWireFrameProtocol?
+    var router: RecentRouterProtocol?
+    var movies: [Movie]?
     
 }
 
 extension RecentPresenter: RecentPresenterProtocol {
-    // TODO: implement presenter methods
-    func viewDidLoad() {
+    func notifyViewLoaded() {
+        self.interactor?.fetchMovies()
     }
 }
 
 extension RecentPresenter: RecentInteractorOutputProtocol {
-    // TODO: implement interactor output methods
+    func moviesFetched(movies: [Movie]) {
+        self.movies = movies
+        self.view?.reloadData()
+    }
 }
+
