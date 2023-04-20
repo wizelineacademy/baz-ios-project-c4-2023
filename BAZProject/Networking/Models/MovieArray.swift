@@ -8,5 +8,5 @@
 import Foundation
 
 struct MovieArray: Decodable {
-    var results: [Movie]
+    var results: [Movie]?
 }
