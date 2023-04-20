@@ -28,7 +28,7 @@ final class TrendingViewModelTests: XCTestCase {
         //Given
         let movies = [Movie(id: 1, title: "Titanic", poster_path: "")]
         //When
-        sut?.movies = Box(value: [ListMoviesProtocol]())
+        sut?.movies = Box(value: movies)
         let count = sut?.getMovieCount()
         //Then
         XCTAssertEqual(count, movies.count)

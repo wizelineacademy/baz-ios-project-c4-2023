@@ -19,6 +19,10 @@ class SearchView: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
+        configureView()
+    }
+    
+    func configureView() {
         self.title = "Buscar"
         searchBar.showsCancelButton = true
         tableView.delegate = self
@@ -38,7 +42,6 @@ class SearchView: UIViewController {
             }
         }
     }
-
 }
 
 //MARK: Extensions
