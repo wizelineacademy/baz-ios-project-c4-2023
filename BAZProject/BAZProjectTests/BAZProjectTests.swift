@@ -30,7 +30,7 @@ final class BAZProjectTests: XCTestCase {
         //Given
         let expectedResult: [ListMoviesProtocol] = [Movie(id: 1, title: "Titanic", poster_path: "")]
         //Then
-        model.movies = expectedResult
+        model.movies = Box(value: expectedResult)
         sut.getMovieArray()
         let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
         //When

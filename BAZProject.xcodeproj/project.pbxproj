@@ -28,6 +28,7 @@
 		E0AB763A29EF5FF8004074B5 /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763929EF5FF8004074B5 /* ServiceApi.swift */; };
 		E0AB763C29EF603E004074B5 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763B29EF603E004074B5 /* ServiceProtocols.swift */; };
 		E0AB763E29EFB445004074B5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763D29EFB445004074B5 /* Box.swift */; };
+		E0AB764429F1F79A004074B5 /* BindingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB764229F1F5E1004074B5 /* BindingTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E0AB763929EF5FF8004074B5 /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
 		E0AB763B29EF603E004074B5 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
 		E0AB763D29EFB445004074B5 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		E0AB764229F1F5E1004074B5 /* BindingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				E0558CE529D6917800DF5AA1 /* BAZProjectTests.swift */,
 				E0558CEC29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift */,
 				E0558CEE29D6AD1200DF5AA1 /* TrendingViewModelTests.swift */,
+				E0AB764229F1F5E1004074B5 /* BindingTest.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				E0558CED29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift in Sources */,
 				E0558CE629D6917800DF5AA1 /* BAZProjectTests.swift in Sources */,
 				E0558CEF29D6AD1200DF5AA1 /* TrendingViewModelTests.swift in Sources */,
+				E0AB764429F1F79A004074B5 /* BindingTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
