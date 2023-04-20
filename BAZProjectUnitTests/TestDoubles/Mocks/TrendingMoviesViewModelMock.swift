@@ -10,7 +10,7 @@ import Foundation
 
 class TrendingMoviesViewModelMock: TrendingMoviesViewModel {
     
-    override func getMovies() async throws {
+    override func getMovies() {
         return
     }
 }

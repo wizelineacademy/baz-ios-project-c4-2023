@@ -9,6 +9,7 @@ import Foundation
 @testable import BAZProject
 
 enum EndpointMock: EndpointProtocol {
+
     case forRequestFailure, forOtherTests
     
     var path: String {
@@ -20,4 +21,5 @@ enum EndpointMock: EndpointProtocol {
     var scheme: String? { return nil }
     var key: String? { return nil }
     var host: String? { return nil }
+    
 }
