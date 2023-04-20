@@ -31,7 +31,7 @@ struct ImageLoader: ImageLoadable {
             let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {
                 let img = UIImage(data: data ?? Data())
-                callBack(img ?? UIImage())
+                callBack(img ?? UIImage(named: "poster"))
             }
         }
     }

@@ -7,8 +7,9 @@
 
 import UIKit
 
+//MARK: - Class
 class HomeCell: UITableViewCell {
-
+    //MARK: - Properties
     static let cellID = "HomeCell"
     
     private let coverView: UIImageView = {
@@ -37,27 +38,26 @@ class HomeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Functions
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
     
     func setupViews() {
-        
         self.contentView.addSubview(coverView)
         self.contentView.addSubview(movieDescription)
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
         coverView.translatesAutoresizingMaskIntoConstraints = false
         coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        coverView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        coverView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        coverView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        coverView.widthAnchor.constraint(equalToConstant: 90).isActive = true
         coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         coverView.layer.cornerRadius = 5.0
         coverView.layer.masksToBounds = true
         
         movieDescription.translatesAutoresizingMaskIntoConstraints = false
         movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8.0).isActive = true
-        movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 8.0).isActive = true
+        movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 12.0).isActive = true
         movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
     }

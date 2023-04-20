@@ -25,16 +25,9 @@ class HomePresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension HomePresenter: HomeViewOutputProtocol {
+    
     func getDataMovies() {
         interactor.getDataMovies()
-    }
-    
-    func getMoviesCount() -> Int {
-        interactor.getMoviesCount()
-    }
-    
-    func getMovieDescription(index: Int) -> String? {
-        interactor.getMovieDescription(index: index)
     }
     
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
@@ -47,10 +40,6 @@ extension HomePresenter: HomeInteractorOutputProtocol {
 
     func presentDataMovies(movies: [ListMovieProtocol]?) {
         view?.showViewDataMovies(movies: movies)
-    }
-    
-    func presentMoviesCount(count: Int) {
-        //view?.showMoviesCount(count: count)
     }
     
     var labelTitle: String {

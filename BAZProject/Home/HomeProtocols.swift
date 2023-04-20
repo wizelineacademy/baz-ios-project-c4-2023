@@ -10,21 +10,19 @@ protocol HomeViewInputProtocol: AnyObject {
     var presenter: HomeViewOutputProtocol? { get }
     // MARK: - Functions
     func showViewDataMovies(movies: [ListMovieProtocol]?)
-    //func showMoviesCount(count: Int)
 }
 
 // MARK: - Presenter
 
 // MARK: - (View To Presenter)
 protocol HomeViewOutputProtocol {
+    // MARK: - Properties
     var view: HomeViewInputProtocol? { get }
     var interactor: HomeInteractorInputProtocol { get }
     var router: HomeRouterProtocol { get }
     var labelTitle: String { get }
     // MARK: - Functions
     func getDataMovies()
-    func getMoviesCount() -> Int
-    func getMovieDescription(index: Int) -> String?
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
 }
 
@@ -32,7 +30,6 @@ protocol HomeViewOutputProtocol {
 protocol HomeInteractorOutputProtocol: AnyObject {
     // MARK: - Functions
     func presentDataMovies(movies: [ListMovieProtocol]?)
-    func presentMoviesCount(count: Int)
 }
 
 // MARK: - Router (Presenter To Router)
@@ -46,8 +43,5 @@ protocol HomeInteractorInputProtocol {
     var labelTitle: String { get }
     // MARK: - Functions
     func getDataMovies()
-    func getMoviesCount() -> Int
-    func getMovieDescription(index: Int) -> String?
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
-    
 }
