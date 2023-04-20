@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +31,9 @@
         <scene sceneID="jF0-KV-Upy">
             <objects>
                 <viewControllerPlaceholder storyboardName="SearchView" id="YvU-0P-LhN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buscar" image="magnifyingglass" catalog="system" id="PDF-PZ-l3n"/>
+                    <tabBarItem key="tabBarItem" title="Holi" selectedImage="pencil.tip.crop.circle.badge.arrow.forward" catalog="system" id="PDF-PZ-l3n">
+                        <imageReference key="image" image="square.and.arrow.up.circle" catalog="system" symbolScale="default"/>
+                    </tabBarItem>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hrs-ex-O2y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,8 +105,9 @@
     </scenes>
     <resources>
         <image name="chart.line.uptrend.xyaxis.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="pencil.tip.crop.circle.badge.arrow.forward" catalog="system" width="128" height="114"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="square.and.arrow.up.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -10,21 +10,24 @@ import Foundation
 class SearchViewModel {
     
     //MARK:Funciones para la vista 
-
     var moviesSearched = Box(value: [ListMoviesProtocol]())
     
+    ///Crear bind que llama al listener
     func bindMovies(_ listener: @escaping () -> Void) {
         moviesSearched.listener = listener
     }
     
+    ///regresa el contador del arreglo de peliculas
     func getMovieCount() -> Int {
         moviesSearched.value.count
     }
     
+    ///regresa el campo titulo de la pelicula
     func getTitle(index: Int) -> String? {
         moviesSearched.value[index].title
     }
     
+    ///Limpia el arreglo para otra consulta
     func cleanMoviesArray(){
         moviesSearched.value = []
     }
@@ -32,7 +35,8 @@ class SearchViewModel {
     //MARK:Consulta servicio buscar peliculas
     
     private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" // llave para peticion de peliculas
-
+    
+    ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, completion: @escaping (Error) -> Void ) {
         let editedTitle = title.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
         print(editedTitle)
@@ -46,5 +50,4 @@ class SearchViewModel {
             }
         }
     }
-    
 }
