@@ -7,7 +7,6 @@
 import Foundation
 
 class TrendingMoviesRemoteData {
-
     private let requestHandler = RequestHandler(withSession: URLSession.shared)
 
     func getMovies() async throws -> [Movie]? {
@@ -20,5 +19,4 @@ class TrendingMoviesRemoteData {
         let data = try await requestHandler.get(endpoint)
         return try MovieArray(data: data)?.results
     }
-
 }

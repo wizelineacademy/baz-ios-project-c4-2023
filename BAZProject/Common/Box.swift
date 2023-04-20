@@ -9,7 +9,7 @@ import Foundation
 
 struct Box<T> {
     private var listener: (() -> Void)?
-    
+
     var value: T? {
         didSet {
             listener?()

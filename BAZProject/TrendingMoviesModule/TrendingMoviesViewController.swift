@@ -7,7 +7,6 @@
 import UIKit
 
 class TrendingMoviesViewController: UIViewController {
-    
     lazy var moviesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
@@ -92,13 +91,11 @@ class TrendingMoviesViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
     }
-
 }
 
 // MARK: - TableView's DataSource
 
 extension TrendingMoviesViewController: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getRowCount()
     }
@@ -106,13 +103,11 @@ extension TrendingMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
     }
-
 }
 
 // MARK: - TableView's Delegate
 
 extension TrendingMoviesViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = viewModel.getCellConfiguration(row: indexPath.row)
         config.imageProperties.maximumSize = CGSize(width: 50, height: 50)
@@ -121,11 +116,9 @@ extension TrendingMoviesViewController: UITableViewDelegate {
         config.image = UIImage(named: "poster") ?? UIImage(systemName: "photo")
         cell.contentConfiguration = config
     }
-
 }
 
 extension TrendingMoviesViewController: UISearchBarDelegate, UISearchTextFieldDelegate {
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
@@ -145,5 +138,4 @@ extension TrendingMoviesViewController: UISearchBarDelegate, UISearchTextFieldDe
         loadInitialData()
         return true
     }
-    
 }
