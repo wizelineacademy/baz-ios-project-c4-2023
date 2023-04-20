@@ -10,22 +10,24 @@ import UIKit
 class BMTabBar: UITabBarController {
 
     let Trending = UINavigationController(rootViewController: TrendingViewController())
-        var arrViews: [UIViewController] =  []
-        var bookmarksItemIcon = UIImage()
-        var historyItemIcon = UIImage()
-        var webItemIcon = UIImage()
-        var settingsItemIcon = UIImage()
+    let Search = UINavigationController(rootViewController: SearchRouter.createSearchModule(withEntity: SearchEntity(strNavBarTitle: "Search")))
+    var arrViews: [UIViewController] =  []
+    
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            arrViews = [Trending]
+            arrViews = [Trending, Search]
             self.setViewControllers(arrViews, animated: true)
             
             let trendingIcon: UIImage = UIImage.init(systemName: "chart.line.uptrend.xyaxis.circle.fill") ?? UIImage()
+            
+            let searchIcon: UIImage = UIImage.init(systemName: "magnifyingglass") ?? UIImage()
             guard let items = self.tabBar.items else { return }
             
             items[0].title = "Trending"
             items[0].image = trendingIcon
+            items[1].title = "Busqueda"
+            items[1].image = searchIcon
             
             
 //            self.tabBar.backgroundColor = .black

@@ -8,12 +8,15 @@
 import UIKit
 
 class TrendingViewController: UITableViewController {
+    
+    var presenter: TrendingPresenterProtocol?
         
     var movies: [Movie] = []
     var movieDataProvider: MovieDataProvider?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
         // Inicializa la clase MovieApi como el proveedor de datos por defecto
         self.movieDataProvider = MovieApi()
@@ -60,4 +63,11 @@ extension TrendingViewController {
         cell.contentConfiguration = config
     }
 
+}
+
+extension TrendingViewController: TrendingViewProtocol {
+    // TODO: implement view output methods
+    func setNavigationTitle(for strTitle: String?){
+        navigationItem.title = strTitle
+    }
 }

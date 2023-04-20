@@ -21,6 +21,14 @@
 		C30893DB28A42481004B1860 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C30893DA28A42481004B1860 /* README.md */; };
 		C30893E328A425E1004B1860 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */ = {isa = PBXBuildFile; fileRef = C383356D28CA917400FCE0D5 /* code-review-rubric.md */; };
+		D309CC6129F0830C007A76D1 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5829F0830C007A76D1 /* SearchPresenter.swift */; };
+		D309CC6229F0830C007A76D1 /* SearchLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5929F0830C007A76D1 /* SearchLocalDataManager.swift */; };
+		D309CC6329F0830C007A76D1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5A29F0830C007A76D1 /* SearchRouter.swift */; };
+		D309CC6429F0830C007A76D1 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5B29F0830C007A76D1 /* SearchProtocols.swift */; };
+		D309CC6529F0830C007A76D1 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5C29F0830C007A76D1 /* SearchInteractor.swift */; };
+		D309CC6629F0830C007A76D1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5D29F0830C007A76D1 /* SearchView.swift */; };
+		D309CC6729F0830C007A76D1 /* SearchRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5E29F0830C007A76D1 /* SearchRemoteDataManager.swift */; };
+		D309CC6929F0830C007A76D1 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC6029F0830C007A76D1 /* SearchEntity.swift */; };
 		D3357AFB29F0463C00A81AD8 /* BMTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357AFA29F0463C00A81AD8 /* BMTabBar.swift */; };
 		D3357B0529F0677700A81AD8 /* BMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357B0329F0677700A81AD8 /* BMTableViewCell.swift */; };
 		D3357B0629F0677700A81AD8 /* BMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B0429F0677700A81AD8 /* BMTableViewCell.xib */; };
@@ -28,6 +36,14 @@
 		D3357B0F29F06C7400A81AD8 /* TrendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B0D29F06C7400A81AD8 /* TrendingViewController.xib */; };
 		D3357B1229F06FAE00A81AD8 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357B1029F06FAE00A81AD8 /* TrendingTableViewCell.swift */; };
 		D3357B1329F06FAE00A81AD8 /* TrendingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B1129F06FAE00A81AD8 /* TrendingTableViewCell.xib */; };
+		D343155B29F0839000AEE166 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D343155A29F0839000AEE166 /* SearchView.xib */; };
+		D343156B29F09EDC00AEE166 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156229F09EDC00AEE166 /* TrendingPresenter.swift */; };
+		D343156C29F09EDC00AEE166 /* TrendingLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156329F09EDC00AEE166 /* TrendingLocalDataManager.swift */; };
+		D343156D29F09EDC00AEE166 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156429F09EDC00AEE166 /* TrendingRouter.swift */; };
+		D343156E29F09EDC00AEE166 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156529F09EDC00AEE166 /* TrendingProtocols.swift */; };
+		D343156F29F09EDC00AEE166 /* TrendingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156629F09EDC00AEE166 /* TrendingInteractor.swift */; };
+		D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */; };
+		D343157329F09EDC00AEE166 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156A29F09EDC00AEE166 /* TrendingEntity.swift */; };
 		D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
 		D3DDE24129D60D1500EF774D /* TrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE24029D60D1500EF774D /* TrendingMovies.swift */; };
 		D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5443329D48B6E00651AE9 /* BAZProjectTests.swift */; };
@@ -57,6 +73,14 @@
 		C30893DA28A42481004B1860 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C30893E128A425E1004B1860 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		C383356D28CA917400FCE0D5 /* code-review-rubric.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "code-review-rubric.md"; sourceTree = "<group>"; };
+		D309CC5829F0830C007A76D1 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		D309CC5929F0830C007A76D1 /* SearchLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataManager.swift; sourceTree = "<group>"; };
+		D309CC5A29F0830C007A76D1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		D309CC5B29F0830C007A76D1 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		D309CC5C29F0830C007A76D1 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		D309CC5D29F0830C007A76D1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D309CC5E29F0830C007A76D1 /* SearchRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataManager.swift; sourceTree = "<group>"; };
+		D309CC6029F0830C007A76D1 /* SearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
 		D3357AFA29F0463C00A81AD8 /* BMTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMTabBar.swift; sourceTree = "<group>"; };
 		D3357B0329F0677700A81AD8 /* BMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMTableViewCell.swift; sourceTree = "<group>"; };
 		D3357B0429F0677700A81AD8 /* BMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BMTableViewCell.xib; sourceTree = "<group>"; };
@@ -64,6 +88,14 @@
 		D3357B0D29F06C7400A81AD8 /* TrendingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingViewController.xib; sourceTree = "<group>"; };
 		D3357B1029F06FAE00A81AD8 /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
 		D3357B1129F06FAE00A81AD8 /* TrendingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingTableViewCell.xib; sourceTree = "<group>"; };
+		D343155A29F0839000AEE166 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		D343156229F09EDC00AEE166 /* TrendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenter.swift; sourceTree = "<group>"; };
+		D343156329F09EDC00AEE166 /* TrendingLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingLocalDataManager.swift; sourceTree = "<group>"; };
+		D343156429F09EDC00AEE166 /* TrendingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRouter.swift; sourceTree = "<group>"; };
+		D343156529F09EDC00AEE166 /* TrendingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProtocols.swift; sourceTree = "<group>"; };
+		D343156629F09EDC00AEE166 /* TrendingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractor.swift; sourceTree = "<group>"; };
+		D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManager.swift; sourceTree = "<group>"; };
+		D343156A29F09EDC00AEE166 /* TrendingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEntity.swift; sourceTree = "<group>"; };
 		D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTaskCoordinator.swift; sourceTree = "<group>"; };
 		D3DDE24029D60D1500EF774D /* TrendingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovies.swift; sourceTree = "<group>"; };
 		D3E5443129D48B6E00651AE9 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +180,7 @@
 				D3357AF729F0458100A81AD8 /* Generics */,
 				D3DDE23D29D5F14300EF774D /* Network */,
 				D3357AF629F041B200A81AD8 /* Trending */,
+				D309CC5729F082E7007A76D1 /* Search */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
 				C30893B328A2F42B004B1860 /* Main.storyboard */,
@@ -158,10 +191,39 @@
 			path = BAZProject;
 			sourceTree = "<group>";
 		};
+		D309CC5729F082E7007A76D1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D343156129F0841C00AEE166 /* Protocols */,
+				D309CC6A29F08344007A76D1 /* View */,
+				D343155C29F083A400AEE166 /* Interactor */,
+				D343155F29F083D400AEE166 /* Presenter */,
+				D343155E29F083C900AEE166 /* Entity */,
+				D343155D29F083B900AEE166 /* Router */,
+				D343156029F083F700AEE166 /* DataManager */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D309CC6A29F08344007A76D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5D29F0830C007A76D1 /* SearchView.swift */,
+				D343155A29F0839000AEE166 /* SearchView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D3357AF629F041B200A81AD8 /* Trending */ = {
 			isa = PBXGroup;
 			children = (
+				D343157429F09EEA00AEE166 /* Protocols */,
 				D3357AFE29F0515200A81AD8 /* View */,
+				D3357B1729F07DF600A81AD8 /* Interactor */,
+				D3357B1629F07DEB00A81AD8 /* Presenter */,
+				D3357B1529F07DD600A81AD8 /* Entity */,
+				D3357B1429F07DC600A81AD8 /* Router */,
+				D343157529F09EF300AEE166 /* DataManager */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -209,6 +271,104 @@
 				D3357B1129F06FAE00A81AD8 /* TrendingTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D3357B1429F07DC600A81AD8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D343156429F09EDC00AEE166 /* TrendingRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D3357B1529F07DD600A81AD8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D343156A29F09EDC00AEE166 /* TrendingEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D3357B1629F07DEB00A81AD8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D343156229F09EDC00AEE166 /* TrendingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D3357B1729F07DF600A81AD8 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D343156629F09EDC00AEE166 /* TrendingInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D343155C29F083A400AEE166 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5C29F0830C007A76D1 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D343155D29F083B900AEE166 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5A29F0830C007A76D1 /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D343155E29F083C900AEE166 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC6029F0830C007A76D1 /* SearchEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D343155F29F083D400AEE166 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5829F0830C007A76D1 /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D343156029F083F700AEE166 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5E29F0830C007A76D1 /* SearchRemoteDataManager.swift */,
+				D309CC5929F0830C007A76D1 /* SearchLocalDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		D343156129F0841C00AEE166 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D309CC5B29F0830C007A76D1 /* SearchProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D343157429F09EEA00AEE166 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D343156529F09EDC00AEE166 /* TrendingProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D343157529F09EF300AEE166 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				D343156329F09EDC00AEE166 /* TrendingLocalDataManager.swift */,
+				D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		D3DDE23D29D5F14300EF774D /* Network */ = {
@@ -316,6 +476,7 @@
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
+				D343155B29F0839000AEE166 /* SearchView.xib in Resources */,
 				D3357B0F29F06C7400A81AD8 /* TrendingViewController.xib in Resources */,
 				C30893B528A2F42B004B1860 /* Main.storyboard in Resources */,
 				D3357B0629F0677700A81AD8 /* BMTableViewCell.xib in Resources */,
@@ -337,15 +498,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D309CC6329F0830C007A76D1 /* SearchRouter.swift in Sources */,
+				D343156E29F09EDC00AEE166 /* TrendingProtocols.swift in Sources */,
+				D343156B29F09EDC00AEE166 /* TrendingPresenter.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				D309CC6429F0830C007A76D1 /* SearchProtocols.swift in Sources */,
 				D3357B0529F0677700A81AD8 /* BMTableViewCell.swift in Sources */,
+				D309CC6129F0830C007A76D1 /* SearchPresenter.swift in Sources */,
 				D3357B1229F06FAE00A81AD8 /* TrendingTableViewCell.swift in Sources */,
+				D309CC6529F0830C007A76D1 /* SearchInteractor.swift in Sources */,
+				D343156C29F09EDC00AEE166 /* TrendingLocalDataManager.swift in Sources */,
+				D309CC6929F0830C007A76D1 /* SearchEntity.swift in Sources */,
 				D3DDE24129D60D1500EF774D /* TrendingMovies.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */,
 				D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */,
+				D309CC6629F0830C007A76D1 /* SearchView.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
 				D3357B0E29F06C7400A81AD8 /* TrendingViewController.swift in Sources */,
+				D343157329F09EDC00AEE166 /* TrendingEntity.swift in Sources */,
+				D343156F29F09EDC00AEE166 /* TrendingInteractor.swift in Sources */,
 				D3357AFB29F0463C00A81AD8 /* BMTabBar.swift in Sources */,
+				D309CC6229F0830C007A76D1 /* SearchLocalDataManager.swift in Sources */,
+				D309CC6729F0830C007A76D1 /* SearchRemoteDataManager.swift in Sources */,
+				D343156D29F09EDC00AEE166 /* TrendingRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
