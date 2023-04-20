@@ -21,6 +21,14 @@ class SearchMoviesInteractor {
 // MARK: Extension
 extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
     
+    /**
+     this function calls the service getMovies
+    
+     - Parameter word: search word
+     - Returns:
+       - success: return The type of the value to decode from the supplied JSON object.
+       - error: returns the service error.
+    */
     func consultServiceSearch(with word: String) {
         movieApi.getMovies(OptionMovie.searchMovie(word).request){ [weak self] (result: Result< MoviesSearchResult, Error>) in
             DispatchQueue.main.async {
@@ -38,6 +46,9 @@ extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
         }
     }
     
+    /**
+     this function creates an array of MoviesViewModels
+     */
     private func setMovies(with moviesResult: [Movie]?){
         var movies              : [MovieData] = []
         for resultArrMovies in moviesResult ?? [Movie](){

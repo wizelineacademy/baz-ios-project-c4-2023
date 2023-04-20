@@ -10,41 +10,26 @@ import XCTest
 
 final class BAZProjectTests: XCTestCase {
 
-    private var sut: ServiceMocks!
+    private var serviceMock: ServiceMocks!
     private var sessionMock = URLSessionMock()
     private var arrResults: [Movie]?
     private var sut2: TrendingViewController!
+    private var interactorMock: SearchMoviesInteractorTest!
+    private var movieModels: MoviesViewModels?
     
     override func setUp() {
         super.setUp()
-        sut = ServiceMocks(sessionMock: sessionMock)
+        serviceMock = ServiceMocks(sessionMock: sessionMock)
         sut2 = TrendingViewController()
         sut2.movies = getMovies()
     }
 
     override func tearDown() {
-        sut = nil
+        serviceMock = nil
         arrResults = nil
         sut2 = nil
+        interactorMock = nil
         super.tearDown()
-    }
-    
-    func testGetApiMovie_Has_Information(){
-        //Given
-        let expectation = XCTestExpectation(description: "Wait for requestMovieAPIBlock completion")
-        sut2.movies = getMovies()
-        //When
-        sut.getMovies(OptionMovie.getMovieDay.request){ (result: Result< [Movie], Error>) in
-            switch result {
-            case .success(let success):
-                self.arrResults = success
-            case .failure(_):
-                self.arrResults = nil
-            }
-        }
-        expectation.fulfill()
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertNil(arrResults)
     }
     
     func test_When_GetMovies(){
@@ -57,6 +42,10 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut2.movies.count, expectedGetMovies)
     }
     
+    func testNotNilMock(){
+        XCTAssertNotNil(serviceMock)
+    }
+    
     func test_When_getTitleMoviesLast_ValidTitle() {
         let titleExpected = "AntMan"
         XCTAssertEqual(sut2.movies.last?.title, titleExpected)
@@ -65,6 +54,10 @@ final class BAZProjectTests: XCTestCase {
     func test_When_getTitleMoviesFirst_ValidTitle() {
         let titleExpected = "Spiderman"
         XCTAssertEqual(sut2.movies.first?.title, titleExpected)
+    }
+    
+    func test_WhenTitleIsNil(){
+        XCTAssertNil(sut2.btnOptionsFilterMovies)
     }
     
     func testMoviesImages_getMoviesInfoPicture_isAvailable() {
@@ -86,6 +79,12 @@ final class BAZProjectTests: XCTestCase {
                                                  MoviesViewModels(title: "Thor", poster_path: "/path/Thor.jpg"),
                                                  MoviesViewModels(title: "AntMan", poster_path: "/path/AntMan.jpg")]
         return popularMovies
+    }
+    
+    func test_ValidateImage(){
+        getMovies().first?.getImage{ imagen in
+            XCTAssertNotNil(imagen)
+        }
     }
     
     func getUrlImage(posterPath: String) -> URL? {

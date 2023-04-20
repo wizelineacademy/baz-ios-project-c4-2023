@@ -12,7 +12,7 @@ protocol SearchMoviesViewInputProtocol: AnyObject{
     
     var presenter : SearchMoviesViewOutputProtocol? { get }
     
-    func showResultMovies(with moviesData: [MovieData])
+    func showResultMovies()
 }
 
 // MARK: - Presenter
@@ -21,6 +21,7 @@ protocol SearchMoviesViewOutputProtocol {
     var view        : SearchMoviesViewInputProtocol? { get }
     var interactor  : SearchMoviesInteractorInputProtocol { get }
     var router      : SearchMoviesRouterProtocol { get }
+    var movies      : [MovieData] { get }
     
     func searchMoview(with word: String)
 }

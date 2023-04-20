@@ -22,9 +22,11 @@
 		E50FC49229D3C5EA00897519 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */; };
 		E531C61629E3A04F00B14A54 /* OptionMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531C61529E3A04F00B14A54 /* OptionMovie.swift */; };
 		E531C61829E3B6E500B14A54 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531C61729E3B6E500B14A54 /* Storyboard.swift */; };
+		E59330E429F1A5B90094DC4A /* SearchMoviesRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59330E329F1A5B90094DC4A /* SearchMoviesRouterTest.swift */; };
 		E5AD4E0A29D6931A0077BB60 /* CWAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD4E0929D6931A0077BB60 /* CWAlert.swift */; };
 		E5B8F1F629D4AE9A001A0EBA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */; };
 		E5B8F1F829D4B208001A0EBA /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */; };
+		E5BB990A29F06A0E00065029 /* SearchMoviesInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BB990929F06A0E00065029 /* SearchMoviesInteractorTest.swift */; };
 		E5C8EDEF29D5FF01009AB8DA /* MoviesViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */; };
 		E5D0B96929E9DB0300A7D2F2 /* SearchMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D0B96829E9DB0300A7D2F2 /* SearchMoviesView.swift */; };
 		E5D0B96B29E9DB1800A7D2F2 /* SearchMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D0B96A29E9DB1800A7D2F2 /* SearchMoviesPresenter.swift */; };
@@ -66,9 +68,11 @@
 		E50FC49129D3C5EA00897519 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		E531C61529E3A04F00B14A54 /* OptionMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMovie.swift; sourceTree = "<group>"; };
 		E531C61729E3B6E500B14A54 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		E59330E329F1A5B90094DC4A /* SearchMoviesRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesRouterTest.swift; sourceTree = "<group>"; };
 		E5AD4E0929D6931A0077BB60 /* CWAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWAlert.swift; sourceTree = "<group>"; };
 		E5B8F1F529D4AE9A001A0EBA /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E5B8F1F729D4B208001A0EBA /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		E5BB990929F06A0E00065029 /* SearchMoviesInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesInteractorTest.swift; sourceTree = "<group>"; };
 		E5C8EDEE29D5FF01009AB8DA /* MoviesViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModels.swift; sourceTree = "<group>"; };
 		E5D0B96829E9DB0300A7D2F2 /* SearchMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesView.swift; sourceTree = "<group>"; };
 		E5D0B96A29E9DB1800A7D2F2 /* SearchMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesPresenter.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 		E54451C329F0661C00B08D21 /* MocksSearch */ = {
 			isa = PBXGroup;
 			children = (
+				E5BB990929F06A0E00065029 /* SearchMoviesInteractorTest.swift */,
+				E59330E329F1A5B90094DC4A /* SearchMoviesRouterTest.swift */,
 			);
 			path = MocksSearch;
 			sourceTree = "<group>";
@@ -355,7 +361,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5FE22E629D76B3A0029AB50 /* URLSessionMock.swift in Sources */,
+				E59330E429F1A5B90094DC4A /* SearchMoviesRouterTest.swift in Sources */,
 				E50FC49229D3C5EA00897519 /* BAZProjectTests.swift in Sources */,
+				E5BB990A29F06A0E00065029 /* SearchMoviesInteractorTest.swift in Sources */,
 				E5FE22E429D769BB0029AB50 /* ServiceMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

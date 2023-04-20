@@ -13,6 +13,7 @@ class SearchMoviesPresenter {
     weak var view       : SearchMoviesViewInputProtocol?
     var interactor      : SearchMoviesInteractorInputProtocol
     var router          : SearchMoviesRouterProtocol
+    var movies          : [MovieData] = []
     
     init(view: SearchMoviesViewInputProtocol,
          interactor: SearchMoviesInteractorInputProtocol,
@@ -34,7 +35,9 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol{
 extension SearchMoviesPresenter: SearchMoviesInteractorOutputProtocol{
     
     func setResponseMovies(with moviesData: [MovieData]) {
-        view?.showResultMovies(with: moviesData)
+        self.movies.removeAll()
+        self.movies = moviesData
+        view?.showResultMovies()
     }
     
     func setError() {

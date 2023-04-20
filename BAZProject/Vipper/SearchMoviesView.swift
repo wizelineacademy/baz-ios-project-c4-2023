@@ -21,7 +21,6 @@ class SearchMoviesView: UIViewController{
     
     // MARK: Properties
     var presenter           : SearchMoviesViewOutputProtocol?
-    var movies              : [MovieData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,26 +67,25 @@ extension SearchMoviesView: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return presenter?.movies.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"CellMovies", for: indexPath) as? CellMovies else {
             return UITableViewCell()
         }
-        let infoCell                = movies[indexPath.row]
-        cell.descriptionMovie.text  = infoCell.title
-        infoCell.getImage(){ imagen in
+        let infoCell                = presenter?.movies[indexPath.row]
+        cell.descriptionMovie.text  = infoCell?.title
+        infoCell?.getImage(){ imagen in
             cell.imgMovie.image         = imagen
         }
         return cell
     }
     
 }
+// MARK: Extension
 extension SearchMoviesView: SearchMoviesViewInputProtocol{
-    func showResultMovies(with moviesData: [MovieData]) {
-        self.movies.removeAll()
-        self.movies = moviesData
+    func showResultMovies() {
         DispatchQueue.main.async {
             self.tblSearch.reloadData()
         }
