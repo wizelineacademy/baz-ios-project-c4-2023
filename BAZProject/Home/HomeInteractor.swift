@@ -2,8 +2,6 @@
 //  BAZProject
 //
 //  Created by jehernandezg on 18/04/23.
-//  
-//  ViperTemplate v.0.0.1 - (2023, NS-Bionick Development Team)
 
 import UIKit
 
@@ -15,6 +13,8 @@ class HomeInteractor {
 }
 
 // MARK: - Extensions
+
+// MARK: - P R E S E N T E R · T O · I N T E R A C T O R
 extension HomeInteractor: HomeInteractorInputProtocol {
     func getMovieDescription(index: Int) -> String? {
         movies?[index].title
@@ -33,17 +33,19 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     
     func getMoviesCount() -> Int {
         movies?.count ?? 0
+        //self.presenter?.presentMoviesCount(count: rowCount)
     }
     
-    func getDataMovies(_ completion: @escaping () -> Void) {
+    func getDataMovies() {
         let movieApi = MovieAPI()
-        movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
+        movieApi.fetchData(model: Movie.self, urlPath: /*"\(MovieAPIConstans.baseURL)\(MovieAPIConstans.search)\(MovieAPIConstans.apiKey)\(MovieAPIConstans.searchKeyWord)"*/
+            "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
             switch result {
             case .failure(let fail):
                 print(fail)
             case .success(let response):
                 self?.movies = response.results
-                completion()
+                self?.presenter?.presentDataMovies(movies: self?.movies)
             }
         }
     }
@@ -51,6 +53,5 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     var labelTitle: String {
         return "string label title"
     }
-    
     
 }

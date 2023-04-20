@@ -2,8 +2,6 @@
 //  BAZProject
 //
 //  Created by jehernandezg on 18/04/23.
-//  
-//  ViperTemplate v.0.0.1 - (2023, NS-Bionick Development Team)
 
 import UIKit
 
@@ -27,8 +25,8 @@ class HomePresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension HomePresenter: HomeViewOutputProtocol {
-    func getDataMovies(_ completion: @escaping () -> Void) {
-        interactor.getDataMovies(completion)
+    func getDataMovies() {
+        interactor.getDataMovies()
     }
     
     func getMoviesCount() -> Int {
@@ -42,12 +40,19 @@ extension HomePresenter: HomeViewOutputProtocol {
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
         interactor.getMovieImage(index: index, completion: completion)
     }
-    
-    
 }
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
 extension HomePresenter: HomeInteractorOutputProtocol {
+
+    func presentDataMovies(movies: [ListMovieProtocol]?) {
+        view?.showViewDataMovies(movies: movies)
+    }
+    
+    func presentMoviesCount(count: Int) {
+        //view?.showMoviesCount(count: count)
+    }
+    
     var labelTitle: String {
         return interactor.labelTitle
     }

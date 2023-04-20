@@ -5,46 +5,47 @@
 
 import UIKit
 
-// MARK: - View
-//HomePresenterToViewProtocol
+// MARK: - View (Presenter To View)
 protocol HomeViewInputProtocol: AnyObject {
     var presenter: HomeViewOutputProtocol? { get }
     // MARK: - Functions
+    func showViewDataMovies(movies: [ListMovieProtocol]?)
+    //func showMoviesCount(count: Int)
 }
 
 // MARK: - Presenter
-//HomeViewToPresenterProtocol
+
+// MARK: - (View To Presenter)
 protocol HomeViewOutputProtocol {
     var view: HomeViewInputProtocol? { get }
     var interactor: HomeInteractorInputProtocol { get }
     var router: HomeRouterProtocol { get }
     var labelTitle: String { get }
     // MARK: - Functions
-    func getDataMovies(_ completion: @escaping () -> Void)
+    func getDataMovies()
     func getMoviesCount() -> Int
     func getMovieDescription(index: Int) -> String?
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
-    
 }
 
-//HomeInteractorToPresenterProtocol
+// MARK: - (Interactor To Presenter)
 protocol HomeInteractorOutputProtocol: AnyObject {
     // MARK: - Functions
+    func presentDataMovies(movies: [ListMovieProtocol]?)
+    func presentMoviesCount(count: Int)
 }
 
-// MARK: - Router
-//HomePresenterToRouterProtocol
+// MARK: - Router (Presenter To Router)
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
 }
 
-// MARK: - Interactor
-//HomePresenterToInteractorProtocol
+// MARK: - Interactor (Presenter To Interactor)
 protocol HomeInteractorInputProtocol {
-    // MARK: - Functions
     var presenter: HomeInteractorOutputProtocol? { get }
     var labelTitle: String { get }
-    func getDataMovies(_ completion: @escaping () -> Void)
+    // MARK: - Functions
+    func getDataMovies()
     func getMoviesCount() -> Int
     func getMovieDescription(index: Int) -> String?
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)

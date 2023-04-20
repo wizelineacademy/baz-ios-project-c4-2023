@@ -2,8 +2,6 @@
 //  BAZProject
 //
 //  Created by jehernandezg on 18/04/23.
-//  
-//  ViperTemplate v.0.0.1 - (2023, NS-Bionick Development Team)
 
 import UIKit
 
@@ -15,16 +13,18 @@ class HomeViewController: UITableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         title = "Home"
         self.tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.cellID)
-        presenter?.getDataMovies({
-            self.tableView.reloadData()
-        })
+        presenter?.getDataMovies()
+//        presenter?.getDataMovies({
+//            self.tableView.reloadData()
+//        })
     }
 
 }
 
+//MARK: - Extensions
 extension HomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,4 +52,12 @@ extension HomeViewController {
 // MARK: - P R E S E N T E R · T O · V I E W
 extension HomeViewController: HomeViewInputProtocol {
     
+    func showViewDataMovies(movies: [ListMovieProtocol]?) {
+        self.tableView.reloadData()
+    }
+    
+//    func showMoviesCount(count: Int) {
+//        self.countRow = count
+//        tableView(self.tableView, numberOfRowsInSection: count)
+//    }
 }
