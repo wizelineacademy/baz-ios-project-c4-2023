@@ -25,10 +25,10 @@ class TrendingMoviesViewController: UIViewController {
         return searchBar
     }()
 
-    var model: TrendingMoviesViewModel
+    private var viewModel: TrendingMoviesViewModel
     
-    init(model: TrendingMoviesViewModel) {
-        self.model = model
+    init(viewModel: TrendingMoviesViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.title = "Trending"
         self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
@@ -51,7 +51,7 @@ class TrendingMoviesViewController: UIViewController {
     private func loadInitialData() {
         Task {
             do {
-                try await model.getMovies()
+                try await viewModel.getMovies()
             } catch {
                 presentError(message: error.localizedDescription)
             }
@@ -61,7 +61,7 @@ class TrendingMoviesViewController: UIViewController {
     private func searchData() {
         Task {
             do {
-                try await model.searchMovies(searchBar.text ?? "")
+                try await viewModel.searchMovies(searchBar.text ?? "")
             } catch {
                 presentError(message: error.localizedDescription)
             }
@@ -69,11 +69,12 @@ class TrendingMoviesViewController: UIViewController {
     }
     
     private func bindings() {
-        model.bindMovies { [weak self] in
+        viewModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
                 self?.moviesTableView.reloadData()
             }
         }
+        
     }
     
     // MARK: - Visuals
@@ -106,7 +107,7 @@ class TrendingMoviesViewController: UIViewController {
 extension TrendingMoviesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.getRowCount()
+        return viewModel.getRowCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
