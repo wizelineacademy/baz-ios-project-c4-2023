@@ -9,19 +9,23 @@ import XCTest
 @testable import BAZProject
 
 
-final class ObservableTests: XCTestCase {
+final class BoxTests: XCTestCase {
     
     private var sutString: Box<String>!
     private var sutInt: Box<Int>!
     private var sut: Box<Bool>!
-    private var listenerCalled: Bool!
     
     override func setUp() {
         super.setUp()
         sutString = Box<String>(value: "")
         sutInt = Box<Int>(value: 0)
         sut = Box<Bool>(value: false)
-        listenerCalled = false
+    }
+    
+    override func tearDown() {
+        sutString = Box<String>(value: "")
+        sutInt = Box<Int>(value: 0)
+        sut = Box<Bool>(value: false)
     }
     
     func test_initializeWithAnyType_objectIsNil() {
@@ -41,5 +45,4 @@ final class ObservableTests: XCTestCase {
         sutString.value = "Bye"
         XCTAssertEqual(sutString.value, "Bye")
     }
-    
 }
