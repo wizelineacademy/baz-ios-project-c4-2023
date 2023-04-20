@@ -10,13 +10,13 @@ import Foundation
 struct Box<T> {
     private var listener: (() -> Void)?
     
-    var value: T {
+    var value: T? {
         didSet {
             listener?()
         }
     }
     
-    init(_ value: T) {
+    init(_ value: T?) {
         self.value = value
     }
     

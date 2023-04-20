@@ -10,6 +10,7 @@ import UIKit
 class TrendingMoviesViewModel {
     
     var movies = Box([Movie]())
+    var error: Box<Error> = Box(nil)
     var remoteData: TrendingMoviesRemoteData
     
     init(movies: [Movie] = [], remoteData: TrendingMoviesRemoteData) {
@@ -21,8 +22,21 @@ class TrendingMoviesViewModel {
         movies.bind(handler)
     }
     
-    func getMovies() async throws {
-        movies.value = try await remoteData.getMovies() ?? []
+    func bindError(_ handler: @escaping () -> Void) {
+        error.bind(handler)
+    }
+    
+    func getMovies() async {
+        do {
+            movies.value = try await remoteData.getMovies() ?? []
+        } catch {
+            self.error.value = error
+        }
+        
+    }
+    
+    func getError() -> String? {
+        error.value?.localizedDescription
     }
     
     func searchMovies(_ searchText: String) async throws {
@@ -31,13 +45,13 @@ class TrendingMoviesViewModel {
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
         var configuration = UIListContentConfiguration.cell()
-        let movie = movies.value[row]
-        configuration.text = movie.title
+        let movie = movies.value?[row]
+        configuration.text = movie?.title
         return configuration
     }
     
     func getRowCount() -> Int {
-        return movies.value.count
+        return movies.value?.count ?? 0
     }
     
 }

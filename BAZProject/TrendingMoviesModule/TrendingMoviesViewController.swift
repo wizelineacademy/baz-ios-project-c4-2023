@@ -50,21 +50,13 @@ class TrendingMoviesViewController: UIViewController {
     // MARK: - ViewModel Calls
     private func loadInitialData() {
         Task {
-            do {
-                try await viewModel.getMovies()
-            } catch {
-                presentError(message: error.localizedDescription)
-            }
+            try await viewModel.getMovies()
         }
     }
     
     private func searchData() {
         Task {
-            do {
-                try await viewModel.searchMovies(searchBar.text ?? "")
-            } catch {
-                presentError(message: error.localizedDescription)
-            }
+            try await viewModel.searchMovies(searchBar.text ?? "")
         }
     }
     
@@ -74,7 +66,11 @@ class TrendingMoviesViewController: UIViewController {
                 self?.moviesTableView.reloadData()
             }
         }
-        
+        viewModel.bindError { [weak self] in
+            DispatchQueue.main.async {
+                self?.presentError()
+            }
+        }
     }
     
     // MARK: - Visuals
@@ -94,7 +90,8 @@ class TrendingMoviesViewController: UIViewController {
         navigationItem.titleView = searchBar
     }
     
-    private func presentError(message: String) {
+    private func presentError() {
+        guard let message = viewModel.getError() else { return }
         let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
