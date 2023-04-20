@@ -49,15 +49,11 @@ class TrendingMoviesViewController: UIViewController {
     
     // MARK: - ViewModel Calls
     private func loadInitialData() {
-        Task {
-            try await viewModel.getMovies()
-        }
+        viewModel.getMovies()
     }
     
     private func searchData() {
-        Task {
-            try await viewModel.searchMovies(searchBar.text ?? "")
-        }
+        viewModel.searchMovies(searchBar.text ?? "")
     }
     
     private func bindings() {

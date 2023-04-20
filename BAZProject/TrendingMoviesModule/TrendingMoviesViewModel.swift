@@ -26,21 +26,29 @@ class TrendingMoviesViewModel {
         error.bind(handler)
     }
     
-    func getMovies() async {
-        do {
-            movies.value = try await remoteData.getMovies() ?? []
-        } catch {
-            self.error.value = error
+    func getMovies() {
+        Task {
+            do {
+                movies.value = try await remoteData.getMovies() ?? []
+            } catch {
+                self.error.value = error
+            }
         }
-        
     }
     
     func getError() -> String? {
         error.value?.localizedDescription
     }
     
-    func searchMovies(_ searchText: String) async throws {
-        movies.value = try await remoteData.searchMovies(searchText) ?? []
+    func searchMovies(_ searchText: String) {
+        Task {
+            do {
+                movies.value = try await remoteData.searchMovies(searchText) ?? []
+            } catch {
+                self.error.value = error
+            }
+        }
+        
     }
     
     func getCellConfiguration(row: Int) -> UIListContentConfiguration {
