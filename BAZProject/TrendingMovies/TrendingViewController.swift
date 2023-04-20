@@ -12,15 +12,17 @@ final class TrendingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMovieArray()
-    }
-    
-    func getMovieArray() { // se guarda la respuesta del servicio en el arreglo y se recarga la tabla
-        trendingModel.getmovies {
+       //TODO: mover a su propia funcion
+        trendingModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
+        getMovieArray()
+    }
+    /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla
+    func getMovieArray() {
+        trendingModel.getmovies()
     }
 }
 

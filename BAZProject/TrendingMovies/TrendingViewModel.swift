@@ -8,24 +8,27 @@
 import Foundation
 
 
-class TrendingViewModel: MoviesListProtocol {
+final class TrendingViewModel: MoviesListProtocol {
    
-    var movies: [ListMoviesProtocol]?
+    var movies = Box(value: [ListMoviesProtocol]())
     
-    func getmovies(_ completion: @escaping () -> Void) {
+    func getmovies() {
         let movieApi = MovieAPI()
         movieApi.getMovies { [weak self] moviearray in
-            self?.movies = moviearray
-            completion()
+            self?.movies.value = moviearray
         }
     }
     
+    func bindMovies(_ listener: @escaping () -> Void) {
+        movies.listener = listener
+    }
+    
     func getMovieCount() -> Int {
-        movies?.count ?? 0
+        movies.value.count
     }
     
     func getTitle(index: Int) -> String? {
-        movies?[index].title
+        movies.value[index].title
     }
     
 }
