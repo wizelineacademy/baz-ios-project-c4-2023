@@ -16,7 +16,7 @@ class MainTabBarController: UITabBarController {
     
     private func getTrendingTab() -> UIViewController {
         let trendingMoviesModel = TrendingMoviesViewModel(remoteData: TrendingMoviesRemoteData())
-        return UINavigationController(rootViewController: TrendingMoviesViewController(model: trendingMoviesModel))
+        return UINavigationController(rootViewController: TrendingMoviesViewController(viewModel: trendingMoviesModel))
     }
 
 }

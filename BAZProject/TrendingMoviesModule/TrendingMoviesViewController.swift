@@ -121,7 +121,7 @@ extension TrendingMoviesViewController: UITableViewDataSource {
 extension TrendingMoviesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = model.getCellConfiguration(row: indexPath.row)
+        var config = viewModel.getCellConfiguration(row: indexPath.row)
         config.imageProperties.maximumSize = CGSize(width: 50, height: 50)
         cell.indentationLevel = 1
         cell.indentationWidth = 0
