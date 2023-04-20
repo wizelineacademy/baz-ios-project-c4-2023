@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchEndpoint: EndpointProtocol {
     
-    var queries: [URLQueryItem]
+    var queries: [URLQueryItem]?
     var path = "/3/search/movie"
     
     init(_ searchText: String) {
