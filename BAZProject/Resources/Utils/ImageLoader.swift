@@ -18,10 +18,6 @@ struct ImageLoader {
                 DispatchQueue.main.async {
                     completion(image)
                 }
-            } else if let image = UIImage(named: "poster") {
-                DispatchQueue.main.async {
-                    completion(image)
-                }
             }
         }
     }
