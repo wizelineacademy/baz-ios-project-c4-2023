@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct TrendingEntity {
     
@@ -19,6 +20,7 @@ struct Movie: Decodable, Equatable {
     let id: Int
     let title: String
     let poster_path: String
+    let image: Data?
 }
 
 struct TrendingMovieResult: Decodable{

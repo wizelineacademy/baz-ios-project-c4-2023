@@ -18,8 +18,7 @@ class SearchTableViewController: UITableViewController {
     // MARK: Properties
     var presenter: SearchPresenterProtocol?
     
-    var serchingName = [String]()
-    var searching = false
+    var listMovies: [SearchedMovies] = []
 
     // MARK: Lifecycle
 
@@ -28,6 +27,7 @@ class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         presenter?.tableView = tableView
+        registrerCell()
     }
     
 }
@@ -52,7 +52,11 @@ extension SearchTableViewController {
 extension SearchTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        presenter?.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        let movie = listMovies[indexPath.row]
+        var config = UIListContentConfiguration.cell()
+        config.text = movie.title
+        config.image = UIImage(named: "poster")
+        cell.contentConfiguration = config
     }
 
 }
@@ -61,7 +65,6 @@ extension SearchTableViewController {
 extension SearchTableViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Enter presionado")
         presenter?.willFetchMovies(searchBar.text ?? "")
     }
 }
@@ -73,5 +76,13 @@ extension SearchTableViewController: SearchViewProtocol {
     
     func registrerCell(){
         tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
+    }
+    
+    func updateData(_ result: [SearchedMovies]) {
+        self.listMovies = result
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
 }

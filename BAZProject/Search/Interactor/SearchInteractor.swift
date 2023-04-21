@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SearchInteractor: SearchInteractorInputProtocol {
 
@@ -24,9 +25,21 @@ class SearchInteractor: SearchInteractorInputProtocol {
         remoteDatamanager?.getSearchedMovies(movie)
     }
     
+    func fetchPoster(_ poster: String) {
+        remoteDatamanager?.getImage(pathPoster: poster)
+    }
+    
 }
 
 extension SearchInteractor: SearchRemoteDataManagerOutputProtocol {
+    func handleGetPosterMovies(_ result: UIImage?) {
+        presenter?.onReceivedPosterMovies(result)
+    }
+    
+    func handleGetErrorServicePosterMovies(_ error: Error) {
+        presenter?.showPosterMoviesError(error)
+    }
+    
     func handleGetSearchedMovies(_ result: [SearchedMovies]) {
         presenter?.onReceivedSearchedMovies(result)
     }

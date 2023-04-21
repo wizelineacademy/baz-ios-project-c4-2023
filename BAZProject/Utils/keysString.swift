@@ -17,4 +17,5 @@ extension String{
     static let pageKey = "page"
     static let pageValueDefault = "1"
     static let queryKey = "query"
+    static let posterBasePath = "https://image.tmdb.org/t/p/w500"
 }

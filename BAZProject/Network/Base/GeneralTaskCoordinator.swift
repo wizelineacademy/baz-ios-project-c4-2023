@@ -76,7 +76,7 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
     }
     
     func get<T: Decodable>(_ type: URLType = .generic, callback: @escaping (Result<T,Error>) -> Void) {
-        let urlString: String = "\(urlBase)\(urlPath)"
+        var urlString: String = "\(urlBase)\(urlPath)"
         let apiQuery = URLQueryItem(name: apiKey, value: api)
         let lenguageQuery = URLQueryItem(name: languageKey, value: languageValueDefault)
         let regionQuery = URLQueryItem(name: regionKey, value: regionValueDefault)
@@ -85,6 +85,9 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         switch(type){
             case .generic:
                 params.append(URLQueryItem(name: pageKey, value: pageValueDefault))
+            case .poster:
+                urlString = .posterBasePath + queryValue
+                params = []
             case .allCustom:
                 break
             case .search:
@@ -146,5 +149,6 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
 public enum URLType {
     case generic
     case allCustom
+    case poster
     case search
 }

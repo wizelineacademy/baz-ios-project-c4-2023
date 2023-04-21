@@ -39,14 +39,6 @@ extension SearchPresenter: SearchPresenterProtocol {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        //config.text = entity.result?[indexPath.row].title
-        config.image = UIImage(named: "poster")
-        cell.contentConfiguration = config
-    }
-    
-    
     
     func willFetchMovies(_ movie: String) {
         interactor?.fetchMovies(movie)
@@ -54,11 +46,17 @@ extension SearchPresenter: SearchPresenterProtocol {
 }
 
 extension SearchPresenter: SearchInteractorOutputProtocol {
+    func onReceivedPosterMovies(_ result: UIImage?) {
+        
+    }
+    
+    func showPosterMoviesError(_ error: Error) {
+        print(error)
+    }
+    
     func onReceivedSearchedMovies(_ result: [SearchedMovies]) {
-        self.entity.result = result
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        entity.result = result
+        view?.updateData(result)
         
     }
     

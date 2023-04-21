@@ -14,7 +14,6 @@
 		B5BE779929D7621B0077737A /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
 		B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */; };
 		B5BE779D29D767660077737A /* MovieApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779C29D767660077737A /* MovieApiMock.swift */; };
-		B5BE779E29D767FB0077737A /* TrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE24029D60D1500EF774D /* TrendingMovies.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -44,7 +43,6 @@
 		D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */; };
 		D343157329F09EDC00AEE166 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156A29F09EDC00AEE166 /* TrendingEntity.swift */; };
 		D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
-		D3DDE24129D60D1500EF774D /* TrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE24029D60D1500EF774D /* TrendingMovies.swift */; };
 		D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5443329D48B6E00651AE9 /* BAZProjectTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +94,6 @@
 		D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManager.swift; sourceTree = "<group>"; };
 		D343156A29F09EDC00AEE166 /* TrendingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEntity.swift; sourceTree = "<group>"; };
 		D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTaskCoordinator.swift; sourceTree = "<group>"; };
-		D3DDE24029D60D1500EF774D /* TrendingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovies.swift; sourceTree = "<group>"; };
 		D3E5443129D48B6E00651AE9 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E5443329D48B6E00651AE9 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +145,6 @@
 		B5BE779429D75E2A0077737A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D3DDE24029D60D1500EF774D /* TrendingMovies.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -517,7 +513,6 @@
 				D309CC6529F0830C007A76D1 /* SearchInteractor.swift in Sources */,
 				D343156C29F09EDC00AEE166 /* TrendingLocalDataManager.swift in Sources */,
 				D309CC6929F0830C007A76D1 /* SearchEntity.swift in Sources */,
-				D3DDE24129D60D1500EF774D /* TrendingMovies.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				B51D476A29F250900089DBBB /* keysString.swift in Sources */,
 				D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */,
@@ -537,7 +532,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BE779929D7621B0077737A /* GeneralTaskCoordinator.swift in Sources */,
-				B5BE779E29D767FB0077737A /* TrendingMovies.swift in Sources */,
 				B5BE779D29D767660077737A /* MovieApiMock.swift in Sources */,
 				B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */,
 				D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */,
