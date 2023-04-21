@@ -11,17 +11,31 @@ protocol GeneralTaskCoordinatorProtocol{
     var session: URLSessionProtocol { get }
     var urlBase: String {get}
     var urlPath: String {get set}
-    var apiURL: String {get}
     var apiKey: String {get}
-    var urlRegion: String {get}
-    func get<T: Decodable>(callback: @escaping (Result<T,Error>) -> Void)
+    var api:String {get}
+    var languageKey: String {get}
+    var languageValueDefault: String {get}
+    var regionKey: String {get}
+    var regionValueDefault: String {get}
+    var pageKey: String {get}
+    var pageValueDefault: String {get}
+    var queryKey: String {get}
+    var queryValue: String {get set}
+    var params: [URLQueryItem] {get set}
+    func get<T: Decodable>(_ type: URLType, callback: @escaping (Result<T,Error>) -> Void)
 }
 
 extension GeneralTaskCoordinatorProtocol {
-    var urlBase     : String {return "https://api.themoviedb.org/3/"}
-    var apiURL      : String {return "?api_key="}
-    var apiKey      : String {return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"}
-    var urlRegion   : String {return "&language=es&region=MX&page=1"}
+    var urlBase: String {return .urlBase}
+    var apiKey: String {return .apiKey}
+    var api: String {return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"}
+    var languageKey: String {return .languageKey}
+    var languageValueDefault: String {return .languageValueDefault}
+    var regionKey: String {return .regionKey}
+    var regionValueDefault: String {return .regionValueDefault}
+    var pageKey: String {return .pageKey}
+    var pageValueDefault: String {return .pageValueDefault}
+    var queryKey: String {return .queryKey}
 }
 
 protocol URLSessionDataTaskProtocol {
@@ -51,8 +65,9 @@ extension URLSession: URLSessionProtocol {
 }
 
 class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
-    
     var urlPath: String = ""
+    var params: [URLQueryItem] = []
+    var queryValue: String = ""
     
     var session: URLSessionProtocol
     
@@ -60,8 +75,24 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         self.session = session
     }
     
-    func get<T: Decodable>(callback: @escaping (Result<T,Error>) -> Void) {
-        guard let url = URL(string: "\(urlBase)\(urlPath)\(apiURL)\(apiKey)\(urlRegion)") else {return}
+    func get<T: Decodable>(_ type: URLType = .generic, callback: @escaping (Result<T,Error>) -> Void) {
+        let urlString: String = "\(urlBase)\(urlPath)"
+        let apiQuery = URLQueryItem(name: apiKey, value: api)
+        let lenguageQuery = URLQueryItem(name: languageKey, value: languageValueDefault)
+        let regionQuery = URLQueryItem(name: regionKey, value: regionValueDefault)
+        var params: [URLQueryItem] = [apiQuery, lenguageQuery, regionQuery]
+        
+        switch(type){
+            case .generic:
+                params.append(URLQueryItem(name: pageKey, value: pageValueDefault))
+            case .allCustom:
+                break
+            case .search:
+                params.append(URLQueryItem(name: queryKey, value: queryValue))
+        }
+        
+        guard let url = addQueryParams(url: URL(string: urlString), newParams: params) else {return}
+        
         let finalURL = URLRequest(url: url)
         DispatchQueue.global().async {
             let task = self.session.performDataTask(with: finalURL) { (data, response, error) in
@@ -99,4 +130,21 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         }
         
     }
+    
+    func addQueryParams(url: URL?, newParams: [URLQueryItem]) -> URL? {
+        guard let url = url else {return nil}
+        let urlComponents = NSURLComponents.init(url: url , resolvingAgainstBaseURL: false)
+        guard urlComponents != nil else { return nil; }
+        if (urlComponents?.queryItems == nil) {
+            urlComponents!.queryItems = [];
+        }
+        urlComponents!.queryItems!.append(contentsOf: newParams);
+        return urlComponents?.url;
+    }
+}
+
+public enum URLType {
+    case generic
+    case allCustom
+    case search
 }

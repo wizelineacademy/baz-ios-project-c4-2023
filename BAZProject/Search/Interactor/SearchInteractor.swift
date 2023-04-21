@@ -12,7 +12,7 @@ class SearchInteractor: SearchInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: SearchInteractorOutputProtocol?
-    var localDatamanager: SearchLocalDataManagerInputProtocol?
+    //var localDatamanager: SearchLocalDataManagerInputProtocol?
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol?
     var entity: SearchEntity?
 
@@ -20,8 +20,18 @@ class SearchInteractor: SearchInteractorInputProtocol {
         return entity?.strNavBarTitle
     }
     
+    func fetchMovies(_ movie: String) {
+        remoteDatamanager?.getSearchedMovies(movie)
+    }
+    
 }
 
 extension SearchInteractor: SearchRemoteDataManagerOutputProtocol {
-    // TODO: Implement use case methods
+    func handleGetSearchedMovies(_ result: [SearchedMovies]) {
+        presenter?.onReceivedSearchedMovies(result)
+    }
+    
+    func handleGetErrorServiceSearchedMovies(_ error: Error) {
+        presenter?.showSearchedMoviesError(error)
+    }
 }

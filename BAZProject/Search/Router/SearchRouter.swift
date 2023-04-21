@@ -12,10 +12,9 @@ import UIKit
 class SearchRouter: SearchRouterProtocol {
 
     class func createSearchModule(withEntity entity: SearchEntity = SearchEntity()) -> UIViewController {
-        let view = SearchView()
+        let view = SearchTableViewController()
         let presenter: SearchPresenterProtocol & SearchInteractorOutputProtocol = SearchPresenter()
         let interactor: SearchInteractorInputProtocol & SearchRemoteDataManagerOutputProtocol = SearchInteractor()
-        let localDataManager: SearchLocalDataManagerInputProtocol = SearchLocalDataManager()
         let remoteDataManager: SearchRemoteDataManagerInputProtocol = SearchRemoteDataManager()
         let router: SearchRouterProtocol = SearchRouter()
         
@@ -24,7 +23,6 @@ class SearchRouter: SearchRouterProtocol {
         presenter.router = router
         presenter.interactor = interactor
         interactor.presenter = presenter
-        interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
         interactor.entity = entity
         remoteDataManager.remoteRequestHandler = interactor
