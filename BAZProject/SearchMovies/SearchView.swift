@@ -21,7 +21,7 @@ class SearchView: UIViewController {
     override func viewDidLoad() {
         configureView()
     }
-    
+/// Configuracion necesaria para la vista
     func configureView() {
         self.title = "Buscar"
         searchBar.showsCancelButton = true

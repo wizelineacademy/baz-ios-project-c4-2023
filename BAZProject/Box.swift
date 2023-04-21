@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Box para manejo de MVVM
 public struct Box<T> {
     public var value: T {
         didSet {

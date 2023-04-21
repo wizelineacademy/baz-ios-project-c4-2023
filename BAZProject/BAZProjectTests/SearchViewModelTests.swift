@@ -22,7 +22,6 @@ final class SearchViewModelTests: XCTestCase {
     override func tearDown() {
         sut = nil
         super.tearDown()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
     func testSearchModel_countNotNil(){

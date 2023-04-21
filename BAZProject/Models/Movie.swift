@@ -13,7 +13,7 @@ protocol ListMoviesProtocol {
     var title: String? { get set }
     var poster_path: String? { get set }
 }
-
+// Estructura para parsear las peliculas
 struct Movie: Decodable, ListMoviesProtocol {
     var id: Int?
     var title: String?

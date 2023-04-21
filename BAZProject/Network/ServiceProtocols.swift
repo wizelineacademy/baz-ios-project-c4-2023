@@ -20,7 +20,7 @@ public protocol URLSessionProtocol {
     typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
     func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
-
+// tipos de errores manejados al consultar 
 public enum ServiceError: Error {
     case noData
     case parsingData
