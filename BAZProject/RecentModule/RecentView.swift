@@ -22,7 +22,7 @@ class RecentView: UITableViewController {
 }
 
 //MARK: TrendingViewProtocols
-extension  RecentView:  RecentViewProtocol {
+extension RecentView: RecentViewProtocol {
     
     func reloadData() {
         DispatchQueue.main.async {
@@ -32,7 +32,7 @@ extension  RecentView:  RecentViewProtocol {
 }
 
 // MARK: - TableView's DataSource
-extension  RecentView {
+extension RecentView {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.presenter?.movies?.count ?? 0
@@ -46,7 +46,7 @@ extension  RecentView {
 }
 
 // MARK: - TableView's Delegate
-extension  RecentView {
+extension RecentView {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()

@@ -12,15 +12,13 @@ class  RecentInteractor: RecentInteractorInputProtocol {
     func fetchMovies() {
         self.remoteDatamanager?.fetchMovies()
     }
-    
 
     // MARK: Properties
     weak var presenter: RecentInteractorOutputProtocol?
-    var remoteDatamanager:  RecentRemoteDataManagerInputProtocol?
-
+    var remoteDatamanager: RecentRemoteDataManagerInputProtocol?
 }
 
-extension  RecentInteractor: RecentRemoteDataManagerOutputProtocol {
+extension RecentInteractor: RecentRemoteDataManagerOutputProtocol {
     func moviesFetched(_ movies: [Movie]) {
         self.presenter?.moviesFetched(movies: movies)
     }

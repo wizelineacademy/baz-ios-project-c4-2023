@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TopRatedRemoteDataManager:TopRatedRemoteDataManagerInputProtocol {
+class TopRatedRemoteDataManager: TopRatedRemoteDataManagerInputProtocol {
     
     private var service: ServiceProtocol
     private let topRatedURL = MovieRequest.getURL(endpoint: .topRatedMovies)

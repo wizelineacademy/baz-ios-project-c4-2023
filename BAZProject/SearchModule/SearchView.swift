@@ -15,7 +15,6 @@ class SearchView: UITableViewController {
 }
 
 extension SearchView: SearchViewProtocol {
-    
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

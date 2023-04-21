@@ -28,8 +28,6 @@ class RecentRemoteDataManager: RecentRemoteDataManagerInputProtocol {
             case .failure(_):
                 break
             }
-            
         }
     }
-
 }

@@ -13,7 +13,6 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
         self.remoteDatamanager?.fetchMovies()
     }
     
-
     // MARK: Properties
     weak var presenter: TrendingInteractorOutputProtocol?
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?

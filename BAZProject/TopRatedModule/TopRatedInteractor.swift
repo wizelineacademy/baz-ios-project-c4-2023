@@ -14,7 +14,6 @@ class TopRatedInteractor: TopRatedInteractorInputProtocol {
     weak var presenter: TopRatedInteractorOutputProtocol?
     var remoteDatamanager: TopRatedRemoteDataManagerInputProtocol?
     
-    
     func fetchMovies() {
         self.remoteDatamanager?.fetchMovies()
     }

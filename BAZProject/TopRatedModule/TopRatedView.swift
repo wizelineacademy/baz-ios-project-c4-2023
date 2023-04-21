@@ -24,7 +24,7 @@ extension TopRatedView: TopRatedViewProtocol {
     func reloadData() {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
+        }
     }
 }
 

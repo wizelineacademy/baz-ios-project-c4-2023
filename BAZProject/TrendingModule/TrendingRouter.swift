@@ -31,6 +31,5 @@ class TrendingRouter: TrendingRouterProtocol {
     static var mainStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
-    
 }
 

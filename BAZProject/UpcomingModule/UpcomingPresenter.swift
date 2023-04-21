@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpcomingPresenter  {
+class UpcomingPresenter {
     
     // MARK: Properties
     weak var view: UpcomingViewProtocol?

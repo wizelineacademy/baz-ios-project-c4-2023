@@ -18,7 +18,6 @@ class TrendingView: UITableViewController {
         super.viewDidLoad()
         presenter?.notifyViewLoaded()
     }
-
 }
 
 //MARK: TrendingViewProtocols

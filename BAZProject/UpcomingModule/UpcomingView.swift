@@ -11,7 +11,7 @@ import UIKit
 class UpcomingView: UITableViewController {
 
     // MARK: Properties
-    var presenter:  UpcomingPresenterProtocol?
+    var presenter: UpcomingPresenterProtocol?
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class UpcomingView: UITableViewController {
 }
 
 //MARK: TrendingViewProtocols
-extension  UpcomingView:  UpcomingViewProtocol {
+extension  UpcomingView: UpcomingViewProtocol {
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -31,7 +31,7 @@ extension  UpcomingView:  UpcomingViewProtocol {
 }
 
 // MARK: - TableView's DataSource
-extension  UpcomingView {
+extension UpcomingView {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.presenter?.movies?.count ?? 0
@@ -45,7 +45,7 @@ extension  UpcomingView {
 }
 
 // MARK: - TableView's Delegate
-extension  UpcomingView {
+extension UpcomingView {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()

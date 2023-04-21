@@ -29,9 +29,7 @@ class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
                 self?.remoteRequestHandler?.handleService(error: error)
                 break
             }
-            
         }
     }
-
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopRatedPresenter  {
+class TopRatedPresenter {
     
     // MARK: Properties
     weak var view: TopRatedViewProtocol?

@@ -25,10 +25,8 @@ class SearchRemoteDataManager: SearchRemoteDataManagerInputProtocol {
                 self?.remoteRequestHandler?.searchResultsFecthed(searchResults: response.results ?? [])
                 break
             case .failure(_):
-                //TODO: Implement error handler
                 break
             }
         }
     }
-    
 }
