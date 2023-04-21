@@ -7,14 +7,10 @@
 
 import UIKit
 
-final class FavoritesViewController: MasterMovieTableViewController {
+final class FavoritesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupViewModel(MovieListViewModel(.popular))
-        setupView()
-        applyFilter()
     }
     
     /*
@@ -27,27 +23,3 @@ final class FavoritesViewController: MasterMovieTableViewController {
     }
     */
 }
-
-// MARK: - Methods
-
-extension FavoritesViewController {
-    
-    func setupView() {
-        
-    }
-    
-    func applyFilter(_ filterType: Enum_MovieFilters? = nil) {
-        viewModel?.applyMovieFilter(filterType) { [weak self] in
-            self?.navigationItem.title = self?.viewModel?.getTitle()
-            self?.tableView.reloadData()
-        }
-    }
-}
-
-extension FavoritesViewController: MasterMovieTableViewProtocols {
-    
-    func setupViewModel(_ viewModel: MovieListViewModel) {
-        self.viewModel = viewModel
-    }
-}
-
