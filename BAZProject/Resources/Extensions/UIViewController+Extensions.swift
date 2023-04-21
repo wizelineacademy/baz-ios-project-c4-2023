@@ -38,11 +38,6 @@ extension UIViewController {
             navigationController?.navigationBar.tintColor = tintColor
             navigationItem.title = title
 
-        } else {
-            navigationController?.navigationBar.barTintColor = backgoundColor
-            navigationController?.navigationBar.tintColor = tintColor
-            navigationController?.navigationBar.isTranslucent = false
-            navigationItem.title = title
         }
     }
     
