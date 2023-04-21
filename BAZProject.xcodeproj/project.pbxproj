@@ -31,6 +31,7 @@
 		85AAC82529F24E6900048139 /* upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 85AAC82129F24E6900048139 /* upcoming.json */; };
 		85AAC82729F2540500048139 /* ImageLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAC82629F2540500048139 /* ImageLoaderTest.swift */; };
 		85AAC82929F25EBE00048139 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAC82829F25EBE00048139 /* UIImage+Extensions.swift */; };
+		85AAC82B29F2636F00048139 /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAC82A29F2636F00048139 /* SearchViewModelTest.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		85AAC82129F24E6900048139 /* upcoming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = upcoming.json; sourceTree = "<group>"; };
 		85AAC82629F2540500048139 /* ImageLoaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTest.swift; sourceTree = "<group>"; };
 		85AAC82829F25EBE00048139 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		85AAC82A29F2636F00048139 /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				859D2E4E29D6A07C008AF807 /* Fakes */,
 				859D2E5229D6A3AB008AF807 /* MovieListViewModelTest.swift */,
 				85AAC82629F2540500048139 /* ImageLoaderTest.swift */,
+				85AAC82A29F2636F00048139 /* SearchViewModelTest.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				85AAC82729F2540500048139 /* ImageLoaderTest.swift in Sources */,
 				859D2E5329D6A3AB008AF807 /* MovieListViewModelTest.swift in Sources */,
+				85AAC82B29F2636F00048139 /* SearchViewModelTest.swift in Sources */,
 				859D2E5529D6A554008AF807 /* MovieFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
