@@ -23,7 +23,7 @@ final class ImageLoaderTest: XCTestCase {
         self.sut = nil
     }
     
-    func testImageLoader_whenReadFromMock_checkNumberOfTreandingMovies() {
+    func testImageLoader_checkImageLoader() {
         
         var imageExpected: UIImage!
         
