@@ -26,10 +26,21 @@ final class SearchMoviesPresenterTest: XCTestCase {
         sut = nil
     }
     
+    // MARK: SetUpCorrect
     func test_NotNil_Presenter(){
         XCTAssertNotNil(sut?.view?.showResultMovies())
         XCTAssertNotNil(sut?.setError())
         XCTAssertNotNil(sut?.setResponseMovies(with: [MovieData]()))
+        XCTAssertNotNil(sut?.movies)
+    }
+    
+    func test_MoviesHasZeroElements(){
+        //Given
+        let expected = 0
+        //When
+        let countMovies = sut?.movies.count ?? 0
+        //Then
+        XCTAssertEqual(expected, countMovies)
     }
 
 }

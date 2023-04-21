@@ -24,6 +24,7 @@ final class SearchMoviesRouterTest: XCTestCase {
         sut = nil
     }
     
+    // MARK: Test - Alert
     func test_PresentNotEmptyAlert() {
         XCTAssertNotNil(sut.presentAlert(CWAlert.simpleWith(message: "mensaje")))
     }
@@ -37,6 +38,7 @@ final class SearchMoviesRouterTest: XCTestCase {
         XCTAssertEqual(expected, msg.message ?? "")
     }
     
+    // MARK: Test - View
     func test_Validate_ViewIsNil(){
         XCTAssertNil(sut.view)
     }
