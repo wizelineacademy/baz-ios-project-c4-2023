@@ -37,7 +37,7 @@ extension FavoritesViewController {
     }
     
     func applyFilter(_ filterType: Enum_MovieFilters? = nil) {
-        viewModel?.applyFilter(filterType) { [weak self] in
+        viewModel?.applyMovieFilter(filterType) { [weak self] in
             self?.navigationItem.title = self?.viewModel?.getTitle()
             self?.tableView.reloadData()
         }
