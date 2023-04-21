@@ -8,11 +8,10 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
 
     var presenter: SearchViewOutputProtocol?
-    var movies: [Movie] = [] {
+    private var moviesModel: [MovieResult]?
+    {
         didSet {
-            DispatchQueue.main.async {
-                self.movieTableView.reloadData()
-            }
+            self.movieTableView.reloadData()
         }
     }
     
@@ -74,30 +73,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         movieTableView.register(HomeCell.self, forCellReuseIdentifier: "HomeCell")
     }
     
+    // MARK: - searchBar Delegates
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print(searchBar.text ?? "")
+        let keyWord = searchBar.text ?? ""
+        presenter?.getMovieSearch(movieName: keyWord)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(searchBar.text ?? "")
+        view.endEditing(true)
     }
 
 }
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let movie = movies[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as? HomeCell {
-            //cell.lblTitle.text = movie.title
-            //cell.setup(movie)
-            cell.setupTitle(title: "self.model?[indexPath.row].title ?? ")
+            cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
+            self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
+                let imgDefault = UIImage(named: "poster") ?? UIImage()
+                cell.setupImage(image: (image ?? imgDefault))
+            })
             return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10//movies.count
+        return moviesModel?.count ?? 0
     }
 
 }
@@ -105,4 +107,7 @@ extension SearchViewController: UITableViewDataSource {
 // MARK: - P R E S E N T E R · T O · V I E W
 extension SearchViewController: SearchViewInputProtocol {
     
+    func showViewDataMovies(movies: [ListMovieProtocol]?) {
+        self.moviesModel = movies as? [MovieResult]
+    }
 }

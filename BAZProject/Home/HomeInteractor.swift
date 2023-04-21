@@ -31,8 +31,7 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     
     func getDataMovies() {
         let movieApi = MovieAPI()
-        movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.search)\(MovieAPIConstans.apiKey)\(MovieAPIConstans.searchKeyWord)"
-            /*"\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)"*/) { [weak self] result in
+        movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
             switch result {
             case .failure(let fail):
                 print(fail.localizedDescription)

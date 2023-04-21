@@ -7,6 +7,7 @@ import UIKit
 
 // MARK: - View (Presenter To View)
 protocol HomeViewInputProtocol: AnyObject {
+    // MARK: - Properties
     var presenter: HomeViewOutputProtocol? { get }
     // MARK: - Functions
     func showViewDataMovies(movies: [ListMovieProtocol]?)
@@ -39,6 +40,7 @@ protocol HomeRouterProtocol {
 
 // MARK: - Interactor (Presenter To Interactor)
 protocol HomeInteractorInputProtocol {
+    // MARK: - Properties
     var presenter: HomeInteractorOutputProtocol? { get }
     var labelTitle: String { get }
     // MARK: - Functions

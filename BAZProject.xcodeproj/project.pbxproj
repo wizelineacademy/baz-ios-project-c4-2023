@@ -118,10 +118,10 @@
 			isa = PBXGroup;
 			children = (
 				10B1C37229EF8817007D5789 /* Cell */,
-				10B1C36829EF5AE1007D5789 /* HomePresenter.swift */,
-				10B1C36929EF5AE1007D5789 /* HomeRouter.swift */,
 				10B1C36A29EF5AE1007D5789 /* HomeViewController.swift */,
+				10B1C36829EF5AE1007D5789 /* HomePresenter.swift */,
 				10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */,
+				10B1C36929EF5AE1007D5789 /* HomeRouter.swift */,
 				10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */,
 			);
 			path = Home;
@@ -138,10 +138,10 @@
 		10FA9B6629F1E64300F17812 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				10FA9B6729F1E66000F17812 /* SearchPresenter.swift */,
-				10FA9B6829F1E66000F17812 /* SearchRouter.swift */,
 				10FA9B6929F1E66000F17812 /* SearchViewController.swift */,
+				10FA9B6729F1E66000F17812 /* SearchPresenter.swift */,
 				10FA9B6B29F1E66000F17812 /* SearchInteractor.swift */,
+				10FA9B6829F1E66000F17812 /* SearchRouter.swift */,
 				10FA9B6A29F1E66000F17812 /* SearchProtocols.swift */,
 			);
 			path = Search;

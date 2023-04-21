@@ -9,7 +9,7 @@ import UIKit
 final class HomeViewController: UITableViewController {
     //MARK: - Properties
     var presenter: HomeViewOutputProtocol?
-    private var model: [MovieResult]?
+    private var moviesModel: [MovieResult]?
     {
         didSet {
             self.tableView.reloadData()
@@ -23,13 +23,13 @@ final class HomeViewController: UITableViewController {
         self.tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.cellID)
         presenter?.getDataMovies()
         let exitButtom: UIBarButtonItem
-        
         exitButtom = UIBarButtonItem(title: "Search",
                                      style: .plain,
                                      target: self,
                                      action: #selector(gotoSerch))
         navigationItem.setRightBarButton(exitButtom,
-                                                animated: false)
+                                         animated: false)
+        title = presenter?.labelTitle
     }
     
     // MARK: Functions
@@ -44,13 +44,13 @@ final class HomeViewController: UITableViewController {
 extension HomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.count ?? 0
+        return moviesModel?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.cellID, for: indexPath) as? HomeCell else { fatalError("Unabel to create cell")}
         
-        cell.setupTitle(title: self.model?[indexPath.row].title ?? "")
+        cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
         
         self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
             let imgDefault = UIImage(named: "poster") ?? UIImage()
@@ -70,7 +70,7 @@ extension HomeViewController {
 extension HomeViewController: HomeViewInputProtocol {
         
     func showViewDataMovies(movies: [ListMovieProtocol]?) {
-        self.model = movies as? [MovieResult]
+        self.moviesModel = movies as? [MovieResult]
     }
     
 }
