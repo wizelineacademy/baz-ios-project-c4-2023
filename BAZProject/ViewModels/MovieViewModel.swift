@@ -16,6 +16,14 @@ struct MovieViewModel {
 }
 
 extension MovieViewModel {
-    var title: String { movie.title }
-    var poster_path: String { "https://image.tmdb.org/t/p/w500/\(self.movie.poster_path)" }
+    var title: String {
+        return movie.title ?? ""
+    }
+    var poster_path: String? {
+        if let poster_path = self.movie.poster_path {
+            return "https://image.tmdb.org/t/p/w500/\(poster_path)"
+        } else {
+            return nil
+        }
+    }
 }
