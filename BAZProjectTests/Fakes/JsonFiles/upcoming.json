@@ -1,0 +1,403 @@
+{
+    "dates": {
+        "maximum": "2023-05-16",
+        "minimum": "2023-04-27"
+    },
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/lWqjXgut48IK5f5IRbDBAoO2Epp.jpg",
+            "genre_ids": [
+                16,
+                12,
+                10751,
+                14,
+                35
+            ],
+            "id": 502356,
+            "original_language": "en",
+            "original_title": "The Super Mario Bros. Movie",
+            "overview": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+            "popularity": 11640.691,
+            "poster_path": "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+            "release_date": "2023-04-05",
+            "title": "The Super Mario Bros. Movie",
+            "video": false,
+            "vote_average": 7.5,
+            "vote_count": 1130
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5Y5pz0NX7SZS9036I733F7uNcwK.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "id": 758323,
+            "original_language": "en",
+            "original_title": "The Pope's Exorcist",
+            "overview": "Father Gabriele Amorth, Chief Exorcist of the Vatican, investigates a young boy's terrifying possession and ends up uncovering a centuries-old conspiracy the Vatican has desperately tried to keep hidden.",
+            "popularity": 1490.539,
+            "poster_path": "/9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg",
+            "release_date": "2023-04-05",
+            "title": "The Pope's Exorcist",
+            "video": false,
+            "vote_average": 6.6,
+            "vote_count": 108
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/a2tys4sD7xzVaogPntGsT1ypVoT.jpg",
+            "genre_ids": [
+                53,
+                35,
+                80
+            ],
+            "id": 804150,
+            "original_language": "en",
+            "original_title": "Cocaine Bear",
+            "overview": "Inspired by a true story, an oddball group of cops, criminals, tourists and teens converge in a Georgia forest where a 500-pound black bear goes on a murderous rampage after unintentionally ingesting cocaine.",
+            "popularity": 1556.769,
+            "poster_path": "/gOnmaxHo0412UVr1QM5Nekv1xPi.jpg",
+            "release_date": "2023-02-22",
+            "title": "Cocaine Bear",
+            "video": false,
+            "vote_average": 6.4,
+            "vote_count": 807
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sFGENDTUNOuDbVufxksCkrDtuaT.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "id": 713704,
+            "original_language": "en",
+            "original_title": "Evil Dead Rise",
+            "overview": "Two sisters find an ancient vinyl that gives birth to bloodthirsty demons that run amok in a Los Angeles apartment building and thrusts them into a primal battle for survival as they face the most nightmarish version of family imaginable.",
+            "popularity": 1013.319,
+            "poster_path": "/5ik4ATKmNtmJU6AYD0bLm56BCVM.jpg",
+            "release_date": "2023-04-12",
+            "title": "Evil Dead Rise",
+            "video": false,
+            "vote_average": 7.5,
+            "vote_count": 28
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wD2kUCX1Bb6oeIb2uz7kbdfLP6k.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "id": 980078,
+            "original_language": "en",
+            "original_title": "Winnie the Pooh: Blood and Honey",
+            "overview": "Christopher Robin is headed off to college and he has abandoned his old friends, Pooh and Piglet, which then leads to the duo embracing their inner monsters.",
+            "popularity": 964.95,
+            "poster_path": "/ewF3IlGscc7FjgGEPcQvZsAsgAW.jpg",
+            "release_date": "2023-01-27",
+            "title": "Winnie the Pooh: Blood and Honey",
+            "video": false,
+            "vote_average": 5.8,
+            "vote_count": 483
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sp7MPK2K60LLd7A6zjHKsfgjFil.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "id": 296271,
+            "original_language": "en",
+            "original_title": "The Devil Conspiracy",
+            "overview": "The hottest biotech company in the world has discovered they can clone history’s most influential people from the dead. Now, they are auctioning clones of Michelangelo, Galileo, Vivaldi, and others for tens of millions of dollars to the world’s ultra-rich. But when they steal the Shroud of Turin and clone the DNA of Jesus Christ, all hell breaks loose.",
+            "popularity": 650.668,
+            "poster_path": "/2lUYbD2C3XSuwqMUbDVDQuz9mqz.jpg",
+            "release_date": "2023-01-13",
+            "title": "The Devil Conspiracy",
+            "video": false,
+            "vote_average": 6.4,
+            "vote_count": 122
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ceYZCBfwbBwSpGJ6PapNVw5jqLG.jpg",
+            "genre_ids": [
+                16,
+                18,
+                12,
+                14
+            ],
+            "id": 916224,
+            "original_language": "ja",
+            "original_title": "すずめの戸締まり",
+            "overview": "Suzume, 17, lost her mother as a little girl. On her way to school, she meets a mysterious young man. But her curiosity unleashes a calamity that endangers the entire population of Japan, and so Suzume embarks on a journey to set things right.",
+            "popularity": 354.274,
+            "poster_path": "/vIeu8WysZrTSFb2uhPViKjX9EcC.jpg",
+            "release_date": "2022-11-11",
+            "title": "Suzume",
+            "video": false,
+            "vote_average": 8.1,
+            "vote_count": 144
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/r7Dfg9aRZ78gJsmDlCirIIlNH3d.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 785084,
+            "original_language": "en",
+            "original_title": "The Whale",
+            "overview": "A reclusive English teacher suffering from severe obesity attempts to reconnect with his estranged teenage daughter for one last chance at redemption.",
+            "popularity": 287.92,
+            "poster_path": "/jQ0gylJMxWSL490sy0RrPj1Lj7e.jpg",
+            "release_date": "2022-12-09",
+            "title": "The Whale",
+            "video": false,
+            "vote_average": 8.1,
+            "vote_count": 2029
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/cdOQk4GP5ch5e1HHATFG3NXouPL.jpg",
+            "genre_ids": [
+                10749,
+                18,
+                35
+            ],
+            "id": 1016121,
+            "original_language": "en",
+            "original_title": "Beautiful Disaster",
+            "overview": "Bad-boy Travis is exactly what college freshman Abby needs and wants to avoid. He spends his nights fighting in underground boxing matches, and his days as the ultimate college campus charmer. But Abby wants nothing to do with Travis. Intrigued by Abby’s resistance, Travis offers her a simple bet: if he loses his next fight, he must remain sex-free for a month. If he wins, Abby must live in his apartment for the same amount of time. Either way, Travis has no idea that Abby’s dark past is about to emerge, and he may have finally met his match.",
+            "popularity": 253.513,
+            "poster_path": "/aQs2JO5fBfWBqy3cRAJYmgmRSCe.jpg",
+            "release_date": "2023-04-04",
+            "title": "Beautiful Disaster",
+            "video": false,
+            "vote_average": 6.7,
+            "vote_count": 16
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/94TIUEhuwv8PhdIADEvSuwPljS5.jpg",
+            "genre_ids": [
+                10752,
+                28
+            ],
+            "id": 840326,
+            "original_language": "fi",
+            "original_title": "Sisu",
+            "overview": "Deep in the wilderness of Lapland, Aatami Korpi is searching for gold but after he stumbles upon Nazi patrol, a breathtaking and gold-hungry chase through the destroyed and mined Lapland wilderness begins.",
+            "popularity": 253.544,
+            "poster_path": "/dHx5yuBb05U9vNaNhIBD7jWyxPk.jpg",
+            "release_date": "2023-01-27",
+            "title": "Sisu",
+            "video": false,
+            "vote_average": 7,
+            "vote_count": 14
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/tIX6j3NzadlwGcJ52nuWdmtOQkg.jpg",
+            "genre_ids": [
+                27,
+                53,
+                9648
+            ],
+            "id": 717728,
+            "original_language": "en",
+            "original_title": "Jeepers Creepers: Reborn",
+            "overview": "Forced to travel with her boyfriend to a horror festival, Laine begins to experience disturbing visions associated with the urban legend of The Creeper. As the festival arrives and the blood-soaked entertainment builds to a frenzy, she becomes the center of it while something unearthly has been summoned.",
+            "popularity": 212.723,
+            "poster_path": "/aGBuiirBIQ7o64FmJxO53eYDuro.jpg",
+            "release_date": "2022-09-15",
+            "title": "Jeepers Creepers: Reborn",
+            "video": false,
+            "vote_average": 5.8,
+            "vote_count": 736
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/pr5B7Hb7711QQDirAyS5P7fKjts.jpg",
+            "genre_ids": [
+                53,
+                28,
+                27,
+                12
+            ],
+            "id": 760741,
+            "original_language": "en",
+            "original_title": "Beast",
+            "overview": "A recently widowed man and his two teenage daughters travel to a game reserve in South Africa. However, their journey of healing soon turns into a fight for survival when a bloodthirsty lion starts to stalk them.",
+            "popularity": 217.382,
+            "poster_path": "/f18rGcLlawKjNC5KRh36S0mvRlY.jpg",
+            "release_date": "2022-08-11",
+            "title": "Beast",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 1072
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sxQuWAUnyZCSJnjXhcGrCP6ASUy.jpg",
+            "genre_ids": [
+                18,
+                27,
+                53
+            ],
+            "id": 931954,
+            "original_language": "es",
+            "original_title": "Venus",
+            "overview": "Lucía, a club dancer on the run, takes refuge in a sinister building on the outskirts of Madrid where her sister Rocío lives with her daughter Alba.",
+            "popularity": 186.729,
+            "poster_path": "/vyQmDx5CF8x9T6WKCLuoFotGpjf.jpg",
+            "release_date": "2022-12-02",
+            "title": "Venus",
+            "video": false,
+            "vote_average": 5.6,
+            "vote_count": 81
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/rCZNtFhCId7zAMo68xyCEwnRvB.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 901563,
+            "original_language": "fr",
+            "original_title": "Close",
+            "overview": "Two thirteen year-olds have always been incredibly close but they drift apart after the intimacy of their relationship is questioned by schoolmates.  An emotionally transformative and unforgettable portrait of the intersection of friendship and love, identity and independence, and heartbreak and healing.",
+            "popularity": 134.953,
+            "poster_path": "/54FGmbm9kJselaFPLRomXDuuCGK.jpg",
+            "release_date": "2022-11-01",
+            "title": "Close",
+            "video": false,
+            "vote_average": 7.8,
+            "vote_count": 334
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qElNES0sHVQcbzvGrTx7ccpGzij.jpg",
+            "genre_ids": [
+                878,
+                28,
+                18
+            ],
+            "id": 842675,
+            "original_language": "zh",
+            "original_title": "流浪地球2",
+            "overview": "Humans built huge engines on the surface of the earth to find a new home. But the road to the universe is perilous. In order to save earth, young people once again have to step forward to start a race against time for life and death.",
+            "popularity": 163.454,
+            "poster_path": "/hBhydcdZuDmGIHfT5uzwIeUAJ6Q.jpg",
+            "release_date": "2023-01-22",
+            "title": "The Wandering Earth II",
+            "video": false,
+            "vote_average": 7.6,
+            "vote_count": 154
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7TUp4uKIaX9c2TAZLPwjty5A0EP.jpg",
+            "genre_ids": [
+                878,
+                35,
+                28
+            ],
+            "id": 447365,
+            "original_language": "en",
+            "original_title": "Guardians of the Galaxy Volume 3",
+            "overview": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+            "popularity": 195.614,
+            "poster_path": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+            "release_date": "2023-05-03",
+            "title": "Guardians of the Galaxy Volume 3",
+            "video": false,
+            "vote_average": 0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/kfKW0HBObLAd4Lj27XX5QoLWmGe.jpg",
+            "genre_ids": [
+                35,
+                27,
+                14
+            ],
+            "id": 649609,
+            "original_language": "en",
+            "original_title": "Renfield",
+            "overview": "Having grown sick and tired of his centuries as Dracula's lackey, Renfield finds a new lease on life — and maybe even redemption — when he falls for feisty, perennially angry traffic cop Rebecca Quincy.",
+            "popularity": 115.877,
+            "poster_path": "/p6yUjhvNGQpFZilKwOKbxQ1eHlo.jpg",
+            "release_date": "2023-04-07",
+            "title": "Renfield",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 51
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ndrZYPNv0jKMCO9Ne98vfNxTzkW.jpg",
+            "genre_ids": [
+                18,
+                53
+            ],
+            "id": 878375,
+            "original_language": "en",
+            "original_title": "On a Wing and a Prayer",
+            "overview": "After their pilot dies unexpectedly mid-flight, passenger Doug White must safely land a plane and save his entire family from insurmountable danger.",
+            "popularity": 133.207,
+            "poster_path": "/8GTJwaC2CeNa0Zg6QrPLwrfurpZ.jpg",
+            "release_date": "2023-04-06",
+            "title": "On a Wing and a Prayer",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 28
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/69HgAYpbJ04w6lUUVainsYxLabb.jpg",
+            "genre_ids": [
+                14,
+                28,
+                12
+            ],
+            "id": 455476,
+            "original_language": "en",
+            "original_title": "Knights of the Zodiac",
+            "overview": "When a headstrong street orphan, Seiya, in search of his abducted sister unwittingly taps into hidden powers, he discovers he might be the only person alive who can protect a reincarnated goddess, sent to watch over humanity. Can he let his past go and embrace his destiny to become a Knight of the Zodiac?",
+            "popularity": 131.541,
+            "poster_path": "/ixLxaRJrJZoN3pg6tc2RAsheYmV.jpg",
+            "release_date": "2023-04-27",
+            "title": "Knights of the Zodiac",
+            "video": false,
+            "vote_average": 0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/l2VqHMBEwAYZh6DeAZSlOzAXw7N.jpg",
+            "genre_ids": [
+                35
+            ],
+            "id": 933419,
+            "original_language": "en",
+            "original_title": "Champions",
+            "overview": "A stubborn and hotheaded minor league basketball coach is forced to train a Special Olympics team when he is sentenced to community service.",
+            "popularity": 128.855,
+            "poster_path": "/yVgtsoXyTZBww7SWE4JE1U4Wcel.jpg",
+            "release_date": "2023-03-09",
+            "title": "Champions",
+            "video": false,
+            "vote_average": 7.1,
+            "vote_count": 81
+        }
+    ],
+    "total_pages": 19,
+    "total_results": 368
+}
