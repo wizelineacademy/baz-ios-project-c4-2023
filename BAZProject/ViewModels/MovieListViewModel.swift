@@ -41,11 +41,11 @@ extension MovieListViewModel {
         return MovieViewModel(movie)
     }
     
-    private func setMovies(_ movies: [Movie]) {
+    func setMovies(_ movies: [Movie]) {
         self.movies = movies
     }
     
-    func applyFilter(_ filterType: Enum_MovieFilters? = nil, completion: @escaping () -> ()) {
+    func applyMovieFilter(_ filterType: Enum_MovieFilters? = nil, completion: @escaping () -> ()) {
         var url: URL?
         
         if let filterType = filterType {
