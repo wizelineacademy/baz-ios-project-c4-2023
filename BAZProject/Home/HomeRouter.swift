@@ -7,9 +7,12 @@
 
 import UIKit
 
+// MARK: - Class
 class HomeRouter {
+    // MARK: - Properties
     weak var view: UIViewController?
     
+    // MARK: - Functions
     static func createModule() -> UIViewController {
         let view = HomeViewController()
         let interactor = HomeInteractor()
@@ -20,21 +23,10 @@ class HomeRouter {
         interactor.presenter = presenter
         router.view = view
         return view
-        /*let view = HomeViewController()
-        let presenter = HomePresenter()
-        let interactor = HomeInteractor()
-        let router = HomeRouter()
-        
-        view.presenter = presenter
-        presenter.view = view
-        presenter.interactor = interactor
-        presenter.router = router
-        interactor.presenter = presenter
-        
-        return view*/
     }
 }
 
+// MARK: - Extensions
 extension HomeRouter: HomeRouterProtocol {
     
 }

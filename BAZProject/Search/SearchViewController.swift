@@ -1,0 +1,108 @@
+//  SearchViewController.swift
+//  BAZProject
+//
+//  Created by jehernandezg on 20/04/23.
+
+import UIKit
+
+class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
+
+    var presenter: SearchViewOutputProtocol?
+    var movies: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.movieTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: Properties
+    private lazy var movieSearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = " Search a movie..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
+    private lazy var movieTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
+        return tableView
+    }()
+
+    // MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Search"
+        initComponents()
+    }
+    
+    // MARK: Functions
+    private func initComponents() {
+        addTableView()
+        setupTableView()
+    }
+    
+    private func addTableView() {
+        self.view.addSubview(movieSearchBar)
+        self.view.addSubview(movieTableView)
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            movieSearchBar.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
+            movieSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            movieSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            movieSearchBar.heightAnchor.constraint(equalToConstant: 32),
+            
+            movieTableView.topAnchor.constraint(equalTo: movieSearchBar.bottomAnchor, constant: 16),
+            movieTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
+            movieTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
+            movieTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+        ])
+    }
+    
+    private func setupTableView() {
+        movieTableView.dataSource = self
+        movieTableView.delegate = self
+        movieTableView.register(HomeCell.self, forCellReuseIdentifier: "HomeCell")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print(searchBar.text ?? "")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(searchBar.text ?? "")
+    }
+
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let movie = movies[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as? HomeCell {
+            //cell.lblTitle.text = movie.title
+            //cell.setup(movie)
+            cell.setupTitle(title: "self.model?[indexPath.row].title ?? ")
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10//movies.count
+    }
+
+}
+
+// MARK: - P R E S E N T E R · T O · V I E W
+extension SearchViewController: SearchViewInputProtocol {
+    
+}

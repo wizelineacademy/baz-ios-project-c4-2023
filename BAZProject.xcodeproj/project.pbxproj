@@ -16,6 +16,11 @@
 		10B1C37029EF5AE1007D5789 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */; };
 		10B1C37129EF5AE1007D5789 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */; };
 		10B1C37429EF8861007D5789 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C37329EF8861007D5789 /* HomeCell.swift */; };
+		10FA9B6C29F1E66000F17812 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6729F1E66000F17812 /* SearchPresenter.swift */; };
+		10FA9B6D29F1E66000F17812 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6829F1E66000F17812 /* SearchRouter.swift */; };
+		10FA9B6E29F1E66000F17812 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6929F1E66000F17812 /* SearchViewController.swift */; };
+		10FA9B6F29F1E66000F17812 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6A29F1E66000F17812 /* SearchProtocols.swift */; };
+		10FA9B7029F1E66000F17812 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6B29F1E66000F17812 /* SearchInteractor.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C30893B628A2F42D004B1860 /* Assets.xcassets */; };
@@ -48,6 +53,11 @@
 		10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		10B1C37329EF8861007D5789 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		10FA9B6729F1E66000F17812 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		10FA9B6829F1E66000F17812 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		10FA9B6929F1E66000F17812 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		10FA9B6A29F1E66000F17812 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		10FA9B6B29F1E66000F17812 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +135,18 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		10FA9B6629F1E64300F17812 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				10FA9B6729F1E66000F17812 /* SearchPresenter.swift */,
+				10FA9B6829F1E66000F17812 /* SearchRouter.swift */,
+				10FA9B6929F1E66000F17812 /* SearchViewController.swift */,
+				10FA9B6B29F1E66000F17812 /* SearchInteractor.swift */,
+				10FA9B6A29F1E66000F17812 /* SearchProtocols.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		C30893A128A2F42B004B1860 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +170,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				10FA9B6629F1E64300F17812 /* Search */,
 				10B1C36729EF5A6C007D5789 /* Home */,
 				10367A4D29D7620D00B27A20 /* Utils */,
 				10059BFE29D6A8540012D295 /* Trending */,
@@ -277,9 +300,14 @@
 				10059C0029D6A8A90012D295 /* TrendingViewModel.swift in Sources */,
 				10B1C37129EF5AE1007D5789 /* HomeInteractor.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				10FA9B6F29F1E66000F17812 /* SearchProtocols.swift in Sources */,
 				10B1C37029EF5AE1007D5789 /* HomeProtocols.swift in Sources */,
+				10FA9B6D29F1E66000F17812 /* SearchRouter.swift in Sources */,
+				10FA9B6C29F1E66000F17812 /* SearchPresenter.swift in Sources */,
 				10B1C37429EF8861007D5789 /* HomeCell.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				10FA9B6E29F1E66000F17812 /* SearchViewController.swift in Sources */,
+				10FA9B7029F1E66000F17812 /* SearchInteractor.swift in Sources */,
 				10B1C36F29EF5AE1007D5789 /* HomeViewController.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,

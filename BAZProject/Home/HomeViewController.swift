@@ -6,7 +6,7 @@
 import UIKit
 
 //MARK: - Class
-class HomeViewController: UITableViewController {
+final class HomeViewController: UITableViewController {
     //MARK: - Properties
     var presenter: HomeViewOutputProtocol?
     private var model: [MovieResult]?
@@ -32,8 +32,10 @@ class HomeViewController: UITableViewController {
                                                 animated: false)
     }
     
-    @objc open func gotoSerch() {
-        print("Saludos")
+    // MARK: Functions
+    @objc public func gotoSerch() {
+        let viewController = SearchRouter.createModule()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
