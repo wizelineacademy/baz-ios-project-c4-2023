@@ -14,10 +14,9 @@ final class MovieListViewModelTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().trending)
 
         self.sut = MovieListViewModel(.trending)
+        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().trending)
         sut.setMovies(moveListFake?.results ?? [])
     }
     
@@ -26,7 +25,7 @@ final class MovieListViewModelTest: XCTestCase {
         self.sut = nil
     }
     
-    func testMovieList_whenReadFromMock_checkNumberOfMovies() {
+    func testMovieList_whenReadFromMock_checkNumberOfTreandingMovies() {
         let resultExpected = 20
         let result = sut.numberOfRowsInSection(0)
 
@@ -43,6 +42,46 @@ final class MovieListViewModelTest: XCTestCase {
         let result = sut.movieAtIndex(100)
 
         XCTAssertNil(result)
+    }
+    
+    func testMoveList_whenReadFromMock_checkNumberOfNowPlayingMovies() {
+        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().now_playing)
+        sut.setMovies(moveListFake?.results ?? [])
+        
+        let resultExpected = 20
+        let result = sut.numberOfRowsInSection(0)
+
+        XCTAssertEqual(result, resultExpected)
+    }
+    
+    func testMoveList_whenReadFromMock_checkNumberOfPopularMovies() {
+        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().popular)
+        sut.setMovies(moveListFake?.results ?? [])
+        
+        let resultExpected = 20
+        let result = sut.numberOfRowsInSection(0)
+
+        XCTAssertEqual(result, resultExpected)
+    }
+    
+    func testMoveList_whenReadFromMock_checkNumberOfTopRatedMovies() {
+        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().now_playing)
+        sut.setMovies(moveListFake?.results ?? [])
+        
+        let resultExpected = 20
+        let result = sut.numberOfRowsInSection(0)
+
+        XCTAssertEqual(result, resultExpected)
+    }
+    
+    func testMoveList_whenReadFromMock_checkNumberOfUpcomingMovies() {
+        let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().now_playing)
+        sut.setMovies(moveListFake?.results ?? [])
+        
+        let resultExpected = 20
+        let result = sut.numberOfRowsInSection(0)
+
+        XCTAssertEqual(result, resultExpected)
     }
 
 }
