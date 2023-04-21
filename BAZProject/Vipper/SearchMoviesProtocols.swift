@@ -19,8 +19,8 @@ protocol SearchMoviesViewInputProtocol: AnyObject{
 protocol SearchMoviesViewOutputProtocol {
     
     var view        : SearchMoviesViewInputProtocol? { get }
-    var interactor  : SearchMoviesInteractorInputProtocol { get }
-    var router      : SearchMoviesRouterProtocol { get }
+    var interactor  : SearchMoviesInteractorInputProtocol? { get }
+    var router      : SearchMoviesRouterProtocol? { get }
     var movies      : [MovieData] { get }
     
     func searchMoview(with word: String)

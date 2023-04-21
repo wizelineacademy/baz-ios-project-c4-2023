@@ -11,13 +11,13 @@ class SearchMoviesPresenter {
     
     // MARK: Properties
     weak var view       : SearchMoviesViewInputProtocol?
-    var interactor      : SearchMoviesInteractorInputProtocol
-    var router          : SearchMoviesRouterProtocol
+    var interactor      : SearchMoviesInteractorInputProtocol?
+    var router          : SearchMoviesRouterProtocol?
     var movies          : [MovieData] = []
     
-    init(view: SearchMoviesViewInputProtocol,
-         interactor: SearchMoviesInteractorInputProtocol,
-         router: SearchMoviesRouterProtocol) {
+    init(view: SearchMoviesViewInputProtocol? = nil,
+         interactor: SearchMoviesInteractorInputProtocol? = nil,
+         router: SearchMoviesRouterProtocol? = nil) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -28,7 +28,7 @@ class SearchMoviesPresenter {
 extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol{
     
     func searchMoview(with word: String) {
-        interactor.consultServiceSearch(with: word)
+        interactor?.consultServiceSearch(with: word)
     }
     
 }
@@ -41,7 +41,7 @@ extension SearchMoviesPresenter: SearchMoviesInteractorOutputProtocol{
     }
     
     func setError() {
-        router.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"))
+        router?.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"))
     }
     
 }

@@ -15,13 +15,13 @@ final class SearchMoviesInteractorTest: XCTestCase{
     var sut         : SearchMoviesInteractor!
     
     override func setUp() {
-        sut = SearchMoviesInteractor(movieApi: MovieAPI(session: URLSession.shared))
         super.setUp()
+        sut = SearchMoviesInteractor(movieApi: MovieAPI(session: URLSession.shared))
     }
     
     override func tearDown()  {
-        sut = nil
         super.tearDown()
+        sut = nil
     }
     
     func testSearchServiceBlock(){
