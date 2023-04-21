@@ -45,4 +45,28 @@ final class BoxTests: XCTestCase {
         sutString.value = "Bye"
         XCTAssertEqual(sutString.value, "Bye")
     }
+    
+    func test_BoxDidBind_ShouldFulfillExpectationByBind() {
+        let expectation = XCTestExpectation()
+        expectation.assertForOverFulfill = true
+        var box = Box(value: 2)
+        
+        box.bind {
+            expectation.fulfill()
+        }
+        wait(for: [expectation])
+    }
+    
+    func test_BoxDidBind_ShouldFulfillExpectationByValueChange() {
+        let expectation = XCTestExpectation()
+        expectation.assertForOverFulfill = true
+        expectation.expectedFulfillmentCount = 2
+        var box = Box(value: 2)
+
+        box.bind {
+            expectation.fulfill()
+        }
+        box.value = 3
+        wait(for: [expectation], timeout: 0.2)
+    }
 }

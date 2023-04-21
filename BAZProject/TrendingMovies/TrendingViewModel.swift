@@ -11,11 +11,14 @@ import Foundation
 class TrendingViewModel: MoviesListProtocol {
    
     var movies = Box(value: [ListMoviesProtocol]())
+    private var movieAPI: MovieAPI
     
+    init(remote: MovieAPI = MovieAPI()) {
+        self.movieAPI = remote
+    }
     ///se consulta el servicio para lista de peliculas
     func getmovies() {
-        let movieApi = MovieAPI()
-        movieApi.getMovies { [weak self] moviearray in
+        movieAPI.getMovies { [weak self] moviearray, _ in
             self?.movies.value = moviearray
         }
     }

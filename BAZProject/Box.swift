@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct Box<T> {
-    var value: T {
+public struct Box<T> {
+    public var value: T {
         didSet {
             listener?()
         }
     }
     var listener: (() -> Void)?
     
-    init(value: T) {
+    public init(value: T) {
         self.value = value
     }
     
-    mutating func bind(_ listener: @escaping (() -> Void)) {
+    public mutating func bind(_ listener: @escaping (() -> Void)) {
         self.listener = listener
         self.listener?()
     }

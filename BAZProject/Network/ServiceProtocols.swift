@@ -7,21 +7,21 @@
 
 import Foundation
 //MARK: Protocolos de servicios
-protocol Service {
+public protocol Service {
     var session: URLSessionProtocol { get }
     func get<T: Decodable>(_ endpoint: URL, callback: @escaping (Result<T,Error>) -> Void)
 }
 
-protocol URLSessionDataTaskProtocol {
+public protocol URLSessionDataTaskProtocol {
     func resume()
 }
 
-protocol URLSessionProtocol {
+public protocol URLSessionProtocol {
     typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
     func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
 
-enum ServiceError: Error {
+public enum ServiceError: Error {
     case noData
     case parsingData
     case error
@@ -32,7 +32,7 @@ enum ServiceError: Error {
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
 extension URLSession: URLSessionProtocol {
-    func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+    public func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
     }
 }

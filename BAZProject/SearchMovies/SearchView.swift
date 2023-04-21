@@ -36,6 +36,7 @@ class SearchView: UIViewController {
         }
         viewModel.searchMovie("") { [weak self] (error) in
             DispatchQueue.main.async {
+                guard let error = error else { return }
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: false)
@@ -61,6 +62,7 @@ extension SearchView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
         viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in
             DispatchQueue.main.async {
+                guard let error = error else { return }
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: false)

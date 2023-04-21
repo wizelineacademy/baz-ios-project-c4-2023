@@ -9,6 +9,12 @@ import Foundation
 
 class SearchViewModel {
     
+    private var service: Service
+    
+    init(service: Service = ServiceAPI(session: URLSession.shared)) {
+        self.service = service
+    }
+    
     //MARK:Funciones para la vista 
     var moviesSearched = Box(value: [ListMoviesProtocol]())
     
@@ -34,14 +40,10 @@ class SearchViewModel {
     
     //MARK:Consulta servicio buscar peliculas
     
-    private let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" // llave para peticion de peliculas
-    
     ///se consulta el servicio para lista de peliculas
-    func searchMovie(_ title: String, completion: @escaping (Error) -> Void ) {
+    func searchMovie(_ title: String, apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a", completion: @escaping (Error?) -> Void) {
         let editedTitle = title.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
-        print(editedTitle)
         guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(editedTitle)") else { return }
-        let service = ServiceAPI(session: URLSession.shared)
         service.get(url) { [weak self] (result: Result<Movies, Error>) in
         //service result 
             switch result {
