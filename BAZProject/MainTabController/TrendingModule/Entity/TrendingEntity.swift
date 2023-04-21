@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TrendingMoviesResult: Decodable {
+struct MoviesResult: Decodable {
     let page: Int?
     let results: [MovieResult]?
     let totalPages: Int?

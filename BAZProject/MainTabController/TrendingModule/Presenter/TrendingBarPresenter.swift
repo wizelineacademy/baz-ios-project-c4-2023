@@ -61,18 +61,16 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
     }
     
     func presentSearchView() {
-        let searchViewController = SearchMoviesViewController()
-        router?.presentNextViewController(from: view, to: searchViewController)
+        router?.presentMovieSearchViewController(from: view)
     }
     
     func didSelectRowAt(_ indexPath: IndexPath) {
-        let detailViewController = MovieDetailViewController()
-        router?.presentNextViewController(from: view, to: detailViewController)
+        router?.presentDetailViewController(from: view)
     }
 }
 
 extension TrendingBarPresenter: TrendingBarInteractorOutputProtocol {
-    func onReceivedTrendingList(with trendingList: TrendingMoviesResult) {
+    func onReceivedTrendingList(with trendingList: MoviesResult) {
         guard let movieList = trendingList.results else { return }
         for movie in movieList {
             interactor?.fetchImageFrom(movie)

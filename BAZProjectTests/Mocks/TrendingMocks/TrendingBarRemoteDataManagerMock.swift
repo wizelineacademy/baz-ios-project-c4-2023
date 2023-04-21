@@ -17,7 +17,7 @@ final class TrendingBarRemoteDataManagerMock: TrendingBarRemoteDataInputProtocol
     var interactor: TrendingBarRemoteDataOutputProtocol?
     var calls: [TrendingBarRemoteDataManagerCalls] = []
     
-    func requestMovieList(byEndPoint endPoint: BAZProject.Endpoint) {
+    func requestMovieList(byEndPoint endPoint: BAZProject.EndPointProtocol) {
         calls.append(.requestMovieList)
     }
     

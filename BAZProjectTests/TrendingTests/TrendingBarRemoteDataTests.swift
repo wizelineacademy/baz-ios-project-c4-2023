@@ -46,7 +46,7 @@ final class TrendingBarRemoteDataTests: XCTestCase {
     
     func testRequestMovieList_whenNoDataError_callsInteractorHandler() {
         let expectation = XCTestExpectation(description: "Wait for request movie list completion")
-        let endPoint: Endpoint = .trending
+        let endPoint: Endpoint = .topRated
         sessionMock.expectation = expectation
 
         sut.requestMovieList(byEndPoint: endPoint)
@@ -58,7 +58,7 @@ final class TrendingBarRemoteDataTests: XCTestCase {
     
     func testRequestMovieList_whenStatusCode200_callsHandleTrendingFetchedList() {
         for statusCode in 200...299 {
-            let endPoint: Endpoint = .trending
+            let endPoint: Endpoint = .upcoming
             let expectation = XCTestExpectation(description: "Wait for completion of \(statusCode)")
             let url: URL = URL(fileURLWithPath: "")
             sessionMock.urlResponse = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)

@@ -55,7 +55,7 @@ final class TrendingBarPresenterMock: BAZProject.TrendingBarPresenterProtocol, T
         calls.append(.didSelectRowAt)
     }
     
-    func onReceivedTrendingList(with trendingList: BAZProject.TrendingMoviesResult) {
+    func onReceivedTrendingList(with trendingList: BAZProject.MoviesResult) {
         calls.append(.onReceivedTrendingList)
     }
     

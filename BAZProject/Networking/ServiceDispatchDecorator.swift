@@ -1,5 +1,5 @@
 //
-//  TrendingBarDispatchDecorator.swift
+//  ServiceDispatchDecorator.swift
 //  BAZProject
 //
 //  Created by 989438 on 27/03/23.
@@ -12,12 +12,12 @@ import Foundation
  
  ### Declaration Example: ###
  ````
- TrendingBarDispatchDecorator(decoratee: ServiceAPI(session: URLSession.shared))
+ ServiceDispatchDecorator(decoratee: ServiceAPI(session: URLSession.shared))
  ````
  
  - Version: 1.0.0
  */
-final class TrendingBarDispatchDecorator: Service {
+final class ServiceDispatchDecorator: Service {
     var session: URLSessionProtocol
 
     private let decoratee: Service
