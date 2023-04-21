@@ -16,7 +16,9 @@ final class MovieListViewModelTest: XCTestCase {
         super.setUp()
         
         let moveListFake = try? JSONDecoder().decode(MovieList.self, from: MovieFakes().trending)
-        self.sut = MovieListViewModel(movies: moveListFake?.results ?? [])
+
+        self.sut = MovieListViewModel(.trending)
+        sut.setMovies(moveListFake?.results ?? [])
     }
     
     override func tearDown() {
