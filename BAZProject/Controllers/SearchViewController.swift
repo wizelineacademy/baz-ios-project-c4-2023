@@ -82,9 +82,7 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("textFieldDidEndEditing: \(textField.text)")
         if let query = textField.text {
-            print("textFieldDidEndEditing - query: \(query)")
             viewModel?.search(query: query) { [weak self] in
                     self?.tableView.reloadData()
             }
