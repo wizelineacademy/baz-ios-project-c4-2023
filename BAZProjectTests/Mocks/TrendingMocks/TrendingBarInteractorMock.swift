@@ -21,7 +21,7 @@ final class TrendingBarInteractorMock: TrendingBarInteractorInputProtocol, Trend
     var calls: [TrendingBarInteractorMockCalls] = []
     var catchedError: ServiceError?
     
-    func fetchMovieList(_ endPoint: Endpoint) {
+    func fetchMovieList(_ endPoint: EndPointProtocol) {
         calls.append(.fetchMovieList)
     }
     
@@ -29,7 +29,7 @@ final class TrendingBarInteractorMock: TrendingBarInteractorInputProtocol, Trend
         calls.append(.fetchImageFrom)
     }
     
-    func handleTrendingFetchedList(_ trendingList: TrendingMoviesResult) {
+    func handleTrendingFetchedList(_ trendingList: MoviesResult) {
         calls.append(.handleTrendingFetchedList)
     }
     

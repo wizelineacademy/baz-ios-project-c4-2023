@@ -12,4 +12,5 @@ enum MainLocalizableString: String {
     case searchScreenTitle = "search_screen_title"
     case searchButtonTitle = "trending_search_button"
     case filterButtonTitle = "trending_filter_button"
+    case baseURLForAPICalls = "https://api.themoviedb.org/3/"
 }

@@ -26,7 +26,8 @@ protocol TrendingBarRouterProtocol {
          - view: UIViewController that is going to push to nextView.
          - nextView: new principal user UIViewController
      */
-    func presentNextViewController(from view: TrendingBarViewControllerProtocol?, to nextView: UIViewController)
+    func presentMovieSearchViewController(from view: TrendingBarViewControllerProtocol?)
+    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?)
 }
 
 // View > Presenter
@@ -76,7 +77,7 @@ protocol TrendingBarInteractorInputProtocol: AnyObject {
     var presenter: TrendingBarInteractorOutputProtocol? { get set }
     var remoteData: TrendingBarRemoteDataInputProtocol? { get set }
     
-    func fetchMovieList(_ endPoint: Endpoint)
+    func fetchMovieList(_ endPoint: EndPointProtocol)
     func fetchImageFrom(_ movie: MovieResult)
     func linkDependencies(remoteData: TrendingBarRemoteDataInputProtocol, presenter: TrendingBarInteractorOutputProtocol)
 }
@@ -92,7 +93,7 @@ extension TrendingBarInteractorInputProtocol {
 protocol TrendingBarInteractorOutputProtocol: AnyObject {
     var interactor: TrendingBarInteractorInputProtocol? { get set }
     
-    func onReceivedTrendingList(with trendingList: TrendingMoviesResult)
+    func onReceivedTrendingList(with trendingList: MoviesResult)
     func onReceivedMovie(with movie: Movie)
     func onReceived(with error: Error)
 }
@@ -101,12 +102,12 @@ protocol TrendingBarInteractorOutputProtocol: AnyObject {
 protocol TrendingBarRemoteDataInputProtocol: AnyObject {
     var interactor: TrendingBarRemoteDataOutputProtocol? { get set }
     
-    func requestMovieList(byEndPoint endPoint: Endpoint)
+    func requestMovieList(byEndPoint endPoint: EndPointProtocol)
     func requestImageData(urlString: String, completion: @escaping (Data?) -> Void)
 }
 
 // RemoteData > Interactor
 protocol TrendingBarRemoteDataOutputProtocol: AnyObject {
-    func handleTrendingFetchedList(_ trendingList: TrendingMoviesResult)
+    func handleTrendingFetchedList(_ trendingList: MoviesResult)
     func handleService(error: Error)
 }

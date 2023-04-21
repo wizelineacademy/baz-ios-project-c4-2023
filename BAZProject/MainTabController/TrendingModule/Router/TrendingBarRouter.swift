@@ -12,7 +12,7 @@ final class TrendingBarRouter: TrendingBarRouterProtocol {
         let view = TrendingViewController()
         let interactor = TrendingBarInteractor()
         let presenter = TrendingBarPresenter()
-        let service = TrendingBarDispatchDecorator(decoratee: ServiceAPI(session: URLSession.shared))
+        let service = ServiceDispatchDecorator(decoratee: ServiceAPI(session: URLSession.shared))
         let remoteData = TrendingBarDataManager(service: service)
         
         view.presenter = presenter
@@ -22,9 +22,24 @@ final class TrendingBarRouter: TrendingBarRouterProtocol {
         return view
     }
     
+    func presentMovieSearchViewController(from view: TrendingBarViewControllerProtocol?) {
+        guard let viewController: UIViewController = view as? UIViewController else { return }
+        let searchRouter: MovieSearchRouterProtocol = MovieSearchRouter()
+        let searchViewController = searchRouter.createSearchMovieModule()
+        searchViewController.hidesBottomBarWhenPushed = true
+        viewController.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
+    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?) {
+        guard let viewController: UIViewController = view as? UIViewController else { return }
+        let emptyViewController = MovieDetailViewController()
+        viewController.navigationController?.pushViewController(emptyViewController, animated: true)
+    }
+    
     func presentNextViewController(from view: TrendingBarViewControllerProtocol?, to nextView: UIViewController) {
         guard let viewController = view as? UIViewController else { return }
         let nextViewController  = nextView
+        nextView.hidesBottomBarWhenPushed = true
         viewController.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

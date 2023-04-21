@@ -25,20 +25,18 @@ final class TrendingBarRouterTests: XCTestCase {
     
     func test_presentMovieDetailViewController_pushedToMovieDetailController() {
         let initialController = TrendingBarViewControllerMock()
-        let nextViewController = BAZProject.MovieDetailViewController()
         let navigationControllerSpy = NavigationControllerSpy(rootViewController: initialController)
         
-        sut.presentNextViewController(from: initialController, to: nextViewController)
+        sut.presentDetailViewController(from: initialController)
         
         XCTAssert(navigationControllerSpy.pushedViewController is BAZProject.MovieDetailViewController)
     }
     
     func test_presentSearchViewController_pushedToMovieSearchViewController() {
         let initialController = TrendingBarViewControllerMock()
-        let nextViewController = BAZProject.SearchMoviesViewController()
         let navigationControllerSpy = NavigationControllerSpy(rootViewController: initialController)
         
-        sut.presentNextViewController(from: initialController, to: nextViewController)
+        sut.presentMovieSearchViewController(from: initialController)
         
         XCTAssert(navigationControllerSpy.pushedViewController is BAZProject.SearchMoviesViewController)
     }

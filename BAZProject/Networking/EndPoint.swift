@@ -8,28 +8,31 @@
 import Foundation
 
 enum Endpoint {
-    static var baseURL = "https://api.themoviedb.org/3/"
+    static var baseURL = NSLocalizedString(MainLocalizableString.baseURLForAPICalls.rawValue, comment: "")
     
     case trending
     case nowPlaying
     case popular
     case topRated
     case upcoming
+    case search(query: String)
 }
 
 extension Endpoint: EndPointProtocol {
     var string: String {
         switch self {
         case .trending:
-            return MainConstants.trendingEndPoint
+            return EndPointConstants.trendingEndPoint
         case .nowPlaying:
-            return MainConstants.nowPlayingEndPoint
+            return EndPointConstants.nowPlayingEndPoint
         case .popular:
-            return MainConstants.popularEndPoint
+            return EndPointConstants.popularEndPoint
         case .topRated:
-            return MainConstants.topRatedEndPoint
+            return EndPointConstants.topRatedEndPoint
         case .upcoming:
-            return MainConstants.upcomingEndPoint
+            return EndPointConstants.upcomingEndPoint
+        case . search(let query):
+            return "\(EndPointConstants.searchMovie)\(query.replacingOccurrences(of: " ", with: "%20"))"
         }
     }
     

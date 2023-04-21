@@ -10,7 +10,7 @@ import Foundation
 
 class MovieFakes {
     var movieList: Data { getDataFrom(json: "movieResult") }
-    var movieResult: TrendingMoviesResult { getObject() }
+    var movieResult: MoviesResult { getObject() }
     
     // MARK: - Private methods
     private func getDataFrom(json file: String) -> Data {
@@ -21,9 +21,9 @@ class MovieFakes {
         return data
     }
     
-    private func getObject() -> TrendingMoviesResult {
+    private func getObject() -> MoviesResult {
         let data = getDataFrom(json: "movieResult")
-        let jsonData = try! JSONDecoder().decode(TrendingMoviesResult.self, from: data)
+        let jsonData = try! JSONDecoder().decode(MoviesResult.self, from: data)
         return jsonData
     }
 }
