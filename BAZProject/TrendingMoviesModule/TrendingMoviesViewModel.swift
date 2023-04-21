@@ -29,7 +29,7 @@ class TrendingMoviesViewModel {
     func getMovies() {
         Task {
             do {
-                movies.value = try await remoteData.getMovies() ?? []
+                movies.value = try await remoteData.getMovies()
             } catch {
                 self.error.value = error
             }
@@ -43,7 +43,7 @@ class TrendingMoviesViewModel {
     func searchMovies(_ searchText: String) {
         Task {
             do {
-                movies.value = try await remoteData.searchMovies(searchText) ?? []
+                movies.value = try await remoteData.searchMovies(searchText)
             } catch {
                 self.error.value = error
             }

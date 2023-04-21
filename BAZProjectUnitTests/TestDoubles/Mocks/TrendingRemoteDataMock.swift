@@ -9,12 +9,23 @@
 
 class TrendingRemoteDataMock: TrendingMoviesRemoteData {
     
+    var movies: [Movie]?
+    var error: Error?
+    
     override func getMovies() async throws -> [Movie]? {
-        return nil
+        if let error = error {
+            throw error
+        } else {
+            return movies
+        }
     }
     
     override func searchMovies(_ searchText: String) async throws -> [Movie]? {
-        return nil
+        if let error = error {
+            throw error
+        } else {
+            return movies
+        }
     }
     
 }
