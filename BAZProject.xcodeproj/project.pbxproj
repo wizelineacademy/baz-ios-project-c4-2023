@@ -14,6 +14,8 @@
 		859AA9CF29EE4D14006C6EBA /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9CE29EE4D14006C6EBA /* MoviesViewController.swift */; };
 		859AA9D329EE5C1C006C6EBA /* MasterMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9D229EE5C1C006C6EBA /* MasterMovieTableViewController.swift */; };
 		859AA9D529EE7DA7006C6EBA /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9D429EE7DA7006C6EBA /* FavoritesViewController.swift */; };
+		859AA9D929EE94A8006C6EBA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9D829EE94A8006C6EBA /* SearchViewController.swift */; };
+		859AA9DD29EE9F83006C6EBA /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9DC29EE9F83006C6EBA /* MovieDetailViewController.swift */; };
 		859D2DC829D5EB84008AF807 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2DC729D5EB84008AF807 /* MovieViewModel.swift */; };
 		859D2E4929D688AB008AF807 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2E4829D688AB008AF807 /* Endpoint.swift */; };
 		859D2E5029D6A17F008AF807 /* trending_movie_day.json in Resources */ = {isa = PBXBuildFile; fileRef = 859D2E4F29D6A17F008AF807 /* trending_movie_day.json */; };
@@ -21,6 +23,8 @@
 		859D2E5529D6A554008AF807 /* MovieFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2E5429D6A554008AF807 /* MovieFakes.swift */; };
 		859D2E5929D6BEFF008AF807 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2E5829D6BEFF008AF807 /* Collection+Extensions.swift */; };
 		859D2E5B29D75BCF008AF807 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D2E5A29D75BCF008AF807 /* ImageLoader.swift */; };
+		85AAC80B29F0DBA600048139 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAC80A29F0DBA600048139 /* SearchViewModel.swift */; };
+		85AAC80D29F1932D00048139 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAC80C29F1932D00048139 /* String+Extensions.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -50,6 +54,8 @@
 		859AA9CE29EE4D14006C6EBA /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		859AA9D229EE5C1C006C6EBA /* MasterMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMovieTableViewController.swift; sourceTree = "<group>"; };
 		859AA9D429EE7DA7006C6EBA /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		859AA9D829EE94A8006C6EBA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		859AA9DC29EE9F83006C6EBA /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		859D2DBD29D569A1008AF807 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		859D2DC729D5EB84008AF807 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		859D2E4829D688AB008AF807 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -58,6 +64,8 @@
 		859D2E5429D6A554008AF807 /* MovieFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFakes.swift; sourceTree = "<group>"; };
 		859D2E5829D6BEFF008AF807 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		859D2E5A29D75BCF008AF807 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		85AAC80A29F0DBA600048139 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		85AAC80C29F1932D00048139 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +111,7 @@
 			children = (
 				859D2DC729D5EB84008AF807 /* MovieViewModel.swift */,
 				859AA9CC29EE3BD0006C6EBA /* MovieListViewModel.swift */,
+				85AAC80A29F0DBA600048139 /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -130,6 +139,8 @@
 				859AA9CE29EE4D14006C6EBA /* MoviesViewController.swift */,
 				859AA9D229EE5C1C006C6EBA /* MasterMovieTableViewController.swift */,
 				859AA9D429EE7DA7006C6EBA /* FavoritesViewController.swift */,
+				859AA9D829EE94A8006C6EBA /* SearchViewController.swift */,
+				859AA9DC29EE9F83006C6EBA /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +195,7 @@
 			children = (
 				859D2E5829D6BEFF008AF807 /* Collection+Extensions.swift */,
 				859AA9C829EDC742006C6EBA /* UIViewController+Extensions.swift */,
+				85AAC80C29F1932D00048139 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,11 +351,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859AA9D929EE94A8006C6EBA /* SearchViewController.swift in Sources */,
 				859A75BA29E732F6003DD163 /* MovieTableViewCell.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				859AA9D529EE7DA7006C6EBA /* FavoritesViewController.swift in Sources */,
+				85AAC80D29F1932D00048139 /* String+Extensions.swift in Sources */,
 				859D2E4929D688AB008AF807 /* Endpoint.swift in Sources */,
 				859AA9CF29EE4D14006C6EBA /* MoviesViewController.swift in Sources */,
+				859AA9DD29EE9F83006C6EBA /* MovieDetailViewController.swift in Sources */,
 				859AA9CD29EE3BD0006C6EBA /* MovieListViewModel.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
@@ -351,6 +366,7 @@
 				859D2E5B29D75BCF008AF807 /* ImageLoader.swift in Sources */,
 				859AA9D329EE5C1C006C6EBA /* MasterMovieTableViewController.swift in Sources */,
 				859D2E5929D6BEFF008AF807 /* Collection+Extensions.swift in Sources */,
+				85AAC80B29F0DBA600048139 /* SearchViewModel.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
 				859D2DC829D5EB84008AF807 /* MovieViewModel.swift in Sources */,
 			);
@@ -394,7 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mx.caffeina.BAZProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -413,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mx.caffeina.BAZProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
