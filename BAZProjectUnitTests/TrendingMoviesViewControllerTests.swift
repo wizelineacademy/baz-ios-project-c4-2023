@@ -9,27 +9,14 @@ import XCTest
 @testable import BAZProject
 
 final class TrendingMoviesViewControllerTests: XCTestCase {
-    
-    var sut: TrendingMoviesViewController!
-    var viewModel: TrendingMoviesViewModelMock!
-
-    override func setUp() {
-        super.setUp()
-        viewModel = TrendingMoviesViewModelMock()
-        sut = TrendingMoviesViewController(model: viewModel)
-    }
-
-    override func tearDown() {
-        sut = nil
-        super.tearDown()
-    }
 
     func test_NumberOfRowsInSection_ShouldBeThree() {
         //Given
         let movies = [Movie(title: "title1"), Movie(title: "title2"), Movie(title: "title3")]
+        let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
+        let sut = TrendingMoviesViewController(viewModel: viewModel)
         
         //When
-        viewModel.movies = movies
         sut.loadViewIfNeeded()
         let rows = sut.tableView(sut.moviesTableView, numberOfRowsInSection: 0)
         
@@ -40,10 +27,11 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
     func test_NumberOfRowsInSection_ShouldBeZero() {
         //Given
         let movies = [Movie]()
+        let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
+        let sut = TrendingMoviesViewController(viewModel: viewModel)
         
         //When
-        viewModel.movies = movies
-        sut.viewDidLoad()
+        sut.loadViewIfNeeded()
         let rows = sut.tableView(sut.moviesTableView, numberOfRowsInSection: 0)
         
         //Then
