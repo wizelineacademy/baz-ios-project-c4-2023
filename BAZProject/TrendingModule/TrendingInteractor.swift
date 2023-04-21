@@ -24,4 +24,9 @@ extension TrendingInteractor: TrendingRemoteDataManagerOutputProtocol {
     func moviesFetched(_ movies: [Movie]) {
         self.presenter?.moviesFetched(movies: movies)
     }
+    
+    func handleService(error: Error) {
+        // TODO: Return data to presenter
+        debugPrint("Returns data to presenter", error)
+    }
 }

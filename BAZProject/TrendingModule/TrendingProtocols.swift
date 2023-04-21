@@ -49,4 +49,5 @@ protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
 
 protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
     func moviesFetched(_ movies: [Movie])
+    func handleService(error: Error)
 }
