@@ -8,7 +8,9 @@
 import Foundation
 
 protocol MovieInfo {
-    var id: Int    { get }
+    var id: Int { get }
     var title: String { get }
     var posterPath: String { get }
+    var overview: String { get }
+    var backdropPath: String? { get }
 }

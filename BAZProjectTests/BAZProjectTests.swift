@@ -6,16 +6,20 @@
 //
 
 import XCTest
+@testable import BAZProject
 
 final class BAZProjectTests: XCTestCase {
     
-    var sut: TrendingViewController!
+    var sut: HomeInteractor!
+    var mock: MockPresenter!
     var api: MovieAPI!
     
     override func setUp() {
         super.setUp()
-        sut = TrendingViewController()
+        sut = HomeInteractor()
+        mock = MockPresenter()
         api = MovieAPI()
+        sut.presenter = mock
     }
     
     override func tearDown() {
@@ -32,15 +36,48 @@ final class BAZProjectTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testAPI_MoviesResponseNotNil_UupdateMoviesArray() throws {
-        api.getMovies { movies in
+    func testInteractor_getSectionDataGreaterThanZero_updateSectionData() throws {
+        sut.setSectionsData()
+        let arrSections = mock.arrSections
+        XCTAssertGreaterThan(arrSections.count, 0)
+    }
+    
+    func testAPI_getTrendingMoviesGreaterThanZero_showMovies() throws {
+        let expectation = XCTestExpectation(description: "Get data successfully")
+        api.getTrendingMovies { movies in
+            XCTAssertGreaterThan(movies?.count ?? 0, 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
+    func testAPI_getNowPlayingMoviesGreaterThanZero_showMovies() throws {
+        let expectation = XCTestExpectation(description: "Get data successfully")
+        api.getNowPlayingMovies { movies in
+            XCTAssertGreaterThan(movies?.count ?? 0, 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
+    func testAPI_getPopularMoviesGreaterThanZero_showMovies() throws {
+        let expectation = XCTestExpectation(description: "Get data successfully")
+        api.getPopularMovies { movies in
+            XCTAssertGreaterThan(movies?.count ?? 0, 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
+    func testAPI_getMoviesFoundNotNil_showMovies() throws {
+        api.searchMoviesfor(keyword: "matrix") { movies in
             XCTAssertNotNil(movies)
         }
     }
     
-    func testAPI_getMoviesGreaterThanZero_showMovies() throws {
+    func testAPI_getMoviesFoundGreaterThanZero_showMovies() throws {
         let expectation = XCTestExpectation(description: "Get data successfully")
-        api.getMovies { movies in
+        api.searchMoviesfor(keyword: "matrix") { movies in
             XCTAssertGreaterThan(movies?.count ?? 0, 0)
             expectation.fulfill()
         }
@@ -63,4 +100,24 @@ final class BAZProjectTests: XCTestCase {
 //        }
 //    }
 
+}
+
+class MockPresenter: HomeInteractorOutputProtocol {
+    var arrSections: [MovieSection] = []
+    var arrMoviesFound: [MovieFoundInfo]?
+    
+    func updateSectionsData(_ sectionData: [MovieSection]) {
+        arrSections = sectionData
+    }
+    
+    func updateMovies(_ movies: [MovieInfo]?, in section: Int) {
+        guard let movies = movies else {
+            return
+        }
+        arrSections[section].movies = movies
+    }
+    
+    func updateMoviesFound(_ movies: [MovieFoundInfo]?) {
+        arrMoviesFound = movies
+    }
 }

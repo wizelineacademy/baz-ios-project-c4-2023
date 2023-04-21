@@ -8,6 +8,8 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>https://api.themoviedb.org</key>
+			<string></string>
 			<key>https://image.tmdb.org</key>
 			<string></string>
 		</dict>
@@ -25,8 +27,6 @@
 					<string>Default Configuration</string>
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
 				</dict>
 			</array>
 		</dict>

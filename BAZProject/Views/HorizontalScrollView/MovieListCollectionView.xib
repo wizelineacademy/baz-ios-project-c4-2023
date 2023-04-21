@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListCollectionView" customModule="BAZProject" customModuleProvider="target">
+            <connections>
+                <outlet property="collVwMovieItems" destination="sDv-59-gts" id="IZr-We-xWt"/>
+                <outlet property="lblSectionTitle" destination="SPS-Hk-htj" id="Ksn-Th-5py"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="270"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPS-Hk-htj">
+                    <rect key="frame" x="16" y="15" width="361" height="31"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sDv-59-gts">
+                    <rect key="frame" x="0.0" y="62" width="393" height="200"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="JEC-OZ-Inh"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Law-mt-prO">
+                        <size key="itemSize" width="156" height="200"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SPS-Hk-htj" secondAttribute="trailing" constant="16" id="1ba-Rw-enP"/>
+                <constraint firstItem="SPS-Hk-htj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="DcJ-RE-xHJ"/>
+                <constraint firstItem="sDv-59-gts" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KnF-EG-NZW"/>
+                <constraint firstItem="SPS-Hk-htj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="YXB-3m-uop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sDv-59-gts" secondAttribute="bottom" constant="8" id="dS0-1j-O7T"/>
+                <constraint firstItem="sDv-59-gts" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dX6-mm-hh2"/>
+                <constraint firstItem="sDv-59-gts" firstAttribute="top" secondItem="SPS-Hk-htj" secondAttribute="bottom" constant="16" id="qop-bZ-qBY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="129.71014492753625" y="-214.95535714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
