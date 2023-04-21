@@ -18,4 +18,17 @@ extension String {
         }
         return url
     }
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func formatReleaseDate() -> String {
+        let split = self.split(separator: "-")
+        return "\(split[2])/\(split[1])/\(split[0])"
+    }
+    
+    func setParameters(old: String, new: String) -> String {
+        self.replacingOccurrences(of: old, with: new)
+    }
 }
