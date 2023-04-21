@@ -60,6 +60,7 @@ class HomeCell: UITableViewCell {
         movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 12.0).isActive = true
         movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
+        self.selectionStyle = .none
     }
     
     func setupTitle(title: String) {

@@ -10,65 +10,79 @@ import XCTest
 
 final class BAZProjectTests: XCTestCase {
 
-    var sut: TrendingViewController!
-    var model: MovieListProtocol!
-    var instance = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as? TrendingViewController)
+    var homeInteractor: HomeInteractor?
+    var homePresenter: MockHomePresenter?
+    
+    var searchInteractor: SearchInteractor?
+    var searchPresenter: MockSearchPresenter?
     
     override func setUp() {
         super.setUp()
-        sut = instance
-        model = TrendingViewModel()
-        sut?.trendingModel = model
+        homeInteractor = HomeInteractor()
+        homePresenter = MockHomePresenter()
+        homeInteractor?.presenter = homePresenter
+        
+        searchInteractor = SearchInteractor()
+        searchPresenter = MockSearchPresenter()
+        searchInteractor?.presenter = searchPresenter
     }
 
     override func tearDown() {
         super.tearDown()
-        sut = nil
-        model = nil
+        homeInteractor = nil
+        homePresenter = nil
+        
+        searchInteractor = nil
+        searchPresenter = nil
     }
     
-    func testTredingViewModel_hasData() {
+    func testWhen_HomeDataMovies_IsNotNull() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 7, title: "Dragon Ball", posterPath: "")]
-        // Then
-        model.movies = expectedResult
-        let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 10)
+        let resultExpected = 1
         // When
-        XCTAssertEqual(rowCount, expectedResult.count)
-    }
-    
-    func testTredingViewModelTitle_hasData() {
-        // Given
-        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 4, title: "DragonBall", posterPath: "")]
+        homeInteractor?.getDataMovies()
         // Then
-        model.movies = expectedResult
-        // When
-        XCTAssertNotNil(sut.trendingModel.getTitle(index: 0))
+        XCTAssertEqual(homePresenter?.arrMovies.count, resultExpected)
     }
     
-    func testTredingViewModel_PosterPath_hasData() {
+    func testWhen_HomeGetMovieImage_IsNotNull() {
         // Given
-        let expectedResult: [ListMovieProtocol] = [MovieResult(id: 8, title: "Dragon Ball Z", posterPath: "225252341tfrt433.jpg")]
-        // Then
-        model.movies = expectedResult
-        // When
-        XCTAssertNotNil(sut.trendingModel.getPosterPath(index: 0))
-    }
-    
-    func testTredingViewModel_ImageLoader() {
-        // Given
-        let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
+        let movies: [ListMovieProtocol] = [MovieResult(id: 7, title: "Avatar", posterPath: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg")]
+        homeInteractor?.movies = movies
+        let expectation = XCTestExpectation(description: "Wait for getMovieImage completion")
         var testImage = UIImage()
         // Then
-        if let testURL = URL(string: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg") {
-            model.getRemoteImage(from: testURL) { urlImage in
-                testImage = urlImage ?? UIImage()
-                // When
-                XCTAssertNotNil(testImage)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: 10.0)
+        homeInteractor?.getMovieImage(index: 0, completion: { movieImage in
+            testImage = movieImage ?? UIImage()
+            // When
+            XCTAssertNotNil(testImage)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 2.0)
     }
-
+    
+    func testWhen_Search_DataMovies_IsNotNull() {
+        // Given
+        let resultExpected = 1
+        // When
+        searchInteractor?.getMovieSearch(movieName: "Halo")
+        // Then
+        XCTAssertEqual(searchPresenter?.arrSeaerchMovies.count, resultExpected)
+    }
+    
+    func testWhen_SearchGetMovieImage_IsNotNull() {
+        // Given
+        let movies: [ListMovieProtocol] = [MovieResult(id: 7, title: "Avatar", posterPath: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg")]
+        searchInteractor?.movies = movies
+        let expectation = XCTestExpectation(description: "Wait for getMovieImage completion")
+        var testImage = UIImage()
+        // Then
+        searchInteractor?.getMovieImage(index: 0, completion: { movieImage in
+            testImage = movieImage ?? UIImage()
+            // When
+            XCTAssertNotNil(testImage)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 2.0)
+    }
 }
