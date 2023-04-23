@@ -22,7 +22,6 @@
 		6CF7528229EF8BB4001F948A /* SearchMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7527D29EF8BB3001F948A /* SearchMoviesPresenter.swift */; };
 		6CF7528329EF8BB4001F948A /* SearchMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7527E29EF8BB3001F948A /* SearchMoviesInteractor.swift */; };
 		6CF7528429EF8BB4001F948A /* SearchMoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7527F29EF8BB4001F948A /* SearchMoviesRouter.swift */; };
-		6CF7528529EF8BB4001F948A /* SearchMoviesEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7528029EF8BB4001F948A /* SearchMoviesEntities.swift */; };
 		6CF7528629EF8BB4001F948A /* SearchMoviesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7528129EF8BB4001F948A /* SearchMoviesProtocols.swift */; };
 		6CF7528C29EFB6DB001F948A /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7528A29EFB6DB001F948A /* MoviesTableViewCell.swift */; };
 		6CF7528D29EFB6DB001F948A /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF7528B29EFB6DB001F948A /* MoviesTableViewCell.xib */; };
@@ -30,7 +29,6 @@
 		6CF7529A29F10D9F001F948A /* MoviesErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF7529829F10D9F001F948A /* MoviesErrorTableViewCell.xib */; };
 		6CF752A229F116F7001F948A /* HomeMoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7529C29F116F7001F948A /* HomeMoviesRouter.swift */; };
 		6CF752A329F116F7001F948A /* HomeMoviesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7529D29F116F7001F948A /* HomeMoviesProtocols.swift */; };
-		6CF752A429F116F7001F948A /* HomeMoviesEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7529E29F116F7001F948A /* HomeMoviesEntities.swift */; };
 		6CF752A529F116F7001F948A /* HomeMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7529F29F116F7001F948A /* HomeMoviesInteractor.swift */; };
 		6CF752A629F116F7001F948A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF752A029F116F7001F948A /* HomeViewController.swift */; };
 		6CF752A729F116F7001F948A /* HomeMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF752A129F116F7001F948A /* HomeMoviesPresenter.swift */; };
@@ -75,7 +73,6 @@
 		6CF7527D29EF8BB3001F948A /* SearchMoviesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesPresenter.swift; sourceTree = "<group>"; };
 		6CF7527E29EF8BB3001F948A /* SearchMoviesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesInteractor.swift; sourceTree = "<group>"; };
 		6CF7527F29EF8BB4001F948A /* SearchMoviesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesRouter.swift; sourceTree = "<group>"; };
-		6CF7528029EF8BB4001F948A /* SearchMoviesEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesEntities.swift; sourceTree = "<group>"; };
 		6CF7528129EF8BB4001F948A /* SearchMoviesProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesProtocols.swift; sourceTree = "<group>"; };
 		6CF7528A29EFB6DB001F948A /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		6CF7528B29EFB6DB001F948A /* MoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesTableViewCell.xib; sourceTree = "<group>"; };
@@ -83,7 +80,6 @@
 		6CF7529829F10D9F001F948A /* MoviesErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesErrorTableViewCell.xib; sourceTree = "<group>"; };
 		6CF7529C29F116F7001F948A /* HomeMoviesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMoviesRouter.swift; sourceTree = "<group>"; };
 		6CF7529D29F116F7001F948A /* HomeMoviesProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMoviesProtocols.swift; sourceTree = "<group>"; };
-		6CF7529E29F116F7001F948A /* HomeMoviesEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMoviesEntities.swift; sourceTree = "<group>"; };
 		6CF7529F29F116F7001F948A /* HomeMoviesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMoviesInteractor.swift; sourceTree = "<group>"; };
 		6CF752A029F116F7001F948A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6CF752A129F116F7001F948A /* HomeMoviesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMoviesPresenter.swift; sourceTree = "<group>"; };
@@ -135,7 +131,6 @@
 		6CF7527829EF8B34001F948A /* SearchMovies */ = {
 			isa = PBXGroup;
 			children = (
-				6CF7528029EF8BB4001F948A /* SearchMoviesEntities.swift */,
 				6CF7527E29EF8BB3001F948A /* SearchMoviesInteractor.swift */,
 				6CF7527D29EF8BB3001F948A /* SearchMoviesPresenter.swift */,
 				6CF7528129EF8BB4001F948A /* SearchMoviesProtocols.swift */,
@@ -176,7 +171,6 @@
 		6CF7529B29F11691001F948A /* HomeMovies */ = {
 			isa = PBXGroup;
 			children = (
-				6CF7529E29F116F7001F948A /* HomeMoviesEntities.swift */,
 				6CF7529F29F116F7001F948A /* HomeMoviesInteractor.swift */,
 				6CF752A129F116F7001F948A /* HomeMoviesPresenter.swift */,
 				6CF7529D29F116F7001F948A /* HomeMoviesProtocols.swift */,
@@ -347,8 +341,6 @@
 				6C6C749829F2736400472C9B /* LoginViewController.swift in Sources */,
 				6CF7528429EF8BB4001F948A /* SearchMoviesRouter.swift in Sources */,
 				6CF752A329F116F7001F948A /* HomeMoviesProtocols.swift in Sources */,
-				6CF7528529EF8BB4001F948A /* SearchMoviesEntities.swift in Sources */,
-				6CF752A429F116F7001F948A /* HomeMoviesEntities.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				6CF752A629F116F7001F948A /* HomeViewController.swift in Sources */,
 				6CF752A729F116F7001F948A /* HomeMoviesPresenter.swift in Sources */,

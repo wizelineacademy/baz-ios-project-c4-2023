@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchMoviesInteractor {
+final class SearchMoviesInteractor {
     var presenter: SearchMoviesInteractorOutputProtocol?
     let basePath: String = "https://api.themoviedb.org/3/"
     let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"

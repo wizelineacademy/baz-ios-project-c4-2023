@@ -8,7 +8,7 @@
 import UIKit
 
 // Cell for custom secctions in a Collection View
-class TitleCollectionReusableView: UICollectionReusableView {
+final class TitleCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var titleSectionLabel: UILabel!
     
     var titleLabel: String = "" {

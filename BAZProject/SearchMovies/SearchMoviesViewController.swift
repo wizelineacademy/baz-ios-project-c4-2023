@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchMoviesViewController: UIViewController {
+final class SearchMoviesViewController: UIViewController {
     
     var presenter: SearchMoviesViewOutputProtocol?
     var movies: [MovieProtocol] = []

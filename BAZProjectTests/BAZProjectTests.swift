@@ -60,8 +60,6 @@ final class BAZProjectTests: XCTestCase {
     
     // test number of movies and not nil array for show
     func testMovies_isNotNil_countMovies() {
-        // Given
-        let expectedMovies = 20
         // When
         interactor.fetchCategories(url: "trending/movie/day?api_key=", section: 0)
         interactor.fetchCategories(url: "movie/popular?api_key=", section: 1)

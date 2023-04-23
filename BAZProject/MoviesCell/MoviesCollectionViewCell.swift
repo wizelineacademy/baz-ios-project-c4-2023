@@ -8,7 +8,7 @@
 import UIKit
 
 // Custom cell for show all movies in a Collection View
-class MoviesCollectionViewCell: UICollectionViewCell {
+final class MoviesCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieImage: UIImageView!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomePresenter {
+final class HomePresenter {
     
     // MARK: properties
     weak var view: HomeViewInputProtocol?

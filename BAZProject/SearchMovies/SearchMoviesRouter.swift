@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SearchMoviesRouter {
+final class SearchMoviesRouter {
     
     weak var view: UIViewController?
     

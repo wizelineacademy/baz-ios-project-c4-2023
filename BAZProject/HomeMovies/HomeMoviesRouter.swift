@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class HomeRouter {
+final class HomeRouter {
     
     weak var view: UIViewController?
     

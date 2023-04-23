@@ -8,7 +8,7 @@
 import UIKit
 
 // Custom cell for show all movies in a Table View
-class MoviesTableViewCell: UITableViewCell {
+final class MoviesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!

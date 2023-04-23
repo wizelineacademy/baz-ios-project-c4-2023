@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchMoviesPresenter {
+final class SearchMoviesPresenter {
     
     // MARK: properties
     weak var view: SearchMoviesViewInputProtocol?

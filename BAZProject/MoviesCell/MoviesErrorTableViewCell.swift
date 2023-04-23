@@ -8,7 +8,7 @@
 import UIKit
 
 // This cell is showed when API don´t get information
-class MoviesErrorTableViewCell: UITableViewCell {
+final class MoviesErrorTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
