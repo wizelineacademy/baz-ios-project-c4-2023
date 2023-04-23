@@ -20,10 +20,7 @@ extension TrendingMoviesViewController: UISearchResultsUpdating{
             if let resultsController = searchController.searchResultsController as? ResultsTableController {
                 resultsController.filteredProducts = strongSelf.searchResultMovies
                 resultsController.tableView.reloadData()
-                resultsController.resultsLabel.text = resultsController.filteredProducts.isEmpty ?
-                    NSLocalizedString("NoItemsFoundTitle", comment: "") :
-                    String(format: NSLocalizedString("Items found: %ld", comment: ""),
-                           resultsController.filteredProducts.count)
+                resultsController.resultsLabel.text = "Numero de elementos encontrados: \(resultsController.filteredProducts.count)"
             }
             
         })

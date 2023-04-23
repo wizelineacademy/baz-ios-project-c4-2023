@@ -9,35 +9,44 @@
 //
 
 import UIKit
-
-class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
-    
+/// Presenter del modulo VIPER Trending Movies
+final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
+    /// Intancia del View  del modulo VIPER Trending Movies
     weak private var view: TrendingMoviesViewProtocol?
+    /// Intancia del Interactor  del modulo VIPER Trending Movies
     var interactor: TrendingMoviesInteractorProtocol?
+    /// Intancia del Router  del modulo VIPER Trending Movies
     private let router: TrendingMoviesWireframeProtocol
 
+    /// Inicializador del Presenter del modulo VIPER de Trending Movies
+    /// - parameters:
+    ///    - interface: View del modulo ViPER
+    ///    - interactor: Interactor del modulo ViPER
+    ///    - router: Router del modulo VIPER
+    /// - returns:
+    ///   Devuelve el Presenter del modulo VIPER Trending Movies
     init(interface: TrendingMoviesViewProtocol, interactor: TrendingMoviesInteractorProtocol?, router: TrendingMoviesWireframeProtocol) {
         self.view = interface
         self.interactor = interactor
         self.router = router
     }
-    
+    ///Funcion que llama al interactor para obtener las las peliculas del la api de MovieDB
     func getMovies() {
         interactor?.getMovies()
     }
-    
+    ///Funcion que llama al view  para setear  las las peliculas del la api de MovieDB
     func setMovies(result: [ListMovieProtocol]) {
         view?.loadData(movies: result)
     }
-    
+    ///Funcion que llama al router para obtener el ResultTableViewController que despliega los resultados de busqueda
     func getResultViewController() -> UIViewController {
         return router.getResultViewController()
     }
-    
+    ///Funcion que llama al interactor para obtener las las imagenes de los posters de peliculas del la api de MovieDB
     func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
         interactor?.getRemotImage(from: stringURL, completion: completion)
     }
-    
+    ///Funcion que llama al interactor para obtener las las peliculas deacuerdo a un criterio de busqueda del la api de MovieDB
     func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ()) {
         interactor?.findMovies(for: string, completion: completion)
     }

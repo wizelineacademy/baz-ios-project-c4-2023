@@ -11,8 +11,8 @@
 		4C0EFA7829F06A4100833FC5 /* ApiConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EFA7729F06A4100833FC5 /* ApiConstans.swift */; };
 		4C0EFA7929F06A4100833FC5 /* ApiConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EFA7729F06A4100833FC5 /* ApiConstans.swift */; };
 		4C0EFA7A29F06A7600833FC5 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E028A425E1004B1860 /* MovieAPI.swift */; };
-		4C6C4EC429F0EDCD00FA634E /* GenericAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC329F0EDCD00FA634E /* GenericAPI.swift */; };
-		4C6C4EC529F0EDCD00FA634E /* GenericAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC329F0EDCD00FA634E /* GenericAPI.swift */; };
+		4C6C4EC429F0EDCD00FA634E /* GenericAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC329F0EDCD00FA634E /* GenericAPIProtocol.swift */; };
+		4C6C4EC529F0EDCD00FA634E /* GenericAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC329F0EDCD00FA634E /* GenericAPIProtocol.swift */; };
 		4C6C4ECD29F0F46400FA634E /* TrendingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC729F0F46400FA634E /* TrendingMoviesPresenter.swift */; };
 		4C6C4ECE29F0F46400FA634E /* TrendingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC729F0F46400FA634E /* TrendingMoviesPresenter.swift */; };
 		4C6C4ECF29F0F46400FA634E /* TrendingMoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C4EC829F0F46400FA634E /* TrendingMoviesRouter.swift */; };
@@ -31,10 +31,10 @@
 		4CA2F93029F3043600B6A60B /* TrendingMoviesViewController+Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92E29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift */; };
 		4CA2F93529F31DE600B6A60B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2F93429F31DE500B6A60B /* TableCell.xib */; };
 		4CA2F93629F31DE600B6A60B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2F93429F31DE500B6A60B /* TableCell.xib */; };
+		4CA2F93829F4601500B6A60B /* TabBarControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */; };
+		4CA2F93929F4601500B6A60B /* TabBarControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */; };
 		4CBDB6F329F1061E000AF2FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F229F1061E000AF2FA /* TabBarController.swift */; };
 		4CBDB6F429F1061E000AF2FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F229F1061E000AF2FA /* TabBarController.swift */; };
-		4CBDB6F629F109D4000AF2FA /* TabBarControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F529F109D4000AF2FA /* TabBarControllerViewModel.swift */; };
-		4CBDB6F729F109D4000AF2FA /* TabBarControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F529F109D4000AF2FA /* TabBarControllerViewModel.swift */; };
 		4CBDB6F929F10D4B000AF2FA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		4CC0A35329F1F747003B311D /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0A35229F1F747003B311D /* ResultsTableController.swift */; };
 		4CC0A35429F1F747003B311D /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0A35229F1F747003B311D /* ResultsTableController.swift */; };
@@ -63,7 +63,7 @@
 		4C0EFA5A29F067D300833FC5 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0EFA5C29F067D300833FC5 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		4C0EFA7729F06A4100833FC5 /* ApiConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstans.swift; sourceTree = "<group>"; };
-		4C6C4EC329F0EDCD00FA634E /* GenericAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPI.swift; sourceTree = "<group>"; };
+		4C6C4EC329F0EDCD00FA634E /* GenericAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIProtocol.swift; sourceTree = "<group>"; };
 		4C6C4EC729F0F46400FA634E /* TrendingMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesPresenter.swift; sourceTree = "<group>"; };
 		4C6C4EC829F0F46400FA634E /* TrendingMoviesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesRouter.swift; sourceTree = "<group>"; };
 		4C6C4EC929F0F46400FA634E /* TrendingMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewController.swift; sourceTree = "<group>"; };
@@ -73,8 +73,8 @@
 		4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMoviesViewController+Restore.swift"; sourceTree = "<group>"; };
 		4CA2F92E29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMoviesViewController+Updating.swift"; sourceTree = "<group>"; };
 		4CA2F93429F31DE500B6A60B /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerModel.swift; sourceTree = "<group>"; };
 		4CBDB6F229F1061E000AF2FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		4CBDB6F529F109D4000AF2FA /* TabBarControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerViewModel.swift; sourceTree = "<group>"; };
 		4CC0A35229F1F747003B311D /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0EFA7729F06A4100833FC5 /* ApiConstans.swift */,
-				4C6C4EC329F0EDCD00FA634E /* GenericAPI.swift */,
+				4C6C4EC329F0EDCD00FA634E /* GenericAPIProtocol.swift */,
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 			);
 			path = Api;
@@ -160,8 +160,8 @@
 		4CBDB6F829F10D2E000AF2FA /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */,
 				4CBDB6F229F1061E000AF2FA /* TabBarController.swift */,
-				4CBDB6F529F109D4000AF2FA /* TabBarControllerViewModel.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -325,12 +325,12 @@
 				4C6C4ED029F0F46400FA634E /* TrendingMoviesRouter.swift in Sources */,
 				4CBDB6F429F1061E000AF2FA /* TabBarController.swift in Sources */,
 				4C6C4ED429F0F46400FA634E /* TrendingMoviesProtocols.swift in Sources */,
-				4CBDB6F729F109D4000AF2FA /* TabBarControllerViewModel.swift in Sources */,
 				4C6C4ED229F0F46400FA634E /* TrendingMoviesViewController.swift in Sources */,
 				4CA2F93029F3043600B6A60B /* TrendingMoviesViewController+Updating.swift in Sources */,
+				4CA2F93929F4601500B6A60B /* TabBarControllerModel.swift in Sources */,
 				4CA2F92D29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift in Sources */,
 				4C0EFA5D29F067D300833FC5 /* BAZProjectTests.swift in Sources */,
-				4C6C4EC529F0EDCD00FA634E /* GenericAPI.swift in Sources */,
+				4C6C4EC529F0EDCD00FA634E /* GenericAPIProtocol.swift in Sources */,
 				4C6C4ED629F0F46400FA634E /* TrendingMoviesInteractor.swift in Sources */,
 				4C0EFA7929F06A4100833FC5 /* ApiConstans.swift in Sources */,
 			);
@@ -344,15 +344,15 @@
 				4CA2F92C29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift in Sources */,
 				4C6C4ECF29F0F46400FA634E /* TrendingMoviesRouter.swift in Sources */,
 				4C6C4ED329F0F46400FA634E /* TrendingMoviesProtocols.swift in Sources */,
-				4C6C4EC429F0EDCD00FA634E /* GenericAPI.swift in Sources */,
+				4C6C4EC429F0EDCD00FA634E /* GenericAPIProtocol.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				4CA2F92929F2404400B6A60B /* RemotLoadImage+UIImageView.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
+				4CA2F93829F4601500B6A60B /* TabBarControllerModel.swift in Sources */,
 				4CA2F92F29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift in Sources */,
 				4CBDB6F329F1061E000AF2FA /* TabBarController.swift in Sources */,
 				4C6C4ED529F0F46400FA634E /* TrendingMoviesInteractor.swift in Sources */,
-				4CBDB6F629F109D4000AF2FA /* TabBarControllerViewModel.swift in Sources */,
 				4C6C4ED129F0F46400FA634E /* TrendingMoviesViewController.swift in Sources */,
 				4CC0A35329F1F747003B311D /* ResultsTableController.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,

@@ -7,14 +7,22 @@
 
 import UIKit
 
-class ResultsTableController: UITableViewController {
-    
-    @IBOutlet weak var resultsLabel: UILabel!
+protocol ResultTableForMoviesProtocol{
+    var filteredProducts: [ListMovieProtocol] { get set}
+    var tableViewCellIdentifier: String { get set }
+}
 
-    let tableViewCellIdentifier = "cellID"
-    
+///ViewController que despliega los resultados de una busqueda
+
+final class ResultsTableController: UITableViewController, ResultTableForMoviesProtocol {
+    ///UILabel que muestra el total de elementos que tiene la busqueda
+    @IBOutlet weak var resultsLabel: UILabel!
+    ///Idetificador de la celda
+    var tableViewCellIdentifier = "cellID"
+    ///Arreglo de ListMovieProtocol  que contiene los resultados a desplegar de la busqueda
     var filteredProducts: [ListMovieProtocol] = []
     
+    // MARK: ViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

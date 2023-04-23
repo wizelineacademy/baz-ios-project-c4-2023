@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 //Protocolo que obtiene una imagen de una URL
-protocol RemoteLoadImage{
+protocol RemoteLoadImageProtocol {
     func loadFrom(url: URL, completion: @escaping (_ image: UIImage?) -> ())
 }
 // Extension de UIImageView para cargar una imagen del servidor
-extension UIImage: RemoteLoadImage{
+extension UIImage: RemoteLoadImageProtocol {
     /**
         Funcion que obtiene una imagen del servidor y regresa un`UIImage`
       - Parameters:

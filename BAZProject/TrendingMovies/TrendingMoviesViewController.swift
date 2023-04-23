@@ -10,44 +10,80 @@
 
 import UIKit
 
-class TrendingMoviesViewController: UITableViewController, TrendingMoviesViewProtocol {
-
+///ViewController que contiene la vista del Modulo Viper de TrendigMovies
+/// - Parameters:
+///    - presenter: Intancia del Presenter del modulo VIPER
+///    - searchController: The gearing of the bicycle
+///    - movies: The handlebar of the bicycle
+///    - searchResultMovies: The frame size of the bicycle, in centimeters
+///    - restoredState: The frame size of the bicycle, in centimeters
+/// - Returns: Regrea un ViewController
+final class TrendingMoviesViewController: UITableViewController, TrendingMoviesViewProtocol {
+    /// Intancia del Presenter  del modulo VIPER Trending Movies
 	var presenter: TrendingMoviesPresenterProtocol?
-    
+    /// Intancia de un UISearchController  que permite buscar una pelicula en la api de MovieDB
     var searchController: UISearchController!
-    
-    var resultsTableController: ResultsTableController!
-    
-    var movies: [ListMovieProtocol] = []
-    
+    /// Intancia de un UITableViewContrller  muestra los resuiltados una pelicula en la api de MovieDB
+    private var resultsTableController: ResultTableForMoviesProtocol!
+    /// Arreglo que contiene las peliculas que despliegan en una lista
+    private var movies: [ListMovieProtocol] = []
+    /// Arreglo que contiene las peliculas que despliegan en una lista deacuerdo a un criterio de busqueda
     var searchResultMovies: [ListMovieProtocol] = []
-    
-    var restoredState: RestorableState = SearchControllerRestorableState()
+    /// Intancia de RestorableStateProtocol que guarda el estado del ResultTableViewController
+    var restoredState: RestorableStateProtocol = SearchControllerRestorableState()
 
+    // MARK: ViewController Lifecycle
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getMovies()
-        configureSearch()
-    }
-    
-    func loadData(movies: [ListMovieProtocol]) {
-        self.movies = movies
-        tableView.reloadData()
-    }
-    
-    func loadSearchData(movies: [ListMovieProtocol]) {
-        self.searchResultMovies = movies
-    }
-
-    func configureSearch(){
-        searchController = UISearchController(searchResultsController: presenter?.getResultViewController())
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.delegate = self
+        searchController = configureSearch()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if restoredState.wasActive {
+            searchController.isActive = restoredState.wasActive
+            restoredState.wasActive = false
+            if restoredState.wasFirstResponder {
+                searchController.searchBar.becomeFirstResponder()
+                restoredState.wasFirstResponder = false
+            }
+        }
+    }
+}
+
+// MARK: - SearchBarController Configuration
+
+extension TrendingMoviesViewController{
+    ///Metodo que establece la configuracion inicial de SearchBArViewController
+    func configureSearch() -> UISearchController{
+        let search = UISearchController(searchResultsController: presenter?.getResultViewController())
+        search.searchResultsUpdater = self
+        search.searchBar.autocapitalizationType = .none
+        search.searchBar.delegate = self
+        return search
+    }
+}
+
+// MARK: - View - Presenter Method's
+
+extension TrendingMoviesViewController{
+    ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB y recarga la el UITableView
+    /// - Parameters:
+    ///     -Movies: Array de ListMovieProtocol
+    func loadData(movies: [ListMovieProtocol]) {
+        self.movies = movies
+        tableView.reloadData()
+    }
+    ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB de acuerdo a un criterio de busqueda  y recarga la el UITableView
+    /// - Parameters:
+    ///     -Movies: Array de ListMovieProtocol
+    func loadSearchData(movies: [ListMovieProtocol]) {
+        self.searchResultMovies = movies
+    }
 }
 
 // MARK: - TableView's DataSource

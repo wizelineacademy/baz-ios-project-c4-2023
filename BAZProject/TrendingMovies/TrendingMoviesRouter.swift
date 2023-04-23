@@ -9,10 +9,14 @@
 //
 
 import UIKit
-
-class TrendingMoviesRouter: TrendingMoviesWireframeProtocol {
+///Router del modulo VIPER Trending Movies
+final class TrendingMoviesRouter: TrendingMoviesWireframeProtocol {
+    /// Intancia del View  del modulo VIPER Trending Movies
     weak var viewController: UIViewController?
-    
+    /**
+     Metodo que regresa un UIviewcontroller con la implementacion del modulo VIPER
+        - Returns: Regrea un UIViewController con la implentacion del modulo VIPER.
+     */
     static func createModule() -> UIViewController {
         // Change to get view from storyboard if not using progammatic UI
         guard let viewController: TrendingMoviesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrendingMoviesViewController") as? TrendingMoviesViewController else { return UIViewController()}
@@ -27,7 +31,7 @@ class TrendingMoviesRouter: TrendingMoviesWireframeProtocol {
         
         return view
     }
-    
+    ///Funcion que regresa el ResultTableViewController que despliega los resultados de busqueda
     func getResultViewController() -> UIViewController{
         guard let viewController: ResultsTableController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResultsTableController") as? ResultsTableController else { return UIViewController()}
         return viewController

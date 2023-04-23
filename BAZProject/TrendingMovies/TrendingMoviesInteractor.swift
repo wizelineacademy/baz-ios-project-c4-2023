@@ -10,16 +10,21 @@
 
 import UIKit
 
-class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
-    
+final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
+    /// Intancia del presenter  del modulo VIPER Trending Movies
     weak var presenter: TrendingMoviesPresenterProtocol?
-    let movieAPI: GenericAPI
-    
-    
-    init(movieAPI: GenericAPI) {
+    /// Intancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
+    let movieAPI: GenericAPIProtocol
+    /**
+     Inicializador del Iteractor del modulo VIPER de Trending Movies
+     - Parameters:
+        - MovieApi: Initancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
+     - Returns: Devuelve el Iteractor del modulo VIPER Trending Movies
+     */
+    init(movieAPI: GenericAPIProtocol) {
         self.movieAPI = movieAPI
     }
-    
+    ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
     func getMovies() {
         guard let urlRequest = getMoviesUrlRequest() else { return }
         
@@ -36,7 +41,7 @@ class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
             }
         }
     }
-    
+    ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies de acuerdo a criterio de busqueda
     func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ()) {
         if !string.isEmpty && string.count > 3{
             guard let request = getSearchMoviewUrlRequest(searchString: string) else { return }
@@ -54,17 +59,27 @@ class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
             }
         }
     }
-
+    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB
+    ///- Returns: Devuelve una URLRequest
     func getMoviesUrlRequest() -> URLRequest?{
         return URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)
     }
-    
+    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB de acuerdo a un criterio de busqueda
+    ///- Parameters:
+    /// - searchString: Criterio de busqueda
+    ///- Returns: Devuelve una URLRequest
     func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?{
         let stringToSearch = "&query=\(searchString.addingPercentEncoding(withAllowedCharacters: .whitespacesAndNewlines) ?? "")"
         guard let url = URL(string: ApiConstans.baseURL + ApiConstans.search + ApiConstans.apiKey + stringToSearch) else { return nil}
         return URLRequest(url: url)
     }
-    
+    /**
+        Funcion que obtiene una imagen del servidor y regresa un`UIImage`
+      - Parameters:
+        - url: La URL de la .Imagen
+        - completion:  Retorna un UIImage .
+      - Returns: UIImage con la imagen descargada del servidor
+    */
     func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
         guard let url = URL(string: ApiConstans.baseUrlImage + stringURL) else { return }
         UIImage().loadFrom(url: url, completion: completion)

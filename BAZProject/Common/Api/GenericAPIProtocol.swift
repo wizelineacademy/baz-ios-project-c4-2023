@@ -6,13 +6,13 @@
 //
 
 import Foundation
-
-protocol GenericAPI {
+///Protocolo para implementar una llamada al Api MovieDB
+protocol GenericAPIProtocol {
     func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void)
     func decode<T: Decodable>(data: Data, decoder: JSONDecoder) -> T?
 }
 
-extension GenericAPI {
+extension GenericAPIProtocol {
     /// Este método obtiene la respuesta del servidor
     /// - parameters:
     ///    - request: Request  a consumir

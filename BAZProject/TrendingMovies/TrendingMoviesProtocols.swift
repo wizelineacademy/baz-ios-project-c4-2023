@@ -35,6 +35,6 @@ protocol TrendingMoviesInteractorProtocol: AnyObject {
 //MARK: View -
 protocol TrendingMoviesViewProtocol: AnyObject {
     var presenter: TrendingMoviesPresenterProtocol?  { get set }
-    var restoredState: RestorableState {get set}
+    var restoredState: RestorableStateProtocol {get set}
     func loadData(movies: [ListMovieProtocol])
 }

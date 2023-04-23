@@ -6,26 +6,29 @@
 
 import Foundation
 
-/// Protocol used to decouple the Movie structure
+/// Protocolo que desacopla la estructura de Movies
 protocol ListMovieProtocol {
     var id: Int { get set }
     var title: String { get set }
     var posterPath: String { get set }
 }
 
-/// Structure that contains the data that will be used in the view
+/// Estructura que contine la información que se usara en la vista
 struct MovieResult: Codable {
+    ///Arreglo de peliculas
     let results: [Movie]?
-
     enum CodingKeys: String, CodingKey {
         case results
     }
 }
 
-// MARK: - Result
+/// Estructura de una pelicula
 struct Movie: Codable, ListMovieProtocol {
+    ///Identificador de una pelicula
     var id: Int
+    ///Drescripcion del titulo de una pelicula
     var title: String
+    ///Path en donde se encuentra la imagen del poster de una pelicula 
     var posterPath: String
 
     enum CodingKeys: String, CodingKey {

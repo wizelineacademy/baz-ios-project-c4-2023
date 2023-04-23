@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+///Estructura que contiene EndPoints y URls del Api de MovieDB
 struct ApiConstans {
     static var baseURL = "https://api.themoviedb.org/3/"
     static var trending = "trending/movie/day"
@@ -14,10 +14,14 @@ struct ApiConstans {
     static var baseUrlImage = "https://image.tmdb.org/t/p/w500"
     static var search = "search/movie"
 }
-
-public enum ApiError: Error{
+///Tipos de errores para el consumo del Api MovieDB
+public enum ApiError: Error {
+    ///Error generico del Api
     case defaultError
-    
+    /**
+     Descripcion del error del Api Movie DB
+     - Returns: Regresa un 'String' con la descripcion del error provocado
+     */
     var localizedDescription: String {
         switch self {
         case .defaultError:

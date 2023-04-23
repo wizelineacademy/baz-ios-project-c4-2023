@@ -7,19 +7,20 @@
 
 import Foundation
 
+///Casos para restablecer la configuracion del UIViewcontroller que implementa la busqueda
 enum RestorationKeys: String {
     case viewControllerTitle
     case searchControllerIsActive
     case searchBarText
     case searchBarIsFirstResponder
 }
-
-protocol RestorableState{
+///Protocolo que contiene los estados a restablecer del  UIViewcontroller que implementa la busqueda
+protocol RestorableStateProtocol{
     var wasActive: Bool {get set}
     var wasFirstResponder: Bool {get set}
 }
 
-struct SearchControllerRestorableState: RestorableState {
+struct SearchControllerRestorableState: RestorableStateProtocol {
     var wasActive = false
     var wasFirstResponder = false
 }
