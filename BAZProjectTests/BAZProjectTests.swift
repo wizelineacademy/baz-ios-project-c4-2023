@@ -32,6 +32,7 @@ final class BAZProjectTests: XCTestCase {
         super.tearDown()
     }
     
+    // Valid number of elements in array 'Movies'
     func test_When_GetMovies(){
         // Given
         let expectedGetMovies = 7
@@ -42,24 +43,29 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(sut2.movies.count, expectedGetMovies)
     }
     
+    // Valid serviceMock is not nil
     func testNotNilMock(){
         XCTAssertNotNil(serviceMock)
     }
     
+    // Validate title of the last position of array
     func test_When_getTitleMoviesLast_ValidTitle() {
         let titleExpected = "AntMan"
         XCTAssertEqual(sut2.movies.last?.title, titleExpected)
     }
     
+    // Validate title of the first position of array
     func test_When_getTitleMoviesFirst_ValidTitle() {
         let titleExpected = "Spiderman"
         XCTAssertEqual(sut2.movies.first?.title, titleExpected)
     }
     
+    // Valid btnOptionsFilterMovies is not nil
     func test_WhenTitleIsNil(){
         XCTAssertNil(sut2.btnOptionsFilterMovies)
     }
     
+    // Validate url image of the first position of array
     func testMoviesImages_getMoviesInfoPicture_isAvailable() {
         // Given
         let pathExpected = URL(string: "https://image.tmdb.org/t/p/w500/path/Spiderman.jpg")
@@ -70,6 +76,7 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertEqual(urlMovie, pathExpected)
     }
     
+    // Creation Mock array 'MoviewData'
     func getMovies() -> [MovieData] {
         let popularMovies: [MoviesViewModels] = [MoviesViewModels(title: "Spiderman", poster_path: "/path/Spiderman.jpg"),
                                                  MoviesViewModels(title: "Batman", poster_path: "/path/Batman.jpg"),
@@ -81,6 +88,7 @@ final class BAZProjectTests: XCTestCase {
         return popularMovies
     }
     
+    // Validate url image of the first position of array
     func test_ValidateImage(){
         getMovies().first?.getImage{ imagen in
             XCTAssertNotNil(imagen)

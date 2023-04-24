@@ -27,11 +27,13 @@ final class SearchMoviesInteractorTest: XCTestCase{
     }
     
     // MARK: SetUpCorrect
+    // Valid consultServiceSearch is not nil
     func testSearchServiceBlock(){
         XCTAssertNotNil(sut.consultServiceSearch(with: "hola"))
     }
     
     // MARK: Test - Functions
+    // Valid array MovieData is not nil
     func test_ZeroArray_MovieData(){
         consultServiceSearch(with: "Hola...")
         

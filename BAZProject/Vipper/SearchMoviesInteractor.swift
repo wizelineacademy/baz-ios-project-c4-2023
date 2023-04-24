@@ -34,8 +34,8 @@ extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
             DispatchQueue.main.async {
                 switch result {
                 case .success(let moviesReponse):
-                    if moviesReponse.arrMovies?.count ?? 0 > 0{
-                        self?.setMovies(with: moviesReponse.arrMovies)
+                    if moviesReponse.movies?.count ?? 0 > 0{
+                        self?.setMovies(with: moviesReponse.movies)
                     }else{
                         self?.presenter?.setError()
                     }

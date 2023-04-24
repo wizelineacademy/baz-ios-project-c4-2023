@@ -30,7 +30,7 @@ final class TrendingViewController: UITableViewController, Storyboard {
             switch result {
             case .success(let moviesReponse):
                 self?.movies.removeAll()
-                if let arrMovies = moviesReponse.arrMovies{
+                if let arrMovies = moviesReponse.movies{
                     for resultArrMovies in arrMovies{
                         self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
                                                                     poster_path: resultArrMovies.posterPath ?? ""))
@@ -57,7 +57,7 @@ final class TrendingViewController: UITableViewController, Storyboard {
     }
     
     // btnAction - options with the different search filters
-    func setup(){
+    private func setup(){
         let categories: [(String, OptionMovie)] = [
             ("Trending",.getMovieDay),
             ("Now Playing",.getNowPlaying),

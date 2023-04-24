@@ -25,10 +25,12 @@ final class SearchMoviesRouterTest: XCTestCase {
     }
     
     // MARK: Test - Alert
+    // Validate CWAlert is not nil
     func test_PresentNotEmptyAlert() {
         XCTAssertNotNil(sut.presentAlert(CWAlert.simpleWith(message: "mensaje")))
     }
     
+    // Validate alert message
     func test_PresentValidMessageAlet(){
         //Given
         let expected = "Hola"
@@ -39,6 +41,7 @@ final class SearchMoviesRouterTest: XCTestCase {
     }
     
     // MARK: Test - View
+    // Validate View is not nil
     func test_Validate_ViewIsNil(){
         XCTAssertNil(sut.view)
     }

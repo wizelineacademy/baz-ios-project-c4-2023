@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SearchMoviesRouter: SearchMoviesRouterProtocol{
+final class SearchMoviesRouter: SearchMoviesRouterProtocol{
     
     // MARK: Properties
     weak var view: SearchMoviesView?

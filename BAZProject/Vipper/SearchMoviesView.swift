@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-class SearchMoviesView: UIViewController{
+final class SearchMoviesView: UIViewController{
     
     @IBOutlet weak var tblSearch: UITableView!{
         didSet{
@@ -28,6 +28,7 @@ class SearchMoviesView: UIViewController{
         searchBar.returnKeyType = UIReturnKeyType.done
     }
     
+    /// Configuration is set to the table
     private func style(to tableView: UITableView){
         tableView.bounces                        = false
         tableView.separatorStyle                 = .none
@@ -41,6 +42,7 @@ class SearchMoviesView: UIViewController{
         tableView.estimatedRowHeight             = UITableView.automaticDimension
     }
     
+    //Registers a nib object that contains a cell with specified identifier.
     private func registerNibs(in tableView: UITableView) {
         tableView.register(UINib(nibName: CellMovies.identifier, bundle: nil),
                            forCellReuseIdentifier: CellMovies.identifier)

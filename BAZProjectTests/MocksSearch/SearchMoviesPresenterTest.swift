@@ -27,6 +27,7 @@ final class SearchMoviesPresenterTest: XCTestCase {
     }
     
     // MARK: SetUpCorrect
+    // Validate that elements are not null.
     func test_NotNil_Presenter(){
         XCTAssertNotNil(sut?.view?.showResultMovies())
         XCTAssertNotNil(sut?.setError())

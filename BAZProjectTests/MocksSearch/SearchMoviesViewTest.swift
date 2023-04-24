@@ -26,14 +26,17 @@ final class SearchMoviesViewTest: XCTestCase {
     }
     
     // MARK: View - Test
+    // Validate backgroundColor of the view
     func test_SearchMoviesView_BackgroundColor() {
         XCTAssertEqual(sut.view.backgroundColor, .systemBackground)
     }
     
+    // Validate title is nil
     func test_SearchMoviesViewTitleIsNotNil() {
         XCTAssertNil(sut.title)
     }
     
+    // validate title is empety
     func test_SearchMoviesViewIsEmptyTitle() {
         //Given
         let expected = ""

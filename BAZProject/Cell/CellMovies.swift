@@ -7,9 +7,14 @@
 
 import UIKit
 
-class CellMovies: UITableViewCell{
+final class CellMovies: UITableViewCell{
     
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var descriptionMovie: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imgMovie.image = nil
+    }
     
 }
