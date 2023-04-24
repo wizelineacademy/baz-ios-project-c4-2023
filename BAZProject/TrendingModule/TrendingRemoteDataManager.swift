@@ -18,6 +18,7 @@ class TrendingRemoteDataManager: TrendingRemoteDataManagerInputProtocol {
         self.service = service
     }
     
+    /// Obtener resultado del API depende URL
     func fetchMovies() {
         guard let trendingURL = trendingURL else { return }
         service.get(trendingURL) { [weak self] (result: Result<Response<[Movie]>, Error>) in

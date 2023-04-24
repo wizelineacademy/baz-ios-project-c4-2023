@@ -13,6 +13,11 @@ class ServiceAPI: ServiceProtocol {
         self.session = session
     }
     
+    
+    /// Función para obtener información del API y regresar Decodable
+    /// - Parameters:
+    ///   - endpoint: url
+    ///   - callback: Result success/error noData, response, internalserver, parsingdata
     func get<T: Decodable>(_ endpoint: URL, callback: @escaping (Result<T,Error>) -> Void) {
         let request: URLRequest = URLRequest(url: endpoint)
         let task = session.performDataTask(with: request) { (data, response, error) in

@@ -25,6 +25,9 @@ extension RecentPresenter: RecentPresenterProtocol {
 }
 
 extension RecentPresenter: RecentInteractorOutputProtocol {
+    
+    /// Función para traer resultado de movies
+    /// - Parameter movies: struct movie con id, title y  posterPath
     func moviesFetched(movies: [Movie]) {
         self.movies = movies
         self.view?.reloadData()

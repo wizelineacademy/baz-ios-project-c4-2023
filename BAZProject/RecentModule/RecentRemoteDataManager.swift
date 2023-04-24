@@ -18,6 +18,7 @@ class RecentRemoteDataManager: RecentRemoteDataManagerInputProtocol {
         self.service = service
     }
     
+    /// Obtener resultado del API depende URL
     func fetchMovies() {
         guard let RecentURL = RecentURL else { return }
         service.get(RecentURL) { [weak self] (result: Result<Response<[Movie]>, Error>) in

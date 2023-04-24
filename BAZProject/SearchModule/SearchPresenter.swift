@@ -16,6 +16,9 @@ class SearchPresenter {
 }
 
 extension SearchPresenter: SearchPresenterProtocol {
+    
+    /// Función para realizar busqueda
+    /// - Parameter query: String search
     func searchMovies(with query: String?) {
         if let query = query {
             self.interactor?.fetchSearchResults(with: query)
@@ -24,6 +27,9 @@ extension SearchPresenter: SearchPresenterProtocol {
 }
 
 extension SearchPresenter: SearchInteractorOutputProtocol {
+    
+    /// Función para obtener resultados de busqueda
+    /// - Parameter searchResults: Obtener id, title, posterpath del entitie SearchResult
     func searchResultsFecthed(searchResults: [SearchResult]) {
         self.searchResults = searchResults
         self.view?.reloadData()

@@ -18,6 +18,8 @@ class UpcomingRemoteDataManager: UpcomingRemoteDataManagerInputProtocol {
         self.service = service
     }
     
+    
+    /// Obtener resultado del API depende URL
     func fetchMovies() {
         guard let UpcomingURL = UpcomingURL else { return }
         service.get(UpcomingURL) { [weak self] (result: Result<Response<[Movie]>, Error>) in

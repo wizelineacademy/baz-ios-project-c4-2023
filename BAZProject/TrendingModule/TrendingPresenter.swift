@@ -25,6 +25,9 @@ extension TrendingPresenter: TrendingPresenterProtocol {
 }
 
 extension TrendingPresenter: TrendingInteractorOutputProtocol {
+    /// Función para traer resultado de movies
+    /// - Parameter movies: struct movie con id, title y  posterPath
+    /// 
     func moviesFetched(movies: [Movie]) {
         self.movies = movies
         self.view?.reloadData()

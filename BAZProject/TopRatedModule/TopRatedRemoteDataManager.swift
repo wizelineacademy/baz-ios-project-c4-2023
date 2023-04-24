@@ -18,6 +18,7 @@ class TopRatedRemoteDataManager: TopRatedRemoteDataManagerInputProtocol {
         self.service = service
     }
     
+    /// Obtener resultado del API depende URL
     func fetchMovies() {
         guard let topRatedURL = topRatedURL else { return }
         service.get(topRatedURL) { [weak self] (result: Result<Response<[Movie]>, Error>) in

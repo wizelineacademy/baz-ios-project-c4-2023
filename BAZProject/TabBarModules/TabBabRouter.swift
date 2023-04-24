@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MainTabBarRouter {
+    
     class func createMainTabBarModule() -> UITabBarController {
         let mainTabBar = UITabBarController()
         let trendingView = TrendingRouter.createTrendingModule()

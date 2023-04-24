@@ -17,6 +17,8 @@ class SearchRemoteDataManager: SearchRemoteDataManagerInputProtocol {
         self.service = service
     }
     
+    /// Función para traer la busqueda 
+    /// - Parameter query: String search
     func fetchSearchResults(with query: String) {
         guard let topRatedURL = MovieRequest.searchMovie(search: query) else { return }
         service.get(topRatedURL) { [weak self] (result: Result<Response<[SearchResult]>, Error>) in
