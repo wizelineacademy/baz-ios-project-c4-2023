@@ -14,7 +14,6 @@ public protocol ImageTextTableViewProtocol {
 }
 
 class ImageTextTableViewCell: UITableViewCell {
-
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblOverView: UILabel!
     @IBOutlet weak var imgPoster: UIImageView!

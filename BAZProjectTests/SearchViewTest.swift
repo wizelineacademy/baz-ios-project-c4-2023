@@ -10,7 +10,6 @@ import BAZProject
 import XCTest
 
 final class SearchViewTest: XCTestCase {
-    
     var sut: SearchViewController?
     
     override func setUp() {
@@ -52,7 +51,4 @@ final class SearchViewTest: XCTestCase {
         //Then
         XCTAssertEqual(strErrorTest, sut?.lblErrorMessage.text)
     }
-    
 }
-
-

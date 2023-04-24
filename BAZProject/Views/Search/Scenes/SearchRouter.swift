@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class SearchRouter {
-    
     static func createModule() -> UIViewController {
         let view = SearchViewController(nibName: "SearchViewController", bundle: nil)
         let interactor = SearchInteractor()

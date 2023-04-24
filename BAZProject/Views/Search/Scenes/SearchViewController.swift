@@ -15,7 +15,6 @@ public protocol SearchDisplayLogic: AnyObject {
 }
 
 public class SearchViewController: UIViewController {
-
     public var interactor: SearchBusinessLogic?
     weak var router: SearchRouter?
     private var arrCellInfo: [ImageTextTableViewProtocol]?{
@@ -30,6 +29,7 @@ public class SearchViewController: UIViewController {
             txfSearch.delegate = self
         }
     }
+    
     @IBOutlet public weak var lblErrorMessage: UILabel! {
         didSet {
             lblErrorMessage.text = ""
@@ -52,11 +52,9 @@ public class SearchViewController: UIViewController {
         txfSearch.resignFirstResponder()
         interactor?.search(withParams: txfSearch.text)
     }
-    
 }
 
 extension SearchViewController: SearchDisplayLogic {
-    
     public func placeInLabel(message strMessage: String) {
         lblErrorMessage.text = strMessage
     }
@@ -64,7 +62,6 @@ extension SearchViewController: SearchDisplayLogic {
     public func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
-    
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -78,8 +75,6 @@ extension SearchViewController: UITableViewDataSource {
         cell.setInfo(info)
         return cell
     }
-    
-    
 }
 
 extension SearchViewController: UITableViewDelegate {

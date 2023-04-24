@@ -9,21 +9,22 @@ import Foundation
 import UIKit
 
 final class TabBarManagerViewController: UITabBarController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
     }
     
     private func setUpViews() {
-        viewControllers = [createNavController(for: TrendingRouter.createTrendingModule(), title: NSLocalizedString("Trending", comment: "Trending"), image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")), createNavController(for: SearchRouter.createModule(), title: NSLocalizedString("Search", comment: "Search"), image: UIImage(systemName: "magnifyingglass"))]
+        let trendingVC = createNavController(for: TrendingRouter.createTrendingModule(), title: NSLocalizedString("Trending", comment: "Trending"), image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill"))
+        let searchVC = createNavController(for: SearchRouter.createModule(), title: NSLocalizedString("Search", comment: "Search"), image: UIImage(systemName: "magnifyingglass"))
+        viewControllers = [trendingVC, searchVC]
     }
     
     private func createNavController(for rootViewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
-            let navController = UINavigationController(rootViewController: rootViewController)
-            navController.tabBarItem.title = title
-            navController.tabBarItem.image = image
-            rootViewController.navigationItem.title = title
-            return navController
-        }
+        let navController = UINavigationController(rootViewController: rootViewController)
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
+        rootViewController.navigationItem.title = title
+        return navController
+    }
 }

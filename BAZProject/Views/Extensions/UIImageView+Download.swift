@@ -5,7 +5,6 @@
 //  Created by Daniel Alberto Vazquez Rodriguez on 12/04/23.
 //
 
-import Foundation
 import UIKit
 
 extension UIImageView {

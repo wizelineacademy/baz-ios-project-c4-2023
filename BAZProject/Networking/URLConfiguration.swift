@@ -8,7 +8,6 @@
 import Foundation
 
 public struct URLConfiguration {
-    
     var strMethod: String
     var strHost: String
     var path: Paths
@@ -31,7 +30,6 @@ public struct URLConfiguration {
     }
     
     public func configureURL() -> URL? {
-        
         guard !strHost.isEmpty else { return nil }
         var components = URLComponents()
         components.scheme = strMethod
@@ -48,7 +46,6 @@ public struct URLConfiguration {
             break
         }
         return components.url
-        
     }
     
     private func configureKeyAndLanguage() -> [URLQueryItem] {

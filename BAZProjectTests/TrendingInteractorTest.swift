@@ -10,7 +10,6 @@ import XCTest
 import BAZProject
 
 final class TrendingInteractorTest: XCTestCase {
-    
     var sut: TrendingInteractor!
     private var errorThrown: ErrorApi?
     private var entity: TrendingEntity?
@@ -78,7 +77,6 @@ final class TrendingInteractorTest: XCTestCase {
         XCTAssertEqual(iNumberExpected, iNumberGot)
         
     }
-    
 }
 
 extension TrendingInteractorTest: TrendingInteractorOutputProtocol {

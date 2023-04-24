@@ -9,7 +9,6 @@ import XCTest
 import BAZProject
 
 final class ServiceApiTests: XCTestCase {
-
     var errorType: ErrorApi?
     var exp: XCTestExpectation?
     var result: MovieService?
@@ -77,5 +76,4 @@ final class ServiceApiTests: XCTestCase {
         }
         exp?.fulfill()
     }
-    
 }

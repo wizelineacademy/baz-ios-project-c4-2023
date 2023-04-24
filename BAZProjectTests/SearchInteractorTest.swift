@@ -10,7 +10,6 @@ import XCTest
 import BAZProject
 
 final class SearchInteractorTest: XCTestCase {
-    
     var view: SearchDisplayLogic?
     private var searchError: SearchEnumError?
     private var sut: SearchInteractor?

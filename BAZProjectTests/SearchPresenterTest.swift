@@ -79,7 +79,6 @@ final class SearchPresenterTest: XCTestCase {
 }
 
 extension SearchPresenterTest: SearchDisplayLogic {
-    
     func placeInLabel(message strMessage: String) {
         self.strMessage = strMessage
     }
@@ -87,6 +86,4 @@ extension SearchPresenterTest: SearchDisplayLogic {
     func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
-    
-    
 }

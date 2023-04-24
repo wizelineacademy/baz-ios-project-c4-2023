@@ -61,5 +61,4 @@ extension SearchInteractor: SearchBusinessLogic {
         
         presenter?.searchDidBrougntResults(in: arrMovies ?? [Movie]())
     }
-    
 }
