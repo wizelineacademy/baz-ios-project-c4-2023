@@ -46,13 +46,10 @@ public class ServiceApi<T: Decodable>: NetworkingProtocol {
     
     public func search<T>(withCompletionHandler handler: @escaping (Result<T, ErrorApi>) -> Void) where T : Decodable {
         guard let url = configuration.configureURL() else {
-            DispatchQueue.main.async {
-                handler(.failure(.badURL))
-            }
-            
+            handler(.failure(.badURL))
             return
         }
-        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+        URLSession.shared.dataTask(with: .init(url: url)) { data, response, _ in
             DispatchQueue.main.async {
                 guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                     handler(.failure(.badResponse))
@@ -64,7 +61,6 @@ public class ServiceApi<T: Decodable>: NetworkingProtocol {
                     handler(.failure(.badJSON))
                 }
             }
-            
         }.resume()
     }
 }
