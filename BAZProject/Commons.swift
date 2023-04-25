@@ -14,6 +14,7 @@ extension String {
     }
 }
 
+/// enumerador para menejar las ulrs del proyecto
 enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
     case TrendingURL = "https://api.themoviedb.org/3/trending/movie/day?api_key="
