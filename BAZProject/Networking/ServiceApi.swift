@@ -53,13 +53,11 @@ public class ServiceApi<T: Decodable>: NetworkingProtocol {
             return
         }
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                DispatchQueue.main.async {
-                    handler(.failure(.badResponse))
-                }
-                return
-            }
             DispatchQueue.main.async {
+                guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                    handler(.failure(.badResponse))
+                    return
+                }
                 if let json = try? JSONDecoder().decode(T.self, from: data) {
                     handler(.success(json))
                 } else {
