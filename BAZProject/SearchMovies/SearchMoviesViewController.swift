@@ -46,7 +46,9 @@ final class SearchMoviesViewController: UIViewController {
 }
 
 extension SearchMoviesViewController: SearchMoviesViewInputProtocol {
-    // Fecth return movie information with movies
+    /// Fecth return movie information with movies
+    /// - Parameters:
+    ///    - movies: receive a [MovieProtocol]
     func showSearchMovies(movies: [MovieProtocol]) {
         self.movies = movies
         searchTableView.reloadData()

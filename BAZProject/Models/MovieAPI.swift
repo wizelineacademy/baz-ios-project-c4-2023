@@ -26,7 +26,9 @@ enum NetworkError: Error {
 final class MovieAPI: MovieAPIProtocol {
     var apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
     var basePath: String = "https://api.themoviedb.org/3/"
-    // Function that get movies from themoviedb API and return it in a completion of type Result with a generic and a NetworkError
+    /// Generic function that get movies from themoviedb API and return a completion Result<T,NetworkError>
+    /// - Parameters:
+    ///  - urlRequest:  URL API
     func fetch<T: Decodable>(urlRequest: URLRequest,completion: @escaping (Result<T,NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data,

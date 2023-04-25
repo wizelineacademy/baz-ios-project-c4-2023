@@ -64,7 +64,10 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewInputProtocol {
-    // Movies and section that return the fecth
+    /// Movies and section that return the fecth
+    /// - Parameters:
+    ///   - movies: a [MovieProtocol]
+    ///   - section: the section where the information will be displayed
     func showCategories(movies: [MovieProtocol], section: Int) {
         
         switch section {

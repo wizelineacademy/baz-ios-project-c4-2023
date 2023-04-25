@@ -27,7 +27,11 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol {
     func popViewController() {
         router.popViewController()
     }
-    // Presenter ask to Interactor that want a fecth from API of an url and key to search
+    
+    /// Presenter ask to Interactor that want a fecth from API
+    /// - parameters:
+    ///    - url: a String url fetch
+    ///    - key: a String to be searched
     func searchMovies(url: String, key: String) {
         interactor.searchMovies(url: url, key: key)
     }

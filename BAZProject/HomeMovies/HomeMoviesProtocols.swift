@@ -25,12 +25,17 @@ protocol HomeViewOutputProtocol: AnyObject {
     
     // View fetch information to presenter
     func fetchCategories(url: String, section: Int)
-    // View communicates to presenter that want to present another view
+    /// View communicates to presenter that want to present another view
+    /// - Parameters:
+    ///    - view: receive a view to be pushed
     func pushSearchViewController(view: UIViewController)
 }
 
 protocol HomeInteractorOutputProtocol {
-    // Interactor return information of the fetch to pressnter
+    /// Interactor return information of the fetch to pressnter
+    /// - Parameters:
+    ///   - movies: a [MovieProtocol]
+    ///   - section: the section where the information will be displayed
     func presenterCategories(movies: [MovieProtocol], section: Int)
     
 }
@@ -45,7 +50,10 @@ protocol HomeRouterProtocol {
 // MARK: - Interactor
 protocol HomeInteractorInputProtocol {
     var presenter: HomeInteractorOutputProtocol? { get }
-    // Interactor receive a fecth from presenter
+    /// Interactor receive a fecth from presenter
+    /// - Parameters:
+    ///   - movies: a String url fetch
+    ///   - section: the section where the information will be displayed
     func fetchCategories(url: String, section: Int)
     
 }

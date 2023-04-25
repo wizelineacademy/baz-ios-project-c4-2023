@@ -24,12 +24,17 @@ final class HomePresenter {
 
 extension HomePresenter: HomeViewOutputProtocol {
     func pushSearchViewController(view: UIViewController) {
-        // conection between view and presenter for push a Search VC
+        /// conection between view and presenter for push a Search VC
+        /// - Parameters:
+        ///    - view: receive a view to be pushed
         router.pushSearchViewController(view: view)
     }
     
     func fetchCategories(url: String, section: Int) {
-        // Conection between view and presenter to get a interactor fetch url of a section
+        /// Conection between view and presenter to get a interactor fetch
+        /// - Parameters:
+        ///   - url: a String url fetch
+        ///   - section: the section where the information will be displayed
         interactor.fetchCategories(url: url, section: section)
     }
     
@@ -38,7 +43,10 @@ extension HomePresenter: HomeViewOutputProtocol {
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     func presenterCategories(movies: [MovieProtocol], section: Int) {
-        // Conection between interactor and presenter to share movie information to the view and section to show
+        /// Conection between interactor and presenter to share movie information to the view
+        /// - Parameters:
+        ///   - movies: a [MovieProtocol]
+        ///   - section: the section where the information will be displayed
         view?.showCategories(movies: movies, section: section)
     }
     

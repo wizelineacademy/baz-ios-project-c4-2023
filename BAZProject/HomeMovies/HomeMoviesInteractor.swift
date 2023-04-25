@@ -19,7 +19,10 @@ final class HomeInteractor {
 
 extension HomeInteractor: HomeInteractorInputProtocol {
     
-    // This fetch function works for get the movie data from API with a url and a section fetching
+    /// This fetch function works for get the movie data from API
+    /// - parameters:
+    ///    - url: a String url fetch
+    ///    - section: section of the table wher we show this information
     func fetchCategories(url: String, section: Int) {
         guard let urlFetch = URL(string: movieApi.basePath + url + movieApi.apiKey) else {
             return

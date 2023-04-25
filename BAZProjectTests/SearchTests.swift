@@ -110,7 +110,7 @@ final class SearchTests: XCTestCase {
     func testNumberOfRowsInSectionWithoutMovies() {
         // Verify that the table view has three rows in the first section
         view.movies = []
-        XCTAssertEqual(view.tableView(view.searchTableView, numberOfRowsInSection: 1), 1)
+        XCTAssertEqual(view.tableView(view.searchTableView, numberOfRowsInSection: 0), 1)
     }
     
     // Test valid fecth movies from API

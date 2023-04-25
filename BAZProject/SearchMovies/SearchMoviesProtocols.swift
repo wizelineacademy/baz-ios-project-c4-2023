@@ -21,14 +21,19 @@ protocol SearchMoviesViewOutputProtocol: AnyObject {
     var view: SearchMoviesViewInputProtocol? { get }
     var interactor: SearchMoviesInteractorInputProtocol { get }
     var router: SearchMoviesRouterProtocol { get }
-    // Comunication between View and Presenter for fecth movies
+    /// Comunication between View and Presenter for fecth movies
+    /// - Parameters:
+    ///    - url: a String url fetch
+    ///    - key: a String to be searched
     func searchMovies(url: String, key: String)
     // Comunication between View and Presenter for pop VC
     func popViewController()
 }
 
 protocol SearchMoviesInteractorOutputProtocol {
-    // interactor returns the movies obtained from the fecth
+    /// interactor returns the movies obtained from the fecth
+    /// - Parameters:
+    ///    - movies: receive a [MovieProtocol]
     func presenterSearchMovies(movies: [MovieProtocol])
 }
 
@@ -42,6 +47,9 @@ protocol SearchMoviesRouterProtocol {
 // MARK: - Interactor
 protocol SearchMoviesInteractorInputProtocol {
     var presenter: SearchMoviesInteractorOutputProtocol? { get }
-    // Comunication between Presenter and Interactor for fecth a movies from a url and a key
+    /// Comunication between Presenter and Interactor for fecth movies
+    /// - Parameters:
+    ///    - url: a String url fetch
+    ///    - key: a String to be searched
     func searchMovies(url: String, key: String)
 }

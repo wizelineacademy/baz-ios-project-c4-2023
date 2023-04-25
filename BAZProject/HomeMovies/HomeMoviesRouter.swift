@@ -34,7 +34,9 @@ final class HomeRouter {
 
 
 extension HomeRouter: HomeRouterProtocol {
-    // Router push a Search VC that receive from Presenter
+    /// Router push a Search VC that receive from Presenter
+    /// - Parameters:
+    ///    - view: receive a view to be pushed
     func pushSearchViewController(view: UIViewController) {
         self.view?.navigationController?.pushViewController(view, animated: true)
     }

@@ -17,7 +17,10 @@ final class SearchMoviesInteractor {
 }
 
 extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol {
-    // Fecth for the search movie with a url and a key if this is required
+    /// Fecth for the search movie with a url and a key if this is required
+    /// - parameters:
+    ///    - url: a String url fetch
+    ///    - key: a String to be searched
     func searchMovies(url: String, key: String) {
         guard let urlFetch = URL(string: movieApi.basePath + url + movieApi.apiKey + key) else {
             return
