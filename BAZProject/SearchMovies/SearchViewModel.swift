@@ -41,8 +41,8 @@ class SearchViewModel {
     //MARK: - Consulta servicio buscar peliculas
     
     ///se consulta el servicio para lista de peliculas
-    func searchMovie(_ title: String, apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a", completion: @escaping (Error?) -> Void) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(title.formatterMovieName())") else { return }
+    func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping (Error?) -> Void) {
+        guard let url = URL(string: "\(urls.SearchURL.rawValue)\(apiKey)&query=\(title.formatterMovieName())") else { return }
         service.get(url) { [weak self] (result: Result<Movies, Error>) in //service result 
             switch result {
             case .success(let apiResults): self?.moviesSearched.value = apiResults.results ?? []
