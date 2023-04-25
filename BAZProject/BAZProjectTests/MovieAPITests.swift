@@ -6,7 +6,6 @@
 //
 
 import XCTest
-
 @testable import BAZProject
 
 final class MovieAPITests: XCTestCase {
@@ -17,14 +16,12 @@ final class MovieAPITests: XCTestCase {
         let expectedError = NSError(domain: "", code: -666)
         let expectation = XCTestExpectation()
         var actualError: Error?
-        
         session.error = expectedError
         sut.getMovies { _, error in
             actualError = error
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
-        
         XCTAssertNotNil(actualError)
         
     }

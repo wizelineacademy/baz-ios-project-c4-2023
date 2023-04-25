@@ -6,7 +6,7 @@
 
 import Foundation
 
-//MARK: Protocolos y datos para peliculas
+//MARK: - Protocolos y datos para peliculas
 
 protocol ListMoviesProtocol {
     var id: Int? { get set }

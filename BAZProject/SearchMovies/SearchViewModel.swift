@@ -15,7 +15,7 @@ class SearchViewModel {
         self.service = service
     }
     
-    //MARK:Funciones para la vista 
+    //MARK: - Funciones para la vista
     var moviesSearched = Box(value: [ListMoviesProtocol]())
     
     ///Crear bind que llama al listener
@@ -38,7 +38,7 @@ class SearchViewModel {
         moviesSearched.value = []
     }
     
-    //MARK:Consulta servicio buscar peliculas
+    //MARK: - Consulta servicio buscar peliculas
     
     ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a", completion: @escaping (Error?) -> Void) {

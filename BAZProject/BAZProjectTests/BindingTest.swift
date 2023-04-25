@@ -8,7 +8,6 @@
 import XCTest
 @testable import BAZProject
 
-
 final class BoxTests: XCTestCase {
     
     private var sutString: Box<String>!
@@ -26,6 +25,7 @@ final class BoxTests: XCTestCase {
         sutString = Box<String>(value: "")
         sutInt = Box<Int>(value: 0)
         sut = Box<Bool>(value: false)
+        super.tearDown()
     }
     
     func test_initializeWithAnyType_objectIsNil() {
@@ -54,7 +54,7 @@ final class BoxTests: XCTestCase {
         box.bind {
             expectation.fulfill()
         }
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 0.2)
     }
     
     func test_BoxDidBind_ShouldFulfillExpectationByValueChange() {

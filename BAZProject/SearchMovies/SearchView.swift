@@ -45,7 +45,7 @@ class SearchView: UIViewController {
     }
 }
 
-//MARK: Extensions
+//MARK: - Extensions
 extension SearchView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getMovieCount()

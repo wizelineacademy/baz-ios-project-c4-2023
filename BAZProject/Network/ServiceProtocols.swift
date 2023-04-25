@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//MARK: Protocolos de servicios
+//MARK: - Protocolos de servicios
 public protocol Service {
     var session: URLSessionProtocol { get }
     func get<T: Decodable>(_ endpoint: URL, callback: @escaping (Result<T,Error>) -> Void)
@@ -28,7 +28,7 @@ public enum ServiceError: Error {
 }
 
 
-//MARK: Extensiones
+//MARK: - Extensiones
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
 extension URLSession: URLSessionProtocol {

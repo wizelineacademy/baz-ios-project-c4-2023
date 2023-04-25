@@ -8,7 +8,7 @@
 import Foundation
 
 
-class TrendingViewModel: MoviesListProtocol {
+final class TrendingViewModel: MoviesListProtocol {
    
     var movies = Box(value: [ListMoviesProtocol]())
     private var movieAPI: MovieAPI
