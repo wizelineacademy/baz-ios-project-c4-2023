@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieArray: Decodable {
+struct MovieArray: Decodable, Equatable {
     
     var results: [Movie]?
     
