@@ -21,7 +21,6 @@ protocol HomeViewOutputProtocol {
     var view: HomeViewInputProtocol? { get }
     var interactor: HomeInteractorInputProtocol { get }
     var router: HomeRouterProtocol { get }
-    var labelTitle: String { get }
     // MARK: - Functions
     func getDataMovies()
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
@@ -42,7 +41,6 @@ protocol HomeRouterProtocol {
 protocol HomeInteractorInputProtocol {
     // MARK: - Properties
     var presenter: HomeInteractorOutputProtocol? { get }
-    var labelTitle: String { get }
     // MARK: - Functions
     func getDataMovies()
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)

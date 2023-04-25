@@ -2,8 +2,6 @@
 //  BAZProject
 //
 //  Created by jehernandezg on 18/04/23.
-//  
-//  ViperTemplate v.0.0.1 - (2023, NS-Bionick Development Team)
 
 import UIKit
 
@@ -17,7 +15,6 @@ class HomeRouter {
         let view = HomeViewController()
         let interactor = HomeInteractor()
         let router = HomeRouter()
-        
         let presenter = HomePresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter
         interactor.presenter = presenter

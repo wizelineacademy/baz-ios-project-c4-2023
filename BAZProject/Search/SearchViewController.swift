@@ -20,7 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search a movie..."
+        searchBar.placeholder = LocalizableString.searchPlaceholder.localized
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
@@ -40,7 +40,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Search"
+        title = LocalizableString.searchTitle.localized
         initComponents()
     }
     

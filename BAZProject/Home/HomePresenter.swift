@@ -25,7 +25,6 @@ class HomePresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension HomePresenter: HomeViewOutputProtocol {
-    
     func getDataMovies() {
         interactor.getDataMovies()
     }
@@ -37,14 +36,7 @@ extension HomePresenter: HomeViewOutputProtocol {
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
 extension HomePresenter: HomeInteractorOutputProtocol {
-
     func presentDataMovies(movies: [ListMovieProtocol]?) {
         view?.showViewDataMovies(movies: movies)
     }
-    
-    var labelTitle: String {
-        return interactor.labelTitle
-    }
 }
-
-

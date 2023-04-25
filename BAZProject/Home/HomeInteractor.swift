@@ -16,8 +16,15 @@ class HomeInteractor {
 
 // MARK: - P R E S E N T E R · T O · I N T E R A C T O R
 extension HomeInteractor: HomeInteractorInputProtocol {
-        
     // MARK: - Functions
+    /**
+     Function that returns a `UIImage` for a specific movie
+     - Parameters:
+        - index: The index of the url image
+        - completion: Returns a UIImage
+     - Returns: The image from data.
+     - Version: 1.0.0
+    */
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
         if let path = URL(string: "\(MovieAPIConstans.baseUrlImage)\(movies?[index].posterPath ?? "")") ?? URL(string: "") {
             let imageLoader: ImageLoader = ImageLoader()
@@ -29,6 +36,10 @@ extension HomeInteractor: HomeInteractorInputProtocol {
         }
     }
     
+    /**
+     Function that gets an array of movies
+     - Version: 1.0.0
+    */
     func getDataMovies() {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
@@ -40,10 +51,6 @@ extension HomeInteractor: HomeInteractorInputProtocol {
                 self?.presenter?.presentDataMovies(movies: self?.movies)
             }
         }
-    }
-    
-    var labelTitle: String {
-        "Home"
     }
     
 }

@@ -17,6 +17,9 @@ class HomeCell: UITableViewCell {
         imageView.contentMode = .redraw
         imageView.backgroundColor = .white
         imageView.image = UIImage(named: "loader")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 5.0
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -25,17 +28,20 @@ class HomeCell: UITableViewCell {
         label.sizeToFit()
         label.textColor = .black
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // MARK: Init
+    // MARK: Init methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        self.selectionStyle = .none
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     //MARK: - Functions
@@ -46,21 +52,20 @@ class HomeCell: UITableViewCell {
     func setupViews() {
         self.contentView.addSubview(coverView)
         self.contentView.addSubview(movieDescription)
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
-        coverView.translatesAutoresizingMaskIntoConstraints = false
-        coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        coverView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        coverView.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        coverView.layer.cornerRadius = 5.0
-        coverView.layer.masksToBounds = true
+
+        NSLayoutConstraint.activate([
+            coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            coverView.heightAnchor.constraint(equalToConstant: 120),
+            coverView.widthAnchor.constraint(equalToConstant: 90),
+            coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
         
-        movieDescription.translatesAutoresizingMaskIntoConstraints = false
-        movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8.0).isActive = true
-        movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 12.0).isActive = true
-        movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
-        self.selectionStyle = .none
+        NSLayoutConstraint.activate([
+            movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8.0),
+            movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 12.0),
+            movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
+        ])
     }
     
     func setupTitle(title: String) {

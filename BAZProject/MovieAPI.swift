@@ -17,13 +17,21 @@ struct MovieAPIConstans {
 
 final class MovieAPI {
     
+    /**
+     Function that gets an array of movies from url
+     - Parameters:
+        - model: The model for decode
+        - urlPath: The url path from Json
+        - onFinished: The result of service
+     - Version: 1.0.0
+    */
     func fetchData<T: Decodable>(model: T.Type, urlPath: String, onFinished: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: urlPath) else { return }
         
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(model, from: data) {
+                if let decodedResponse = try? JSONDecoder().decode(T.self, from: data) {
                     DispatchQueue.main.async {
                         onFinished(.success(decodedResponse))
                     }
