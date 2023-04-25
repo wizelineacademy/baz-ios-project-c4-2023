@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Variables
     var presenter: ViewToPresenterProtocol?
+    var networkManager = NetworkManager()
     
     // MARK: UIElements
     @IBOutlet weak var collectionView_Home: UICollectionView!
@@ -26,6 +27,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         initialConfiguration()
         presenter?.getMoviesData()
+        networkManager.getNewMovies(page: 1) { movies, error in
+            print("Ya hemos consumido el nuevo servicio con la capa de networking")
+        }
     }
     
     private func initialConfiguration(){

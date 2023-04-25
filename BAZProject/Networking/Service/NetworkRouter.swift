@@ -14,3 +14,5 @@ protocol NetworkRouter: class {
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion)
     func cancel()
 }
+
+

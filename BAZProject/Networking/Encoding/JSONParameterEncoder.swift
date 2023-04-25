@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: (SDA) Consider unit tests in this encoder, this piece of code encodes the parameters to JSON and adds apporpiate headers
 public struct JSONParameterEncoder: ParameterEncoder {
     
     public static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {

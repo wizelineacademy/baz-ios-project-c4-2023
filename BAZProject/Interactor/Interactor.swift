@@ -47,4 +47,6 @@ class Interactor: PresenterToInteractor {
     func getMoviesData() {
         self.consultTheMovieApi()
     }
+    
+    
 }
