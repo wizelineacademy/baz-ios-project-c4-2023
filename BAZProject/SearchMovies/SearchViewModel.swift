@@ -42,10 +42,8 @@ class SearchViewModel {
     
     ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a", completion: @escaping (Error?) -> Void) {
-        let editedTitle = title.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
-        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(editedTitle)") else { return }
-        service.get(url) { [weak self] (result: Result<Movies, Error>) in
-        //service result 
+        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(title.formatterMovieName())") else { return }
+        service.get(url) { [weak self] (result: Result<Movies, Error>) in //service result 
             switch result {
             case .success(let apiResults): self?.moviesSearched.value = apiResults.results ?? []
             case .failure(let error): completion(error)
