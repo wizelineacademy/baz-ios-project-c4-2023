@@ -27,7 +27,7 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol {
     func popViewController() {
         router.popViewController()
     }
-    // Presenter ask to Interactor that want a fecth from API
+    // Presenter ask to Interactor that want a fecth from API of an url and key to search
     func searchMovies(url: String, key: String) {
         interactor.searchMovies(url: url, key: key)
     }
@@ -35,7 +35,7 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol {
 
 extension SearchMoviesPresenter: SearchMoviesInteractorOutputProtocol {
     func presenterSearchMovies(movies: [MovieProtocol]) {
-        // Presenter return movie Informetion from the fecth
+        // Presenter return movie Information from the fecth
         view?.showSearchMovies(movies: movies)
     }
 }

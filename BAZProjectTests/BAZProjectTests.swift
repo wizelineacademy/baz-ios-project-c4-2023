@@ -15,11 +15,13 @@ final class BAZProjectTests: XCTestCase {
     var view: HomeViewController!
     var router: HomeRouter!
     var movieApi: MovieAPI!
+    var imageLoader: ImageLoader!
     
     override func setUp() {
         super.setUp()
         movieApi = MovieAPI()
-        interactor = HomeInteractor()
+        imageLoader = ImageLoader()
+        interactor = HomeInteractor(movieAPI: movieApi)
         let storyboard = UIStoryboard(name: "HomeMovies", bundle: nil)
         view = (storyboard.instantiateViewController(withIdentifier: "HomeMovies") as? HomeViewController)
         view.loadViewIfNeeded()
@@ -36,7 +38,7 @@ final class BAZProjectTests: XCTestCase {
         interactor = nil
         presenter = nil
     }
-    
+        
     // Test valid fecth movies from API
     func testMovies_fetchMovies_isNotNil() {
         // Given
@@ -78,7 +80,7 @@ final class BAZProjectTests: XCTestCase {
     // Test if movie can push a VC
     func testMovies_isVC_push() {
         XCTAssertNotNil(view)
-        presenter.pushViewController(view: view)
+        presenter.pushSearchViewController(view: view)
     }
     // Test enum error when url is invalid
     func testEnumeError_BadUrl() {
@@ -103,9 +105,26 @@ final class BAZProjectTests: XCTestCase {
     }
     // Test get a valid URL for fetch
     func testGetURLImageValid(){
+        let expectation = self.expectation(description: "Data fetched successfully")
         let urlExpected = URL(string: "https://image.tmdb.org/t/p/w500/tFCTNx7foAsUQpgu2x1KjAJD1wT.jpg")
-        XCTAssertEqual(urlExpected, view.getURLImage(poster_path: view.movies[1].poster_path ?? ""))
-        
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = view.collectionView(view.moviesCollectionView, cellForItemAt: indexPath) as? MoviesCollectionViewCell
+        XCTAssertEqual(urlExpected, imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? ""))
+        XCTAssertNotNil(imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? ""))
+        guard let urlMovieImage = imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? "") else {
+            XCTAssertNil(imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? ""))
+            return
+        }
+        imageLoader.loadImage(urlData: urlMovieImage) { image in
+            XCTAssertNotNil(cell?.movieImage)
+            XCTAssertNotNil(self.view.moviesCollectionView.numberOfSections)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 20) { error in
+                if let error = error {
+                    XCTFail("Failed with error: \(error)")
+                }
+            }
     }
     // Test collection view sections
     func testNumberOfSections() {
@@ -162,7 +181,7 @@ final class BAZProjectTests: XCTestCase {
     // test when we have to push a VC
     func testPushVC() {
         let viewToPush = SearchMoviesRouter.createModule()
-        XCTAssertNotNil(presenter.pushViewController(view: viewToPush))
+        XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
     // Mock of popular movies
     func getMockPopularMovies() -> [MovieProtocol] {

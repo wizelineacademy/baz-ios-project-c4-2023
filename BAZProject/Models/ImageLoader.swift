@@ -27,4 +27,11 @@ struct ImageLoader {
             }
         }
     }
+    
+    // Get a complete URL, having a base url we can complete de URL with poster_path and return it
+    func getURLImage(poster_path: String) -> URL? {
+        let base = "https://image.tmdb.org/t/p/w500"
+        return URL(string: base + poster_path)
+    }
+    
 }

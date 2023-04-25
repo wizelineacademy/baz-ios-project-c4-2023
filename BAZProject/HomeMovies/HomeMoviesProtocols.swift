@@ -26,7 +26,7 @@ protocol HomeViewOutputProtocol: AnyObject {
     // View fetch information to presenter
     func fetchCategories(url: String, section: Int)
     // View communicates to presenter that want to present another view
-    func pushViewController(view: UIViewController)
+    func pushSearchViewController(view: UIViewController)
 }
 
 protocol HomeInteractorOutputProtocol {
@@ -39,7 +39,7 @@ protocol HomeInteractorOutputProtocol {
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
     // Router receive a view to push them
-    func pushViewController(view: UIViewController)
+    func pushSearchViewController(view: UIViewController)
 }
 
 // MARK: - Interactor

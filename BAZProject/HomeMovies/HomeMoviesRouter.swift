@@ -18,9 +18,10 @@ final class HomeRouter {
         guard let view = storyboard.instantiateViewController(withIdentifier: "HomeMovies") as? HomeViewController else {
             return UIViewController()
         }
-        let interactor = HomeInteractor()
-        let router = HomeRouter()
         
+        let movieApi = MovieAPI()
+        let interactor = HomeInteractor(movieAPI: movieApi)
+        let router = HomeRouter()
         let presenter = HomePresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter
         interactor.presenter = presenter
@@ -33,8 +34,8 @@ final class HomeRouter {
 
 
 extension HomeRouter: HomeRouterProtocol {
-    // Router push a VC that receive from Presenter
-    func pushViewController(view: UIViewController) {
+    // Router push a Search VC that receive from Presenter
+    func pushSearchViewController(view: UIViewController) {
         self.view?.navigationController?.pushViewController(view, animated: true)
     }
 }

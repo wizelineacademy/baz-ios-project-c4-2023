@@ -34,17 +34,11 @@ final class SearchMoviesViewController: UIViewController {
                                  forCellReuseIdentifier: "MoviesErrorCell")
     }
     
-    // Get a complete URL, having a base url we can complete de URL with poster_path and return it
-    func getURLImage(poster_path: String) -> URL? {
-        let base = "https://image.tmdb.org/t/p/w500"
-        return URL(string: base + poster_path)
-    }
-    
     // Fetch to get trending movies from API
     func movieFecth() {
         presenter?.searchMovies(url: "trending/movie/day?api_key=", key: "")
     }
-    // User tap into back button
+    // User tap into back button and come back to Home
     @IBAction func backAction(_ sender: UIButton) {
         presenter?.popViewController()
     }
@@ -103,7 +97,7 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         cell.movieTitleLabel.text = self.movies[indexPath.row].title ?? "titúlo"
-       guard let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
+        guard let url = imageLoader.getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
             return cell
         }
         imageLoader.loadImage(urlData: url) { image in

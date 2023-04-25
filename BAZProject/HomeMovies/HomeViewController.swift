@@ -43,13 +43,6 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    
-    // Get a complete URL, having a base url we can complete de URL with poster_path and return it
-    func getURLImage(poster_path: String) -> URL? {
-        let base = "https://image.tmdb.org/t/p/w500"
-        return URL(string: base + poster_path)
-    }
-    
     // Fetch to get trending movies from API
     func movieFecth() {
         presenter?.fetchCategories(url: "trending/movie/day?api_key=", section: 0)
@@ -65,13 +58,13 @@ final class HomeViewController: UIViewController {
     // We want to show Search module VIPER
     @IBAction func searchAction(_ sender: UIButton) {
         let seacrhView = SearchMoviesRouter.createModule()
-        presenter?.pushViewController(view: seacrhView)
+        presenter?.pushSearchViewController(view: seacrhView)
     }
     
 }
 
 extension HomeViewController: HomeViewInputProtocol {
-    // Movies that return the fecth
+    // Movies and section that return the fecth
     func showCategories(movies: [MovieProtocol], section: Int) {
         
         switch section {
@@ -101,7 +94,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case 0:
             cell.movieTitle.text = self.movies[indexPath.row].title
-            guard let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
+            guard let url = imageLoader.getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
                 return cell
             }
             imageLoader.loadImage(urlData: url) { image in
@@ -110,7 +103,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         case 1:
             cell.movieTitle.text = self.populars[indexPath.row].title
-            guard let url = getURLImage(poster_path: self.populars[indexPath.row].poster_path ?? "") else {
+            guard let url = imageLoader.getURLImage(poster_path: self.populars[indexPath.row].poster_path ?? "") else {
                 return cell
             }
             imageLoader.loadImage(urlData: url) { image in
@@ -119,7 +112,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         case 2:
             cell.movieTitle.text = self.cineMovie[indexPath.row].title
-            guard let url = getURLImage(poster_path: self.cineMovie[indexPath.row].poster_path ?? "") else {
+            guard let url = imageLoader.getURLImage(poster_path: self.cineMovie[indexPath.row].poster_path ?? "") else {
                 return cell
             }
             imageLoader.loadImage(urlData: url) { image in

@@ -10,17 +10,18 @@ import Foundation
 // All the validations of query data for show movies or any error
 final class HomeInteractor {
     var presenter: HomeInteractorOutputProtocol?
-    let basePath: String = "https://api.themoviedb.org/3/"
-    let apiKey: String = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-    let movieApi = MovieAPI()
+    var movieApi: MovieAPIProtocol
     var movies: [MovieProtocol] = []
+    init(movieAPI: MovieAPIProtocol) {
+            self.movieApi = movieAPI
+    }
 }
 
 extension HomeInteractor: HomeInteractorInputProtocol {
     
-    // This fetch function works for get the movie data from API
+    // This fetch function works for get the movie data from API with a url and a section fetching
     func fetchCategories(url: String, section: Int) {
-        guard let urlFetch = URL(string: basePath + url + apiKey) else {
+        guard let urlFetch = URL(string: movieApi.basePath + url + movieApi.apiKey) else {
             return
         }
         let urlRequestMovie = URLRequest(url: urlFetch)

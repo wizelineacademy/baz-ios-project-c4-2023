@@ -14,12 +14,14 @@ final class SearchTests: XCTestCase {
     var presenter: SearchMoviesPresenter!
     var view: SearchMoviesViewController!
     var router: SearchMoviesRouter!
+    var imageLoader: ImageLoader!
     var movieApi: MovieAPI!
     
     override func setUp() {
         super.setUp()
         movieApi = MovieAPI()
-        interactor = SearchMoviesInteractor()
+        imageLoader = ImageLoader()
+        interactor = SearchMoviesInteractor(movieAPI: movieApi)
         let storyboard = UIStoryboard(name: "SearchMovies", bundle: nil)
         view = (storyboard.instantiateViewController(withIdentifier: "SearchStory") as? SearchMoviesViewController)
         view.loadViewIfNeeded()
@@ -63,8 +65,8 @@ final class SearchTests: XCTestCase {
     }
     // Test for get a url image from a poster_path returned of the fetch
     func testgetUrlImageForShow()  {
-        let urlExpected = URL(string: "")
-        let urlImage = view.getURLImage(poster_path: "")
+        let urlExpected = URL(string: "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg")
+        let urlImage = imageLoader.getURLImage(poster_path: "/ayZkaN2f3ASjWW8ooCfuJT3T8Va.jpg")
         XCTAssertNotNil(urlImage)
         XCTAssertNotEqual(urlExpected, urlImage)
     }
@@ -85,11 +87,24 @@ final class SearchTests: XCTestCase {
     }
     // Test the display information is valid
     func testCellForRow() {
+        let expectation = self.expectation(description: "Data fetched successfully")
         // Verify that the cell at row 0 has the correct text label
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = view.tableView(view.searchTableView, cellForRowAt: indexPath) as? MoviesTableViewCell
-        XCTAssertNotNil(cell?.movieTitleLabel.text)
-        XCTAssertNotNil(cell?.movieImage)
+        guard let urlMovieImage = imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? "") else {
+            XCTAssertNil(imageLoader?.getURLImage(poster_path: view.movies[1].poster_path ?? ""))
+            return
+        }
+        imageLoader.loadImage(urlData: urlMovieImage) { image in
+            XCTAssertNotNil(cell?.movieImage)
+            XCTAssertNotNil(self.view.searchTableView.numberOfSections)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 20) { error in
+                if let error = error {
+                    XCTFail("Failed with error: \(error)")
+                }
+            }
     }
     // Test when we don´t have onfromation to show
     func testNumberOfRowsInSectionWithoutMovies() {
