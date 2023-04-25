@@ -17,7 +17,7 @@ class TrendingMoviesViewController: UIViewController {
         return tableView
     }()
     
-    lazy var searchBar: UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self

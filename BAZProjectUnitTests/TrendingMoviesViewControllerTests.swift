@@ -9,16 +9,21 @@ import XCTest
 @testable import BAZProject
 
 final class TrendingMoviesViewControllerTests: XCTestCase {
+    
+    private func configureSut(with movies: [Movie] = []) -> TrendingMoviesViewController {
+        let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
+        let sut = TrendingMoviesViewController(viewModel: viewModel)
+        return sut
+    }
 
     func test_NumberOfRowsInSection_ShouldBeThree() {
         //Given
         let movies = [Movie(title: "title1"), Movie(title: "title2"), Movie(title: "title3")]
-        let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
-        let sut = TrendingMoviesViewController(viewModel: viewModel)
+        let sut = configureSut(with: movies)
         
         //When
         sut.loadViewIfNeeded()
-        let rows = sut.tableView(sut.moviesTableView, numberOfRowsInSection: 0)
+        let rows = sut.numberOfRows()
         
         //Then
         XCTAssertEqual(rows, movies.count)
@@ -27,15 +32,20 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
     func test_NumberOfRowsInSection_ShouldBeZero() {
         //Given
         let movies = [Movie]()
-        let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
-        let sut = TrendingMoviesViewController(viewModel: viewModel)
+        let sut = configureSut(with: movies)
         
         //When
         sut.loadViewIfNeeded()
-        let rows = sut.tableView(sut.moviesTableView, numberOfRowsInSection: 0)
+        let rows = sut.numberOfRows()
         
         //Then
         XCTAssertEqual(rows, movies.count)
     }
     
+}
+
+extension TrendingMoviesViewController {
+    func numberOfRows() -> Int {
+        return tableView(moviesTableView, numberOfRowsInSection: 0)
+    }
 }
