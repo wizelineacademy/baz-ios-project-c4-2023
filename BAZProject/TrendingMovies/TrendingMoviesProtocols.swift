@@ -30,6 +30,8 @@ protocol TrendingMoviesInteractorProtocol: AnyObject {
     func getMovies()
     func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ())
     func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ())
+    func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?
+    func getMoviesUrlRequest() -> URLRequest?
 }
 
 //MARK: View -

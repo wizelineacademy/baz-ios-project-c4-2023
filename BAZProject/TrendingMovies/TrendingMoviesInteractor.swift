@@ -10,6 +10,23 @@
 
 import UIKit
 
+extension TrendingMoviesInteractorProtocol{
+    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB
+    ///- Returns: Devuelve una URLRequest
+    func getMoviesUrlRequest() -> URLRequest?{
+        return URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)
+    }
+    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB de acuerdo a un criterio de busqueda
+    ///- Parameters:
+    /// - searchString: Criterio de busqueda
+    ///- Returns: Devuelve una URLRequest
+    func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?{
+        let stringToSearch = "&query=\(searchString.addingPercentEncoding(withAllowedCharacters: .whitespacesAndNewlines)?.replacingOccurrences(of: " ", with: "") ?? "")"
+        guard let url = URL(string: ApiConstans.baseURL + ApiConstans.search + ApiConstans.apiKey + stringToSearch) else { return nil}
+        return URLRequest(url: url)
+    }
+}
+
 final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
     /// Intancia del presenter  del modulo VIPER Trending Movies
     weak var presenter: TrendingMoviesPresenterProtocol?
@@ -59,20 +76,6 @@ final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
             }
         }
     }
-    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB
-    ///- Returns: Devuelve una URLRequest
-    func getMoviesUrlRequest() -> URLRequest?{
-        return URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)
-    }
-    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB de acuerdo a un criterio de busqueda
-    ///- Parameters:
-    /// - searchString: Criterio de busqueda
-    ///- Returns: Devuelve una URLRequest
-    func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?{
-        let stringToSearch = "&query=\(searchString.addingPercentEncoding(withAllowedCharacters: .whitespacesAndNewlines) ?? "")"
-        guard let url = URL(string: ApiConstans.baseURL + ApiConstans.search + ApiConstans.apiKey + stringToSearch) else { return nil}
-        return URLRequest(url: url)
-    }
     /**
         Funcion que obtiene una imagen del servidor y regresa un`UIImage`
       - Parameters:
@@ -84,6 +87,5 @@ final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
         guard let url = URL(string: ApiConstans.baseUrlImage + stringURL) else { return }
         UIImage().loadFrom(url: url, completion: completion)
     }
-    
     
 }
