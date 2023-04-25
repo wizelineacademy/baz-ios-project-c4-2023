@@ -15,6 +15,7 @@ final class CellMovies: UITableViewCell{
     override func prepareForReuse() {
         super.prepareForReuse()
         imgMovie.image = nil
+        descriptionMovie.text = nil
     }
     
 }

@@ -18,6 +18,7 @@ final class SearchMoviesInteractorTest: XCTestCase{
         super.setUp()
         sut = SearchMoviesInteractor(movieApi: MovieAPI(session: URLSession.shared))
         presenter = MockPresenter()
+        sut.presenter = presenter
     }
     
     override func tearDown()  {
@@ -44,6 +45,15 @@ final class SearchMoviesInteractorTest: XCTestCase{
     
     func consultServiceSearch(with word: String) {
         sut.consultServiceSearch(with: word)
+    }
+    
+    func testMovieDataTransformation() {
+        // Given
+        let movie = Movie(title: "", genreIds: [1])
+        // When
+        sut.setMovies(with: [movie])
+        // Then
+        XCTAssertEqual(presenter?.moviesMock.count, 1)
     }
     
 }

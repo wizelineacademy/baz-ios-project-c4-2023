@@ -49,7 +49,7 @@ extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
     /**
      this function creates an array of MoviesViewModels
      */
-    private func setMovies(with moviesResult: [Movie]?){
+    func setMovies(with moviesResult: [Movie]?){
         var movies              : [MovieData] = []
         for resultArrMovies in moviesResult ?? [Movie](){
             movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",

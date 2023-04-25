@@ -45,5 +45,14 @@ final class SearchMoviesRouterTest: XCTestCase {
     func test_Validate_ViewIsNil(){
         XCTAssertNil(sut.view)
     }
+    
+    func test_createModule_NotNil() {
+        //When
+        let module = SearchMoviesRouter.createModule()
+        
+        // then
+        XCTAssertNotNil(module)
+        XCTAssertNotNil(module.view)
+    }
 
 }
