@@ -31,7 +31,9 @@ extension SearchPresenter: SearchPresenterProtocol {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.identifier, for: indexPath) as? TrendingTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: GeneralTableViewCell.identifier, for: indexPath) as? GeneralTableViewCell{
+            let movie = entity.result?[indexPath.row]
+            cell.setup(movie)
             return cell
         }else{
             let cell = UITableViewCell()
@@ -46,15 +48,8 @@ extension SearchPresenter: SearchPresenterProtocol {
 }
 
 extension SearchPresenter: SearchInteractorOutputProtocol {
-    func onReceivedPosterMovies(_ result: UIImage?) {
-        
-    }
     
-    func showPosterMoviesError(_ error: Error) {
-        print(error)
-    }
-    
-    func onReceivedSearchedMovies(_ result: [SearchedMovies]) {
+    func onReceivedSearchedMovies(_ result: [Movie]) {
         entity.result = result
         view?.updateData(result)
         

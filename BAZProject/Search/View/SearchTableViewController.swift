@@ -18,7 +18,9 @@ class SearchTableViewController: UITableViewController {
     // MARK: Properties
     var presenter: SearchPresenterProtocol?
     
-    var listMovies: [SearchedMovies] = []
+    var listMovies: [Movie] = []
+    
+    var tempImage: UIImage = UIImage()
 
     // MARK: Lifecycle
 
@@ -37,7 +39,6 @@ class SearchTableViewController: UITableViewController {
 extension SearchTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        entity?.result?.count ?? 0
         return presenter?.tableView(tableView, numberOfRowsInSection: section) ?? 0
     }
 
@@ -51,13 +52,13 @@ extension SearchTableViewController {
 
 extension SearchTableViewController {
 
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let movie = listMovies[indexPath.row]
         var config = UIListContentConfiguration.cell()
         config.text = movie.title
         config.image = UIImage(named: "poster")
         cell.contentConfiguration = config
-    }
+    }*/
 
 }
 
@@ -75,13 +76,20 @@ extension SearchTableViewController: SearchViewProtocol {
     }
     
     func registrerCell(){
-        tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
+        tableView.register(UINib(nibName: GeneralTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: GeneralTableViewCell.identifier)
     }
     
-    func updateData(_ result: [SearchedMovies]) {
+    func updateData(_ result: [Movie]) {
         self.listMovies = result
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+        
+    }
+    
+    func getPoster(_ posterImage: UIImage) {
+        DispatchQueue.main.async {
+            self.tempImage = posterImage
         }
         
     }

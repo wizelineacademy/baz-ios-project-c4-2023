@@ -38,7 +38,9 @@ extension TrendingViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.identifier, for: indexPath) as? TrendingTableViewCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: GeneralTableViewCell.identifier, for: indexPath) as? GeneralTableViewCell{
+            let movie = entity?.result?[indexPath.row]
+            cell.setup(movie)
             return cell
         }else{
             let cell = UITableViewCell()
@@ -49,17 +51,6 @@ extension TrendingViewController {
 }
 
 // MARK: - TableView's Delegate
-
-extension TrendingViewController {
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        config.text = entity?.result?[indexPath.row].title
-        config.image = UIImage(named: "poster")
-        cell.contentConfiguration = config
-    }
-
-}
 
 extension TrendingViewController: TrendingViewProtocol {
     // TODO: implement view output methods
@@ -78,7 +69,7 @@ extension TrendingViewController: TrendingViewProtocol {
     }
     
     func registrerCell(){
-        tableView.register(UINib(nibName: TrendingTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: TrendingTableViewCell.identifier)
+        tableView.register(UINib(nibName: GeneralTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: GeneralTableViewCell.identifier)
     }
     
 }

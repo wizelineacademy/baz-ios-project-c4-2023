@@ -28,23 +28,4 @@ class SearchRemoteDataManager:SearchRemoteDataManagerInputProtocol {
         }
     }
     
-    func getImage(pathPoster: String){
-        let session = URLSession.shared
-        let coordinator = GeneralTaskCoordinator(session: session)
-        coordinator.queryValue = pathPoster
-                
-        coordinator.get(.poster){(result: Result<Data?, Error>) in
-            switch result {
-                case .success(let poster):
-                if let posterData = poster {
-                    self.remoteRequestHandler?.handleGetPosterMovies(UIImage(data: posterData))
-                }else{
-                    self.remoteRequestHandler?.handleGetPosterMovies(UIImage(named: "poster"))
-                }
-                case .failure(let error):
-                    self.remoteRequestHandler?.handleGetErrorServiceSearchedMovies(error)
-            }
-        }
-    }
-    
 }

@@ -10,6 +10,10 @@
 		B51D476629F237100089DBBB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476429F237100089DBBB /* SearchTableViewController.swift */; };
 		B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51D476529F237100089DBBB /* SearchTableViewController.xib */; };
 		B51D476A29F250900089DBBB /* keysString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476929F250900089DBBB /* keysString.swift */; };
+		B54DC53429F757CF0078AEAD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DC53329F757CF0078AEAD /* Movie.swift */; };
+		B5A19F4D29F706B300ACD625 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */; };
+		B5A19F4E29F706B300ACD625 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */; };
+		B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F5129F7086600ACD625 /* GeneralServices.swift */; };
 		B5BE779129D75CF20077737A /* TrendingMovies.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BE779029D75CF20077737A /* TrendingMovies.json */; };
 		B5BE779929D7621B0077737A /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
 		B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */; };
@@ -60,6 +64,10 @@
 		B51D476429F237100089DBBB /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B51D476529F237100089DBBB /* SearchTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewController.xib; sourceTree = "<group>"; };
 		B51D476929F250900089DBBB /* keysString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keysString.swift; sourceTree = "<group>"; };
+		B54DC53329F757CF0078AEAD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralTableViewCell.swift; path = BAZProject/Network/Services/GeneralTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GeneralTableViewCell.xib; path = BAZProject/Network/Services/GeneralTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		B5A19F5129F7086600ACD625 /* GeneralServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServices.swift; sourceTree = "<group>"; };
 		B5BE779029D75CF20077737A /* TrendingMovies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrendingMovies.json; sourceTree = "<group>"; };
 		B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGeneralTaskCordinator.swift; sourceTree = "<group>"; };
 		B5BE779C29D767660077737A /* MovieApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiMock.swift; sourceTree = "<group>"; };
@@ -145,6 +153,8 @@
 		B5BE779429D75E2A0077737A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5A19F5129F7086600ACD625 /* GeneralServices.swift */,
+				B54DC53329F757CF0078AEAD /* Movie.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -253,6 +263,8 @@
 		D3357AF929F045BC00A81AD8 /* GenericsTable */ = {
 			isa = PBXGroup;
 			children = (
+				B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */,
+				B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */,
 			);
 			path = GenericsTable;
 			sourceTree = "<group>";
@@ -480,6 +492,7 @@
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
 				B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */,
+				B5A19F4E29F706B300ACD625 /* GeneralTableViewCell.xib in Resources */,
 				D3357B0F29F06C7400A81AD8 /* TrendingViewController.xib in Resources */,
 				C30893B528A2F42B004B1860 /* Main.storyboard in Resources */,
 				D3357B0629F0677700A81AD8 /* BMTableViewCell.xib in Resources */,
@@ -509,12 +522,15 @@
 				D3357B0529F0677700A81AD8 /* BMTableViewCell.swift in Sources */,
 				D309CC6129F0830C007A76D1 /* SearchPresenter.swift in Sources */,
 				B51D476629F237100089DBBB /* SearchTableViewController.swift in Sources */,
+				B54DC53429F757CF0078AEAD /* Movie.swift in Sources */,
 				D3357B1229F06FAE00A81AD8 /* TrendingTableViewCell.swift in Sources */,
 				D309CC6529F0830C007A76D1 /* SearchInteractor.swift in Sources */,
 				D343156C29F09EDC00AEE166 /* TrendingLocalDataManager.swift in Sources */,
 				D309CC6929F0830C007A76D1 /* SearchEntity.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */,
 				B51D476A29F250900089DBBB /* keysString.swift in Sources */,
+				B5A19F4D29F706B300ACD625 /* GeneralTableViewCell.swift in Sources */,
 				D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */,
 				D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */,
 				D3357B0E29F06C7400A81AD8 /* TrendingViewController.swift in Sources */,

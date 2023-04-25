@@ -17,17 +17,15 @@ protocol SearchViewProtocol: AnyObject {
     
     func setNavigationTitle(for strTitle: String?)
     func registrerCell()
-    func updateData(_ result: [SearchedMovies])
+    func updateData(_ result: [Movie])
 }
 
 //MARK: - Interactor
 
 /// Interactor -> Presenter
 protocol SearchInteractorOutputProtocol: AnyObject {
-    func onReceivedSearchedMovies(_ result: [SearchedMovies])
+    func onReceivedSearchedMovies(_ result: [Movie])
     func showSearchedMoviesError(_ error: Error)
-    func onReceivedPosterMovies(_ result: UIImage?)
-    func showPosterMoviesError(_ error: Error)
 }
 
 /// Presenter -> Interactor
@@ -39,7 +37,6 @@ protocol SearchInteractorInputProtocol: AnyObject {
     
     func getNavTitle() -> String?
     func fetchMovies(_ movie: String)
-    func fetchPoster(_ poster: String)
 }
 
 //MARK: - Presenter
@@ -53,7 +50,6 @@ protocol SearchPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func willFetchMovies(_ movie: String)
-    func willFetchPoster(_ posterº: String)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 }
@@ -71,15 +67,12 @@ protocol SearchRouterProtocol: AnyObject {
 protocol SearchRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: SearchRemoteDataManagerOutputProtocol? { get set }
     func getSearchedMovies(_ movie: String)
-    func getImage(pathPoster: String)
 }
 
 /// Remote data manager -> Interactor
 protocol SearchRemoteDataManagerOutputProtocol: AnyObject {
-    func handleGetSearchedMovies(_ result: [SearchedMovies])
+    func handleGetSearchedMovies(_ result: [Movie])
     func handleGetErrorServiceSearchedMovies(_ error: Error)
-    func handleGetPosterMovies(_ result: UIImage?)
-    func handleGetErrorServicePosterMovies(_ error: Error)
     
 }
 
