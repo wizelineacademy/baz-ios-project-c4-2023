@@ -1,5 +1,5 @@
 //
-//  UpcomingPresenter.swift
+//  MoviePresenter.swift
 //  BAZProject
 //
 //  Created by Ricardo Omar Martinez Nava on 11/04/23.
@@ -8,23 +8,23 @@
 
 import UIKit
 
-class UpcomingPresenter {
+class MoviePresenter {
     
     // MARK: Properties
-    weak var view: UpcomingViewProtocol?
-    var interactor: UpcomingInteractorInputProtocol?
-    var router: UpcomingRouterProtocol?
+    weak var view: MovieViewProtocol?
+    var interactor: MovieInteractorInputProtocol?
+    var router: MovieRouterProtocol?
     var movies: [Movie]?
     
 }
 
-extension UpcomingPresenter: UpcomingPresenterProtocol {
+extension MoviePresenter: MoviePresenterProtocol {
     func notifyViewLoaded() {
         self.interactor?.fetchMovies()
     }
 }
 
-extension UpcomingPresenter: UpcomingInteractorOutputProtocol {
+extension MoviePresenter: MovieInteractorOutputProtocol {
     
     /// Función para traer resultado de movies
     /// - Parameter movies: struct movie con id, title y  posterPath

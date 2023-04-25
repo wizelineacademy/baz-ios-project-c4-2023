@@ -12,8 +12,8 @@ enum TrendingRemoteDataManagerCalls{
     case fetchMovies
 }
 
-class PokedexMainRemoteDataManagerMock: TrendingRemoteDataManagerInputProtocol {
-    var remoteRequestHandler: BAZProject.TrendingRemoteDataManagerOutputProtocol?
+class PokedexMainRemoteDataManagerMock: MovieRemoteDataManagerInputProtocol {
+    var remoteRequestHandler: BAZProject.MovieRemoteDataManagerOutputProtocol?
     
     var calls:[TrendingRemoteDataManagerCalls] = []
     

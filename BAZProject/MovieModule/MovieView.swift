@@ -1,5 +1,5 @@
 //
-//  UpcomingView.swift
+//  MovieView.swift
 //  BAZProject
 //
 //  Created by Ricardo Omar Martinez Nava on 11/04/23.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class UpcomingView: UITableViewController {
+class MovieView: UITableViewController {
 
     // MARK: Properties
-    var presenter: UpcomingPresenterProtocol?
+    var presenter: MoviePresenterProtocol?
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class UpcomingView: UITableViewController {
 }
 
 //MARK: TrendingViewProtocols
-extension  UpcomingView: UpcomingViewProtocol {
+extension  MovieView: MovieViewProtocol {
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -31,21 +31,21 @@ extension  UpcomingView: UpcomingViewProtocol {
 }
 
 // MARK: - TableView's DataSource
-extension UpcomingView {
+extension MovieView {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.presenter?.movies?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") else { return UITableViewCell() }
+        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell") else { return UITableViewCell() }
         return tableViewCell
     }
 
 }
 
 // MARK: - TableView's Delegate
-extension UpcomingView {
+extension MovieView {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         var config = UIListContentConfiguration.cell()
