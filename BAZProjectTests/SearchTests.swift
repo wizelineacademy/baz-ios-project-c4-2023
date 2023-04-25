@@ -21,7 +21,7 @@ final class SearchTests: XCTestCase {
         movieApi = MovieAPI()
         interactor = SearchMoviesInteractor()
         let storyboard = UIStoryboard(name: "SearchMovies", bundle: nil)
-        view = (storyboard.instantiateViewController(withIdentifier: "SearchStory") as! SearchMoviesViewController)
+        view = (storyboard.instantiateViewController(withIdentifier: "SearchStory") as? SearchMoviesViewController)
         view.loadViewIfNeeded()
         router = SearchMoviesRouter()
         presenter = SearchMoviesPresenter(view: view, interactor: interactor, router: router)

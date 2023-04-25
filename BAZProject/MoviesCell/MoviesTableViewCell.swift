@@ -24,4 +24,10 @@ final class MoviesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        movieImage.image = nil
+        movieTitleLabel.text = nil
+    }
+    
 }

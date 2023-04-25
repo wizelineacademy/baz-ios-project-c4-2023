@@ -21,7 +21,7 @@ final class BAZProjectTests: XCTestCase {
         movieApi = MovieAPI()
         interactor = HomeInteractor()
         let storyboard = UIStoryboard(name: "HomeMovies", bundle: nil)
-        view = (storyboard.instantiateViewController(withIdentifier: "HomeMovies") as! HomeViewController)
+        view = (storyboard.instantiateViewController(withIdentifier: "HomeMovies") as? HomeViewController)
         view.loadViewIfNeeded()
         router = HomeRouter()
         presenter = HomePresenter(view: view, interactor: interactor, router: router)

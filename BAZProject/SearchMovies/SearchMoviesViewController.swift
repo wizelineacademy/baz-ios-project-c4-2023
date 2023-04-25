@@ -103,7 +103,9 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         cell.movieTitleLabel.text = self.movies[indexPath.row].title ?? "titúlo"
-        let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "")!
+       guard let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
+            return cell
+        }
         imageLoader.loadImage(urlData: url) { image in
             cell.movieImage.image = image
         }

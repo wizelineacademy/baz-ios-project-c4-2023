@@ -101,21 +101,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case 0:
             cell.movieTitle.text = self.movies[indexPath.row].title
-            let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "")!
+            guard let url = getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
+                return cell
+            }
             imageLoader.loadImage(urlData: url) { image in
                 cell.movieImage.image = image
             }
             return cell
         case 1:
             cell.movieTitle.text = self.populars[indexPath.row].title
-            let url = getURLImage(poster_path: self.populars[indexPath.row].poster_path ?? "")!
+            guard let url = getURLImage(poster_path: self.populars[indexPath.row].poster_path ?? "") else {
+                return cell
+            }
             imageLoader.loadImage(urlData: url) { image in
                 cell.movieImage.image = image
             }
             return cell
         case 2:
             cell.movieTitle.text = self.cineMovie[indexPath.row].title
-            let url = getURLImage(poster_path: self.cineMovie[indexPath.row].poster_path ?? "")!
+            guard let url = getURLImage(poster_path: self.cineMovie[indexPath.row].poster_path ?? "") else {
+                return cell
+            }
             imageLoader.loadImage(urlData: url) { image in
                 cell.movieImage.image = image
             }

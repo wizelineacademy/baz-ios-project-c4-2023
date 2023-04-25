@@ -15,7 +15,9 @@ final class HomeRouter {
     // Create the mmodule Home with all the instances of VIPER
     static func createModule() -> UIViewController {
         let storyboard = UIStoryboard(name: "HomeMovies", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "HomeMovies") as! HomeViewController
+        guard let view = storyboard.instantiateViewController(withIdentifier: "HomeMovies") as? HomeViewController else {
+            return UIViewController()
+        }
         let interactor = HomeInteractor()
         let router = HomeRouter()
         

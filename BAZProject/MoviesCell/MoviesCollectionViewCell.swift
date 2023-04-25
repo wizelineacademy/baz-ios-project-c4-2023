@@ -16,5 +16,11 @@ final class MoviesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        movieImage.image = nil
+        movieTitle.text = nil
+    }
 
 }

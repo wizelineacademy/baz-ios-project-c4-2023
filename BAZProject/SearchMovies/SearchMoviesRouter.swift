@@ -14,7 +14,9 @@ final class SearchMoviesRouter {
     
     static func createModule() -> UIViewController {
         let storyboard = UIStoryboard(name: "SearchMovies", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "SearchStory") as! SearchMoviesViewController
+        guard let view = storyboard.instantiateViewController(withIdentifier: "SearchStory") as? SearchMoviesViewController else {
+            return UIViewController()
+        }
         let interactor = SearchMoviesInteractor()
         let router = SearchMoviesRouter()
 

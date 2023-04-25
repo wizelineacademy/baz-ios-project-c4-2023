@@ -17,4 +17,9 @@ final class TitleCollectionReusableView: UICollectionReusableView {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleSectionLabel.text = nil
+    }
+    
 }
