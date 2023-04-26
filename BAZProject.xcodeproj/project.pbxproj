@@ -29,7 +29,6 @@
 		E0A44E1629F31A0200CE7215 /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A44E1529F31A0200CE7215 /* SearchViewControllerTests.swift */; };
 		E0AB763A29EF5FF8004074B5 /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763929EF5FF8004074B5 /* ServiceApi.swift */; };
 		E0AB763C29EF603E004074B5 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763B29EF603E004074B5 /* ServiceProtocols.swift */; };
-		E0AB763E29EFB445004074B5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB763D29EFB445004074B5 /* Box.swift */; };
 		E0AB764429F1F79A004074B5 /* BindingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB764229F1F5E1004074B5 /* BindingTest.swift */; };
 		E0AB764729F204CE004074B5 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB764529F204B2004074B5 /* SearchViewModelTests.swift */; };
 		E0AB764929F2FBEE004074B5 /* MovieAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB764829F2FBEE004074B5 /* MovieAPITests.swift */; };
@@ -37,6 +36,7 @@
 		E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */; };
 		E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833429F9819E00B6D8C3 /* DetailsView.swift */; };
 		E0D4833729F981B000B6D8C3 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */; };
+		E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833A29F9C2C900B6D8C3 /* Box.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		E0A44E1529F31A0200CE7215 /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
 		E0AB763929EF5FF8004074B5 /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
 		E0AB763B29EF603E004074B5 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
-		E0AB763D29EFB445004074B5 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		E0AB764229F1F5E1004074B5 /* BindingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTest.swift; sourceTree = "<group>"; };
 		E0AB764529F204B2004074B5 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		E0AB764829F2FBEE004074B5 /* MovieAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPITests.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		E0D4833429F9819E00B6D8C3 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
+		E0D4833A29F9C2C900B6D8C3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +198,7 @@
 		E0D4833029F97FAE00B6D8C3 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				E0AB763D29EFB445004074B5 /* Box.swift */,
+				E0D4833A29F9C2C900B6D8C3 /* Box.swift */,
 				E0D4832E29F8842200B6D8C3 /* Commons.swift */,
 			);
 			path = Commons;
@@ -324,11 +324,11 @@
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				E0AB763C29EF603E004074B5 /* ServiceProtocols.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
-				E0AB763E29EFB445004074B5 /* Box.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */,
 				E045961729EF439D00712F8C /* SearchViewModel.swift in Sources */,
 				E0D4832F29F8842200B6D8C3 /* Commons.swift in Sources */,
+				E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */,
 				E0AB763A29EF5FF8004074B5 /* ServiceApi.swift in Sources */,
 				E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */,
 				E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */,

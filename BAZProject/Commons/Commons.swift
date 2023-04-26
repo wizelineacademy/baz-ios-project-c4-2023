@@ -5,14 +5,8 @@
 //  Created by Manuel S on 25/04/23.
 //
 
-import Foundation
+import UIKit
 
-// Metodos extras para el uso de peliculas con Strings
-extension String {
-    func formatterMovieName() -> String {
-        self.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
-    }
-}
 
 /// enumerador para menejar las ulrs del proyecto
 enum urls: String {
@@ -43,5 +37,15 @@ enum categoriesFilter: String {
         case .Search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
         }
+    }
+}
+
+//MARK: - Extensiones
+
+// Metodos extras para el uso de peliculas con Strings
+extension String {
+    func formatterMovieName() -> String {
+        self.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
+        
     }
 }
