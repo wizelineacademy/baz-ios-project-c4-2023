@@ -8,22 +8,28 @@
 import Foundation
  
 protocol RequestSessionProtocol {
+    
     func customData(for request: URLRequest) async throws -> (Data, URLResponse)
+    
 }
 
 extension URLSession: RequestSessionProtocol {
+    
     func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
         return try await data(for: request)
     }
+    
 }
 
 protocol EndpointProtocol {
+    
     var path: String { get }
     var scheme: String? { get }
     var host: String? { get }
     var key: String? { get }
     var queries: [URLQueryItem]? { get }
     func getRequest() -> URLRequest?
+    
 }
 
 extension EndpointProtocol {
@@ -50,11 +56,5 @@ extension EndpointProtocol {
         guard let url = components.url else { return nil }
         return URLRequest(url: url)
     }
-
+    
 }
-
-protocol DataTaskProtocol {
-    func resume()
-}
-
-extension URLSessionDataTask: DataTaskProtocol {}

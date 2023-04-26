@@ -6,7 +6,7 @@
 
 import Foundation
 
-struct Movie: Decodable {
+struct Movie: Decodable, Equatable {
     
     var id: Int?
     var title: String?
