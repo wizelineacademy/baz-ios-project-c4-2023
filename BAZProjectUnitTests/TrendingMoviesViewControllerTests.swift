@@ -46,6 +46,6 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
 
 extension TrendingMoviesViewController {
     func numberOfRows() -> Int {
-        return tableView(moviesTableView, numberOfRowsInSection: 0)
+        return collectionView(collectionView, numberOfItemsInSection: 1)
     }
 }
