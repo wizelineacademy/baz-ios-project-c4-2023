@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  BAZProject
+
+  Created by jehernandezg on 24/04/23.
+  
+*/
+
+"LocalizableString_labelTitle" = "Inicio";
+"LocalizableString_searchTitle" = "Buscar";
+"LocalizableString_searchPlaceholder" = " Buscar película...";
