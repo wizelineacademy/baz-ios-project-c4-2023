@@ -24,9 +24,3 @@ class MovieCollectionViewCell: UICollectionViewCell {
 }
 
 
-struct MovieCollectionViewCellModel {
-    var posterName: String?
-    var title: String?
-    var rating: String?
-    var category: String?
-}
