@@ -25,6 +25,9 @@ class MovieTableViewCell: UITableViewCell {
     
     private let imageLoader: ImageLoader = ImageLoader()
     
+    /// The identifier used by this cell.
+    static let identifier = String(describing: MovieTableViewCell.self)
+    
     /// The view model representing the movie information.
     var movieVM: MovieViewModel?
     
