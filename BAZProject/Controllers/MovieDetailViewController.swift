@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController {
+// MARK: - MovieDetailViewController
+final class MovieDetailViewController: UIViewController {
     
     var movieVM: MovieViewModel?
 
