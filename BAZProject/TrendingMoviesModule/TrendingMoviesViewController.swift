@@ -6,30 +6,13 @@
 
 import UIKit
 
-class TrendingMoviesViewController: UIViewController {
+class TrendingMoviesViewController: UICollectionViewController {
     
-    lazy var moviesTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TrendingTableViewCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        return tableView
-    }()
-    
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.delegate = self
-        searchBar.searchTextField.delegate = self
-        return searchBar
-    }()
-
     private var viewModel: TrendingMoviesViewModel
     
     init(viewModel: TrendingMoviesViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.title = "Trending"
         self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
         self.bindings()
@@ -41,9 +24,7 @@ class TrendingMoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setTableView()
-        setSearchBar()
+        setCollectionView()
         loadInitialData()
     }
     
@@ -52,14 +33,10 @@ class TrendingMoviesViewController: UIViewController {
         viewModel.getMovies()
     }
     
-    private func searchData() {
-        viewModel.searchMovies(searchBar.text ?? "")
-    }
-    
     private func bindings() {
         viewModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
-                self?.moviesTableView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
         viewModel.bindError { [weak self] in
@@ -70,20 +47,9 @@ class TrendingMoviesViewController: UIViewController {
     }
     
     // MARK: Visuals
-    private func setView() {
-        view.backgroundColor = .systemBackground
-    }
     
-    private func setTableView() {
-        view.addSubview(moviesTableView)
-        moviesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        moviesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        moviesTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        moviesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-    }
-    
-    private func setSearchBar() {
-        navigationItem.titleView = searchBar
+    private func setCollectionView() {
+        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TrendingCollectionViewCell")
     }
     
     private func presentError() {
@@ -95,55 +61,51 @@ class TrendingMoviesViewController: UIViewController {
     
 }
 
-// MARK: - TableView's DataSource
+// MARK: - CollectionView's DataSource
 
-extension TrendingMoviesViewController: UITableViewDataSource {
+extension TrendingMoviesViewController {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getRowCount()
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell") ?? UITableViewCell()
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
 }
 
-// MARK: - TableView's Delegate
+// MARK: - CollectionView's Delegate
 
-extension TrendingMoviesViewController: UITableViewDelegate {
+extension TrendingMoviesViewController {
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = viewModel.getCellConfiguration(row: indexPath.row)
-        config.imageProperties.maximumSize = CGSize(width: 50, height: 50)
-        cell.indentationLevel = 1
-        cell.indentationWidth = 0
-        config.image = UIImage(named: "poster") ?? UIImage(systemName: "photo")
-        cell.contentConfiguration = config
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
+        let cellModel = viewModel.getCellConfiguration(row: indexPath.item)
+        cell.setCell(with: cellModel)
+        return cell
     }
     
 }
 
-extension TrendingMoviesViewController: UISearchBarDelegate, UISearchTextFieldDelegate {
+// MARK: - CollectionView's Flow Layout Delegate
+
+extension TrendingMoviesViewController: UICollectionViewDelegateFlowLayout {
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 130, height: 250)
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchData()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        loadInitialData()
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        loadInitialData()
-        return true
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     
 }

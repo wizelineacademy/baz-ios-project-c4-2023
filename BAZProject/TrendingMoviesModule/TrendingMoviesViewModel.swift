@@ -40,22 +40,9 @@ class TrendingMoviesViewModel {
         error.value?.localizedDescription
     }
     
-    func searchMovies(_ searchText: String) {
-        Task {
-            do {
-                movies.value = try await remoteData.searchMovies(searchText)
-            } catch {
-                self.error.value = error
-            }
-        }
-        
-    }
-    
-    func getCellConfiguration(row: Int) -> UIListContentConfiguration {
-        var configuration = UIListContentConfiguration.cell()
+    func getCellConfiguration(row: Int) -> MovieCollectionViewCellModel {
         let movie = movies.value?[row]
-        configuration.text = movie?.title
-        return configuration
+        return MovieCollectionViewCellModel(title: movie?.title)
     }
     
     func getRowCount() -> Int {
