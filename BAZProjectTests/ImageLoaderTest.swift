@@ -52,8 +52,5 @@ final class ImageLoaderTest: XCTestCase {
             wait(for: [expectation], timeout: 5)
         }
     }
-    
-    
-
 }
 
