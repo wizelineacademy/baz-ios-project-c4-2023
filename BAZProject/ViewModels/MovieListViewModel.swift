@@ -10,7 +10,7 @@ import UIKit
 /**
 Enumerated type that represents different filters for movies.
 */
-enum Enum_MovieFilters: String {
+enum MovieFilter: String {
     /// Represents trending movies.
     case trending   = "Treanding"
 
@@ -31,7 +31,7 @@ class MovieListViewModel {
     
     // MARK: - Private Properties
     
-    private var filterType: Enum_MovieFilters = Enum_MovieFilters.trending
+    private var filterType: MovieFilter = MovieFilter.trending
     private var movies: [Movie] = []
     
     // MARK: - Initializer
@@ -42,7 +42,7 @@ class MovieListViewModel {
         - Parameters:
             - filterType: The type of filter to use when managing the movie list.
      */
-    init(_ filterType: Enum_MovieFilters) {
+    init(_ filterType: MovieFilter) {
         self.filterType = filterType
     }
     
@@ -96,7 +96,7 @@ extension MovieListViewModel {
         - Parameter filterType: An optional `Enum_MovieFilters` value representing the filter to apply. If `nil`, the current filter type is used.
         - Parameter completion: A closure to be executed when the filtered movies have been loaded. This closure takes no parameters and has no return value.
     */
-    func applyMovieFilter(_ filterType: Enum_MovieFilters? = nil, completion: @escaping () -> ()) {
+    func applyMovieFilter(_ filterType: MovieFilter? = nil, completion: @escaping () -> ()) {
         var url: URL?
         
         if let filterType = filterType {

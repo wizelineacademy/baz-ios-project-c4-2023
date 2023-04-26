@@ -57,7 +57,7 @@ extension MoviesViewController {
 
      - parameter filterType: An optional `Enum_MovieFilters` value representing the type of filter to apply. If this parameter is `nil`, all filters will be removed.
      */
-    private func applyFilter(_ filterType: Enum_MovieFilters? = nil) {
+    private func applyFilter(_ filterType: MovieFilter? = nil) {
         viewModel?.applyMovieFilter(filterType) { [weak self] in
             self?.navigationItem.title = self?.viewModel?.getTitle()
             self?.tableView.reloadData()
