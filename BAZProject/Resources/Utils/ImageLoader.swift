@@ -8,8 +8,14 @@
 import UIKit
 
 struct ImageLoader {
+    
+    ///Private queue for loading images from the network.
     private let queue = DispatchQueue(label: "com.imageQueue")
     
+    /// Loads an image from a given URL and returns it asynchronously.
+    /// - Parameters:
+    ///    - url: The URL from which to fetch the image.
+    ///    - completion: The completion block to call once the image has been loaded successfully.
     func getImage(from url: URL, completion: @escaping (UIImage) -> Void) {
         
         queue.async {
