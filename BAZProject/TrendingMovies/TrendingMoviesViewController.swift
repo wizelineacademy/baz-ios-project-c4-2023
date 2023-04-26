@@ -48,18 +48,6 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if restoredState.wasActive {
-            searchController?.isActive = restoredState.wasActive
-            restoredState.wasActive = false
-            if restoredState.wasFirstResponder {
-                searchController?.searchBar.becomeFirstResponder()
-                restoredState.wasFirstResponder = false
-            }
-        }
-    }
 }
 
 // MARK: - SearchBarController Configuration

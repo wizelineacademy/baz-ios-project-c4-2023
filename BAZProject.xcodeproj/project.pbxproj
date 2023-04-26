@@ -28,7 +28,7 @@
 		4C9E3F8129F84B37000B7A96 /* ApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F8029F84B37000B7A96 /* ApiTest.swift */; };
 		4C9E3F8329F8512D000B7A96 /* LoadImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */; };
 		4CA2F92929F2404400B6A60B /* RemotLoadImage+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92829F2404400B6A60B /* RemotLoadImage+UIImageView.swift */; };
-		4CA2F92C29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */; };
+		4CA2F92C29F2FF8700B6A60B /* SearchControllerRestorableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92B29F2FF8700B6A60B /* SearchControllerRestorableState.swift */; };
 		4CA2F93529F31DE600B6A60B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2F93429F31DE500B6A60B /* TableCell.xib */; };
 		4CA2F93829F4601500B6A60B /* TabBarControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */; };
 		4CACA5F429F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */; };
@@ -78,7 +78,7 @@
 		4C9E3F8029F84B37000B7A96 /* ApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTest.swift; sourceTree = "<group>"; };
 		4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageTest.swift; sourceTree = "<group>"; };
 		4CA2F92829F2404400B6A60B /* RemotLoadImage+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemotLoadImage+UIImageView.swift"; sourceTree = "<group>"; };
-		4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMoviesViewController+Restore.swift"; sourceTree = "<group>"; };
+		4CA2F92B29F2FF8700B6A60B /* SearchControllerRestorableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerRestorableState.swift; sourceTree = "<group>"; };
 		4CA2F93429F31DE500B6A60B /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerModel.swift; sourceTree = "<group>"; };
 		4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewControllerTest.swift; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 			children = (
 				4CA2F93429F31DE500B6A60B /* TableCell.xib */,
 				4CC0A35229F1F747003B311D /* ResultsTableController.swift */,
-				4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */,
+				4CA2F92B29F2FF8700B6A60B /* SearchControllerRestorableState.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6C4ECD29F0F46400FA634E /* TrendingMoviesPresenter.swift in Sources */,
-				4CA2F92C29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift in Sources */,
+				4CA2F92C29F2FF8700B6A60B /* SearchControllerRestorableState.swift in Sources */,
 				4C6C4ECF29F0F46400FA634E /* TrendingMoviesRouter.swift in Sources */,
 				4C6C4ED329F0F46400FA634E /* TrendingMoviesProtocols.swift in Sources */,
 				4C6C4EC429F0EDCD00FA634E /* GenericAPIProtocol.swift in Sources */,
