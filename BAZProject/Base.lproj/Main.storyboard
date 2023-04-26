@@ -76,7 +76,13 @@
                             <outlet property="delegate" destination="DF1-ZG-ayL" id="5nR-er-hrx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Trending Movies" id="8E9-i5-K0G"/>
+                    <navigationItem key="navigationItem" title="Trending Movies" id="8E9-i5-K0G">
+                        <barButtonItem key="rightBarButtonItem" title="Filtrar" id="dFR-aZ-Xle">
+                            <connections>
+                                <action selector="FilterButton:" destination="DF1-ZG-ayL" id="9Ht-bl-ef3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inw-fF-zPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

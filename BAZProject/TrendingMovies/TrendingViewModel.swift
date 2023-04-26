@@ -17,8 +17,8 @@ final class TrendingViewModel: MoviesListProtocol {
         self.movieAPI = remote
     }
     ///se consulta el servicio para lista de peliculas
-    func getmovies() {
-        movieAPI.getMovies { [weak self] moviearray, _ in
+    func getmovies(category: categoriesFilter) {
+        movieAPI.getMovies(category: category) { [weak self] moviearray, _ in
             self?.movies.value = moviearray
         }
     }

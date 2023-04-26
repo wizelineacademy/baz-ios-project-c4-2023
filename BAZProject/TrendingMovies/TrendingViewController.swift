@@ -17,7 +17,7 @@ final class TrendingViewController: UITableViewController {
 
     /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla
     func getMovieArray() {
-        trendingModel.getmovies()
+        trendingModel.getmovies(category: .Trending)
     }
     
     ///Configuracion para cuando se cargue la vista
@@ -29,6 +29,32 @@ final class TrendingViewController: UITableViewController {
             }
         }
         getMovieArray()
+    }
+    
+    //MARK: - Buttons
+    @IBAction func FilterButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Filtro", message: "Selecciona el filtro que quieres aplicar", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: categoriesFilter.Trending.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = categoriesFilter.Trending.rawValue
+            self?.trendingModel.getmovies(category: .Trending)
+        })
+        alert.addAction(UIAlertAction(title: categoriesFilter.NowPlaying.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = categoriesFilter.NowPlaying.rawValue
+            self?.trendingModel.getmovies(category: .NowPlaying)
+        })
+        alert.addAction(UIAlertAction(title: categoriesFilter.Popular.rawValue, style: UIAlertAction.Style.default) {[weak self] _ in
+            self?.navigationItem.title = categoriesFilter.Popular.rawValue
+            self?.trendingModel.getmovies(category: .Popular)
+        })
+        alert.addAction(UIAlertAction(title: categoriesFilter.TopRated.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = categoriesFilter.TopRated.rawValue
+            self?.trendingModel.getmovies(category: .TopRated)
+        })
+        alert.addAction(UIAlertAction(title: categoriesFilter.Upcoming.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = categoriesFilter.Upcoming.rawValue
+            self?.trendingModel.getmovies(category: .Upcoming)
+        })
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
