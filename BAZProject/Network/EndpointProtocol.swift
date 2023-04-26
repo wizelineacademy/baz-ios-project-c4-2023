@@ -7,15 +7,26 @@
 
 import Foundation
 
-protocol Service {
-    var session: URLSessionProtocol { get }
-    func getMovies(_ endpoint: Endpoint, callback: @escaping (Result<[Movie],Error>) -> Void)
-}
-
 protocol URLSessionDataTaskProtocol {
     func resume()
 }
 
-protocol URLSessionProtocol { typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
+protocol URLSessionProtocol {
+    typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
     func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+}
+
+protocol ServiceProtocol {
+    var session: URLSessionProtocol { get }
+    func get<T: Decodable>(_ endpoint: URL, callback: @escaping (Result<T,Error>) -> Void)
+}
+
+extension URLSession: URLSessionProtocol {
+    func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+        return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
+    }
+}
+
+extension URLSessionDataTask: URLSessionDataTaskProtocol {
+    
 }
