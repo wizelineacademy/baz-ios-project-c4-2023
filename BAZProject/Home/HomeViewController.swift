@@ -20,7 +20,7 @@ final class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.cellID)
+        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
         presenter?.getDataMovies(endPoint: .trending)
         let exitButtom: UIBarButtonItem
         exitButtom = UIBarButtonItem(title: LocalizableString.searchTitle.localized,
@@ -48,7 +48,7 @@ extension HomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.cellID, for: indexPath) as? HomeCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as? HomeCell else { return UITableViewCell() }
         cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
         self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
             let imgDefault = UIImage(named: "poster") ?? UIImage()

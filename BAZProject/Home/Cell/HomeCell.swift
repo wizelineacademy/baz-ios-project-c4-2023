@@ -7,18 +7,26 @@
 
 import UIKit
 
+struct CellConstants {
+    static let small = 8.0
+    static let regular = 12.0
+    static let cornerRadius = 5.0
+    static let viewHeightAnchor = 140.0
+    static let coverViewHeight = 120.0
+    static let coverViewCenterY = 90.0
+    static let cellID = "HomeCell"
+}
+
 //MARK: - Class
 class HomeCell: UITableViewCell {
     //MARK: - Properties
-    static let cellID = "HomeCell"
-    
     private let coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .redraw
         imageView.backgroundColor = .white
         imageView.image = UIImage(named: "loader")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5.0
+        imageView.layer.cornerRadius = CellConstants.cornerRadius
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -37,7 +45,7 @@ class HomeCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         self.selectionStyle = .none
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 140).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: CellConstants.viewHeightAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,17 +62,17 @@ class HomeCell: UITableViewCell {
         self.contentView.addSubview(movieDescription)
 
         NSLayoutConstraint.activate([
-            coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            coverView.heightAnchor.constraint(equalToConstant: 120),
-            coverView.widthAnchor.constraint(equalToConstant: 90),
+            coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellConstants.small),
+            coverView.heightAnchor.constraint(equalToConstant: CellConstants.coverViewHeight),
+            coverView.widthAnchor.constraint(equalToConstant: CellConstants.coverViewCenterY),
             coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8.0),
-            movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: 12.0),
+            movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: CellConstants.small),
+            movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: CellConstants.regular),
             movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
+            movieDescription.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -CellConstants.small)
         ])
     }
     

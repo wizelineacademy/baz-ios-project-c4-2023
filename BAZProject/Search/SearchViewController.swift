@@ -5,6 +5,12 @@
 
 import UIKit
 
+struct ConstraintConstants {
+    static let small = 8.0
+    static let regular = 16.0
+    static let large = 32.0
+}
+
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
 
     var presenter: SearchViewOutputProtocol?
@@ -55,15 +61,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         self.view.addSubview(movieTableView)
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            movieSearchBar.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            movieSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            movieSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            movieSearchBar.heightAnchor.constraint(equalToConstant: 32),
+            movieSearchBar.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: ConstraintConstants.small),
+            movieSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ConstraintConstants.regular),
+            movieSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ConstraintConstants.regular),
+            movieSearchBar.heightAnchor.constraint(equalToConstant: ConstraintConstants.large),
             
-            movieTableView.topAnchor.constraint(equalTo: movieSearchBar.bottomAnchor, constant: 16),
-            movieTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
-            movieTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
-            movieTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+            movieTableView.topAnchor.constraint(equalTo: movieSearchBar.bottomAnchor, constant: ConstraintConstants.regular),
+            movieTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            movieTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            movieTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
     
