@@ -48,10 +48,6 @@ extension MasterMovieTableViewController {
 // MARK: - TableView's DataSource
 
 extension MasterMovieTableViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.numberOfSections() ?? 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel?.numberOfRowsInSection(section) ?? 0

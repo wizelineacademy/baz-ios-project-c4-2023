@@ -52,15 +52,6 @@ final class MovieListViewModel {
 extension MovieListViewModel {
     
     /**
-        Returns the number of sections in the movie list.
-     
-        - Returns: The number of sections, which is always 1.
-    */
-    func numberOfSections() -> Int {
-        1
-    }
-    
-    /**
         Returns the number of rows in a given section of the movie list.
      
         - Parameter section: An integer value representing the section number.
