@@ -65,26 +65,17 @@ extension MasterMovieTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
         
-        cell.delegate = self
-        
         if let movieVM = viewModel?.movieAtIndex(indexPath.row) {
             cell.setup(movieVM)
         }
         
         return cell
     }
-
-}
-
-// MARK: - TableView's CellProtocols
-
-extension MasterMovieTableViewController: MovieTableViewCellProtocols {
     
-    func didTapCell(_ movieVM: MovieViewModel?) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailViewController {
-            vc.movieVM = movieVM
+            vc.movieVM = viewModel?.movieAtIndex(indexPath.row)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }

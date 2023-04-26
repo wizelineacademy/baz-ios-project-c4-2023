@@ -7,21 +7,7 @@
 
 import UIKit
 
-/**
-Protocol used by movie table view cells to notify their delegate that they have been tapped.
-*/
-protocol MovieTableViewCellProtocols {
-    /**
-      Notifies the delegate that the cell has been tapped.
-      - Parameter movieVM: The view model of the movie associated with the tapped cell.
-    */
-    func didTapCell(_ movieVM: MovieViewModel?)
-}
-
 class MovieTableViewCell: UITableViewCell {
-    
-    /// The delegate for handling cell taps.
-    var delegate:MovieTableViewCellProtocols!
     
     private let imageLoader: ImageLoader = ImageLoader()
     
@@ -39,9 +25,6 @@ class MovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.accessoryType = .disclosureIndicator
-        
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,15 +49,6 @@ extension MovieTableViewCell {
             imageLoader.getImage(from: url) { [weak self] image in
                 self?.imgView.image = image
             }
-        }
-    }
-
-    /**
-      Handles when the cell is tapped by calling the delegate method to notify the controller.
-    */
-    @objc func didTap () {
-        if self.delegate != nil {
-            self.delegate.didTapCell(movieVM)
         }
     }
 }
