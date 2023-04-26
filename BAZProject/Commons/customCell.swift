@@ -21,6 +21,7 @@ class customCell: UITableViewCell {
         movieImage.image = UIImage(named: "poster")
     }
     
+    ///Setea todos los datos para que la celda pueda 
     func setInfo(_ info: MoviesListProtocol, indexPath: IndexPath) {
         titleLable.text = info.getTitle(index: indexPath.row)
         downloadTask = movieImage.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getPathImage(index:indexPath.row) ?? "")")!)

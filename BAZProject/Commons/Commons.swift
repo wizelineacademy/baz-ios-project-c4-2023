@@ -44,13 +44,16 @@ enum categoriesFilter: String {
 
 // Metodos extras para el uso de peliculas con Strings
 extension String {
+    /// Formato del nombre de la pelicula para poder buscarla
     func formatterMovieName() -> String {
         self.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
         
     }
 }
 
+// Metodos extras para la colocacion de las imagenes
 extension UIImageView{
+    /// Consulta desde una url para colocar la imagen
     func loadImage(url: URL) -> URLSessionDownloadTask {
         let session = URLSession.shared
         let downloadTask = session.downloadTask(with: url){[weak self] url, response, error in
@@ -61,7 +64,6 @@ extension UIImageView{
                 }
             }
         }
-        
         downloadTask.resume()
         return downloadTask
     }

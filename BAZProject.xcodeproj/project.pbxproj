@@ -127,12 +127,12 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				E0D4833129F9816F00B6D8C3 /* DetailsMovies */,
 				E0D4833029F97FAE00B6D8C3 /* Commons */,
 				E0AB764129F0F65E004074B5 /* Models */,
 				E08EFD3629D3ABCD0056EF16 /* Network */,
 				E045961329EF40D600712F8C /* SearchMovies */,
 				E08EFD3529D3ABB30056EF16 /* TrendingMovies */,
+				E0D4833129F9816F00B6D8C3 /* DetailsMovies */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
 				C30893B328A2F42B004B1860 /* Main.storyboard */,

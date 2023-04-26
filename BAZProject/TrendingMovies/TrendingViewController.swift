@@ -15,7 +15,7 @@ final class TrendingViewController: UITableViewController {
         setView()
     }
 
-    /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla
+    /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
     func getMovieArray() {
         trendingModel.getmovies(category: .Trending)
     }
@@ -32,6 +32,7 @@ final class TrendingViewController: UITableViewController {
     }
     //MARK: - Buttons
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
+        // Alerta para poder realizar la busqueda por categoria
         let alert = UIAlertController(title: "Filtro", message: "Selecciona el filtro que quieres aplicar", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: categoriesFilter.Trending.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
             self?.navigationItem.title = categoriesFilter.Trending.rawValue
