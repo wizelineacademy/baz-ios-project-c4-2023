@@ -31,8 +31,6 @@ extension HomeInteractor: HomeInteractorInputProtocol {
             imageLoader.loadImage(from: path) { image in
                 completion(image)
             }
-        } else {
-            completion(nil)
         }
     }
     
@@ -40,9 +38,9 @@ extension HomeInteractor: HomeInteractorInputProtocol {
      Function that gets an array of movies
      - Version: 1.0.0
     */
-    func getDataMovies() {
+    func getDataMovies(endPoint: Endpoint) {
         let movieApi = MovieAPI()
-        movieApi.fetchData(model: Movie.self, urlPath: "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.trending)\(MovieAPIConstans.apiKey)") { [weak self] result in
+        movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
             switch result {
             case .failure(let fail):
                 print(fail.localizedDescription)

@@ -23,11 +23,9 @@ extension SearchInteractor: SearchInteractorInputProtocol {
         - movieName: The movie string to search for
      - Version: 1.0.0
     */
-    func getMovieSearch(movieName: String) {
+    func getMovieSearch(endPoint: Endpoint) {
         let movieApi = MovieAPI()
-        let path = "\(MovieAPIConstans.baseURL)\(MovieAPIConstans.search)\(MovieAPIConstans.apiKey)\(MovieAPIConstans.searchConfig)\(movieName)"
-        let newPath = path.replacingOccurrences(of: " ", with: "%20")
-        movieApi.fetchData(model: Movie.self, urlPath: newPath) { [weak self] result in
+        movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
             switch result {
             case .failure(let fail):
                 print(fail.localizedDescription)
@@ -52,8 +50,6 @@ extension SearchInteractor: SearchInteractorInputProtocol {
             imageLoader.loadImage(from: path) { image in
                 completion(image)
             }
-        } else {
-            completion(nil)
         }
     }
     

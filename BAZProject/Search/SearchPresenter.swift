@@ -27,8 +27,8 @@ class SearchPresenter {
 // MARK: - V I E W · T O · P R E S E N T E R
 extension SearchPresenter: SearchViewOutputProtocol {
 
-    func getMovieSearch(movieName: String) {
-        interactor.getMovieSearch(movieName: movieName)
+    func getMovieSearch(endPoint: Endpoint) {
+        interactor.getMovieSearch(endPoint: endPoint)
     }
     
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {

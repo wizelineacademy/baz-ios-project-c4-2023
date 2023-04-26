@@ -76,7 +76,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     // MARK: - searchBar Delegates
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         let keyWord = searchBar.text ?? ""
-        presenter?.getMovieSearch(movieName: keyWord)
+        presenter?.getMovieSearch(endPoint: .search(query: keyWord))
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

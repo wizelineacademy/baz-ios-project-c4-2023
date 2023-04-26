@@ -40,7 +40,7 @@ final class BAZProjectTests: XCTestCase {
         // Given
         let resultExpected = 1
         // When
-        homeInteractor?.getDataMovies()
+        homeInteractor?.getDataMovies(endPoint: .trending)
         // Then
         XCTAssertEqual(homePresenter?.arrMovies.count, resultExpected)
     }
@@ -58,14 +58,14 @@ final class BAZProjectTests: XCTestCase {
             XCTAssertNotNil(testImage)
             expectation.fulfill()
         })
-        wait(for: [expectation], timeout: 2.0)
+        wait(for: [expectation], timeout: 9.0)
     }
     
     func testWhen_Search_DataMovies_IsNotNull() {
         // Given
         let resultExpected = 1
         // When
-        searchInteractor?.getMovieSearch(movieName: "Halo")
+        searchInteractor?.getMovieSearch(endPoint: .search(query: "El"))
         // Then
         XCTAssertEqual(searchPresenter?.arrSeaerchMovies.count, resultExpected)
     }

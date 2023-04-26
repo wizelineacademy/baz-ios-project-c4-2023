@@ -22,7 +22,7 @@ protocol SearchViewOutputProtocol {
 	var interactor: SearchInteractorInputProtocol { get }
 	var router: SearchRouterProtocol { get }
     // MARK: - Functions
-    func getMovieSearch(movieName: String)
+    func getMovieSearch(endPoint: Endpoint)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
 }
 
@@ -37,7 +37,7 @@ protocol SearchInteractorInputProtocol {
     // MARK: - Properties
     var presenter: SearchInteractorOutputProtocol? { get }
     // MARK: - Functions
-    func getMovieSearch(movieName: String)
+    func getMovieSearch(endPoint: Endpoint)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
 }
 

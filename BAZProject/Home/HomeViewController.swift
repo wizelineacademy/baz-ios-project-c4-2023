@@ -21,7 +21,7 @@ final class HomeViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.cellID)
-        presenter?.getDataMovies()
+        presenter?.getDataMovies(endPoint: .trending)
         let exitButtom: UIBarButtonItem
         exitButtom = UIBarButtonItem(title: LocalizableString.searchTitle.localized,
                                      style: .plain,
