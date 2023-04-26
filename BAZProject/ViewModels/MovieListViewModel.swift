@@ -27,7 +27,8 @@ enum MovieFilter: String {
     case upcoming   = "Upcoming"
 }
 
-class MovieListViewModel {
+// MARK: - MovieListViewModel
+final class MovieListViewModel {
     
     // MARK: - Private Properties
     
