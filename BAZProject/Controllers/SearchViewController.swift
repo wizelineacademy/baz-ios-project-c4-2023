@@ -7,14 +7,15 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+// MARK: - SearchViewController
+final class SearchViewController: UIViewController {
     
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txfSearch: UITextField!
     
-    // MARK: - Variables
+    // MARK: - Properties
     
     var viewModel: SearchViewModel?
 
@@ -22,28 +23,24 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         viewModel = SearchViewModel()
         
-        let nib = UINib(nibName: "MovieTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier:"movieCell")
+        setupTable()
         
         configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(named: "background") ?? .white, tintColor: .white, title: "Search", preferredLargeTitle: true)
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+// MARK: - Methods
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension SearchViewController {
+    private func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let nib = UINib(nibName: "MovieTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
     }
-    */
-
 }
 
 // MARK: - TableView's DataSource
@@ -64,7 +61,7 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
         
         if let movieVM = viewModel?.movieAtIndex(indexPath.row) {
             cell.setup(movieVM)
@@ -90,5 +87,12 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailViewController {
+            vc.movieVM = viewModel?.movieAtIndex(indexPath.row)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
