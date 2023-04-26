@@ -32,7 +32,6 @@ class MovieAPI {
         }
         
         guard let url = URL(string: urlStruct) else { return }
-        print(url)
         service.get(url) { (result: Result<Movies , Error>) in
             switch result {
             case .success(let apiResults): completion(apiResults.results ?? [], nil)
