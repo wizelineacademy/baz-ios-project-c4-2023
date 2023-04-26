@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct URLConfiguration{
+public struct URLConfiguration {
     var strMethod: String
     var strHost: String
     var path: Paths
     private var strCurrentLocale: String {
-        if #available(iOS 16.0, *){
+        if #available(iOS 16.0, *) {
             return Locale.current.language.languageCode?.identifier ?? ""
-        }else{
+        } else {
             return Locale.current.identifier
         }
     }
@@ -25,28 +25,51 @@ public struct URLConfiguration{
         self.path = path
     }
     
-    public mutating func updateHost(with strHost: String) {
-        self.strHost = strHost
+    public mutating func updatePath(with path: Paths) {
+        self.path = path
     }
     
     public func configureURL() -> URL? {
-        if strHost.count > 0 {
-            var components = URLComponents()
-            components.scheme = strMethod
-            components.host = strHost
-            components.path = path.rawValue
-            components.queryItems = [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
-                                     URLQueryItem(name: "language", value: strCurrentLocale)]
-            
-            return components.url
+        guard !strHost.isEmpty else { return nil }
+        var components = URLComponents()
+        components.scheme = strMethod
+        components.host = strHost
+        components.path = path.getString()
+        switch path {
+        case .trending:
+            components.queryItems = configureKeyAndLanguage()
+        case .search(let strQuery):
+            var arrComponents = configureKeyAndLanguage()
+            arrComponents.append(URLQueryItem(name: "query", value: strQuery))
+            components.queryItems = arrComponents
+        default:
+            break
         }
-        
-        return nil
-        
+        return components.url
+    }
+    
+    private func configureKeyAndLanguage() -> [URLQueryItem] {
+        return [URLQueryItem(name: "api_key", value: "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"),
+                URLQueryItem(name: "language", value: strCurrentLocale)]
     }
 }
 
-public enum Paths: String {
-    case trending = "/3/trending/movie/day"
-    case noPath = ""
+public enum Paths {
+    case trending
+    case image(strFile: String)
+    case search(strQuery: String)
+    case noPath
+    
+    func getString() -> String {
+        switch self {
+        case .trending:
+            return "/3/trending/movie/day"
+        case .image(let strFile):
+            return "/t/p/w500\(strFile)"
+        case .search(strQuery: _):
+            return "/3/search/movie"
+        case .noPath:
+            return ""
+        }
+    }
 }

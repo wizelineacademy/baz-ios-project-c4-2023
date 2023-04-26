@@ -9,9 +9,9 @@ import XCTest
 import BAZProject
 
 final class ServiceApiTests: XCTestCase {
-
     var errorType: ErrorApi?
     var exp: XCTestExpectation?
+    var result: MovieService?
     
     override func setUp() {
         super.setUp()
@@ -22,18 +22,21 @@ final class ServiceApiTests: XCTestCase {
         super.tearDown()
         exp = nil
         errorType = nil
+        result = nil
     }
     
     func test_BadURL_ReturnURLError() {
         //Given
         let strHostVoid = ""
         let configuration = URLConfiguration(strHost: strHostVoid, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
-        sut.search()
+        sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
+            self?.handleService(result)
+        }
         //Then
         waitForExpectations(timeout: 1.0)
-        XCTAssertEqual(errorType, ErrorApi.badURL)
+        XCTAssertEqual(errorType?.getMessage(), ErrorApi.badURL.getMessage())
         
     }
     
@@ -41,25 +44,36 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strBadHost = "Esto es un mal host"
         let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi(serviceDelegate: self, configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
         //When
-        sut.search()
+        sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
+            self?.handleService(result)
+        }
         //Then
         waitForExpectations(timeout: 1.0)
-        XCTAssertEqual(errorType, ErrorApi.badResponse)
+        XCTAssertEqual(errorType?.getMessage(), ErrorApi.badResponse.getMessage())
     }
     
-}
-
-extension ServiceApiTests: ServiceApiProtocol{
-    
-    func serviceFinished(withResult result: Result<[String : Any], BAZProject.ErrorApi>) {
-        switch result{
-        case .failure(let error):
-            exp?.fulfill()
-            errorType = error
-        default:
-            return
+    func testSerachImplemented() {
+        //Given
+        let configuration = URLConfiguration(path: .trending)
+        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        //When
+        sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
+            self?.handleService(result)
         }
+        //Then
+        waitForExpectations(timeout: 2.5)
+        XCTAssertNotNil(result)
+    }
+    
+    private func handleService(_ result: Result<MovieService, ErrorApi>) {
+        switch result {
+        case .success(let result):
+            self.result = result
+        case .failure(let failure):
+            errorType = failure
+        }
+        exp?.fulfill()
     }
 }

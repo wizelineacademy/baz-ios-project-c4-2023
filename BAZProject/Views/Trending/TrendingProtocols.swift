@@ -23,7 +23,7 @@ protocol TrendingViewProtocol: AnyObject {
 //MARK: - Interactor
 
 /// Interactor -> Presenter
-protocol TrendingInteractorOutputProtocol: AnyObject {
+public protocol TrendingInteractorOutputProtocol: AnyObject {
     func serviceRespondedSuccess()
     func serviceFailed(withError error: ErrorApi)
 }
@@ -31,7 +31,7 @@ protocol TrendingInteractorOutputProtocol: AnyObject {
 /// Presenter -> Interactor
 protocol TrendingInteractorInputProtocol: AnyObject {
     var presenter: TrendingInteractorOutputProtocol? { get set }
-    var remoteDatamanager: TrendingRemoteDataManagerInputProtocol? { get set }
+    var serviceApi: NetworkingProtocol? { get set }
     var entity: TrendingEntity? { get set }
     
     func getNavTitle() -> String?
@@ -60,20 +60,4 @@ protocol TrendingRouterProtocol: AnyObject {
     static func createTrendingModule(withEntity entity: TrendingEntity) -> UIViewController
     
     func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?)
-}
-
-//MARK: - Data Manager
-
-/// Interactor -> Remote data manager
-protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
-    var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol? { get set }
-    var serviceApi: NetworkingProtocol? { get set }
-    
-    func getMovies()
-}
-
-/// Remote data manager -> Interactor
-protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
-    func moviesObtained(with arrMovies: [Movie]?)
-    func serviceDidFail(with error: ErrorApi)
 }

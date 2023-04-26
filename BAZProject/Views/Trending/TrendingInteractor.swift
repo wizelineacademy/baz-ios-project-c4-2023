@@ -8,39 +8,53 @@
 
 import Foundation
 
-class TrendingInteractor: TrendingInteractorInputProtocol {
+public class TrendingInteractor: TrendingInteractorInputProtocol {
 
     // MARK: Properties
-    weak var presenter: TrendingInteractorOutputProtocol?
-    var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?
-    var entity: TrendingEntity?
+    weak public var presenter: TrendingInteractorOutputProtocol?
+    public var serviceApi: NetworkingProtocol?
+    public var entity: TrendingEntity?
+    
+    public init(presenter: TrendingInteractorOutputProtocol? = nil, serviceApi: NetworkingProtocol? = nil, entity: TrendingEntity? = nil) {
+        self.presenter = presenter
+        self.serviceApi = serviceApi
+        self.entity = entity
+    }
 
     func getNavTitle() -> String? {
         return entity?.strNavBarTitle
     }
     
-    func getMovies() {
-        remoteDatamanager?.getMovies()
+    public func getMovies() {
+        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
+            switch result {
+            case .failure(let error):
+                self?.presenter?.serviceFailed(withError: error)
+            case .success(let movies):
+                if let arrResponse = movies.results, arrResponse.count > 0 {
+                    self?.updateMovies(with: arrResponse)
+                }
+            }
+        })
     }
     
-    func getNumberOfRows() -> Int? {
+    public func getNumberOfRows() -> Int? {
         return entity?.getNumberOfRows()
     }
     
-    func getMovie(forRow iRow: Int) -> Movie? {
+    public func getMovie(forRow iRow: Int) -> Movie? {
         return entity?.getMovie(forRow: iRow)
     }
     
-}
-
-extension TrendingInteractor: TrendingRemoteDataManagerOutputProtocol {
-    func moviesObtained(with arrMovies: [Movie]?) {
+    private func updateMovies(with arrResponse: [MovieDetailService]) {
+        var arrMovies: [Movie] = [Movie]()
+        for movie in arrResponse {
+            if let movie = movie.convertToMovieApp(){
+                arrMovies.append(movie)
+            }
+        }
         entity?.updateMovies(with: arrMovies)
         presenter?.serviceRespondedSuccess()
-    }
-    
-    func serviceDidFail(with error: ErrorApi) {
-        presenter?.serviceFailed(withError: error)
     }
     
 }
