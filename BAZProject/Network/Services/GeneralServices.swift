@@ -8,7 +8,17 @@
 import Foundation
 import UIKit
 
-public class GetImage{
+/**
+ Download image from image content API page.
+
+ - Parameter pathPoster: image url ID.
+
+ - Throws: `completion` with `convertedImage`
+
+ - Returns: UIImage with Movie Poster
+ */
+
+public class GetImage {
     static func getImage(pathPoster: String, completion: @escaping (UIImage?) -> Void){
         let session = URLSession.shared
         let coordinator = GeneralTaskCoordinator(session: session)
