@@ -92,6 +92,7 @@ iOSInjectionProject/
 # OS
 #
 .DS_Store
+*.xcconfig
 
 # Credentials
 #

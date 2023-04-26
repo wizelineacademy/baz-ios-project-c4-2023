@@ -1,0 +1,28 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/i8dshLvq4LE3s0v8PrkDdUyb1ae.jpg",
+      "id": 603692,
+      "title": "John Wick: Chapter 4",
+      "original_language": "en",
+      "original_title": "John Wick: Chapter 4",
+      "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+      "poster_path": "/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+      "media_type": "movie",
+      "genre_ids": [
+        28,
+        53,
+        80
+      ],
+      "popularity": 3734.86,
+      "release_date": "2023-03-22",
+      "video": false,
+      "vote_average": 8.244,
+      "vote_count": 353
+    }
+  ],
+  "total_pages": 1000,
+  "total_results": 20000
+}
