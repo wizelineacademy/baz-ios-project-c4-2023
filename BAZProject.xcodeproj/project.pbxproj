@@ -37,6 +37,7 @@
 		E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833429F9819E00B6D8C3 /* DetailsView.swift */; };
 		E0D4833729F981B000B6D8C3 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */; };
 		E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833A29F9C2C900B6D8C3 /* Box.swift */; };
+		E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833C29F9CC9600B6D8C3 /* customCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E0D4833429F9819E00B6D8C3 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
 		E0D4833A29F9C2C900B6D8C3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		E0D4833C29F9CC9600B6D8C3 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				E0D4833A29F9C2C900B6D8C3 /* Box.swift */,
 				E0D4832E29F8842200B6D8C3 /* Commons.swift */,
+				E0D4833C29F9CC9600B6D8C3 /* customCell.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E0AB763C29EF603E004074B5 /* ServiceProtocols.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
+				E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */,
 				E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */,
 				E045961729EF439D00712F8C /* SearchViewModel.swift in Sources */,
 				E0D4832F29F8842200B6D8C3 /* Commons.swift in Sources */,

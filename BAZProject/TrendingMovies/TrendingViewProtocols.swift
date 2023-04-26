@@ -13,4 +13,5 @@ protocol MoviesListProtocol {
     func getMovieCount() -> Int
     func getTitle(index: Int) -> String?
     func bindMovies(_ listener: @escaping () -> Void)
+    func getPathImage(index: Int) -> String? 
 }

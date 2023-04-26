@@ -30,21 +30,6 @@ final class TrendingViewController: UITableViewController {
         }
         getMovieArray()
     }
-    
-    func loadImage(from url: URL?, withCompletionHandler handler: @escaping (UIImage?) -> Void) -> URLSessionDownloadTask? {
-            guard let url = url else { return nil }
-            let downloadTask = URLSession.shared.downloadTask(with: url) { [weak self] url, response, error in
-                if let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        handler(image)
-                    }
-                }
-            }
-            
-            downloadTask.resume()
-            return downloadTask
-        }
-    
     //MARK: - Buttons
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Filtro", message: "Selecciona el filtro que quieres aplicar", preferredStyle: UIAlertController.Style.alert)
@@ -79,22 +64,13 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         trendingModel.getMovieCount()
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
-}
-
-// MARK: - TableView's Delegate
-
-extension TrendingViewController {
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        config.text = trendingModel.getTitle(index: indexPath.row)
-        let _ = loadImage(from: URL(string: "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg")) { image in
-            config.image = image
-        }
-        cell.contentConfiguration = config
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! customCell
+        cell.setInfo(trendingModel, indexPath: indexPath)
+        return cell
     }
 }

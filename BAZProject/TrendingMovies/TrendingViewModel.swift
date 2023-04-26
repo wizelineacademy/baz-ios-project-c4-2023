@@ -35,4 +35,7 @@ final class TrendingViewModel: MoviesListProtocol {
         movies.value[index].title
     }
     
+    func getPathImage(index: Int) -> String? {
+        movies.value[index].poster_path
+    }
 }
