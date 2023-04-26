@@ -87,7 +87,6 @@ extension SearchViewModel: SearchableProtocol {
         
         // Create a resource to load data from the `MovieList` endpoint using the `Resource` struct.
         let resource = Resource<MovieList>(url: url) { data in
-            let str = String(decoding: data, as: UTF8.self)
             return try? JSONDecoder().decode(MovieList.self, from: data)
         }
         
@@ -100,5 +99,4 @@ extension SearchViewModel: SearchableProtocol {
             }
         }
     }
-    
 }
