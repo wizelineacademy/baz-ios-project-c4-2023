@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension String {
+internal extension String {
     /**
     Returns a URL-encoded string representation of the current string, with special characters escaped.
 
