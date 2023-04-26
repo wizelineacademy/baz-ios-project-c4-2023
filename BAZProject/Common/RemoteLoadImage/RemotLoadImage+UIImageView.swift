@@ -12,8 +12,8 @@ import UIKit
 protocol RemoteLoadImageProtocol {
     func loadFrom(url: URL, completion: @escaping (_ image: UIImage?) -> ())
 }
-// Extension de UIImageView para cargar una imagen del servidor
-extension UIImage: RemoteLoadImageProtocol {
+
+final class ImageRemoteLoader: RemoteLoadImageProtocol{
     /**
         Funcion que obtiene una imagen del servidor y regresa un`UIImage`
       - Parameters:
@@ -32,6 +32,16 @@ extension UIImage: RemoteLoadImageProtocol {
                     completion(nil)
                 }
             }
+        }
+    }
+    
+}
+
+// Extension de UIImageView para cargar una imagen del servidor
+extension UIImageView {
+    func loadRemoteImage(url: URL, imageLoader: RemoteLoadImageProtocol = ImageRemoteLoader()){
+        imageLoader.loadFrom(url: url) {[weak self] remotImage in
+            self?.image = remotImage
         }
     }
 }

@@ -13,23 +13,21 @@ import UIKit
 
 //MARK: Wireframe -
 protocol TrendingMoviesWireframeProtocol: AnyObject {
-    func getResultViewController() -> UIViewController
 }
 //MARK: Presenter -
 protocol TrendingMoviesPresenterProtocol: AnyObject {
     func getMovies()
     func setMovies(result: [ListMovieProtocol])
-    func getResultViewController() -> UIViewController
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ())
-    func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ())
+    func findMovies(for string: String?)
+    func loadFindMovies(movies: [ListMovieProtocol])
+    func cleanStringForSearch(_ string: String?) -> String
 }
 
 //MARK: Interactor -
 protocol TrendingMoviesInteractorProtocol: AnyObject {
     var presenter: TrendingMoviesPresenterProtocol?  { get set }
     func getMovies()
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ())
-    func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ())
+    func findMovies(for string: String)
     func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?
     func getMoviesUrlRequest() -> URLRequest?
 }
@@ -37,6 +35,10 @@ protocol TrendingMoviesInteractorProtocol: AnyObject {
 //MARK: View -
 protocol TrendingMoviesViewProtocol: AnyObject {
     var presenter: TrendingMoviesPresenterProtocol?  { get set }
-    var restoredState: RestorableStateProtocol {get set}
+    var restoredState: RestorableStateProtocol { get set }
+    var resultsTableController: ResultsTableController? { get set }
+    var movies: [ListMovieProtocol] { get set }
+    var searchResultMovies: [ListMovieProtocol] { get set }
     func loadData(movies: [ListMovieProtocol])
+    func loadSearchData(movies: [ListMovieProtocol])
 }

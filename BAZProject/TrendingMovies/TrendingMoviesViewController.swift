@@ -22,11 +22,17 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
     /// Intancia del Presenter  del modulo VIPER Trending Movies
 	var presenter: TrendingMoviesPresenterProtocol?
     /// Intancia de un UISearchController  que permite buscar una pelicula en la api de MovieDB
-    var searchController: UISearchController!
+    var searchController: UISearchController?
     /// Intancia de un UITableViewContrller  muestra los resuiltados una pelicula en la api de MovieDB
-    private var resultsTableController: ResultTableForMoviesProtocol!
+    var resultsTableController: ResultsTableController?
     /// Arreglo que contiene las peliculas que despliegan en una lista
-    private var movies: [ListMovieProtocol] = []
+    var movies: [ListMovieProtocol] = []{
+        didSet{
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
     /// Arreglo que contiene las peliculas que despliegan en una lista deacuerdo a un criterio de busqueda
     var searchResultMovies: [ListMovieProtocol] = []
     /// Intancia de RestorableStateProtocol que guarda el estado del ResultTableViewController
@@ -37,6 +43,7 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
 	override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getMovies()
+        resultsTableController = configureTableViewSearch()
         searchController = configureSearch()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -45,10 +52,10 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if restoredState.wasActive {
-            searchController.isActive = restoredState.wasActive
+            searchController?.isActive = restoredState.wasActive
             restoredState.wasActive = false
             if restoredState.wasFirstResponder {
-                searchController.searchBar.becomeFirstResponder()
+                searchController?.searchBar.becomeFirstResponder()
                 restoredState.wasFirstResponder = false
             }
         }
@@ -60,11 +67,17 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
 extension TrendingMoviesViewController{
     ///Metodo que establece la configuracion inicial de SearchBArViewController
     func configureSearch() -> UISearchController{
-        let search = UISearchController(searchResultsController: presenter?.getResultViewController())
+        guard let resultsTableController = resultsTableController else { return UISearchController() }
+        let search = UISearchController(searchResultsController: resultsTableController)
         search.searchResultsUpdater = self
         search.searchBar.autocapitalizationType = .none
         search.searchBar.delegate = self
         return search
+    }
+    
+    func configureTableViewSearch() -> ResultsTableController{
+        guard let viewController: ResultsTableController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResultsTableController") as? ResultsTableController else { return ResultsTableController() }
+        return viewController
     }
 }
 
@@ -76,7 +89,6 @@ extension TrendingMoviesViewController{
     ///     -Movies: Array de ListMovieProtocol
     func loadData(movies: [ListMovieProtocol]) {
         self.movies = movies
-        tableView.reloadData()
     }
     ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB de acuerdo a un criterio de busqueda  y recarga la el UITableView
     /// - Parameters:
@@ -95,22 +107,12 @@ extension TrendingMoviesViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
-    }
-
-}
-
-// MARK: - TableView's Delegate
-
-extension TrendingMoviesViewController {
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        config.text = movies[indexPath.row].title
-        presenter?.getRemotImage(from: movies[indexPath.row].posterPath, completion: { image in
-            config.image = image
-            cell.contentConfiguration = config
-        })
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath)
+        let movie = movies[indexPath.row]
+        guard let url = movie.urlImage else { return UITableViewCell() }
+        cell.textLabel?.text = movie.title
+        cell.imageView?.loadRemoteImage(url: url)
+        return cell
     }
 
 }
@@ -124,7 +126,16 @@ extension TrendingMoviesViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        guard let searchController = searchController else { return }
         updateSearchResults(for: searchController)
     }
     
+}
+// MARK: - UISearchResultsUpdating
+
+extension TrendingMoviesViewController: UISearchResultsUpdating{
+
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter?.findMovies(for: searchController.searchBar.text)
+    }
 }

@@ -29,23 +29,8 @@ final class TrendingMoviesInteractorMock: TrendingMoviesInteractorProtocol{
         calls.append(.getMovies)
     }
     
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
-        calls.append(.getRemotImage)
-        guard let url = URL(string: ApiConstans.baseUrlImage + stringURL) else { return }
-        UIImage().loadFrom(url: url, completion: completion)
-    }
-    
-    func findMovies(for string: String, completion: @escaping ([BAZProject.ListMovieProtocol]) -> ()) {
+    func findMovies(for string: String) {
+        presenter?.findMovies(for: string)
         calls.append(.findMovies)
-        guard let request = getSearchMoviewUrlRequest(searchString: string) else { return }
-        fakeMovieApi.fetch(request: request) { (result: Result<MovieResult?, Error>) in
-            switch result {
-            case .failure(let fail):
-                print(fail)
-            case .success(let response):
-                guard let movies = response?.results else { return }
-                completion(movies)
-            }
-        }
     }
 }

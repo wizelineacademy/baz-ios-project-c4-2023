@@ -29,9 +29,9 @@
 		4C9E3F8329F8512D000B7A96 /* LoadImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */; };
 		4CA2F92929F2404400B6A60B /* RemotLoadImage+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92829F2404400B6A60B /* RemotLoadImage+UIImageView.swift */; };
 		4CA2F92C29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */; };
-		4CA2F92F29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92E29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift */; };
 		4CA2F93529F31DE600B6A60B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2F93429F31DE500B6A60B /* TableCell.xib */; };
 		4CA2F93829F4601500B6A60B /* TabBarControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */; };
+		4CACA5F429F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */; };
 		4CBDB6F329F1061E000AF2FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F229F1061E000AF2FA /* TabBarController.swift */; };
 		4CC0A35329F1F747003B311D /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0A35229F1F747003B311D /* ResultsTableController.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
@@ -79,9 +79,9 @@
 		4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageTest.swift; sourceTree = "<group>"; };
 		4CA2F92829F2404400B6A60B /* RemotLoadImage+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemotLoadImage+UIImageView.swift"; sourceTree = "<group>"; };
 		4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMoviesViewController+Restore.swift"; sourceTree = "<group>"; };
-		4CA2F92E29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingMoviesViewController+Updating.swift"; sourceTree = "<group>"; };
 		4CA2F93429F31DE500B6A60B /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		4CA2F93729F4601400B6A60B /* TabBarControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerModel.swift; sourceTree = "<group>"; };
+		4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewControllerTest.swift; sourceTree = "<group>"; };
 		4CBDB6F229F1061E000AF2FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4CC0A35229F1F747003B311D /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +121,7 @@
 				4C56782629F6D8D500D5FA23 /* TrendingMoviesPresenterTest.swift */,
 				4C9E3F7A29F72054000B7A96 /* TrendingMoviesInteractorTest.swift */,
 				4C9E3F7C29F763D4000B7A96 /* ResultTableViewControllerTest.swift */,
+				4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */,
 			);
 			path = TrendingMoviesTest;
 			sourceTree = "<group>";
@@ -248,7 +249,6 @@
 				4CA2F93429F31DE500B6A60B /* TableCell.xib */,
 				4CC0A35229F1F747003B311D /* ResultsTableController.swift */,
 				4CA2F92B29F2FF8700B6A60B /* TrendingMoviesViewController+Restore.swift */,
-				4CA2F92E29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -399,6 +399,7 @@
 				4C9E3F8129F84B37000B7A96 /* ApiTest.swift in Sources */,
 				4C9E3F7429F711CC000B7A96 /* FakeMovieApi.swift in Sources */,
 				4C9E3F7D29F763D4000B7A96 /* ResultTableViewControllerTest.swift in Sources */,
+				4CACA5F429F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift in Sources */,
 				4C9E3F6829F6DE94000B7A96 /* TrendingMoviesInteractorMock.swift in Sources */,
 				4C9E3F7129F70CB5000B7A96 /* UIVIewControllerSpy.swift in Sources */,
 				4C56782729F6D8D500D5FA23 /* TrendingMoviesPresenterTest.swift in Sources */,
@@ -422,7 +423,6 @@
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				4CA2F93829F4601500B6A60B /* TabBarControllerModel.swift in Sources */,
-				4CA2F92F29F3043600B6A60B /* TrendingMoviesViewController+Updating.swift in Sources */,
 				4CBDB6F329F1061E000AF2FA /* TabBarController.swift in Sources */,
 				4C6C4ED529F0F46400FA634E /* TrendingMoviesInteractor.swift in Sources */,
 				4C6C4ED129F0F46400FA634E /* TrendingMoviesViewController.swift in Sources */,

@@ -11,6 +11,7 @@ protocol ListMovieProtocol {
     var id: Int { get set }
     var title: String { get set }
     var posterPath: String { get set }
+    var urlImage: URL? { get }
 }
 
 /// Estructura que contine la información que se usara en la vista
@@ -30,9 +31,15 @@ struct Movie: Codable, ListMovieProtocol {
     var title: String
     ///Path en donde se encuentra la imagen del poster de una pelicula 
     var posterPath: String
+    ///URL del poster de la pelicula
+    var urlImage: URL?{
+        return URL(string: ApiConstans.baseUrlImage + posterPath)
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, title
         case posterPath = "poster_path"
     }
+    
+
 }

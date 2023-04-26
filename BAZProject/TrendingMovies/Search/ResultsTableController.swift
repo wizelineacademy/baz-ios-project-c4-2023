@@ -20,7 +20,14 @@ final class ResultsTableController: UITableViewController, ResultTableForMoviesP
     ///Idetificador de la celda
     var tableViewCellIdentifier = "cellID"
     ///Arreglo de ListMovieProtocol  que contiene los resultados a desplegar de la busqueda
-    var filteredProducts: [ListMovieProtocol] = []
+    var filteredProducts: [ListMovieProtocol] = []{
+        didSet{
+            DispatchQueue.main.async { [weak self] in
+                self?.resultsLabel.text = "Número de elementos encontrados: \(self?.filteredProducts.count ?? 0)"
+                self?.tableView.reloadData()
+            }
+        }
+    }
     
     // MARK: ViewController Lifecycle
     
@@ -40,14 +47,7 @@ final class ResultsTableController: UITableViewController, ResultTableForMoviesP
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath)
         let movie = filteredProducts[indexPath.row]
-        
         cell.textLabel?.text = movie.title
-        guard let url = URL(string: ApiConstans.baseUrlImage + movie.posterPath) else { return UITableViewCell()}
-        UIImage().loadFrom(url: url) { image in
-            DispatchQueue.main.async {
-                cell.imageView?.image = image
-            }
-        }
         return cell
     }
 

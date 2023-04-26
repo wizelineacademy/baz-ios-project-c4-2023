@@ -29,4 +29,6 @@ final class ApiTest: XCTestCase {
         let error = ApiError.defaultError
         XCTAssertEqual(error.localizedDescription, "Error por defecto")
     }
+    
+    
 }

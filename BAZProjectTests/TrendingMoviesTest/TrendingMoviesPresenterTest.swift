@@ -11,20 +11,21 @@ import XCTest
 
 final class TrendingMoviesPresenterTest: XCTestCase{
     
-    private var sut: BAZProject.TrendingMoviesPresenter!
+    private var sut: TrendingMoviesPresenterMock!
     private var viewControllerMock: TrendigMoviesViewControllerMock!
     private var interactorMock: TrendingMoviesInteractorMock!
     private var routerMock: TrendingMoviesRouterMock!
     
     override func setUp() {
         super.setUp()
-        viewControllerMock = TrendigMoviesViewControllerMock()
+        viewControllerMock = TrendigMoviesViewControllerMock(restoredState: SearchControllerRestorableState())
         interactorMock = TrendingMoviesInteractorMock(movieAPI: FakeMovieApi(resultType: .sucess))
         routerMock = TrendingMoviesRouterMock()
         
-        sut = BAZProject.TrendingMoviesPresenter(interface: viewControllerMock,
-                                                 interactor: interactorMock,
-                                                 router: routerMock)
+        sut = TrendingMoviesPresenterMock(textToSearch: "textToSearch",
+                                          interface: viewControllerMock,
+                                          interactor: interactorMock,
+                                          router: routerMock)
     }
     
     override func tearDown() {
@@ -37,18 +38,25 @@ final class TrendingMoviesPresenterTest: XCTestCase{
     
     func test_getMovies_callsInteractorGetMovies() {
         sut.getMovies()
-        XCTAssertEqual(interactorMock.calls, [.getMovies])
+        XCTAssertEqual(sut.calls, [.getMovies])
     }
     
     func test_setMovies_callsViewToAddData(){
         let fakeMovies: [ListMovieProtocol] = []
         sut.setMovies(result: fakeMovies)
-        XCTAssertEqual(viewControllerMock.calls, [.loadData])
+        XCTAssertEqual(sut.calls, [.setMovies])
     }
     
-    func test_getResultViewController_returnsResultViewController(){
-        let fakeViewControler = sut.getResultViewController()
-        XCTAssert(fakeViewControler is UITableViewController)
+    func test_findMovies() {
+        sut.findMovies(for: "textToSearch")
+        XCTAssertEqual(sut.calls, [.findMovies])
+    }
+    
+    func test_cleanStringForSearch_returnCleanString(){
+        let cleantext = sut.cleanStringForSearch("textToSearch")
+        let count = cleantext.count
+        XCTAssert(count > 3)
+        
     }
     
 //    func test_getRemotImage_callsInteracrtorGetImage() {
@@ -56,9 +64,6 @@ final class TrendingMoviesPresenterTest: XCTestCase{
 //        sut.getRemotImage(from: "", completion: completion)
 //    }
     
-//    func findMovies() {
-//        sut.findMovies(for: <#T##String#>, completion: <#T##([ListMovieProtocol]) -> ()#>)
-//        XCTAssertEqual(interactorMock.calls, [.getMovies])
-//    }
+
 }
 

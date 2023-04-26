@@ -31,9 +31,4 @@ final class TrendingMoviesRouter: TrendingMoviesWireframeProtocol {
         
         return view
     }
-    ///Funcion que regresa el ResultTableViewController que despliega los resultados de busqueda
-    func getResultViewController() -> UIViewController{
-        guard let viewController: ResultsTableController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResultsTableController") as? ResultsTableController else { return UIViewController()}
-        return viewController
-    }
 }

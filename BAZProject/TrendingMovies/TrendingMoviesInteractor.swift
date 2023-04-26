@@ -14,14 +14,15 @@ extension TrendingMoviesInteractorProtocol{
     ///Metodo que regresa la url necesaria para consumir el Api de MovieDB
     ///- Returns: Devuelve una URLRequest
     func getMoviesUrlRequest() -> URLRequest?{
-        return URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)
+        guard let url = URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey) else { return nil }
+        return URLRequest(url: url)
     }
     ///Metodo que regresa la url necesaria para consumir el Api de MovieDB de acuerdo a un criterio de busqueda
     ///- Parameters:
     /// - searchString: Criterio de busqueda
     ///- Returns: Devuelve una URLRequest
     func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?{
-        let stringToSearch = "&query=\(searchString.addingPercentEncoding(withAllowedCharacters: .whitespacesAndNewlines)?.replacingOccurrences(of: " ", with: "") ?? "")"
+        let stringToSearch = "&query=\(searchString.replacingOccurrences(of: " ", with: "") )"
         guard let url = URL(string: ApiConstans.baseURL + ApiConstans.search + ApiConstans.apiKey + stringToSearch) else { return nil}
         return URLRequest(url: url)
     }
@@ -44,48 +45,26 @@ final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
     func getMovies() {
         guard let urlRequest = getMoviesUrlRequest() else { return }
-        
         movieAPI.fetch(request: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
                 print(fail)
             case .success(let response):
-                guard let movies = response?.results else {
-                    print(ApiError.defaultError)
-                    return
-                }
-                self?.presenter?.setMovies(result: movies)
+                self?.presenter?.setMovies(result: response?.results ?? [])
             }
         }
     }
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies de acuerdo a criterio de busqueda
-    func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ()) {
-        if !string.isEmpty && string.count > 3{
-            guard let request = getSearchMoviewUrlRequest(searchString: string) else { return }
-            movieAPI.fetch(request: request) {(result: Result<MovieResult?, Error>) in
-                switch result {
-                case .failure(let fail):
-                    print(fail)
-                case .success(let response):
-                    guard let movies = response?.results else {
-                        print(ApiError.defaultError)
-                        return
-                    }
-                    completion(movies)
-                }
+    func findMovies(for string: String) {
+        guard let request = getSearchMoviewUrlRequest(searchString: string) else { return }
+        movieAPI.fetch(request: request) {(result: Result<MovieResult?, Error>) in
+            switch result {
+            case .failure(let fail):
+                print(fail)
+            case .success(let response):
+                self.presenter?.loadFindMovies(movies: response?.results ?? [])
             }
         }
-    }
-    /**
-        Funcion que obtiene una imagen del servidor y regresa un`UIImage`
-      - Parameters:
-        - url: La URL de la .Imagen
-        - completion:  Retorna un UIImage .
-      - Returns: UIImage con la imagen descargada del servidor
-    */
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
-        guard let url = URL(string: ApiConstans.baseUrlImage + stringURL) else { return }
-        UIImage().loadFrom(url: url, completion: completion)
     }
     
 }

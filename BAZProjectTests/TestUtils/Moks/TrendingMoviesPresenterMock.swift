@@ -11,34 +11,54 @@ import UIKit
 
 enum TrendingMoviesPresenterCalls{
     case getMovies
-    case getRemotImage
+    case setMovies
     case getResultViewController
     case findMovies
+    case loadFindMovies
+    case cleanStringForSearch
 }
 
 final class TrendingMoviesPresenterMock: TrendingMoviesPresenterProtocol{
 
+    
+
     var calls: [TrendingMoviesPresenterCalls] = []
+    var interface: TrendigMoviesViewControllerMock? = TrendigMoviesViewControllerMock(restoredState: SearchControllerRestorableState())
+    var interactor: TrendingMoviesInteractorProtocol?
+    var router: TrendingMoviesWireframeProtocol
+    var textToSearch: String?
+    
+    
+    init(textToSearch: String? = nil, interface: TrendingMoviesViewProtocol? = nil, interactor: TrendingMoviesInteractorProtocol? = nil, router: TrendingMoviesWireframeProtocol) {
+        self.textToSearch = textToSearch
+        self.interface = interface as? TrendigMoviesViewControllerMock
+        self.interactor = interactor
+        self.router = router
+        self.interactor = interactor
+        self.router = router
+    }
     
     func getMovies() {
         calls.append(.getMovies)
     }
     
     func setMovies(result: [BAZProject.ListMovieProtocol]) {
-        calls.append(.getRemotImage)
+        calls.append(.setMovies)
     }
     
-    func getResultViewController() -> UIViewController {
-        calls.append(.getResultViewController)
-        return UIViewController() as! TrendingMoviesViewController
-    }
-    
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
-        calls.append(.getRemotImage)
-    }
-    
-    func findMovies(for string: String, completion: @escaping ([BAZProject.ListMovieProtocol]) -> ()) {
+    func findMovies(for string: String?) {
+        self.textToSearch = string
+        interactor?.findMovies(for: string ?? "")
         calls.append(.findMovies)
+    }
+    
+    func loadFindMovies(movies: [BAZProject.ListMovieProtocol]) {
+        calls.append(.loadFindMovies)
+    }
+    
+    func cleanStringForSearch(_ string: String?) -> String {
+        calls.append(.cleanStringForSearch)
+        return string ?? ""
     }
 
 }

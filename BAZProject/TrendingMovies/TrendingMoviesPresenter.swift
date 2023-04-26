@@ -17,7 +17,6 @@ final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
     var interactor: TrendingMoviesInteractorProtocol?
     /// Intancia del Router  del modulo VIPER Trending Movies
     private let router: TrendingMoviesWireframeProtocol
-
     /// Inicializador del Presenter del modulo VIPER de Trending Movies
     /// - parameters:
     ///    - interface: View del modulo ViPER
@@ -38,17 +37,23 @@ final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
     func setMovies(result: [ListMovieProtocol]) {
         view?.loadData(movies: result)
     }
-    ///Funcion que llama al router para obtener el ResultTableViewController que despliega los resultados de busqueda
-    func getResultViewController() -> UIViewController {
-        return router.getResultViewController()
-    }
-    ///Funcion que llama al interactor para obtener las las imagenes de los posters de peliculas del la api de MovieDB
-    func getRemotImage(from stringURL: String, completion: @escaping (UIImage?) -> ()) {
-        interactor?.getRemotImage(from: stringURL, completion: completion)
-    }
     ///Funcion que llama al interactor para obtener las las peliculas deacuerdo a un criterio de busqueda del la api de MovieDB
-    func findMovies(for string: String, completion: @escaping ([ListMovieProtocol]) -> ()) {
-        interactor?.findMovies(for: string, completion: completion)
+    func findMovies(for string: String?) {
+        interactor?.findMovies(for: cleanStringForSearch(string))
     }
+    /// Limpia el texto a buscar
+    /// - parameters:
+    ///    - string: String
+    func cleanStringForSearch(_ string: String?) -> String {
+        return string?.count ?? 0 > 3 ? string ?? "" : ""
+    }
+    /// Inicializa los valores para desplegar la busqueda en ResultsTableController
+    /// - parameters:
+    ///    - movies: Movies
+    func loadFindMovies(movies: [ListMovieProtocol]) {
+        view?.resultsTableController?.filteredProducts = movies
+    }
+    
+
     
 }

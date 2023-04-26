@@ -30,9 +30,9 @@ extension TrendingMoviesViewController{
         super.encodeRestorableState(with: coder)
         
         coder.encode(navigationItem.title!, forKey: RestorationKeys.viewControllerTitle.rawValue)
-        coder.encode(searchController.isActive, forKey: RestorationKeys.searchControllerIsActive.rawValue)
-        coder.encode(searchController.searchBar.isFirstResponder, forKey: RestorationKeys.searchBarIsFirstResponder.rawValue)
-        coder.encode(searchController.searchBar.text, forKey: RestorationKeys.searchBarText.rawValue)
+        coder.encode(searchController?.isActive, forKey: RestorationKeys.searchControllerIsActive.rawValue)
+        coder.encode(searchController?.searchBar.isFirstResponder, forKey: RestorationKeys.searchBarIsFirstResponder.rawValue)
+        coder.encode(searchController?.searchBar.text, forKey: RestorationKeys.searchBarText.rawValue)
     }
     
     override func decodeRestorableState(with coder: NSCoder) {
@@ -43,6 +43,6 @@ extension TrendingMoviesViewController{
         navigationItem.title! = decodedTitle
         restoredState.wasActive = coder.decodeBool(forKey: RestorationKeys.searchControllerIsActive.rawValue)
         restoredState.wasFirstResponder = coder.decodeBool(forKey: RestorationKeys.searchBarIsFirstResponder.rawValue)
-        searchController.searchBar.text = coder.decodeObject(forKey: RestorationKeys.searchBarText.rawValue) as? String
+        searchController?.searchBar.text = coder.decodeObject(forKey: RestorationKeys.searchBarText.rawValue) as? String
     }
 }
