@@ -41,7 +41,7 @@ extension MasterMovieTableViewController {
     /// Returns: Void.
     func configureTable() {
         let nib = UINib(nibName: "MovieTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier:"movieCell")
+        tableView.register(nib, forCellReuseIdentifier: MovieTableViewCell.identifier)
     }
 }
 
@@ -63,7 +63,7 @@ extension MasterMovieTableViewController {
 extension MasterMovieTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell()}
         
         cell.delegate = self
         
