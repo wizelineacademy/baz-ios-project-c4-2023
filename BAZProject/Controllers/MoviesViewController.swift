@@ -33,7 +33,7 @@ extension MoviesViewController {
 
      - Returns: Void.
     */
-    func setupView() -> Void {
+    private func setupView() -> Void {
         /**
          Creates an array of `UIAction` items representing different filter options.
          The `handler` closure of each item applies a filter to the view controller.
