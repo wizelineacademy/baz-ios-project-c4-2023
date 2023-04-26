@@ -20,9 +20,8 @@ struct Resource<T> {
 }
 
 final class MovieAPI {
-    /**
-      Loading a resource and parsing it into a generic type T.
-    */
+
+    /// Loading a resource and parsing it into a generic type T.
     func load<T>(resource: Resource<T>, completion: @escaping (T?) -> ()) {
         
         guard let url =  resource.url else { return }

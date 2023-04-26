@@ -34,10 +34,9 @@ extension MoviesViewController {
      - Returns: Void.
     */
     private func setupView() -> Void {
-        /**
-         Creates an array of `UIAction` items representing different filter options.
-         The `handler` closure of each item applies a filter to the view controller.
-        */
+
+        /// Creates an array of `UIAction` items representing different filter options.
+        /// The `handler` closure of each item applies a filter to the view controller.
         var menuItems: [UIAction] {
             return [
                 UIAction(title: "Treanding",   handler: { [weak self] _ in self?.applyFilter(.trending)   }),
