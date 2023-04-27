@@ -15,19 +15,21 @@ enum NetworkEnvironment {
 }
 
 public enum MovieApi {
-    case recommended(id: Int)
+    case trending(page: Int)
+    case nowPlaying(page: Int)
     case pupular(page: Int)
-    case newMovies(page: Int)
-    case video(id:Int)
+    case topRated(page: Int)
+    case upcoming(page: Int)
+    case newMovies(page: Int) // TODO: (SDA) Erase this case
 }
 
 extension MovieApi: EndPointType {
     // TODO: (SDA) Maybe we do not need environment
     var environmentBaseURL: String {
         switch NetworkManager.environment {
-        case .production: return "https://api.themoviedb.org/3/movie/" // TODO: (SDA) This is the good one
+        case .production: return "https://api.themoviedb.org/3/" // TODO: (SDA) This is the good one
         case .qa: return "http://qa.api.themoviedb.org/3/movie/"
-        case .staging: return "http://staging.api.themoviedb.org/3/movie/"
+        default: return ""
         }
     }
     
@@ -38,14 +40,18 @@ extension MovieApi: EndPointType {
     
     var path: String {
         switch self {
-        case .recommended(let id):
-            return "\(id)/recomendations"
+        case .trending:
+            return "trending/movie/day"
+        case .nowPlaying:
+            return "movie/now_playing"
         case .pupular:
-            return "popular"
+            return "movie/popular"
+        case .topRated:
+            return "movie/top_rated"
+        case .upcoming:
+            return "movie/upcoming"
         case .newMovies:
-            return "now_playing"
-        case .video(let id):
-            return "\(id)/videos"
+            return "movie/now_playing" // TODO: (SDA) Erase this case
         }
     }
     
@@ -55,11 +61,35 @@ extension MovieApi: EndPointType {
     
     var task: HTTPTask {
         switch self {
+        case .trending(let page):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
+        case .nowPlaying(let page):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
+        case .pupular(let page):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
+        case .topRated(let page):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
+        case .upcoming(let page):
+            return .requestParameters(bodyParameters: nil, bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
         case .newMovies(let page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
-                                      urlParameters: ["page": page,
-                                                      "api_key": NetworkManager.MovieApiKey])
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": page])
         default:
             return .request
         }

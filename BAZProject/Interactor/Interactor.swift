@@ -7,46 +7,67 @@
 
 import Foundation
 
-///Enumeration that stores the diferent urls used for the project
-enum serviceUrls: String {
-    case trending = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-}
+/////Enumeration that stores the diferent urls used for the project
+//enum serviceUrls: String {
+//    case trending = "https://api.themoviedb.org/3/trending/movie/day?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+//}
 
 class Interactor: PresenterToInteractor {
     
     // MARK: Variables
     var presenter: InteractorToPresenter?
+    var networkManager = NetworkManager()
     
-    func consultTheMovieApi() {
-        
-        let urlString = (serviceUrls.trending.rawValue)
-        guard let url = URL(string: urlString) else {
-            // TODO: (SDA) Presentar un error al formar la url
-            return
-        }
-        
-        let urlRequest = URLRequest(url: url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) { data, urlResponse, error in
-            if let error = error {
-                // TODO: (SDA) Presentar error en el request
-                return
-            }
-            guard let data = data,
-                  let response = try? JSONDecoder().decode(MovieApiResult.self, from: data) else {
-                // TODO: (SDA) Presentar un error al decodificar la información
-                return
-            }
-            guard let movies = response.results else { return }
-            self.presenter?.manageResponse(results: movies)
-        }
-        task.resume()
-    }
-    
-    // MARK: PresenterToInteractor methods
+    // MARK: Comformance PresenterToInteractorProtocol
     func getMoviesData() {
-        self.consultTheMovieApi()
+        networkManager.getTrendingMovies(page: 1){ movies, error in
+            if let error = error {
+                // TODO: (SDA) Presentar error
+                print(error)
+                return
+            }
+            guard let trendingMovies = movies else { return }
+            self.presenter?.trendingMovies = trendingMovies
+        }
+        
+        networkManager.getNowPlayingMovies(page: 1) { movies, error in
+            if let error = error {
+                // TODO: (SDA) Presentar error
+                print(error)
+                return
+            }
+            guard let nowPlayingMovies = movies else { return }
+            self.presenter?.nowPlayingMovies = nowPlayingMovies
+        }
+        
+        networkManager.getPopularMovies(page: 1){ movies, error in
+            if let error = error {
+                // TODO: (SDA) Presentar error
+                print(error)
+                return
+            }
+            guard let popularMovies = movies else { return }
+            self.presenter?.popularMovies = popularMovies
+        }
+        
+        networkManager.getTopRatedMovies(page: 1){ movies, error in
+            if let error = error {
+                // TODO: (SDA) Presentar error
+                print(error)
+                return
+            }
+            guard let topRatedMovies = movies else { return }
+            self.presenter?.topRatedMovies = topRatedMovies
+        }
+        
+        networkManager.getUpcomingMovies(page: 1){ movies, error in
+            if let error = error {
+                // TODO: (SDA) Presentar error
+                print(error)
+                return
+            }
+            guard let upcomingMovies = movies else { return }
+            self.presenter?.upcomingMovies = upcomingMovies
+        }
     }
-    
-    
 }
