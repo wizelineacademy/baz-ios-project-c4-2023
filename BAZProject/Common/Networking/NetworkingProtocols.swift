@@ -9,17 +9,11 @@ import Foundation
  
 protocol RequestSessionProtocol {
     
-    func customData(for request: URLRequest) async throws -> (Data, URLResponse)
+    func data(for request: URLRequest) async throws -> (Data, URLResponse)
     
 }
 
-extension URLSession: RequestSessionProtocol {
-    
-    func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
-        return try await data(for: request)
-    }
-    
-}
+extension URLSession: RequestSessionProtocol { }
 
 protocol EndpointProtocol {
     
