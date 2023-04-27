@@ -27,6 +27,14 @@ class HomeInteractor: HomeInteractorInputProtocol {
         return entity?.strNavBarTitle
     }
     
+    /**
+     Get fetch movies..
+     
+     Fetch movies for the data section with the MovieAPI services. Result is returned through the Present.
+     
+     - Parameters:
+        - section: Int that represent the section index.
+     */
     func setSectionsData() {
         for section in Sections.allCases {
             arrMovieListSections.append(Section(title: section.title))
@@ -34,6 +42,14 @@ class HomeInteractor: HomeInteractorInputProtocol {
         presenter?.updateSectionsData(arrMovieListSections)
     }
     
+    /**
+     Get fetch movies.
+     
+     Fetch movies for the data section with the MovieAPI services. Result is returned through the Present.
+     
+     - Parameters:
+        - section: Int that represent the section index.
+     */
     func fetchMovies(for section: Int) {
         switch section {
         case 0:
@@ -60,20 +76,41 @@ class HomeInteractor: HomeInteractorInputProtocol {
         }
     }
     
+    /**
+     Search movies for string key.
+     
+     - Parameters:
+        - text: A string that represents the keyword(s) for the search.
+     */
     func searchMovies(for text: String) {
         movieAPI?.searchMoviesfor(keyword: text, completion: { movies in
             self.arrMoviesFound = movies
         })
     }
     
+    /**
+     Get movie info object.
+     
+     - Parameters:
+        - indexPath: Represents the section and index of the movie to return its information.
+     */
     func getMovie(for indexPath: IndexPath) -> MovieInfo? {
         arrMovieListSections[safe: indexPath.section]?.movies[safe: indexPath.row]
     }
     
+    /**
+     Return the number of items found for the search section.
+     */
     func getMovieFoundCount() -> Int? {
         arrMoviesFound?.count
     }
     
+    /**
+     Get movie info fot the search section.
+     
+     - Parameters:
+        - indexPath: Represent the section and index of the movie to search info.
+     */
     func getMovieFound(for index: Int) -> MovieFoundInfo? {
         arrMoviesFound?[safe: index]
     }
