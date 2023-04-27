@@ -13,6 +13,8 @@ protocol ListMoviesProtocol {
     var title: String? { get set }
     var poster_path: String? { get set }
     var overview: String? { get set }
+    var vote_average: Double? { get set }
+
 }
 // Estructura para parsear las peliculas
 struct Movie: Decodable, ListMoviesProtocol {
@@ -20,6 +22,7 @@ struct Movie: Decodable, ListMoviesProtocol {
     var title: String?
     var poster_path: String?
     var overview: String?
+    var vote_average: Double?
 }
 
 struct Movies: Decodable {
