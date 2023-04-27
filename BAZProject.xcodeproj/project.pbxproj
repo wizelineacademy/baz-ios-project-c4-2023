@@ -35,10 +35,10 @@
 		E0D4832F29F8842200B6D8C3 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4832E29F8842200B6D8C3 /* Commons.swift */; };
 		E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */; };
 		E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833429F9819E00B6D8C3 /* DetailsView.swift */; };
-		E0D4833729F981B000B6D8C3 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */; };
 		E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833A29F9C2C900B6D8C3 /* Box.swift */; };
 		E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833C29F9CC9600B6D8C3 /* customCell.swift */; };
 		E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */; };
+		E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,10 +83,10 @@
 		E0D4832E29F8842200B6D8C3 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		E0D4833429F9819E00B6D8C3 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
 		E0D4833A29F9C2C900B6D8C3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		E0D4833C29F9CC9600B6D8C3 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +174,7 @@
 		E08EFD3529D3ABB30056EF16 /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				E0D4833C29F9CC9600B6D8C3 /* customCell.swift */,
 				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 				E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */,
@@ -204,7 +205,6 @@
 			children = (
 				E0D4833A29F9C2C900B6D8C3 /* Box.swift */,
 				E0D4832E29F8842200B6D8C3 /* Commons.swift */,
-				E0D4833C29F9CC9600B6D8C3 /* customCell.swift */,
 				E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */,
 			);
 			path = Commons;
@@ -215,7 +215,7 @@
 			children = (
 				E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */,
 				E0D4833429F9819E00B6D8C3 /* DetailsView.swift */,
-				E0D4833629F981B000B6D8C3 /* DetailsView.storyboard */,
+				E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */,
 			);
 			path = DetailsMovies;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 			files = (
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
 				E045961B29EF459600712F8C /* SearchView.storyboard in Resources */,
-				E0D4833729F981B000B6D8C3 /* DetailsView.storyboard in Resources */,
+				E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,

@@ -13,6 +13,16 @@ final class TrendingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        
+        //TODO: Revisar con menor
+        let apikey = "asldfjasñldkjfñasdljf"
+        let data = Data(apikey.utf8)
+        let account = "themoviedb.org"
+        let service = "apikey"
+//        KeychainHelper.standard.genericSave(data, service: service, account: account)
+        let result = KeychainHelper.standard.genericRead(service: service, account: account, type: String.self)
+        print("alv: \(result ?? "")")
+        
     }
 
     /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
@@ -73,5 +83,11 @@ extension TrendingViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! customCell
         cell.setInfo(trendingModel, indexPath: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewmodel = DetailsViewModel(movieDetail: trendingModel.getAllInfoMoview(index: indexPath.row))
+        let vc = DetailsView(ViewModel: viewmodel)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -8,5 +8,13 @@
 import Foundation
 
 class DetailsViewModel {
+    
+    var movieDetail: Box<ListMoviesProtocol>
+    
+    init(movieDetail: ListMoviesProtocol) {
+        self.movieDetail = Box(value: movieDetail)
+    }
+    
+    
 
 }

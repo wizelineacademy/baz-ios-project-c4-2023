@@ -9,7 +9,7 @@ import Foundation
 
 
 final class TrendingViewModel: MoviesListProtocol {
-   
+    
     var movies = Box(value: [ListMoviesProtocol]())
     private var movieAPI: MovieAPI
     
@@ -37,5 +37,9 @@ final class TrendingViewModel: MoviesListProtocol {
     
     func getPathImage(index: Int) -> String? {
         movies.value[index].poster_path
+    }
+    
+    func getAllInfoMoview(index: Int) -> ListMoviesProtocol {
+        movies.value[index]
     }
 }
