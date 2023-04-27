@@ -26,7 +26,7 @@ final class TrendingViewModelTests: XCTestCase {
     }
     
     func test_GetMovies_MoviesCountShouldBeThree() {
-        let movies = [Movie(title: "title1"), Movie(title: "title2"), Movie(title: "title3")]
+        let movies = [MediaDataObject(title: "title1"), MediaDataObject(title: "title2"), MediaDataObject(title: "title3")]
         let expectation = XCTestExpectation()
         
         sut.movies.bind {

@@ -10,7 +10,7 @@ import XCTest
 
 final class TrendingMoviesViewControllerTests: XCTestCase {
     
-    private func configureSut(with movies: [Movie] = []) -> TrendingMoviesViewController {
+    private func configureSut(with movies: [MediaDataObject] = []) -> TrendingMoviesViewController {
         let viewModel = TrendingMoviesViewModelMock(movies: movies, remoteData: TrendingRemoteDataMock())
         let sut = TrendingMoviesViewController(viewModel: viewModel)
         return sut
@@ -18,7 +18,7 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
 
     func test_NumberOfRowsInSection_ShouldBeThree() {
         //Given
-        let movies = [Movie(title: "title1"), Movie(title: "title2"), Movie(title: "title3")]
+        let movies = [MediaDataObject(title: "title1"), MediaDataObject(title: "title2"), MediaDataObject(title: "title3")]
         let sut = configureSut(with: movies)
         
         //When
@@ -31,7 +31,7 @@ final class TrendingMoviesViewControllerTests: XCTestCase {
     
     func test_NumberOfRowsInSection_ShouldBeZero() {
         //Given
-        let movies = [Movie]()
+        let movies = [MediaDataObject]()
         let sut = configureSut(with: movies)
         
         //When

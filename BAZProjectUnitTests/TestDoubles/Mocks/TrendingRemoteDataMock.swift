@@ -9,10 +9,10 @@
 
 class TrendingRemoteDataMock: TrendingMoviesRemoteData {
     
-    var movies: [Movie]?
+    var movies: [MediaDataObject]?
     var error: Error?
     
-    override func getMovies() async throws -> [Movie]? {
+    override func getMovies() async throws -> [MediaDataObject]? {
         if let error = error {
             throw error
         } else {
@@ -20,7 +20,7 @@ class TrendingRemoteDataMock: TrendingMoviesRemoteData {
         }
     }
     
-    override func searchMovies(_ searchText: String) async throws -> [Movie]? {
+    override func searchMovies(_ searchText: String) async throws -> [MediaDataObject]? {
         if let error = error {
             throw error
         } else {

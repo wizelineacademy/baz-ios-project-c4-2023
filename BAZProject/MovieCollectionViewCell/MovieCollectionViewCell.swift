@@ -12,13 +12,17 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var ratingLabel: UILabel!
-    @IBOutlet private weak var categoryLabel: UILabel!
 
-    func setCell(with model: MovieCollectionViewCellModel) {
-        posterImageView.image = UIImage(named: model.posterName ?? "poster") ?? UIImage(named: "poster")
+    func setCell(with model: MediaItem) {
+        let fallBackPoster = model.mediaType?.defaultImage ?? ""
+        posterImageView.image = UIImage(named: model.posterPath ?? fallBackPoster) ?? UIImage(named: fallBackPoster)
         titleLabel.text = model.title
-        ratingLabel.text = model.rating
-        categoryLabel.text = model.category
+        if let rating = model.rating {
+            ratingLabel.text = "\(rating)"
+            ratingLabel.superview?.isHidden = false
+        } else {
+            ratingLabel.superview?.isHidden = true
+        }
     }
     
 }

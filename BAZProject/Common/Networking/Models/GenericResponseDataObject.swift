@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct MovieArray: Decodable, Equatable {
+struct GenericResponseDataObject: Decodable, Equatable {
     
-    var results: [Movie]?
+    var results: [MediaDataObject]?
     
 }

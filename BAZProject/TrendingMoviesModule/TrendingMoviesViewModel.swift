@@ -9,11 +9,11 @@ import UIKit
 
 class TrendingMoviesViewModel {
     
-    var movies = Box([Movie]())
+    var movies = Box([MediaDataObject]())
     var error: Box<Error> = Box(nil)
     var remoteData: TrendingMoviesRemoteData
     
-    init(movies: [Movie] = [], remoteData: TrendingMoviesRemoteData) {
+    init(movies: [MediaDataObject] = [], remoteData: TrendingMoviesRemoteData) {
         self.movies.value = movies
         self.remoteData = remoteData
     }
@@ -40,9 +40,14 @@ class TrendingMoviesViewModel {
         error.value?.localizedDescription
     }
     
-    func getCellConfiguration(row: Int) -> MovieCollectionViewCellModel {
+    func getCellConfiguration(row: Int) -> MediaItem {
         let movie = movies.value?[row]
-        return MovieCollectionViewCellModel(title: movie?.title)
+        var rating: String? = nil
+        if let average = movie?.voteAverage {
+            rating = String(round(average * 10) / 10)
+        }
+        let mediaModel = MediaItem(id: movie?.id, title: movie?.title, rating: rating, mediaType: MediaType(movie?.mediaType))
+        return mediaModel
     }
     
     func getRowCount() -> Int {
