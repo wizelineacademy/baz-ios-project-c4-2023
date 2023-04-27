@@ -74,7 +74,7 @@ class ActorItemAdapter: ReusableCollectionViewCell<Actor> {
     override var item: Actor!{
         didSet{
             let placeHolder = UIImage(named: "poster")
-            let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.profile_path)"
+            let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.profilePath ?? "")"
             imgvProfile.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)
             lblNameActor.text = item.name
             lblCharacterActor.text = item.character

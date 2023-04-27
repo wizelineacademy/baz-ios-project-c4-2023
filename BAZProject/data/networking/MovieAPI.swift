@@ -20,20 +20,14 @@ class MovieAPI {
             defer {
                 completion(movies)
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
+            guard let data = data else { return }
 
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let title = result.object(forKey: "title") as? String,
-                   let poster_path = result.object(forKey: "poster_path") as? String,
-                   let overview = result.object(forKey: "overview") as? String,
-                   let vote_average = result.object(forKey: "vote_average") as? Float,
-                   let release_date = result.object(forKey: "release_date") as? String {
-                    movies.append(Movie(id: id, title: title, poster_path: poster_path, overview: overview, vote_average: vote_average, release_date: release_date))
-                }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(MoviesResponse.self, from: data)
+                movies = response.results
+            } catch {
+                print("\(#function) Error decoding JSON: \(error)")
             }
         }.resume()
     }
@@ -47,20 +41,14 @@ class MovieAPI {
             defer {
                 completion(movies)
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
+            guard let data = data else { return }
 
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let title = result.object(forKey: "title") as? String,
-                   let poster_path = result.object(forKey: "poster_path") as? String,
-                   let overview = result.object(forKey: "overview") as? String,
-                   let vote_average = result.object(forKey: "vote_average") as? Float,
-                   let release_date = result.object(forKey: "release_date") as? String {
-                    movies.append(Movie(id: id, title: title, poster_path: poster_path, overview: overview, vote_average: vote_average, release_date: release_date))
-                }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(MoviesResponse.self, from: data)
+                movies = response.results
+            } catch {
+                print("\(#function) Error decoding JSON: \(error)")
             }
         }.resume()
     }
@@ -94,18 +82,14 @@ class MovieAPI {
             defer {
                 completion(characters)
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "cast") as? [NSDictionary]
-            else { return }
+            guard let result = data else { return }
 
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let name = result.object(forKey: "name") as? String,
-                   let profile_path = result.object(forKey: "profile_path") as? String,
-                   let character = result.object(forKey: "character") as? String {
-                    characters.append(Actor(id: id, name: name, profile_path: profile_path, character: character))
-                }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(ActorResponse.self, from: result)
+                characters = response.cast
+            } catch {
+                print("\(#function) Error decoding JSON: \(error)")
             }
         }.resume()
     }
@@ -119,19 +103,14 @@ class MovieAPI {
             defer {
                 completion(reviews)
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
+            guard let data = data else { return }
 
-            for result in results {
-                if let author = result.object(forKey: "author") as? String,
-                   let content = result.object(forKey: "content") as? String,
-                   let authorDetails = result.object(forKey:"author_details") as? [String: Any],
-                   let rating = authorDetails["rating"] as? Int,
-                   let created_at = result.object(forKey: "created_at") as? String {
-                    reviews.append(Review(author: author, content: content, rating: rating, created_at: created_at))
-                }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(ReviewResponse.self, from: data)
+                reviews = response.results
+            } catch {
+                print("\(#function) Error decoding JSON: \(error)")
             }
         }.resume()
     }
@@ -143,20 +122,14 @@ class MovieAPI {
             defer {
                 completion(movies)
             }
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-                  let results = json.object(forKey: "results") as? [NSDictionary]
-            else { return }
+            guard let data = data else { return }
 
-            for result in results {
-                if let id = result.object(forKey: "id") as? Int,
-                   let title = result.object(forKey: "title") as? String,
-                   let poster_path = result.object(forKey: "poster_path") as? String,
-                   let overview = result.object(forKey: "overview") as? String,
-                   let vote_average = result.object(forKey: "vote_average") as? Float,
-                   let release_date = result.object(forKey: "release_date") as? String {
-                    movies.append(Movie(id: id, title: title, poster_path: poster_path, overview: overview, vote_average: vote_average, release_date: release_date))
-                }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(MoviesResponse.self, from: data)
+                movies = response.results
+            } catch {
+                print("\(#function) Error decoding JSON: \(error)")
             }
         }.resume()
     }
@@ -174,11 +147,23 @@ class MovieAPI {
             else { return }
 
             for result in results {
-                if let _ = result.object(forKey: "id") as? Int,
-                   let name = result.object(forKey: "name") as? String {
+                if let name = result.object(forKey: "name") as? String {
                     keywords.append(name)
                 }
             }
+        }.resume()
+    }
+    
+    func request<T: Decodable>(url: URL, completion: @escaping ([T]) -> Void) {
+        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+            var items: [T] = []
+            defer {
+                completion(items)
+            }
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            guard let results = try? decoder.decode([T].self, from: data) else { return }
+            items = results
         }.resume()
     }
 }

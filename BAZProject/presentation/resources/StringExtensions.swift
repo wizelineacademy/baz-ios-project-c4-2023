@@ -14,7 +14,7 @@ extension String {
     ///  - Returns: Una instancia de `URL` creada a partir de la cadena de texto.
     func toUrl() -> URL {
         guard let url = URL(string: self) else {
-            fatalError("La cadena no es una URL válida.")
+            fatalError("La cadena no es una URL válida \(self).")
         }
         return url
     }

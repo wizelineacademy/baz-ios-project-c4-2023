@@ -79,7 +79,6 @@ extension SearchViewController: UISearchControllerDelegate {
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let query = searchController.searchBar.text ?? ""
-        print("updateSearchResults : \(query)")
         if query.isEmpty {
             searchViewModel?.sectionTitles = []
             updateTable()

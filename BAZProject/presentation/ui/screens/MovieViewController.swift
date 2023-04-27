@@ -34,7 +34,7 @@ class MovieViewController: ReusableViewController {
         let imgv = UIImageView()
         imgv.contentMode = .scaleToFill
         let placeHolder = UIImage(named: "poster")
-        let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(movieViewModel.movie.poster_path)"
+        let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(movieViewModel.movie.posterPath ?? "")"
         imgv.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)
         imgv.translatesAutoresizingMaskIntoConstraints = false
         return imgv
@@ -79,8 +79,8 @@ class MovieViewController: ReusableViewController {
     }()
     
     private lazy var skwVoteAndDate: StackVoteAndDate = {
-        let vote = movieViewModel.movie.vote_average
-        let date = movieViewModel.movie.release_date
+        let vote = movieViewModel.movie.voteAverage
+        let date = movieViewModel.movie.releaseDate
         let skw = StackVoteAndDate(voteAverange: vote, releaseDate: date)
         skw.translatesAutoresizingMaskIntoConstraints = false
         return skw

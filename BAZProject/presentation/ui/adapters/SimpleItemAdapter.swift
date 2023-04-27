@@ -17,7 +17,7 @@ class SimpleItemAdapter: ReusableTableViewCell<String> {
         lbl.font = UIFont(name: "ArialNarrow", size: sizeFont)
         lbl.font = UIFont.systemFont(ofSize: sizeFont)
         lbl.textColor = .black
-        lbl.textAlignment = .center
+        lbl.textAlignment = .left
         lbl.numberOfLines = 0
         lbl.sizeToFit()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,6 @@ class SimpleItemAdapter: ReusableTableViewCell<String> {
 
     private func lblKeywordConstraints() {
         addSubview(lblKeyword)
-        lblKeyword.centerXAnchor.constraint(equalTo:  centerXAnchor).isActive = true
         lblKeyword.topAnchor.constraint(equalTo: topAnchor, constant: .dim4).isActive = true
         lblKeyword.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim4).isActive = true
         lblKeyword.bottomAnchor.constraint(equalTo:  bottomAnchor, constant: -.dim4).isActive = true

@@ -37,10 +37,10 @@ class SearchViewModel {
             self.keywords = keywords
         }
         group.notify(queue: .main) {
-            if self.movies.count > 0 {
+            if self.movies.count > 0 && !self.sectionTitles.contains("Peliculas") {
                 self.sectionTitles.append("Peliculas")
             }
-            if self.keywords.count > 0 {
+            if self.keywords.count > 0 && !self.sectionTitles.contains("Otras sugerencias") {
                 self.sectionTitles.append("Otras sugerencias")
             }
             self.delegate?.searchResults()

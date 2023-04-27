@@ -54,7 +54,7 @@ class MovieItemAdapter: ReusableCollectionViewCell<Movie> {
     override var item: Movie!{
         didSet{
             let placeHolder = UIImage(named: "poster")
-            let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.poster_path)"
+            let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.posterPath ?? "")"
             imgvPorter.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)
             lblTitleMovie.text = item.title
         }

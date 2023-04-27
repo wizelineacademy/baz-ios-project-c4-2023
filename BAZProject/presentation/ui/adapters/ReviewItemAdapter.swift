@@ -93,7 +93,6 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
         lbl.textColor = .gray
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        //lbl.sizeToFit()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -112,8 +111,8 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
                 content = String(item.content.prefix(100)) + "..."
             }
             lblContentReview.text = content
-            lblRatingReview.text = "\(item.rating)"
-            lblDateReview.text = item.created_at
+            lblRatingReview.text = "\(item.rating ?? 0)"
+            lblDateReview.text = item.createdAt
         }
     }
 
