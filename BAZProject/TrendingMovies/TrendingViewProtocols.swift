@@ -8,8 +8,10 @@
 import Foundation
 
 protocol MoviesListProtocol {
-    var movies: [ListMoviesProtocol]? { get set }
-    func getmovies(_ Completion: @escaping () -> Void)
+    var movies: Box<[ListMoviesProtocol]> { get set }
+    func getmovies(category: categoriesFilter)
     func getMovieCount() -> Int
     func getTitle(index: Int) -> String?
+    func bindMovies(_ listener: @escaping () -> Void)
+    func getPathImage(index: Int) -> String? 
 }
