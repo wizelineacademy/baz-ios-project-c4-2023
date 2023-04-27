@@ -11,14 +11,37 @@ public protocol DetailPresentationLogic {
     var view: DetailSearchDisplayLogic? { get }
     
     func currentInfo(movie: ImageTextTableViewProtocol?)
+    func serviceDidFailed(with error: ErrorApi)
+    func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?)
 }
 
 public class DetailPresenter {
     public weak var view: DetailSearchDisplayLogic?
+    
+    public init() {}
 }
 
 extension DetailPresenter: DetailPresentationLogic {
     public func currentInfo(movie: ImageTextTableViewProtocol?) {
         view?.updateTable(withCurrentInfo: movie)
+    }
+    
+    public func serviceDidFailed(with error: ErrorApi) {
+        view?.serviceDidFailed(with: error.getMessage())
+    }
+    
+    public func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?) {
+        guard let result = result else { return }
+        var arrToView: [ImageTextTableViewProtocol] = [ImageTextTableViewProtocol]()
+        switch result.count {
+        case 0:
+            arrToView = [EmptySearch()]
+        case 1, 2:
+            arrToView = result
+        default:
+            arrToView = Array(result.prefix(upTo: 2))
+        }
+        
+        view?.reloadSimilarMovies(with: arrToView)
     }
 }

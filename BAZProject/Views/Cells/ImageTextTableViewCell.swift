@@ -34,7 +34,7 @@ public class ImageTextTableViewCell: UITableViewCell {
         lblTitle.text = info.strTitle
         lblOverView.numberOfLines = iNumber
         lblOverView.text = info.strOverView
-        lblDate.text = String.localizedStringWithFormat(NSLocalizedString("Release date: %@", comment: "Release date: %@"), info.strDate ?? "")
+        lblDate.text = info.strDate
         if let urlConfiguration = info.urlConfiguration {
             downloadTask = imgPoster.loadImage(urlConfiguration: urlConfiguration)
         }

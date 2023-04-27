@@ -13,7 +13,7 @@ class CleanFactory {
         let view = SearchViewController(nibName: "SearchViewController", bundle: nil)
         let interactor = SearchInteractor()
         let presenter = SearchPresenter()
-        let serviceApi = ServiceApi<MovieService>(configuration: URLConfiguration(path: .noPath))
+        let serviceApi = ServiceApi(configuration: URLConfiguration(path: .noPath))
         view.interactor = interactor
         interactor.presenter = presenter
         interactor.networkingSearch = serviceApi
@@ -26,8 +26,10 @@ class CleanFactory {
         let interactor = DetailInteractor()
         interactor.setUpEntity(withMovie: movie)
         let presenter = DetailPresenter()
+        let serviceAPi = ServiceApi(configuration: URLConfiguration(path: .noPath))
         view.interactor = interactor
         interactor.presenter = presenter
+        interactor.networking = serviceAPi
         presenter.view = view
         return view
     }

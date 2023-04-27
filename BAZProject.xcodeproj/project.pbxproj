@@ -33,6 +33,7 @@
 		336DDA9C29E8D32900E9ACBF /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336DDA9B29E8D32900E9ACBF /* MockService.swift */; };
 		336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 336DDAA029E8D79500E9ACBF /* responseMock.json */; };
 		339D474B29EDAA2F00B68FA9 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339D474D29EDAA2F00B68FA9 /* SearchViewController.xib */; };
+		339ED99529FAD18000A1A538 /* similarMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 339ED99429FAD18000A1A538 /* similarMock.json */; };
 		33ACA7A929ECFE0F00FD0421 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7A729ECFE0F00FD0421 /* SearchViewController.swift */; };
 		33ACA7AC29ECFF7B00FD0421 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AB29ECFF7B00FD0421 /* SearchInteractor.swift */; };
 		33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AD29ECFF8800FD0421 /* SearchPresenter.swift */; };
@@ -96,6 +97,7 @@
 		336DDA9B29E8D32900E9ACBF /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		336DDAA029E8D79500E9ACBF /* responseMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseMock.json; sourceTree = "<group>"; };
 		339D474C29EDAA2F00B68FA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchViewController.xib; sourceTree = "<group>"; };
+		339ED99429FAD18000A1A538 /* similarMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = similarMock.json; sourceTree = "<group>"; };
 		33ACA7A729ECFE0F00FD0421 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		33ACA7AB29ECFF7B00FD0421 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		33ACA7AD29ECFF8800FD0421 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				3327F7ED29EEEE3100F46759 /* searchVoid.json */,
 				3327F7EB29EEE57C00F46759 /* responseSearchMock.json */,
 				336DDAA029E8D79500E9ACBF /* responseMock.json */,
+				339ED99429FAD18000A1A538 /* similarMock.json */,
 				336DDA9B29E8D32900E9ACBF /* MockService.swift */,
 			);
 			path = NetworkingMocks;
@@ -435,6 +438,7 @@
 				3327F7EC29EEE57C00F46759 /* responseSearchMock.json in Resources */,
 				3327F7EE29EEEE3100F46759 /* searchVoid.json in Resources */,
 				336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */,
+				339ED99529FAD18000A1A538 /* similarMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

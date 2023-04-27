@@ -33,6 +33,6 @@ public struct Movie: ImageTextTableViewProtocol {
     }
     
     public var strDate: String? {
-        return release_date
+        return String.localizedStringWithFormat(NSLocalizedString("Release date: %@", comment: "Release date: %@"), release_date ?? "")
     }
 }

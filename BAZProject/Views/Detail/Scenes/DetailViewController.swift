@@ -11,6 +11,8 @@ public protocol DetailSearchDisplayLogic: AnyObject {
     var interactor: DetailBusinessLogic? { get }
     
     func updateTable(withCurrentInfo info: ImageTextTableViewProtocol?)
+    func reloadSimilarMovies(with arrSimilar: [ImageTextTableViewProtocol])
+    func serviceDidFailed(with strMessage: String)
 }
 
 public class DetailViewController: UIViewController {
@@ -27,11 +29,17 @@ public class DetailViewController: UIViewController {
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
         }
     }
+    private var arrSimilar: [ImageTextTableViewProtocol]?{
+        didSet {
+            tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
+        }
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         interactor?.getCurrentData()
+        interactor?.searchForSimilar()
     }
     
     private func registerCells() {
@@ -43,6 +51,17 @@ extension DetailViewController: DetailSearchDisplayLogic {
     public func updateTable(withCurrentInfo info: ImageTextTableViewProtocol?) {
         currentData = info
     }
+    
+    public func serviceDidFailed(with strMessage: String) {
+        let alert = UIAlertController(title: "", message: strMessage, preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: NSLocalizedString("Accept", comment: "Accept"), style: .default)
+        alert.addAction(acceptAction)
+        present(alert, animated: true)
+    }
+    
+    public func reloadSimilarMovies(with arrSimilar: [ImageTextTableViewProtocol]) {
+        self.arrSimilar = arrSimilar
+    }
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -50,10 +69,21 @@ extension DetailViewController: UITableViewDataSource {
         return 3
     }
     
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 2:
+            return NSLocalizedString("Similar movies", comment: "")
+        default:
+            return nil
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
+        case 2:
+            return arrSimilar?.count ?? 0
         default:
             return 0
         }
@@ -62,16 +92,19 @@ extension DetailViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return configureFirstSection(forRow: indexPath)
+            return configure(forMovie: currentData, andRow: indexPath)
+        case 2:
+            let movie = arrSimilar?[indexPath.row]
+            return configure(forMovie: movie, andRow: indexPath)
         default:
             break
         }
         return UITableViewCell()
     }
     
-    private func configureFirstSection(forRow indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tblMovieInfo.dequeueReusableCell(withIdentifier: CellTypes.imageTextCell.rawValue, for: indexPath) as? ImageTextTableViewCell, let info = currentData else { return UITableViewCell() }
-        cell.setInfo(info, numberOfLines: 0)
+    private func configure(forMovie movie: ImageTextTableViewProtocol?, andRow indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tblMovieInfo.dequeueReusableCell(withIdentifier: CellTypes.imageTextCell.rawValue, for: indexPath) as? ImageTextTableViewCell, let movie = movie else { return UITableViewCell() }
+        cell.setInfo(movie, numberOfLines: indexPath.section == 0 ? 0 : 2)
         return cell
     }
 }

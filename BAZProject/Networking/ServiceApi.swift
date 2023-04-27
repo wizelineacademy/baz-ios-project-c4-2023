@@ -23,7 +23,7 @@ public enum ErrorApi: Error {
     case badURL
     case badJSON
     case badResponse
-    
+    case badParameter
     
     public func getMessage() -> String {
         switch self {
@@ -33,11 +33,13 @@ public enum ErrorApi: Error {
             return NSLocalizedString("There was a problem parsing the json", comment: "There was a problem parsing the json")
         case .badResponse:
             return NSLocalizedString("The service didn't respond", comment: "The service didn't respond")
+        case .badParameter:
+            return NSLocalizedString("The parameter was null", comment: "The parameter was null")
         }
     }
 }
 
-public class ServiceApi<T: Decodable>: NetworkingProtocol {
+public class ServiceApi: NetworkingProtocol {
     public var configuration : URLConfiguration
     
     public init(configuration: URLConfiguration) {

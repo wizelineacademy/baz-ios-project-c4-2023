@@ -16,7 +16,7 @@ class TrendingRouter: TrendingRouterProtocol {
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
         let interactor: TrendingInteractorInputProtocol = TrendingInteractor()
         let router: TrendingRouterProtocol = TrendingRouter()
-        let serviceApi: NetworkingProtocol = ServiceApi<MovieService>(configuration: URLConfiguration(path: .trending))
+        let serviceApi: NetworkingProtocol = ServiceApi(configuration: URLConfiguration(path: .trending))
         
         view.presenter = presenter
         presenter.view = view

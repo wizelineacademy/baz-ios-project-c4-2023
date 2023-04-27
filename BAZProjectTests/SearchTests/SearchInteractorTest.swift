@@ -58,7 +58,7 @@ final class SearchInteractorTest: XCTestCase {
     func testServiceError() {
         //Given
         let errorExpected: SearchEnumError = .serviceProblem
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "Matrix")
@@ -69,7 +69,7 @@ final class SearchInteractorTest: XCTestCase {
     func testServiceBringResults() {
         //Given
         let iTotal = 4
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseSearchMock"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseSearchMock"))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "Matrix")
@@ -80,7 +80,7 @@ final class SearchInteractorTest: XCTestCase {
     
     func testServiceRespondButResultsWereEmpty() {
         //Given
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "jaklfakdja")

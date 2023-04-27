@@ -29,7 +29,7 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strHostVoid = ""
         let configuration = URLConfiguration(strHost: strHostVoid, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)
@@ -44,7 +44,7 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strBadHost = "Esto es un mal host"
         let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)
@@ -57,7 +57,7 @@ final class ServiceApiTests: XCTestCase {
     func testSerachImplemented() {
         //Given
         let configuration = URLConfiguration(path: .trending)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)

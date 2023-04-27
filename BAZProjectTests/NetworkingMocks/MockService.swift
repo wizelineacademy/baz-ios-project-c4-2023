@@ -8,7 +8,7 @@
 import Foundation
 import BAZProject
 
-class MockService<T: Decodable>: NetworkingProtocol {
+class MockService: NetworkingProtocol {
     var configuration: URLConfiguration
     private var caseToTest: MockCasesToTest
     

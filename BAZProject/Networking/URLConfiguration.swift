@@ -36,7 +36,7 @@ public struct URLConfiguration {
         components.host = strHost
         components.path = path.getString()
         switch path {
-        case .trending:
+        case .trending, .similarMovies(_):
             components.queryItems = configureKeyAndLanguage()
         case .search(let strQuery):
             var arrComponents = configureKeyAndLanguage()
@@ -58,6 +58,7 @@ public enum Paths {
     case trending
     case image(strFile: String)
     case search(strQuery: String)
+    case similarMovies(strMovieId: String)
     case noPath
     
     func getString() -> String {
@@ -68,6 +69,8 @@ public enum Paths {
             return "/t/p/w500\(strFile)"
         case .search(strQuery: _):
             return "/3/search/movie"
+        case .similarMovies(let strMovieId):
+            return "/3/movie/\(strMovieId)/recommendations"
         case .noPath:
             return ""
         }

@@ -15,3 +15,5 @@
 "Please, provide a term to search." = "Por favor proporcione un término para buscar.";
 "No results found" = "No se encontraron resultados.";
 "Release date: %@" = "Fecha de lanzamiento: %@";
+"The parameter was null" = "El parámetro venía vacío";
+"Similar movies" = "Películas similares";
