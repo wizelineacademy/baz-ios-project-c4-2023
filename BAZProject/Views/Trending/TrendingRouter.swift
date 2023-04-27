@@ -30,7 +30,7 @@ class TrendingRouter: TrendingRouterProtocol {
     }
     
     func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?) {
-        if let view = view as? TrendingView{
+        if let view = view as? TrendingView {
             let alert = UIAlertController(title: "Error", message: strMessage, preferredStyle: .alert)
             let action = UIAlertAction(title: "Aceptar", style: .default)
             alert.addAction(action)
@@ -38,4 +38,10 @@ class TrendingRouter: TrendingRouterProtocol {
         }
     }
     
+    func goToDetail(for movie: Movie, from view: TrendingViewProtocol?) {
+        if let view = view as? TrendingView {
+            let destinationVC = CleanFactory.createDetailModule(withMovie: movie)
+            view.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+    }
 }

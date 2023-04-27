@@ -20,5 +20,9 @@ public struct EmptySearch: ImageTextTableViewProtocol {
         return nil
     }
     
+    public var strDate: String? {
+        return nil
+    }
+    
     public init() {}
 }

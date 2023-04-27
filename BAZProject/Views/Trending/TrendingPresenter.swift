@@ -32,6 +32,12 @@ extension TrendingPresenter: TrendingPresenterProtocol {
     func getMovie(forRow iRow: Int) -> Movie? {
         return interactor?.getMovie(forRow: iRow)
     }
+    
+    func goToDetail(forIndex iRow: Int) {
+        if let movie = getMovie(forRow: iRow) {
+            router?.goToDetail(for: movie, from: view)
+        }
+    }
 }
 
 extension TrendingPresenter: TrendingInteractorOutputProtocol {

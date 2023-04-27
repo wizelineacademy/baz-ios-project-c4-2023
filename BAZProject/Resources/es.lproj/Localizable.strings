@@ -14,3 +14,4 @@
 "Search by movie or artist" = "Busca por película o artista.";
 "Please, provide a term to search." = "Por favor proporcione un término para buscar.";
 "No results found" = "No se encontraron resultados.";
+"Release date: %@" = "Fecha de lanzamiento: %@";

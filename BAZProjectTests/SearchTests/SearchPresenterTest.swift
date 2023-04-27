@@ -58,7 +58,7 @@ final class SearchPresenterTest: XCTestCase {
     
     func testSuccessfullSearchArrCount() {
         //Given
-        let arrResponse = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción"), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción")]
+        let arrResponse = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción", release_date: ""), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción", release_date: "")]
         //When
         sut?.searchDidBrougntResults(in: arrResponse)
         //Then

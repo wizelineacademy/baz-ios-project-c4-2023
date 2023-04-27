@@ -51,6 +51,7 @@ protocol TrendingPresenterProtocol: AnyObject {
     func viewDidLoad()
     func getNumberOfRows() -> Int?
     func getMovie(forRow iRow: Int) -> Movie?
+    func goToDetail(forIndex iRow: Int)
 }
 
 //MARK: - Router
@@ -60,4 +61,5 @@ protocol TrendingRouterProtocol: AnyObject {
     static func createTrendingModule(withEntity entity: TrendingEntity) -> UIViewController
     
     func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?)
+    func goToDetail(for movie: Movie, from view: TrendingViewProtocol?)
 }

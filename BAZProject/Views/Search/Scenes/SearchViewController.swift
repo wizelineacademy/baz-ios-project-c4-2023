@@ -16,7 +16,6 @@ public protocol SearchDisplayLogic: AnyObject {
 
 public class SearchViewController: UIViewController {
     public var interactor: SearchBusinessLogic?
-    weak var router: SearchRouter?
     private var arrCellInfo: [ImageTextTableViewProtocol]?{
         didSet {
             tblResults.reloadData()
@@ -80,6 +79,10 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let info = arrCellInfo?[indexPath.row] as? Movie {
+            let destinationVC = CleanFactory.createDetailModule(withMovie: info)
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
     }
 }
 

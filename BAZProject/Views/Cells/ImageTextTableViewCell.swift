@@ -10,29 +10,33 @@ import UIKit
 public protocol ImageTextTableViewProtocol {
     var strTitle: String { get }
     var strOverView: String? { get }
+    var strDate: String? { get }
     var urlConfiguration: URLConfiguration? { get }
 }
 
-class ImageTextTableViewCell: UITableViewCell {
-    @IBOutlet weak var lblTitle: UILabel!
+public class ImageTextTableViewCell: UITableViewCell {
+    @IBOutlet public weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblOverView: UILabel!
     @IBOutlet weak var imgPoster: UIImageView!
     private var downloadTask: URLSessionDownloadTask?
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         downloadTask?.cancel()
         downloadTask = nil
         lblTitle.text = ""
+        lblDate.text = ""
         imgPoster.image = UIImage(named: "poster")
     }
     
-    func setInfo(_ info: ImageTextTableViewProtocol) {
+    func setInfo(_ info: ImageTextTableViewProtocol, numberOfLines iNumber: Int = 2) {
         lblTitle.text = info.strTitle
+        lblOverView.numberOfLines = iNumber
         lblOverView.text = info.strOverView
+        lblDate.text = String.localizedStringWithFormat(NSLocalizedString("Release date: %@", comment: "Release date: %@"), info.strDate ?? "")
         if let urlConfiguration = info.urlConfiguration {
             downloadTask = imgPoster.loadImage(urlConfiguration: urlConfiguration)
         }
-        
     }
 }
