@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gTV-IL-0wX" customClass="DetailsCollectionViewCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="532"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="565" height="532"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-MI-NbB">
+                        <rect key="frame" x="8" y="500" width="549" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-cp-S5p">
+                        <rect key="frame" x="50" y="49.000000000000028" width="465" height="425.66666666666674"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="AK3-MI-NbB" firstAttribute="top" secondItem="Pxl-cp-S5p" secondAttribute="bottom" constant="25" id="MdD-Us-QHq"/>
+                <constraint firstAttribute="bottom" secondItem="AK3-MI-NbB" secondAttribute="bottom" constant="8" id="Ps5-vZ-OIp"/>
+                <constraint firstAttribute="trailing" secondItem="AK3-MI-NbB" secondAttribute="trailing" constant="8" id="Rhs-az-fB1"/>
+                <constraint firstItem="AK3-MI-NbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="eVX-Lk-QVZ"/>
+                <constraint firstItem="Pxl-cp-S5p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="gHs-eL-viL"/>
+                <constraint firstItem="AK3-MI-NbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="nQx-4B-btb"/>
+                <constraint firstItem="Pxl-cp-S5p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="oQs-D9-tCa"/>
+                <constraint firstAttribute="bottom" secondItem="AK3-MI-NbB" secondAttribute="bottom" constant="8" id="qOC-kE-xsB"/>
+                <constraint firstAttribute="trailing" secondItem="Pxl-cp-S5p" secondAttribute="trailing" constant="50" id="xc6-gQ-prz"/>
+                <constraint firstAttribute="trailing" secondItem="AK3-MI-NbB" secondAttribute="trailing" constant="8" id="zZa-ab-vJo"/>
+            </constraints>
+            <size key="customSize" width="565" height="532"/>
+            <connections>
+                <outlet property="imageView" destination="Pxl-cp-S5p" id="0yw-fc-106"/>
+                <outlet property="txtLabel" destination="AK3-MI-NbB" id="PGI-kF-aDU"/>
+            </connections>
+            <point key="canvasLocation" x="626.71755725190837" y="431.69014084507046"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+    </resources>
+</document>

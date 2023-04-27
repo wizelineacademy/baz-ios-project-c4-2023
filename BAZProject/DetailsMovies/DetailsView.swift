@@ -31,10 +31,11 @@ class DetailsView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let nib = UINib(nibName: "DetailsCollectionViewCell", bundle: nil)
         
-        actorsCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        similarCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell1")
-        recomendationsCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell2")
+        actorsCV.register(nib, forCellWithReuseIdentifier: "cell")
+        similarCV.register(nib, forCellWithReuseIdentifier: "cell")
+        recomendationsCV.register(nib , forCellWithReuseIdentifier: "cell")
 
         //TODO: mandar a llamar todas las peticiones
         //dispatch Group
@@ -64,21 +65,19 @@ extension DetailsView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DetailsCollectionViewCell
         switch collectionView {
         case actorsCV:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-            cell.backgroundColor = .black
+            cell.txtLabel.text = "Holi"
+            cell.imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(ViewModel.movieDetail.value.poster_path ?? "")")!)
             return cell
         case similarCV:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath)
             cell.backgroundColor = .blue
             return cell
         case recomendationsCV:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell2", for: indexPath)
             cell.backgroundColor = .yellow
             return cell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
             return cell
         }
     }

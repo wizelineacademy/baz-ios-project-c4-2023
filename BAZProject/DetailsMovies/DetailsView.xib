@@ -131,7 +131,6 @@
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="WXj-3u-PNa" secondAttribute="trailing" constant="8" id="4lJ-ap-4H9"/>
                                                 <constraint firstAttribute="bottom" secondItem="WXj-3u-PNa" secondAttribute="bottom" constant="8" id="SGG-Qs-Y34"/>
@@ -167,7 +166,6 @@
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             <constraints>
                                                 <constraint firstItem="SeS-t0-hNs" firstAttribute="top" secondItem="pnz-G5-8cH" secondAttribute="bottom" constant="4" id="Byg-6V-ovE"/>
                                                 <constraint firstItem="pnz-G5-8cH" firstAttribute="leading" secondItem="Qtj-4x-maM" secondAttribute="leading" constant="8" id="Jxe-wk-buj"/>
@@ -203,7 +201,6 @@
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="TaK-16-x3H" secondAttribute="trailing" constant="8" id="1qI-NS-pGd"/>
                                                 <constraint firstItem="fDU-bJ-U99" firstAttribute="leading" secondItem="3Rk-TT-MFE" secondAttribute="leading" constant="8" id="Bce-i1-obd"/>
@@ -261,15 +258,6 @@
         <image name="star.leadinghalf.filled" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

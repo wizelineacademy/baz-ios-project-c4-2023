@@ -39,6 +39,8 @@
 		E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833C29F9CC9600B6D8C3 /* customCell.swift */; };
 		E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */; };
 		E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */; };
+		E0D4834829FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */; };
+		E0D4834929FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		E0D4833C29F9CC9600B6D8C3 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
+		E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,8 @@
 				E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */,
 				E0D4833429F9819E00B6D8C3 /* DetailsView.swift */,
 				E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */,
+				E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */,
+				E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */,
 			);
 			path = DetailsMovies;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
 				E045961B29EF459600712F8C /* SearchView.storyboard in Resources */,
 				E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */,
+				E0D4834929FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
@@ -330,6 +337,7 @@
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				E0AB763C29EF603E004074B5 /* ServiceProtocols.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				E0D4834829FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */,
 				E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */,
