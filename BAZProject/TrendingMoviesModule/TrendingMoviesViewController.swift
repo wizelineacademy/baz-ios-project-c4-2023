@@ -49,7 +49,7 @@ class TrendingMoviesViewController: UICollectionViewController {
     // MARK: Visuals
     
     private func setCollectionView() {
-        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TrendingCollectionViewCell")
+        collectionView.register(UINib(nibName: "MediaCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MediaCollectionViewCell")
     }
     
     private func presentError() {
@@ -66,11 +66,11 @@ class TrendingMoviesViewController: UICollectionViewController {
 extension TrendingMoviesViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getRowCount()
+        return viewModel.getRowCount(for: section)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return viewModel.getSectionCount()
     }
     
 }
@@ -80,8 +80,8 @@ extension TrendingMoviesViewController {
 extension TrendingMoviesViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
-        let cellModel = viewModel.getCellConfiguration(row: indexPath.item)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCollectionViewCell", for: indexPath) as? MediaCollectionViewCell else { return UICollectionViewCell() }
+        let cellModel = viewModel.getCellConfiguration(indexPath: indexPath)
         cell.setCell(with: cellModel)
         return cell
     }

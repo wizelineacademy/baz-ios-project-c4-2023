@@ -14,5 +14,8 @@ struct MediaDataObject: Decodable, Equatable {
     var posterPath: String?
     var mediaType: String?
     var voteAverage: Float?
+    var name: String?
+    var releaseDate: String?
+    var profilePath: String?
     
 }

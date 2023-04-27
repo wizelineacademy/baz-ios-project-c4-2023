@@ -12,7 +12,8 @@ struct MediaItem {
     var id: Int?
     var posterPath: String?
     var title: String?
-    var rating: String?
+    var rating: Float?
     var mediaType: MediaType?
+    var releaseDate: Date?
     
 }
