@@ -135,4 +135,50 @@ class MovieAPI {
             }
         }.resume()
     }
+    
+    func searchMoviesForKeyword(_ query: String, completion: @escaping ([Movie]) -> Void) {
+        let url = Consts.END_POINTS.SEARCH_MOVIES.setParameters(old: "{keyword}", new: query).toUrl()
+        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+            var movies: [Movie] = []
+            defer {
+                completion(movies)
+            }
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
+                  let results = json.object(forKey: "results") as? [NSDictionary]
+            else { return }
+
+            for result in results {
+                if let id = result.object(forKey: "id") as? Int,
+                   let title = result.object(forKey: "title") as? String,
+                   let poster_path = result.object(forKey: "poster_path") as? String,
+                   let overview = result.object(forKey: "overview") as? String,
+                   let vote_average = result.object(forKey: "vote_average") as? Float,
+                   let release_date = result.object(forKey: "release_date") as? String {
+                    movies.append(Movie(id: id, title: title, poster_path: poster_path, overview: overview, vote_average: vote_average, release_date: release_date))
+                }
+            }
+        }.resume()
+    }
+    
+    func searchForKeyword(_ query: String, completion: @escaping ([String]) -> Void) {
+        let url = Consts.END_POINTS.SEARCH_FOR_KEYWORD.setParameters(old: "{keyword}", new: query).toUrl()
+        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+            var keywords: [String] = []
+            defer {
+                completion(keywords)
+            }
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
+                  let results = json.object(forKey: "results") as? [NSDictionary]
+            else { return }
+
+            for result in results {
+                if let _ = result.object(forKey: "id") as? Int,
+                   let name = result.object(forKey: "name") as? String {
+                    keywords.append(name)
+                }
+            }
+        }.resume()
+    }
 }

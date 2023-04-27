@@ -11,7 +11,6 @@ import UIKit
 class ReusableTableViewController<T: ReusableTableViewCell<U>, U>: ReusableViewController {
 
     // MARK: - Variables
-    // MARK: - Variables
     var reusableDataSource = ReusableTableViewDataSource<T, U>()
     var reusableDelegateAndFlowLayout = ReusableTableViewDelegate()
 

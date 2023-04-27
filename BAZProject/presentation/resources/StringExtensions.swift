@@ -29,6 +29,10 @@ extension String {
     }
     
     func setParameters(old: String, new: String) -> String {
-        self.replacingOccurrences(of: old, with: new)
+        let allowedChars = CharacterSet.urlQueryAllowed
+        guard let encode = self.replacingOccurrences(of: old, with: new).addingPercentEncoding(withAllowedCharacters: allowedChars) else {
+            fatalError("La cadena no es válida.")
+        }
+        return encode
     }
 }

@@ -28,5 +28,8 @@ struct Consts {
         
         static let MOVIE_CAST = URL +  "/movie/{movieID}/casts" + PARAMS_DEFAULT
         static let MOVIE_REVIEWS = URL + "/movie/{movieID}/reviews" + PARAMS_API_KEY
+        
+        static let SEARCH_MOVIES = URL + "/search/movie" + PARAMS_DEFAULT + "&query={keyword}"
+        static let SEARCH_FOR_KEYWORD = URL + "/search/keyword" + PARAMS_DEFAULT + "&query={keyword}"
     }
 }
