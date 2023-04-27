@@ -42,8 +42,8 @@ class TrendingMoviesViewModel {
     
     func getCellConfiguration(row: Int) -> MediaItem {
         let movie = movies.value?[row]
-        var rating: String? = nil
-        if let average = movie?.voteAverage {
+        var rating: String?
+        if let average = movie?.voteAverage, average != 0 {
             rating = String(round(average * 10) / 10)
         }
         let mediaModel = MediaItem(id: movie?.id, title: movie?.title, rating: rating, mediaType: MediaType(movie?.mediaType))
