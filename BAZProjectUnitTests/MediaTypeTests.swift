@@ -6,30 +6,62 @@
 //
 
 import XCTest
+import BAZProject
 
 final class MediaTypeTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_init_ShouldGetTVMediaType() {
+        let expectedType = MediaType.tv
+        let mediaType: MediaType?
+        
+        mediaType = MediaType("tv")
+        
+        XCTAssertEqual(expectedType, mediaType)
+        XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
+        XCTAssertEqual(expectedType.itemTitle, mediaType?.itemTitle)
+        XCTAssertEqual(expectedType.groupTitle, mediaType?.groupTitle)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_init_ShouldGetMoviesMediaType() {
+        let expectedType = MediaType.movie
+        let mediaType: MediaType?
+        
+        mediaType = MediaType("movie")
+        
+        XCTAssertEqual(expectedType, mediaType)
+        XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
+        XCTAssertEqual(expectedType.itemTitle, mediaType?.itemTitle)
+        XCTAssertEqual(expectedType.groupTitle, mediaType?.groupTitle)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_init_ShouldGetPersonMediaType() {
+        let expectedType = MediaType.person
+        let mediaType: MediaType?
+        
+        mediaType = MediaType("person")
+        
+        XCTAssertEqual(expectedType, mediaType)
+        XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
+        XCTAssertEqual(expectedType.itemTitle, mediaType?.itemTitle)
+        XCTAssertEqual(expectedType.groupTitle, mediaType?.groupTitle)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_init_ShouldGetNilMediaTypeViaNilArgument() {
+        let mediaType: MediaType?
+        
+        mediaType = MediaType(nil)
+        
+        XCTAssertNil(mediaType)
+        
+    }
+    
+    func test_init_ShouldGetNilMediaTypeViaRawValueNotFound() {
+        let mediaType: MediaType?
+        
+        mediaType = MediaType("other")
+        
+        XCTAssertNil(mediaType)
     }
 
 }

@@ -14,7 +14,7 @@ class RequestSessionMock: RequestSessionProtocol {
     
     var urlResponse = HTTPURLResponse(url: URL(string: "file://")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     
-    func customData(for request: URLRequest) async throws -> (Data, URLResponse) {
+    func data(for request: URLRequest) async throws -> (Data, URLResponse) {
         return (Data(), urlResponse)
     }
 }
