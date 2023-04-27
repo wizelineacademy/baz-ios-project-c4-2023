@@ -1,26 +1,25 @@
 //
-//  TrendingPresenter.swift
-//  BAZProject
+//  TrendingPresenterMock.swift
+//  BAZProjectTests
 //
-//  Created by bvelazquezva on 19/04/23.
-//  
+//  Created by Ben Frank V. on 25/04/23.
 //
 
 import Foundation
 import UIKit
 
-class TrendingPresenter  {
+class TrendingPresenterMock  {
     
     // MARK: Properties
     weak var view: TrendingViewProtocol?
     var interactor: TrendingInteractorInputProtocol?
     var router: TrendingRouterProtocol?
     
-    var entity = TrendingEntity()
+    var result: [Movie] = []
     
 }
 
-extension TrendingPresenter: TrendingPresenterProtocol {
+extension TrendingPresenterMock: TrendingPresenterProtocol {
     
     // TODO: implement presenter methods
     func viewDidLoad() {
@@ -33,11 +32,9 @@ extension TrendingPresenter: TrendingPresenterProtocol {
     }
 }
 
-extension TrendingPresenter: TrendingInteractorOutputProtocol {
+extension TrendingPresenterMock: TrendingInteractorOutputProtocol {
     func onReceivedMovies(_ result: [Movie]) {
-        self.entity.result = result
-        self.view?.updateData(with: result)
-        self.view?.updataView()
+        self.result = result
     }
     
     func showMoviesError(_ error: Error) {

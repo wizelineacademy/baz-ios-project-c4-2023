@@ -22,7 +22,7 @@ protocol GeneralTaskCoordinatorProtocol{
     var queryKey: String {get}
     var queryValue: String {get set}
     var params: [URLQueryItem] {get set}
-    func get<T: Decodable>(_ type: URLType, callback: @escaping (Result<T,Error>) -> Void)
+    func get<T: Decodable>(_ urlType: URLType, callback: @escaping (Result<T,Error>) -> Void)
 }
 
 extension GeneralTaskCoordinatorProtocol {
@@ -75,14 +75,14 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         self.session = session
     }
     
-    func get<T: Decodable>(_ type: URLType = .generic, callback: @escaping (Result<T,Error>) -> Void) {
+    func get<T: Decodable>(_ urlType: URLType = .generic, callback: @escaping (Result<T,Error>) -> Void) {
         let urlString: String = "\(urlBase)\(urlPath)"
         let apiQuery = URLQueryItem(name: apiKey, value: api)
         let lenguageQuery = URLQueryItem(name: languageKey, value: languageValueDefault)
         let regionQuery = URLQueryItem(name: regionKey, value: regionValueDefault)
         var params: [URLQueryItem] = [apiQuery, lenguageQuery, regionQuery]
         
-        switch(type){
+        switch(urlType){
             case .generic:
                 params.append(URLQueryItem(name: pageKey, value: pageValueDefault))
             case .allCustom:

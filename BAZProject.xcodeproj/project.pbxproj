@@ -15,9 +15,46 @@
 		B5A19F4E29F706B300ACD625 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */; };
 		B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F5129F7086600ACD625 /* GeneralServices.swift */; };
 		B5BE779129D75CF20077737A /* TrendingMovies.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BE779029D75CF20077737A /* TrendingMovies.json */; };
-		B5BE779929D7621B0077737A /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
 		B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */; };
-		B5BE779D29D767660077737A /* MovieApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779C29D767660077737A /* MovieApiMock.swift */; };
+		B5CCD72829F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD72729F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift */; };
+		B5CCD73C29F8874700DE3701 /* TrendingRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */; };
+		B5CCD73D29F8874700DE3701 /* TrendingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156629F09EDC00AEE166 /* TrendingInteractor.swift */; };
+		B5CCD73E29F8874700DE3701 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156A29F09EDC00AEE166 /* TrendingEntity.swift */; };
+		B5CCD73F29F8874700DE3701 /* BMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B0429F0677700A81AD8 /* BMTableViewCell.xib */; };
+		B5CCD74029F8874700DE3701 /* BMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357B0329F0677700A81AD8 /* BMTableViewCell.swift */; };
+		B5CCD74129F8874700DE3701 /* TrendingLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156329F09EDC00AEE166 /* TrendingLocalDataManager.swift */; };
+		B5CCD74229F8874700DE3701 /* BMTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357AFA29F0463C00A81AD8 /* BMTabBar.swift */; };
+		B5CCD74329F8874700DE3701 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */; };
+		B5CCD74429F8874700DE3701 /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
+		B5CCD74529F8874700DE3701 /* GeneralServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F5129F7086600ACD625 /* GeneralServices.swift */; };
+		B5CCD74629F8874700DE3701 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156529F09EDC00AEE166 /* TrendingProtocols.swift */; };
+		B5CCD74729F8874700DE3701 /* keysString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476929F250900089DBBB /* keysString.swift */; };
+		B5CCD74829F8874700DE3701 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357B1029F06FAE00A81AD8 /* TrendingTableViewCell.swift */; };
+		B5CCD74929F8874700DE3701 /* TrendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B0D29F06C7400A81AD8 /* TrendingViewController.xib */; };
+		B5CCD74A29F8874700DE3701 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156429F09EDC00AEE166 /* TrendingRouter.swift */; };
+		B5CCD74B29F8874700DE3701 /* TrendingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3357B1129F06FAE00A81AD8 /* TrendingTableViewCell.xib */; };
+		B5CCD74C29F8874700DE3701 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156229F09EDC00AEE166 /* TrendingPresenter.swift */; };
+		B5CCD74D29F8874700DE3701 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DC53329F757CF0078AEAD /* Movie.swift */; };
+		B5CCD74E29F8874700DE3701 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3357B0C29F06C7400A81AD8 /* TrendingViewController.swift */; };
+		B5CCD74F29F8874700DE3701 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */; };
+		B5CCD75029F887BB00DE3701 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC6029F0830C007A76D1 /* SearchEntity.swift */; };
+		B5CCD75129F887BB00DE3701 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5C29F0830C007A76D1 /* SearchInteractor.swift */; };
+		B5CCD75229F887BB00DE3701 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5829F0830C007A76D1 /* SearchPresenter.swift */; };
+		B5CCD75329F887BB00DE3701 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5A29F0830C007A76D1 /* SearchRouter.swift */; };
+		B5CCD75429F887BB00DE3701 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5B29F0830C007A76D1 /* SearchProtocols.swift */; };
+		B5CCD75529F887BB00DE3701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
+		B5CCD75629F887BB00DE3701 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
+		B5CCD75729F887BB00DE3701 /* SearchLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5929F0830C007A76D1 /* SearchLocalDataManager.swift */; };
+		B5CCD75829F887BB00DE3701 /* SearchRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309CC5E29F0830C007A76D1 /* SearchRemoteDataManager.swift */; };
+		B5CCD75929F887BB00DE3701 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476429F237100089DBBB /* SearchTableViewController.swift */; };
+		B5CCD75A29F887BB00DE3701 /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51D476529F237100089DBBB /* SearchTableViewController.xib */; };
+		B5CCD75C29F8887800DE3701 /* TrendingInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD75B29F8887800DE3701 /* TrendingInteractorMock.swift */; };
+		B5CCD75E29F8891700DE3701 /* TrendingPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD75D29F8891700DE3701 /* TrendingPresenterMock.swift */; };
+		B5CCD76029F88A1F00DE3701 /* SearchRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD75F29F88A1F00DE3701 /* SearchRemoteDataManagerMock.swift */; };
+		B5CCD76229F88A4600DE3701 /* SearchInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD76129F88A4600DE3701 /* SearchInteractorMock.swift */; };
+		B5CCD76429F88A6500DE3701 /* SearchPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD76329F88A6500DE3701 /* SearchPresenterMock.swift */; };
+		B5CCD76629F88DAC00DE3701 /* Search.json in Resources */ = {isa = PBXBuildFile; fileRef = B5CCD76529F88DAC00DE3701 /* Search.json */; };
+		B5CCD76929F8A51D00DE3701 /* TrendingViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD76829F8A51D00DE3701 /* TrendingViewControllerMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -70,7 +107,14 @@
 		B5A19F5129F7086600ACD625 /* GeneralServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServices.swift; sourceTree = "<group>"; };
 		B5BE779029D75CF20077737A /* TrendingMovies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrendingMovies.json; sourceTree = "<group>"; };
 		B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGeneralTaskCordinator.swift; sourceTree = "<group>"; };
-		B5BE779C29D767660077737A /* MovieApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiMock.swift; sourceTree = "<group>"; };
+		B5CCD72729F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManagerMock.swift; sourceTree = "<group>"; };
+		B5CCD75B29F8887800DE3701 /* TrendingInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractorMock.swift; sourceTree = "<group>"; };
+		B5CCD75D29F8891700DE3701 /* TrendingPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenterMock.swift; sourceTree = "<group>"; };
+		B5CCD75F29F88A1F00DE3701 /* SearchRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataManagerMock.swift; sourceTree = "<group>"; };
+		B5CCD76129F88A4600DE3701 /* SearchInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorMock.swift; sourceTree = "<group>"; };
+		B5CCD76329F88A6500DE3701 /* SearchPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterMock.swift; sourceTree = "<group>"; };
+		B5CCD76529F88DAC00DE3701 /* Search.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Search.json; sourceTree = "<group>"; };
+		B5CCD76829F8A51D00DE3701 /* TrendingViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewControllerMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,9 +179,10 @@
 		B5BE779229D75D710077737A /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */,
-				B5BE779029D75CF20077737A /* TrendingMovies.json */,
-				B5BE779C29D767660077737A /* MovieApiMock.swift */,
+				B5CCD71D29F881D700DE3701 /* Files */,
+				B5CCD71A29F8817500DE3701 /* Network */,
+				B5CCD71929F880DF00DE3701 /* Search */,
+				B5CCD71729F880AD00DE3701 /* Trending */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -154,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				B5A19F5129F7086600ACD625 /* GeneralServices.swift */,
-				B54DC53329F757CF0078AEAD /* Movie.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -162,8 +206,119 @@
 		B5BE779529D75E590077737A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B54DC53329F757CF0078AEAD /* Movie.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B5CCD71729F880AD00DE3701 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD76729F8A46A00DE3701 /* View */,
+				B5CCD72329F882BA00DE3701 /* Interactor */,
+				B5CCD72029F8825500DE3701 /* Presenter */,
+				B5CCD72429F882C900DE3701 /* DataManager */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
+		B5CCD71929F880DF00DE3701 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD72129F8829E00DE3701 /* Interactor */,
+				B5CCD71F29F8824800DE3701 /* Presenter */,
+				B5CCD72229F882AB00DE3701 /* DataManager */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B5CCD71A29F8817500DE3701 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD71B29F8818200DE3701 /* Base */,
+				B5CCD71C29F8818F00DE3701 /* Services */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B5CCD71B29F8818200DE3701 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B5CCD71C29F8818F00DE3701 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5CCD71D29F881D700DE3701 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE779029D75CF20077737A /* TrendingMovies.json */,
+				B5CCD76529F88DAC00DE3701 /* Search.json */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		B5CCD71F29F8824800DE3701 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD76329F88A6500DE3701 /* SearchPresenterMock.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B5CCD72029F8825500DE3701 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD75D29F8891700DE3701 /* TrendingPresenterMock.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B5CCD72129F8829E00DE3701 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD76129F88A4600DE3701 /* SearchInteractorMock.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B5CCD72229F882AB00DE3701 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD75F29F88A1F00DE3701 /* SearchRemoteDataManagerMock.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		B5CCD72329F882BA00DE3701 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD75B29F8887800DE3701 /* TrendingInteractorMock.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B5CCD72429F882C900DE3701 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD72729F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		B5CCD76729F8A46A00DE3701 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCD76829F8A51D00DE3701 /* TrendingViewControllerMock.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C30893A128A2F42B004B1860 = {
@@ -189,8 +344,8 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				B51D476829F24FFE0089DBBB /* Utils */,
 				D3357AF729F0458100A81AD8 /* Generics */,
+				B51D476829F24FFE0089DBBB /* Utils */,
 				D3DDE23D29D5F14300EF774D /* Network */,
 				D3357AF629F041B200A81AD8 /* Trending */,
 				D309CC5729F082E7007A76D1 /* Search */,
@@ -503,7 +658,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CCD74B29F8874700DE3701 /* TrendingTableViewCell.xib in Resources */,
+				B5CCD75A29F887BB00DE3701 /* SearchTableViewController.xib in Resources */,
+				B5CCD74F29F8874700DE3701 /* GeneralTableViewCell.xib in Resources */,
+				B5CCD73F29F8874700DE3701 /* BMTableViewCell.xib in Resources */,
+				B5CCD76629F88DAC00DE3701 /* Search.json in Resources */,
 				B5BE779129D75CF20077737A /* TrendingMovies.json in Resources */,
+				B5CCD74929F8874700DE3701 /* TrendingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,10 +708,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BE779929D7621B0077737A /* GeneralTaskCoordinator.swift in Sources */,
-				B5BE779D29D767660077737A /* MovieApiMock.swift in Sources */,
+				B5CCD74D29F8874700DE3701 /* Movie.swift in Sources */,
+				B5CCD73C29F8874700DE3701 /* TrendingRemoteDataManager.swift in Sources */,
+				B5CCD75229F887BB00DE3701 /* SearchPresenter.swift in Sources */,
+				B5CCD74C29F8874700DE3701 /* TrendingPresenter.swift in Sources */,
+				B5CCD73E29F8874700DE3701 /* TrendingEntity.swift in Sources */,
+				B5CCD74029F8874700DE3701 /* BMTableViewCell.swift in Sources */,
+				B5CCD74329F8874700DE3701 /* GeneralTableViewCell.swift in Sources */,
+				B5CCD75929F887BB00DE3701 /* SearchTableViewController.swift in Sources */,
+				B5CCD74829F8874700DE3701 /* TrendingTableViewCell.swift in Sources */,
+				B5CCD75529F887BB00DE3701 /* AppDelegate.swift in Sources */,
+				B5CCD74429F8874700DE3701 /* GeneralTaskCoordinator.swift in Sources */,
+				B5CCD75629F887BB00DE3701 /* SceneDelegate.swift in Sources */,
+				B5CCD75C29F8887800DE3701 /* TrendingInteractorMock.swift in Sources */,
+				B5CCD74A29F8874700DE3701 /* TrendingRouter.swift in Sources */,
+				B5CCD76929F8A51D00DE3701 /* TrendingViewControllerMock.swift in Sources */,
 				B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */,
+				B5CCD76029F88A1F00DE3701 /* SearchRemoteDataManagerMock.swift in Sources */,
+				B5CCD75329F887BB00DE3701 /* SearchRouter.swift in Sources */,
+				B5CCD72829F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift in Sources */,
+				B5CCD74729F8874700DE3701 /* keysString.swift in Sources */,
+				B5CCD75E29F8891700DE3701 /* TrendingPresenterMock.swift in Sources */,
+				B5CCD75029F887BB00DE3701 /* SearchEntity.swift in Sources */,
+				B5CCD74629F8874700DE3701 /* TrendingProtocols.swift in Sources */,
+				B5CCD74229F8874700DE3701 /* BMTabBar.swift in Sources */,
+				B5CCD76429F88A6500DE3701 /* SearchPresenterMock.swift in Sources */,
+				B5CCD76229F88A4600DE3701 /* SearchInteractorMock.swift in Sources */,
+				B5CCD74129F8874700DE3701 /* TrendingLocalDataManager.swift in Sources */,
+				B5CCD75729F887BB00DE3701 /* SearchLocalDataManager.swift in Sources */,
 				D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */,
+				B5CCD75129F887BB00DE3701 /* SearchInteractor.swift in Sources */,
+				B5CCD75429F887BB00DE3701 /* SearchProtocols.swift in Sources */,
+				B5CCD74E29F8874700DE3701 /* TrendingViewController.swift in Sources */,
+				B5CCD73D29F8874700DE3701 /* TrendingInteractor.swift in Sources */,
+				B5CCD74529F8874700DE3701 /* GeneralServices.swift in Sources */,
+				B5CCD75829F887BB00DE3701 /* SearchRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
