@@ -16,6 +16,10 @@ class DetailsView: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewText: UILabel!
     @IBOutlet weak var voteAverage: UILabel!
+    @IBOutlet weak var actorsCV: UICollectionView!
+    @IBOutlet weak var similarCV: UICollectionView!
+    @IBOutlet weak var recomendationsCV: UICollectionView!
+
 
     init(ViewModel: DetailsViewModel) {
         self.ViewModel = ViewModel
@@ -36,5 +40,18 @@ class DetailsView: UIViewController {
         voteAverage.text = "\(ViewModel.movieDetail.value.vote_average ?? 0.0)"
         
     }
+}
+
+
+extension DetailsView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
     
 }
