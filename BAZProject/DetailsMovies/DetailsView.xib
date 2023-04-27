@@ -119,12 +119,16 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WXj-3u-PNa">
                                                     <rect key="frame" x="8" y="32.333333333333371" width="377" height="154.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4jG-f1-xyO">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4jG-f1-xyO">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="aSF-je-9f1"/>
+                                                        <outlet property="delegate" destination="-1" id="ayL-Tb-h6A"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -151,12 +155,16 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SeS-t0-hNs">
                                                     <rect key="frame" x="8" y="32.333333333333371" width="377" height="154.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rST-cy-Pe5">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rST-cy-Pe5">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="uDJ-1Z-c52"/>
+                                                        <outlet property="delegate" destination="-1" id="rOC-29-lFz"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -183,12 +191,16 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-16-x3H">
                                                     <rect key="frame" x="8" y="32.333333333333371" width="377" height="154.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Pi-6w-GCU">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Pi-6w-GCU">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="eG8-gp-gpA"/>
+                                                        <outlet property="delegate" destination="-1" id="C9Y-qI-H1k"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemPinkColor"/>

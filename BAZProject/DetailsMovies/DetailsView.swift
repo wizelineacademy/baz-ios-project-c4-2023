@@ -31,6 +31,11 @@ class DetailsView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        actorsCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        similarCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell1")
+        recomendationsCV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell2")
+
         //TODO: mandar a llamar todas las peticiones
         //dispatch Group
         //Loader
@@ -46,12 +51,35 @@ class DetailsView: UIViewController {
 extension DetailsView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        switch collectionView {
+        case actorsCV:
+            return 3
+        case similarCV:
+            return 5
+        case recomendationsCV:
+            return 10
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        switch collectionView {
+        case actorsCV:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+            cell.backgroundColor = .black
+            return cell
+        case similarCV:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath)
+            cell.backgroundColor = .blue
+            return cell
+        case recomendationsCV:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell2", for: indexPath)
+            cell.backgroundColor = .yellow
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+            return cell
+        }
     }
-    
-    
 }
