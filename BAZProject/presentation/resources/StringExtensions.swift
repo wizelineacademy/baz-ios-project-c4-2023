@@ -14,8 +14,25 @@ extension String {
     ///  - Returns: Una instancia de `URL` creada a partir de la cadena de texto.
     func toUrl() -> URL {
         guard let url = URL(string: self) else {
-            fatalError("La cadena no es una URL válida.")
+            fatalError("La cadena no es una URL válida \(self).")
         }
         return url
+    }
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func formatReleaseDate() -> String {
+        let split = self.split(separator: "-")
+        return "\(split[2])/\(split[1])/\(split[0])"
+    }
+    
+    func setParameters(old: String, new: String) -> String {
+        let allowedChars = CharacterSet.urlQueryAllowed
+        guard let encode = self.replacingOccurrences(of: old, with: new).addingPercentEncoding(withAllowedCharacters: allowedChars) else {
+            fatalError("La cadena no es válida.")
+        }
+        return encode
     }
 }

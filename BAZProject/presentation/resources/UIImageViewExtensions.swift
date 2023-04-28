@@ -29,9 +29,11 @@ extension UIImageView {
                     // Ejecuta el bloque de finalización si se proporciona
                 }
             } catch {
-                self.image = placeHolder
-                completion?()
-                // Si hay un error al cargar la imagen, se usa el parametro placeHolder
+                DispatchQueue.main.async {
+                    self.image = placeHolder
+                    completion?()
+                    // Si hay un error al cargar la imagen, se usa el parametro placeHolder
+                }
             }
         }
     }

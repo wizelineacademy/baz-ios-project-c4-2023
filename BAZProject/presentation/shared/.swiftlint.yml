@@ -1,0 +1,98 @@
+disabled_rules:
+    - trailing_whitespace
+    - comment_spacing
+    - mark
+    - empty_count
+    - identifier_name
+    - colon
+    - opening_brace
+    - statement_position
+    - vertical_whitespace
+    - line_length
+    - function_body_length
+    - type_body_length
+    - function_parameter_count
+    - cyclomatic_complexity
+    - legacy_constructor
+    - discouraged_direct_init
+excluded:
+    - Carthage
+    - Pods
+    - PruebasAztecaUITest/*
+    - UITest_Flows/*
+force_cast: error
+large_tuple:
+    severity: warning
+file_length:
+    warning: 300
+    error: 500
+type_name:
+    allowed_symbols: "_"
+    validates_start_with_lowercase: false
+trailing_semicolon: warning
+shorthand_operator: warning
+opt_in_rules:
+    weak_delegate: error
+
+custom_rules:
+    already_true:
+        regex: "== true"
+        message: "Don't compare to true, just use the bool value."
+        severity: warning
+    already_false:
+        regex: "== false"
+        message: "Don't compare to false, just use the bool value."
+        severity: warning
+    no_password:
+        regex: "password"
+        message: "Don't use password, change the value drowssap"
+        severity: warning
+    only_iOS:
+        regex: "macOS 10"
+        message: "Develop only for iOS and iPad"
+        severity: error
+    no_iOS_8:
+        regex: "iOS 8.0"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    no_iOS_9:
+        regex: "iOS 9.0"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    no_iOS_10:
+        regex: "iOS 10.0"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    no_iOS_10.1:
+        regex: "iOS 10.1"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    no_iOS_10.2:
+        regex: "iOS 10.2"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    no_iOS_10.3:
+        regex: "iOS 10.3"
+        message: "Develop only for iOS 10 ^"
+        severity: warning
+    multiple_empty_lines:
+        included: ".*.swift"
+        name: "Multiple Empty Lines"
+        regex: '((?:\s*\n){3,})'
+        message: "There are too many line breaks"
+        severity: warning
+    non_weak_delegate_datasource:
+        included: ".*.swift"
+        name: "Retain Cycle"
+        regex: '^\ *var\ *(delegate)'
+        message: "Delegate/datasource may be weak."
+        severity: warning
+    protocol_conformance:
+        included: ".*.swift"
+        name: "Protocol Conformance"
+        message: "Protocol conformance should be declared in separate extensions in the same file"
+        regex: "(class|struct|extension)[[:space:]]+(?i:(?![^d]*delegate:))[^'\"()<>{},!?:]+:([^'\"<>(){},!?:]+,)+[^'\"<>(){},!?:]*\\{"
+        match_kinds: -keyword
+        severity: warning
+
+reporter: "xcode"

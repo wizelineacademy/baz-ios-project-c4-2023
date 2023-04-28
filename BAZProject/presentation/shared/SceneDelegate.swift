@@ -49,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func goToMainView(_ scene: UIWindowScene) {
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MovieListRouter.createModule()
+        window?.rootViewController = MainViewController()
         window?.makeKeyAndVisible()
     }
 }

@@ -15,4 +15,6 @@ enum Filters {
     case popular
     case topRated
     case upcoming
+    case similar
+    case recommendations
 }
