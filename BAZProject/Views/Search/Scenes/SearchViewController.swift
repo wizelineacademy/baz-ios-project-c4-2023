@@ -22,8 +22,8 @@ public class SearchViewController: UIViewController {
         }
     }
     
-    @IBOutlet public weak var txfSearch: UITextField!{
-        didSet{
+    @IBOutlet public weak var txfSearch: UITextField! {
+        didSet {
             txfSearch.placeholder = NSLocalizedString("Search by movie or artist", comment: "Search by movie or artist")
             txfSearch.delegate = self
         }

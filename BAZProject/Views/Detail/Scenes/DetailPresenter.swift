@@ -33,13 +33,12 @@ extension DetailPresenter: DetailPresentationLogic {
     public func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?) {
         guard let result = result else { return }
         var arrToView: [ImageTextTableViewProtocol] = [ImageTextTableViewProtocol]()
+        
         switch result.count {
         case 0:
             arrToView = [EmptySearch()]
-        case 1, 2:
-            arrToView = result
         default:
-            arrToView = Array(result.prefix(upTo: 2))
+            arrToView = Array(result.prefix(2))
         }
         
         view?.reloadSimilarMovies(with: arrToView)
