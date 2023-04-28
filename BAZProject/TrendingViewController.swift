@@ -8,12 +8,14 @@ import UIKit
 
 final class TrendingViewController: UITableViewController, Storyboard {
 
+    @IBOutlet weak var btnOptionsFilterMovies: UIBarButtonItem!
     var movies              : [MovieData] = []
     var movieApi            : MovieAPI? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callServiceMovieAPI()
+        setup()
+        callServiceMovieAPI(request: OptionMovie.getMovieDay.request)
     }
     
     /**
@@ -23,11 +25,12 @@ final class TrendingViewController: UITableViewController, Storyboard {
        - success: return The type of the value to decode from the supplied JSON object.
        - error: returns the service error.
     */
-    private func callServiceMovieAPI(){
-        movieApi?.getMovies(.getMovieDay){ [weak self] (result: Result< MoviesResult, Error>) in
+    private func callServiceMovieAPI(request : URLRequest){
+        movieApi?.getMovies(request){ [weak self] (result: Result< MoviesResult, Error>) in
             switch result {
             case .success(let moviesReponse):
-                if let arrMovies = moviesReponse.arrMovies{
+                self?.movies.removeAll()
+                if let arrMovies = moviesReponse.movies{
                     for resultArrMovies in arrMovies{
                         self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
                                                                     poster_path: resultArrMovies.posterPath ?? ""))
@@ -42,7 +45,38 @@ final class TrendingViewController: UITableViewController, Storyboard {
             }
         }
     }
+    
+    private func setNavTitle(with title: String){
+        self.title = title
+    }
 
+    // btnAction - send you the next 'search view'
+    @IBAction func searchMovie(_ sender: Any) {
+        let viewController = SearchMoviesRouter.createModule()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // btnAction - options with the different search filters
+    private func setup(){
+        let categories: [(String, OptionMovie)] = [
+            ("Trending",.getMovieDay),
+            ("Now Playing",.getNowPlaying),
+            ("Popular",.getPopular),
+            ("Top Rated", .getTopRated),
+            ("Upcoming", .getUpcoming)]
+        let optionsItems: [UIAction] = categories.map {
+            self.createUIAction(with: $0.0, option: $0.1)
+        }
+        btnOptionsFilterMovies.menu = UIMenu(title: "Selecciona una opción", children: optionsItems)
+    }
+    
+    private func createUIAction(with title: String, option: OptionMovie) -> UIAction{
+        return UIAction(title: title, handler: { [weak self] _ in
+            self?.callServiceMovieAPI(request: option.request)
+            self?.setNavTitle(with: title)
+        })
+    }
+    
 }
 
 // MARK: - TableView's DataSource

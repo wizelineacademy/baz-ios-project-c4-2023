@@ -7,10 +7,10 @@
 import Foundation
 
 struct MoviesResult: Decodable {
-    var arrMovies: [Movie]?
+    var movies: [Movie]?
     
     enum CodingKeys: String, CodingKey {
-        case arrMovies = "results"
+        case movies = "results"
     }
     
 }
@@ -48,6 +48,20 @@ struct Movie: Decodable{
         case video
         case voteAverage        = "vote_average"
         case voteCount          = "vote_count"
+    }
+    
+}
+struct MoviesSearchResult: Decodable {
+    var movies          : [Movie]?
+    var page            : Int?
+    var totalPages      : Int?
+    var totalResults    : Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case movies         = "results"
+        case page
+        case totalPages     = "total_pages"
+        case totalResults   = "total_results"
     }
     
 }

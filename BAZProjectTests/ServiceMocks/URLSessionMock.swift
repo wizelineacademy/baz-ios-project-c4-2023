@@ -18,6 +18,7 @@ final class URLSessionMock: URLSessionProtocol {
     
     func performDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         completionHandler(data, urlResponse, error)
+        expectation?.fulfill()
         return dataTask
     }
 }

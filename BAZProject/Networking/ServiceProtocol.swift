@@ -8,7 +8,32 @@
 import Foundation
 protocol Service {
     var session: URLSessionProtocol { get }
-    func getMovies(_ endpoint: OptionMovie, callback: @escaping (Result<[Movie],Error>) -> Void)
+    func getMovies<T:Decodable>(_ request: URLRequest, callback: @escaping (Result<T, Error>) -> Void)
+}
+
+extension Service{
+    /**
+    This Function is generic, makes a request to a service,
+    
+    - Parameters:
+       - endpoint: Is an enum that indicates what request it sends.
+    
+    - Returns:
+       - T: return The type of the value to decode from the supplied JSON object.
+       - Error: returns the service error
+    */
+    func getMovies<T:Decodable>(_ request: URLRequest, callback: @escaping (Result<T, Error>) -> Void) {
+        let task = self.session.performDataTask(with: request) { (data, response, error) in
+            guard let data: Data = data else { return callback(.failure(error ?? NSError())) }
+            do {
+                let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+                callback(.success(decodedData))
+            } catch {
+                callback(.failure(error))
+            }
+        }
+        task.resume()
+    }
 }
 
 protocol URLSessionDataTaskProtocol {

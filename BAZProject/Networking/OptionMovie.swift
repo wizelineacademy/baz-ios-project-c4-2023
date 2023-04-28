@@ -7,29 +7,43 @@
 import UIKit
 enum OptionMovie {
     case getMovieDay
+    case getNowPlaying
+    case getPopular
+    case getTopRated
+    case getUpcoming
+    case searchMovie(String)
 }
 extension OptionMovie: Endpoint{
     
-    var baseURL: String {
-        return "https://api.themoviedb.org/3/trending/"
-    }
-    
     var path: String {
         switch self {
-        case .getMovieDay: return "movie/day"
+        case .getMovieDay: return "/3/trending/movie/day"
+        case .getNowPlaying: return "/3/movie/now_playing"
+        case .getPopular: return "/3/movie/popular"
+        case .getTopRated: return "/3/movie/top_rated"
+        case .getUpcoming: return "/3/movie/upcoming"
+        case .searchMovie: return "/3/search/movie"
         }
     }
     
-    var apiKey: String {
-        return "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
-    }
-    
     var request: URLRequest {
-        return URLRequest(url: url)
+        return URLRequest(url: url?.url ?? URL(fileURLWithPath: ""))
     }
     
-    var url: URL {
-        return URL(string: baseURL + path + apiKey) ?? URL(fileURLWithPath: "")
+    var url: URLComponents? {
+        var components = URLComponents(string: baseURL)
+        components?.path = path
+        var queryItems = [URLQueryItem]()
+        queryItems.append(apiKey)
+        switch self {
+        case .searchMovie(let txtSearch):
+            let queryItem = URLQueryItem(name: "query",
+                                          value: txtSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
+            queryItems.append(queryItem)
+        default: break
+        }
+        components?.queryItems = queryItems
+        return components
     }
     
 }
