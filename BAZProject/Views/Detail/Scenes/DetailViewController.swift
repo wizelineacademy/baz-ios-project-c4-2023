@@ -29,7 +29,7 @@ public class DetailViewController: UIViewController {
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
         }
     }
-    private var arrSimilar: [ImageTextTableViewProtocol]?{
+    private var arrSimilar: [ImageTextTableViewProtocol]? {
         didSet {
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
         }
