@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="kZc-o2-MMI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tv3-uc-7PE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SearchStory" id="K9w-hm-wlU" customClass="SearchMoviesViewController" customModule="BAZProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="acz-Yi-g4i">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar clipsSubviews="YES" contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="DAq-ia-AZS">
+                                <rect key="frame" x="38" y="64" width="345" height="50"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="g0d-vD-8dy"/>
+                                </constraints>
+                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="K9w-hm-wlU" id="Vw8-Ln-C4x"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xxu-6V-uuN">
+                                <rect key="frame" x="0.0" y="114" width="393" height="704"/>
+                                <color key="backgroundColor" red="0.070588238540000001" green="0.070588238540000001" blue="0.070588238540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.070588238540000001" green="0.070588238540000001" blue="0.070588238540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-xD-bJH">
+                                <rect key="frame" x="2" y="73" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="FSJ-al-90b"/>
+                                    <constraint firstAttribute="height" constant="32" id="Lgs-Ch-oDw"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.backward" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="K9w-hm-wlU" eventType="touchUpInside" id="4Ws-hj-c3O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7cl-hj-svu"/>
+                        <color key="backgroundColor" red="0.070588238540000001" green="0.070588238540000001" blue="0.070588238540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DAq-ia-AZS" secondAttribute="trailing" constant="10" id="4Di-Lo-Bi4"/>
+                            <constraint firstItem="SAc-xD-bJH" firstAttribute="leading" secondItem="7cl-hj-svu" secondAttribute="leading" constant="2" id="LMc-9B-sUP"/>
+                            <constraint firstItem="DAq-ia-AZS" firstAttribute="top" secondItem="7cl-hj-svu" secondAttribute="top" constant="5" id="WTU-08-6uF"/>
+                            <constraint firstItem="7cl-hj-svu" firstAttribute="bottom" secondItem="Xxu-6V-uuN" secondAttribute="bottom" id="Z0S-kZ-QGd"/>
+                            <constraint firstItem="Xxu-6V-uuN" firstAttribute="top" secondItem="DAq-ia-AZS" secondAttribute="bottom" id="fGU-f0-bg1"/>
+                            <constraint firstItem="DAq-ia-AZS" firstAttribute="leading" secondItem="SAc-xD-bJH" secondAttribute="trailing" constant="4" id="sKt-08-zya"/>
+                            <constraint firstItem="Xxu-6V-uuN" firstAttribute="trailing" secondItem="7cl-hj-svu" secondAttribute="trailing" id="sXu-Vg-MOe"/>
+                            <constraint firstItem="SAc-xD-bJH" firstAttribute="centerY" secondItem="DAq-ia-AZS" secondAttribute="centerY" id="tqP-hQ-Xoz"/>
+                            <constraint firstItem="Xxu-6V-uuN" firstAttribute="leading" secondItem="7cl-hj-svu" secondAttribute="leading" id="vYV-oE-r1u"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="E9b-UH-3aW"/>
+                    <navigationItem key="navigationItem" id="Qqi-Ij-alB"/>
+                    <connections>
+                        <outlet property="searchBar" destination="DAq-ia-AZS" id="SzY-YX-myV"/>
+                        <outlet property="searchTableView" destination="Xxu-6V-uuN" id="P8M-PX-2Rf"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="762.59541984732823" y="-293.66197183098592"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

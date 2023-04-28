@@ -9,8 +9,9 @@ import UIKit
 
 struct ImageLoader {
     
-    // loadImage get the image (poster) when URL is valid.
-    // need a urlData for fecth the image of the movie. and returns it.
+    /// loadImage get the image (poster) when URL is valid
+    /// - Parameters: and return a image in a completion
+    ///  - urlData: for fecth the image of the movie
     func loadImage(urlData: URL, completion: @escaping (UIImage?) -> Void) {
         let globalQueue = DispatchQueue.global(qos: .utility)
         globalQueue.async {
@@ -27,4 +28,11 @@ struct ImageLoader {
             }
         }
     }
+    
+    // Get a complete URL, having a base url we can complete de URL with poster_path and return it
+    func getURLImage(poster_path: String) -> URL? {
+        let base = "https://image.tmdb.org/t/p/w500"
+        return URL(string: base + poster_path)
+    }
+    
 }

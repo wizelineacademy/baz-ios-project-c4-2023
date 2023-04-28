@@ -7,11 +7,11 @@
 import Foundation
 
 // Movie implements the protocol for use properties and add some more optionals
-struct Movie: MovieProtocol {
+struct Movie: Decodable, MovieProtocol {
 
-    var id: Int
-    var title: String
-    var poster_path: String
+    var id: Int?
+    var title: String?
+    var poster_path: String?
     var adult: Bool?
     var backdrop_path: String?
     var genre_ids: [Int]?
@@ -19,10 +19,10 @@ struct Movie: MovieProtocol {
     var original_language: String?
     var original_title: String?
     var overview: String?
-    var popularity: String?
+    var popularity: Double?
     var release_date: String?
     var video: Bool?
-    var vote_average: String?
-    var vote_count: String?
+    var vote_average: Double?
+    var vote_count: Int?
     
 }
