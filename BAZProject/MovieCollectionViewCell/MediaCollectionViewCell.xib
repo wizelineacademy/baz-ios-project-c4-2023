@@ -63,6 +63,9 @@
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Ch0-xB-s0X" firstAttribute="height" secondItem="qca-35-8Ek" secondAttribute="height" multiplier="0.06" id="hgU-xW-wH5"/>
+                        </constraints>
                     </stackView>
                 </subviews>
             </view>
