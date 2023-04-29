@@ -57,14 +57,14 @@ final class DetailViewTest: XCTestCase {
         //Given
         let iTotal = 3
         //When
-        let iReal = sut?.tblMovieInfo.numberOfRows(inSection: 2)
+        let iReal = sut?.tblMovieInfo.numberOfRows(inSection: 3)
         //Then
         XCTAssertEqual(iTotal, iReal)
     }
     
     func testThirdSectionHasInfo() {
         //Given
-        let indexPath = IndexPath(row: 1, section: 2)
+        let indexPath = IndexPath(row: 1, section: 3)
         //When
         sut?.tblMovieInfo.reloadData()
         let cell = sut?.tblMovieInfo.cellForRow(at: indexPath) as? ImageTextTableViewCell

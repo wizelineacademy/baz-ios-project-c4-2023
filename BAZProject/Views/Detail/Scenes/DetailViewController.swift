@@ -31,7 +31,7 @@ public class DetailViewController: UIViewController {
     }
     private var arrSimilar: [ImageTextTableViewProtocol]? {
         didSet {
-            tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
+            tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 3), with: .automatic)
         }
     }
     
@@ -66,12 +66,12 @@ extension DetailViewController: DetailSearchDisplayLogic {
 
 extension DetailViewController: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 2:
+        case 3:
             return NSLocalizedString("Similar movies", comment: "")
         default:
             return nil
@@ -82,7 +82,7 @@ extension DetailViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 1
-        case 2:
+        case 3:
             return arrSimilar?.count ?? 0
         default:
             return 0
@@ -93,7 +93,7 @@ extension DetailViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             return configure(forMovie: currentData, andRow: indexPath)
-        case 2:
+        case 3:
             let movie = arrSimilar?[indexPath.row]
             return configure(forMovie: movie, andRow: indexPath)
         default:

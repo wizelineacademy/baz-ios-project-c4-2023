@@ -87,4 +87,48 @@ final class URLConfigurationTest: XCTestCase {
         //Then
         XCTAssertEqual(urlFinal, serviceURL)
     }
+    
+    func testUrlNowPlayingCorrect() {
+        //Given
+        let strFinalURL: String = "https://api.themoviedb.org/3/movie/now_playing?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalURL)
+        let sut = URLConfiguration(path: .nowPlaying)
+        //When
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
+    
+    func testUrlPopularCorrect() {
+        //Given
+        let strFinalURL: String = "https://api.themoviedb.org/3/movie/popular?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalURL)
+        let sut = URLConfiguration(path: .popular)
+        //When
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
+    
+    func testTopRatedURLCorrect() {
+        //Given
+        let strFinalURL: String = "https://api.themoviedb.org/3/movie/top_rated?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalURL)
+        let sut = URLConfiguration(path: .topRated)
+        //When
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
+    
+    func testUpcomingURLCorrect() {
+        //Given
+        let strFinalURL: String = "https://api.themoviedb.org/3/movie/upcoming?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalURL)
+        let sut = URLConfiguration(path: .upcoming)
+        //When
+        let urlServiceURL = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceURL)
+    }
 }

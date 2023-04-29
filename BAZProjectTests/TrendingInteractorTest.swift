@@ -38,7 +38,7 @@ final class TrendingInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
     }
     
@@ -49,7 +49,7 @@ final class TrendingInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badJSON))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
     }
     
@@ -60,7 +60,7 @@ final class TrendingInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         let strTitle = sut.getMovie(forRow: 0)?.title
         XCTAssertEqual(strFirstTitle, strTitle)
     }
@@ -72,7 +72,7 @@ final class TrendingInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         let iNumberGot = sut.getNumberOfRows()
         XCTAssertEqual(iNumberExpected, iNumberGot)
         

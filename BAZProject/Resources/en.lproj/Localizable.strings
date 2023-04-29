@@ -7,6 +7,10 @@
 */
 
 "Trending" = "Trending";
+"Now Playing" = "Now Playing";
+"Popular" = "Popular";
+"Top Rated" = "Top Rated";
+"Upcoming" = "Upcoming";
 "There was a problem creating the url" = "There was a problem creating the url";
 "There was a problem parsing the json" = "There was a problem parsing the json";
 "The service didn't respond" = "The service didn't respond";
@@ -17,3 +21,6 @@
 "Release date: %@" = "Release date: %@";
 "The parameter was null" = "The parameter was null";
 "Similar movies" = "Similar movies";
+"Filter options" = "Filter options";
+"Choose among these options" = "Choose among these options";
+"Cancel" = "Cancel";
