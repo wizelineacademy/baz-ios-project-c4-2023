@@ -21,21 +21,27 @@ enum categoriesFilter: String {
     case TopRated = "Top Rated"
     case Upcoming = "Upcoming"
     case Search =  "Search"
+    case Recommendation = "Recommendation Movies"
+    case similar = "similar Movies"
+    
     
     var url: String {
+        let baseURL = "https://api.themoviedb.org/3/movie/"
         switch self {
         case .Trending:
             return "https://api.themoviedb.org/3/trending/movie/day?api_key="
         case .NowPlaying:
-            return "https://api.themoviedb.org/3/movie/now_playing?api_key="
+            return "\(baseURL)now_playing?api_key="
         case .Popular:
-            return "https://api.themoviedb.org/3/movie/popular?api_key="
+            return "\(baseURL)popular?api_key="
         case .TopRated:
-            return "https://api.themoviedb.org/3/movie/top_rated?api_key="
+            return "\(baseURL)top_rated?api_key="
         case .Upcoming:
-            return "https://api.themoviedb.org/3/movie/upcoming?api_key="
+            return "\(baseURL)upcoming?api_key="
         case .Search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
+        case .Recommendation, .similar:
+            return baseURL
         }
     }
 }

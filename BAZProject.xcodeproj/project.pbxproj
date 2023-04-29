@@ -41,6 +41,8 @@
 		E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */; };
 		E0D4834829FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */; };
 		E0D4834929FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */; };
+		E0D4834B29FB300700B6D8C3 /* DetailsViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834A29FB300700B6D8C3 /* DetailsViewProtocols.swift */; };
+		E0D4834D29FB338100B6D8C3 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834C29FB338100B6D8C3 /* Cast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 		E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
+		E0D4834A29FB300700B6D8C3 /* DetailsViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewProtocols.swift; sourceTree = "<group>"; };
+		E0D4834C29FB338100B6D8C3 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				C30893E128A425E1004B1860 /* Movie.swift */,
+				E0D4834C29FB338100B6D8C3 /* Cast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,8 +224,9 @@
 			children = (
 				E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */,
 				E0D4833429F9819E00B6D8C3 /* DetailsView.swift */,
-				E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */,
+				E0D4834A29FB300700B6D8C3 /* DetailsViewProtocols.swift */,
 				E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */,
+				E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */,
 				E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */,
 			);
 			path = DetailsMovies;
@@ -344,6 +350,8 @@
 				E045961729EF439D00712F8C /* SearchViewModel.swift in Sources */,
 				E0D4832F29F8842200B6D8C3 /* Commons.swift in Sources */,
 				E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */,
+				E0D4834D29FB338100B6D8C3 /* Cast.swift in Sources */,
+				E0D4834B29FB300700B6D8C3 /* DetailsViewProtocols.swift in Sources */,
 				E0AB763A29EF5FF8004074B5 /* ServiceApi.swift in Sources */,
 				E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */,
 				E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */,

@@ -17,28 +17,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="565" height="532"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-MI-NbB">
-                        <rect key="frame" x="8" y="500" width="549" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-MI-NbB">
+                        <rect key="frame" x="8" y="509.66666666666669" width="549" height="14.333333333333314"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-cp-S5p">
-                        <rect key="frame" x="50" y="49.000000000000028" width="465" height="425.66666666666674"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-cp-S5p">
+                        <rect key="frame" x="20" y="7" width="525" height="494.33333333333337"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="AK3-MI-NbB" firstAttribute="top" secondItem="Pxl-cp-S5p" secondAttribute="bottom" constant="25" id="MdD-Us-QHq"/>
+                <constraint firstItem="AK3-MI-NbB" firstAttribute="top" secondItem="Pxl-cp-S5p" secondAttribute="bottom" constant="8" id="MdD-Us-QHq"/>
                 <constraint firstAttribute="bottom" secondItem="AK3-MI-NbB" secondAttribute="bottom" constant="8" id="Ps5-vZ-OIp"/>
                 <constraint firstAttribute="trailing" secondItem="AK3-MI-NbB" secondAttribute="trailing" constant="8" id="Rhs-az-fB1"/>
                 <constraint firstItem="AK3-MI-NbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="eVX-Lk-QVZ"/>
-                <constraint firstItem="Pxl-cp-S5p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="gHs-eL-viL"/>
+                <constraint firstItem="Pxl-cp-S5p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="gHs-eL-viL"/>
                 <constraint firstItem="AK3-MI-NbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="nQx-4B-btb"/>
-                <constraint firstItem="Pxl-cp-S5p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="oQs-D9-tCa"/>
+                <constraint firstItem="Pxl-cp-S5p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="oQs-D9-tCa"/>
                 <constraint firstAttribute="bottom" secondItem="AK3-MI-NbB" secondAttribute="bottom" constant="8" id="qOC-kE-xsB"/>
-                <constraint firstAttribute="trailing" secondItem="Pxl-cp-S5p" secondAttribute="trailing" constant="50" id="xc6-gQ-prz"/>
+                <constraint firstAttribute="trailing" secondItem="Pxl-cp-S5p" secondAttribute="trailing" constant="20" id="xc6-gQ-prz"/>
                 <constraint firstAttribute="trailing" secondItem="AK3-MI-NbB" secondAttribute="trailing" constant="8" id="zZa-ab-vJo"/>
             </constraints>
             <size key="customSize" width="565" height="532"/>

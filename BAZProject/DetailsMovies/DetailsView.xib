@@ -89,10 +89,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBe-mS-acT">
-                                            <rect key="frame" x="0.0" y="285" width="393" height="150"/>
+                                            <rect key="frame" x="0.0" y="285" width="393" height="50"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-F7-rZb">
-                                                    <rect key="frame" x="8" y="0.0" width="377" height="142"/>
+                                                    <rect key="frame" x="8" y="0.0" width="377" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5z-Kx-MCy">
-                                            <rect key="frame" x="0.0" y="435" width="393" height="195"/>
+                                            <rect key="frame" x="0.0" y="335" width="393" height="225"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mW-Yx-eIN">
                                                     <rect key="frame" x="8" y="7.9999999999999982" width="151.33333333333334" height="20.333333333333329"/>
@@ -117,7 +117,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WXj-3u-PNa">
-                                                    <rect key="frame" x="8" y="32.333333333333371" width="377" height="154.66666666666666"/>
+                                                    <rect key="frame" x="8" y="32.333333333333314" width="377" height="184.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4jG-f1-xyO">
                                                         <size key="itemSize" width="128" height="128"/>
@@ -141,7 +141,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtj-4x-maM">
-                                            <rect key="frame" x="0.0" y="630" width="393" height="195"/>
+                                            <rect key="frame" x="0.0" y="560" width="393" height="195"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-G5-8cH">
                                                     <rect key="frame" x="8" y="7.9999999999999982" width="145.66666666666666" height="20.333333333333329"/>
@@ -176,7 +176,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Rk-TT-MFE">
-                                            <rect key="frame" x="0.0" y="825" width="393" height="195"/>
+                                            <rect key="frame" x="0.0" y="755" width="393" height="195"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDU-bJ-U99">
                                                     <rect key="frame" x="8" y="7.9999999999999982" width="193.33333333333334" height="20.333333333333329"/>
@@ -211,7 +211,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-iZ-YwG">
-                                            <rect key="frame" x="0.0" y="1020" width="393" height="480"/>
+                                            <rect key="frame" x="0.0" y="950" width="393" height="550"/>
                                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         </view>
                                     </subviews>
@@ -220,7 +220,7 @@
                                         <constraint firstItem="3Rk-TT-MFE" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.13" id="S8m-Q9-aD9"/>
                                         <constraint firstItem="Qtj-4x-maM" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.13" id="bn5-tx-GDx"/>
                                         <constraint firstItem="LGh-Fc-ctz" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.04" id="nqG-XJ-nVQ"/>
-                                        <constraint firstItem="n5z-Kx-MCy" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.13" id="pSq-Jf-ASk"/>
+                                        <constraint firstItem="n5z-Kx-MCy" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.15" id="pSq-Jf-ASk"/>
                                     </constraints>
                                 </stackView>
                             </subviews>

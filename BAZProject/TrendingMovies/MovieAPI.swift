@@ -14,7 +14,7 @@ class MovieAPI {
         self.service = service
     }
     ///Función generica que consulta las  de peliculas de acuerdo a la categoria
-    func getMovies(category: categoriesFilter , completion: @escaping ([ListMoviesProtocol], Error?) -> Void){
+    func getMovies(category: categoriesFilter , idMovie: Int = 0,  completion: @escaping ([ListMoviesProtocol], Error?) -> Void){
         var urlStruct =  ""
         switch category {
          case .Trending:
@@ -27,11 +27,16 @@ class MovieAPI {
             urlStruct = "\(categoriesFilter.TopRated.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
         case .Upcoming:
             urlStruct = "\(categoriesFilter.Upcoming.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
+        case .Recommendation:
+            urlStruct = "\(categoriesFilter.Recommendation.url)\(idMovie)/recommendations?api_key=\(urls.apikey.rawValue)&language=es"
+        case .similar:
+            urlStruct = "\(categoriesFilter.similar.url)\(idMovie)/similar?api_key=\(urls.apikey.rawValue)&language=es"
         default:
             urlStruct = ""
         }
         
         guard let url = URL(string: urlStruct) else { return }
+        print("\(category) - \(url)")
         service.get(url) { (result: Result<Movies , Error>) in
             switch result {
             case .success(let apiResults): completion(apiResults.results ?? [], nil)
