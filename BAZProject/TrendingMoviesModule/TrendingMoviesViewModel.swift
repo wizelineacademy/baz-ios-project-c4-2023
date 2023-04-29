@@ -78,7 +78,8 @@ class TrendingMoviesViewModel {
     }
     
     func setSnapshotWithDictionary(dctItems: [MediaType : [MediaItem]]) {
-        dctItems.forEach { (key, value) in
+        let sorted = dctItems.sorted(by: { $0.key.order < $1.key.order })
+        sorted.forEach { (key, value) in
             mediaSnapshot.value?.appendSections([key])
             mediaSnapshot.value?.appendItems(value)
         }

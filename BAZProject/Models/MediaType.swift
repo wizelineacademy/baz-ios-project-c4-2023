@@ -34,4 +34,12 @@ public enum MediaType: String, Hashable {
         }
     }
     
+    public var order: Int {
+        switch self {
+        case .movie: return 0
+        case .tv: return 1
+        case .person: return 2
+        }
+    }
+    
 }
