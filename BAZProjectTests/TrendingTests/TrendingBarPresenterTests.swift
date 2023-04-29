@@ -33,7 +33,8 @@ final class TrendingBarPresenterTests: XCTestCase {
     }
     
     func test_didSelectRow_callsRouter() {
-        let indexPath = IndexPath()
+        let indexPath = IndexPath(row: 0, section: 0)
+        sut.trendingModel.append(Movie(id: 1, title: "", posterPath: Data(), summary: "", backdropPath: "", backdropPathData: nil))
         
         sut.didSelectRowAt(indexPath)
         
@@ -75,7 +76,7 @@ final class TrendingBarPresenterTests: XCTestCase {
     }
     
     func test_onReceivedMovie_callsViewFillTrendingMovie(){
-        let movie = Movie(id: 235, title: "prueba", posterPath: Data())
+        let movie = Movie(id: 2, title: "", posterPath: Data(), summary: "", backdropPath: "", backdropPathData: nil)
         
         sut.onReceivedMovie(with: movie)
         

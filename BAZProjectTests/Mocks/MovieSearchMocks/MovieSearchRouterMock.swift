@@ -21,7 +21,7 @@ final class MovieSearchRouterMock: MovieSearchRouterProtocol {
         return UIViewController() as! SearchMoviesViewController
     }
     
-    func presentDetailViewController(from view: BAZProject.MovieSearchViewControllerProtocol?) {
+    func presentDetailViewController(from view: BAZProject.MovieSearchViewControllerProtocol?, withMovie movie: [BAZProject.MovieDetailModel]) {
         calls.append(.presentDetailViewController)
     }
 }

@@ -25,7 +25,7 @@ final class MovieSearchRouterTests: XCTestCase {
         let initialController = SearchMoviesViewController()
         let navigationControllerSpy = NavigationControllerSpy(rootViewController: initialController)
         
-        sut.presentDetailViewController(from: initialController)
+        sut.presentDetailViewController(from: initialController, withMovie: [])
         
         XCTAssert(navigationControllerSpy.pushedViewController is BAZProject.MovieDetailViewController)
     }

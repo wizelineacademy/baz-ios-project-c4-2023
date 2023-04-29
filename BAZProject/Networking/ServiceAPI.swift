@@ -53,6 +53,7 @@ final class ServiceAPI: Service {
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                     callback(.success(decodedData))
                 } catch {
+                    print(error)
                     callback(.failure(ServiceError.parsingData))
                 }
             }

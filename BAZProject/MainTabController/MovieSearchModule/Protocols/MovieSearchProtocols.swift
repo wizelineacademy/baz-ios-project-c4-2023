@@ -24,7 +24,7 @@ protocol MovieSearchRouterProtocol {
          - view: UIViewController that is going to push to nextView.
          - nextView: new principal user UIViewController
      */
-    func presentDetailViewController(from view: MovieSearchViewControllerProtocol?)
+    func presentDetailViewController(from view: MovieSearchViewControllerProtocol?, withMovie movie: [MovieDetailModel])
 }
 
 // View > Presenter

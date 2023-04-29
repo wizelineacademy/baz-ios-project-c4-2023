@@ -26,7 +26,7 @@ final class TrendingBarRouterMock: TrendingBarRouterProtocol {
         calls.append(.presentMovieSearchViewController)
     }
     
-    func presentDetailViewController(from view: BAZProject.TrendingBarViewControllerProtocol?) {
+    func presentDetailViewController(from view: BAZProject.TrendingBarViewControllerProtocol?, withMovie movie: [BAZProject.MovieDetailModel]) {
         calls.append(.presentDetailViewController)
     }
 }

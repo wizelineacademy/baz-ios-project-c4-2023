@@ -26,7 +26,6 @@ final class SearchMoviesViewController: UITableViewController, ReusableIdentifie
         navigationItem.searchController?.hidesNavigationBarDuringPresentation = true
         navigationItem.searchController?.searchBar.sizeToFit()
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

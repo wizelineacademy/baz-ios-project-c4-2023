@@ -25,7 +25,8 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     }
     
     func didSelectRowAt(_ indexPath: IndexPath) {
-        router?.presentDetailViewController(from: view)
+        let movieDetailArray: MovieDetailModel = .summary([movieModel[indexPath.row]])
+        router?.presentDetailViewController(from: view, withMovie: [movieDetailArray])
     }
 }
 
