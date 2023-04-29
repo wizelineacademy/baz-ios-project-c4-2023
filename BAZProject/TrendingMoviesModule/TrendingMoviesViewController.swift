@@ -9,6 +9,7 @@ import UIKit
 class TrendingMoviesViewController: UICollectionViewController {
     
     private var viewModel: TrendingMoviesViewModel
+    private var dataSource: TrendingMoviesViewModel.MediaCollectionDataSource?
     
     init(viewModel: TrendingMoviesViewModel) {
         self.viewModel = viewModel
@@ -36,7 +37,8 @@ class TrendingMoviesViewController: UICollectionViewController {
     private func bindings() {
         viewModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                guard let snapShot = self?.viewModel.getDataSnapshot() else { return }
+                self?.dataSource?.apply(snapShot, animatingDifferences: false)
             }
         }
         viewModel.bindError { [weak self] in
@@ -49,7 +51,8 @@ class TrendingMoviesViewController: UICollectionViewController {
     // MARK: Visuals
     
     private func setCollectionView() {
-        collectionView.register(UINib(nibName: "MediaCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MediaCollectionViewCell")
+        collectionView.collectionViewLayout = createLayout()
+        configureDataSource()
     }
     
     private func presentError() {
@@ -61,51 +64,53 @@ class TrendingMoviesViewController: UICollectionViewController {
     
 }
 
-// MARK: - CollectionView's DataSource
+// MARK: - CollectionView's Layout
 
 extension TrendingMoviesViewController {
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getRowCount(for: section)
-    }
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.getSectionCount()
-    }
-    
-}
+    private func createLayout() -> UICollectionViewLayout {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.8))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
-// MARK: - CollectionView's Delegate
+            // if we have the space, adapt and go 2-up + peeking 3rd item
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
-extension TrendingMoviesViewController {
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCollectionViewCell", for: indexPath) as? MediaCollectionViewCell else { return UICollectionViewCell() }
-        let cellModel = viewModel.getCellConfiguration(indexPath: indexPath)
-        cell.setCell(with: cellModel)
-        return cell
-    }
-    
-}
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .continuous
+            section.interGroupSpacing = 20
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
 
-// MARK: - CollectionView's Flow Layout Delegate
+            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem( layoutSize: titleSize, elementKind: SimpleCollectionViewHeaderView.kind, alignment: .top)
+            section.boundarySupplementaryItems = [titleSupplementary]
+            return section
+        }
 
-extension TrendingMoviesViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 250)
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: config)
+        return layout
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    private func configureDataSource() {
+        let cellRegistration = TrendingMoviesViewModel.MediaCollectionCellRegistration(cellNib: UINib(nibName: "MediaCollectionViewCell", bundle: nil)) { [weak self] (cell, indexPath, item) in
+            guard let cellModel = self?.viewModel.getCellConfiguration(item: item) else { return }
+            cell.setCell(with: cellModel)
+        }
+        dataSource = TrendingMoviesViewModel.MediaCollectionDataSource(collectionView: collectionView) {
+            (collectionView, indexPath, item) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+        }
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<SimpleCollectionViewHeaderView>(elementKind: SimpleCollectionViewHeaderView.kind) { [weak self] (supplementaryView, elementKind, indexPath) in
+            supplementaryView.title.text = self?.viewModel.getGroupTitle(for: indexPath.section)
+        }
+        dataSource?.supplementaryViewProvider = { [weak self] (view, kind, index) in
+            return self?.collectionView.dequeueConfiguredReusableSupplementary( using: supplementaryRegistration, for: index)
+        }
     }
     
 }

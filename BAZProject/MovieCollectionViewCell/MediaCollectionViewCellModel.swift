@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaCollectionViewCellModel {
+struct MediaCollectionViewCellModel: Hashable {
     
     var title: String
     var subtitle: String?
