@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="200" width="130" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWY-f6-eCc">
-                                        <rect key="frame" x="8" y="8" width="114" height="15"/>
+                                        <rect key="frame" x="8" y="8" width="114" height="14.999999999999996"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -63,9 +63,6 @@
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                             </stackView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="Ch0-xB-s0X" firstAttribute="height" secondItem="qca-35-8Ek" secondAttribute="height" multiplier="0.06" id="hgU-xW-wH5"/>
-                        </constraints>
                     </stackView>
                 </subviews>
             </view>
