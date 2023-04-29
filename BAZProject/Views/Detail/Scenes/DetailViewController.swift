@@ -10,8 +10,9 @@ import UIKit
 public protocol DetailSearchDisplayLogic: AnyObject {
     var interactor: DetailBusinessLogic? { get }
     
-    func updateTable(withCurrentInfo info: ImageTextTableViewProtocol?)
-    func reloadSimilarMovies(with arrSimilar: [ImageTextTableViewProtocol])
+    func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?)
+    func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol])
+    func reloadSimilarMovies(with arrSimilar: [CellPersonalizedTableViewProtocol])
     func serviceDidFailed(with strMessage: String)
 }
 
@@ -23,13 +24,18 @@ public class DetailViewController: UIViewController {
         }
     }
     public var interactor: DetailBusinessLogic?
-    private var currentData: ImageTextTableViewProtocol? {
+    private var currentData: CellPersonalizedTableViewProtocol? {
         didSet {
             navigationItem.title = currentData?.strTitle ?? ""
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
         }
     }
-    private var arrSimilar: [ImageTextTableViewProtocol]? {
+    private var arrReviews: [CellPersonalizedTableViewProtocol]? {
+        didSet {
+            tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
+        }
+    }
+    private var arrSimilar: [CellPersonalizedTableViewProtocol]? {
         didSet {
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 3), with: .automatic)
         }
@@ -39,16 +45,19 @@ public class DetailViewController: UIViewController {
         super.viewDidLoad()
         registerCells()
         interactor?.getCurrentData()
-        interactor?.searchForSimilar()
     }
     
     private func registerCells() {
-        tblMovieInfo.register(UINib(nibName: CellTypes.imageTextCell.rawValue, bundle: nil), forCellReuseIdentifier: CellTypes.imageTextCell.rawValue)
+        var nib = UINib(nibName: CellTypes.imageTextCell.rawValue, bundle: nil)
+        tblMovieInfo.register(nib, forCellReuseIdentifier: CellTypes.imageTextCell.rawValue)
+        
+        nib = UINib(nibName: CellTypes.reviewCell.rawValue, bundle: nil)
+        tblMovieInfo.register(nib, forCellReuseIdentifier: CellTypes.reviewCell.rawValue)
     }
 }
 
 extension DetailViewController: DetailSearchDisplayLogic {
-    public func updateTable(withCurrentInfo info: ImageTextTableViewProtocol?) {
+    public func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?) {
         currentData = info
     }
     
@@ -59,9 +68,14 @@ extension DetailViewController: DetailSearchDisplayLogic {
         present(alert, animated: true)
     }
     
-    public func reloadSimilarMovies(with arrSimilar: [ImageTextTableViewProtocol]) {
+    public func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol]) {
+        self.arrReviews = arrReviews
+    }
+    
+    public func reloadSimilarMovies(with arrSimilar: [CellPersonalizedTableViewProtocol]) {
         self.arrSimilar = arrSimilar
     }
+    
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -71,6 +85,8 @@ extension DetailViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
+        case 2:
+            return NSLocalizedString("Reviews", comment: "Reviews")
         case 3:
             return NSLocalizedString("Similar movies", comment: "")
         default:
@@ -82,6 +98,8 @@ extension DetailViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 1
+        case 2:
+            return arrReviews?.count ?? 0
         case 3:
             return arrSimilar?.count ?? 0
         default:
@@ -93,6 +111,9 @@ extension DetailViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             return configure(forMovie: currentData, andRow: indexPath)
+        case 2:
+            let review = arrReviews?[indexPath.row]
+            return configure(forReview: review, andIndexPath: indexPath)
         case 3:
             let movie = arrSimilar?[indexPath.row]
             return configure(forMovie: movie, andRow: indexPath)
@@ -102,9 +123,15 @@ extension DetailViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
-    private func configure(forMovie movie: ImageTextTableViewProtocol?, andRow indexPath: IndexPath) -> UITableViewCell {
+    private func configure(forMovie movie: CellPersonalizedTableViewProtocol?, andRow indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tblMovieInfo.dequeueReusableCell(withIdentifier: CellTypes.imageTextCell.rawValue, for: indexPath) as? ImageTextTableViewCell, let movie = movie else { return UITableViewCell() }
         cell.setInfo(movie, numberOfLines: indexPath.section == 0 ? 0 : 2)
+        return cell
+    }
+    
+    private func configure(forReview review: CellPersonalizedTableViewProtocol?, andIndexPath indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tblMovieInfo.dequeueReusableCell(withIdentifier: CellTypes.reviewCell.rawValue, for: indexPath) as? ReviewTableViewCell, let review = review else { return UITableViewCell() }
+        cell.set(info: review)
         return cell
     }
 }

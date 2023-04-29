@@ -11,7 +11,7 @@ public protocol SearchPresentationLogic {
     var view: SearchDisplayLogic? { get }
     
     func search(FailedWith error: SearchEnumError)
-    func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol])
+    func searchDidBrougntResults(in arrResults: [CellPersonalizedTableViewProtocol])
 }
 
 public class SearchPresenter {
@@ -28,7 +28,7 @@ extension SearchPresenter: SearchPresentationLogic {
         
     }
     
-    public func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol]) {
+    public func searchDidBrougntResults(in arrResults: [CellPersonalizedTableViewProtocol]) {
         view?.placeInLabel(message: "")
         
         view?.showResults(in: arrResults.isEmpty ? [EmptySearch()] : arrResults)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EmptySearch: ImageTextTableViewProtocol {
+public struct EmptySearch: CellPersonalizedTableViewProtocol {
     public var strTitle: String {
         return NSLocalizedString("No results found", comment: "No results found")
     }

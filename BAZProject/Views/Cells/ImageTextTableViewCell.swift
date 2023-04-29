@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol ImageTextTableViewProtocol {
+public protocol CellPersonalizedTableViewProtocol {
     var strTitle: String { get }
     var strOverView: String? { get }
     var strDate: String? { get }
@@ -30,7 +30,7 @@ public class ImageTextTableViewCell: UITableViewCell {
         imgPoster.image = UIImage(named: "poster")
     }
     
-    func setInfo(_ info: ImageTextTableViewProtocol, numberOfLines iNumber: Int = 2) {
+    func setInfo(_ info: CellPersonalizedTableViewProtocol, numberOfLines iNumber: Int = 2) {
         lblTitle.text = info.strTitle
         lblOverView.numberOfLines = iNumber
         lblOverView.text = info.strOverView

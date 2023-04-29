@@ -26,6 +26,11 @@
 		3343AD4C29D4ACED00F4CAB9 /* CellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD4B29D4ACED00F4CAB9 /* CellTypes.swift */; };
 		3343AD4F29D4ADCF00F4CAB9 /* ImageTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD4D29D4ADCF00F4CAB9 /* ImageTextTableViewCell.swift */; };
 		3343AD5029D4ADCF00F4CAB9 /* ImageTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3343AD4E29D4ADCF00F4CAB9 /* ImageTextTableViewCell.xib */; };
+		3344B23629FCC8D20047B095 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3344B23529FCC8D20047B095 /* ReviewService.swift */; };
+		3344B23829FCCD2F0047B095 /* review.json in Resources */ = {isa = PBXBuildFile; fileRef = 3344B23729FCCD2F0047B095 /* review.json */; };
+		3344B23B29FCCE9F0047B095 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3344B23929FCCE9F0047B095 /* ReviewTableViewCell.swift */; };
+		3344B23C29FCCE9F0047B095 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3344B23A29FCCE9F0047B095 /* ReviewTableViewCell.xib */; };
+		3344B23E29FCD00E0047B095 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3344B23D29FCD00E0047B095 /* Review.swift */; };
 		334CD8C229DB4B03006D99EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 334CD8C429DB4B03006D99EA /* Localizable.strings */; };
 		334CD8C729DB80EE006D99EA /* URLConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CD8C629DB80EE006D99EA /* URLConfiguration.swift */; };
 		334CD8CB29DB8C1C006D99EA /* URLConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334CD8CA29DB8C1C006D99EA /* URLConfigurationTest.swift */; };
@@ -89,6 +94,11 @@
 		3343AD4B29D4ACED00F4CAB9 /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
 		3343AD4D29D4ADCF00F4CAB9 /* ImageTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextTableViewCell.swift; sourceTree = "<group>"; };
 		3343AD4E29D4ADCF00F4CAB9 /* ImageTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTextTableViewCell.xib; sourceTree = "<group>"; };
+		3344B23529FCC8D20047B095 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		3344B23729FCCD2F0047B095 /* review.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = review.json; sourceTree = "<group>"; };
+		3344B23929FCCE9F0047B095 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		3344B23A29FCCE9F0047B095 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		3344B23D29FCD00E0047B095 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		334CD8BE29DB4ACF006D99EA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		334CD8C329DB4B03006D99EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		334CD8C529DB4B07006D99EA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -187,6 +197,8 @@
 				3343AD4B29D4ACED00F4CAB9 /* CellTypes.swift */,
 				3343AD4D29D4ADCF00F4CAB9 /* ImageTextTableViewCell.swift */,
 				3343AD4E29D4ADCF00F4CAB9 /* ImageTextTableViewCell.xib */,
+				3344B23929FCCE9F0047B095 /* ReviewTableViewCell.swift */,
+				3344B23A29FCCE9F0047B095 /* ReviewTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -202,6 +214,7 @@
 		336DDA9D29E8D4EF00E9ACBF /* NetworkingMocks */ = {
 			isa = PBXGroup;
 			children = (
+				3344B23729FCCD2F0047B095 /* review.json */,
 				3327F7ED29EEEE3100F46759 /* searchVoid.json */,
 				3327F7EB29EEE57C00F46759 /* responseSearchMock.json */,
 				336DDAA029E8D79500E9ACBF /* responseMock.json */,
@@ -278,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				33DCC78029F9CD590077BD78 /* DetailInfo.swift */,
+				3344B23D29FCD00E0047B095 /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				33E7CEAA29E8750A00681265 /* MovieService.swift */,
+				3344B23529FCC8D20047B095 /* ReviewService.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -438,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3344B23829FCCD2F0047B095 /* review.json in Resources */,
 				3327F7EC29EEE57C00F46759 /* responseSearchMock.json in Resources */,
 				3327F7EE29EEEE3100F46759 /* searchVoid.json in Resources */,
 				336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */,
@@ -452,6 +468,7 @@
 				3343AD5029D4ADCF00F4CAB9 /* ImageTextTableViewCell.xib in Resources */,
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
+				3344B23C29FCCE9F0047B095 /* ReviewTableViewCell.xib in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				33DCC77B29F998340077BD78 /* DetailViewController.xib in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
@@ -491,6 +508,7 @@
 				33DCC77A29F998340077BD78 /* DetailViewController.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				3327F7F029EEF49A00F46759 /* EmptySearch.swift in Sources */,
+				3344B23B29FCCE9F0047B095 /* ReviewTableViewCell.swift in Sources */,
 				33ACA7A929ECFE0F00FD0421 /* SearchViewController.swift in Sources */,
 				3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */,
 				33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */,
@@ -502,11 +520,13 @@
 				3343AD4429D4A58D00F4CAB9 /* TrendingView.swift in Sources */,
 				33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */,
 				3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */,
+				3344B23629FCC8D20047B095 /* ReviewService.swift in Sources */,
 				33DCC77D29F9987D0077BD78 /* DetailInteractor.swift in Sources */,
 				3343AD4329D4A58D00F4CAB9 /* TrendingInteractor.swift in Sources */,
 				33ACA7AC29ECFF7B00FD0421 /* SearchInteractor.swift in Sources */,
 				33E7CEAB29E8750A00681265 /* MovieService.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
+				3344B23E29FCD00E0047B095 /* Review.swift in Sources */,
 				33ACA7B029ED004500FD0421 /* CleanFactory.swift in Sources */,
 				33DCC78129F9CD590077BD78 /* DetailInfo.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
@@ -562,7 +582,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QQSW9VPK6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
@@ -582,7 +602,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QQSW9VPK6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
@@ -718,7 +738,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QQSW9VPK6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -747,7 +767,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QQSW9VPK6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

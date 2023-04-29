@@ -14,7 +14,7 @@ final class SearchInteractorTest: XCTestCase {
     private var searchError: SearchEnumError?
     private var sut: SearchInteractor?
     private var mockServer: NetworkingProtocol?
-    private var arrResults: [ImageTextTableViewProtocol]?
+    private var arrResults: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -95,7 +95,7 @@ extension SearchInteractorTest: SearchPresentationLogic {
         self.searchError = error
     }
     
-    func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol]) {
+    func searchDidBrougntResults(in arrResults: [CellPersonalizedTableViewProtocol]) {
         self.arrResults = arrResults
     }
 }

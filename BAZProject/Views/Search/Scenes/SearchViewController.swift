@@ -11,12 +11,12 @@ public protocol SearchDisplayLogic: AnyObject {
     var interactor: SearchBusinessLogic? { get }
     
     func placeInLabel(message strMessage: String)
-    func showResults(in arrCellInfo: [ImageTextTableViewProtocol])
+    func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol])
 }
 
 public class SearchViewController: UIViewController {
     public var interactor: SearchBusinessLogic?
-    private var arrCellInfo: [ImageTextTableViewProtocol]?{
+    private var arrCellInfo: [CellPersonalizedTableViewProtocol]?{
         didSet {
             tblResults.reloadData()
         }
@@ -58,7 +58,7 @@ extension SearchViewController: SearchDisplayLogic {
         lblErrorMessage.text = strMessage
     }
     
-    public func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
+    public func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
 }

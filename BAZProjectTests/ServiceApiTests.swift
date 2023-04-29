@@ -11,7 +11,7 @@ import BAZProject
 final class ServiceApiTests: XCTestCase {
     var errorType: ErrorApi?
     var exp: XCTestExpectation?
-    var result: MovieService?
+    var result: MovieService<MovieDetailService>?
     
     override func setUp() {
         super.setUp()
@@ -67,7 +67,7 @@ final class ServiceApiTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    private func handleService(_ result: Result<MovieService, ErrorApi>) {
+    private func handleService(_ result: Result<MovieService<MovieDetailService>, ErrorApi>) {
         switch result {
         case .success(let result):
             self.result = result

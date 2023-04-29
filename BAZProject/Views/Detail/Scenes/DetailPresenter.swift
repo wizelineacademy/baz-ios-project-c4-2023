@@ -10,9 +10,10 @@ import Foundation
 public protocol DetailPresentationLogic {
     var view: DetailSearchDisplayLogic? { get }
     
-    func currentInfo(movie: ImageTextTableViewProtocol?)
+    func currentInfo(movie: CellPersonalizedTableViewProtocol?)
     func serviceDidFailed(with error: ErrorApi)
-    func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?)
+    func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?)
+    func reviewsWereObtained(with arrReviews: [CellPersonalizedTableViewProtocol]?)
 }
 
 public class DetailPresenter {
@@ -22,7 +23,7 @@ public class DetailPresenter {
 }
 
 extension DetailPresenter: DetailPresentationLogic {
-    public func currentInfo(movie: ImageTextTableViewProtocol?) {
+    public func currentInfo(movie: CellPersonalizedTableViewProtocol?) {
         view?.updateTable(withCurrentInfo: movie)
     }
     
@@ -30,17 +31,26 @@ extension DetailPresenter: DetailPresentationLogic {
         view?.serviceDidFailed(with: error.getMessage())
     }
     
-    public func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?) {
+    public func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?) {
         guard let result = result else { return }
-        var arrToView: [ImageTextTableViewProtocol] = [ImageTextTableViewProtocol]()
-        
-        switch result.count {
+        let arrToView = filter(array: result, upTo: 2)
+        view?.reloadSimilarMovies(with: arrToView)
+    }
+    
+    public func reviewsWereObtained(with arrReviews: [CellPersonalizedTableViewProtocol]?) {
+        guard let arrReviews = arrReviews else { return }
+        let arrToView = filter(array: arrReviews, upTo: 5)
+        view?.reloadReviews(with: arrToView)
+    }
+    
+    private func filter(array arrToFilter: [CellPersonalizedTableViewProtocol], upTo iLimit: Int) -> [CellPersonalizedTableViewProtocol] {
+        var arrToView: [CellPersonalizedTableViewProtocol] = [CellPersonalizedTableViewProtocol]()
+        switch arrToFilter.count {
         case 0:
             arrToView = [EmptySearch()]
         default:
-            arrToView = Array(result.prefix(2))
+            arrToView = Array(arrToFilter.prefix(iLimit))
         }
-        
-        view?.reloadSimilarMovies(with: arrToView)
+        return arrToView
     }
 }

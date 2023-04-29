@@ -27,7 +27,7 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
     
     public func getMovies(withFilter filter: Paths) {
         serviceApi?.updatePath(with: filter)
-        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
+        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>) in
             switch result {
             case .failure(let error):
                 self?.presenter?.serviceFailed(withError: error)

@@ -11,7 +11,6 @@ public protocol DetailBusinessLogic {
     var presenter: DetailPresentationLogic? { get }
     
     func getCurrentData()
-    func searchForSimilar()
 }
 
 public class DetailInteractor {
@@ -33,15 +32,17 @@ public class DetailInteractor {
 extension DetailInteractor: DetailBusinessLogic {
     public func getCurrentData() {
         presenter?.currentInfo(movie: entity?.movie)
+        searchForReview()
+        searchForSimilar()
     }
     
-    public func searchForSimilar() {
+    private func searchForSimilar() {
         guard let iMovieId = entity?.movie.id else {
             presenter?.serviceDidFailed(with: .badParameter)
             return
         }
         networking?.updatePath(with: .similarMovies(strMovieId: "\(iMovieId)"))
-        networking?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
+        networking?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>) in
             switch result {
             case .failure(let error):
                 self?.presenter?.serviceDidFailed(with: error)
@@ -51,10 +52,33 @@ extension DetailInteractor: DetailBusinessLogic {
         })
     }
     
+    private func searchForReview() {
+        guard let iMovieId = entity?.movie.id else {
+            presenter?.serviceDidFailed(with: .badParameter)
+            return
+        }
+        networking?.updatePath(with: .review(strMovieId: "\(iMovieId)"))
+        networking?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<ReviewService>, ErrorApi>) in
+            switch result {
+            case .success(let success):
+                self?.handleSuccessReview(with: success.results)
+            case .failure(let failure):
+                self?.presenter?.serviceDidFailed(with: failure)
+            }
+        })
+    }
+    
     private func handelSuccess(with arrResponse: [MovieDetailService]?) {
         entity?.updateSimilarArray(with: arrResponse)
         if let arrMovieSimilar = entity?.arrSimilar {
             presenter?.similarMoviewsObtained(with: arrMovieSimilar)
+        }
+    }
+    
+    public func handleSuccessReview(with arrResponse: [ReviewService]?) {
+        entity?.updateReviewArray(with: arrResponse)
+        if let arrReview = entity?.arrReviews {
+            presenter?.reviewsWereObtained(with: arrReview)
         }
     }
     

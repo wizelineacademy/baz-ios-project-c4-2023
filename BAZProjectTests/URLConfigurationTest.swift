@@ -131,4 +131,15 @@ final class URLConfigurationTest: XCTestCase {
         //Then
         XCTAssertEqual(urlFinal, urlServiceURL)
     }
+    
+    func testReviewCase() {
+        //Given
+        let strFinalUrl = "https://api.themoviedb.org/3/movie/603/reviews?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
+        let urlFinal = URL(string: strFinalUrl)
+        let sut = URLConfiguration(path: .review(strMovieId: "603"))
+        //When
+        let urlServiceUrl = sut.configureURL()
+        //Then
+        XCTAssertEqual(urlFinal, urlServiceUrl)
+    }
 }

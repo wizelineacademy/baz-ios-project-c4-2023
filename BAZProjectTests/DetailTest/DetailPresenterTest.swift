@@ -12,9 +12,10 @@ import BAZProject
 final class DetailPresenterTest: XCTestCase {
     var sut: DetailPresenter?
     var interactor: DetailBusinessLogic?
-    private var arrFinal: [ImageTextTableViewProtocol]?
+    private var arrFinal: [CellPersonalizedTableViewProtocol]?
     private var strError: String?
-    private var savedInfo: ImageTextTableViewProtocol?
+    private var savedInfo: CellPersonalizedTableViewProtocol?
+    private var arrReviews: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -28,6 +29,7 @@ final class DetailPresenterTest: XCTestCase {
         arrFinal = nil
         strError = nil
         savedInfo = nil
+        arrReviews = nil
     }
     
     func testSavedDataIsSent() {
@@ -42,7 +44,7 @@ final class DetailPresenterTest: XCTestCase {
     func testLargeArrayIsCutToTwo() {
         //Given
         let iExpected = 2
-        let arrInitial: [ImageTextTableViewProtocol] = [Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 2, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 3, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")]
+        let arrInitial: [CellPersonalizedTableViewProtocol] = [Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 2, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 3, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")]
         //When
         sut?.similarMoviewsObtained(with: arrInitial)
         //Then
@@ -52,7 +54,7 @@ final class DetailPresenterTest: XCTestCase {
     func testLoneResultDidNotChange() {
         //Given
         let iExpected = 1
-        let arrInitial: [ImageTextTableViewProtocol] = [Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")]
+        let arrInitial: [CellPersonalizedTableViewProtocol] = [Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")]
         //When
         sut?.similarMoviewsObtained(with: arrInitial)
         //Then
@@ -62,7 +64,7 @@ final class DetailPresenterTest: XCTestCase {
     func testVoidArray() {
         //Given
         let emptySearch = EmptySearch()
-        let arrEmpty: [ImageTextTableViewProtocol] = [ImageTextTableViewProtocol]()
+        let arrEmpty: [CellPersonalizedTableViewProtocol] = [CellPersonalizedTableViewProtocol]()
         //When
         sut?.similarMoviewsObtained(with: arrEmpty)
         //Then
@@ -77,15 +79,38 @@ final class DetailPresenterTest: XCTestCase {
         //Then
         XCTAssertEqual(strMessageExpected, strError)
     }
+    
+    func testReviewsCutToFive() {
+        //Given
+        let arrReviews = [Review(strReview: "Una review", strAuthor: "Un autor"), Review(strReview: "Una review2", strAuthor: "Un autor"), Review(strReview: "Una review3", strAuthor: "Un autor"), Review(strReview: "Una review4", strAuthor: "Un autor"), Review(strReview: "Una review5", strAuthor: "Un autor"), Review(strReview: "Una review6", strAuthor: "Un autor"), Review(strReview: "Una review7", strAuthor: "Un autor")]
+        let iExpected = 5
+        //When
+        sut?.reviewsWereObtained(with: arrReviews)
+        //Then
+        XCTAssertEqual(iExpected, self.arrReviews?.count)
+    }
+    
+    func testLesThanFiveIsPreserved() {
+        //Given
+        let arrReviewsToTest = [Review(strReview: "Una review", strAuthor: "Un autor"), Review(strReview: "Una review2", strAuthor: "Un autor"), Review(strReview: "Una review3", strAuthor: "Un autor"), Review(strReview: "Una review4", strAuthor: "Un autor")]
+        //When
+        sut?.reviewsWereObtained(with: arrReviewsToTest)
+        //Then
+        XCTAssertEqual(arrReviewsToTest.count, self.arrReviews?.count)
+    }
 }
 
 extension DetailPresenterTest: DetailSearchDisplayLogic {
-    func updateTable(withCurrentInfo info: ImageTextTableViewProtocol?) {
+    func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?) {
         self.savedInfo = info
     }
     
-    func reloadSimilarMovies(with arrSimilar: [ImageTextTableViewProtocol]) {
+    func reloadSimilarMovies(with arrSimilar: [CellPersonalizedTableViewProtocol]) {
         self.arrFinal =  arrSimilar
+    }
+    
+    func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol]) {
+        self.arrReviews = arrReviews
     }
     
     func serviceDidFailed(with strMessage: String) {

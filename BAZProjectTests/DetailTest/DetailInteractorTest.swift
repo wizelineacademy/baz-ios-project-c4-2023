@@ -12,11 +12,12 @@ import BAZProject
 final class DetailInteractorTest: XCTestCase {
     var sut: DetailInteractor?
     var view: BAZProject.DetailSearchDisplayLogic?
-    var movie: ImageTextTableViewProtocol?
+    var movie: CellPersonalizedTableViewProtocol?
     var testMovie: Movie!
     private var mockServer: NetworkingProtocol?
     private var errorService: ErrorApi?
-    private var arrSimilar: [ImageTextTableViewProtocol]?
+    private var arrSimilar: [CellPersonalizedTableViewProtocol]?
+    private var arrReviews: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -45,7 +46,7 @@ final class DetailInteractorTest: XCTestCase {
         //Given
         let errorExpected = ErrorApi.badParameter
         //When
-        sut?.searchForSimilar()
+        sut?.getCurrentData()
         //Then
         XCTAssertEqual(errorExpected, errorService)
     }
@@ -57,7 +58,7 @@ final class DetailInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
         sut?.networking = mockServer
         //When
-        sut?.searchForSimilar()
+        sut?.getCurrentData()
         //Then
         XCTAssertEqual(erroExpected, errorService)
     }
@@ -69,7 +70,7 @@ final class DetailInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
         sut?.networking = mockServer
         //When
-        sut?.searchForSimilar()
+        sut?.getCurrentData()
         //Then
         XCTAssertEqual(arrSimilar?.count, iTotalResult)
     }
@@ -81,14 +82,59 @@ final class DetailInteractorTest: XCTestCase {
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("similarMock"))
         sut?.networking = mockServer
         //When
-        sut?.searchForSimilar()
+        sut?.getCurrentData()
         //Then
         XCTAssertEqual(arrSimilar?.count, iTotalExpected)
+    }
+    
+    func testReviewNilError() {
+        //Given
+        let errorExpected = ErrorApi.badParameter
+        //When
+        sut?.getCurrentData()
+        //Then
+        XCTAssertEqual(errorExpected, errorService)
+    }
+    
+    func testReviewBadResponse() {
+        //Given
+        let erroExpected: ErrorApi = .badResponse
+        sut?.setUpEntity(withMovie: testMovie)
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
+        sut?.networking = mockServer
+        //When
+        sut?.getCurrentData()
+        //Then
+        XCTAssertEqual(erroExpected, errorService)
+    }
+    
+    func testReviewSuccessfullVoidResponse() {
+        //Given
+        let iTotalResult = 0
+        sut?.setUpEntity(withMovie: testMovie)
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
+        sut?.networking = mockServer
+        //When
+        sut?.getCurrentData()
+        //Then
+        XCTAssertEqual(arrReviews?.count, iTotalResult)
+    }
+    
+    func testReviewSucessfullResponseWithResults() {
+        //Given
+        let iTotalExpected = 1
+        sut?.setUpEntity(withMovie: testMovie)
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("review"))
+        sut?.networking = mockServer
+        //When
+        sut?.getCurrentData()
+        //Then
+        XCTAssertEqual(arrReviews?.count, iTotalExpected)
     }
 }
 
 extension DetailInteractorTest: DetailPresentationLogic {
-    func currentInfo(movie: ImageTextTableViewProtocol?) {
+    func currentInfo(movie: CellPersonalizedTableViewProtocol?) {
         self.movie = movie
     }
     
@@ -96,7 +142,11 @@ extension DetailInteractorTest: DetailPresentationLogic {
         errorService = error
     }
     
-    func similarMoviewsObtained(with result: [ImageTextTableViewProtocol]?) {
+    func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?) {
         arrSimilar = result
+    }
+    
+    func reviewsWereObtained(with arrReviews: [CellPersonalizedTableViewProtocol]?) {
+        self.arrReviews = arrReviews
     }
 }

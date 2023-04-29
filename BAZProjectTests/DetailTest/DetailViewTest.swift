@@ -12,8 +12,9 @@ import BAZProject
 final class DetailViewTest: XCTestCase {
     var sut: DetailViewController?
     var presenter: DetailPresentationLogic?
-    var info: ImageTextTableViewProtocol?
-    var arrSimilar: [ImageTextTableViewProtocol]?
+    var info: CellPersonalizedTableViewProtocol?
+    var arrSimilar: [CellPersonalizedTableViewProtocol]?
+    var arrReviews: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -53,10 +54,31 @@ final class DetailViewTest: XCTestCase {
         XCTAssertEqual(cell?.lblTitle.text, info?.strTitle)
     }
     
+    func testSecondSectionIsUpdated() {
+        //Given
+        let iTotal = 2
+        //When
+        searchForReview()
+        let iReal = sut?.tblMovieInfo.numberOfRows(inSection: 2)
+        //Then
+        XCTAssertEqual(iTotal, iReal)
+    }
+    
+    func testSecondSectionHasInfo() {
+        //Given
+        let indexPath = IndexPath(row: 0, section: 2)
+        //When
+        sut?.tblMovieInfo.reloadData()
+        let cell = sut?.tblMovieInfo.cellForRow(at: indexPath) as? ReviewTableViewCell
+        //Then
+        XCTAssertEqual(cell?.lblReview.text, arrReviews?.first?.strOverView)
+    }
+    
     func testThirdSectionHasUpdatedRows() {
         //Given
         let iTotal = 3
         //When
+        searchForSimilar()
         let iReal = sut?.tblMovieInfo.numberOfRows(inSection: 3)
         //Then
         XCTAssertEqual(iTotal, iReal)
@@ -82,5 +104,10 @@ extension DetailViewTest: DetailBusinessLogic {
     func searchForSimilar() {
         arrSimilar = [Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 2, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: ""), Movie(id: 3, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")]
         sut?.reloadSimilarMovies(with: arrSimilar!)
+    }
+    
+    func searchForReview() {
+        arrReviews = [Review(strReview: "Una review", strAuthor: "Un autor"), Review(strReview: "Una review2", strAuthor: "Un autor2")]
+        sut?.reloadReviews(with: arrReviews!)
     }
 }

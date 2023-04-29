@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct MovieService: Decodable {
+public struct MovieService<T: Decodable>: Decodable {
     var page: Int?
-    public var results: [MovieDetailService]?
+    public var results: [T]?
 }
 
 public struct MovieDetailService: Decodable {

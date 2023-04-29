@@ -12,7 +12,7 @@ import BAZProject
 final class SearchPresenterTest: XCTestCase {
     var interactor: BAZProject.SearchBusinessLogic?
     private var strMessage: String?
-    private var arrCellInfo: [ImageTextTableViewProtocol]?
+    private var arrCellInfo: [CellPersonalizedTableViewProtocol]?
     private var sut: SearchPresenter?
     
     override func setUp() {
@@ -83,7 +83,7 @@ extension SearchPresenterTest: SearchDisplayLogic {
         self.strMessage = strMessage
     }
     
-    func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
+    func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
 }

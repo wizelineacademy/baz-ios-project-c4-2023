@@ -9,4 +9,5 @@ import Foundation
 
 enum CellTypes: String {
     case imageTextCell = "ImageTextTableViewCell"
+    case reviewCell = "ReviewTableViewCell"
 }
