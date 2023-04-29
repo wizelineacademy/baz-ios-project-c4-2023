@@ -22,6 +22,7 @@ protocol EndpointProtocol {
     var host: String? { get }
     var key: String? { get }
     var queries: [URLQueryItem]? { get }
+    var cachePolicy: URLRequest.CachePolicy { get }
     func getRequest() -> URLRequest?
     
 }
@@ -32,6 +33,7 @@ extension EndpointProtocol {
     var host: String? { return "api.themoviedb.org" }
     var key: String? { return "f6cd5c1a9e6c6b965fdcab0fa6ddd38a" }
     var queries: [URLQueryItem]? { return nil }
+    var cachePolicy: URLRequest.CachePolicy { return .useProtocolCachePolicy}
     
     func getRequest() -> URLRequest? {
         var queriesCopy = queries
@@ -48,7 +50,7 @@ extension EndpointProtocol {
         components.path = path
         components.queryItems = queriesCopy
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url, cachePolicy: cachePolicy)
     }
     
 }

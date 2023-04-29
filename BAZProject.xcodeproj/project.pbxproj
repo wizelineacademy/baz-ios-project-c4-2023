@@ -29,6 +29,8 @@
 		4B6BB28A29FB1352007A20D7 /* RawRepresentableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB28929FB1352007A20D7 /* RawRepresentableExtension.swift */; };
 		4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB28B29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift */; };
 		4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */; };
+		4B6BB29429FDD931007A20D7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29329FDD931007A20D7 /* UIImage.swift */; };
+		4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29529FDDC24007A20D7 /* ImageEndpoint.swift */; };
 		4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */; };
 		4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */; };
 		4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDB229F9E28B00F9422B /* MediaItem.swift */; };
@@ -82,6 +84,8 @@
 		4B6BB28929FB1352007A20D7 /* RawRepresentableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentableExtension.swift; sourceTree = "<group>"; };
 		4B6BB28B29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		4B6BB29329FDD931007A20D7 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4B6BB29529FDDC24007A20D7 /* ImageEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoint.swift; sourceTree = "<group>"; };
 		4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8FBDB229F9E28B00F9422B /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			children = (
 				4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */,
 				4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */,
+				4B6BB29529FDDC24007A20D7 /* ImageEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			children = (
 				4B3A946429D609F100C25BF4 /* Decodable.swift */,
 				4B6BB28929FB1352007A20D7 /* RawRepresentableExtension.swift */,
+				4B6BB29329FDD931007A20D7 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */,
+				4B6BB29429FDD931007A20D7 /* UIImage.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingMoviesViewController.swift in Sources */,
 				4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */,
 				4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */,
@@ -423,6 +430,7 @@
 				C30893E328A425E1004B1860 /* MediaDataObject.swift in Sources */,
 				4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */,
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
+				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
 				4B37399229D4B4550056041F /* GenericResponseDataObject.swift in Sources */,
 				4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */,
 			);

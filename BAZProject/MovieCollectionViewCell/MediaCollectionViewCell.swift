@@ -15,7 +15,9 @@ class MediaCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var decorImageView: UIImageView!
     
     func setCell(with model: MediaCollectionViewCellModel) {
-        imageView.image = UIImage(named: model.defaultImage ?? "")
+        Task {
+            imageView.image = try? await UIImage(download: model.image) ?? UIImage(named: model.defaultImage ?? "")
+        }
         titleLabel.text = model.title
         if let subtitle = model.subtitle {
             subtitleLabel.text = subtitle
@@ -29,6 +31,11 @@ class MediaCollectionViewCell: UICollectionViewCell {
         } else {
             subtitleLabel.superview?.isHidden = true
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
     }
     
 }
