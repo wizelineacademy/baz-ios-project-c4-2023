@@ -15,7 +15,7 @@ class TrendingMoviesViewController: UICollectionViewController {
         self.viewModel = viewModel
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.title = "Trending"
-        self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "gear"), selectedImage: UIImage(systemName: "gear"))
+        self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "chart.line.uptrend.xyaxis"), selectedImage: UIImage(systemName: "chart.line.uptrend.xyaxis"))
         self.bindings()
     }
     
