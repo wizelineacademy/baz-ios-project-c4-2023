@@ -87,4 +87,33 @@ final class TrendingMediaViewModelTests: XCTestCase {
         XCTAssertEqual(model, expectedModel)
     }
     
+    func test_getFormattedObjects() {
+        let dataObjects = [MediaDataObject(mediaType: "movie"), MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
+        let dctObject = [MediaType.movie: [MediaItem(mediaType: .movie)], MediaType.tv: [MediaItem(mediaType: .tv)], MediaType.person: [MediaItem(mediaType: .person)]]
+        
+        let dctOutput = sut.formatMediaDataObject(dataObjects)
+        
+        XCTAssertEqual(dctObject, dctOutput)
+    }
+    
+    func test_getSectionTitles() {
+        let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "tv"), MediaDataObject(title: "title3", mediaType: "person")]
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 3
+        
+        remoteData.mediaItems = mediaItems
+        sut.loadData()
+        sut.bindSnapshot {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+        let section1 = sut.getGroupTitle(for: MediaType.movie.order)
+        let section2 = sut.getGroupTitle(for: MediaType.tv.order)
+        let section3 = sut.getGroupTitle(for: MediaType.person.order)
+        
+        XCTAssertEqual(section1, MediaType.movie.groupTitle)
+        XCTAssertEqual(section2, MediaType.tv.groupTitle)
+        XCTAssertEqual(section3, MediaType.person.groupTitle)
+    }
+    
 }
