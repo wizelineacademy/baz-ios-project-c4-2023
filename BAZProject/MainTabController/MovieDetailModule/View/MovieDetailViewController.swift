@@ -87,6 +87,24 @@ extension MovieDetailViewController: MovieDetailViewControllerProtocol {
     }
 }
 
+extension MovieDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let sections = presenter?.movieModel[indexPath.section] else { return }
+        switch sections {
+        case .summary:
+            return
+        case .starring:
+            return
+        case .similar(let items):
+            presenter?.didSelectRowAt(indexPath, items)
+        case .recomended(let items):
+            presenter?.didSelectRowAt(indexPath, items)
+        case .reviews(_):
+            return
+        }
+    }
+}
+
 extension MovieDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let count: Int = presenter?.movieModel.count else {

@@ -26,7 +26,11 @@ final class MovieDetailRouter: MovieDetailRouterProtocol {
         return movieDetailView
     }
     
-    func presentDetailViewController(from view: MovieDetailViewControllerProtocol?) {
-        
+    func presentDetailViewController(from view: MovieDetailViewControllerProtocol?, withMovie movie: [MovieDetailModel]) {
+        guard let viewController: UIViewController = view as? UIViewController else { return }
+        let movieDetailRouter: MovieDetailRouterProtocol = MovieDetailRouter()
+        let movieDetail = movieDetailRouter.createMovieDetailModule(withMovie: movie)
+        movieDetail.hidesBottomBarWhenPushed = true
+        viewController.navigationController?.pushViewController(movieDetail, animated: true)
     }
 }

@@ -24,7 +24,7 @@ protocol MovieDetailRouterProtocol {
          - view: UIViewController that is going to push to nextView.
          - nextView: new principal user UIViewController
      */
-    func presentDetailViewController(from view: MovieDetailViewControllerProtocol?)
+    func presentDetailViewController(from view: MovieDetailViewControllerProtocol?, withMovie movie: [MovieDetailModel])
 }
 
 // View > Presenter
@@ -55,6 +55,7 @@ protocol MovieDetailPresenterProtocol: AnyObject {
     func searchForRecommendedMovies(of movie: Int)
     func searchForReviews(for movie: Int)
     func getMovieBanner()
+    func didSelectRowAt(_ indexPath: IndexPath, _ items: [Movie])
 }
 
 extension MovieDetailPresenterProtocol {

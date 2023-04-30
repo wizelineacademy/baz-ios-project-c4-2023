@@ -62,12 +62,8 @@ final class MovieDetailInteractorTests: XCTestCase {
     }
     
     func test_fetchMovieBanner_callsRequestImageData(){
-//        let expectation = XCTestExpectation(description: "Wait for request banner completion")
-//        remoteData.expectation = expectation
-        
         sut.fetchMovieBanner("")
         
-//        wait(for: [expectation], timeout: 0.2)
         XCTAssert(remoteData.calls.contains(.requestImageData))
     }
     

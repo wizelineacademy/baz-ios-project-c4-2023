@@ -97,4 +97,8 @@ final class MovieDetailPresenterMock: BAZProject.MovieDetailPresenterProtocol, M
     func onReceivedUserReviewModel(with reviews: [BAZProject.ReviewModel]) {
         calls.append(.onReceivedUserReviewModel)
     }
+    
+    func didSelectRowAt(_ indexPath: IndexPath, _ items: [BAZProject.Movie]) {
+        calls.append(.didSelectRowAt)
+    }
 }

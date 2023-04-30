@@ -44,8 +44,9 @@ extension MovieDetailPresenter: MovieDetailPresenterProtocol {
         interactor?.fetchUserReviews(Endpoint.reviews(idMovie: movie))
     }
     
-    func didSelectRowAt(_ indexPath: IndexPath) {
-        
+    func didSelectRowAt(_ indexPath: IndexPath, _ items: [Movie]) {
+        let movieDetailArray: MovieDetailModel = .summary([items[indexPath.row]])
+        router?.presentDetailViewController(from: view, withMovie: [movieDetailArray])
     }
 }
 
