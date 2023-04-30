@@ -31,6 +31,9 @@
 		4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */; };
 		4B6BB29429FDD931007A20D7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29329FDD931007A20D7 /* UIImage.swift */; };
 		4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29529FDDC24007A20D7 /* ImageEndpoint.swift */; };
+		4B6BB29D29FE388F007A20D7 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29B29FE388F007A20D7 /* SearchTableViewController.swift */; };
+		4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29F29FE38D7007A20D7 /* SearchViewModel.swift */; };
+		4B6BB2A229FE38F3007A20D7 /* SearchRemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2A129FE38F3007A20D7 /* SearchRemoteData.swift */; };
 		4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */; };
 		4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */; };
 		4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDB229F9E28B00F9422B /* MediaItem.swift */; };
@@ -86,6 +89,9 @@
 		4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		4B6BB29329FDD931007A20D7 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4B6BB29529FDDC24007A20D7 /* ImageEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoint.swift; sourceTree = "<group>"; };
+		4B6BB29B29FE388F007A20D7 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		4B6BB29F29FE38D7007A20D7 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		4B6BB2A129FE38F3007A20D7 /* SearchRemoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteData.swift; sourceTree = "<group>"; };
 		4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8FBDB229F9E28B00F9422B /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -230,6 +236,23 @@
 			path = SimpleCollectionViewHeaderView;
 			sourceTree = "<group>";
 		};
+		4B6BB29A29FE37D7007A20D7 /* SearchModule */ = {
+			isa = PBXGroup;
+			children = (
+				4B6BB29B29FE388F007A20D7 /* SearchTableViewController.swift */,
+				4B6BB29F29FE38D7007A20D7 /* SearchViewModel.swift */,
+				4B6BB2A129FE38F3007A20D7 /* SearchRemoteData.swift */,
+			);
+			path = SearchModule;
+			sourceTree = "<group>";
+		};
+		4B6BB2A329FE39FC007A20D7 /* MediaItemTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MediaItemTableViewCell;
+			sourceTree = "<group>";
+		};
 		4B8FBDAD29F9C22500F9422B /* MovieCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +295,8 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				4B6BB2A329FE39FC007A20D7 /* MediaItemTableViewCell */,
+				4B6BB29A29FE37D7007A20D7 /* SearchModule */,
 				4B6BB29029FB3695007A20D7 /* SimpleCollectionViewHeaderView */,
 				4B8FBDAD29F9C22500F9422B /* MovieCollectionViewCell */,
 				4B2DA18C29EF6AA4006BD0EC /* Common */,
@@ -417,9 +442,11 @@
 				4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */,
 				4B37398E29D4A9DC0056041F /* RequestHandlerError.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
+				4B6BB29D29FE388F007A20D7 /* SearchTableViewController.swift in Sources */,
 				4B8FBDB529F9E2E600F9422B /* MediaType.swift in Sources */,
 				4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */,
 				4B3BBE8129D65674001F4E85 /* NetworkingProtocols.swift in Sources */,
+				4B6BB2A229FE38F3007A20D7 /* SearchRemoteData.swift in Sources */,
 				4B37399429D4BA560056041F /* TrendingMediaViewModel.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				4B6BB28A29FB1352007A20D7 /* RawRepresentableExtension.swift in Sources */,
@@ -430,6 +457,7 @@
 				C30893E328A425E1004B1860 /* MediaDataObject.swift in Sources */,
 				4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */,
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
+				4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */,
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
 				4B37399229D4B4550056041F /* GenericResponseDataObject.swift in Sources */,
 				4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */,
