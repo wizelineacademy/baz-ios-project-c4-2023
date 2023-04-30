@@ -9,8 +9,6 @@ import UIKit
 
 class DetailsView: UIViewController {
     
-    let userDefaults = UserDefaults.standard
-    
     //MARK: Oulets
     var ViewModel: DetailsViewModel
     @IBOutlet weak var imageMovie: UIImageView!
@@ -73,7 +71,7 @@ class DetailsView: UIViewController {
     //MARK: - Buttons
     
     @IBAction func favoriteButton(_ sender: UIButton) {
-
+        ViewModel.saveUserDefautls()
     }
     
 }

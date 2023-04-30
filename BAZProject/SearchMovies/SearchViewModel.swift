@@ -16,7 +16,7 @@ class SearchViewModel {
     }
     
     //MARK: - Funciones para la vista
-    var moviesSearched = Box(value: [ListMoviesProtocol]())
+    var moviesSearched = Box(value: [InfoMoviesProtocol]())
     
     ///Crear bind que llama al listener
     func bindMovies(_ listener: @escaping () -> Void) {

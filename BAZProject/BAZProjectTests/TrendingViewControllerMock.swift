@@ -29,10 +29,10 @@ final class SearchViewModelMock: SearchViewModel {
 
 final class MovieApiMock: MovieAPI {
     
-    var movies = [ListMoviesProtocol]()
+    var movies = [InfoMoviesProtocol]()
     var error: Error?
     
-    override func getMovies(completion: @escaping ([ListMoviesProtocol], Error?) -> Void){
+    override func getMovies(completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
         completion(movies, error)
     }
 }

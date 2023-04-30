@@ -43,6 +43,7 @@
 		E0D4834929FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */; };
 		E0D4834B29FB300700B6D8C3 /* DetailsViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834A29FB300700B6D8C3 /* DetailsViewProtocols.swift */; };
 		E0D4834D29FB338100B6D8C3 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834C29FB338100B6D8C3 /* Cast.swift */; };
+		E0D4834F29FDFCA900B6D8C3 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834E29FDFCA900B6D8C3 /* Favorites.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E0D4834729FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 		E0D4834A29FB300700B6D8C3 /* DetailsViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewProtocols.swift; sourceTree = "<group>"; };
 		E0D4834C29FB338100B6D8C3 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		E0D4834E29FDFCA900B6D8C3 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				C30893E128A425E1004B1860 /* Movie.swift */,
 				E0D4834C29FB338100B6D8C3 /* Cast.swift */,
+				E0D4834E29FDFCA900B6D8C3 /* Favorites.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */,
 				E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
+				E0D4834F29FDFCA900B6D8C3 /* Favorites.swift in Sources */,
 				E070192D29E492F400111F2B /* TrendingViewProtocols.swift in Sources */,
 				E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */,
 			);

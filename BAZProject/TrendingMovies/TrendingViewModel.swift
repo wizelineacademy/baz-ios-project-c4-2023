@@ -8,9 +8,9 @@
 import Foundation
 
 
-final class TrendingViewModel: MoviesListProtocol {
+final class TrendingViewModel: TrendingListProtocol {
     
-    var movies = Box(value: [ListMoviesProtocol]())
+    var movies = Box(value: [InfoMoviesProtocol]())
     private var movieAPI: MovieAPI
     
     init(remote: MovieAPI = MovieAPI()) {
@@ -39,7 +39,7 @@ final class TrendingViewModel: MoviesListProtocol {
         movies.value[index].poster_path
     }
     
-    func getAllInfoMoview(index: Int) -> ListMoviesProtocol {
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
         movies.value[index]
     }
 }

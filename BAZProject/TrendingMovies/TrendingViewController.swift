@@ -8,7 +8,7 @@ import UIKit
 
 final class TrendingViewController: UITableViewController {
 
-    var trendingModel: MoviesListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
+    var trendingModel: TrendingListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
 
     override func viewDidLoad() {
         super.viewDidLoad()

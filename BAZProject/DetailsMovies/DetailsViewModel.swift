@@ -10,18 +10,24 @@ import Foundation
 class DetailsViewModel: DetailsProtocol {
     
     //MARK: - Outlets
-    var movieDetail: Box<ListMoviesProtocol>
-    var recommendationMovies: Box<[ListMoviesProtocol]>
-    var similarMovies: Box<[ListMoviesProtocol]>
-    var castMovie: Box<[CastProtocol]>
+    var movie: InfoMoviesProtocol
+    var movieDetail: Box<InfoMoviesProtocol>
+    var recommendationMovies: Box<[InfoMoviesProtocol]>
+    var similarMovies: Box<[InfoMoviesProtocol]>
+    var castMovie: Box<[CastInfoProtocol]>
+    var favoriteMoviesArray: [InfoMoviesProtocol]
     private var movieAPI: MovieAPI
     
-    init(movieDetail: ListMoviesProtocol, remote: MovieAPI = MovieAPI() ) {
+    let userDefaults = UserDefaults.standard
+
+    init(movieDetail: InfoMoviesProtocol, remote: MovieAPI = MovieAPI() ) {
         self.movieDetail = Box(value: movieDetail)
+        self.movie = movieDetail
         self.recommendationMovies = Box(value: [movieDetail])
         self.similarMovies = Box(value: [movieDetail])
         self.castMovie = Box(value: [Cast()])
         self.movieAPI = remote
+        self.favoriteMoviesArray = userDefaults.object(forKey: UserDKeys.favorites.rawValue) as? [InfoMoviesProtocol] ?? []
     }
     
     func getTitle() -> String? {
@@ -46,6 +52,28 @@ class DetailsViewModel: DetailsProtocol {
     func getRating() -> String? {
         "\(movieDetail.value.vote_average ?? 0.0)"
     }
+    
+    func saveUserDefautls() {
+//
+//        if let encoded = try? JSONEncoder().encode(favorite) {
+//            UserDefaults.standard.set(encoded, forKey: UserDKeys.favorites.rawValue)
+//        }
+        
+//        if let data = UserDefaults.standard.object(forKey: UserDKeys.favorites.rawValue) as? [InfoMoviesProtocol],
+//           let category = try? JSONDecoder().decode(favorite, from: data) {
+//             print(category.name)
+//        }
+//        let array = favoriteMoviesArray.append(movie)
+//
+//        if let encoded = try? JSONEncoder().encode(array) {
+//            UserDefaults.standard.set(encoded, forKey: UserDKeys.favorites.rawValue)
+        
+        }
+        
+        
+        
+        
+    
     
     //MARK: - Buttons
 

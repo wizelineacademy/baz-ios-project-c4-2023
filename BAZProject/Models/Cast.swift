@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: - Protocolos para Actores
 
-protocol CastProtocol {
+protocol CastInfoProtocol {
     var id: Int? { get set }
     var name: String? { get set }
     var profile_path: String? { get set }
@@ -17,7 +17,7 @@ protocol CastProtocol {
 }
 
 // Estructura para parsear los actores
-struct Cast: Decodable, CastProtocol {
+struct Cast: Decodable, CastInfoProtocol {
     var id: Int?
     var name: String?
     var profile_path: String?

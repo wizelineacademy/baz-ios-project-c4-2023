@@ -10,10 +10,10 @@ import Foundation
 
 protocol DetailsProtocol {
     // Variables para guardar las peliculas
-    var movieDetail: Box<ListMoviesProtocol> { get set }
-    var recommendationMovies: Box<[ListMoviesProtocol]> { get set }
-    var similarMovies: Box<[ListMoviesProtocol]> { get set }
-    var castMovie: Box<[CastProtocol]> { get set }
+    var movieDetail: Box<InfoMoviesProtocol> { get set }
+    var recommendationMovies: Box<[InfoMoviesProtocol]> { get set }
+    var similarMovies: Box<[InfoMoviesProtocol]> { get set }
+    var castMovie: Box<[CastInfoProtocol]> { get set }
     
     //Funciones vista principal
     func getTitle() -> String?

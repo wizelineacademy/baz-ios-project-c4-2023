@@ -13,7 +13,6 @@ enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
 
-
 enum categoriesFilter: String {
     case Trending = "Trending"
     case NowPlaying = "Now Playing"
@@ -45,6 +44,11 @@ enum categoriesFilter: String {
             return baseURL
         }
     }
+}
+
+//enum para UserDefauls
+enum UserDKeys: String {
+    case favorites = "favoritesMovies"
 }
 
 //MARK: - Extensiones

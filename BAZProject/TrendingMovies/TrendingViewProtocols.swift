@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol MoviesListProtocol {
-    var movies: Box<[ListMoviesProtocol]> { get set }
+protocol TrendingListProtocol {
+    var movies: Box<[InfoMoviesProtocol]> { get set }
     func getmovies(category: categoriesFilter)
     func getMovieCount() -> Int
     func getTitle(index: Int) -> String?
     func bindMovies(_ listener: @escaping () -> Void)
     func getPathImage(index: Int) -> String?
-    func getAllInfoMoview(index: Int) -> ListMoviesProtocol
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol
 }

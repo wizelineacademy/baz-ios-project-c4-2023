@@ -11,11 +11,17 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var txtLabel: UILabel!
+    @IBOutlet weak var characterLabel: UILabel!
+    
     private var downloadTask: URLSessionDownloadTask?
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        downloadTask?.cancel()
+        downloadTask = nil
+        txtLabel.text = ""
+        characterLabel.text = ""
+        imageView.image = UIImage(named: "poster")
         // Initialization code
     }
     
@@ -30,6 +36,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         case .cast:
             txtLabel.text = info.getCastMovieTitle(index: indexPath.row)
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getCastPath(index:indexPath.row) ?? "")")!)
+            characterLabel.text = info.getCastMovieMoviesCharacter(index: indexPath.row)
         default:
             txtLabel.text = info.getTitle()
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getPathImage() ?? "")")!)

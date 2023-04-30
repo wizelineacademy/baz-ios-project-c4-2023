@@ -11,7 +11,7 @@ import XCTest
 final class BAZProjectTests: XCTestCase {
     
     var sut: TrendingViewController!
-    var model: MoviesListProtocol!
+    var model: TrendingListProtocol!
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_NotNil() {
         //Given
-        let expectedResult: [ListMoviesProtocol] = [Movie(id: 1, title: "Titanic", poster_path: "")]
+        let expectedResult: [InfoMoviesProtocol] = [Movie(id: 1, title: "Titanic", poster_path: "")]
         //Then
         model.movies = Box(value: expectedResult)
         sut.getMovieArray()
