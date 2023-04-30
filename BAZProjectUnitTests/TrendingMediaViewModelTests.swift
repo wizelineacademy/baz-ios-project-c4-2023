@@ -69,8 +69,22 @@ final class TrendingMediaViewModelTests: XCTestCase {
         XCTAssertEqual(0, actualValue)
     }
     
-    func test_getCellConfiguration() {
-        let item = MediaItem()
+    func test_getCellConfiguration_rated() {
+        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: Date())
+        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: "1.0", image: "", rated: true, defaultImage: MediaType.movie.defaultImage)
+        
+        let model = sut.getCellConfiguration(item: item)
+        
+        XCTAssertEqual(model, expectedModel)
+    }
+    
+    func test_getCellConfiguration_notRated() {
+        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
+        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: "4/30/23", image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
+        
+        let model = sut.getCellConfiguration(item: item)
+        
+        XCTAssertEqual(model, expectedModel)
     }
     
 }

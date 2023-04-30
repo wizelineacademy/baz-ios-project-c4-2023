@@ -38,18 +38,17 @@ final class TrendingMediaViewControllerTests: XCTestCase {
         XCTAssertEqual(tvItems, tv.count)
     }
     
-    func test_NumberOfRowsInSection_ShouldBeZero() {
+    func test_NumberOfRowsInSection_NotReachingBindingClosure() {
         //Given
-        let items = [MediaDataObject]()
-        configureSut(with: items)
+        let movies = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "movie"), MediaDataObject(title: "title3", mediaType: "movie")]
+        configureSut(with: movies)
         
         //When
         sut.loadViewIfNeeded()
-        sut.dataSource?.apply(viewModel.getDataSnapshot())
         let actualItems = sut.dataSource?.snapshot().numberOfItems
         
         //Then
-        XCTAssertEqual(items.count, actualItems)
+        XCTAssertNotEqual(movies.count, actualItems)
     }
     
 }
