@@ -22,7 +22,6 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         txtLabel.text = ""
         characterLabel.text = ""
         imageView.image = UIImage(named: "poster")
-        // Initialization code
     }
     
     func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: categoriesFilter) {

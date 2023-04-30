@@ -10,24 +10,19 @@ import Foundation
 class DetailsViewModel: DetailsProtocol {
     
     //MARK: - Outlets
-    var movie: InfoMoviesProtocol
     var movieDetail: Box<InfoMoviesProtocol>
     var recommendationMovies: Box<[InfoMoviesProtocol]>
     var similarMovies: Box<[InfoMoviesProtocol]>
     var castMovie: Box<[CastInfoProtocol]>
-    var favoriteMoviesArray: [InfoMoviesProtocol]
     private var movieAPI: MovieAPI
-    
     let userDefaults = UserDefaults.standard
 
     init(movieDetail: InfoMoviesProtocol, remote: MovieAPI = MovieAPI() ) {
         self.movieDetail = Box(value: movieDetail)
-        self.movie = movieDetail
         self.recommendationMovies = Box(value: [movieDetail])
         self.similarMovies = Box(value: [movieDetail])
         self.castMovie = Box(value: [Cast()])
         self.movieAPI = remote
-        self.favoriteMoviesArray = userDefaults.object(forKey: UserDKeys.favorites.rawValue) as? [InfoMoviesProtocol] ?? []
     }
     
     func getTitle() -> String? {
@@ -54,29 +49,65 @@ class DetailsViewModel: DetailsProtocol {
     }
     
     func saveUserDefautls() {
-//
-//        if let encoded = try? JSONEncoder().encode(favorite) {
-//            UserDefaults.standard.set(encoded, forKey: UserDKeys.favorites.rawValue)
-//        }
-        
-//        if let data = UserDefaults.standard.object(forKey: UserDKeys.favorites.rawValue) as? [InfoMoviesProtocol],
-//           let category = try? JSONDecoder().decode(favorite, from: data) {
-//             print(category.name)
-//        }
-//        let array = favoriteMoviesArray.append(movie)
-//
-//        if let encoded = try? JSONEncoder().encode(array) {
-//            UserDefaults.standard.set(encoded, forKey: UserDKeys.favorites.rawValue)
-        
+        do {
+            guard let movie = movieDetail.value as? Movie else { return }
+            if let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) {
+                var UDData = try JSONDecoder().decode([Movie].self, from: data)
+                UDData.append(movie)
+                let data = try JSONEncoder().encode(UDData)
+                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+            } else {
+                let data = try JSONEncoder().encode([movie])
+                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+            }
+            
+        } catch {
+            print("Can not store:", error)
+            
         }
-        
-        
-        
-        
-    
-    
-    //MARK: - Buttons
+        print("se agrego")
 
+    }
+    
+    func deteleUserDefautls() {
+        do {
+            guard let movie = movieDetail.value as? Movie else { return }
+            if let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) {
+                var UDData = try JSONDecoder().decode([Movie].self, from: data)
+                
+                for (index, element) in UDData.enumerated() {
+                    if element.id == movie.id {
+                        UDData.remove(at: index)
+                    }
+                }
+                let data = try JSONEncoder().encode(UDData)
+                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+            }
+        } catch {
+            print("Can not store:", error)
+        }
+        print("se elimino")
+        
+    }
+    
+    func isMovieFavorite() -> Bool {
+        var fav = false
+        do {
+            guard let movie = movieDetail.value as? Movie else { return  false }
+            guard let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) else { return false }
+            let UDData = try JSONDecoder().decode([Movie].self, from: data)
+            UDData.forEach { Movie in
+                if movie.id == Movie.id{
+                    fav = true
+                }
+            }
+            
+        } catch {
+            print("Can not store:", error)
+            
+        }
+        return fav
+    }
 }
 
 //MARK: - Extensiones

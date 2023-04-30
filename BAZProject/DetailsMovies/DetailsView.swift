@@ -33,7 +33,6 @@ class DetailsView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        
         ViewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
                 self?.actorsCV.reloadData()
@@ -41,7 +40,6 @@ class DetailsView: UIViewController {
                 self?.recomendationsCV.reloadData()
             }
         }
-
     }
 
     /// Registro de los nibs para el uso de todos los CollectionViews
@@ -56,6 +54,7 @@ class DetailsView: UIViewController {
     func setView(){
         registerNibs()
         getAllInfo()
+        setFavoriteButton()
         titleLabel.text = ViewModel.getTitle()
         imageMovie.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(ViewModel.getPathImage() ?? "")")!)
         overviewText.text = ViewModel.getOverview()
@@ -68,10 +67,16 @@ class DetailsView: UIViewController {
         ViewModel.getRecommendationMovies()
     }
     
+    func setFavoriteButton() {
+        ViewModel.isMovieFavorite() ? favoriteButton.setBackgroundImage(UIImage(named: "heart.fill"), for: .normal) : favoriteButton.setBackgroundImage(UIImage(named: "heart"), for: .normal)
+        
+    }
+    
     //MARK: - Buttons
     
     @IBAction func favoriteButton(_ sender: UIButton) {
-        ViewModel.saveUserDefautls()
+        ViewModel.isMovieFavorite() ? ViewModel.deteleUserDefautls() : ViewModel.saveUserDefautls()
+        setFavoriteButton()
     }
     
 }
