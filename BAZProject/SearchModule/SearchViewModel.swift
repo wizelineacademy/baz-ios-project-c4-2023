@@ -13,9 +13,11 @@ class SearchViewModel {
     typealias MediaCollectionSnapShot = NSDiffableDataSourceSnapshot<MediaType, MediaItem>
     
     var remoteData: SearchRemoteData
+    var localData: SearchLocalData
     
-    init(remoteData: SearchRemoteData) {
+    init(remoteData: SearchRemoteData, localData: SearchLocalData) {
         self.remoteData = remoteData
+        self.localData = localData
     }
     
 }

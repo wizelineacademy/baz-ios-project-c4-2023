@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func getSearchTab() -> UIViewController {
-        let viewModel = SearchViewModel(remoteData: SearchRemoteData())
+        let viewModel = SearchViewModel(remoteData: SearchRemoteData(), localData: SearchLocalData())
         return UINavigationController(rootViewController: SearchTableViewController(viewModel: viewModel))
     }
     
