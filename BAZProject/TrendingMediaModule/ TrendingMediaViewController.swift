@@ -1,17 +1,17 @@
 //
-//  TrendingMoviesViewController.swift
+//  TrendingMediaViewController.swift
 //  BAZProject
 //
 //
 
 import UIKit
 
-class TrendingMoviesViewController: UICollectionViewController {
+class TrendingMediaViewController: UICollectionViewController {
     
-    private var viewModel: TrendingMoviesViewModel
-    private var dataSource: TrendingMoviesViewModel.MediaCollectionDataSource?
+    private var viewModel: TrendingMediaViewModel
+    private var dataSource: TrendingMediaViewModel.MediaCollectionDataSource?
     
-    init(viewModel: TrendingMoviesViewModel) {
+    init(viewModel: TrendingMediaViewModel) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.title = "Trending"
@@ -32,14 +32,14 @@ class TrendingMoviesViewController: UICollectionViewController {
     
     // MARK: ViewModel Calls
     private func loadInitialData() {
-        viewModel.getMovies()
+        viewModel.loadData()
     }
     
     private func bindings() {
-        viewModel.bindMovies { [weak self] in
+        viewModel.bindSnapshot { [weak self] in
             DispatchQueue.main.async {
-                guard let snapShot = self?.viewModel.getDataSnapshot() else { return }
-                self?.dataSource?.apply(snapShot, animatingDifferences: false)
+                guard let snapshot = self?.viewModel.getDataSnapshot() else { return }
+                self?.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
         viewModel.bindError { [weak self] in
@@ -65,9 +65,9 @@ class TrendingMoviesViewController: UICollectionViewController {
     
 }
 
-// MARK: - CollectionView's Layout
+// MARK: - CollectionView's Diffable DataSource & Layout
 
-extension TrendingMoviesViewController {
+extension TrendingMediaViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
@@ -96,11 +96,11 @@ extension TrendingMoviesViewController {
     }
     
     private func configureDataSource() {
-        let cellRegistration = TrendingMoviesViewModel.MediaCollectionCellRegistration(cellNib: UINib(nibName: "MediaCollectionViewCell", bundle: nil)) { [weak self] (cell, indexPath, item) in
+        let cellRegistration = TrendingMediaViewModel.MediaCollectionCellRegistration(cellNib: UINib(nibName: "MediaCollectionViewCell", bundle: nil)) { [weak self] (cell, indexPath, item) in
             guard let cellModel = self?.viewModel.getCellConfiguration(item: item) else { return }
             cell.setCell(with: cellModel)
         }
-        dataSource = TrendingMoviesViewModel.MediaCollectionDataSource(collectionView: collectionView) {
+        dataSource = TrendingMediaViewModel.MediaCollectionDataSource(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
         }

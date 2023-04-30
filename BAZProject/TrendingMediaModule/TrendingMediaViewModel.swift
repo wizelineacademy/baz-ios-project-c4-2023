@@ -1,5 +1,5 @@
 //
-//  TrendingMoviesViewModel.swift
+//  TrendingMediaViewModel.swift
 //  BAZProject
 //
 //  Created by gescarcega on 29/03/23.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-class TrendingMoviesViewModel {
+class TrendingMediaViewModel {
     
     typealias MediaCollectionDataSource = UICollectionViewDiffableDataSource<MediaType, MediaItem>
     typealias MediaCollectionSnapShot = NSDiffableDataSourceSnapshot<MediaType, MediaItem>
     typealias MediaCollectionCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, MediaItem>
     
     var error: Box<Error> = Box(nil)
-    var remoteData: TrendingMoviesRemoteData
+    var remoteData: TrendingMediaRemoteData
     private var mediaSnapshot = Box(MediaCollectionSnapShot())
     
-    init(dataObjects: [MediaDataObject] = [], remoteData: TrendingMoviesRemoteData) {
+    init(dataObjects: [MediaDataObject] = [], remoteData: TrendingMediaRemoteData) {
         self.remoteData = remoteData
         self.setSnapshotWithDictionary(dctItems: self.formatMediaDataObject(dataObjects))
     }
     
-    func bindMovies(_ handler: @escaping () -> Void) {
+    func bindSnapshot(_ handler: @escaping () -> Void) {
         mediaSnapshot.bind(handler)
     }
     
@@ -30,12 +30,12 @@ class TrendingMoviesViewModel {
         error.bind(handler)
     }
     
-    func getMovies() {
+    func loadData() {
         Task {
             do {
-                guard let movieArray = try await remoteData.getMovies() else { return }
-                let formatted = formatMediaDataObject(movieArray)
-                setSnapshotWithDictionary(dctItems: formatted)
+                guard let mediaArray = try await remoteData.getMediaItems() else { return }
+                let formattedMedia = formatMediaDataObject(mediaArray)
+                setSnapshotWithDictionary(dctItems: formattedMedia)
             } catch {
                 self.error.value = error
             }
@@ -46,21 +46,21 @@ class TrendingMoviesViewModel {
         error.value?.localizedDescription
     }
     
-    func getCellConfiguration(item movie: MediaItem) -> MediaCollectionViewCellModel {
+    func getCellConfiguration(item: MediaItem) -> MediaCollectionViewCellModel {
         var subtitle: String?
         var rated = false
-        if let releaseDate = movie.releaseDate, releaseDate > Date() {
+        if let releaseDate = item.releaseDate, releaseDate > Date() {
             let stringFormatter = DateFormatter()
             stringFormatter.dateStyle = .short
             stringFormatter.timeStyle = .none
             stringFormatter.locale = Locale.current
             subtitle = stringFormatter.string(from: releaseDate)
-        } else if let average = movie.rating, average != 0 {
+        } else if let average = item.rating, average != 0 {
             subtitle = String(round(average * 10) / 10)
             rated = true
         }
         
-        return MediaCollectionViewCellModel(title: movie.title ?? "", subtitle: subtitle, image: movie.posterPath ?? "", rated: rated, defaultImage: movie.mediaType?.defaultImage)
+        return MediaCollectionViewCellModel(title: item.title ?? "", subtitle: subtitle, image: item.posterPath ?? "", rated: rated, defaultImage: item.mediaType?.defaultImage)
     }
     
     

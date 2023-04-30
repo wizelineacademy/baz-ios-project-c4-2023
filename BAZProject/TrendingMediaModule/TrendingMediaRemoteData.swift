@@ -1,16 +1,16 @@
 //
-//  MovieAPI.swift
+//  TrendingMediaRemoteData.swift
 //  BAZProject
 //
 //
 
 import Foundation
 
-class TrendingMoviesRemoteData {
+class TrendingMediaRemoteData {
     
     private let requestHandler = RequestHandler(withSession: URLSession.shared)
 
-    func getMovies() async throws -> [MediaDataObject]? {
+    func getMediaItems() async throws -> [MediaDataObject]? {
         let data = try await requestHandler.get(TrendingEndpoint())
         return try GenericResponseDataObject(data: data)?.results
     }
