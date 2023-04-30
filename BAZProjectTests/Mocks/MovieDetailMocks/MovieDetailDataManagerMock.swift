@@ -7,6 +7,7 @@
 
 import Foundation
 @testable import BAZProject
+import XCTest
 
 enum MovieDetailDataManagerMockCalls {
     case requestActors
@@ -22,6 +23,7 @@ enum MovieDetailDataManagerMockCalls {
 final class MovieDetailDataManagerMock: BAZProject.MovieDetailRemoteDataInputProtocol {
     var interactor: BAZProject.MovieDetailRemoteDataOutputProtocol?
     var calls: [MovieDetailDataManagerMockCalls] = []
+    var expectation: XCTestExpectation?
     
     func requestActors(withEndPoint endPoint: BAZProject.EndPointProtocol) {
         calls.append(.requestActors)
@@ -37,6 +39,7 @@ final class MovieDetailDataManagerMock: BAZProject.MovieDetailRemoteDataInputPro
     
     func requestImageData(urlString: String, completion: @escaping (Data?) -> Void) {
         calls.append(.requestImageData)
+        expectation?.fulfill()
     }
     
     func requestProfileImageData(actors: [BAZProject.Actor], completion: @escaping ([BAZProject.ActorModel]) -> Void) {

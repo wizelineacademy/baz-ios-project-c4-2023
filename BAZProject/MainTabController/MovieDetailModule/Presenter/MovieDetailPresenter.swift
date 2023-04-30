@@ -58,7 +58,6 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputProtocol {
     
     func onReceivedActorModel(withActorModel actor: [ActorModel]) {
         movieModel.append(MovieDetailModel.starring(actor))
-        view?.reloadMovieDetailInfo()
     }
     
     func onReceivedSimilarMovies(with movies: MoviesResult) {
@@ -69,7 +68,6 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputProtocol {
     func onReceivedSimilarMoviesModel(with movies: [Movie]) {
         if movies.count > 0 {
             movieModel.append(MovieDetailModel.similar(movies))
-            view?.reloadMovieDetailInfo()
         }
     }
     
@@ -81,7 +79,6 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputProtocol {
     func onReceivedRecommendedMoviesModel(with movies: [Movie]) {
         if movies.count > 0 {
             movieModel.append(MovieDetailModel.recomended(movies))
-            view?.reloadMovieDetailInfo()
         }
     }
     
@@ -91,7 +88,6 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputProtocol {
             movieModel.removeAll()
             movieModel.append(.summary([Movie(id: movie.id, title: movie.title, posterPath: movie.posterPath, summary: movie.summary, backdropPath: movie.backdropPath, backdropPathData: banner)]))
         }
-        view?.reloadMovieDetailInfo()
     }
     
     func onReceivedUserReviews(with reviews: ReviewResponse) {
@@ -102,7 +98,6 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputProtocol {
     func onReceivedUserReviewModel(with reviews: [ReviewModel]) {
         if reviews.count > 0 {
             movieModel.append(MovieDetailModel.reviews(reviews))
-            view?.reloadMovieDetailInfo()
         }
     }
     

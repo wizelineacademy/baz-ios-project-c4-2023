@@ -55,7 +55,6 @@ protocol MovieDetailPresenterProtocol: AnyObject {
     func searchForRecommendedMovies(of movie: Int)
     func searchForReviews(for movie: Int)
     func getMovieBanner()
-    func didSelectRowAt(_ indexPath: IndexPath)
 }
 
 extension MovieDetailPresenterProtocol {

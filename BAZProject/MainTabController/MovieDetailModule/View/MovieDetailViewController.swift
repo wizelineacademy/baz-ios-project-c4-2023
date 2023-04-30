@@ -87,10 +87,6 @@ extension MovieDetailViewController: MovieDetailViewControllerProtocol {
     }
 }
 
-extension MovieDetailViewController: UICollectionViewDelegate {
-    
-}
-
 extension MovieDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let count: Int = presenter?.movieModel.count else {

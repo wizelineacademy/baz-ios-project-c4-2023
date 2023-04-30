@@ -15,9 +15,20 @@ enum MovieDetailPresenterMockCalls {
     case searchForReviews
     case getMovieBanner
     case didSelectRowAt
+    case onReceivedActors
+    case onReceivedActorModel
+    case onReceivedSimilarMovies
+    case onReceivedSimilarMoviesModel
+    case onReceivedRecommendedMovies
+    case onReceivedRecommendedMoviesModel
+    case onReceivedMovieBanner
+    case onReceivedWithError
+    case onReceivedUserReviews
+    case onReceivedUserReviewModel
 }
 
-final class MovieDetailPresenterMock: BAZProject.MovieDetailPresenterProtocol {
+final class MovieDetailPresenterMock: BAZProject.MovieDetailPresenterProtocol, MovieDetailInteractorOutputProtocol {
+    var interactor: BAZProject.MovieDetailInteractorInputProtocol?
     var view: BAZProject.MovieDetailViewControllerProtocol?
     var router: BAZProject.MovieDetailRouterProtocol?
     var movieModel: [BAZProject.MovieDetailModel] = []
@@ -45,5 +56,45 @@ final class MovieDetailPresenterMock: BAZProject.MovieDetailPresenterProtocol {
     
     func didSelectRowAt(_ indexPath: IndexPath) {
         calls.append(.didSelectRowAt)
+    }
+    
+    func onReceivedActors(with actorList: BAZProject.MovieCast) {
+        calls.append(.onReceivedActors)
+    }
+    
+    func onReceivedActorModel(withActorModel actor: [BAZProject.ActorModel]) {
+        calls.append(.onReceivedActorModel)
+    }
+    
+    func onReceivedSimilarMovies(with movies: BAZProject.MoviesResult) {
+        calls.append(.onReceivedSimilarMovies)
+    }
+    
+    func onReceivedSimilarMoviesModel(with movies: [BAZProject.Movie]) {
+        calls.append(.onReceivedSimilarMoviesModel)
+    }
+    
+    func onReceivedRecommendedMovies(with movies: BAZProject.MoviesResult) {
+        calls.append(.onReceivedRecommendedMovies)
+    }
+    
+    func onReceivedRecommendedMoviesModel(with movies: [BAZProject.Movie]) {
+        calls.append(.onReceivedRecommendedMoviesModel)
+    }
+    
+    func onReceivedMovieBanner(with banner: Data) {
+        calls.append(.onReceivedMovieBanner)
+    }
+    
+    func onReceived(with error: Error) {
+        calls.append(.onReceivedWithError)
+    }
+    
+    func onReceivedUserReviews(with reviews: BAZProject.ReviewResponse) {
+        calls.append(.onReceivedUserReviews)
+    }
+    
+    func onReceivedUserReviewModel(with reviews: [BAZProject.ReviewModel]) {
+        calls.append(.onReceivedUserReviewModel)
     }
 }
