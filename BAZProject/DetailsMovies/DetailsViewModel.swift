@@ -9,6 +9,7 @@ import Foundation
 
 class DetailsViewModel: DetailsProtocol {
     
+    //MARK: - Outlets
     var movieDetail: Box<ListMoviesProtocol>
     var recommendationMovies: Box<[ListMoviesProtocol]>
     var similarMovies: Box<[ListMoviesProtocol]>
@@ -45,6 +46,9 @@ class DetailsViewModel: DetailsProtocol {
     func getRating() -> String? {
         "\(movieDetail.value.vote_average ?? 0.0)"
     }
+    
+    //MARK: - Buttons
+
 }
 
 //MARK: - Extensiones
@@ -101,23 +105,25 @@ extension DetailsViewModel {
 extension DetailsViewModel {
     
     func getCastMovie() {
-        
+        movieAPI.getCast(idMovie: movieDetail.value.id ?? 0) { [weak self] movieArray, _ in
+            self?.castMovie.value = movieArray
+        }
     }
     
     func getCastMovieTitle(index: Int) -> String? {
-        ""
+         castMovie.value[index].name
     }
     
     func getCastMovieMoviesCount() -> Int? {
-        0
+        castMovie.value.count
     }
     
     func getCastMovieMoviesCharacter(index: Int) -> String? {
-        ""
+        castMovie.value[index].character
     }
     
     func getCastPath(index: Int) -> String? {
-        similarMovies.value[index].poster_path
+        castMovie.value[index].profile_path
     }
 }
 

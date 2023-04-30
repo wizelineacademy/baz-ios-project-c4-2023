@@ -36,7 +36,6 @@ class MovieAPI {
         }
         
         guard let url = URL(string: urlStruct) else { return }
-        print("\(category) - \(url)")
         service.get(url) { (result: Result<Movies , Error>) in
             switch result {
             case .success(let apiResults): completion(apiResults.results ?? [], nil)
@@ -44,4 +43,19 @@ class MovieAPI {
             }
         }
     }
+    
+    
+    func getCast(idMovie: Int,  completion: @escaping ([CastProtocol], Error?) -> Void) {
+        let urlStruct = "\(categoriesFilter.similar.url)\(idMovie)/credits?api_key=\(urls.apikey.rawValue)&language=es"
+        guard let url = URL(string: urlStruct) else { return }
+        print("- \(url)")
+        service.get(url) { (result: Result<Casts, Error>) in
+            switch result {
+            case .success(let apiResults): completion(apiResults.cast ?? [], nil)
+            case .failure(let error): completion([], error)
+            }
+        }
+    }
 }
+
+

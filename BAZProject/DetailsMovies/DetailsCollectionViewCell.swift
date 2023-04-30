@@ -19,13 +19,21 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setSimilarInfo(_ info: DetailsProtocol, indexPath: IndexPath) {
-        txtLabel.text = info.getSimilarMoviesTitle(index: indexPath.row)
-        downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getSimilarPath(index:indexPath.row) ?? "")")!)
-    }
-    
-    func setRecommendationInfo(_ info: DetailsProtocol, indexPath: IndexPath) {
-        txtLabel.text = info.getRecommendationMoviesTitle(index: indexPath.row)
-        downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getRecommendationPath(index:indexPath.row) ?? "")")!)
+    func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: categoriesFilter) {
+        switch type {
+        case .similar:
+            txtLabel.text = info.getSimilarMoviesTitle(index: indexPath.row)
+            downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getSimilarPath(index:indexPath.row) ?? "")")!)
+        case .Recommendation:
+            txtLabel.text = info.getRecommendationMoviesTitle(index: indexPath.row)
+            downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getRecommendationPath(index:indexPath.row) ?? "")")!)
+        case .cast:
+            txtLabel.text = info.getCastMovieTitle(index: indexPath.row)
+            downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getCastPath(index:indexPath.row) ?? "")")!)
+        default:
+            txtLabel.text = info.getTitle()
+            downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getPathImage() ?? "")")!)
+        }
+        
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 protocol CastProtocol {
     var id: Int? { get set }
     var name: String? { get set }
-    var poster_path: String? { get set }
+    var profile_path: String? { get set }
     var character: String? { get set }
 }
 
@@ -20,6 +20,10 @@ protocol CastProtocol {
 struct Cast: Decodable, CastProtocol {
     var id: Int?
     var name: String?
-    var poster_path: String?
+    var profile_path: String?
     var character: String?
+}
+
+struct Casts: Decodable {
+    var cast: [Cast]?
 }

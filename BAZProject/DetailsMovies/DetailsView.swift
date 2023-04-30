@@ -9,6 +9,8 @@ import UIKit
 
 class DetailsView: UIViewController {
     
+    let userDefaults = UserDefaults.standard
+    
     //MARK: Oulets
     var ViewModel: DetailsViewModel
     @IBOutlet weak var imageMovie: UIImageView!
@@ -18,7 +20,8 @@ class DetailsView: UIViewController {
     @IBOutlet weak var actorsCV: UICollectionView!
     @IBOutlet weak var similarCV: UICollectionView!
     @IBOutlet weak var recomendationsCV: UICollectionView!
-
+    @IBOutlet weak var favoriteButton: UIButton!
+    
 
     init(ViewModel: DetailsViewModel) {
         self.ViewModel = ViewModel
@@ -54,20 +57,24 @@ class DetailsView: UIViewController {
     /// Se setea todo lo necesario para cargar la vista
     func setView(){
         registerNibs()
-        getAllMovies()
+        getAllInfo()
         titleLabel.text = ViewModel.getTitle()
         imageMovie.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(ViewModel.getPathImage() ?? "")")!)
         overviewText.text = ViewModel.getOverview()
         voteAverage.text = ViewModel.getRating()
     }
     
-    func getAllMovies(){
+    func getAllInfo(){
+        ViewModel.getCastMovie()
         ViewModel.getSimilarMovies()
         ViewModel.getRecommendationMovies()
     }
     
     //MARK: - Buttons
     
+    @IBAction func favoriteButton(_ sender: UIButton) {
+
+    }
     
 }
 
@@ -78,7 +85,7 @@ extension DetailsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case actorsCV:
-            return 3
+            return ViewModel.getCastMovieMoviesCount() ?? 0
         case similarCV:
             return ViewModel.getSimilarMoviesCount() ?? 0
         case recomendationsCV:
@@ -92,13 +99,13 @@ extension DetailsView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailsCollectionViewCell else { return UICollectionViewCell() }
         switch collectionView {
         case actorsCV:
-            cell.txtLabel.text = "Holi"
+            cell.setInfo(ViewModel, indexPath: indexPath, type: .cast)
             return cell
         case similarCV:
-            cell.setSimilarInfo(ViewModel, indexPath: indexPath)
+            cell.setInfo(ViewModel, indexPath: indexPath, type: .similar)
             return cell
         case recomendationsCV:
-            cell.setRecommendationInfo(ViewModel, indexPath: indexPath)
+            cell.setInfo(ViewModel, indexPath: indexPath, type: .Recommendation)
             return cell
         default:
             return cell

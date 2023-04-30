@@ -23,6 +23,7 @@ enum categoriesFilter: String {
     case Search =  "Search"
     case Recommendation = "Recommendation Movies"
     case similar = "similar Movies"
+    case cast = "cast"
     
     
     var url: String {
@@ -40,7 +41,7 @@ enum categoriesFilter: String {
             return "\(baseURL)upcoming?api_key="
         case .Search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
-        case .Recommendation, .similar:
+        case .Recommendation, .similar, .cast:
             return baseURL
         }
     }

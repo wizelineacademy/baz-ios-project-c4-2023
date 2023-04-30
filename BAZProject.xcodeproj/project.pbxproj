@@ -183,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				E0D4833C29F9CC9600B6D8C3 /* customCell.swift */,
-				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 				E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */,
 				E070192C29E492F400111F2B /* TrendingViewProtocols.swift */,
@@ -194,6 +193,7 @@
 		E08EFD3629D3ABCD0056EF16 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				E0AB763929EF5FF8004074B5 /* ServiceApi.swift */,
 				E0AB763B29EF603E004074B5 /* ServiceProtocols.swift */,
 			);
