@@ -17,6 +17,12 @@ final class TrendingMediaViewControllerTests: XCTestCase {
         viewModel = TrendingMediaViewModelMock(dataObjects: media, remoteData: TrendingMediaRemoteDataMock())
         sut = TrendingMediaViewController(viewModel: viewModel)
     }
+    
+    override func tearDown() {
+        sut = nil
+        viewModel = nil
+        super.tearDown()
+    }
 
     func test_snapshotAppliedCorrectly_NumberOfItemsInSectionsShouldBeOneAndThree() {
         //Given
