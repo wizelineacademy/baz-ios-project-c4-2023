@@ -1,5 +1,5 @@
 //
-//  TrendingViewModelTests.swift
+//  TrendingMediaViewModelTests.swift
 //  BAZProjectUnitTests
 //
 //  Created by gescarcega on 20/04/23.
@@ -8,15 +8,15 @@
 import XCTest
 @testable import BAZProject
 
-final class TrendingViewModelTests: XCTestCase {
+final class TrendingMediaViewModelTests: XCTestCase {
     
-    var sut: TrendingMoviesViewModel!
-    var remoteData: TrendingRemoteDataMock!
+    var sut: TrendingMediaViewModel!
+    var remoteData: TrendingMediaRemoteDataMock!
     
     override func setUp() {
         super.setUp()
-        remoteData = TrendingRemoteDataMock()
-        sut = TrendingMoviesViewModel(remoteData: remoteData)
+        remoteData = TrendingMediaRemoteDataMock()
+        sut = TrendingMediaViewModel(remoteData: remoteData)
     }
     
     override func tearDown() {
@@ -26,29 +26,30 @@ final class TrendingViewModelTests: XCTestCase {
     }
     
     func test_GetMovies_MoviesCountShouldBeThree() {
-        let movies = [MediaDataObject(title: "title1"), MediaDataObject(title: "title2"), MediaDataObject(title: "title3")]
+        let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "movie"), MediaDataObject(title: "title3", mediaType: "movie")]
         let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 3
         
-        sut.movies.bind {
+        remoteData.mediaItems = mediaItems
+        sut.loadData()
+        sut.bindSnapshot {
             expectation.fulfill()
         }
-        remoteData.movies = movies
-        sut.getMovies()
         wait(for: [expectation], timeout: 0.1)
-        let actualValue = sut.getRowCount()
+        let actualValue = self.sut.getDataSnapshot().numberOfItems(inSection: .movie)
         
-        XCTAssertEqual(movies.count, actualValue)
+        XCTAssertEqual(mediaItems.count, actualValue)
     }
     
     func test_GetMovies_Error() {
         let error = NSError(domain: "", code: -666)
         let expectation = XCTestExpectation()
         
-        sut.error.bind {
+        sut.bindError {
             expectation.fulfill()
         }
         remoteData.error = error
-        sut.getMovies()
+        sut.loadData()
         wait(for: [expectation], timeout: 0.1)
         let actualValue = sut.getError()
         
@@ -58,26 +59,18 @@ final class TrendingViewModelTests: XCTestCase {
     func test_GetMovies_MoviesCountShouldBeZeroByNilData() {
         let expectation = XCTestExpectation()
         
-        sut.movies.bind {
+        sut.bindSnapshot {
             expectation.fulfill()
         }
-        sut.getMovies()
+        sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let actualValue = sut.getRowCount()
+        let actualValue = sut.getDataSnapshot().numberOfSections
         
         XCTAssertEqual(0, actualValue)
     }
     
-    func test_MoviesCountShouldBeZeroByNilData() {
-        let expectation = XCTestExpectation()
-        
-        sut.movies.bind {
-            expectation.fulfill()
-        }
-        sut.getMovies()
-        wait(for: [expectation], timeout: 0.1)
-        let actualValue = sut.getRowCount()
-        
-        XCTAssertEqual(0, actualValue)
+    func test_getCellConfiguration() {
+        let item = MediaItem()
     }
+    
 }

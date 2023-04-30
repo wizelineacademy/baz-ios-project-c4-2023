@@ -8,8 +8,8 @@ import UIKit
 
 class TrendingMediaViewController: UICollectionViewController {
     
-    private var viewModel: TrendingMediaViewModel
-    private var dataSource: TrendingMediaViewModel.MediaCollectionDataSource?
+    var viewModel: TrendingMediaViewModel
+    var dataSource: TrendingMediaViewModel.MediaCollectionDataSource?
     
     init(viewModel: TrendingMediaViewModel) {
         self.viewModel = viewModel
