@@ -53,7 +53,7 @@ final class TrendingViewModelTests: XCTestCase {
         //When
         movieAPIMock?.movies = movies
         sut?.bindMovies { expectation.fulfill() }
-        sut?.getmovies(category: .Trending)
+        sut?.getmovies(category: .NowPlaying)
         wait(for: [expectation], timeout: 0.1)
         let count = sut?.getMovieCount()
         //Then

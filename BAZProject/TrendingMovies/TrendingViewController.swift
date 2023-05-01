@@ -19,7 +19,7 @@ final class TrendingViewController: UITableViewController {
         let data = Data(apikey.utf8)
         let account = "themoviedb.org"
         let service = "apikey"
-//        KeychainHelper.standard.genericSave(data, service: service, account: account)
+        KeychainHelper.standard.genericSave(data, service: service, account: account)
         let result = KeychainHelper.standard.genericRead(service: service, account: account, type: String.self)
         print("alv: \(result ?? "")")
         

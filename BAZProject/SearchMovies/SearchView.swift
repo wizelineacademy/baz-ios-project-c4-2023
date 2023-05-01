@@ -37,7 +37,7 @@ class SearchView: UIViewController {
         viewModel.searchMovie("") { [weak self] (error) in
             DispatchQueue.main.async {
                 guard let error = error else { return }
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: false)
             }
