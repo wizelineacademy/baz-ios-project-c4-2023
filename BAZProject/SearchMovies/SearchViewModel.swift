@@ -38,6 +38,9 @@ class SearchViewModel {
         moviesSearched.value = []
     }
     
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
+        moviesSearched.value[index]
+    }
     //MARK: - Consulta servicio buscar peliculas
     
     ///se consulta el servicio para lista de peliculas

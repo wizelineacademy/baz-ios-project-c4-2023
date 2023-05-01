@@ -68,19 +68,14 @@ class DetailsView: UIViewController {
     }
     
     func setFavoriteButton() {
-        ViewModel.isMovieFavorite() ? favoriteButton.setBackgroundImage(UIImage(named: "heart.fill"), for: .normal) : favoriteButton.setBackgroundImage(UIImage(named: "heart"), for: .normal)
-        
+        ViewModel.isMovieFavorite() ? favoriteButton.setTitle("Borrar", for: .normal) : favoriteButton.setTitle("Agregar", for: .normal)
     }
-    
     //MARK: - Buttons
-    
     @IBAction func favoriteButton(_ sender: UIButton) {
         ViewModel.isMovieFavorite() ? ViewModel.deteleUserDefautls() : ViewModel.saveUserDefautls()
         setFavoriteButton()
     }
-    
 }
-
 
 //MARK: - Extensiones
 extension DetailsView: UICollectionViewDataSource {

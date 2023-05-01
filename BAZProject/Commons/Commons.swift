@@ -51,6 +51,12 @@ enum UserDKeys: String {
     case favorites = "favoritesMovies"
 }
 
+//enum para Manejo de titulos
+enum StringsTitles: String {
+    case favorites = "Favoritos"
+    case search = "buscar"
+    case treding = "Trending"
+}
 //MARK: - Extensiones
 
 // Metodos extras para el uso de peliculas con Strings

@@ -32,7 +32,8 @@ final class TrendingViewController: UITableViewController {
     
     ///Configuracion para cuando se cargue la vista
     func setView() {
-        self.tabBarController?.viewControllers?[1].title = "Buscar"
+        self.tabBarController?.viewControllers?[1].title = StringsTitles.search.rawValue
+        self.tabBarController?.viewControllers?[2].title = StringsTitles.favorites.rawValue
         trendingModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()

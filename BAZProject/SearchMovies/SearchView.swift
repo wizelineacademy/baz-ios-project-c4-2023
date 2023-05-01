@@ -56,6 +56,12 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = viewModel.getTitle(index: indexPath.row)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row))
+        let vc = DetailsView(ViewModel: viewmodel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension SearchView: UISearchBarDelegate {
