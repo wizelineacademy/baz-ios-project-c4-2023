@@ -21,7 +21,7 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ViewModel.getFavoritesMovies()
+        ViewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
         ViewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()

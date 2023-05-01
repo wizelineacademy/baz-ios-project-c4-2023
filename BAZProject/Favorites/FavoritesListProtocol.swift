@@ -15,5 +15,5 @@ protocol FavoriteListProtocol {
     func getMovieCount() -> Int
     func getTitle(index: Int) -> String?
     func getPathImage(index: Int) -> String?
-    func getFavoritesMovies()
+    func getFavoritesMovies(key: String)
 }

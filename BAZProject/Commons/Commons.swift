@@ -49,6 +49,7 @@ enum categoriesFilter: String {
 //enum para UserDefauls
 enum UserDKeys: String {
     case favorites = "favoritesMovies"
+    case favoriteTests = "favoriteTests"
 }
 
 //enum para Manejo de titulos

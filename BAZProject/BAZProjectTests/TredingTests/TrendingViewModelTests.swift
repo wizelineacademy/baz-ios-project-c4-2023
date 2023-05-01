@@ -59,5 +59,4 @@ final class TrendingViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(count, movies.count)
     }
-    
 }

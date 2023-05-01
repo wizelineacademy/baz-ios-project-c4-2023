@@ -35,9 +35,9 @@ class FavoritesViewModel: FavoriteListProtocol {
         favoriteMovies!.value[index]
     }
     
-    func getFavoritesMovies(){
+    func getFavoritesMovies(key: String) {
         do {
-            if let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) {
+            if let data = UserDefaults.standard.data(forKey: key) {
                 let UDData = try JSONDecoder().decode([Movie].self, from: data)
                 favoriteMovies = Box(value: UDData)
             }

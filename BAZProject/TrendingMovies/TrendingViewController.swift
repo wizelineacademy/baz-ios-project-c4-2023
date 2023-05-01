@@ -13,21 +13,21 @@ final class TrendingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        
-        //TODO: Revisar con menor
+        keychain()
+    }
+    /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
+    func getMovieArray() {
+        trendingModel.getmovies(category: .Trending)
+    }
+    
+    ///Funcion que guarda y lee de keyChain
+    func keychain(){
         let apikey = "asldfjasñldkjfñasdljf"
         let data = Data(apikey.utf8)
         let account = "themoviedb.org"
         let service = "apikey"
         KeychainHelper.standard.genericSave(data, service: service, account: account)
         let result = KeychainHelper.standard.genericRead(service: service, account: account, type: String.self)
-        print("alv: \(result ?? "")")
-        
-    }
-
-    /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
-    func getMovieArray() {
-        trendingModel.getmovies(category: .Trending)
     }
     
     ///Configuracion para cuando se cargue la vista
