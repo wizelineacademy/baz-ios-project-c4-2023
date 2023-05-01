@@ -11,6 +11,15 @@ class SearchTableViewController: UITableViewController {
     
     var viewModel: SearchViewModel
     var dataSource: SearchViewModel.MediaCollectionDataSource?
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search moves, tv series, people..."
+        definesPresentationContext = true
+        return searchController
+    }()
 
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -26,6 +35,19 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        setSearchController()
     }
+    
+    private func setSearchController() {
+        navigationItem.searchController = searchController
+    }
+    
+}
+
+extension SearchTableViewController: UISearchResultsUpdating {
+    
+  func updateSearchResults(for searchController: UISearchController) {
+      
+  }
     
 }
