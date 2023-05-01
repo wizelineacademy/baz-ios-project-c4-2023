@@ -13,3 +13,8 @@ protocol MovieProtocol: Decodable {
     var title: String? { get }
     var poster_path: String? { get }
 }
+
+struct MoviesGeneral {
+    var section: Int
+    var movies: [MovieProtocol]
+}

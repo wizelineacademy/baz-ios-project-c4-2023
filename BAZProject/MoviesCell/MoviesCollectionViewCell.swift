@@ -22,5 +22,17 @@ final class MoviesCollectionViewCell: UICollectionViewCell {
         movieImage.image = nil
         movieTitle.text = nil
     }
-
+    
+    var titleLabel: String = "" {
+        didSet{
+            movieTitle.text = titleLabel
+        }
+    }
+   
+    var image: UIImage = UIImage() {
+        didSet{
+            movieImage.image = image
+        }
+    }
+    
 }
