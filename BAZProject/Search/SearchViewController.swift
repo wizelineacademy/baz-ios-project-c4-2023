@@ -5,12 +5,6 @@
 
 import UIKit
 
-struct ConstraintConstants {
-    static let small = 8.0
-    static let regular = 16.0
-    static let large = 32.0
-}
-
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
 
     var presenter: SearchViewOutputProtocol?

@@ -24,13 +24,13 @@ extension SearchInteractor: SearchInteractorInputProtocol {
      - Version: 1.0.0
     */
     func getMovieSearch(endPoint: Endpoint) {
-        let movieApi = MovieAPI()
-        movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
-            switch result {
+        let apiMovie = MovieAPI()
+        apiMovie.fetchData(model: Movie.self, endPoint) { [weak self] objResult in
+            switch objResult {
             case .failure(let fail):
                 print(fail.localizedDescription)
-            case .success(let response):
-                self?.movies = response.results
+            case .success(let objResponse):
+                self?.movies = objResponse.results
                 self?.presenter?.presentDataMovies(movies: self?.movies)
             }
         }

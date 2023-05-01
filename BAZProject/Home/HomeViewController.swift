@@ -12,8 +12,21 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         return tableView
+    }()
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let items = ["Trending","NowPlaying","Popular","TopRated","Upcoming"]
+        let segmented = UISegmentedControl(items: items)
+        segmented.selectedSegmentTintColor = .white
+        segmented.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)], for: .normal)
+        segmented.tintColor = .gray
+        segmented.backgroundColor = .darkGray
+        segmented.selectedSegmentIndex = 0
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        segmented.addTarget(self, action: #selector(selectSection(_:)), for: .valueChanged)
+        return segmented
     }()
     
     var presenter: HomeViewOutputProtocol?
@@ -38,8 +51,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         navigationItem.setRightBarButton(exitButtom,
                                          animated: false)
         title = LocalizableString.labelTitle.localized
-        addTableView()
-        setupTableView()
+        self.view.backgroundColor = UIColor.AppColors.homeBackgroundColor
+        addViews()
+        setupViews()
     }
     
     // MARK: Functions
@@ -48,21 +62,51 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    private func addTableView() {
+    private func addViews() {
+        self.view.addSubview(segmentedControl)
         self.view.addSubview(movieTableView)
+        
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            movieTableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: ConstraintConstants.small),
+            segmentedControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: ConstraintConstants.extraSmall),
+            segmentedControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -ConstraintConstants.extraSmall),
+            segmentedControl.heightAnchor.constraint(equalToConstant: ConstraintConstants.segmentedHeight),
+            
+            movieTableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: ConstraintConstants.small),
             movieTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             movieTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             movieTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
     
-    private func setupTableView() {
+    private func setupViews() {
         movieTableView.dataSource = self
         movieTableView.delegate = self
         movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
+    }
+    
+    @objc func selectSection(_ sender: UISegmentedControl) {
+//        var selection: showType!
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            selection = .popular
+//            break
+//        case 1:
+//            selection = .topRated
+//            break
+//        case 2:
+//            selection = .onTv
+//            break
+//        case 3:
+//            selection = .airingToday
+//            break
+//        default:
+//            break
+//        }
+//        presenter.fetchList(section: selection) {
+//            self.collectionView.reloadData()
+//        }
     }
 
 }
