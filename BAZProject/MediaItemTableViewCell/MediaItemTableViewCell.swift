@@ -1,5 +1,5 @@
 //
-//  MediaItemTableViewCell.swift
+//  MediaTableViewCell.swift
 //  BAZProject
 //
 //  Created by gescarcega on 01/05/23.
@@ -7,14 +7,39 @@
 
 import UIKit
 
-class MediaItemTableViewCell: UITableViewCell {
-
+class MediaTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var posterImageView: UIImageView!
+    @IBOutlet private weak var decorImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var ratingLabel: UILabel!
+    
     func setCell(with model: MediaTableViewCellModel) {
         Task {
-            imageView?.image = try? await UIImage(download: model.image ?? "") ?? UIImage(named: model.defaultImage ?? "")
+            posterImageView?.image = try? await UIImage(download: model.image ?? "") ?? UIImage(named: model.defaultImage ?? "")
         }
-        textLabel?.text = model.title
-        detailTextLabel?.text = model.subtitle
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        subtitleLabel.isHidden = model.subtitle == nil
+        if let subtitle = model.footNote {
+            ratingLabel.text = subtitle
+            if model.rated {
+                decorImageView.image = UIImage(systemName: "star.fill")
+                decorImageView.tintColor = .systemYellow
+            } else {
+                decorImageView.image = UIImage(systemName: "clock")
+                decorImageView.tintColor = .systemGray
+            }
+        } else {
+            ratingLabel.superview?.isHidden = true
+        }
+        if let detail = model.detail {
+            descriptionLabel.text = detail
+        } else {
+            descriptionLabel.superview?.isHidden = true
+        }
     }
     
     override func prepareForReuse() {

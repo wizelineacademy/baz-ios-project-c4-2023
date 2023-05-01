@@ -43,7 +43,7 @@ class SearchTableViewController: UITableViewController {
     
     private func setView() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(MediaItemTableViewCell.self, forCellReuseIdentifier: "MediaTableViewCell")
+        tableView.register(UINib(nibName: "MediaTableViewCell", bundle: nil), forCellReuseIdentifier: "MediaTableViewCell")
     }
     
     private func setSearchController() {
@@ -65,7 +65,7 @@ class SearchTableViewController: UITableViewController {
     
     private func createDataSource() {
         dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath) as? MediaItemTableViewCell, let model = self?.viewModel.getCellModel(for: itemIdentifier) else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath) as? MediaTableViewCell, let model = self?.viewModel.getCellModel(for: itemIdentifier) else { return UITableViewCell() }
             cell.setCell(with: model)
             return cell
         }
@@ -76,6 +76,14 @@ extension SearchTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
+    }
+    
+}
+
+extension SearchTableViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.width * 0.53
     }
     
 }

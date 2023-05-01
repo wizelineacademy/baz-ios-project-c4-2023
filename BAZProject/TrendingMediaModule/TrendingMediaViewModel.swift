@@ -50,16 +50,11 @@ class TrendingMediaViewModel {
         var subtitle: String?
         var rated = false
         if let releaseDate = item.releaseDate, releaseDate > Date() {
-            let stringFormatter = DateFormatter()
-            stringFormatter.dateStyle = .short
-            stringFormatter.timeStyle = .none
-            stringFormatter.locale = Locale.current
-            subtitle = stringFormatter.string(from: releaseDate)
+            subtitle = DateFormatter.common.string(from: releaseDate)
         } else if let average = item.rating, average != 0 {
             subtitle = String(round(average * 10) / 10)
             rated = true
         }
-        
         return MediaCollectionViewCellModel(title: item.title ?? "", subtitle: subtitle, image: item.posterPath ?? "", rated: rated, defaultImage: item.mediaType?.defaultImage)
     }
     

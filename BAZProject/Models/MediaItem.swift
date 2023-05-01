@@ -15,5 +15,6 @@ struct MediaItem:  Hashable {
     var rating: Float?
     var mediaType: MediaType?
     var releaseDate: Date?
+    var overview: String?
     
 }

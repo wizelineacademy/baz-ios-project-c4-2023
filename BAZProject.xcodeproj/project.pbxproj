@@ -37,6 +37,8 @@
 		4B6BB2A529FE3F1A007A20D7 /* SearchLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2A429FE3F1A007A20D7 /* SearchLocalData.swift */; };
 		4B6BB2AC2A00394A007A20D7 /* MediaItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2AA2A00394A007A20D7 /* MediaItemTableViewCell.swift */; };
 		4B6BB2AF2A003B77007A20D7 /* MediaTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2AE2A003B77007A20D7 /* MediaTableViewCellModel.swift */; };
+		4B6BB2B12A003E9C007A20D7 /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */; };
+		4B6BB2B62A006DAE007A20D7 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */; };
 		4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */; };
 		4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */; };
 		4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDB229F9E28B00F9422B /* MediaItem.swift */; };
@@ -98,6 +100,8 @@
 		4B6BB2A429FE3F1A007A20D7 /* SearchLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalData.swift; sourceTree = "<group>"; };
 		4B6BB2AA2A00394A007A20D7 /* MediaItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemTableViewCell.swift; sourceTree = "<group>"; };
 		4B6BB2AE2A003B77007A20D7 /* MediaTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCellModel.swift; sourceTree = "<group>"; };
+		4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
+		4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8FBDB229F9E28B00F9422B /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				4B3A946429D609F100C25BF4 /* Decodable.swift */,
 				4B6BB28929FB1352007A20D7 /* RawRepresentableExtension.swift */,
 				4B6BB29329FDD931007A20D7 /* UIImage.swift */,
+				4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 			children = (
 				4B6BB2AA2A00394A007A20D7 /* MediaItemTableViewCell.swift */,
 				4B6BB2AE2A003B77007A20D7 /* MediaTableViewCellModel.swift */,
+				4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */,
 			);
 			path = MediaItemTableViewCell;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B6BB2B12A003E9C007A20D7 /* MediaTableViewCell.xib in Resources */,
 				4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */,
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
@@ -468,6 +475,7 @@
 				C30893E328A425E1004B1860 /* MediaDataObject.swift in Sources */,
 				4B6BB2AC2A00394A007A20D7 /* MediaItemTableViewCell.swift in Sources */,
 				4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */,
+				4B6BB2B62A006DAE007A20D7 /* DateFormatter.swift in Sources */,
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
 				4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */,
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
