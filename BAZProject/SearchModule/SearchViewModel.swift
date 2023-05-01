@@ -39,4 +39,8 @@ class SearchViewModel {
         return snapshot.value
     }
     
+    func getCellModel(for item: MediaItem) -> MediaTableViewCellModel {
+        return MediaTableViewCellModel(title: item.title, subtitle: item.mediaType == .person ? nil : item.mediaType?.itemTitle, image: item.posterPath, defaultImage: item.mediaType?.defaultImage)
+    }
+    
 }

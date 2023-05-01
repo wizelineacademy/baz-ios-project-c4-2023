@@ -43,7 +43,7 @@ class SearchTableViewController: UITableViewController {
     
     private func setView() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MediaTableViewCell")
+        tableView.register(MediaItemTableViewCell.self, forCellReuseIdentifier: "MediaTableViewCell")
     }
     
     private func setSearchController() {
@@ -64,15 +64,9 @@ class SearchTableViewController: UITableViewController {
     }
     
     private func createDataSource() {
-        dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { (tableView, indexPath, itemIdentifier) in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath)
-            var config = cell.defaultContentConfiguration()
-            config.text = itemIdentifier.title
-            config.secondaryText = itemIdentifier.mediaType?.itemTitle
-            Task {
-                config.image = try? await UIImage(download: itemIdentifier.posterPath ?? "")
-            }
-            cell.contentConfiguration = config
+        dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath) as? MediaItemTableViewCell, let model = self?.viewModel.getCellModel(for: itemIdentifier) else { return UITableViewCell() }
+            cell.setCell(with: model)
             return cell
         }
     }
