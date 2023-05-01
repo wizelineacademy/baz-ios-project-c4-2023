@@ -13,7 +13,6 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var decorImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var ratingLabel: UILabel!
     
     func setCell(with model: MediaTableViewCellModel) {
@@ -22,7 +21,7 @@ class MediaTableViewCell: UITableViewCell {
         }
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
-        subtitleLabel.isHidden = model.subtitle == nil
+        subtitleLabel.superview?.isHidden = model.subtitle == nil
         if let subtitle = model.footNote {
             ratingLabel.text = subtitle
             if model.rated {
@@ -34,11 +33,6 @@ class MediaTableViewCell: UITableViewCell {
             }
         } else {
             ratingLabel.superview?.isHidden = true
-        }
-        if let detail = model.detail {
-            descriptionLabel.text = detail
-        } else {
-            descriptionLabel.superview?.isHidden = true
         }
     }
     
