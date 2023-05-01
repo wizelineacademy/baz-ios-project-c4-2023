@@ -35,6 +35,7 @@ protocol HomeInteractorOutputProtocol: AnyObject {
 // MARK: - Router (Presenter To Router)
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
+    func showAnimation(completion: @escaping () -> Void)
 }
 
 // MARK: - Interactor (Presenter To Interactor)

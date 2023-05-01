@@ -40,9 +40,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         self.movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
-        presenter?.getDataMovies(endPoint: .trending)
         let exitButtom: UIBarButtonItem
         exitButtom = UIBarButtonItem(title: LocalizableString.searchTitle.localized,
                                      style: .plain,
@@ -54,6 +52,11 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.view.backgroundColor = UIColor.AppColors.homeBackgroundColor
         addViews()
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectSection(segmentedControl)
     }
     
     // MARK: Functions
@@ -87,26 +90,27 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func selectSection(_ sender: UISegmentedControl) {
-//        var selection: showType!
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            selection = .popular
-//            break
-//        case 1:
-//            selection = .topRated
-//            break
-//        case 2:
-//            selection = .onTv
-//            break
-//        case 3:
-//            selection = .airingToday
-//            break
-//        default:
-//            break
-//        }
-//        presenter.fetchList(section: selection) {
-//            self.collectionView.reloadData()
-//        }
+        var selection: Endpoint = .trending
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selection = .trending
+            break
+        case 1:
+            selection = .nowPlaying
+            break
+        case 2:
+            selection = .popular
+            break
+        case 3:
+            selection = .topRated
+            break
+        case 4:
+            selection = .upcoming
+            break
+        default:
+            break
+        }
+        presenter?.getDataMovies(endPoint: selection)
     }
 
 }

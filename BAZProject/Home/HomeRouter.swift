@@ -9,6 +9,7 @@ import UIKit
 class HomeRouter {
     // MARK: - Properties
     weak var view: UIViewController?
+    private var animationView: UIAlertController?
     
     // MARK: - Functions
     static func createModule() -> UIViewController {
@@ -25,5 +26,14 @@ class HomeRouter {
 
 // MARK: - Extensions
 extension HomeRouter: HomeRouterProtocol {
+    func showAnimation(completion: @escaping () -> Void) {
+        animationView = UIAlertController.GlobalViews.animationView
+        DispatchQueue.main.async {
+            self.view?.present(self.animationView ?? UIAlertController(), animated: true, completion: {
+                completion()
+            })
+        }
+    }
+    
     
 }
