@@ -10,7 +10,7 @@ import UIKit
 class SearchTableViewController: UITableViewController {
     
     var viewModel: SearchViewModel
-    var dataSource: SearchViewModel.MediaCollectionDataSource?
+    var dataSource: SearchViewModel.MediaTableDataSource?
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
@@ -26,6 +26,7 @@ class SearchTableViewController: UITableViewController {
         super.init(style: .plain)
         self.title = "Search"
         self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        self.bindings()
     }
     
     required init?(coder: NSCoder) {
@@ -34,14 +35,47 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setView()
         setSearchController()
+        createDataSource()
+        loadData()
+    }
+    
+    private func setView() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MediaTableViewCell")
     }
     
     private func setSearchController() {
         navigationItem.searchController = searchController
     }
     
+    private func loadData() {
+        viewModel.loadData()
+    }
+    
+    private func bindings() {
+        viewModel.bindSnapshot { [weak self] in
+            DispatchQueue.main.async {
+                guard let snapshot = self?.viewModel.getSnapshot() else { return }
+                self?.dataSource?.apply(snapshot)
+            }
+        }
+    }
+    
+    private func createDataSource() {
+        dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { (tableView, indexPath, itemIdentifier) in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath)
+            var config = cell.defaultContentConfiguration()
+            config.text = itemIdentifier.title
+            config.secondaryText = itemIdentifier.mediaType?.itemTitle
+            Task {
+                config.image = try? await UIImage(download: itemIdentifier.posterPath ?? "")
+            }
+            cell.contentConfiguration = config
+            return cell
+        }
+    }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating {
