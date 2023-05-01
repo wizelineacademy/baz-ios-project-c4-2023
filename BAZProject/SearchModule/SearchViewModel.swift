@@ -42,7 +42,7 @@ class SearchViewModel {
     func getCellModel(for item: MediaItem) -> MediaTableViewCellModel {
         switch item.mediaType {
         case .person:
-            return MediaTableViewCellModel(title: item.title, subtitle: nil, image: item.posterPath, defaultImage: item.mediaType?.defaultImage, detail: nil, footNote: nil, rated: false)
+            return MediaTableViewCellModel(title: item.title, subtitle: nil, image: item.posterPath, defaultImage: item.mediaType?.defaultImage, footNote: nil, rated: false)
         default:
             var footnote: String?
             var rated = false
@@ -52,7 +52,7 @@ class SearchViewModel {
                 footnote = String(round(average * 10) / 10)
                 rated = true
             }
-            return MediaTableViewCellModel(title: item.title, subtitle: item.mediaType?.itemTitle, image: item.posterPath, defaultImage: item.mediaType?.defaultImage, detail: item.overview, footNote: footnote, rated: rated)
+            return MediaTableViewCellModel(title: item.title, subtitle: item.mediaType?.itemTitle, image: item.posterPath, defaultImage: item.mediaType?.defaultImage, footNote: footnote, rated: rated)
         }
     }
     

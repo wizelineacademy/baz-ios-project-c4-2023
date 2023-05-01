@@ -5,9 +5,9 @@
 //  Created by gescarcega on 26/04/23.
 //
 
-import Foundation
+import UIKit
 
-struct MediaItem:  Hashable {
+struct MediaItem: Hashable {
     
     var id: Int?
     var posterPath: String?
@@ -15,6 +15,15 @@ struct MediaItem:  Hashable {
     var rating: Float?
     var mediaType: MediaType?
     var releaseDate: Date?
-    var overview: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(mediaType)
+        hasher.combine(releaseDate)
+    }
+
+    static func == (lhs: MediaItem, rhs: MediaItem) -> Bool {
+        return lhs.id == rhs.id && lhs.mediaType == rhs.mediaType && lhs.releaseDate == rhs.releaseDate
+    }
     
 }

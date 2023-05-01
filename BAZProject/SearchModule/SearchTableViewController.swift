@@ -83,7 +83,7 @@ extension SearchTableViewController: UISearchResultsUpdating {
 extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.width * 0.53
+        return tableView.frame.width * 0.25
     }
     
 }
