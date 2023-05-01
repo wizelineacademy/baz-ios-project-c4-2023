@@ -46,8 +46,8 @@ class SearchTableViewController: UITableViewController {
 
 extension SearchTableViewController: UISearchResultsUpdating {
     
-  func updateSearchResults(for searchController: UISearchController) {
-      
-  }
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
     
 }
