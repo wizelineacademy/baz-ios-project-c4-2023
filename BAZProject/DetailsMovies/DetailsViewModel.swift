@@ -48,17 +48,17 @@ class DetailsViewModel: DetailsProtocol {
         "\(movieDetail.value.vote_average ?? 0.0)"
     }
     
-    func saveUserDefautls() {
+    func saveUserDefautls(key: String) {
         do {
             guard let movie = movieDetail.value as? Movie else { return }
-            if let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) {
+            if let data = UserDefaults.standard.data(forKey: key) {
                 var UDData = try JSONDecoder().decode([Movie].self, from: data)
                 UDData.append(movie)
                 let data = try JSONEncoder().encode(UDData)
-                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+                UserDefaults.standard.set(data, forKey: key)
             } else {
                 let data = try JSONEncoder().encode([movie])
-                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+                UserDefaults.standard.set(data, forKey: key)
             }
             
         } catch {
@@ -69,10 +69,10 @@ class DetailsViewModel: DetailsProtocol {
 
     }
     
-    func deteleUserDefautls() {
+    func deteleUserDefautls(key: String) {
         do {
             guard let movie = movieDetail.value as? Movie else { return }
-            if let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) {
+            if let data = UserDefaults.standard.data(forKey: key) {
                 var UDData = try JSONDecoder().decode([Movie].self, from: data)
                 
                 for (index, element) in UDData.enumerated() {
@@ -81,7 +81,7 @@ class DetailsViewModel: DetailsProtocol {
                     }
                 }
                 let data = try JSONEncoder().encode(UDData)
-                UserDefaults.standard.set(data, forKey: UserDKeys.favorites.rawValue)
+                UserDefaults.standard.set(data, forKey: key)
             }
         } catch {
             print("Can not store:", error)
@@ -127,10 +127,6 @@ extension DetailsViewModel {
     
     func getRecommendationMoviesCount() -> Int? {
         recommendationMovies.value.count
-    }
-    
-    func getRecommendationPath(){
-        
     }
     
     func getRecommendationPath(index: Int) -> String? {

@@ -72,7 +72,7 @@ class DetailsView: UIViewController {
     }
     //MARK: - Buttons
     @IBAction func favoriteButton(_ sender: UIButton) {
-        ViewModel.isMovieFavorite() ? ViewModel.deteleUserDefautls() : ViewModel.saveUserDefautls()
+        ViewModel.isMovieFavorite() ? ViewModel.deteleUserDefautls(key: UserDKeys.favorites.rawValue) : ViewModel.saveUserDefautls(key: UserDKeys.favorites.rawValue)
         setFavoriteButton()
     }
 }

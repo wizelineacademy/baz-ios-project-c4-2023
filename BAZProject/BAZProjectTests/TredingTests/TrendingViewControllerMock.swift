@@ -26,18 +26,3 @@ final class SearchViewModelMock: SearchViewModel {
         movies.count
     }
 }
-
-final class MovieApiMock: MovieAPI {
-    
-    var movies = [InfoMoviesProtocol]()
-    var cast = [CastInfoProtocol]()
-    var error: Error?
-    
-    override func getMovies(category: categoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
-        completion(movies, error)
-    }
-    
-    override func getCast(idMovie: Int = 0 , completion: @escaping ([CastInfoProtocol], Error?) -> Void) {
-        completion(cast, error)
-    }
-}

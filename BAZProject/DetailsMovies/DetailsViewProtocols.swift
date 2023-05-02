@@ -21,8 +21,8 @@ protocol DetailsProtocol {
     func getPathImage() -> String?
     func getOverview() -> String?
     func getRating() -> String?
-    func saveUserDefautls()
-    func deteleUserDefautls()
+    func saveUserDefautls(key: String)
+    func deteleUserDefautls(key: String)
     func isMovieFavorite() -> Bool
 
     // Funciones para Recomendaciones
