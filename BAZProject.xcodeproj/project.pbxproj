@@ -18,6 +18,10 @@
 		C30893E328A425E1004B1860 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */ = {isa = PBXBuildFile; fileRef = C383356D28CA917400FCE0D5 /* code-review-rubric.md */; };
 		E03141412A00B6EE00F42F9D /* SearchListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03141402A00B6EE00F42F9D /* SearchListProtocol.swift */; };
+		E03141442A00BA2100F42F9D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03141422A00BA2100F42F9D /* SearchTableViewCell.swift */; };
+		E03141452A00BA2100F42F9D /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E03141432A00BA2100F42F9D /* SearchTableViewCell.xib */; };
+		E03141482A00BECB00F42F9D /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03141462A00BECB00F42F9D /* TrendingTableViewCell.swift */; };
+		E03141492A00BECB00F42F9D /* TrendingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E03141472A00BECB00F42F9D /* TrendingTableViewCell.xib */; };
 		E045961729EF439D00712F8C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045961629EF439D00712F8C /* SearchViewModel.swift */; };
 		E045961929EF43AC00712F8C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045961829EF43AC00712F8C /* SearchView.swift */; };
 		E045961B29EF459600712F8C /* SearchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E045961A29EF459600712F8C /* SearchView.storyboard */; };
@@ -49,7 +53,6 @@
 		E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */; };
 		E0D4833529F9819E00B6D8C3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833429F9819E00B6D8C3 /* DetailsView.swift */; };
 		E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833A29F9C2C900B6D8C3 /* Box.swift */; };
-		E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833C29F9CC9600B6D8C3 /* customCell.swift */; };
 		E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */; };
 		E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */; };
 		E0D4834829FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */; };
@@ -82,6 +85,10 @@
 		C30893E128A425E1004B1860 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		C383356D28CA917400FCE0D5 /* code-review-rubric.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "code-review-rubric.md"; sourceTree = "<group>"; };
 		E03141402A00B6EE00F42F9D /* SearchListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListProtocol.swift; sourceTree = "<group>"; };
+		E03141422A00BA2100F42F9D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		E03141432A00BA2100F42F9D /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		E03141462A00BECB00F42F9D /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
+		E03141472A00BECB00F42F9D /* TrendingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingTableViewCell.xib; sourceTree = "<group>"; };
 		E045961629EF439D00712F8C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E045961829EF43AC00712F8C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E045961A29EF459600712F8C /* SearchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchView.storyboard; sourceTree = "<group>"; };
@@ -114,7 +121,6 @@
 		E0D4833229F9819000B6D8C3 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		E0D4833429F9819E00B6D8C3 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		E0D4833A29F9C2C900B6D8C3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		E0D4833C29F9CC9600B6D8C3 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		E0D4833E29F9DB2F00B6D8C3 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		E0D4834029FAFC5900B6D8C3 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 		E0D4834629FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				E045961829EF43AC00712F8C /* SearchView.swift */,
 				E045961A29EF459600712F8C /* SearchView.storyboard */,
 				E03141402A00B6EE00F42F9D /* SearchListProtocol.swift */,
+				E03141422A00BA2100F42F9D /* SearchTableViewCell.swift */,
+				E03141432A00BA2100F42F9D /* SearchTableViewCell.xib */,
 			);
 			path = SearchMovies;
 			sourceTree = "<group>";
@@ -207,10 +215,11 @@
 		E08EFD3529D3ABB30056EF16 /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
-				E0D4833C29F9CC9600B6D8C3 /* customCell.swift */,
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
 				E08EFD3929D3AC400056EF16 /* TrendingViewModel.swift */,
 				E070192C29E492F400111F2B /* TrendingViewProtocols.swift */,
+				E03141462A00BECB00F42F9D /* TrendingTableViewCell.swift */,
+				E03141472A00BECB00F42F9D /* TrendingTableViewCell.xib */,
 			);
 			path = TrendingMovies;
 			sourceTree = "<group>";
@@ -404,7 +413,9 @@
 				E045961B29EF459600712F8C /* SearchView.storyboard in Resources */,
 				E0D2C9222A0034B000D90A49 /* Favorites.storyboard in Resources */,
 				E0D4834129FAFC5900B6D8C3 /* DetailsView.xib in Resources */,
+				E03141492A00BECB00F42F9D /* TrendingTableViewCell.xib in Resources */,
 				E0D4834929FB24FE00B6D8C3 /* DetailsCollectionViewCell.xib in Resources */,
+				E03141452A00BA2100F42F9D /* SearchTableViewCell.xib in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				E0D2C9262A003A6100D90A49 /* FavoriteTableViewCell.xib in Resources */,
@@ -434,8 +445,8 @@
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				E0D4834829FB24FE00B6D8C3 /* DetailsCollectionViewCell.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
-				E0D4833D29F9CC9600B6D8C3 /* customCell.swift in Sources */,
 				E08EFD3A29D3AC400056EF16 /* TrendingViewModel.swift in Sources */,
+				E03141442A00BA2100F42F9D /* SearchTableViewCell.swift in Sources */,
 				E045961729EF439D00712F8C /* SearchViewModel.swift in Sources */,
 				E0D4832F29F8842200B6D8C3 /* Commons.swift in Sources */,
 				E0D4833B29F9C2C900B6D8C3 /* Box.swift in Sources */,
@@ -450,6 +461,7 @@
 				E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
 				E070192D29E492F400111F2B /* TrendingViewProtocols.swift in Sources */,
+				E03141482A00BECB00F42F9D /* TrendingTableViewCell.swift in Sources */,
 				E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */,
 				E0A4AAF22A009D77000383F7 /* MovieApiMock.swift in Sources */,
 				E0D2C9282A003F5600D90A49 /* FavoritesListProtocol.swift in Sources */,

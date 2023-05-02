@@ -41,7 +41,14 @@ final class TrendingViewController: UITableViewController {
             }
         }
         getMovieArray()
+        registerTableViewCells()
     }
+    
+    private func registerTableViewCells() {
+        let textFieldCell = UINib(nibName: "TrendingTableViewCell", bundle: nil)
+        self.tableView.register(textFieldCell, forCellReuseIdentifier: "cell")
+    }
+    
     //MARK: - Buttons
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
         // Alerta para poder realizar la busqueda por categoria
@@ -82,7 +89,7 @@ extension TrendingViewController {
         return 150
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! customCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TrendingTableViewCell
         cell.setInfo(trendingModel, indexPath: indexPath)
         return cell
     }

@@ -1,14 +1,14 @@
 //
-//  customCell.swift
+//  TrendingTableViewCell.swift
 //  BAZProject
 //
-//  Created by Manuel S on 26/04/23.
+//  Created by Manuel S on 01/05/23.
 //
 
 import UIKit
 
-class customCell: UITableViewCell {
-    
+class TrendingTableViewCell: UITableViewCell {
+
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
     private var downloadTask: URLSessionDownloadTask?
@@ -20,7 +20,6 @@ class customCell: UITableViewCell {
         titleLable.text = ""
         movieImage.image = UIImage(named: "poster")
     }
-    
     ///Setea todos los datos para la celda
     func setInfo(_ info: TrendingListProtocol, indexPath: IndexPath) {
         titleLable.text = info.getTitle(index: indexPath.row)

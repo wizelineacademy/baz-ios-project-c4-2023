@@ -17,6 +17,7 @@ protocol SearchListProtocol {
     func getMovieCount() -> Int
     func getTitle(index: Int) -> String?
     func cleanMoviesArray()
+    func getImagePath(index: Int) -> String?
     func getAllInfoMoview(index: Int) -> InfoMoviesProtocol
     func searchMovie(_ title: String, apiKey: String, completion: @escaping (Error?) -> Void)
 }

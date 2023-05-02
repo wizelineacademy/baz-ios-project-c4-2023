@@ -33,6 +33,9 @@ class SearchViewModel: SearchListProtocol {
         moviesSearched.value[index].title
     }
     
+    func getImagePath(index: Int) -> String? {
+        moviesSearched.value[index].poster_path
+    }
     ///Limpia el arreglo para otra consulta
     func cleanMoviesArray(){
         moviesSearched.value = []
