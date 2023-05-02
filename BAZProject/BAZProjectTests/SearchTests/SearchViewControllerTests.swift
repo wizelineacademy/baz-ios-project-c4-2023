@@ -22,5 +22,19 @@ final class SearchViewControllerTests: XCTestCase {
         
         XCTAssertEqual(movies.count, rows)
     }
-
+    
+    func test_IsbuttonCancelShows() {
+        let sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as! SearchView
+        sut.loadViewIfNeeded()
+        XCTAssertTrue(sut.searchBar.showsCancelButton)
+    }
+    
+    func test_TableSelected() {
+        let sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as! SearchView
+        
+        sut.loadViewIfNeeded()
+        let button = sut.searchBar.isSearchResultsButtonSelected
+        
+        XCTAssertFalse(button)
+    }
 }

@@ -62,20 +62,14 @@ final class FavoriteViewModelTests: XCTestCase {
         XCTAssertEqual(movie?.title, movies[0].title)
     }
     
-    
-    
     func testFavoriteModel_FavoriteList_NotNil() {
-        
-        
         let movies = [Movie(id: 1, title: "Avatar", poster_path: "avatar.png")]
-        
         //When
         saveUserDefautls()
         //Then
         sut!.getFavoritesMovies(key: UserDKeys.favoriteTests.rawValue)
         XCTAssertNotNil(sut?.favoriteMovies)
     }
-    
     
     func saveUserDefautls() {
         let movies = Movie(id: 1, title: "Avatar", poster_path: "avatar.png")
