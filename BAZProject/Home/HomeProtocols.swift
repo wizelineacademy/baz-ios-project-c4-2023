@@ -24,6 +24,8 @@ protocol HomeViewOutputProtocol {
     // MARK: - Functions
     func getDataMovies(endPoint: Endpoint)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func saveFavorite(index: Int)
+    func deleteFavorite(index: Int)
 }
 
 // MARK: - (Interactor To Presenter)
@@ -44,6 +46,8 @@ protocol HomeInteractorInputProtocol {
     // MARK: - Properties
     var presenter: HomeInteractorOutputProtocol? { get }
     // MARK: - Functions
-    func getDataMovies(endPoint: Endpoint, completion: @escaping () -> Void)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getDataMovies(endPoint: Endpoint, completion: @escaping () -> Void)
+    func saveFavorite(index: Int, onSaved: @escaping () -> Void)
+    func deleteFavorite(index: Int, onSaved: @escaping () -> Void)
 }

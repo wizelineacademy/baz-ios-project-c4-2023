@@ -6,15 +6,6 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
-
-    var presenter: SearchViewOutputProtocol?
-    private var moviesModel: [MovieResult]?
-    {
-        didSet {
-            self.movieTableView.reloadData()
-        }
-    }
-    
     // MARK: Properties
     private lazy var movieSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -24,6 +15,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
+        searchBar.showsCancelButton = true
         searchBar.delegate = self
         return searchBar
     }()
@@ -32,14 +24,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         return tableView
     }()
-
+    
+    var presenter: SearchViewOutputProtocol?
+    private var moviesModel: [MovieResult]?
+    {
+        didSet {
+            self.movieTableView.reloadData()
+        }
+    }
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        self.view.backgroundColor = UIColor.AppColors.homeBackgroundColor
         title = LocalizableString.searchTitle.localized
         initComponents()
     }
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         self.view.addSubview(movieTableView)
         let safeArea = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            movieSearchBar.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: ConstraintConstants.small),
+            movieSearchBar.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: ConstraintConstants.medium),
             movieSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ConstraintConstants.regular),
             movieSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ConstraintConstants.regular),
             movieSearchBar.heightAnchor.constraint(equalToConstant: ConstraintConstants.large),
@@ -70,7 +70,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     private func setupTableView() {
         movieTableView.dataSource = self
         movieTableView.delegate = self
-        movieTableView.register(HomeCell.self, forCellReuseIdentifier: "HomeCell")
+        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
     }
     
     // MARK: - searchBar Delegates
@@ -82,17 +82,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
+    
+    
 
 }
 
+// MARK: - Extensions
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as? HomeCell {
-            cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
-            self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
-                let imgDefault = UIImage(named: "poster") ?? UIImage()
-                cell.setupImage(image: (image ?? imgDefault))
-            })
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID) as? HomeCell {
+            cell.isHome = false
+            cell.searchPresenter = presenter
+            cell.index = indexPath.row
+            cell.model = self.moviesModel?[indexPath.row]
             return cell
         }
         return UITableViewCell()
@@ -101,7 +103,7 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesModel?.count ?? 0
     }
-
+    
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W

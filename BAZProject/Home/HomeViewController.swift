@@ -124,11 +124,10 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as? HomeCell
         else { return UITableViewCell() }
-        cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
-        self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
-            let imgDefault = UIImage(named: "poster") ?? UIImage()
-            cell.setupImage(image: (image ?? imgDefault))
-        })
+        cell.isHome = true
+        cell.presenter = presenter
+        cell.index = indexPath.row
+        cell.model = self.moviesModel?[indexPath.row]
         return cell
     }
     
