@@ -35,6 +35,14 @@ class SearchViewModel {
         return snapshot.value
     }
     
+    func bindError(_ bind: @escaping () -> Void) {
+        error.bind(bind)
+    }
+    
+    func getError() -> String? {
+        return error.value?.localizedDescription
+    }
+    
     func getCellModel(for item: MediaItem) -> MediaTableViewCellModel {
         switch item.mediaType {
         case .person:
@@ -52,8 +60,8 @@ class SearchViewModel {
         }
     }
     
-    func getSectionTitle(for: Int) -> String? {
-        return snapshot.value.sectionIdentifiers.contains(0) ? "Recent" : nil
+    func getSectionTitle(for section: Int) -> String? {
+        return section == 0 ? "Recent" : nil
     }
     
     func searchMedia(keyword: String) {

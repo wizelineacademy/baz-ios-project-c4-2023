@@ -11,9 +11,14 @@
 class SearchRemoteDataMock: SearchRemoteData {
     
     var mediaObject: [MediaDataObject]?
+    var error: Error?
     
     override func searchMedia(_ searchText: String) async throws -> [MediaDataObject]? {
-        return mediaObject
+        if let error = error {
+            throw error
+        } else {
+            return mediaObject
+        }
     }
     
 }

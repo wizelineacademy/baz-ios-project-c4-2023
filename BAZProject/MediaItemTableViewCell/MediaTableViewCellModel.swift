@@ -13,7 +13,6 @@ struct MediaTableViewCellModel {
     var subtitle: String?
     var image: String?
     var defaultImage: String?
-    var detail: String?
     var footNote: String?
     var rated: Bool
     
