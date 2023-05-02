@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaCollectionViewCellModel {
+struct MediaCollectionViewCellModel: Equatable {
     
     var title: String
     var subtitle: String?

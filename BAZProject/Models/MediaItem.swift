@@ -16,14 +16,4 @@ struct MediaItem: Hashable {
     var mediaType: MediaType?
     var releaseDate: Date?
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(mediaType)
-        hasher.combine(releaseDate)
-    }
-
-    static func == (lhs: MediaItem, rhs: MediaItem) -> Bool {
-        return lhs.id == rhs.id && lhs.mediaType == rhs.mediaType && lhs.releaseDate == rhs.releaseDate
-    }
-    
 }
