@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct MediaItem: Hashable {
+struct MediaItem: Hashable {
     
     public var id: Int?
     public var posterPath: String?
@@ -18,7 +18,7 @@ public struct MediaItem: Hashable {
     
 }
 
-public extension MediaItem {
+extension MediaItem {
     
     init(dataObject: MediaDataObject) {
         self.mediaType = MediaType(rawValue: dataObject.mediaType ?? "")
