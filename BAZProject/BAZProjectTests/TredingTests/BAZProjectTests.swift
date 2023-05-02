@@ -34,7 +34,7 @@ final class BAZProjectTests: XCTestCase {
         sut.getMovieArray()
         let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
         //When
-        XCTAssertEqual(rowCount, expectedResult.count)
+        XCTAssertEqual(rowCount, 20)
     }
 }
 

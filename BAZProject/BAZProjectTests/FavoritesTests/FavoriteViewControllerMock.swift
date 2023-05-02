@@ -8,7 +8,7 @@
 import Foundation
 @testable import BAZProject
 
-final class FavoriteViewModelMock: FavoritesViewModel {
+final class FavoritesViewModelMock: FavoritesViewModel {
 
     var movies = [Movie]()
     

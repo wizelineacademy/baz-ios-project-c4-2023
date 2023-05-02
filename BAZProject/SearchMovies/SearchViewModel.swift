@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchViewModel {
+class SearchViewModel: SearchListProtocol {
     
     private var service: Service
     

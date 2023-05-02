@@ -10,30 +10,38 @@ import XCTest
 
 final class SearchViewControllerTests: XCTestCase {
 
+    var sut: SearchView?
+
+    override func setUp(){
+        super.setUp()
+        sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as? SearchView
+    }
+
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+    
     func test_rowsNotZero() {
-        let sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as! SearchView
         let viewModel = SearchViewModelMock(service: ServiceAPI(session: SessionMock()))
-        sut.viewModel = viewModel
+        sut!.viewModel = viewModel
         let movies = [Movie(), Movie()]
         viewModel.movies = movies
         
-        sut.loadViewIfNeeded()
-        let rows = sut.tableView.numberOfRows(inSection: 0)
+        sut!.loadViewIfNeeded()
+        let rows = sut!.tableView.numberOfRows(inSection: 0)
         
         XCTAssertEqual(movies.count, rows)
     }
     
     func test_IsbuttonCancelShows() {
-        let sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as! SearchView
-        sut.loadViewIfNeeded()
-        XCTAssertTrue(sut.searchBar.showsCancelButton)
+        sut!.loadViewIfNeeded()
+        XCTAssertTrue(sut!.searchBar.showsCancelButton)
     }
     
     func test_TableSelected() {
-        let sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as! SearchView
-        
-        sut.loadViewIfNeeded()
-        let button = sut.searchBar.isSearchResultsButtonSelected
+        sut!.loadViewIfNeeded()
+        let button = sut!.searchBar.isSearchResultsButtonSelected
         
         XCTAssertFalse(button)
     }

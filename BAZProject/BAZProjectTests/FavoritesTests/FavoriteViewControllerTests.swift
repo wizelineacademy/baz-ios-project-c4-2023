@@ -8,14 +8,28 @@ import XCTest
 @testable import BAZProject
 
 final class FavoriteViewControllerTests: XCTestCase {
+    
+    
+    
+    var sut: FavoritesViewController!
+    var model: FavoritesViewModelMock!
+    
+    override func setUp() {
+        super.setUp()
+        sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as! FavoritesViewController
+        model = FavoritesViewModelMock()
+        sut.ViewModel = model
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        model = nil
+    }
 
     func test_rowsNotZero() {
         //Given
-        let sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as! FavoritesViewController
-        let viewModel = FavoriteViewModelMock()
-        sut.ViewModel = viewModel
         let movies = [Movie(), Movie()]
-        viewModel.movies = movies
+        model.movies = movies
         //Then
         sut.loadViewIfNeeded()
         let rows = sut.tableView.numberOfRows(inSection: 0)
@@ -25,11 +39,8 @@ final class FavoriteViewControllerTests: XCTestCase {
     
     func test_HeigthGrown_WhenEmplyMovie() {
         //Given
-        let sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as! FavoritesViewController
-        let viewModel = FavoriteViewModelMock()
-        sut.ViewModel = viewModel
         let movies = [Movie(), Movie()]
-        viewModel.movies = movies
+        model.movies = movies
         //Then
         sut.loadViewIfNeeded()
         let rows = sut.tableView.estimatedRowHeight
