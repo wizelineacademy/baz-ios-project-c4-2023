@@ -28,7 +28,6 @@ class CollectionRecomendationsCell: UICollectionViewCell{
     
     func setCell(with infoReview: RecomendationsData?){
         lblTitle.text = infoReview?.title
-        lblDescription.text = infoReview?.overview
         if let posterPath = infoReview?.posterPath{
             imgPoster.download(poster_path: posterPath)
         }
@@ -37,7 +36,6 @@ class CollectionRecomendationsCell: UICollectionViewCell{
     override func prepareForReuse() {
         super.prepareForReuse()
         lblTitle.text           = nil
-        lblDescription.text     = nil
         imgPoster.image         = nil
     }
 }
