@@ -36,6 +36,7 @@ protocol HomeInteractorOutputProtocol: AnyObject {
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
     func showAnimation(completion: @escaping () -> Void)
+    func hideAnimation(completion: @escaping () -> Void)
 }
 
 // MARK: - Interactor (Presenter To Interactor)
@@ -43,6 +44,6 @@ protocol HomeInteractorInputProtocol {
     // MARK: - Properties
     var presenter: HomeInteractorOutputProtocol? { get }
     // MARK: - Functions
-    func getDataMovies(endPoint: Endpoint)
+    func getDataMovies(endPoint: Endpoint, completion: @escaping () -> Void)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
 }

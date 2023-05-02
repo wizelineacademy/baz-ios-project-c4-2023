@@ -26,7 +26,11 @@ class HomePresenter {
 // MARK: - V I E W · T O · P R E S E N T E R
 extension HomePresenter: HomeViewOutputProtocol {
     func getDataMovies(endPoint: Endpoint) {
-        interactor.getDataMovies(endPoint: endPoint)
+        self.router.showAnimation {
+            self.interactor.getDataMovies(endPoint: endPoint) {
+                self.router.hideAnimation {}
+            }
+        }
     }
     
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {

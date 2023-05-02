@@ -35,5 +35,12 @@ extension HomeRouter: HomeRouterProtocol {
         }
     }
     
+    func hideAnimation(completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            self.animationView?.dismiss(animated: true, completion: {
+                completion()
+            })
+        }
+    }
     
 }
