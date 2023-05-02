@@ -15,7 +15,7 @@ class SearchViewModel {
     private var remoteData: SearchRemoteData
     private var localData: SearchLocalData
     private var snapshot = Box(MediaSnapshot())
-    private var error: Box<Error> = Box(nil)
+    private var error: Box<Error?> = Box(nil)
     
     init(remoteData: SearchRemoteData, localData: SearchLocalData) {
         self.remoteData = remoteData
@@ -53,7 +53,7 @@ class SearchViewModel {
     }
     
     func getSectionTitle(for: Int) -> String? {
-        return (snapshot.value?.sectionIdentifiers.contains(0) ?? false) ? "Recent" : nil
+        return snapshot.value.sectionIdentifiers.contains(0) ? "Recent" : nil
     }
     
     func searchMedia(keyword: String) {
@@ -74,22 +74,8 @@ class SearchViewModel {
     
     func resetSnapshot(with items: [MediaItem], in section: Int) {
         snapshot.value = MediaSnapshot()
-        snapshot.value?.appendSections([section])
-        snapshot.value?.appendItems(items)
+        snapshot.value.appendSections([section])
+        snapshot.value.appendItems(items)
     }
     
 }
-
-fileprivate extension MediaItem {
-    init(dataObject: MediaDataObject) {
-        self.mediaType = MediaType(dataObject.mediaType)
-        self.rating = dataObject.voteAverage
-        self.id = dataObject.id
-        self.title = dataObject.title ?? dataObject.name
-        self.posterPath = dataObject.posterPath ?? dataObject.profilePath
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.releaseDate = dateFormatter.date(from: dataObject.releaseDate ?? "")
-    }
-}
-

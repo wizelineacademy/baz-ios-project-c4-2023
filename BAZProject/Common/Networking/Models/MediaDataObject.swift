@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct MediaDataObject: Decodable, Equatable {
+public struct MediaDataObject: Decodable, Equatable {
     
-    var id: Int?
-    var title: String?
-    var posterPath: String?
-    var mediaType: String?
-    var voteAverage: Float?
-    var name: String?
-    var releaseDate: String?
-    var profilePath: String?
-    var overview: String?
+    public var id: Int?
+    public var title: String?
+    public var posterPath: String?
+    public var mediaType: String?
+    public var voteAverage: Float?
+    public var name: String?
+    public var releaseDate: String?
+    public var profilePath: String?
+    public var overview: String?
     
 }

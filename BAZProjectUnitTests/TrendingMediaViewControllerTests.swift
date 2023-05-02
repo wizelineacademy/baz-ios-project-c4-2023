@@ -35,7 +35,7 @@ final class TrendingMediaViewControllerTests: XCTestCase {
         
         //When
         sut.loadViewIfNeeded()
-        sut.dataSource?.apply(viewModel.getDataSnapshot())
+        sut.dataSource?.apply(viewModel.getDataSnapshot() ?? NSDiffableDataSourceSnapshot<MediaType, MediaItem>())
         let movieItems = sut.dataSource?.snapshot(for: .movie).items.count
         let tvItems = sut.dataSource?.snapshot(for: .tv).items.count
         

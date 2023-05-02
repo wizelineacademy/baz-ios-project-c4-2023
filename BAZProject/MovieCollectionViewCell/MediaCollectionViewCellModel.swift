@@ -9,10 +9,10 @@ import Foundation
 
 struct MediaCollectionViewCellModel: Equatable {
     
-    var title: String
+    var title: String?
     var subtitle: String?
-    var image: String
-    var rated: Bool
+    var image: String?
+    var rated: Bool = false
     var defaultImage: String?
     
 }
