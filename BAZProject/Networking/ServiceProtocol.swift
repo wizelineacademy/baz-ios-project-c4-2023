@@ -26,6 +26,9 @@ extension Service{
         let task = self.session.performDataTask(with: request) { (data, response, error) in
             guard let data: Data = data else { return callback(.failure(error ?? NSError())) }
             do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                                    print(json)
+                                }
                 let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                 callback(.success(decodedData))
             } catch {

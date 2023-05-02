@@ -24,6 +24,7 @@ protocol SearchMoviesViewOutputProtocol {
     var movies      : [MovieData] { get }
     
     func searchMoview(with word: String)
+    func selectCell(_ tableView: UITableView, _ indexPath: IndexPath)
 }
 
 protocol SearchMoviesInteractorOutputProtocol: AnyObject {
@@ -37,6 +38,7 @@ protocol SearchMoviesRouterProtocol {
     var view        : SearchMoviesView? { get }
     
     func presentAlert(_ alert : UIAlertController)
+    func pushDetailVC(with infoMovie: MovieData?)
     
 }
 

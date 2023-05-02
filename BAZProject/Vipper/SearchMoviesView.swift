@@ -78,10 +78,14 @@ extension SearchMoviesView: UITableViewDelegate, UITableViewDataSource{
         }
         let infoCell                = presenter?.movies[indexPath.row]
         cell.descriptionMovie.text  = infoCell?.title
-        infoCell?.getImage(){ imagen in
-            cell.imgMovie.image         = imagen
+        if let posterPath = infoCell?.poster_path{
+            cell.imgMovie.download(poster_path: posterPath)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.selectCell(tableView, indexPath)
     }
     
 }

@@ -33,7 +33,10 @@ final class TrendingViewController: UITableViewController, Storyboard {
                 if let arrMovies = moviesReponse.movies{
                     for resultArrMovies in arrMovies{
                         self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
-                                                                    poster_path: resultArrMovies.posterPath ?? ""))
+                                                             poster_path: resultArrMovies.posterPath ?? "",
+                                                             original_title: resultArrMovies.originalTitle ?? "",
+                                                             id: resultArrMovies.id ?? 0,
+                                                             overview: resultArrMovies.overview ?? ""))
                     }
                     
                     DispatchQueue.main.async {
@@ -89,6 +92,11 @@ extension TrendingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = MoviesDetailRouter.createModule(with: movies[indexPath.row])
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 
 }
 
@@ -98,10 +106,10 @@ extension TrendingViewController {
         var config = UIListContentConfiguration.cell()
         let infoMovieCell = movies[indexPath.row]
         config.text = infoMovieCell.title
-        infoMovieCell.getImage(){ imagen in
+        /*infoMovieCell.getImage(){ imagen in
             config.image = imagen
             cell.contentConfiguration = config
-        }
+        }*/
         cell.contentConfiguration = config
     }
 }

@@ -12,6 +12,8 @@ enum OptionMovie {
     case getTopRated
     case getUpcoming
     case searchMovie(String)
+    case getReviews(Int)
+    case getRecomendations(Int)
 }
 extension OptionMovie: Endpoint{
     
@@ -23,6 +25,8 @@ extension OptionMovie: Endpoint{
         case .getTopRated: return "/3/movie/top_rated"
         case .getUpcoming: return "/3/movie/upcoming"
         case .searchMovie: return "/3/search/movie"
+        case .getReviews(let idMovie): return "/3/movie/\(idMovie)/reviews"
+        case .getRecomendations(let idMovie): return "/3/movie/\(idMovie)/recommendations"
         }
     }
     

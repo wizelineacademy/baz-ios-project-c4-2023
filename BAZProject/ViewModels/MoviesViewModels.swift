@@ -9,24 +9,46 @@ import Foundation
 import UIKit
 
 struct MoviesViewModels: MovieData{
-    var title: String
-    var poster_path: String
-    func getImage(completion: @escaping (UIImage) -> ()) {
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(poster_path)") else { return }
-        let globalQueue = DispatchQueue.global()
-        globalQueue.async {
-            if let data = try? Data(contentsOf: url){
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    completion(image ?? UIImage())
-                }
-            }
-        }
-    }
+    var title               : String
+    var poster_path         : String?
+    var original_title      : String
+    var id                  : Int
+    var overview            : String
 }
 
 protocol MovieData {
-    var title: String { get }
-    var poster_path: String { get }
-    func getImage(completion: @escaping(UIImage) ->())
+    var title           : String { get }
+    var poster_path     : String? { get }
+    var original_title  : String { get }
+    var id              : Int    { get }
+    var overview        : String { get }
+}
+
+struct ReviewsInformation   : ReviewsMovieData{
+    var author              : String
+    var avatar_path         : String?
+    var content             : String
+}
+
+protocol ReviewsMovieData {
+    
+    var author          : String { get }
+    var avatar_path     : String? { get }
+    var content         : String { get }
+    
+}
+
+struct RecomendationsModel: RecomendationsData {
+    
+    var title       : String
+    var posterPath  : String?
+    var overview    : String
+}
+
+protocol RecomendationsData {
+    
+    var title           : String { get }
+    var posterPath      : String? { get }
+    var overview        : String { get }
+    
 }

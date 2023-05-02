@@ -53,7 +53,10 @@ extension SearchMoviesInteractor: SearchMoviesInteractorInputProtocol{
         var movies              : [MovieData] = []
         for resultArrMovies in moviesResult ?? [Movie](){
             movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
-                                           poster_path: resultArrMovies.posterPath ?? ""))
+                                           poster_path: resultArrMovies.posterPath ?? "",
+                                           original_title: resultArrMovies.originalTitle ?? "",
+                                           id: resultArrMovies.id ?? 0,
+                                           overview: resultArrMovies.overview ?? ""))
         }
         presenter?.setResponseMovies(with: movies)
     }
