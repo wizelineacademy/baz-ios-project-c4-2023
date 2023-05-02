@@ -12,25 +12,18 @@ class MovieListCell: UITableViewCell, ReusableCell {
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var imgCover: UIImageView!
     
-    private var movieInfo: MovieInfo? {
+    private var movieInfo: MovieFoundInfo? {
         didSet {
             self.updateView()
         }
     }
     
-    func setData(with movieInfo: MovieInfo) {
+    func setData(with movieInfo: MovieFoundInfo) {
         self.movieInfo = movieInfo
     }
     
     func updateView() {
         guard let movieInfo = self.movieInfo else { return }
-        lblTitle.text = movieInfo.title
-        ResourcesManager().downloadImage(from: movieInfo.posterPath) { image in
-            if let image = image {
-                self.imgCover.image = image
-            } else {
-                self.imgCover.image = UIImage(named: "poster")
-            }
-        }
+        lblTitle.text = movieInfo.title.firstCapitalized
     }
 }

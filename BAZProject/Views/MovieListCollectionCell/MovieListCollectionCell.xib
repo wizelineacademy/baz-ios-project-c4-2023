@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieListCollectionCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="156" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="156" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p71-XN-Zeh">
+                        <rect key="frame" x="16" y="0.0" width="140" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="HPW-PG-7ei">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfO-iV-Rra">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="p71-XN-Zeh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="5Gg-hR-INJ"/>
+                <constraint firstAttribute="trailing" secondItem="p71-XN-Zeh" secondAttribute="trailing" id="G1Z-zt-AD5"/>
+                <constraint firstItem="p71-XN-Zeh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SUW-D0-ZD0"/>
+                <constraint firstAttribute="bottom" secondItem="p71-XN-Zeh" secondAttribute="bottom" id="hNZ-EP-LHL"/>
+            </constraints>
+            <size key="customSize" width="133" height="173"/>
+            <connections>
+                <outlet property="imgCover" destination="HPW-PG-7ei" id="SYE-V0-ksL"/>
+                <outlet property="lblTitle" destination="CfO-iV-Rra" id="yTC-Cz-cjK"/>
+            </connections>
+            <point key="canvasLocation" x="192.0289855072464" y="172.76785714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="poster" width="500" height="743"/>
+    </resources>
+</document>
