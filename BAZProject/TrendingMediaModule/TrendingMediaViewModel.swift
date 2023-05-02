@@ -59,7 +59,7 @@ class TrendingMediaViewModel {
     }
     
     
-    func getDataSnapshot() -> NSDiffableDataSourceSnapshot<MediaType, MediaItem>? {
+    func getDataSnapshot() -> NSDiffableDataSourceSnapshot<MediaType, MediaItem> {
         return mediaSnapshot.value
     }
     
