@@ -38,6 +38,8 @@
 		4B6BB2AF2A003B77007A20D7 /* MediaTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2AE2A003B77007A20D7 /* MediaTableViewCellModel.swift */; };
 		4B6BB2B12A003E9C007A20D7 /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */; };
 		4B6BB2B62A006DAE007A20D7 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */; };
+		4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2BE2A00ADC6007A20D7 /* SearchViewModelTests.swift */; };
+		4B6BB2C22A00ADE9007A20D7 /* SearchLocalDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */; };
 		4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */; };
 		4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */; };
 		4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDB229F9E28B00F9422B /* MediaItem.swift */; };
@@ -100,6 +102,8 @@
 		4B6BB2AE2A003B77007A20D7 /* MediaTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCellModel.swift; sourceTree = "<group>"; };
 		4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
 		4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		4B6BB2BE2A00ADC6007A20D7 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataMock.swift; sourceTree = "<group>"; };
 		4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8FBDB229F9E28B00F9422B /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				4B947E7729F24C9900C116E3 /* EndpointTests.swift */,
 				4B947E7929F24DDA00C116E3 /* RequestHandlerErrorTests.swift */,
 				4B6BB28729FB0CDC007A20D7 /* MediaTypeTests.swift */,
+				4B6BB2BE2A00ADC6007A20D7 /* SearchViewModelTests.swift */,
 			);
 			path = BAZProjectUnitTests;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */,
 				4B2DA1A529F2089A006BD0EC /* TrendingRemoteDataMock.swift */,
 				4B947E7529F247DB00C116E3 /* DecodableMovies.swift */,
+				4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				4B2DA1A629F2089A006BD0EC /* TrendingRemoteDataMock.swift in Sources */,
 				4B947E7629F247DB00C116E3 /* DecodableMovies.swift in Sources */,
 				4B2DA1A829F23E68006BD0EC /* TrendingMediaViewModelTests.swift in Sources */,
+				4B6BB2C22A00ADE9007A20D7 /* SearchLocalDataMock.swift in Sources */,
 				4B3BBE9029D69D46001F4E85 /* TrendingMoviesViewModelMock.swift in Sources */,
 				4B3BBE8E29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift in Sources */,
 				4B6BB28829FB0CDC007A20D7 /* MediaTypeTests.swift in Sources */,
@@ -440,6 +447,7 @@
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
 				4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */,
+				4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */,
 				4B37399C29D4C1450056041F /* RequestHandlerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
