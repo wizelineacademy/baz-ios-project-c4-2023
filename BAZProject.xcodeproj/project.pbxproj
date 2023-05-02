@@ -250,7 +250,6 @@
 		4B6BB29A29FE37D7007A20D7 /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
-				4B6BB2BC2A0075F6007A20D7 /* SubSearchView */,
 				4B6BB29B29FE388F007A20D7 /* SearchTableViewController.swift */,
 				4B6BB29F29FE38D7007A20D7 /* SearchViewModel.swift */,
 				4B6BB2A129FE38F3007A20D7 /* SearchRemoteData.swift */,
@@ -267,13 +266,6 @@
 				4B6BB2B02A003E9C007A20D7 /* MediaTableViewCell.xib */,
 			);
 			path = MediaItemTableViewCell;
-			sourceTree = "<group>";
-		};
-		4B6BB2BC2A0075F6007A20D7 /* SubSearchView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubSearchView;
 			sourceTree = "<group>";
 		};
 		4B8FBDAD29F9C22500F9422B /* MovieCollectionViewCell */ = {

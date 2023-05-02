@@ -9,12 +9,13 @@ import UIKit
 
 class SearchViewModel {
     
-    typealias MediaTableDataSource = UITableViewDiffableDataSource<MediaType, MediaItem>
-    typealias MediaSnapshot = NSDiffableDataSourceSnapshot<MediaType, MediaItem>
+    typealias MediaTableDataSource = UITableViewDiffableDataSource<Int, MediaItem>
+    typealias MediaSnapshot = NSDiffableDataSourceSnapshot<Int, MediaItem>
     
     private var remoteData: SearchRemoteData
     private var localData: SearchLocalData
     private var snapshot = Box(MediaSnapshot())
+    private var error: Box<Error> = Box(nil)
     
     init(remoteData: SearchRemoteData, localData: SearchLocalData) {
         self.remoteData = remoteData
@@ -22,13 +23,8 @@ class SearchViewModel {
     }
     
     func loadData() {
-        let initialMedia = localData.getRecentlyViewedMovies().filter({ $0.mediaType != nil })
-        let dctMedia = Dictionary(grouping: initialMedia, by: { $0.mediaType! })
-        let sorted = dctMedia.sorted(by: { $0.key.order < $1.key.order })
-        sorted.forEach { (key, value) in
-            snapshot.value?.appendSections([key])
-            snapshot.value?.appendItems(value)
-        }
+        let initialMedia = localData.getRecentlySearchedMovies().filter({ $0.mediaType != nil })
+        resetSnapshot(with: initialMedia, in: 0)
     }
     
     func bindSnapshot(_ bind: @escaping () -> Void) {
@@ -56,4 +52,44 @@ class SearchViewModel {
         }
     }
     
+    func getSectionTitle(for: Int) -> String? {
+        return (snapshot.value?.sectionIdentifiers.contains(0) ?? false) ? "Recent" : nil
+    }
+    
+    func searchMedia(keyword: String) {
+        Task {
+            do {
+                guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
+                let mediaItems = formatMediaDataObject(mediaObjects)
+                resetSnapshot(with: mediaItems, in: 1)
+            } catch {
+                self.error.value = error
+            }
+        }
+    }
+    
+    func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaItem] {
+        return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+    }
+    
+    func resetSnapshot(with items: [MediaItem], in section: Int) {
+        snapshot.value = MediaSnapshot()
+        snapshot.value?.appendSections([section])
+        snapshot.value?.appendItems(items)
+    }
+    
 }
+
+fileprivate extension MediaItem {
+    init(dataObject: MediaDataObject) {
+        self.mediaType = MediaType(dataObject.mediaType)
+        self.rating = dataObject.voteAverage
+        self.id = dataObject.id
+        self.title = dataObject.title ?? dataObject.name
+        self.posterPath = dataObject.posterPath ?? dataObject.profilePath
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.releaseDate = dateFormatter.date(from: dataObject.releaseDate ?? "")
+    }
+}
+

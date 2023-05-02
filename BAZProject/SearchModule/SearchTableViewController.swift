@@ -15,6 +15,7 @@ class SearchTableViewController: UITableViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search moves, tv series, people..."
         definesPresentationContext = true
@@ -69,13 +70,23 @@ class SearchTableViewController: UITableViewController {
             cell.setCell(with: model)
             return cell
         }
+        
     }
 }
 
-extension SearchTableViewController: UISearchResultsUpdating {
+extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            if let searchText = searchController.searchBar.text, searchText != "" {
+                self.viewModel.searchMedia(keyword: searchText)
+            }
+        }
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadData()
     }
     
 }
@@ -84,6 +95,18 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.width * 0.25
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = viewModel.getSectionTitle(for: section) else { return nil }
+        let label = UILabel()
+        label.text = sectionTitle
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return viewModel.getSectionTitle(for: section) == nil ? 0 : UITableView.automaticDimension
     }
     
 }

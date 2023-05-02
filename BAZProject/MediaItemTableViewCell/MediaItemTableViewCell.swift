@@ -38,7 +38,7 @@ class MediaTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView?.image = nil
+        posterImageView?.image = nil
     }
     
 }
