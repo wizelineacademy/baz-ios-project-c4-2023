@@ -23,7 +23,7 @@ class SearchViewModel {
     }
     
     func loadData() {
-        let initialMedia = localData.getRecentlySearchedMovies().filter({ $0.mediaType != nil })
+        guard let initialMedia = localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) else { return }
         resetSnapshot(with: initialMedia, in: 0)
     }
     

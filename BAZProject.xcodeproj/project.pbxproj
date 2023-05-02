@@ -40,6 +40,7 @@
 		4B6BB2B62A006DAE007A20D7 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */; };
 		4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2BE2A00ADC6007A20D7 /* SearchViewModelTests.swift */; };
 		4B6BB2C22A00ADE9007A20D7 /* SearchLocalDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */; };
+		4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB2C32A00AFEC007A20D7 /* SearchRemoteDataMock.swift */; };
 		4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */; };
 		4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */; };
 		4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FBDB229F9E28B00F9422B /* MediaItem.swift */; };
@@ -104,6 +105,7 @@
 		4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		4B6BB2BE2A00ADC6007A20D7 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataMock.swift; sourceTree = "<group>"; };
+		4B6BB2C32A00AFEC007A20D7 /* SearchRemoteDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataMock.swift; sourceTree = "<group>"; };
 		4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8FBDB229F9E28B00F9422B /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				4B2DA1A529F2089A006BD0EC /* TrendingRemoteDataMock.swift */,
 				4B947E7529F247DB00C116E3 /* DecodableMovies.swift */,
 				4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */,
+				4B6BB2C32A00AFEC007A20D7 /* SearchRemoteDataMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				4B3BBE8529D65879001F4E85 /* RequestSessionMock.swift in Sources */,
 				4B2DA1AC29F23F1C006BD0EC /* DecoderTests.swift in Sources */,
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
+				4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
 				4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */,
 				4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */,

@@ -11,7 +11,7 @@ final class SearchLocalDataMock: SearchLocalData {
     
     var items: [MediaItem]?
     
-    override func getRecentlySearchedMovies() -> [MediaItem] {
+    override func getRecentlySearchedMedia() -> [MediaItem]? {
         return items
     }
 
