@@ -11,6 +11,7 @@ import UIKit
 
 class MovieRouter: MovieRouterProtocol {
 
+
     class func createModule(endpoint: Endpoint) -> UIViewController {
                 
         guard let view = mainStoryboard.instantiateViewController(withIdentifier: "MovieView") as? MovieView else { return UIViewController()
@@ -34,5 +35,11 @@ class MovieRouter: MovieRouterProtocol {
     
     static var mainStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
+    }
+}
+
+extension MovieRouter {
+    func goToMovieDetail(of movieID: Int, from view: UIViewController) {
+        view.present(MovieDetailRouter.createMovieDetailModule(of: movieID), animated: false)
     }
 }

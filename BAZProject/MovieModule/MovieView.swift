@@ -64,5 +64,6 @@ extension MovieView {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter?.goToMovieDetail(of: indexPath,from: self)
     }
 }

@@ -33,21 +33,31 @@ class MovieDataTests: XCTestCase {
         serviceMock = nil
         super.tearDown()
     }
-    /*
+    
     func testRequestTrending_whenResponseError_callsHandleServiceError() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for Trending completion")
         sessionMock.data = Data()
-        let urlString = "https://fakeurl.com"
         // When
         sut.fetchMovies()
         expectation.fulfill()
         // Then
         wait(for: [expectation], timeout: 0.1)
-        XCTAssert(interactorMock.calls.contains(.handleerror))
-        XCTAssertNotEqual(interactorMock.catchedError, .response,  "error ")
+        XCTAssert(interactorMock.calls.contains(.handleService))
+        XCTAssertEqual(interactorMock.catchedError, .response, "Se espera que el código regrese del tipo ServiceError.response")
     }
-    */
+    
+    func testRequest_whenNoDataError_callsInteractorHandler() {
+        // Given
+        let expectation = XCTestExpectation(description: "Wait for requestPokemonBlock completion")
+        // When
+        sut.fetchMovies()
+        expectation.fulfill()
+        // Then
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssert(interactorMock.calls.contains(.handleService))
+        XCTAssertEqual(interactorMock.catchedError, .noData, "Se espera que el código regrese del tipo ServiceError.noData")
+    }
     
 }
 

@@ -31,6 +31,12 @@ class MovieRequest: NSObject {
         return URL(string: requestURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
     }
     
+    static func getMovieDetail(of movieId: Int) -> URL? {
+        let endpoint = Endpoint.movieDetail.rawValue+"/\(movieId)"
+        let requestURL: String = baseURL+endpoint+"?api_key=\(apiKey)"
+        return URL(string: requestURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+    }
+    
 }
 
 enum Endpoint: String {

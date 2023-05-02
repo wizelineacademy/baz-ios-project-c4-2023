@@ -28,7 +28,8 @@ class MovieRemoteDataManager: MovieRemoteDataManagerInputProtocol {
             case .success(let response):
                 self?.remoteRequestHandler?.moviesFetched(response.results ?? [])
                 break
-            case .failure(_):
+            case .failure(let error):
+                self?.remoteRequestHandler?.handleService(error: error)
                 break
             }
         }
