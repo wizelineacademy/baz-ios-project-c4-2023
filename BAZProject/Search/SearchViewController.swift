@@ -15,7 +15,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
-        searchBar.showsCancelButton = true
         searchBar.delegate = self
         return searchBar
     }()

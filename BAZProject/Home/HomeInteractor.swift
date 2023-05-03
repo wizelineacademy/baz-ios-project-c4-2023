@@ -67,7 +67,7 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     
     func saveFavorite(index: Int, onSaved: @escaping () -> Void) {
         guard let favorite = self.movies?[index] as? MovieResult else { return }
-        if let data = UserDefaults.standard.data(forKey: "SavedData") {
+        if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
             if let userDefaultsList = try? JSONDecoder().decode([MovieResult].self, from: data) {
                 var updatedList = [MovieResult]()
                 userDefaultsList.forEach { show in
@@ -77,11 +77,11 @@ extension HomeInteractor: HomeInteractorInputProtocol {
                     updatedList.append(favorite)
                 }
                 if let encoded = try? JSONEncoder().encode(updatedList) {
-                    UserDefaults.standard.set(encoded, forKey: "SavedData")
+                    UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
                     
-                    if let data = UserDefaults.standard.data(forKey: "SavedData") {
+                    if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
                         if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                            //debugPrint(decoded)
+                            debugPrint(decoded)
                             onSaved()
                             return
                         }
@@ -92,11 +92,11 @@ extension HomeInteractor: HomeInteractorInputProtocol {
             var updatedList = [MovieResult]()
             updatedList.append(favorite)
             if let encoded = try? JSONEncoder().encode(updatedList) {
-                UserDefaults.standard.set(encoded, forKey: "SavedData")
+                UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
                 
-                if let data = UserDefaults.standard.data(forKey: "SavedData") {
+                if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
                     if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                        //debugPrint(decoded)
+                        debugPrint(decoded)
                         onSaved()
                         return
                     }
@@ -108,7 +108,7 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     func deleteFavorite(index: Int, onSaved: @escaping () -> Void) {
         guard let favorite = self.movies?[index] as? MovieResult else { return }
         //se obtiene data de favoritos previos
-        if let data = UserDefaults.standard.data(forKey: "SavedData") {
+        if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
             //se obtiene arreglo userDefaultsList de favoritos guardados
             if let userDefaultsList = try? JSONDecoder().decode([MovieResult].self, from: data) {
                 //arreglo vacío de tipo MovieResult
@@ -123,14 +123,14 @@ extension HomeInteractor: HomeInteractorInputProtocol {
                 //debugPrint(updatedList)
                 if let encoded = try? JSONEncoder().encode(updatedList) {
                     //se guarda el arreglo de favoritos actualizado en UserDefaults encodeado
-                    UserDefaults.standard.set(encoded, forKey: "SavedData")
+                    UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
                     
                     //se obtiene la data del arreglo fuardado en UserDefaults
-                    if let data = UserDefaults.standard.data(forKey: "SavedData") {
+                    if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
                         
                         //si se logra decodear el arreglo almacenado, se termina el proceso
                         if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                            //debugPrint(decoded)
+                            debugPrint(decoded)
                             onSaved()
                             return
                         }
@@ -142,7 +142,7 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     }
     
     func getFavorites() -> [MovieResult]? {
-        if let data = UserDefaults.standard.data(forKey: "SavedData") {
+        if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
             if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
                 return decoded
             }
