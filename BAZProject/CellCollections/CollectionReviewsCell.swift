@@ -27,8 +27,9 @@ class CollectionReviewsCell: UICollectionViewCell{
     }
     
     func setCell(with infoReview: ReviewsMovieData?){
-        lblUser.text = infoReview?.author ?? ""
-        lblReview.text = infoReview?.content ?? ""
+        lblUser.text    = infoReview?.author ?? ""
+        lblReview.text  = infoReview?.content ?? ""
+        imgUser.image   = UIImage(named: "user")
         if let avatarPath = infoReview?.avatar_path{
             imgUser.download(poster_path: avatarPath)
             imgUser.makeRounded()

@@ -12,8 +12,9 @@ final class MoviesDetailPresenter {
     weak var view       : MoviesDetailViewInputProtocol?
     var interactor      : MoviesDetailInteractorInputProtocol?
     var router          : MoviesDetailRouterProtocol?
-    var resultReviews   : [ReviewsMovieData] = []
-    var resultRecomendations : [RecomendationsData] = []
+    var resultReviews           : [ReviewsMovieData]    = []
+    var resultRecomendations    : [RecomendationsData]  = []
+    var resultSimilars          : [RecomendationsData]  = []
     
     init(view: MoviesDetailViewInputProtocol? = nil,
          interactor: MoviesDetailInteractorInputProtocol? = nil,
@@ -31,6 +32,7 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
         view?.setInfoMovie(with: interactor?.moviesInfo)
         interactor?.getReview()
         interactor?.getRecomendations()
+        interactor?.getSimilars()
     }
     
 }
@@ -42,15 +44,23 @@ extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
         view?.setReviews()
     }
     
-    func setResponseRecomendations(with result: [RecomendationsData]) {
-        self.resultRecomendations.removeAll()
-        self.resultRecomendations = result
-        view?.setRecomendations()
+    func setResponseDetail(with result: [RecomendationsData], detail typeDetail: OptionDetail?) {
+        switch typeDetail {
+        case .Recomendations:
+            self.resultRecomendations.removeAll()
+            self.resultRecomendations = result
+            view?.setRecomendations()
+        case .Similars:
+            self.resultSimilars.removeAll()
+            self.resultSimilars = result
+            view?.setSimilars()
+        default: break;
+        }
+        
     }
     
     func setError() {
         print("error...")
     }
-    
     
 }

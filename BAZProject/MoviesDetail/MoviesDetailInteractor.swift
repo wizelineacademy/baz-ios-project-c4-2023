@@ -6,6 +6,10 @@
 //
 
 import Foundation
+enum OptionDetail {
+    case Recomendations
+    case Similars
+}
 final class MoviesDetailInteractor {
     
     // MARK: Properties
@@ -56,7 +60,8 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
                 switch result {
                 case .success(let moviesReponse):
                     if moviesReponse.recomendations?.count ?? 0 > 0{
-                        self?.setRecomendations(with: moviesReponse.recomendations)
+                        self?.setInfoDetail(with: moviesReponse.recomendations,
+                                                typeDetail: .Recomendations)
                     }else{
                         self?.presenter?.setError()
                     }
@@ -67,14 +72,32 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         }
     }
     
-    func setRecomendations (with resultRecomendations: [Recomendations]?){
+    func getSimilars(){
+        movieApi.getMovies(OptionMovie.getSimilars(moviesInfo?.id ?? 0).request){ [weak self] (result: Result< MovieSimilars, Error>) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let moviesReponse):
+                    if moviesReponse.similars?.count ?? 0 > 0{
+                        self?.setInfoDetail(with: moviesReponse.similars,
+                                                typeDetail: .Similars)
+                    }else{
+                        self?.presenter?.setError()
+                    }
+                default:
+                    self?.presenter?.setError()
+                }
+            }
+        }
+    }
+    
+    func setInfoDetail(with resultRecomendations: [Movie]?, typeDetail optionDetail: OptionDetail?){
         var recomendationData              : [RecomendationsData] = []
-        for infoRecomendations in resultRecomendations ?? [Recomendations](){
+        for infoRecomendations in resultRecomendations ?? [Movie](){
             recomendationData.append(RecomendationsModel(title: infoRecomendations.title ?? "",
                                                       posterPath: infoRecomendations.posterPath,
                                                       overview: infoRecomendations.overview ?? ""))
         }
-        self.presenter?.setResponseRecomendations(with: recomendationData)
+        self.presenter?.setResponseDetail(with: recomendationData, detail: optionDetail)
     }
     
 }

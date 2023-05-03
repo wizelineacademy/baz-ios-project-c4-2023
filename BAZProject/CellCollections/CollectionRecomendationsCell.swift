@@ -11,7 +11,6 @@ class CollectionRecomendationsCell: UICollectionViewCell{
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgPoster: UIImageView!
-    @IBOutlet weak var lblDescription: UILabel!
     
     
     //MARK: Static Properties
@@ -27,7 +26,8 @@ class CollectionRecomendationsCell: UICollectionViewCell{
     }
     
     func setCell(with infoReview: RecomendationsData?){
-        lblTitle.text = infoReview?.title
+        lblTitle.text   = infoReview?.title
+        imgPoster.image = UIImage(named: "movie")
         if let posterPath = infoReview?.posterPath{
             imgPoster.download(poster_path: posterPath)
         }

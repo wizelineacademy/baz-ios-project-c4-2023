@@ -15,6 +15,7 @@ protocol MoviesDetailViewInputProtocol: AnyObject {
     func setInfoMovie(with movieData: MovieData?)
     func setReviews()
     func setRecomendations()
+    func setSimilars()
 }
 
 //MARK: - Presenter
@@ -25,6 +26,7 @@ protocol MoviesDetailViewOutputProtocol {
     var router          : MoviesDetailRouterProtocol? { get }
     var resultReviews   : [ReviewsMovieData] { get }
     var resultRecomendations : [RecomendationsData] { get }
+    var resultSimilars       : [RecomendationsData] { get }
     
     func consultReviews()
     
@@ -32,7 +34,7 @@ protocol MoviesDetailViewOutputProtocol {
 
 protocol MoviesDetailInteractorOutputProtocol: AnyObject {
     func setResponseDetailsMovies(with resultReviews: [ReviewsMovieData])
-    func setResponseRecomendations(with result: [RecomendationsData])
+    func setResponseDetail(with result: [RecomendationsData], detail typeDetail: OptionDetail?)
     func setError()
 }
 
@@ -51,5 +53,6 @@ protocol MoviesDetailInteractorInputProtocol {
     
     func getReview()
     func getRecomendations()
+    func getSimilars()
     
 }

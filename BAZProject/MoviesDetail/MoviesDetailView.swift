@@ -35,18 +35,35 @@ final class MoviesDetailView: UIViewController{
                                        forCellWithReuseIdentifier: CollectionRecomendationsCell.identifier)
         }
     }
+    @IBOutlet weak var collecionSimilars: UICollectionView!{
+        didSet {
+            collecionSimilars.delegate = self
+            collecionSimilars.dataSource = self
+            if let layout = collecionSimilars.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = .horizontal
+            }
+            collecionSimilars.register(CollectionRecomendationsCell.nib,
+                                       forCellWithReuseIdentifier: CollectionRecomendationsCell.identifier)
+        }
+    }
     
     @IBOutlet weak var vComents: UIView!{
         didSet{
             vComents.isHidden = true
         }
     }
+    
     @IBOutlet weak var vRecomendations: UIView!{
         didSet{
             vRecomendations.isHidden = true
         }
     }
     
+    @IBOutlet weak var vSimilars: UIView!{
+        didSet{
+            vSimilars.isHidden = true
+        }
+    }
     
     var presenter: MoviesDetailViewOutputProtocol?
     
@@ -77,12 +94,17 @@ extension MoviesDetailView: MoviesDetailViewInputProtocol{
         collectionRecomendations.reloadData()
     }
     
+    func setSimilars(){
+        vSimilars.isHidden = false
+        collecionSimilars.reloadData()
+    }
+    
 }
 
 extension MoviesDetailView: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView.tag == 0 ? presenter?.resultReviews.count ?? 0 : presenter?.resultRecomendations.count ?? 0
+        return collectionView.tag == 0 ? presenter?.resultReviews.count ?? 0 : collectionView.tag == 1 ? presenter?.resultRecomendations.count ?? 0 : presenter?.resultSimilars.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,6 +115,10 @@ extension MoviesDetailView: UICollectionViewDataSource{
         }else if collectionView == self.collectionRecomendations {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionRecomendationsCell", for: indexPath) as? CollectionRecomendationsCell else { return UICollectionViewCell() }
             cell.setCell(with: presenter?.resultRecomendations[indexPath.row])
+            return cell
+        }else if collectionView == self.collecionSimilars {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionRecomendationsCell", for: indexPath) as? CollectionRecomendationsCell else { return UICollectionViewCell() }
+            cell.setCell(with: presenter?.resultSimilars[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
