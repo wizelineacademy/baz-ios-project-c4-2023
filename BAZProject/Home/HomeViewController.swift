@@ -21,8 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let segmented = UISegmentedControl(items: items)
         segmented.selectedSegmentTintColor = .white
         segmented.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)], for: .normal)
-        segmented.tintColor = .gray
-        segmented.backgroundColor = UIColor.AppColors.segmentedBackgroundColor
+        segmented.backgroundColor = UIColor.AppColors.labelGreen
         segmented.selectedSegmentIndex = 0
         segmented.translatesAutoresizingMaskIntoConstraints = false
         segmented.addTarget(self, action: #selector(selectSection(_:)), for: .valueChanged)

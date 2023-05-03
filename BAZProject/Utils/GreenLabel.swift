@@ -19,7 +19,7 @@ class GreenLabel: UILabel {
     }
     
     func commonInit(){
-        self.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        self.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         self.sizeToFit()
         self.textColor = UIColor.AppColors.labelGreen
     }
