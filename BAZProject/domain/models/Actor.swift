@@ -7,13 +7,6 @@
 
 import Foundation
 
-/*struct Actor {
-    let id: Int
-    let name: String
-    let profile_path: String
-    let character: String
-}*/
-
 struct ActorResponse: Codable {
     let cast: [Actor]
 }

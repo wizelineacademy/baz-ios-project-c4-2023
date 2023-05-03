@@ -18,6 +18,7 @@
 		236E338B29DD3C9E00290C1D /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E338A29DD3C9E00290C1D /* CGFloatExtensions.swift */; };
 		236E338F29DD420300290C1D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E338E29DD420300290C1D /* UIImageViewExtensions.swift */; };
 		236E339129DD42FD00290C1D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E339029DD42FD00290C1D /* StringExtensions.swift */; };
+		239C62E32A02DDD400E24907 /* MoviesDataSourceRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239C62E22A02DDD400E24907 /* MoviesDataSourceRemoteTests.swift */; };
 		23A0EE2D29FAE02E00B65BCB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0EE2C29FAE02E00B65BCB /* SearchViewModel.swift */; };
 		23A0EE2F29FAE0F700B65BCB /* SearchDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0EE2E29FAE0F700B65BCB /* SearchDataSourceRemote.swift */; };
 		23A0EE3129FAE55B00B65BCB /* SimpleItemAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0EE3029FAE55B00B65BCB /* SimpleItemAdapter.swift */; };
@@ -77,6 +78,7 @@
 		236E338A29DD3C9E00290C1D /* CGFloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 		236E338E29DD420300290C1D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		236E339029DD42FD00290C1D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		239C62E22A02DDD400E24907 /* MoviesDataSourceRemoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesDataSourceRemoteTests.swift; sourceTree = "<group>"; };
 		23A0EE2C29FAE02E00B65BCB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		23A0EE2E29FAE0F700B65BCB /* SearchDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSourceRemote.swift; sourceTree = "<group>"; };
 		23A0EE3029FAE55B00B65BCB /* SimpleItemAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemAdapter.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				231F915529D60C8100FF054B /* BAZProjectUnitTests.swift */,
+				239C62E22A02DDD400E24907 /* MoviesDataSourceRemoteTests.swift */,
 			);
 			path = BAZProjectUnitTests;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				C30893A628A2F42B004B1860 /* Sources */,
 				C30893A728A2F42B004B1860 /* Frameworks */,
 				C30893A828A2F42B004B1860 /* Resources */,
+				239C62E12A02DD9A00E24907 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -409,6 +413,7 @@
 				TargetAttributes = {
 					231F915229D60C8100FF054B = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 						TestTargetID = C30893A928A2F42B004B1860;
 					};
 					C30893A928A2F42B004B1860 = {
@@ -457,6 +462,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		239C62E12A02DD9A00E24907 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#export PATH=\"$PATH:/opt/homebrew/bin\"\n#if which swiftlint > /dev/null; then\n  #swiftlint\n#else\n  #echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+		};
 		23F254CC29EA7C8200321E52 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,7 +496,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "#export PATH=\"$PATH:/opt/homebrew/bin\"\n#if which swiftlint > /dev/null; then\n  #swiftlint\n#else\n  #echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -482,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239C62E32A02DDD400E24907 /* MoviesDataSourceRemoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,14 +583,21 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.BAZProjectUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BAZProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BAZProject";
@@ -578,10 +609,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.BAZProjectUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,13 +7,6 @@
 
 import Foundation
 
-/*struct Review {
-    let author: String
-    let content: String
-    let rating: Int
-    let created_at: String
-}*/
-
 struct ReviewResponse: Codable {
     let results: [Review]
 }

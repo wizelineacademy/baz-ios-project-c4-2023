@@ -9,8 +9,9 @@ import Foundation
 
 // MARK: - Protocol para la lista de Peliculas
 protocol MoviesRepository {
-    func getAllMovie(filter: Filters, completion: @escaping ([Movie]) -> Void)
+    func getMovies(filter: Filters, completion: @escaping ([Movie]) -> Void)
     func getRelatedMovies(filter: Filters, movieID: Int, completion: @escaping ([Movie]) -> Void)
+    func getUrlFilter(_ filter: Filters, _ movieID: Int?) -> String
 }
 
 // MARK: - Protocol para trabajar con información particular de una pelicula
