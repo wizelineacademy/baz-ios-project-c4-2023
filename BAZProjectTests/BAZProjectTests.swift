@@ -10,11 +10,17 @@ import XCTest
 
 class BAZProjectTests: XCTestCase {
     
+    typealias InteractorSearchProtocols = SearchInteractorInputProtocol & SearchRemoteDataManagerOutputProtocol
+    
     var trendingPresenter: TrendingPresenter?
     var trendingPresenterMock: TrendingPresenterMock?
-        
+    //MARK: Search Variables
     var searchPresenter: SearchPresenter?
+    var interactorSearch: InteractorSearchProtocols?
+    var remoteSearchDataManager: SearchRemoteDataManagerInputProtocol?
     var searchPresenterMock: SearchPresenterMock?
+    var interactorSearchMock: InteractorSearchProtocols?
+    var remoteSearchDataManagerMock: SearchRemoteDataManagerInputProtocol?
         
     var resulTrending: [Movie] = []
     var searchQuery = "John Wick"
@@ -24,8 +30,35 @@ class BAZProjectTests: XCTestCase {
         trendingPresenter = TrendingPresenter()
         trendingPresenterMock = TrendingPresenterMock()
         
-        searchPresenter = SearchPresenter()
+        createSearch()
+        createSearchMock()
+    }
+    
+    func createSearchMock(){
         searchPresenterMock = SearchPresenterMock(tableView: UITableView())
+        interactorSearchMock = SearchInteractorMock()
+        interactorSearchMock?.presenter = searchPresenterMock
+        searchPresenterMock?.interactor = interactorSearchMock
+        remoteSearchDataManagerMock = SearchRemoteDataManagerMock()
+        interactorSearchMock?.remoteDatamanager = remoteSearchDataManagerMock
+        remoteSearchDataManagerMock?.remoteRequestHandler = interactorSearchMock
+    }
+    
+    func createSearch(){
+        searchPresenter = SearchPresenter()
+        interactorSearch = SearchInteractor()
+        interactorSearch?.presenter = searchPresenter
+        searchPresenter?.interactor = interactorSearch
+        remoteSearchDataManager = SearchRemoteDataManager()
+        interactorSearch?.remoteDatamanager = remoteSearchDataManager
+        remoteSearchDataManager?.remoteRequestHandler = interactorSearchMock
+    }
+    
+    func denitSearchMock(){
+        searchPresenter = nil
+        searchPresenterMock = nil
+        interactorSearchMock = nil
+        remoteSearchDataManagerMock = nil
     }
 
     override func tearDown(){
@@ -33,8 +66,7 @@ class BAZProjectTests: XCTestCase {
         trendingPresenter = nil
         trendingPresenterMock = nil
         
-        searchPresenter = nil
-        searchPresenterMock = nil
+        denitSearchMock()
     }
 
     func test_DataMovieResponse(){
@@ -62,15 +94,17 @@ class BAZProjectTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    func test_DataSearchMovieResponse(){
+    func test_DataSearchMovieResponse() async{
         //Give
         var expetationMovies: [Movie] = []
         searchPresenterMock?.willFetchMovies(searchQuery)
         expetationMovies = searchPresenterMock?.entity.result ?? []
+        print(expetationMovies)
         //When
         var result: [Movie] = []
         searchPresenter?.willFetchMovies(searchQuery)
         result = searchPresenter?.entity.result ?? []
+        print(result)
         
         
         //Then

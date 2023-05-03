@@ -11,11 +11,6 @@ class SearchRemoteDataManagerMock: SearchRemoteDataManagerInputProtocol {
     
     var remoteRequestHandler: SearchRemoteDataManagerOutputProtocol?
     
-    init() {
-        var mock: SearchRemoteDataManagerOutputMockProtocol?
-        self.remoteRequestHandler = mock
-    }
-    
     func getSearchedMovies(_ movie: String) {
         let session = URLSession.shared
         let coordinator = GeneralTaskCoordinatorMock(session: session)
