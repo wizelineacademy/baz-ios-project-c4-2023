@@ -68,22 +68,20 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     func saveFavorite(index: Int, onSaved: @escaping () -> Void) {
         guard let favorite = self.movies?[index] as? MovieResult else { return }
         if let data = UserDefaults.standard.data(forKey: "SavedData") {
-            if let List = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                debugPrint(List)
+            if let userDefaultsList = try? JSONDecoder().decode([MovieResult].self, from: data) {
                 var updatedList = [MovieResult]()
-                List.forEach { show in
+                userDefaultsList.forEach { show in
                     updatedList.append(show)
                 }
                 if !updatedList.contains(where: {$0.id == favorite.id }) {
                     updatedList.append(favorite)
                 }
-                debugPrint(updatedList)
                 if let encoded = try? JSONEncoder().encode(updatedList) {
                     UserDefaults.standard.set(encoded, forKey: "SavedData")
                     
                     if let data = UserDefaults.standard.data(forKey: "SavedData") {
                         if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                            debugPrint(decoded)
+                            //debugPrint(decoded)
                             onSaved()
                             return
                         }
@@ -93,13 +91,12 @@ extension HomeInteractor: HomeInteractorInputProtocol {
         } else {
             var updatedList = [MovieResult]()
             updatedList.append(favorite)
-            debugPrint(updatedList)
             if let encoded = try? JSONEncoder().encode(updatedList) {
                 UserDefaults.standard.set(encoded, forKey: "SavedData")
                 
                 if let data = UserDefaults.standard.data(forKey: "SavedData") {
                     if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                        debugPrint(decoded)
+                        //debugPrint(decoded)
                         onSaved()
                         return
                     }
@@ -109,16 +106,44 @@ extension HomeInteractor: HomeInteractorInputProtocol {
     }
     
     func deleteFavorite(index: Int, onSaved: @escaping () -> Void) {
-        print("delete favorite")
         guard let favorite = self.movies?[index] as? MovieResult else { return }
-        
+        //se obtiene data de favoritos previos
+        if let data = UserDefaults.standard.data(forKey: "SavedData") {
+            //se obtiene arreglo userDefaultsList de favoritos guardados
+            if let userDefaultsList = try? JSONDecoder().decode([MovieResult].self, from: data) {
+                //arreglo vacío de tipo MovieResult
+                var updatedList = [MovieResult]()
+                
+                userDefaultsList.forEach { movie in
+                    if movie.id != favorite.id {
+                        updatedList.append(movie)//se agrega cada objeto movie de favoritos a arreglo vacío updatedList que no sea igual al objeto que se quiere eliminar de favoritos
+                    }
+                }
+                //lista actualizada de favoritos sin la movie que se eliminó
+                //debugPrint(updatedList)
+                if let encoded = try? JSONEncoder().encode(updatedList) {
+                    //se guarda el arreglo de favoritos actualizado en UserDefaults encodeado
+                    UserDefaults.standard.set(encoded, forKey: "SavedData")
+                    
+                    //se obtiene la data del arreglo fuardado en UserDefaults
+                    if let data = UserDefaults.standard.data(forKey: "SavedData") {
+                        
+                        //si se logra decodear el arreglo almacenado, se termina el proceso
+                        if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
+                            //debugPrint(decoded)
+                            onSaved()
+                            return
+                        }
+                    }
+                }
+            }
+        }
         onSaved()
     }
     
     func getFavorites() -> [MovieResult]? {
         if let data = UserDefaults.standard.data(forKey: "SavedData") {
             if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {
-                //debugPrint(decoded)
                 return decoded
             }
         }
