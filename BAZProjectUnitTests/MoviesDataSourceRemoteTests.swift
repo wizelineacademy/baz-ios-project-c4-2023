@@ -18,8 +18,8 @@ final class MoviesDataSourceRemoteTests: XCTestCase {
     }
     
     override func tearDown() {
-        super.tearDown()
         sut = nil
+        super.tearDown()
     }
     
     func testGetMoviesTrending() throws {
