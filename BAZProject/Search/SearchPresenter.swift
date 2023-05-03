@@ -11,6 +11,7 @@ class SearchPresenter {
     weak var view: SearchViewInputProtocol?
     var interactor: SearchInteractorInputProtocol
     var router: SearchRouterProtocol
+    private var pEndpoint: Endpoint = .trending
     
     init(view: SearchViewInputProtocol,
          interactor: SearchInteractorInputProtocol,
@@ -26,13 +27,29 @@ class SearchPresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension SearchPresenter: SearchViewOutputProtocol {
-
     func getMovieSearch(endPoint: Endpoint) {
-        interactor.getMovieSearch(endPoint: endPoint)
+        self.router.showAnimation {
+            self.pEndpoint = endPoint
+            self.interactor.getMovieSearch(endPoint: self.pEndpoint) {
+                self.router.hideAnimation {}
+            }
+        }
     }
     
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
         interactor.getMovieImage(index: index, completion: completion)
+    }
+    
+    func saveFavorite(index: Int) {
+        interactor.saveFavorite(index: index) {
+            self.getMovieSearch(endPoint: self.pEndpoint)
+        }
+    }
+    
+    func deleteFavorite(index: Int) {
+        interactor.deleteFavorite(index: index) {
+            self.getMovieSearch(endPoint: self.pEndpoint)
+        }
     }
 }
 

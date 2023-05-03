@@ -24,6 +24,8 @@ protocol SearchViewOutputProtocol {
     // MARK: - Functions
     func getMovieSearch(endPoint: Endpoint)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func saveFavorite(index: Int)
+    func deleteFavorite(index: Int)
 }
 
 // MARK: - (Interactor To Presenter)
@@ -37,11 +39,15 @@ protocol SearchInteractorInputProtocol {
     // MARK: - Properties
     var presenter: SearchInteractorOutputProtocol? { get }
     // MARK: - Functions
-    func getMovieSearch(endPoint: Endpoint)
+    func getMovieSearch(endPoint: Endpoint, completion: @escaping () -> Void)
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func saveFavorite(index: Int, onSaved: @escaping () -> Void)
+    func deleteFavorite(index: Int, onSaved: @escaping () -> Void)
 }
 
 // MARK: - Router (Presenter To Router)
 protocol SearchRouterProtocol {
     var view: UIViewController? { get }
+    func showAnimation(completion: @escaping () -> Void)
+    func hideAnimation(completion: @escaping () -> Void)
 }

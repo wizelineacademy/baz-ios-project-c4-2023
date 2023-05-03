@@ -81,8 +81,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
-    
-    
 
 }
 
@@ -107,7 +105,6 @@ extension SearchViewController: UITableViewDataSource {
 
 // MARK: - P R E S E N T E R · T O · V I E W
 extension SearchViewController: SearchViewInputProtocol {
-    
     func showViewDataMovies(movies: [ListMovieProtocol]?) {
         self.moviesModel = movies as? [MovieResult]
     }

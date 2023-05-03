@@ -114,7 +114,11 @@ class HomeCell: UITableViewCell {
                 presenter?.saveFavorite(index: index ?? 0)
             }
         } else {
-            //searchPresenter?.getMovieSearch(endPoint: .trending)
+            if model?.isFavorite ?? false {
+                searchPresenter?.deleteFavorite(index: index ?? 0)
+            } else {
+                searchPresenter?.saveFavorite(index: index ?? 0)
+            }
         }
         
     }

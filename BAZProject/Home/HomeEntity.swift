@@ -21,7 +21,7 @@ struct MovieAPIConstans {
     static let baseUrlImage = "https://image.tmdb.org/t/p/w500"
 }
 
-public enum Endpoint {
+enum Endpoint {
     static var baseURL = MovieAPIConstans.baseURL
     case trending
     case nowPlaying
