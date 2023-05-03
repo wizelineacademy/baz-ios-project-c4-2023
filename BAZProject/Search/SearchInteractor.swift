@@ -40,7 +40,7 @@ extension SearchInteractor: SearchInteractorInputProtocol {
                 for i in 0..<origin.count {
                     for j in 0..<favorites.count {
                         if origin[i].id == favorites[j].id {
-                            self?.movies![i].isFavorite = true
+                            self?.movies?[i].isFavorite = true
                         }
                     }
                 }

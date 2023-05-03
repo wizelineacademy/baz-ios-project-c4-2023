@@ -31,7 +31,7 @@ class HomeCell: UITableViewCell {
     private let favoriteButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(systemName: "star"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .cyan
         button.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -66,8 +66,8 @@ class HomeCell: UITableViewCell {
                     self?.coverView.image = imageData
                 })
             }
-            let outLine: UIImage = UIImage(systemName: "star") ?? UIImage()
-            let filled: UIImage = UIImage(systemName: "star.fill") ?? UIImage()
+            let outLine: UIImage = UIImage(systemName: "star")?.withTintColor(.cyan) ?? UIImage()
+            let filled: UIImage = UIImage(systemName: "star.fill")?.withTintColor(.cyan) ?? UIImage()
             favoriteButton.setImage(model?.isFavorite ?? false ? filled : outLine, for: .normal)
             //favoriteButton.isHidden = comesFromFavorite
         }

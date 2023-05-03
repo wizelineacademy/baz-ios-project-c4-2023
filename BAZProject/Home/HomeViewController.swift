@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                                      style: .plain,
                                      target: self,
                                      action: #selector(gotoSerch))
+        exitButtom.tintColor = UIColor.AppColors.labelGreen
         navigationItem.setRightBarButton(exitButtom,
                                          animated: false)
         title = LocalizableString.labelTitle.localized

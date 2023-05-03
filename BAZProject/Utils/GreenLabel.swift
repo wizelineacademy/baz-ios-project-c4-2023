@@ -8,8 +8,8 @@
 import UIKit
 
 class GreenLabel: UILabel {
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         self.commonInit()
     }
 
