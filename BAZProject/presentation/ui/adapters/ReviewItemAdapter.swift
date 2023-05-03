@@ -103,6 +103,8 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
         lblDateReview.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim8).isActive = true
     }
 
+    // MARK: - Override Functions/Variables
+
     override var item: Review!{
         didSet{
             lblAuthorReview.text = item.author

@@ -8,10 +8,12 @@ import Foundation
 
 class MovieAPI {
 
-    /// Servicio que consume de la API DB movie
-    /// - Parameters:
-    ///   - completion: El closure a llamar una vez que se completa la operación.
-    ///   El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter filter: El enum Filters que especifica los filtros para obtener películas.
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
+     */
     func getMovies(filter: Filters, completion: @escaping ([Movie]) -> Void) {
         let url = getUrlFilter(filter).toUrl()
 
@@ -32,7 +34,12 @@ class MovieAPI {
         }.resume()
     }
     
-    /// Servicio que consume de la API DB movie
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter filter: El enum Filters que especifica los filtros para obtener películas.
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
+     */
     func getRelatedMovies(filter: Filters, movieID: Int, completion: @escaping ([Movie]) -> Void) {
         let url = getUrlFilter(filter, movieID).toUrl()
 
@@ -53,6 +60,11 @@ class MovieAPI {
         }.resume()
     }
 
+    /**
+     Metodo para retornar el string del EndPoint de las constastes de la capa de dominio
+     - Parameter filter: El enum Filters que especifica el EndPoint a usar.
+     - Parameter movieID: parametro opcional para complementar el EndPoint
+     */
     private func getUrlFilter(_ filter: Filters, _ movieID: Int? = nil) -> String {
         switch filter {
         case .trending:
@@ -73,7 +85,12 @@ class MovieAPI {
     }
     
     
-    /// Servicio que consume de la API DB movie
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter movieID: El id de la pelicula
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Actor]` que devolvera al terminar la peticion.
+     */
     func getCastForMovie(movieID: Int, completion: @escaping ([Actor]) -> Void) {
         let url = Consts.END_POINTS.MOVIE_CAST.setParameters(old: "{movieID}", new: "\(movieID)").toUrl()
 
@@ -94,7 +111,12 @@ class MovieAPI {
         }.resume()
     }
     
-    /// Servicio que consume de la API DB movie
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter movieID: El id de la pelicula
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Review]` que devolvera al terminar la peticion.
+     */
     func getReviewsForMovie(movieID: Int, completion: @escaping ([Review]) -> Void) {
         let url = Consts.END_POINTS.MOVIE_REVIEWS.setParameters(old: "{movieID}", new: "\(movieID)").toUrl()
 
@@ -114,7 +136,13 @@ class MovieAPI {
             }
         }.resume()
     }
-    
+
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter query: Palabra a consultar
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
+     */
     func searchMoviesForKeyword(_ query: String, completion: @escaping ([Movie]) -> Void) {
         let url = Consts.END_POINTS.SEARCH_MOVIES.setParameters(old: "{keyword}", new: query).toUrl()
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
@@ -133,7 +161,13 @@ class MovieAPI {
             }
         }.resume()
     }
-    
+
+    /**
+     Servicio que consume de la API DB movie
+     - Parameter query: Palabra a consultar
+     - Parameter completion: El closure a llamar una vez que se completa la operación.
+                             El closure toma un parámetro `[Movie]` que devolvera al terminar la peticion.
+     */
     func searchForKeyword(_ query: String, completion: @escaping ([String]) -> Void) {
         let url = Consts.END_POINTS.SEARCH_FOR_KEYWORD.setParameters(old: "{keyword}", new: query).toUrl()
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
@@ -153,7 +187,10 @@ class MovieAPI {
             }
         }.resume()
     }
-    
+
+    /**
+     Metodo generico para consumir peticiones
+     */
     func request<T: Decodable>(url: URL, completion: @escaping ([T]) -> Void) {
         URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
             var items: [T] = []

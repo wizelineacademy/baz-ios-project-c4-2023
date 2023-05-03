@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Class
 class SearchViewController: ReusableViewController {
 
     private let searchMovieItemAdapterIdentifier = NSStringFromClass(SearchMovieItemAdapter.self)
@@ -70,6 +71,7 @@ class SearchViewController: ReusableViewController {
     }
 }
 
+// MARK: - Extensions
 extension SearchViewController: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
         // El controlador de búsqueda se presentó en la interfaz de usuario

@@ -7,23 +7,28 @@
 
 import Foundation
 
+// MARK: - Protocol
 protocol SearchDelegate: AnyObject {
     func searchResults()
 }
 
+// MARK: - Class
 class SearchViewModel {
 
+    // MARK: - public variables
     var sectionTitles: [String] = []
     var movies: [Movie] = []
     var keywords: [String] = []
     weak var delegate: SearchDelegate?
 
+    // MARK: - private variables
     private let repository: SearchRepository
 
     init(_ repository: SearchRepository) {
         self.repository = repository
     }
-    
+
+    // MARK: - public functions
     func fetchSearch(_ query: String) {
         let group = DispatchGroup()
         group.enter()

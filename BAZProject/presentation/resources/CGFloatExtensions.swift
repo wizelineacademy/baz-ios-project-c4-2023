@@ -7,7 +7,9 @@
 
 import Foundation
 
-/// Extension propia para globalizar variables para definir dimenciones entre constraints
+/**
+ Extension propia para globalizar variables para definir dimenciones entre constraints
+ */
 extension CGFloat {
     
     static var dim4: CGFloat {

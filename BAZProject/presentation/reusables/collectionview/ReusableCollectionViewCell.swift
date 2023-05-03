@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ReusableCollectionViewCell<U>: UICollectionViewCell {
+class ReusableCollectionViewCell<U>: UICollectionViewCell, CellReusable {
 
     // MARK: - Variables
 

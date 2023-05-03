@@ -19,17 +19,28 @@ class MainViewController: UITabBarController {
     }
     
     // MARK: - Private Functions
+    /**
+     Metodo que carga los UITabBarItem para el UITabBarController
+     */
     private func setupItems() {
-        let moviesScreen = MoviesViewController()
-        let moviesNav = UINavigationController(rootViewController: moviesScreen)
-        let moviesTabItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "tv"), selectedImage: UIImage(systemName: "tv"))
-        moviesScreen.tabBarItem = moviesTabItem
-        
-        let searchScreen = SearchViewController()
-        let searchNav = UINavigationController(rootViewController: searchScreen)
-        let designsTabItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
-        searchScreen.tabBarItem = designsTabItem
+        let moviesNav = setupBarItem(MoviesViewController(), "Movies", UIImage(systemName: "tv"), UIImage(systemName: "tv"))
+
+        let searchNav = setupBarItem(SearchViewController(), "Search", UIImage(systemName: "magnifyingglass"), UIImage(systemName: "magnifyingglass"))
         selectedIndex = 0
         self.viewControllers = [moviesNav,searchNav]
+    }
+
+    /**
+     Metodo que carga el UITabBarItem para el UITabBarController
+     - Parameter screem: ViewController que se asignara al UINavigationController
+     - Parameter title: Titulo que se mostrara en el UITabBarItem
+     - Parameter image: Imagen "normal" para mostrar el UITabBarItem
+     - Parameter imageSelect: Imagen "seleccionada" para indicar que el UITabBarItem resalte
+     */
+    private func setupBarItem(_ screen: UIViewController, _ title: String, _ image: UIImage?, _ imageSelect: UIImage?) -> UINavigationController {
+        let nav = UINavigationController(rootViewController: screen)
+        let tabItem = UITabBarItem(title: title, image: image, selectedImage: imageSelect)
+        screen.tabBarItem = tabItem
+        return nav
     }
 }

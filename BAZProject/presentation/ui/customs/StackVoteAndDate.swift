@@ -8,10 +8,14 @@
 import Foundation
 import UIKit
 
+// MARK: - Class
 class StackVoteAndDate: UIStackView {
 
+    // MARK: - Properties
     private var voteAverange: Float
     private var releaseDate: String
+
+    // MARK: - Input/View and Constraints
 
     private lazy var lblVoteAverangeMovie: UILabel = {
         return setupLabel(text: "Voto Promedio: \(voteAverange)")
