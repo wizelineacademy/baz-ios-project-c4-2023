@@ -11,6 +11,7 @@
 		B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51D476529F237100089DBBB /* SearchTableViewController.xib */; };
 		B51D476A29F250900089DBBB /* keysString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476929F250900089DBBB /* keysString.swift */; };
 		B54DC53429F757CF0078AEAD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DC53329F757CF0078AEAD /* Movie.swift */; };
+		B55E880B2A037B490081680C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E880A2A037B490081680C /* Loader.swift */; };
 		B5A19F4D29F706B300ACD625 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */; };
 		B5A19F4E29F706B300ACD625 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */; };
 		B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F5129F7086600ACD625 /* GeneralServices.swift */; };
@@ -120,6 +121,7 @@
 		B51D476529F237100089DBBB /* SearchTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewController.xib; sourceTree = "<group>"; };
 		B51D476929F250900089DBBB /* keysString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keysString.swift; sourceTree = "<group>"; };
 		B54DC53329F757CF0078AEAD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		B55E880A2A037B490081680C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralTableViewCell.swift; path = BAZProject/Network/Services/GeneralTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		B5A19F4C29F706B300ACD625 /* GeneralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GeneralTableViewCell.xib; path = BAZProject/Network/Services/GeneralTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		B5A19F5129F7086600ACD625 /* GeneralServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServices.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				D3357AFA29F0463C00A81AD8 /* BMTabBar.swift */,
 				D3357B0329F0677700A81AD8 /* BMTableViewCell.swift */,
 				D3357B0429F0677700A81AD8 /* BMTableViewCell.xib */,
+				B55E880A2A037B490081680C /* Loader.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				D309CC6329F0830C007A76D1 /* SearchRouter.swift in Sources */,
 				D343156E29F09EDC00AEE166 /* TrendingProtocols.swift in Sources */,
 				D343156B29F09EDC00AEE166 /* TrendingPresenter.swift in Sources */,
+				B55E880B2A037B490081680C /* Loader.swift in Sources */,
 				B5EC48D62A02C58F00AB8462 /* DetailMovieRouter.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				B5EC48E22A02C58F00AB8462 /* DetailMovieEntity.swift in Sources */,

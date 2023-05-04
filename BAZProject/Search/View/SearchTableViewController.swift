@@ -57,6 +57,7 @@ extension SearchTableViewController {
 extension SearchTableViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        Loader.start()
         presenter?.willFetchMovies(searchBar.text ?? "")
     }
 }
@@ -74,6 +75,7 @@ extension SearchTableViewController: SearchViewProtocol {
         self.listMovies = result
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            Loader.stop()
         }
         
     }
