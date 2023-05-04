@@ -24,7 +24,7 @@ class SearchViewModel {
     
     func loadData() {
         guard let initialMedia = localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) else { return }
-        resetSnapshot(with: initialMedia, in: 0)
+        resetSnapshot(with: initialMedia, section: 0)
     }
     
     func bindSnapshot(_ bind: @escaping () -> Void) {
@@ -61,7 +61,7 @@ class SearchViewModel {
     }
     
     func getSectionTitle(for section: Int) -> String? {
-        return section == 0 ? "Recent" : nil
+        return section == 0 ? "Recent" : "Results"
     }
     
     func searchMedia(keyword: String) {
@@ -69,7 +69,7 @@ class SearchViewModel {
             do {
                 guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
                 let mediaItems = formatMediaDataObject(mediaObjects)
-                resetSnapshot(with: mediaItems, in: 1)
+                resetSnapshot(with: mediaItems, section: 1)
             } catch {
                 self.error.value = error
             }
@@ -80,8 +80,8 @@ class SearchViewModel {
         return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
     }
     
-    func resetSnapshot(with items: [MediaItem], in section: Int) {
-        snapshot.value = MediaSnapshot()
+    func resetSnapshot(with items: [MediaItem], section: Int) {
+        snapshot.value.deleteAllItems()
         snapshot.value.appendSections([section])
         snapshot.value.appendItems(items)
     }

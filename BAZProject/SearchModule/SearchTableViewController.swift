@@ -17,9 +17,8 @@ class SearchTableViewController: UITableViewController {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search moves, tv series, people..."
-        definesPresentationContext = true
         return searchController
     }()
 
@@ -73,6 +72,21 @@ class SearchTableViewController: UITableViewController {
         }
         
     }
+    
+    private func simpleHeader(title: String) -> UIView {
+        let view = UIView()
+        view.backgroundColor = .systemBackground
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = title
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        view.addSubview(label)
+        label.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
+        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        return view
+    }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
@@ -99,14 +113,11 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionTitle = viewModel.getSectionTitle(for: section) else { return nil }
-        let label = UILabel()
-        label.text = sectionTitle
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        return label
+        return simpleHeader(title: sectionTitle)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return viewModel.getSectionTitle(for: section) == nil ? 0 : UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
 }
