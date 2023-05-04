@@ -40,6 +40,5 @@ class DetailsCollectionViewCell: UICollectionViewCell {
             txtLabel.text = info.getTitle()
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getPathImage() ?? "")")!)
         }
-        
     }
 }

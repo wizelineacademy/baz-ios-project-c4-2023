@@ -63,7 +63,6 @@ class DetailsViewModel: DetailsProtocol {
             
         } catch {
             print("Can not store:", error)
-            
         }
         print("se agrego")
 
@@ -101,10 +100,8 @@ class DetailsViewModel: DetailsProtocol {
                     fav = true
                 }
             }
-            
         } catch {
             print("Can not store:", error)
-            
         }
         return fav
     }

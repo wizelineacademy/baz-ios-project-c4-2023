@@ -27,7 +27,6 @@ public enum ServiceError: Error {
     case error
 }
 
-
 //MARK: - Extensiones
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 

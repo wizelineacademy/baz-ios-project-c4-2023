@@ -51,7 +51,7 @@ class DetailsView: UIViewController {
     }
     
     /// Se setea todo lo necesario para cargar la vista
-    func setView(){
+    func setView() {
         registerNibs()
         getAllInfo()
         setFavoriteButton()

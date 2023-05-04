@@ -65,7 +65,6 @@ extension String {
     /// Formato del nombre de la pelicula para poder buscarla
     func formatterMovieName() -> String {
         self.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
-        
     }
 }
 

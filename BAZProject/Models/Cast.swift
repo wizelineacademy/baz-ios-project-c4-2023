@@ -15,7 +15,6 @@ protocol CastInfoProtocol {
     var profile_path: String? { get set }
     var character: String? { get set }
 }
-
 // Estructura para parsear los actores
 struct Cast: Decodable, CastInfoProtocol {
     var id: Int?
