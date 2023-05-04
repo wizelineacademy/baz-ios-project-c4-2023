@@ -7,24 +7,16 @@
 
 @testable import BAZProject
 
-class TrendingRemoteDataMock: TrendingMoviesRemoteData {
+class TrendingMediaRemoteDataMock: TrendingMediaRemoteData {
     
-    var movies: [Movie]?
+    var mediaItems: [MediaDataObject]?
     var error: Error?
     
-    override func getMovies() async throws -> [Movie]? {
+    override func getMediaItems() async throws -> [MediaDataObject]? {
         if let error = error {
             throw error
         } else {
-            return movies
-        }
-    }
-    
-    override func searchMovies(_ searchText: String) async throws -> [Movie]? {
-        if let error = error {
-            throw error
-        } else {
-            return movies
+            return mediaItems
         }
     }
     
