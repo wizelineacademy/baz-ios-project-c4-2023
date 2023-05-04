@@ -11,8 +11,9 @@ class SearchTableViewController: UITableViewController {
     
     var viewModel: SearchViewModel
     var dataSource: SearchViewModel.MediaTableDataSource?
+    var dispatchService: DispatchProtocol = DispatchQueue.main
     
-    private lazy var searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -27,7 +28,6 @@ class SearchTableViewController: UITableViewController {
         super.init(style: .plain)
         self.title = "Search"
         self.tabBarItem = UITabBarItem(title: self.title, image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
-        self.bindings()
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +36,7 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindings()
         setView()
         setSearchController()
         createDataSource()
@@ -57,7 +58,7 @@ class SearchTableViewController: UITableViewController {
     
     private func bindings() {
         viewModel.bindSnapshot { [weak self] in
-            DispatchQueue.main.async {
+            self?.dispatchService.async {
                 guard let snapshot = self?.viewModel.getSnapshot() else { return }
                 self?.dataSource?.apply(snapshot)
             }
@@ -77,7 +78,7 @@ class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        dispatchService.asyncAfter(deadline: .now() + 0.8) {
             if let searchText = searchController.searchBar.text, searchText != "" {
                 self.viewModel.searchMedia(keyword: searchText)
             }

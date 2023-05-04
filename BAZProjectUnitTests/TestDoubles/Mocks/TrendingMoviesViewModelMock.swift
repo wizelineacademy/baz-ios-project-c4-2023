@@ -10,6 +10,4 @@ import Foundation
 
 class TrendingMediaViewModelMock: TrendingMediaViewModel {
     
-    override func loadData() { }
-
 }

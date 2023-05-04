@@ -10,6 +10,7 @@ class TrendingMediaViewController: UICollectionViewController {
     
     var viewModel: TrendingMediaViewModel
     var dataSource: TrendingMediaViewModel.MediaCollectionDataSource?
+    var dispatchService: DispatchProtocol = DispatchQueue.main
     
     init(viewModel: TrendingMediaViewModel) {
         self.viewModel = viewModel
@@ -37,13 +38,13 @@ class TrendingMediaViewController: UICollectionViewController {
     
     private func bindings() {
         viewModel.bindSnapshot { [weak self] in
-            DispatchQueue.main.async {
+            self?.dispatchService.async {
                 guard let snapshot = self?.viewModel.getDataSnapshot() else { return }
                 self?.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
         viewModel.bindError { [weak self] in
-            DispatchQueue.main.async {
+            self?.dispatchService.async {
                 self?.presentError()
             }
         }
