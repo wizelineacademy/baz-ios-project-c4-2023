@@ -17,6 +17,8 @@ struct MovieViewModel {
     /// The underlying movie object.
     private let movie:Movie
     
+    private let dateFormatter = DateFormatter()
+    
     // MARK: - Initialization
     
     /// Initializes a new instance of `MovieViewModel`.
@@ -42,5 +44,24 @@ extension MovieViewModel {
         } else {
             return nil
         }
+    }
+    
+    //TODO: Prueba unitaria
+    var overview: String {
+        return movie.overview ?? ""
+    }
+    
+    var year: String {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let release_date = movie.release_date, let date = dateFormatter.date(from: release_date) else {
+            return ""
+        }
+        
+        return "\(Calendar.current.component(.year, from: date))"
+    }
+    
+    var vote_average: String {
+        return "\((Int(movie.vote_average ?? 0) ) * 10 )% de coincidencia"
     }
 }
