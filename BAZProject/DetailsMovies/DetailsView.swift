@@ -74,7 +74,7 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
     }
     /// Verifica si la pelicula esta en favoritos y cambia el titulo
     func setFavoriteButton() {
-        ViewModel.isMovieFavorite() ? favoriteButton.setTitle("Borrar", for: .normal) : favoriteButton.setTitle("Agregar", for: .normal)
+        ViewModel.isMovieFavorite() ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
     //MARK: - Buttons
     @IBAction func favoriteButton(_ sender: UIButton) {

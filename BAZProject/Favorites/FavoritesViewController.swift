@@ -17,11 +17,7 @@ class FavoritesViewController: UIViewController {
         setView()
     }
     
-    ///Funcion que setea la vista
-    func setView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        registerTableViewCells()
+    override func viewWillAppear(_ animated: Bool) {
         self.title = StringsTitles.favorites.rawValue
         ViewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
         ViewModel.bindMovie { [weak self] in
@@ -29,6 +25,13 @@ class FavoritesViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    ///Funcion que setea la vista
+    func setView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        registerTableViewCells()
     }
     
     ///Se registran las celdas para las peliculas
