@@ -108,7 +108,6 @@ final class SearchViewModelTests: XCTestCase {
     
     func test_getCellModel_FootnoteShouldBeRatingWhenDateBeforeTodayAndDifferentFromAbsoluteZero() {
         let tomorrowsDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
         let person = MediaItem(id: 1, posterPath: "path", title: "title", rating: 1.2, mediaType: .tv, releaseDate: tomorrowsDate)
         let expectedModel = MediaTableViewCellModel(title: "title", subtitle: MediaType.tv.itemTitle, image: "path", defaultImage: MediaType.tv.defaultImage, footNote: "1.2", rated: true)
         
@@ -119,7 +118,6 @@ final class SearchViewModelTests: XCTestCase {
     
     func test_getCellModel_FootnoteShouldBeEmptyWhenDateBeforeTodayAndRatingIsAbsoluteZero() {
         let tomorrowsDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
         let person = MediaItem(id: 1, posterPath: "path", title: "title", rating: 0.0, mediaType: .tv, releaseDate: tomorrowsDate)
         let expectedModel = MediaTableViewCellModel(title: "title", subtitle: MediaType.tv.itemTitle, image: "path", defaultImage: MediaType.tv.defaultImage, footNote: nil, rated: false)
         
