@@ -85,7 +85,6 @@ final class FavoriteViewModelTests: XCTestCase {
             
         } catch {
             print("Can not store:", error)
-            
         }
     }
 }

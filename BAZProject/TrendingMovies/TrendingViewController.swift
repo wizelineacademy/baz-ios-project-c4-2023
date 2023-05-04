@@ -37,6 +37,10 @@ final class TrendingViewController: UITableViewController {
     func setView() {
         self.tabBarController?.viewControllers?[1].title = StringsTitles.search.rawValue
         self.tabBarController?.viewControllers?[2].title = StringsTitles.favorites.rawValue
+        self.tabBarController?.tabBar.items![1].image = UIImage(systemName: "magnifyingglass")
+        self.tabBarController?.tabBar.items![1].selectedImage = UIImage(systemName: "magnifyingglass")
+        self.tabBarController?.tabBar.items![2].image = UIImage(systemName: "heart")
+        self.tabBarController?.tabBar.items![2].selectedImage = UIImage(systemName: "heart.fill")
         trendingModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
