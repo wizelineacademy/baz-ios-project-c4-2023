@@ -34,11 +34,9 @@ final class MovieTableViewCell: UITableViewCell {
 
 extension MovieTableViewCell {
     
-    /**
-      Sets up the cell with the specified movie view model.
-     
-      - Parameter movieVM: The view model containing the movie information to display.
-    */
+    ///  Sets up the cell with the specified movie view model.
+    ///
+    ///  - Parameter movieVM: The view model containing the movie information to display.
     func setup(_ movieVM:MovieViewModel) {
         lblDescription.text = movieVM.title
         imgView.image = UIImage(named: "poster")
