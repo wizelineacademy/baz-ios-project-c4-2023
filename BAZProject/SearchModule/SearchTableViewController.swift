@@ -85,7 +85,6 @@ extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegat
         }
     }
     
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadData()
     }
