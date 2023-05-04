@@ -7,7 +7,6 @@
 import Foundation
 
 //MARK: - Protocolos y datos para peliculas
-
 // protocolo para el manejo de peliculas
 protocol InfoMoviesProtocol: Codable {
     var id: Int? { get set }

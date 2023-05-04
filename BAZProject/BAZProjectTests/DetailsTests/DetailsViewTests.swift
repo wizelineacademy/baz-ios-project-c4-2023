@@ -13,8 +13,7 @@ final class DetailsViewTests: XCTestCase {
     var sut: DetailsView!
     var viewModel = DetailsViewModel(movieDetail: Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0))
     
-    
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         sut = DetailsView(ViewModel: viewModel)
         sut.ViewModel = viewModel
@@ -25,17 +24,16 @@ final class DetailsViewTests: XCTestCase {
         super.tearDown()
     }
     
-    
     //MARK: - Pruebas de pantalla principal
     
-    func testDetailsView_TitleIsEqualToViewModel(){
+    func testDetailsView_TitleIsEqualToViewModel() {
         //Given
         sut.loadViewIfNeeded()
         //When
         XCTAssertEqual(sut.navigationItem.title, viewModel.getTitle())
     }
     
-    func testDetailsView_MovieIsNotFavorite(){
+    func testDetailsView_MovieIsNotFavorite() {
         //Given
         sut.loadViewIfNeeded()
         let favorite = viewModel.isMovieFavorite()
@@ -43,17 +41,17 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertFalse(favorite)
     }
     
-    func testDetailsView_onViewIsNotNil(){
+    func testDetailsView_onViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
         let favorite = sut.favoriteButton.title(for: .normal)
         //When
         XCTAssertEqual(favorite, "Agregar")
     }
+
+    //MARK: - Pruebas de similares
     
-    //Pruebas Peliculas Similares
-    
-    func testDetailsView_RecoCollectionViewIsNotNil(){
+    func testDetailsView_RecoCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
         viewModel.similarMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0)])
@@ -63,9 +61,7 @@ final class DetailsViewTests: XCTestCase {
     
     //MARK: - Pruebas de Collections Views
     
-    //Prueba Peliculas Recomendadas
-    
-    func testDetailsView_SimilarCollectionViewIsNotNil(){
+    func testDetailsView_SimilarCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
         viewModel.recommendationMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0)])
@@ -73,9 +69,8 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView(sut.recomendationsCV, numberOfItemsInSection: 0))
     }
     
-    //Pruebas Cast
-    
-    func testDetailsView_CastCollectionViewIsNotNil(){
+    //MARK: - Pruebas Cast
+    func testDetailsView_CastCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
         viewModel.castMovie = Box(value: [Cast(id: 1 , name: "Pepe toño macias", profile_path: "", character: "Deadpool")])
@@ -83,6 +78,13 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView(sut.actorsCV, numberOfItemsInSection: 0))
     }
     
+  //MARK: - Pruebas de mapas
     
-    
+    func testDetailsView_CinemaExist() {
+        //Given
+        sut.loadViewIfNeeded()
+        sut.addCinema(lat: 19.99884, long: -19.99384)
+        //When
+        XCTAssertNotNil(sut.mapView.annotations.first?.coordinate)
+    }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var imageVire: UIImageView!
     @IBOutlet weak var labelText: UILabel!
     private var downloadTask: URLSessionDownloadTask?

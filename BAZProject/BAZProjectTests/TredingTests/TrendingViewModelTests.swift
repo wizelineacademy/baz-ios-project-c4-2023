@@ -13,20 +13,18 @@ final class TrendingViewModelTests: XCTestCase {
     var sut: TrendingViewModel?
     var movieAPIMock: MovieApiMock?
 
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         movieAPIMock = MovieApiMock(service: ServiceAPI(session: SessionMock()))
         sut = TrendingViewModel(remote: movieAPIMock!)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
         sut = nil
         super.tearDown()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testTrendingModel_TableViewNotZerp(){
+    func testTrendingModel_TableViewNotZerp() {
         //Given
         let movies = [Movie(id: 1, title: "Titanic", poster_path: "")]
         //When

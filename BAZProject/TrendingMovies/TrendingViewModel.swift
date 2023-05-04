@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class TrendingViewModel: TrendingListProtocol {
     
     var movies = Box(value: [InfoMoviesProtocol]())

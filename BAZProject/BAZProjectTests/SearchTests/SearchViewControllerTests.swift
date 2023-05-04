@@ -12,7 +12,7 @@ final class SearchViewControllerTests: XCTestCase {
 
     var sut: SearchView?
 
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as? SearchView
     }
@@ -46,15 +46,14 @@ final class SearchViewControllerTests: XCTestCase {
         XCTAssertFalse(button)
     }
     
-    func testSearchView_TitleIsEqualToViewModel(){
+    func testSearchView_TitleIsEqualToViewModel() {
         sut?.loadViewIfNeeded()
         XCTAssertEqual(sut?.navigationItem.title, "Buscar")
     }
     
-    func testSearchView_PlaceHolderIsEqualToView(){
+    func testSearchView_PlaceHolderIsEqualToView() {
         sut?.loadViewIfNeeded()
         let placeH = sut?.searchBar.placeholder
         XCTAssertEqual(placeH, "Busca tu pelicula")
     }
-    
 }

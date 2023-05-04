@@ -7,8 +7,6 @@
 
 import Foundation
 
-//TODO: Revisar con menor
-
 final class KeychainHelper {
     
     static let standard = KeychainHelper()

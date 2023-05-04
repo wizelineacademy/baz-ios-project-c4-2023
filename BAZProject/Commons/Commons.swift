@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /// enumerador para menejar las ulrs del proyecto
 enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"

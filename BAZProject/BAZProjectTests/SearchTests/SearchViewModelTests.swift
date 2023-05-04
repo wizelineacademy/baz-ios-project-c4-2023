@@ -13,7 +13,7 @@ final class SearchViewModelTests: XCTestCase {
     var sut: SearchViewModel?
     var sessionMock: SessionMock?
 
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         sessionMock = SessionMock()
         sut = SearchViewModel(service: ServiceAPI(session: sessionMock!))
@@ -24,7 +24,7 @@ final class SearchViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSearchModel_countNotNil(){
+    func testSearchModel_countNotNil() {
         //Given
         let movies = [Movie(id: 1, title: "Mario Bros", poster_path: "")]
         //When
@@ -53,7 +53,7 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
     }
     
-    func testSearchModel_bindMovies(){
+    func testSearchModel_bindMovies() {
         //Given
         let movies = [Movie(id: 1, title: "Mario Bros", poster_path: "")]
         let expectation = XCTestExpectation(description: "Binding should call closure")

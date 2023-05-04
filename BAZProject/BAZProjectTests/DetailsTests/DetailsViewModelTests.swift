@@ -128,10 +128,8 @@ final class DetailsViewModelTests: XCTestCase {
         return movieArray
     }
     
-    
     //MARK: - Pruebas de Seccion de recomendaciones
-    
-    
+
     func testDetailsViewModel_getRecommendationMovies() {
         //Given
         let movies = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
@@ -165,7 +163,6 @@ final class DetailsViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(path, movie[0].poster_path)
     }
-
     
     //MARK: - Pruebas de Seccion de Similares
     
@@ -204,8 +201,7 @@ final class DetailsViewModelTests: XCTestCase {
     }
     
     //MARK: - Pruebas de Seccion de Reparto
-    
-    
+
     func testDetailsViewModel_getCastMovie() {
         //Given
         let cast = [Cast(id: 1, name: "Henry Cavil", profile_path: "", character: "Superman")]
@@ -249,5 +245,4 @@ final class DetailsViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(character, cast[0].character)
     }
-    
 }

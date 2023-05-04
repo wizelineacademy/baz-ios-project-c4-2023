@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol SearchListProtocol {
     
     var moviesSearched: Box<[InfoMoviesProtocol]> { get set } ///Varible donde se almacenara informacion de las peliculas

@@ -10,7 +10,6 @@ import UIKit
 class SearchView: UIViewController {
     
     //MARK: - OUtlets y variables
-    
     var viewModel: SearchViewModel = SearchViewModel()// se crea instancia al ViewModel de MVVM
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!

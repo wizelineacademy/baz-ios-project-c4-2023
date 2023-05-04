@@ -12,7 +12,7 @@ final class FavoriteViewModelTests: XCTestCase {
     
     var sut: FavoritesViewModel?
 
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         sut = FavoritesViewModel()
     }
@@ -22,7 +22,7 @@ final class FavoriteViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFavoriteModel_countNotNil(){
+    func testFavoriteModel_countNotNil() {
         //Given
         let movies = [Movie(id: 1, title: "Mario Bros", poster_path: "")]
         //When
@@ -63,7 +63,6 @@ final class FavoriteViewModelTests: XCTestCase {
     }
     
     func testFavoriteModel_FavoriteList_NotNil() {
-        let movies = [Movie(id: 1, title: "Avatar", poster_path: "avatar.png")]
         //When
         saveUserDefautls()
         //Then
@@ -89,6 +88,4 @@ final class FavoriteViewModelTests: XCTestCase {
             
         }
     }
-    
 }
-

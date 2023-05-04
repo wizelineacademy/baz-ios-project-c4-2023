@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class FavoritesViewModel: FavoriteListProtocol {
     
     //MARK: - Outlets

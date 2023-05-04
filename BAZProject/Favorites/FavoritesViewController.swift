@@ -14,13 +14,15 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+    }
+    
+    ///Funcion que setea la vista
+    func setView() {
         tableView.delegate = self
         tableView.dataSource = self
         registerTableViewCells()
         self.title = StringsTitles.favorites.rawValue
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         ViewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
         ViewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
@@ -28,6 +30,7 @@ class FavoritesViewController: UIViewController {
             }
         }
     }
+    
     ///Se registran las celdas para las peliculas
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
@@ -57,6 +60,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewmodel = DetailsViewModel(movieDetail: ViewModel.getAllInfoMoview(index: indexPath.row))
         let vc = DetailsView(ViewModel: viewmodel)
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

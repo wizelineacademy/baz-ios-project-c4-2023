@@ -8,7 +8,6 @@
 import Foundation
 import CoreLocation
 
-
 protocol DetailsProtocol {
     // Variables para guardar las peliculas
     var movieDetail: Box<InfoMoviesProtocol> { get set }

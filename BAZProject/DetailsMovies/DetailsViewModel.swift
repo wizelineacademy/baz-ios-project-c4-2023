@@ -183,5 +183,3 @@ extension DetailsViewModel {
         castMovie.value[index].profile_path
     }
 }
-
-
