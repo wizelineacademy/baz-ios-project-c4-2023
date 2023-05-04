@@ -9,7 +9,6 @@ import Foundation
 
 
 protocol FavoriteListProtocol {
-    
     var favoriteMovies: Box<[InfoMoviesProtocol]>? { get set }
     func bindMovie(_ listener: @escaping () -> Void) ///Funcion que setea el bind para el box
     func getMovieCount() -> Int ///regresa el contador del arreglo de peliculas

@@ -35,7 +35,7 @@ class SearchViewModel: SearchListProtocol {
         moviesSearched.value[index].poster_path
     }
     ///Limpia el arreglo para otra consulta
-    func cleanMoviesArray(){
+    func cleanMoviesArray() {
         moviesSearched.value = []
     }
     ///Funcion que devolvera la informacion de una pelicula

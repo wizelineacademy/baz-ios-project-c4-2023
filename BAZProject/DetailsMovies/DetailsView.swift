@@ -140,7 +140,7 @@ extension DetailsView {
     }
     /// Configuracion cuando se actualiza la localicacio
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last{
+        if let location = locations.last {
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             addCinema(lat: location.coordinate.latitude - 0.0005550 , long: location.coordinate.longitude - 0.00700)

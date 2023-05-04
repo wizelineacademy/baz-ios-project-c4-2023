@@ -60,7 +60,6 @@ class DetailsViewModel: DetailsProtocol {
                 let data = try JSONEncoder().encode([movie])
                 UserDefaults.standard.set(data, forKey: key)
             }
-            
         } catch {
             print("Can not store:", error)
         }
@@ -87,7 +86,6 @@ class DetailsViewModel: DetailsProtocol {
             print("Can not store:", error)
         }
         print("se elimino")
-        
     }
     
     /// Indicaror si la pelicula esta en el arreglo de favoritos

@@ -69,7 +69,7 @@ extension String {
 }
 
 // Metodos extras para la colocacion de las imagenes
-extension UIImageView{
+extension UIImageView {
     /// Consulta desde una url para colocar la imagen
     func loadImage(url: URL) -> URLSessionDownloadTask {
         let session = URLSession.shared

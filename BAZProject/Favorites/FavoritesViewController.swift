@@ -39,7 +39,6 @@ class FavoritesViewController: UIViewController {
     }
 }
 
-
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         ViewModel.getMovieCount()

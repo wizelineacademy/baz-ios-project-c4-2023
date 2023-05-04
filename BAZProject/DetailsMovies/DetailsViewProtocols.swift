@@ -43,6 +43,5 @@ protocol DetailsProtocol {
     func getCastMovieTitle(index: Int) -> String?  ///regresa el campo titulo de la pelicula
     func getCastMovieMoviesCount() -> Int?    ///Regresa el conteo del arreglo de peliculas
     func getCastMovieMoviesCharacter(index: Int) -> String?
-    func getCastPath(index: Int) -> String? /// Regresa el path para la consulta de la imagen
-    
+    func getCastPath(index: Int) -> String? /// Regresa el path para la consulta de la imagen    
 }
