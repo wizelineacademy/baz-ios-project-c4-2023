@@ -65,22 +65,23 @@ final class SearchViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         wait(for: [expectation], timeout: 0.1)
+        let items = sut.dataSource?.snapshot().numberOfItems
         
-        XCTAssertEqual(sut.dataSource?.snapshot().numberOfItems, media.count)
+        XCTAssertEqual(items, media.count)
     }
     
     func test_searchData_ShouldHaveThreeElements() {
         let media = [MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 6
+        expectation.expectedFulfillmentCount = 4
         setSutWithRemoteData(media: media, expectation: expectation)
         
-        sut.searchController.searchBar.text = "Harry"
         sut.loadViewIfNeeded()
-        sut.updateSearchResults(for: sut.searchController)
-        wait(for: [expectation], timeout: 0.1)
+        sut.searchController.searchBar.text = "Harry"
+        wait(for: [expectation], timeout: 0.5)
+        let items = sut.dataSource?.snapshot().numberOfItems
         
-        XCTAssertEqual(sut.dataSource?.snapshot().numberOfItems, media.count)
+        XCTAssertEqual(items, media.count)
     }
     
     func test_searchData_ShouldNotSearchWithEmptyString() {

@@ -7,7 +7,7 @@
 
 import Foundation
  
-protocol RequestSessionProtocol {
+public protocol RequestSessionProtocol {
     
     func data(for request: URLRequest) async throws -> (Data, URLResponse)
     
@@ -15,7 +15,7 @@ protocol RequestSessionProtocol {
 
 extension URLSession: RequestSessionProtocol { }
 
-protocol EndpointProtocol {
+public protocol EndpointProtocol {
     
     var path: String { get }
     var scheme: String? { get }

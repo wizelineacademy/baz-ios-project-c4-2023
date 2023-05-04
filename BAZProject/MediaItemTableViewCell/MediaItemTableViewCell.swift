@@ -16,8 +16,11 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var ratingLabel: UILabel!
     
     func setCell(with model: MediaTableViewCellModel) {
-        Task {
-            posterImageView?.image = try? await UIImage(download: model.image ?? "") ?? UIImage(named: model.defaultImage ?? "")
+        posterImageView.image = UIImage(named: model.defaultImage ?? "")
+        if let imagePath = model.image {
+            Task {
+                posterImageView.image = try? await UIImage(endpoint: ImageEndpoint(path: imagePath))
+            }
         }
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle

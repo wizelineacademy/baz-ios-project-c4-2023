@@ -134,12 +134,12 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(title)
     }
     
-    func test_getSectionTitle_ShouldBeNilForOtherIndices() {
+    func test_getSectionTitle_ShouldBeResultsForOtherIndices() {
         let section = 5
         
         let title = sut.getSectionTitle(for: section)
         
-        XCTAssertNil(title)
+        XCTAssertEqual(title, "Results")
     }
     
     func test_searchMedia_ShouldUpdateSnapshot() {

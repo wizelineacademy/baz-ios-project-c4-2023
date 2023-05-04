@@ -18,7 +18,7 @@ class MediaCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: model.defaultImage ?? "")
         if let imagePath = model.image {
             Task {
-                imageView.image = try? await UIImage(download: imagePath)
+                imageView.image = try? await UIImage(endpoint: ImageEndpoint(path: imagePath))
             }
         }
         titleLabel.text = model.title
