@@ -5,6 +5,12 @@
 //  Created by Sergio Del Olmo Aguilar on 28/03/23.
 //
 
+// TODO: Usar core data(1) o file manager para la persistencia de datos más pesados, los del detalle de películas
+// TODO: AVFUndation tomar el proyecto para el audio
+// TODO: Para el Core Location, si estamos en mexico mostrar los resultados mx y en español, si no en inglés, poner un booleano para ahorrar tiempo y problemas
+// TODO: Definir unas coordenadas aleatorias al momento de instanciar una película y asignarlas para depués poder mostrar el mapa con MapKit
+// TODO: Detalle de película y busqueda por id y palabra clave.
+
 import UIKit
 
 class HomeViewController: UIViewController {

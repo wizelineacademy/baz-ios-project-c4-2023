@@ -29,8 +29,38 @@ struct NetworkManager {
     private let router = Router<MovieApi>()
     
     /// Function to get the trending movies from TheMovieDB using "page" as only argument
-    func getTrendingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-        router.request(.trending(page: page)) { data, response, error in
+    // TODO: Hacer el getTrendingMoviespara que reciba generica el tipo a castear
+//    func getTrendingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
+//        router.request(.trending(page: page)) { data, response, error in
+//            
+//            if error != nil {
+//                completion(nil, "Please check your network connection.")
+//            }
+//            
+//            if let response = response as? HTTPURLResponse {
+//                let result = self.handleNetworkResponse(response)
+//                switch result {
+//                case .success:
+//                    guard let responseData = data else {
+//                        completion(nil, NetworkResponse.noData.rawValue)
+//                        return
+//                    }
+//                    do {
+//                        let apiResponse = try self.decodeResponse(data: responseData) as MovieApiResponse
+//                                            completion(apiResponse.movies, nil)
+//                    } catch {
+//                        print(error)
+//                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+//                    }
+//                case .failure(let networkFailureError):
+//                    completion(nil, networkFailureError)
+//                }
+//            }
+//        }
+//    }
+    
+    func getMovies<T: Decodable>(endpoint: MovieApi, completion: @escaping (_ result: T?, _ error: String?) -> Void){
+        router.request(endpoint) { data, response, error in
             
             if error != nil {
                 completion(nil, "Please check your network connection.")
@@ -45,9 +75,8 @@ struct NetworkManager {
                         return
                     }
                     do {
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
+                        let apiResponse = try self.decodeResponse(data: responseData) as T
+                        completion(apiResponse, nil)
                     } catch {
                         print(error)
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
@@ -59,7 +88,20 @@ struct NetworkManager {
         }
     }
     
+    
+    /// Function to decode response
+    func decodeResponse<T: Decodable >(data: Data) throws -> T {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(T.self, from: data)
+            return decodedData
+        } catch {
+            throw error
+        }
+    }
+    
     /// Function to get now playing movies from TheMovieDB using "page" as only argument
+    // TODO: Pasar el enum com parámetro y tener una sola función en la capa de network y las necesarias en el interactor
     func getNowPlayingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
         router.request(.nowPlaying(page: page)) { data, response, error in
             

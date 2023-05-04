@@ -20,10 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //Pasar el view controller que será mi vista inicial
 //        let navigationController = UINavigationController(rootViewController: <#T##UIViewController#>)
         //Aqui se agregan los controladores, cuidado con poner más de 5
-
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
+        let storyboard = UIStoryboard(name: "LoginAndRegistration", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()
         let window = UIWindow(windowScene: windowScene)
         //Pasar el navigationController, en vez de este view que tenemos en el storyboard

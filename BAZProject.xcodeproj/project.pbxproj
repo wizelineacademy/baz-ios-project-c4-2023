@@ -24,6 +24,12 @@
 		A7DE3F6529E5DD9200D614C6 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE3F6429E5DD9200D614C6 /* JSONParameterEncoder.swift */; };
 		A7DE3F6729E5E20900D614C6 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE3F6629E5E20900D614C6 /* NetworkRouter.swift */; };
 		A7DE3F6929E5E70800D614C6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE3F6829E5E70800D614C6 /* Router.swift */; };
+		A7E3D49A2A00C3100069DC83 /* LoginAndRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E3D4992A00C3100069DC83 /* LoginAndRegistration.storyboard */; };
+		A7E3D49C2A00C33F0069DC83 /* LoginAndRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3D49B2A00C33F0069DC83 /* LoginAndRegistrationView.swift */; };
+		A7E3D4A22A01C9B50069DC83 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3D4A12A01C9B50069DC83 /* HomeRouter.swift */; };
+		A7E3D4A62A01CB050069DC83 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3D4A42A01CB050069DC83 /* DetailViewController.swift */; };
+		A7E3D4A72A01CB050069DC83 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E3D4A52A01CB050069DC83 /* DetailViewController.xib */; };
+		A7E3D4AA2A01CB860069DC83 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3D4A92A01CB860069DC83 /* DetailRouter.swift */; };
 		A7F2D92C29F7999D00CCEA44 /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2D92B29F7999D00CCEA44 /* MovieEndPoint.swift */; };
 		A7F2D92F29F7A2AE00CCEA44 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2D92E29F7A2AE00CCEA44 /* Movie.swift */; };
 		A7F2D93229F7A77B00CCEA44 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2D93129F7A77B00CCEA44 /* NetworkManager.swift */; };
@@ -67,6 +73,13 @@
 		A7DE3F6429E5DD9200D614C6 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		A7DE3F6629E5E20900D614C6 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		A7DE3F6829E5E70800D614C6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		A7E3D4992A00C3100069DC83 /* LoginAndRegistration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndRegistration.storyboard; sourceTree = "<group>"; };
+		A7E3D49B2A00C33F0069DC83 /* LoginAndRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegistrationView.swift; sourceTree = "<group>"; };
+		A7E3D49D2A0101850069DC83 /* BAZProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BAZProject.entitlements; sourceTree = "<group>"; };
+		A7E3D4A12A01C9B50069DC83 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		A7E3D4A42A01CB050069DC83 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A7E3D4A52A01CB050069DC83 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		A7E3D4A92A01CB860069DC83 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		A7F2D92B29F7999D00CCEA44 /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
 		A7F2D92E29F7A2AE00CCEA44 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A7F2D93129F7A77B00CCEA44 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -177,6 +190,61 @@
 			path = Encoding;
 			sourceTree = "<group>";
 		};
+		A7E3D4942A00990A0069DC83 /* LoginAndRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4992A00C3100069DC83 /* LoginAndRegistration.storyboard */,
+				A7E3D49B2A00C33F0069DC83 /* LoginAndRegistrationView.swift */,
+			);
+			path = LoginAndRegistration;
+			sourceTree = "<group>";
+		};
+		A7E3D49E2A01C90F0069DC83 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4A02A01C97F0069DC83 /* Router */,
+				A70C760029D4B791001004BA /* Entities */,
+				A70C75FD29D4AE7D001004BA /* Interactor */,
+				A70C75FA29D4AAC9001004BA /* Presenter */,
+				A70C75F929D49F2F001004BA /* HomeView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A7E3D49F2A01C9480069DC83 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4A82A01CB350069DC83 /* Router */,
+				A7E3D4A32A01CAE50069DC83 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A7E3D4A02A01C97F0069DC83 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4A12A01C9B50069DC83 /* HomeRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		A7E3D4A32A01CAE50069DC83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4A42A01CB050069DC83 /* DetailViewController.swift */,
+				A7E3D4A52A01CB050069DC83 /* DetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7E3D4A82A01CB350069DC83 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3D4A92A01CB860069DC83 /* DetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		A7F2D92A29F7997400CCEA44 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,11 +292,11 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				A7E3D49F2A01C9480069DC83 /* Detail */,
+				A7E3D49E2A01C90F0069DC83 /* Home */,
+				A7E3D49D2A0101850069DC83 /* BAZProject.entitlements */,
+				A7E3D4942A00990A0069DC83 /* LoginAndRegistration */,
 				A7DE3F5729E5CECC00D614C6 /* Networking */,
-				A70C760029D4B791001004BA /* Entities */,
-				A70C75FD29D4AE7D001004BA /* Interactor */,
-				A70C75FA29D4AAC9001004BA /* Presenter */,
-				A70C75F929D49F2F001004BA /* HomeView */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
 				C30893C328A2F845004B1860 /* TrendingViewController.swift */,
@@ -335,7 +403,9 @@
 				A70C75F529D3C44D001004BA /* HomeView.storyboard in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
+				A7E3D4A72A01CB050069DC83 /* DetailViewController.xib in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
+				A7E3D49A2A00C3100069DC83 /* LoginAndRegistration.storyboard in Resources */,
 				A7AB63BB29D3AF3900D37546 /* MovieAppCollectionViewCell.xib in Resources */,
 				C30893B528A2F42B004B1860 /* Main.storyboard in Resources */,
 			);
@@ -356,9 +426,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E3D4AA2A01CB860069DC83 /* DetailRouter.swift in Sources */,
 				A7DE3F6529E5DD9200D614C6 /* JSONParameterEncoder.swift in Sources */,
 				A7DE3F6129E5D57100D614C6 /* ParameterEncoding.swift in Sources */,
 				C30893C428A2F845004B1860 /* TrendingViewController.swift in Sources */,
+				A7E3D49C2A00C33F0069DC83 /* LoginAndRegistrationView.swift in Sources */,
 				A7F2D93229F7A77B00CCEA44 /* NetworkManager.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				A7DE3F6929E5E70800D614C6 /* Router.swift in Sources */,
@@ -366,9 +438,11 @@
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				A70C75FF29D4AE96001004BA /* Interactor.swift in Sources */,
 				A7AB63BA29D3AF3900D37546 /* MovieAppCollectionViewCell.swift in Sources */,
+				A7E3D4A22A01C9B50069DC83 /* HomeRouter.swift in Sources */,
 				A7DE3F5E29E5D36900D614C6 /* HTTPTask.swift in Sources */,
 				A7DE3F5A29E5CEFC00D614C6 /* EndPointType.swift in Sources */,
 				A7DE3F6329E5D98300D614C6 /* URLParameterEncoder.swift in Sources */,
+				A7E3D4A62A01CB050069DC83 /* DetailViewController.swift in Sources */,
 				A714CF7029E5265A00D1AE22 /* Protocols.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
 				A7F2D92F29F7A2AE00CCEA44 /* Movie.swift in Sources */,
@@ -569,6 +643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BAZProject/BAZProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -597,6 +672,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BAZProject/BAZProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

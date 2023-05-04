@@ -7,14 +7,11 @@
 
 import Foundation
 
-struct MovieApiResponse {
+struct MovieApiResponse: Decodable {
     let page: Int
     let numberOfResults: Int
     let numberOfPages: Int
     let movies: [Movie]
-}
-
-extension MovieApiResponse: Decodable {
     
     private enum MovieApiResponseCodingKeys: String, CodingKey {
         case page
@@ -32,3 +29,8 @@ extension MovieApiResponse: Decodable {
         movies =  try container.decode([Movie].self, forKey: .movies)
     }
 }
+
+//extension MovieApiResponse: Decodable {
+//    
+//    
+//}
