@@ -15,7 +15,6 @@ class DetailMoviePresenter  {
     weak var view: DetailMovieViewProtocol?
     var interactor: DetailMovieInteractorInputProtocol?
     var router: DetailMovieRouterProtocol?
-    var mainAnalytics: MainAnalyticsProtocol?
     
 }
 

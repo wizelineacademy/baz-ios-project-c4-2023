@@ -51,15 +51,6 @@ extension SearchTableViewController {
 // MARK: - TableView's Delegate
 
 extension SearchTableViewController {
-
-    /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let movie = listMovies[indexPath.row]
-        var config = UIListContentConfiguration.cell()
-        config.text = movie.title
-        config.image = UIImage(named: "poster")
-        cell.contentConfiguration = config
-    }*/
-
 }
 
 // MARK: - SearchBar's Delegate
