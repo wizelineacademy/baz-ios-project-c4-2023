@@ -14,24 +14,25 @@ import Foundation
 enum SearchInteractorMockCalls {
     case fetchSearchResults
     case searchResultsFecthed
+    case handleService
 }
 
 class SearchInteractorMock: SearchInteractorInputProtocol, SearchRemoteDataManagerOutputProtocol {
     
     var presenter: SearchInteractorOutputProtocol?
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol?
-    var calls: [SearchInteractorMockCalls] = []
+    var callsSearch: [SearchInteractorMockCalls] = []
     
     func fetchSearchResults(with query: String) {
-        calls.append(.fetchSearchResults)
+        callsSearch.append(.fetchSearchResults)
     }
     
-    func searchResultsFecthed(searchResults: [BAZProject.SearchResult]) {
-        calls.append(.searchResultsFecthed)
+    func searchResultsFecthed(searchResults: [SearchResult]) {
+        callsSearch.append(.searchResultsFecthed)
     }
     
-    
-    
-    
+    func handleService(error: Error) {
+        callsSearch.append(.handleService)
+    }
     
 }

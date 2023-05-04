@@ -46,4 +46,5 @@ protocol SearchRemoteDataManagerInputProtocol: AnyObject {
 
 protocol SearchRemoteDataManagerOutputProtocol: AnyObject {
     func searchResultsFecthed(searchResults: [SearchResult])
+    func handleService(error: Error)
 }

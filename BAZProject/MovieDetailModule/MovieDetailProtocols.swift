@@ -27,7 +27,10 @@ protocol MovieDetailPresenterProtocol: AnyObject {
     var router: MovieDetailRouterProtocol? { get set }
     var movieDetail: MovieDetail? { get set }
     var movieId: Int { get set }
+    var isFavorite: Bool { get set }
     
+    func saveFavoriteMovie()
+    func deleteToFavoriteMovie()
     func notifyViewLoaded()
 }
 
@@ -39,8 +42,12 @@ protocol MovieDetailInteractorOutputProtocol: AnyObject {
 protocol MovieDetailInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: MovieDetailInteractorOutputProtocol? { get set }
+    var data: MovieDetail? { get set }
+    var saveData: SaveMovies { get }
     var remoteDatamanager: MovieDetailRemoteDataManagerInputProtocol? { get set }
     
+    func saveFavoriteMovie()
+    func deleteToFavoriteMovie()
     func fetchMovieDetail(of movieId: Int?)
 }
 
@@ -49,6 +56,7 @@ protocol MovieDetailRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: MovieDetailRemoteDataManagerOutputProtocol? { get set }
     
     func fetchMovieDetail(of movieId: Int)
+
 }
 
 protocol MovieDetailRemoteDataManagerOutputProtocol: AnyObject {

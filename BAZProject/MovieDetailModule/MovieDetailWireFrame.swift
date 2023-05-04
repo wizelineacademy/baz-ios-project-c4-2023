@@ -22,6 +22,7 @@ class MovieDetailRouter: MovieDetailRouterProtocol {
         presenter.interactor = interactor
         interactor.presenter = presenter
         interactor.remoteDatamanager = remoteDataManager
+        //interactor.data = dataFunct
         remoteDataManager.remoteRequestHandler = interactor
             
         return view

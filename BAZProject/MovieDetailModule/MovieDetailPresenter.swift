@@ -14,6 +14,7 @@ class MovieDetailPresenter {
     var interactor: MovieDetailInteractorInputProtocol?
     var router: MovieDetailRouterProtocol?
     var movieDetail: MovieDetail?
+    var isFavorite: Bool = false
     var movieId: Int
     
     init(movieId: Int) {
@@ -22,6 +23,15 @@ class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterProtocol {
+    func saveFavoriteMovie() {
+        interactor?.saveFavoriteMovie()
+    }
+    
+    func deleteToFavoriteMovie() {
+        interactor?.deleteToFavoriteMovie()
+    }
+    
+    
     func notifyViewLoaded() {
         self.interactor?.fetchMovieDetail(of: movieId)
     }

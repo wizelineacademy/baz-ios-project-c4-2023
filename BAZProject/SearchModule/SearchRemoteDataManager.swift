@@ -26,7 +26,8 @@ class SearchRemoteDataManager: SearchRemoteDataManagerInputProtocol {
             case .success(let response):
                 self?.remoteRequestHandler?.searchResultsFecthed(searchResults: response.results ?? [])
                 break
-            case .failure(_):
+            case .failure(let error):
+                self?.remoteRequestHandler?.handleService(error: error)
                 break
             }
         }

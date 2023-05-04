@@ -35,14 +35,7 @@ class ServiceAPI: ServiceProtocol {
                 callback(.failure(ServiceError.response))
                 return
             }
-            
-            guard (200 ... 299) ~= response.statusCode else {
-                print("statusCode should be 2xx, but is \(response.statusCode)")
-                print("response = \(response)")
-                callback(.failure(ServiceError.internalServer))
-                return
-            }
-            
+    
             do {
                 let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                 callback(.success(decodedData))

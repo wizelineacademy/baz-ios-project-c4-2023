@@ -16,6 +16,7 @@ class MovieView: UITableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
         presenter?.notifyViewLoaded()
     }
 

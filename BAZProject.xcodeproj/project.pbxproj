@@ -19,6 +19,9 @@
 		8C13BEFF29D5E09E00732B79 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C13BEFE29D5E09E00732B79 /* BAZProjectTests.swift */; };
 		8C28975F29DC986500DA4FB3 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C28975E29DC986500DA4FB3 /* URLSessionMock.swift */; };
 		8C3F4BF729E7230F003E97C9 /* trendingMovies.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C3F4BF629E7230F003E97C9 /* trendingMovies.json */; };
+		8C4E8DAB2A04257C00C7937A /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4E8DAA2A04257C00C7937A /* SearchInteractorTests.swift */; };
+		8C4E8DAD2A0425D000C7937A /* SearchRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4E8DAC2A0425D000C7937A /* SearchRemoteDataManagerMock.swift */; };
+		8C4E8DAF2A042A5800C7937A /* SearchRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4E8DAE2A042A5800C7937A /* SearchRemoteTests.swift */; };
 		8C546C4F29DC931F001BD303 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C546C4E29DC931F001BD303 /* ServiceError.swift */; };
 		8C546C5229DC96AD001BD303 /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C546C5129DC96AD001BD303 /* ServiceMock.swift */; };
 		8C66813D29DB2AF700FE1B73 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C66813C29DB2AF700FE1B73 /* EndpointProtocol.swift */; };
@@ -27,6 +30,7 @@
 		8C67189929F1F556004BE8FD /* MovieInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C67189829F1F556004BE8FD /* MovieInteractorMock.swift */; };
 		8C67189D29F1F9D1004BE8FD /* TrendingRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C67189C29F1F9D1004BE8FD /* TrendingRemoteDataManagerMock.swift */; };
 		8C6718A029F1FD3A004BE8FD /* MovieDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C67189F29F1FD3A004BE8FD /* MovieDataTests.swift */; };
+		8C6F0BDD2A0171040035A40B /* MovieSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6F0BDC2A0171040035A40B /* MovieSave.swift */; };
 		8C8C68CA29E606E700936CE2 /* MoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C68C329E606E700936CE2 /* MoviePresenter.swift */; };
 		8C8C68CC29E606E700936CE2 /* UpcomingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C68C529E606E700936CE2 /* UpcomingProtocols.swift */; };
 		8C8C68CD29E606E700936CE2 /* MovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C68C629E606E700936CE2 /* MovieInteractor.swift */; };
@@ -85,6 +89,9 @@
 		8C3F4BF029E70C27003E97C9 /* MovieResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResult.swift; sourceTree = "<group>"; };
 		8C3F4BF629E7230F003E97C9 /* trendingMovies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trendingMovies.json; sourceTree = "<group>"; };
 		8C3F4BF829E724E6003E97C9 /* trendingMoviesFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trendingMoviesFakes.swift; sourceTree = "<group>"; };
+		8C4E8DAA2A04257C00C7937A /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
+		8C4E8DAC2A0425D000C7937A /* SearchRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataManagerMock.swift; sourceTree = "<group>"; };
+		8C4E8DAE2A042A5800C7937A /* SearchRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteTests.swift; sourceTree = "<group>"; };
 		8C546C4E29DC931F001BD303 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		8C546C5129DC96AD001BD303 /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 		8C66813C29DB2AF700FE1B73 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
@@ -93,6 +100,7 @@
 		8C67189829F1F556004BE8FD /* MovieInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInteractorMock.swift; sourceTree = "<group>"; };
 		8C67189C29F1F9D1004BE8FD /* TrendingRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManagerMock.swift; sourceTree = "<group>"; };
 		8C67189F29F1FD3A004BE8FD /* MovieDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataTests.swift; sourceTree = "<group>"; };
+		8C6F0BDC2A0171040035A40B /* MovieSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSave.swift; sourceTree = "<group>"; };
 		8C8C68C329E606E700936CE2 /* MoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresenter.swift; sourceTree = "<group>"; };
 		8C8C68C529E606E700936CE2 /* UpcomingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingProtocols.swift; sourceTree = "<group>"; };
 		8C8C68C629E606E700936CE2 /* MovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInteractor.swift; sourceTree = "<group>"; };
@@ -225,6 +233,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8C6F0BDB2A0170F30035A40B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8C6F0BDC2A0171040035A40B /* MovieSave.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8C8C68C229E606CD00936CE2 /* MovieModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				8CAF180F29F9B9AA003000AC /* SearchPresenterTest.swift */,
+				8C4E8DAA2A04257C00C7937A /* SearchInteractorTests.swift */,
+				8C4E8DAE2A042A5800C7937A /* SearchRemoteTests.swift */,
 			);
 			path = SearchModule;
 			sourceTree = "<group>";
@@ -250,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				8CAF181229F9BAAC003000AC /* SearchInteractorMock.swift */,
+				8C4E8DAC2A0425D000C7937A /* SearchRemoteDataManagerMock.swift */,
 			);
 			path = SearchMocks;
 			sourceTree = "<group>";
@@ -316,6 +335,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				8C6F0BDB2A0170F30035A40B /* Utils */,
 				8C06090129FAF23A00A868B6 /* MovieDetailModule */,
 				8C8C68C229E606CD00936CE2 /* MovieModule */,
 				8CF4B56F29E4A8DA00CA8023 /* TabBarModules */,
@@ -449,8 +469,11 @@
 				8C67189929F1F556004BE8FD /* MovieInteractorMock.swift in Sources */,
 				8CC28EE829F84BD60013FA48 /* MoviePresenterTests.swift in Sources */,
 				8CAF181029F9B9AA003000AC /* SearchPresenterTest.swift in Sources */,
+				8C4E8DAB2A04257C00C7937A /* SearchInteractorTests.swift in Sources */,
+				8C4E8DAF2A042A5800C7937A /* SearchRemoteTests.swift in Sources */,
 				8CAF180B29F993F4003000AC /* MovieInteractorTests.swift in Sources */,
 				8CAF180D29F9A393003000AC /* MovieRemoteDataManagerMock.swift in Sources */,
+				8C4E8DAD2A0425D000C7937A /* SearchRemoteDataManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +506,7 @@
 				8CF4B55729E496CE00CA8023 /* SearchRouter.swift in Sources */,
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				8C546C4F29DC931F001BD303 /* ServiceError.swift in Sources */,
+				8C6F0BDD2A0171040035A40B /* MovieSave.swift in Sources */,
 				8CF4B55529E496CE00CA8023 /* SearchView.swift in Sources */,
 				8CF4B57129E4A91D00CA8023 /* TabBabRouter.swift in Sources */,
 				8C8C68CA29E606E700936CE2 /* MoviePresenter.swift in Sources */,
@@ -531,7 +555,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64FX2AW52H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ricardo.BAZProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -551,7 +575,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64FX2AW52H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ricardo.BAZProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
