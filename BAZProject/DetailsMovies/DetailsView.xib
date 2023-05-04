@@ -289,7 +289,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemYellowColor"/>
             <constraints>
                 <constraint firstItem="KiR-7O-YhH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.959288" constant="16" id="6OF-FB-LgE"/>
                 <constraint firstItem="CLn-U7-p0q" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="XRl-lR-pYz"/>

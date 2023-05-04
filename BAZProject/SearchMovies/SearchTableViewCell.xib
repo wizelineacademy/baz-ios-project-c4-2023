@@ -22,6 +22,9 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="4QX-zV-ddA"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbY-mO-hCF">
                         <rect key="frame" x="128" y="19" width="289" height="209"/>
@@ -34,7 +37,11 @@
                     <constraint firstAttribute="bottom" secondItem="YEi-fC-gcv" secondAttribute="bottom" constant="8" id="JLi-st-Z9w"/>
                     <constraint firstAttribute="trailingMargin" secondItem="xbY-mO-hCF" secondAttribute="trailing" constant="8" id="K9Z-20-sU3"/>
                     <constraint firstItem="xbY-mO-hCF" firstAttribute="leading" secondItem="YEi-fC-gcv" secondAttribute="trailing" constant="8" id="YIO-Op-wjV"/>
-                    <constraint firstItem="YEi-fC-gcv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rMn-LG-CFZ"/>
+                    <constraint firstItem="YEi-fC-gcv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rMn-LG-CFZ">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
                     <constraint firstAttribute="bottomMargin" secondItem="xbY-mO-hCF" secondAttribute="bottom" constant="8" id="vHK-xY-U1X"/>
                     <constraint firstItem="xbY-mO-hCF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="xNF-Ih-wsL"/>
                     <constraint firstItem="YEi-fC-gcv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="yw0-si-U6e"/>

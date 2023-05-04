@@ -47,14 +47,15 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="7Ys-l1-YLU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <connections>
                             <outlet property="dataSource" destination="DF1-ZG-ayL" id="J2U-Qh-E3n"/>
                             <outlet property="delegate" destination="DF1-ZG-ayL" id="5nR-er-hrx"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Trending Movies" id="8E9-i5-K0G">
-                        <barButtonItem key="rightBarButtonItem" title="Filtrar" id="dFR-aZ-Xle">
+                        <barButtonItem key="rightBarButtonItem" title="Filtrar" image="film" catalog="system" id="dFR-aZ-Xle">
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="FilterButton:" destination="DF1-ZG-ayL" id="9Ht-bl-ef3"/>
                             </connections>
@@ -78,6 +79,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PNd-ae-KSc">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -101,10 +103,14 @@
     </scenes>
     <resources>
         <image name="chart.line.uptrend.xyaxis.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="film" catalog="system" width="128" height="93"/>
         <image name="pencil.tip.crop.circle.badge.arrow.forward" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up.circle" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

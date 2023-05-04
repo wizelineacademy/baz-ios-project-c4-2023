@@ -15,6 +15,7 @@ class SearchView: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         configureView()
     }
 /// Configuracion necesaria para la vista

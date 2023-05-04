@@ -33,7 +33,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5Bx-Ij-Khm" secondAttribute="bottom" id="NKp-VB-phg"/>
                             <constraint firstItem="5Bx-Ij-Khm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="eVe-UW-M4x"/>
@@ -64,6 +64,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ww1-s2-zfU">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -79,6 +80,9 @@
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

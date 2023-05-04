@@ -22,6 +22,9 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="ewH-EV-2mE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-Pi-sIT">
                         <rect key="frame" x="106" y="8" width="303" height="103"/>
@@ -32,7 +35,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="GLc-Py-dgu" secondAttribute="bottom" constant="8" id="CWF-nB-oBa"/>
-                    <constraint firstItem="G6w-Pi-sIT" firstAttribute="leading" secondItem="GLc-Py-dgu" secondAttribute="trailing" constant="8" id="Dkh-Ra-Wgq"/>
+                    <constraint firstItem="G6w-Pi-sIT" firstAttribute="leading" secondItem="GLc-Py-dgu" secondAttribute="trailing" constant="8" id="Dkh-Ra-Wgq">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
                     <constraint firstItem="GLc-Py-dgu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="G8n-3C-UPp"/>
                     <constraint firstAttribute="trailing" secondItem="G6w-Pi-sIT" secondAttribute="trailing" constant="8" id="ST9-jx-pb0"/>
                     <constraint firstItem="GLc-Py-dgu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="nN2-IU-NEi"/>
