@@ -46,6 +46,16 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(votes, ranking)
     }
     
+    func testDetailsModel_HasRanking() {
+        //Given
+        let movie = Movie(id: 1, title: "John Wick", poster_path: "", overview: "", vote_average: 10.0)
+        //When
+        sut?.movieDetail = Box(value: movie)
+        let ranking = sut?.getRating()
+        //Then
+        XCTAssertNotNil(ranking)
+    }
+    
     func testDetailsModel_HasOverview() {
         //Given
         let movie = Movie(id: 1, title: "John Wick", poster_path: "", overview: "El matador", vote_average: 10.0)

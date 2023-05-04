@@ -57,4 +57,14 @@ final class TrendingViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(count, movies.count)
     }
+    
+    func testTrendingModel_MovieDetailNotNil() {
+        //Given
+        let movies = [Movie(id: 1, title: "Titanic", poster_path: "")]
+        //When
+        sut?.movies = Box(value: movies)
+        let movie = sut?.getAllInfoMoview(index: 0)
+        //Then
+        XCTAssertEqual("Titanic", movie?.title)
+    }
 }

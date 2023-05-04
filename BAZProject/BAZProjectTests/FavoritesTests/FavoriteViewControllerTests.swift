@@ -14,7 +14,7 @@ final class FavoriteViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as! FavoritesViewController
+        sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as? FavoritesViewController
         model = FavoritesViewModelMock()
         sut.ViewModel = model
     }
@@ -61,4 +61,14 @@ final class FavoriteViewControllerTests: XCTestCase {
         //When
         XCTAssertNotEqual(button, UIColor(ciColor: .red))
     }
+    
+    func testSearchView_onIsEqualToView() {
+        //Given
+        sut?.loadViewIfNeeded()
+        //Then
+        let tamaño = sut.tableView.heightAnchor
+        //When
+        XCTAssertNotNil(tamaño)
+    }
+    
 }

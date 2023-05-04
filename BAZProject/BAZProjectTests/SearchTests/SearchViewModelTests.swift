@@ -94,4 +94,25 @@ final class SearchViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(count, 0)
     }
+    
+    func test_searchMovie_PathExist()  {
+        //Given
+        let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
+        //When
+        sut?.moviesSearched = Box(value: movies)
+        let path = sut?.getImagePath(index: 0)
+        //Then
+        XCTAssertEqual("Av.png", path)
+    }
+    
+    func test_searchMovie_MovieInfoExist()  {
+        //Given
+        let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
+        //When
+        sut?.moviesSearched = Box(value: movies)
+        let movie = sut?.getAllInfoMoview(index: 0)
+        //Then
+        XCTAssertNotNil(movie)
+    }
+    
 }
