@@ -17,6 +17,5 @@ struct MediaDataObject: Decodable, Equatable {
     var name: String?
     var releaseDate: String?
     var profilePath: String?
-    var overview: String?
     
 }

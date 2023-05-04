@@ -9,12 +9,12 @@ import UIKit
 
 struct MediaItem: Hashable {
     
-    public var id: Int?
-    public var posterPath: String?
-    public var title: String?
-    public var rating: Float?
-    public var mediaType: MediaType?
-    public var releaseDate: Date?
+    var id: Int?
+    var posterPath: String?
+    var title: String?
+    var rating: Float?
+    var mediaType: MediaType?
+    var releaseDate: Date?
     
 }
 
