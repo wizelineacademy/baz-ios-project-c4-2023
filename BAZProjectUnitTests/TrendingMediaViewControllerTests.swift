@@ -35,6 +35,7 @@ final class TrendingMediaViewControllerTests: XCTestCase {
         items.append(contentsOf: movies)
         configureSut(with: items)
         let exepectation = XCTestExpectation()
+        exepectation.expectedFulfillmentCount = 2
         var dispatchService = DispatchMock()
         dispatchService.expectation = exepectation
         sut.dispatchService = dispatchService
