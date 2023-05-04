@@ -15,8 +15,11 @@ class MediaCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var decorImageView: UIImageView!
     
     func setCell(with model: MediaCollectionViewCellModel) {
-        Task {
-            imageView.image = try? await UIImage(download: model.image) ?? UIImage(named: model.defaultImage ?? "")
+        imageView.image = UIImage(named: model.defaultImage ?? "")
+        if let imagePath = model.image {
+            Task {
+                imageView.image = try? await UIImage(download: imagePath)
+            }
         }
         titleLabel.text = model.title
         if let subtitle = model.subtitle {

@@ -78,9 +78,15 @@ final class TrendingMediaViewModelTests: XCTestCase {
         XCTAssertEqual(model, expectedModel)
     }
     
-    func test_getCellConfiguration_notRated() {
-        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
-        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: "4/30/23", image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
+    func test_getCellConfigurationForItemNotYetRated_ShouldBeEqual() {
+        let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        formatter.locale = Locale.current
+        let tomorrowsStringDate = formatter.string(from: tomorrowsDate)
+        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: tomorrowsDate)
+        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: tomorrowsStringDate, image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
         
         let model = sut.getCellConfiguration(item: item)
         

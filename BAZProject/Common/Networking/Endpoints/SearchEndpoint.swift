@@ -7,13 +7,28 @@
 
 import Foundation
 
-struct SearchEndpoint: EndpointProtocol {
+enum SearchEndpoint: EndpointProtocol {
     
-    var queries: [URLQueryItem]?
-    var path = "/3/search/movie"
+    case movies(String)
+    case series(String)
+    case people(String)
+    case keyword(String)
     
-    init(_ searchText: String) {
-        queries = [URLQueryItem(name: "query", value: searchText)]
+    var queries: [URLQueryItem]? {
+        switch self {
+        case .movies(let searchText): return [URLQueryItem(name: "query", value: searchText)]
+        case .series(let searchText): return [URLQueryItem(name: "query", value: searchText)]
+        case .people(let searchText): return [URLQueryItem(name: "query", value: searchText)]
+        case .keyword(let searchText): return [URLQueryItem(name: "query", value: searchText)]
+        }
     }
-    
+    var path: String {
+        switch self {
+        case .movies: return "/3/search/movie"
+        case .series: return "/3/search/tv"
+        case .people: return "/3/search/person"
+        case .keyword: return "/3/search/multi"
+        }
+    }
+
 }

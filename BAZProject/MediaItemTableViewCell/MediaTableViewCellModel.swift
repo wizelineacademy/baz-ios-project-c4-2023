@@ -1,18 +1,19 @@
 //
-//  MediaCollectionViewCellModel.swift
+//  MediaTableViewCellModel.swift
 //  BAZProject
 //
-//  Created by gescarcega on 27/04/23.
+//  Created by gescarcega on 01/05/23.
 //
 
 import Foundation
 
-struct MediaCollectionViewCellModel: Equatable {
+struct MediaTableViewCellModel {
     
     var title: String?
     var subtitle: String?
     var image: String?
-    var rated: Bool = false
     var defaultImage: String?
+    var footNote: String?
+    var rated: Bool
     
 }

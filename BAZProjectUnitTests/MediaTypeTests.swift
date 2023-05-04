@@ -15,7 +15,7 @@ final class MediaTypeTests: XCTestCase {
         let expectedType = MediaType.tv
         let mediaType: MediaType?
         
-        mediaType = MediaType("tv")
+        mediaType = MediaType(rawValue: "tv")
         
         XCTAssertEqual(expectedType, mediaType)
         XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
@@ -27,7 +27,7 @@ final class MediaTypeTests: XCTestCase {
         let expectedType = MediaType.movie
         let mediaType: MediaType?
         
-        mediaType = MediaType("movie")
+        mediaType = MediaType(rawValue: "movie")
         
         XCTAssertEqual(expectedType, mediaType)
         XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
@@ -39,27 +39,18 @@ final class MediaTypeTests: XCTestCase {
         let expectedType = MediaType.person
         let mediaType: MediaType?
         
-        mediaType = MediaType("person")
+        mediaType = MediaType(rawValue: "person")
         
         XCTAssertEqual(expectedType, mediaType)
         XCTAssertEqual(expectedType.defaultImage, mediaType?.defaultImage)
         XCTAssertEqual(expectedType.itemTitle, mediaType?.itemTitle)
         XCTAssertEqual(expectedType.groupTitle, mediaType?.groupTitle)
     }
-    
-    func test_init_ShouldGetNilMediaTypeViaNilArgument() {
-        let mediaType: MediaType?
-        
-        mediaType = MediaType(nil)
-        
-        XCTAssertNil(mediaType)
-        
-    }
-    
+
     func test_init_ShouldGetNilMediaTypeViaRawValueNotFound() {
         let mediaType: MediaType?
         
-        mediaType = MediaType("other")
+        mediaType = MediaType(rawValue: "other")
         
         XCTAssertNil(mediaType)
     }
