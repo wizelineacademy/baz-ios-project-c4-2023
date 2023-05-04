@@ -21,11 +21,6 @@ class MovieFakes: MovieRepository {
         completion(reviews)
     }
     
-    private func randomString(length: Int) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyz"
-        return String((0..<length).map{ _ in letters.randomElement()! })
-    }
-    
     private func generateActors(_ count: Int) -> [Actor] {
         guard count > 0 else { return [] }
         
@@ -62,19 +57,5 @@ class MovieFakes: MovieRepository {
         }
         
         return allReviews
-    }
-    
-    private func randomDate() -> String {
-        let randomYear = Int(arc4random_uniform(20)) + 2000
-        let randomMonth = Int(arc4random_uniform(12)) + 1
-        let randomDay = Int(arc4random_uniform(28)) + 1
-        let randomDateComponents = DateComponents(year: randomYear, month: randomMonth, day: randomDay)
-        let randomDate = Calendar.current.date(from: randomDateComponents)!
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: randomDate)
-        
-        return dateString
     }
 }
