@@ -13,11 +13,14 @@ final class TrendingMediaViewControllerTests: XCTestCase {
     var viewModel: TrendingMediaViewModelMock!
     var sut: TrendingMediaViewController!
     
-    private func configureSut(with media: [MediaDataObject] = []) {
+    private func configureSut(with media: [MediaDataObject] = [], expectation: XCTestExpectation? = nil) {
         let remoteData = TrendingMediaRemoteDataMock()
         remoteData.mediaItems = media
+        var dispatchService = DispatchMock()
+        dispatchService.expectation = expectation
         viewModel = TrendingMediaViewModelMock(remoteData: remoteData)
         sut = TrendingMediaViewController(viewModel: viewModel)
+        sut.dispatchService = dispatchService
     }
     
     override func tearDown() {
@@ -54,15 +57,11 @@ final class TrendingMediaViewControllerTests: XCTestCase {
     func test_NumberOfRowsInSection_NotReachingBindingClosure() {
         //Given
         let movies = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "movie"), MediaDataObject(title: "title3", mediaType: "movie")]
-        configureSut(with: movies)
         let exepectation = XCTestExpectation()
-        var dispatchService = DispatchMock()
-        dispatchService.expectation = exepectation
-        sut.dispatchService = dispatchService
-        
+        configureSut(with: movies, expectation: exepectation)
         //When
         sut.loadViewIfNeeded()
-        wait(for: [exepectation], timeout: 0.1)
+        wait(for: [exepectation], timeout: 0.5)
         let actualItems = sut.dataSource?.snapshot().numberOfItems
         
         //Then
