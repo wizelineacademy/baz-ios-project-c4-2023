@@ -44,7 +44,7 @@ class MovieAPI {
         }
     }
     
-    
+    ///Funcion que obtiene el arreglo de actores desde el servicio
     func getCast(idMovie: Int,  completion: @escaping ([CastInfoProtocol], Error?) -> Void) {
         let urlStruct = "\(categoriesFilter.similar.url)\(idMovie)/credits?api_key=\(urls.apikey.rawValue)&language=es"
         guard let url = URL(string: urlStruct) else { return }

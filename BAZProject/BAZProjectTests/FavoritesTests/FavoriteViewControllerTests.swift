@@ -9,8 +9,6 @@ import XCTest
 
 final class FavoriteViewControllerTests: XCTestCase {
     
-    
-    
     var sut: FavoritesViewController!
     var model: FavoritesViewModelMock!
     
@@ -47,5 +45,26 @@ final class FavoriteViewControllerTests: XCTestCase {
         //When
         XCTAssertEqual(-1, rows)
     }
+    
+    func testFavoriteView_TitleIsEqualToViewModel(){
+        //Given
+        sut.loadViewIfNeeded()
+        //When
+        XCTAssertEqual(sut.navigationItem.title, "Favoritos")
+    }
+    
+    func testSearchView_ButtonIsEqualToView(){
+        //Given
+        sut?.loadViewIfNeeded()
+        //Then
+        let button = sut.navigationItem.rightBarButtonItem?.tintColor
+        //When
+
+        XCTAssertNotEqual(button, UIColor(ciColor: .red))
+    }
+                       
+    
+    
 }
+
 

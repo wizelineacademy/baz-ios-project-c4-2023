@@ -34,11 +34,11 @@ final class TrendingViewModel: TrendingListProtocol {
     func getTitle(index: Int) -> String? {
         movies.value[index].title
     }
-    
+    /// Regresa el path para la consulta de la imagen
     func getPathImage(index: Int) -> String? {
         movies.value[index].poster_path
     }
-    
+    /// Regresa la informacion de una pelucula
     func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
         movies.value[index]
     }

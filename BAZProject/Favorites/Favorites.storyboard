@@ -43,6 +43,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2za-u7-WWp">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.triangle.2.circlepath" catalog="system" id="aX1-WI-EcA">
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="reloadButton:" destination="Y6W-OH-hqX" id="JaM-Wg-Hu1"/>
                             </connections>
@@ -78,6 +79,9 @@
     </scenes>
     <resources>
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

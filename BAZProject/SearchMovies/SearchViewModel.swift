@@ -16,23 +16,21 @@ class SearchViewModel: SearchListProtocol {
     }
     
     //MARK: - Funciones para la vista
+    ///Varible donde se almacenara informacion de las peliculas
     var moviesSearched = Box(value: [InfoMoviesProtocol]())
-    
     ///Crear bind que llama al listener
     func bindMovies(_ listener: @escaping () -> Void) {
         moviesSearched.listener = listener
     }
-    
     ///regresa el contador del arreglo de peliculas
     func getMovieCount() -> Int {
         moviesSearched.value.count
     }
-    
     ///regresa el campo titulo de la pelicula
     func getTitle(index: Int) -> String? {
         moviesSearched.value[index].title
     }
-    
+    ///regresa el campo del path para la imagen de la pelicula
     func getImagePath(index: Int) -> String? {
         moviesSearched.value[index].poster_path
     }
@@ -40,12 +38,12 @@ class SearchViewModel: SearchListProtocol {
     func cleanMoviesArray(){
         moviesSearched.value = []
     }
-    
+    ///Funcion que devolvera la informacion de una pelicula
     func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
         moviesSearched.value[index]
     }
-    //MARK: - Consulta servicio buscar peliculas
     
+    //MARK: - Consulta servicio buscar peliculas
     ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping (Error?) -> Void) {
         guard let url = URL(string: "\(categoriesFilter.Search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }

@@ -28,12 +28,12 @@ class FavoritesViewController: UIViewController {
             }
         }
     }
-    
+    ///Se registran las celdas para las peliculas
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         self.tableView.register(textFieldCell, forCellReuseIdentifier: "Cell")
     }
-    
+    //Boton para refrescar la lista 
     @IBAction func reloadButton(_ sender: Any) {
         tableView.reloadData()
     }

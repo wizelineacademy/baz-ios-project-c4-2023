@@ -13,6 +13,7 @@ enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
 
+/// enumerador para menejar de los tipos y sus urls
 enum categoriesFilter: String {
     case Trending = "Trending"
     case NowPlaying = "Now Playing"
@@ -23,7 +24,6 @@ enum categoriesFilter: String {
     case Recommendation = "Recommendation Movies"
     case similar = "similar Movies"
     case cast = "cast"
-    
     
     var url: String {
         let baseURL = "https://api.themoviedb.org/3/movie/"

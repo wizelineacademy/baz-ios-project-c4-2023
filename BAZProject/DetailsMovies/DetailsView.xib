@@ -265,7 +265,6 @@
                                         <constraint firstItem="9ob-Eg-eRR" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.15" id="6gQ-cD-htd"/>
                                         <constraint firstItem="3Rk-TT-MFE" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.13" id="S8m-Q9-aD9"/>
                                         <constraint firstItem="Qtj-4x-maM" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.13" id="bn5-tx-GDx"/>
-                                        <constraint firstItem="LGh-Fc-ctz" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.04" id="nqG-XJ-nVQ"/>
                                         <constraint firstItem="n5z-Kx-MCy" firstAttribute="height" secondItem="89C-gT-enL" secondAttribute="height" multiplier="0.15" id="pSq-Jf-ASk"/>
                                     </constraints>
                                 </stackView>

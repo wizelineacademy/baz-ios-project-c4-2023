@@ -23,7 +23,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         characterLabel.text = ""
         imageView.image = UIImage(named: "poster")
     }
-    
+    ///Funcion para setear imagenes y titulos
     func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: categoriesFilter) {
         switch type {
         case .similar:

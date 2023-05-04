@@ -24,25 +24,37 @@ final class SearchViewControllerTests: XCTestCase {
     
     func test_rowsNotZero() {
         let viewModel = SearchViewModelMock(service: ServiceAPI(session: SessionMock()))
-        sut!.viewModel = viewModel
+        sut?.viewModel = viewModel
         let movies = [Movie(), Movie()]
         viewModel.movies = movies
         
-        sut!.loadViewIfNeeded()
+        sut?.loadViewIfNeeded()
         let rows = sut!.tableView.numberOfRows(inSection: 0)
         
         XCTAssertEqual(movies.count, rows)
     }
     
     func test_IsbuttonCancelShows() {
-        sut!.loadViewIfNeeded()
+        sut?.loadViewIfNeeded()
         XCTAssertTrue(sut!.searchBar.showsCancelButton)
     }
     
     func test_TableSelected() {
-        sut!.loadViewIfNeeded()
+        sut?.loadViewIfNeeded()
         let button = sut!.searchBar.isSearchResultsButtonSelected
         
         XCTAssertFalse(button)
     }
+    
+    func testSearchView_TitleIsEqualToViewModel(){
+        sut?.loadViewIfNeeded()
+        XCTAssertEqual(sut?.navigationItem.title, "Buscar")
+    }
+    
+    func testSearchView_PlaceHolderIsEqualToView(){
+        sut?.loadViewIfNeeded()
+        let placeH = sut?.searchBar.placeholder
+        XCTAssertEqual(placeH, "Busca tu pelicula")
+    }
+    
 }

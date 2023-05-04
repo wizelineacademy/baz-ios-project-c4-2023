@@ -60,17 +60,19 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
         getAllInfo()
         setFavoriteButton()
         titleLabel.text = ViewModel.getTitle()
+        navigationItem.title = ViewModel.getTitle()
         imageMovie.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(ViewModel.getPathImage() ?? "")")!)
         overviewText.text = ViewModel.getOverview()
         voteAverage.text = ViewModel.getRating()
     }
     
-    func getAllInfo(){
+    ///Consulta todos los servicios
+    func getAllInfo() {
         ViewModel.getCastMovie()
         ViewModel.getSimilarMovies()
         ViewModel.getRecommendationMovies()
     }
-    
+    /// Verifica si la pelicula esta en favoritos y cambia el titulo
     func setFavoriteButton() {
         ViewModel.isMovieFavorite() ? favoriteButton.setTitle("Borrar", for: .normal) : favoriteButton.setTitle("Agregar", for: .normal)
     }
@@ -117,7 +119,7 @@ extension DetailsView: UICollectionViewDataSource {
 
 //MARK: - Funciones de mapas
 extension DetailsView {
-    
+    ///Configiracion del mapa para setear localicacion
     func setmap() {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -129,15 +131,14 @@ extension DetailsView {
              }
         }
     }
-    
-    func addCinema(lat: CLLocationDegrees, long: CLLocationDegrees  ) {
+    ///Agrega las Ubicaciones de los "cines" cercanos
+    func addCinema(lat: CLLocationDegrees, long: CLLocationDegrees) {
         let annotation = MKPointAnnotation()
         annotation.title = "Cine"
-        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat),
-                                                        longitude: CLLocationDegrees(long))
+        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         mapView.addAnnotation(annotation)
     }
-
+    /// Configuracion cuando se actualiza la localicacio
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
@@ -147,13 +148,11 @@ extension DetailsView {
             self.mapView.setRegion(region, animated: true)
         }
     }
-    
+    ///Configuracion de las anotaciones del mapa 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
-
         let identifier = "Annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true

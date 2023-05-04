@@ -9,6 +9,7 @@ import UIKit
 final class TrendingViewController: UITableViewController {
 
     var trendingModel: TrendingListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
+    //MARK: -Oulets
     @IBOutlet weak var FilterButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -16,6 +17,7 @@ final class TrendingViewController: UITableViewController {
         setView()
         keychain()
     }
+    
     /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
     func getMovieArray() {
         trendingModel.getmovies(category: .Trending)
@@ -50,6 +52,7 @@ final class TrendingViewController: UITableViewController {
     }
     
     //MARK: - Buttons
+    ///Alerta para el filtrado de peliculas
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
         // Alerta para poder realizar la busqueda por categoria
         let alert = UIAlertController(title: "Filtro", message: "Selecciona el filtro que quieres aplicar", preferredStyle: UIAlertController.Style.alert)
@@ -78,7 +81,6 @@ final class TrendingViewController: UITableViewController {
 }
 
 // MARK: - TableView's DataSource
-
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

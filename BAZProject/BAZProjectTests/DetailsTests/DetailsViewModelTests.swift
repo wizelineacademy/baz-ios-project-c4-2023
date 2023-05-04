@@ -12,8 +12,7 @@ final class DetailsViewModelTests: XCTestCase {
     var sut: DetailsViewModel?
     var movieAPIMock: MovieApiMock?
 
-    
-    override func setUp(){
+    override func setUp() {
         super.setUp()
         movieAPIMock = MovieApiMock(service: ServiceAPI(session: SessionMock()))
         sut = DetailsViewModel(movieDetail: Movie(), remote: movieAPIMock!)
@@ -24,10 +23,9 @@ final class DetailsViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-
     //MARK: - Pruebas de pantalla principal
     
-    func testDetailsModel_MovieExist(){
+    func testDetailsModel_MovieExist() {
         //Given
         let movie = Movie(id: 1, title: "John Wick", poster_path: "")
         //When
@@ -37,7 +35,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(name, movie.title)
     }
 
-    func testDetailsModel_HasVotes(){
+    func testDetailsModel_HasVotes() {
         //Given
         let votes = "10.0"
         let movie = Movie(id: 1, title: "John Wick", poster_path: "", overview: "", vote_average: 10.0)
@@ -48,8 +46,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(votes, ranking)
     }
     
-    
-    func testDetailsModel_HasOverview(){
+    func testDetailsModel_HasOverview() {
         //Given
         let movie = Movie(id: 1, title: "John Wick", poster_path: "", overview: "El matador", vote_average: 10.0)
         //When
@@ -58,8 +55,8 @@ final class DetailsViewModelTests: XCTestCase {
         //Then
         XCTAssertNotNil(overV)
     }
-    
-    func testDetailsModel_HasPath(){
+     
+    func testDetailsModel_HasPath() {
         //Given
         let image = "JW.png"
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
@@ -70,8 +67,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(overV, image)
     }
     
-    
-    func testDetailsModel_HasRating(){
+    func testDetailsModel_HasRating() {
         //Given
         let expectedResult = "10.0"
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
@@ -82,7 +78,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, rating)
     }
     
-    func testDetailsModel_IsFavorite(){
+    func testDetailsModel_IsFavorite() {
         //Given
         let isFav = false
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
@@ -91,11 +87,9 @@ final class DetailsViewModelTests: XCTestCase {
         let favBool = sut?.isMovieFavorite()
         //Then
         XCTAssertEqual(isFav, favBool)
-        
     }
     
-    
-    func testDetailsModel_SavedUSerDefaults(){
+    func testDetailsModel_SavedUSerDefaults() {
         //Given
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
         //When
@@ -106,8 +100,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertNotNil(savedData)
     }
     
-    
-    func testDetailsModel_DeleteUSerDefaults(){
+    func testDetailsModel_DeleteUSerDefaults() {
         //Given
         sut?.userDefaults.removeObject(forKey: UserDKeys.favoriteTests.rawValue)
         let movie = Movie(id: 2, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
@@ -121,12 +114,8 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, savedData.value.count)
     }
     
-    
-    
-    
-    
     //MARK: - Funciones auxiliares
-    func getUDMovies(key: String) -> Box<[Movie]>  {
+    func getUDMovies(key: String) -> Box<[Movie]> {
         var movieArray = Box(value: [Movie()])
         do {
             if let data = UserDefaults.standard.data(forKey: key) {
@@ -157,7 +146,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(count, movies.count)
     }
     
-    func testDetailsModel_RecommendatioMovieExist(){
+    func testDetailsModel_RecommendatioMovieExist() {
         //Given
         let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
         //When
@@ -167,7 +156,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(name, movie[0].title)
     }
     
-    func testDetailsModel_RecommendatioMoviePathExist(){
+    func testDetailsModel_RecommendatioMoviePathExist() {
         //Given
         let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
         //When
@@ -194,7 +183,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(count, movies.count)
     }
     
-    func testDetailsModel_SimilarMovieExist(){
+    func testDetailsModel_SimilarMovieExist() {
         //Given
         let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "")]
         //When
@@ -204,7 +193,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(name, movie[0].title)
     }
 
-    func testDetailsModel_SimilarMoviePathExist(){
+    func testDetailsModel_SimilarMoviePathExist() {
         //Given
         let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
         //When
@@ -231,7 +220,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(count, cast.count)
     }
     
-    func testDetailsModel_CastMovieExist(){
+    func testDetailsModel_CastMovieExist() {
         //Given
         let cast = [Cast(id: 1, name: "Henry Cavil", profile_path: "", character: "Superman")]
         //When
@@ -241,7 +230,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(name, cast[0].name)
     }
 
-    func testDetailsModel_CastMoviePathExist(){
+    func testDetailsModel_CastMoviePathExist() {
         //Given
         let cast = [Cast(id: 1, name: "Henry Cavil", profile_path: "Henry.jpg", character: "Superman")]
         //When
@@ -251,7 +240,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(path, cast[0].profile_path)
     }
     
-    func testDetailsModel_CastMovieCharacter(){
+    func testDetailsModel_CastMovieCharacter() {
         //Given
         let cast = [Cast(id: 1, name: "Henry Cavil", profile_path: "Henry.jpg", character: "Superman")]
         //When

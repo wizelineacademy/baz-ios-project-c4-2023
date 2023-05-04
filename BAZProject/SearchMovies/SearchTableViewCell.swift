@@ -20,6 +20,7 @@ class SearchTableViewCell: UITableViewCell {
         imageVire.image = UIImage(named: "poster")
     }
     
+    ///Funcion para setear los datos como imagen o titulo
     func setInfo(_ info: SearchListProtocol, indexPath: IndexPath) {
         labelText.text = info.getTitle(index: indexPath.row)
         downloadTask = imageVire.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getImagePath(index:indexPath.row) ?? "")")!)

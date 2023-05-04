@@ -14,6 +14,7 @@ final class KeychainHelper {
     static let standard = KeychainHelper()
     private init() {}
     
+    ///Funcion para guardar un dato
     func save(_ data: Data, service: String, account: String) {
         let query = [kSecValueData: data, kSecClass: kSecClassGenericPassword, kSecAttrService: service, kSecAttrAccount: account] as CFDictionary
                 let status = SecItemAdd(query, nil)
@@ -22,6 +23,7 @@ final class KeychainHelper {
         }
     }
     
+    ///Funcion para leer un dato
     func read(service: String, account: String) -> Data? {
         
         let query = [kSecAttrService: service, kSecAttrAccount: account, kSecClass: kSecClassGenericPassword, kSecReturnData: true
@@ -33,7 +35,7 @@ final class KeychainHelper {
     }
     
     //MARK: - Genericos de keyChain
-    
+    ///Funcion generica  guardar una estructura
     func genericSave<T>(_ item: T, service: String, account: String) where T : Codable {
         do {
             let data = try JSONEncoder().encode(item)
@@ -43,6 +45,7 @@ final class KeychainHelper {
         }
     }
     
+    ///Funcion generica  leer una estructura
     func genericRead<T>(service: String, account: String, type: T.Type) -> T? where T : Codable {
         // Read item data from keychain
         guard let data = read(service: service, account: account) else {

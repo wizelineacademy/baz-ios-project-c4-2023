@@ -9,8 +9,9 @@ import UIKit
 
 class SearchView: UIViewController {
     
+    //MARK: - OUtlets y variables
+    
     var viewModel: SearchViewModel = SearchViewModel()// se crea instancia al ViewModel de MVVM
-     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -18,6 +19,7 @@ class SearchView: UIViewController {
         super.viewDidLoad()
         configureView()
     }
+
 /// Configuracion necesaria para la vista
     func configureView() {
         self.title = "Buscar"
@@ -40,7 +42,7 @@ class SearchView: UIViewController {
             }
         }
     }
-    
+    ///Registro de las celas de las peliculas
     private func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "SearchTableViewCell", bundle: nil)
         self.tableView.register(textFieldCell, forCellReuseIdentifier: "cell")
@@ -71,7 +73,6 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - Extensions Search bar
-
 extension SearchView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
         viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in

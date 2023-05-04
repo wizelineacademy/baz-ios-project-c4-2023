@@ -36,6 +36,13 @@ final class BAZProjectTests: XCTestCase {
         //When
         XCTAssertEqual(rowCount, 20)
     }
+    
+    func testTredingView_FilterTitleIsOK() {
+        //Given
+        let color = sut.navigationItem.rightBarButtonItem?.tintColor
+        //When
+        XCTAssertNotEqual(color, .gray)
+    }
 }
 
 
