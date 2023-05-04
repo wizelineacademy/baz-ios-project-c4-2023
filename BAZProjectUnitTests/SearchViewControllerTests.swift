@@ -98,7 +98,4 @@ final class SearchViewControllerTests: XCTestCase {
 
 }
 
-class SearchViewModelMock: SearchViewModel {
-
-}
-
+class SearchViewModelMock: SearchViewModel { }

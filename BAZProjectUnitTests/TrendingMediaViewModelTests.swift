@@ -80,11 +80,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
     
     func test_getCellConfigurationForItemNotYetRated_ShouldBeEqual() {
         let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        formatter.locale = Locale.current
-        let tomorrowsStringDate = formatter.string(from: tomorrowsDate)
+        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
         let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: tomorrowsDate)
         let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: tomorrowsStringDate, image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
         

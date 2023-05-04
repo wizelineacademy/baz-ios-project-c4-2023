@@ -69,3 +69,5 @@ final class TrendingMediaViewControllerTests: XCTestCase {
         XCTAssertEqual(movies.count, actualItems)
     }
 }
+
+class TrendingMediaViewModelMock: TrendingMediaViewModel {}

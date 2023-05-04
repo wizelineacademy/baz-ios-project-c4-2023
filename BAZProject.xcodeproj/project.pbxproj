@@ -24,7 +24,6 @@
 		4B3BBE8529D65879001F4E85 /* RequestSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8429D65879001F4E85 /* RequestSessionMock.swift */; };
 		4B3BBE8929D658E2001F4E85 /* EndpointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */; };
 		4B3BBE8E29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8D29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift */; };
-		4B3BBE9029D69D46001F4E85 /* TrendingMoviesViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */; };
 		4B6BB28829FB0CDC007A20D7 /* MediaTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB28729FB0CDC007A20D7 /* MediaTypeTests.swift */; };
 		4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB28B29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift */; };
 		4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */; };
@@ -92,7 +91,6 @@
 		4B3BBE8429D65879001F4E85 /* RequestSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSessionMock.swift; sourceTree = "<group>"; };
 		4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointMock.swift; sourceTree = "<group>"; };
 		4B3BBE8D29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingMediaViewControllerTests.swift; path = BAZProjectUnitTests/TrendingMediaViewControllerTests.swift; sourceTree = SOURCE_ROOT; };
-		4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewModelMock.swift; sourceTree = "<group>"; };
 		4B6BB28729FB0CDC007A20D7 /* MediaTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaTypeTests.swift; path = BAZProjectUnitTests/MediaTypeTests.swift; sourceTree = SOURCE_ROOT; };
 		4B6BB28B29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		4B6BB29129FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewHeaderView.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			children = (
 				4B3BBE8429D65879001F4E85 /* RequestSessionMock.swift */,
 				4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */,
-				4B3BBE8F29D69D46001F4E85 /* TrendingMoviesViewModelMock.swift */,
 				4B2DA1A529F2089A006BD0EC /* TrendingRemoteDataMock.swift */,
 				4B947E7529F247DB00C116E3 /* DecodableMovies.swift */,
 				4B6BB2C12A00ADE9007A20D7 /* SearchLocalDataMock.swift */,
@@ -452,7 +449,6 @@
 				4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */,
 				4B7060022A03113E00CB142A /* SearchViewControllerTests.swift in Sources */,
 				4B6BB2C22A00ADE9007A20D7 /* SearchLocalDataMock.swift in Sources */,
-				4B3BBE9029D69D46001F4E85 /* TrendingMoviesViewModelMock.swift in Sources */,
 				4B3BBE8E29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift in Sources */,
 				4B6BB28829FB0CDC007A20D7 /* MediaTypeTests.swift in Sources */,
 				4B3BBE8929D658E2001F4E85 /* EndpointMock.swift in Sources */,
