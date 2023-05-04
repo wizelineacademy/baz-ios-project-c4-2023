@@ -130,6 +130,10 @@ extension DetailsViewModel {
     func getRecommendationPath(index: Int) -> String? {
         recommendationMovies.value[index].poster_path
     }
+    /// Regresa la informacion de una pelucula
+    func getAllIRecoMovie(index: Int) -> InfoMoviesProtocol {
+        recommendationMovies.value[index]
+    }
 }
 
 //MARK: - Similar movies services
@@ -153,6 +157,10 @@ extension DetailsViewModel {
     /// Regresa el path para la consulta de la imagen
     func getSimilarPath(index: Int) -> String? {
         similarMovies.value[index].poster_path
+    }
+    /// Regresa la informacion de una pelucula
+    func getAllSimilarMovie(index: Int) -> InfoMoviesProtocol {
+        similarMovies.value[index]
     }
 }
 
@@ -181,5 +189,9 @@ extension DetailsViewModel {
     /// Regresa el path para la consulta de la imagen
     func getCastPath(index: Int) -> String? {
         castMovie.value[index].profile_path
+    }
+    /// Regresa la informacion de una pelucula
+    func getAllActorMovie(index: Int) -> CastInfoProtocol {
+        castMovie.value[index]
     }
 }

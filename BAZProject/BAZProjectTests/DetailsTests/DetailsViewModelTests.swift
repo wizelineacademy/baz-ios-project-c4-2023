@@ -174,6 +174,16 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(path, movie[0].poster_path)
     }
     
+    func testDetailsModel_RecommendatioMovieAllInfoExist() {
+        //Given
+        let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
+        //When
+        sut?.recommendationMovies = Box(value: movie)
+        let allInfo = sut?.getAllIRecoMovie(index: 0)
+        //Then
+        XCTAssertNotNil(allInfo)
+    }
+    
     //MARK: - Pruebas de Seccion de Similares
     
     func testDetailsViewModel_getSimilarMovies() {
@@ -208,6 +218,16 @@ final class DetailsViewModelTests: XCTestCase {
         let path = sut?.getSimilarPath(index: 0)
         //Then
         XCTAssertEqual(path, movie[0].poster_path)
+    }
+
+    func testDetailsModel_SimilarMovieAllInfoExist() {
+        //Given
+        let movie = [Movie(id: 1, title: "Payasos asesinos del espacio exterior", poster_path: "", overview: "", vote_average: 10.0)]
+        //When
+        sut?.similarMovies = Box(value: movie)
+        let allInfo = sut?.getAllSimilarMovie(index: 0)
+        //Then
+        XCTAssertNotNil(allInfo)
     }
     
     //MARK: - Pruebas de Seccion de Reparto
@@ -254,5 +274,15 @@ final class DetailsViewModelTests: XCTestCase {
         let character = sut?.getCastMovieMoviesCharacter(index: 0)
         //Then
         XCTAssertEqual(character, cast[0].character)
+    }
+    
+    func testDetailsModel_CastMovieAllInfoExist() {
+        //Given
+        let cast = [Cast(id: 1, name: "Henry Cavil", profile_path: "Henry.jpg", character: "Superman")]
+        //When
+        sut?.castMovie = Box(value: cast)
+        let allInfo = sut?.getAllActorMovie(index: 0)
+        //Then
+        XCTAssertNotNil(allInfo)
     }
 }
