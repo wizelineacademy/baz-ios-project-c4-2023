@@ -32,7 +32,7 @@ class SearchViewController: ReusableViewController {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "What are you looking for?"
+        searchController.searchBar.placeholder = "searchQuestionText".localized
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
 
@@ -108,9 +108,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = searchViewModel?.sectionTitles[section]
         switch section {
-        case "Peliculas":
+        case "moviesText".localized :
             return searchViewModel?.movies.count ?? 0
-        case "Otras sugerencias":
+        case "otherSuggestionsText".localized :
             return searchViewModel?.keywords.count ?? 0
         default:
             return 0
@@ -120,13 +120,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = searchViewModel?.sectionTitles[indexPath.section]
         switch section {
-        case "Peliculas":
+        case "moviesText".localized :
             if let movieCell = tableView.dequeueReusableCell(withIdentifier: searchMovieItemAdapterIdentifier, for: indexPath) as? SearchMovieItemAdapter {
                 movieCell.item = searchViewModel?.movies[indexPath.row]
                 return movieCell
             }
             return UITableViewCell()
-        case "Otras sugerencias":
+        case "otherSuggestionsText".localized :
             if let simpleCell = tableView.dequeueReusableCell(withIdentifier: simpleItemAdapterIdentifier, for: indexPath) as? SimpleItemAdapter {
                 simpleCell.item = searchViewModel?.keywords[indexPath.row]
                 return simpleCell
@@ -140,9 +140,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = searchViewModel?.sectionTitles[indexPath.section]
         switch section {
-        case "Peliculas":
+        case "moviesText".localized :
             return .dim100
-        case "Otras sugerencias":
+        case "otherSuggestionsText".localized :
             return .dim32
         default:
             return 44

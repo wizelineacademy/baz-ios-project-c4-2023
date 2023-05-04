@@ -101,7 +101,7 @@ class MovieViewController: ReusableViewController {
     }()
     
     private lazy var lblCastActorsText: UILabel = {
-        return setupLabel(text: "Reparto de Actores")
+        return setupLabel(text: "castText".localized)
     }()
     
     private lazy var clvActors: UICollectionView = {
@@ -124,7 +124,7 @@ class MovieViewController: ReusableViewController {
     }
     
     private lazy var lblSimilarMoviesText: UILabel = {
-        return setupLabel(text: "Películas similares")
+        return setupLabel(text: "similarMoviesText".localized)
     }()
     
     private lazy var clvSimilarMovies: UICollectionView = {
@@ -139,7 +139,7 @@ class MovieViewController: ReusableViewController {
     }
     
     private lazy var lblRecommendedMoviesText: UILabel = {
-        return setupLabel(text: "Películas recomendadas")
+        return setupLabel(text: "recommendedMoviesText".localized)
     }()
     
     private lazy var clvRecommendedMovies: UICollectionView = {
@@ -154,7 +154,7 @@ class MovieViewController: ReusableViewController {
     }
     
     private lazy var lblMovieReviewsText: UILabel = {
-        return setupLabel(text: "Reseñas de la película")
+        return setupLabel(text: "movieReviewsText".localized)
     }()
     
     private lazy var tvwReviews: UITableView = {
@@ -192,7 +192,7 @@ class MovieViewController: ReusableViewController {
     
     private func setupActorDataSourceAndConstraints(_ collectionView: UICollectionView) -> ReusableCollectionViewDataSource<ActorItemAdapter, Actor> {
         let dataSourceDelegate = ReusableCollectionViewDataSource<ActorItemAdapter, Actor>()
-        dataSourceDelegate.message = "No hay actores disponibles"
+        dataSourceDelegate.message = "actorsEmptyText".localized
         movieViewModel.onCharactersUpdate = {
             DispatchQueue.main.async {
                 dataSourceDelegate.updateItems(self.movieViewModel.characters)
@@ -218,7 +218,7 @@ class MovieViewController: ReusableViewController {
         collectionView.widthAnchor.constraint(equalTo: skwContent.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: .dim220).isActive = true
         let dataSourceDelegate = MoviesDataSource()
-        dataSourceDelegate.message = "No hay peliculas disponibles"
+        dataSourceDelegate.message = "moviesEmptyText".localized
         let repository: MoviesRepository = MoviesDataSourceRemote()
         let moviesViewModel = MoviesViewModel(repository)
         moviesViewModel.onMoviesUpdate = {
@@ -233,7 +233,7 @@ class MovieViewController: ReusableViewController {
     
     private func setupReviewDataSourceAndConstraints(_ delegates: ReviewsDelegate) -> ReusableTableViewDataSource<ReviewItemAdapter, Review> {
         let dataSourceDelegate = ReusableTableViewDataSource<ReviewItemAdapter, Review>()
-        dataSourceDelegate.message = "No hay reseñas disponibles"
+        dataSourceDelegate.message = "reviewsEmptyText".localized
         movieViewModel.onReviewsUpdate = {
             DispatchQueue.main.async {
                 let reviews = self.movieViewModel.reviews
@@ -260,7 +260,7 @@ class MovieViewController: ReusableViewController {
     // MARK: - Override Functions
     override func setupView() {
         super.setupView()
-        self.navigationController?.navigationBar.topItem?.title = "Movies"
+        self.navigationController?.navigationBar.topItem?.title = "moviesText".localized
         slwMainContentConstraints()
         imgvPorterConstraints()
         skwContentConstraints()

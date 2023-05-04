@@ -23,9 +23,9 @@ class MainViewController: UITabBarController {
      Metodo que carga los UITabBarItem para el UITabBarController
      */
     private func setupItems() {
-        let moviesNav = setupBarItem(MoviesViewController(), "Movies", UIImage(systemName: "tv"), UIImage(systemName: "tv"))
+        let moviesNav = setupBarItem(MoviesViewController(), "moviesText".localized, UIImage(systemName: "tv"), UIImage(systemName: "tv"))
 
-        let searchNav = setupBarItem(SearchViewController(), "Search", UIImage(systemName: "magnifyingglass"), UIImage(systemName: "magnifyingglass"))
+        let searchNav = setupBarItem(SearchViewController(), "searchText".localized, UIImage(systemName: "magnifyingglass"), UIImage(systemName: "magnifyingglass"))
         selectedIndex = 0
         self.viewControllers = [moviesNav,searchNav]
     }

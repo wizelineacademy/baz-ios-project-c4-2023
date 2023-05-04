@@ -47,7 +47,7 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblTrendingMoviesText: UILabel = {
-        return setupLabel("Tendencias")
+        return setupLabel("trendsText".localized)
     }()
 
     private lazy var clvTrendingMovies: UICollectionView = {
@@ -62,7 +62,7 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblNowPlayingMoviesText: UILabel = {
-        return setupLabel("Reproduciendo Ahora")
+        return setupLabel("playingNowText".localized)
     }()
 
     private lazy var clvNowPlayingMovies: UICollectionView = {
@@ -77,7 +77,7 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblPopularMoviesText: UILabel = {
-        return setupLabel("Populares")
+        return setupLabel("popularText".localized)
     }()
     
     private lazy var clvPopularMovies: UICollectionView = {
@@ -92,7 +92,7 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblTopRatedMoviesText: UILabel = {
-        return setupLabel("Los más valorados")
+        return setupLabel("topRatedText".localized)
     }()
     
     private lazy var clvTopRatedMovies: UICollectionView = {
@@ -107,7 +107,7 @@ class MoviesViewController: ReusableViewController {
     }
     
     private lazy var lblUpcomingMoviesText: UILabel = {
-        return setupLabel("Próximamente")
+        return setupLabel("upcomingText".localized)
     }()
     
     private lazy var clvUpcomingMovies: UICollectionView = {
