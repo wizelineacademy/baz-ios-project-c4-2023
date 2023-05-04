@@ -20,18 +20,25 @@ final class SearchViewControllerTests: XCTestCase {
         super.tearDown()
     }
 
-    func setSutWithLocalData(media: [MediaItem]? = nil) {
+    func setSutWithLocalData(media: [MediaItem]? = nil, expectation: XCTestExpectation) {
         let localData = SearchLocalDataMock()
         localData.items = media
         viewModel = SearchViewModelMock(remoteData: SearchRemoteDataMock(), localData: localData)
         sut = SearchTableViewController(viewModel: viewModel)
-        sut.dispatchService = DispatchMock()
+        setSutExpectation(expectation: expectation)
     }
     
-    func setSutWithRemoteData(media: [MediaDataObject]? = nil) {
+    func setSutWithRemoteData(media: [MediaDataObject]? = nil, expectation: XCTestExpectation) {
         let remote = SearchRemoteDataMock()
         remote.mediaObject = media
         sut = SearchTableViewController(viewModel: SearchViewModelMock(remoteData: remote, localData: SearchLocalDataMock()))
+        setSutExpectation(expectation: expectation)
+    }
+    
+    func setSutExpectation(expectation: XCTestExpectation) {
+        var dispatch = DispatchMock()
+        dispatch.expectation = expectation
+        sut.dispatchService = dispatch
     }
     
     func test_titleWasSet() {
@@ -52,17 +59,41 @@ final class SearchViewControllerTests: XCTestCase {
     
     func test_initialDataLoaded() {
         let media = [MediaItem(mediaType: .movie), MediaItem(mediaType: .tv), MediaItem(mediaType: .person)]
-        setSutWithLocalData(media: media)
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 4
-        var dispatch = DispatchMock()
-        dispatch.expectation = expectation
-        sut.dispatchService = dispatch
+        expectation.expectedFulfillmentCount = 3
+        setSutWithLocalData(media: media, expectation: expectation)
         
         sut.loadViewIfNeeded()
         wait(for: [expectation], timeout: 0.1)
         
         XCTAssertEqual(sut.dataSource?.snapshot().numberOfItems, media.count)
+    }
+    
+    func test_searchData_ShouldHaveThreeElements() {
+        let media = [MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 6
+        setSutWithRemoteData(media: media, expectation: expectation)
+        
+        sut.searchController.searchBar.text = "Harry"
+        sut.loadViewIfNeeded()
+        sut.updateSearchResults(for: sut.searchController)
+        wait(for: [expectation], timeout: 0.1)
+        
+        XCTAssertEqual(sut.dataSource?.snapshot().numberOfItems, media.count)
+    }
+    
+    func test_searchData_ShouldNotSearchWithEmptyString() {
+        let media = [MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 1
+        setSutWithRemoteData(media: media, expectation: expectation)
+        
+        sut.loadViewIfNeeded()
+        sut.updateSearchResults(for: sut.searchController)
+        wait(for: [expectation], timeout: 0.1)
+        
+        XCTAssertEqual(sut.dataSource?.snapshot().numberOfItems, 0)
     }
 
 }
