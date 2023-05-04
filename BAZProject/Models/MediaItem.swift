@@ -5,7 +5,7 @@
 //  Created by gescarcega on 26/04/23.
 //
 
-import UIKit
+import Foundation
 
 struct MediaItem: Hashable {
     
