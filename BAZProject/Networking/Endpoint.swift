@@ -17,6 +17,9 @@ enum Endpoint {
 
     /// The API key required to make requests to the API.
     static let apiKey = "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
+    
+    /// The language to make requests to the API.
+    static let language = "&language=es"
 
     /// Represents the endpoint for getting trending movies.
     case trending
@@ -66,10 +69,10 @@ extension Endpoint {
             // If query parameter is not URL encoded, it is encoded and added to the URL string
             guard let query = query.urlEncoded() else { break }
             
-            return URL(string: "\(Endpoint.base)\(path)\(Endpoint.apiKey)&query=\(query)")
+            return URL(string: "\(Endpoint.base)\(path)\(Endpoint.apiKey)\(Endpoint.language)&query=\(query)")
         }
         
         // Returns the URL constructed from the base URL, API key and path
-        return URL(string: "\(Endpoint.base)\(path)\(Endpoint.apiKey)")
+        return URL(string: "\(Endpoint.base)\(path)\(Endpoint.apiKey)\(Endpoint.language)")
     }
 }
