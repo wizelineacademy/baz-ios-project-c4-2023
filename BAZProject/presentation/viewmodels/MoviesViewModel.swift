@@ -24,19 +24,15 @@ class MoviesViewModel {
     // MARK: - public functions
     func fetchMovies(_ filter: Filters) {
         repository.getMovies(filter: filter) { movies in
-            DispatchQueue.main.async {
-                self.movies = movies
-                self.onMoviesUpdate?()
-            }
+            self.movies = movies
+            self.onMoviesUpdate?()
         }
     }
 
     func fetchRelatedMovies(_ filter: Filters, _ movieID: Int) {
         repository.getRelatedMovies(filter: filter, movieID: movieID) { movies in
-            DispatchQueue.main.async {
-                self.movies = movies
-                self.onMoviesUpdate?()
-            }
+            self.movies = movies
+            self.onMoviesUpdate?()
         }
     }
 }
