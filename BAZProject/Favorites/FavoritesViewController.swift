@@ -9,9 +9,10 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
-    var ViewModel: FavoritesViewModel = FavoritesViewModel()
+    var viewModel: FavoritesViewModel = FavoritesViewModel()
     
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -19,8 +20,8 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = StringsTitles.favorites.rawValue
-        ViewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
-        ViewModel.bindMovie { [weak self] in
+        viewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
+        viewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -45,14 +46,16 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+//MARK: - Extensiones
+
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        ViewModel.getMovieCount()
+        viewModel.getMovieCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FavoriteTableViewCell
-        cell.setInfo(ViewModel, indexPath: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell()}
+        cell.setInfo(viewModel, indexPath: indexPath)
         return cell
     }
     
@@ -61,8 +64,8 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewmodel = DetailsViewModel(movieDetail: ViewModel.getAllInfoMoview(index: indexPath.row))
-        let vc = DetailsView(ViewModel: viewmodel)
+        let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row) ?? Movie())
+        let vc = DetailsView(viewModel: viewmodel)
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }

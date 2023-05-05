@@ -14,23 +14,23 @@ class MovieAPI {
         self.service = service
     }
     ///Función generica que consulta las  de peliculas de acuerdo a la categoria
-    func getMovies(category: categoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
+    func getMovies(category: CategoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
         var urlStruct =  ""
         switch category {
-         case .Trending:
-            urlStruct = "\(categoriesFilter.Trending.url)\(urls.apikey.rawValue)"
-        case .NowPlaying:
-            urlStruct = "\(categoriesFilter.NowPlaying.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
-        case .Popular:
-            urlStruct = "\(categoriesFilter.Popular.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
-        case .TopRated:
-            urlStruct = "\(categoriesFilter.TopRated.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
-        case .Upcoming:
-            urlStruct = "\(categoriesFilter.Upcoming.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
-        case .Recommendation:
-            urlStruct = "\(categoriesFilter.Recommendation.url)\(idMovie)/recommendations?api_key=\(urls.apikey.rawValue)&language=es"
+         case .trending:
+            urlStruct = "\(CategoriesFilter.trending.url)\(urls.apikey.rawValue)"
+        case .nowPlaying:
+            urlStruct = "\(CategoriesFilter.nowPlaying.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
+        case .popular:
+            urlStruct = "\(CategoriesFilter.popular.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
+        case .topRated:
+            urlStruct = "\(CategoriesFilter.topRated.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
+        case .upcoming:
+            urlStruct = "\(CategoriesFilter.upcoming.url)\(urls.apikey.rawValue)&language=es&region=MX&page=1"
+        case .recommendation:
+            urlStruct = "\(CategoriesFilter.recommendation.url)\(idMovie)/recommendations?api_key=\(urls.apikey.rawValue)&language=es"
         case .similar:
-            urlStruct = "\(categoriesFilter.similar.url)\(idMovie)/similar?api_key=\(urls.apikey.rawValue)&language=es"
+            urlStruct = "\(CategoriesFilter.similar.url)\(idMovie)/similar?api_key=\(urls.apikey.rawValue)&language=es"
         default:
             urlStruct = ""
         }
@@ -46,7 +46,7 @@ class MovieAPI {
     
     ///Funcion que obtiene el arreglo de actores desde el servicio
     func getCast(idMovie: Int,  completion: @escaping ([CastInfoProtocol], Error?) -> Void) {
-        let urlStruct = "\(categoriesFilter.similar.url)\(idMovie)/credits?api_key=\(urls.apikey.rawValue)&language=es"
+        let urlStruct = "\(CategoriesFilter.similar.url)\(idMovie)/credits?api_key=\(urls.apikey.rawValue)&language=es"
         guard let url = URL(string: urlStruct) else { return }
         print("- \(url)")
         service.get(url) { (result: Result<Casts, Error>) in

@@ -10,6 +10,7 @@ import Foundation
 class FavoritesViewModel: FavoriteListProtocol {
     
     //MARK: - Outlets
+    
     var favoriteMovies: Box<[InfoMoviesProtocol]>?
     let userDefaults = UserDefaults.standard
     ///Funcion que setea el bind para el box 
@@ -30,8 +31,8 @@ class FavoritesViewModel: FavoriteListProtocol {
         favoriteMovies?.value[index].poster_path
     }
     ///Regresa la informacion de la pelicula
-    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
-        favoriteMovies!.value[index]
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol? {
+        favoriteMovies?.value[index]
     }
     //Funcion para poder obtener info de UserDefaults 
     func getFavoritesMovies(key: String) {

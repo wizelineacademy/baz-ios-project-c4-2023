@@ -10,6 +10,7 @@ import Foundation
 class DetailsViewModel: DetailsProtocol {
 
     //MARK: - Outlets
+    
     var movieDetail: Box<InfoMoviesProtocol>
     var recommendationMovies: Box<[InfoMoviesProtocol]>
     var similarMovies: Box<[InfoMoviesProtocol]>
@@ -109,11 +110,12 @@ class DetailsViewModel: DetailsProtocol {
 //MARK: - Extensiones
 
 //MARK: - recommendation movies services
+
 extension DetailsViewModel {
     
     //Consulta el servicio para obtener los datos
     func getRecommendationMovies() {
-        movieAPI.getMovies(category: .Recommendation, idMovie: movieDetail.value.id ?? 0) { [weak self] movieArray, _ in
+        movieAPI.getMovies(category: .recommendation, idMovie: movieDetail.value.id ?? 0) { [weak self] movieArray, _ in
             self?.recommendationMovies.value = movieArray
         }
     }
@@ -137,6 +139,7 @@ extension DetailsViewModel {
 }
 
 //MARK: - Similar movies services
+
 extension DetailsViewModel {
     
     //Consulta el servicio para obtener los datos
@@ -165,6 +168,7 @@ extension DetailsViewModel {
 }
 
 //MARK: - Cast movie services
+
 extension DetailsViewModel {
     //Consulta el servicio para obtener los datos
     func getCastMovie() {

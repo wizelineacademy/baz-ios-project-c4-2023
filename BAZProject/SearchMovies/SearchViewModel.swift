@@ -44,9 +44,10 @@ class SearchViewModel: SearchListProtocol {
     }
     
     //MARK: - Consulta servicio buscar peliculas
+    
     ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping (Error?) -> Void) {
-        guard let url = URL(string: "\(categoriesFilter.Search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }
+        guard let url = URL(string: "\(CategoriesFilter.search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }
         service.get(url) { [weak self] (result: Result<Movies, Error>) in //service result 
             switch result {
             case .success(let apiResults): self?.moviesSearched.value = apiResults.results ?? []

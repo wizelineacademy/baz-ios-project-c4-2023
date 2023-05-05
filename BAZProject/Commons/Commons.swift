@@ -13,33 +13,33 @@ enum urls: String {
 }
 
 /// enumerador para menejar de los tipos y sus urls
-enum categoriesFilter: String {
-    case Trending = "Trending"
-    case NowPlaying = "Now Playing"
-    case Popular = "Popular"
-    case TopRated = "Top Rated"
-    case Upcoming = "Upcoming"
-    case Search =  "Search"
-    case Recommendation = "Recommendation Movies"
+enum CategoriesFilter: String {
+    case trending = "Trending"
+    case nowPlaying = "Now Playing"
+    case popular = "Popular"
+    case topRated = "Top Rated"
+    case upcoming = "Upcoming"
+    case search =  "Search"
+    case recommendation = "Recommendation Movies"
     case similar = "similar Movies"
     case cast = "cast"
     
     var url: String {
         let baseURL = "https://api.themoviedb.org/3/movie/"
         switch self {
-        case .Trending:
+        case .trending:
             return "https://api.themoviedb.org/3/trending/movie/day?api_key="
-        case .NowPlaying:
+        case .nowPlaying:
             return "\(baseURL)now_playing?api_key="
-        case .Popular:
+        case .popular:
             return "\(baseURL)popular?api_key="
-        case .TopRated:
+        case .topRated:
             return "\(baseURL)top_rated?api_key="
-        case .Upcoming:
+        case .upcoming:
             return "\(baseURL)upcoming?api_key="
-        case .Search:
+        case .search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
-        case .Recommendation, .similar, .cast:
+        case .recommendation, .similar, .cast:
             return baseURL
         }
     }

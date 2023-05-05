@@ -13,7 +13,7 @@ final class MovieApiMock: MovieAPI {
     var cast = [CastInfoProtocol]()
     var error: Error?
     
-    override func getMovies(category: categoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void) {
+    override func getMovies(category: CategoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void) {
         completion(movies, error)
     }
     

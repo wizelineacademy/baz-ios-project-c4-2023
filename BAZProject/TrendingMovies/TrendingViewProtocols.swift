@@ -9,7 +9,7 @@ import Foundation
 
 protocol TrendingListProtocol {
     var movies: Box<[InfoMoviesProtocol]> { get set }
-    func getmovies(category: categoriesFilter) ///se consulta el servicio para lista de peliculas
+    func getmovies(category: CategoriesFilter) ///se consulta el servicio para lista de peliculas
     func getMovieCount() -> Int ///regresa el contador del arreglo de peliculas
     func getTitle(index: Int) -> String? ///regresa el campo titulo de la pelicula
     func bindMovies(_ listener: @escaping () -> Void) ///Crear bind que llama al listener

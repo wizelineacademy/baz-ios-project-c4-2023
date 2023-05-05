@@ -9,6 +9,7 @@ import UIKit
 final class TrendingViewController: UITableViewController {
 
     var trendingModel: TrendingListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
+    
     //MARK: -Oulets
     @IBOutlet weak var FilterButton: UIBarButtonItem!
 
@@ -20,7 +21,7 @@ final class TrendingViewController: UITableViewController {
     
     /// se guarda la respuesta del servicio en el arreglo y se recarga la tabla con la categoria por default
     func getMovieArray() {
-        trendingModel.getmovies(category: .Trending)
+        trendingModel.getmovies(category: .trending)
     }
     
     ///Funcion que guarda y lee de keyChain
@@ -60,25 +61,25 @@ final class TrendingViewController: UITableViewController {
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
         // Alerta para poder realizar la busqueda por categoria
         let alert = UIAlertController(title: "Filtro", message: "Selecciona el filtro que quieres aplicar", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: categoriesFilter.Trending.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
-            self?.navigationItem.title = categoriesFilter.Trending.rawValue
-            self?.trendingModel.getmovies(category: .Trending)
+        alert.addAction(UIAlertAction(title: CategoriesFilter.trending.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = CategoriesFilter.trending.rawValue
+            self?.trendingModel.getmovies(category: .trending)
         })
-        alert.addAction(UIAlertAction(title: categoriesFilter.NowPlaying.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
-            self?.navigationItem.title = categoriesFilter.NowPlaying.rawValue
-            self?.trendingModel.getmovies(category: .NowPlaying)
+        alert.addAction(UIAlertAction(title: CategoriesFilter.nowPlaying.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = CategoriesFilter.nowPlaying.rawValue
+            self?.trendingModel.getmovies(category: .nowPlaying)
         })
-        alert.addAction(UIAlertAction(title: categoriesFilter.Popular.rawValue, style: UIAlertAction.Style.default) {[weak self] _ in
-            self?.navigationItem.title = categoriesFilter.Popular.rawValue
-            self?.trendingModel.getmovies(category: .Popular)
+        alert.addAction(UIAlertAction(title: CategoriesFilter.popular.rawValue, style: UIAlertAction.Style.default) {[weak self] _ in
+            self?.navigationItem.title = CategoriesFilter.popular.rawValue
+            self?.trendingModel.getmovies(category: .popular)
         })
-        alert.addAction(UIAlertAction(title: categoriesFilter.TopRated.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
-            self?.navigationItem.title = categoriesFilter.TopRated.rawValue
-            self?.trendingModel.getmovies(category: .TopRated)
+        alert.addAction(UIAlertAction(title: CategoriesFilter.topRated.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = CategoriesFilter.topRated.rawValue
+            self?.trendingModel.getmovies(category: .topRated)
         })
-        alert.addAction(UIAlertAction(title: categoriesFilter.Upcoming.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
-            self?.navigationItem.title = categoriesFilter.Upcoming.rawValue
-            self?.trendingModel.getmovies(category: .Upcoming)
+        alert.addAction(UIAlertAction(title: CategoriesFilter.upcoming.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.navigationItem.title = CategoriesFilter.upcoming.rawValue
+            self?.trendingModel.getmovies(category: .upcoming)
         })
         self.present(alert, animated: true, completion: nil)
     }
@@ -102,7 +103,7 @@ extension TrendingViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewmodel = DetailsViewModel(movieDetail: trendingModel.getAllInfoMoview(index: indexPath.row))
-        let vc = DetailsView(ViewModel: viewmodel)
+        let vc = DetailsView(viewModel: viewmodel)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

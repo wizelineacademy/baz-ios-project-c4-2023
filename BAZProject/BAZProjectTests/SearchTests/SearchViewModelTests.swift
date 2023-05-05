@@ -114,5 +114,4 @@ final class SearchViewModelTests: XCTestCase {
         //Then
         XCTAssertNotNil(movie)
     }
-    
 }

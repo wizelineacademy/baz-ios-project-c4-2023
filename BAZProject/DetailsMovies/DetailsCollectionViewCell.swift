@@ -17,6 +17,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         downloadTask?.cancel()
         downloadTask = nil
         txtLabel.text = ""
@@ -24,12 +25,12 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "poster")
     }
     ///Funcion para setear imagenes y titulos
-    func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: categoriesFilter) {
+    func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: CategoriesFilter) {
         switch type {
         case .similar:
             txtLabel.text = info.getSimilarMoviesTitle(index: indexPath.row)
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getSimilarPath(index:indexPath.row) ?? "")")!)
-        case .Recommendation:
+        case .recommendation:
             txtLabel.text = info.getRecommendationMoviesTitle(index: indexPath.row)
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getRecommendationPath(index:indexPath.row) ?? "")")!)
         case .cast:

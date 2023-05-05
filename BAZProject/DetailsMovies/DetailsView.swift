@@ -12,7 +12,8 @@ import CoreLocation
 class DetailsView: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Oulets
-    var ViewModel: DetailsViewModel
+    
+    var viewModel: DetailsViewModel
     let locationManager = CLLocationManager()
     @IBOutlet weak var imageMovie: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,8 +25,8 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
-    init(ViewModel: DetailsViewModel) {
-        self.ViewModel = ViewModel
+    init(viewModel: DetailsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: "DetailsView", bundle: nil)
     }
     
@@ -37,7 +38,7 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         setView()
         setmap()
-        ViewModel.bindMovie { [weak self] in
+        viewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
                 self?.actorsCV.reloadData()
                 self?.similarCV.reloadData()
@@ -59,41 +60,43 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
         registerNibs()
         getAllInfo()
         setFavoriteButton()
-        titleLabel.text = ViewModel.getTitle()
-        navigationItem.title = ViewModel.getTitle()
-        imageMovie.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(ViewModel.getPathImage() ?? "")")!)
-        overviewText.text = ViewModel.getOverview()
-        voteAverage.text = ViewModel.getRating()
+        titleLabel.text = viewModel.getTitle()
+        navigationItem.title = viewModel.getTitle()
+        imageMovie.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.getPathImage() ?? "")")!)
+        overviewText.text = viewModel.getOverview()
+        voteAverage.text = viewModel.getRating()
     }
     
     ///Consulta todos los servicios
     func getAllInfo() {
-        ViewModel.getCastMovie()
-        ViewModel.getSimilarMovies()
-        ViewModel.getRecommendationMovies()
+        viewModel.getCastMovie()
+        viewModel.getSimilarMovies()
+        viewModel.getRecommendationMovies()
     }
     /// Verifica si la pelicula esta en favoritos y cambia el titulo
     func setFavoriteButton() {
-        ViewModel.isMovieFavorite() ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        viewModel.isMovieFavorite() ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
-    //MARK: - Buttons
+    //MARK: - Buttonsç
+    
     @IBAction func favoriteButton(_ sender: UIButton) {
-        ViewModel.isMovieFavorite() ? ViewModel.deteleUserDefautls(key: UserDKeys.favorites.rawValue) : ViewModel.saveUserDefautls(key: UserDKeys.favorites.rawValue)
+        viewModel.isMovieFavorite() ? viewModel.deteleUserDefautls(key: UserDKeys.favorites.rawValue) : viewModel.saveUserDefautls(key: UserDKeys.favorites.rawValue)
         setFavoriteButton()
     }
 }
 
 //MARK: - Extensiones
+
 extension DetailsView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case actorsCV:
-            return ViewModel.getCastMovieMoviesCount() ?? 0
+            return viewModel.getCastMovieMoviesCount() ?? 0
         case similarCV:
-            return ViewModel.getSimilarMoviesCount() ?? 0
+            return viewModel.getSimilarMoviesCount() ?? 0
         case recomendationsCV:
-            return ViewModel.getRecommendationMoviesCount() ?? 0
+            return viewModel.getRecommendationMoviesCount() ?? 0
         default:
             return 0
         }
@@ -101,15 +104,16 @@ extension DetailsView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailsCollectionViewCell else { return UICollectionViewCell() }
+        
         switch collectionView {
         case actorsCV:
-            cell.setInfo(ViewModel, indexPath: indexPath, type: .cast)
+            cell.setInfo(viewModel, indexPath: indexPath, type: .cast)
             return cell
         case similarCV:
-            cell.setInfo(ViewModel, indexPath: indexPath, type: .similar)
+            cell.setInfo(viewModel, indexPath: indexPath, type: .similar)
             return cell
         case recomendationsCV:
-            cell.setInfo(ViewModel, indexPath: indexPath, type: .Recommendation)
+            cell.setInfo(viewModel, indexPath: indexPath, type: .recommendation)
             return cell
         default:
             return cell
@@ -118,6 +122,7 @@ extension DetailsView: UICollectionViewDataSource {
 }
 
 //MARK: - Funciones de mapas
+
 extension DetailsView {
     ///Configiracion del mapa para setear localicacion
     func setmap() {
@@ -151,6 +156,7 @@ extension DetailsView {
     ///Configuracion de las anotaciones del mapa 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
+        
         let identifier = "Annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         if annotationView == nil {

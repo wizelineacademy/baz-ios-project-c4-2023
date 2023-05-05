@@ -70,5 +70,4 @@ final class FavoriteViewControllerTests: XCTestCase {
         //When
         XCTAssertNotNil(tamaño)
     }
-    
 }

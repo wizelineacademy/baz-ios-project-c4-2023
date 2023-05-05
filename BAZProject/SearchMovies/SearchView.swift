@@ -10,6 +10,7 @@ import UIKit
 class SearchView: UIViewController {
     
     //MARK: - OUtlets y variables
+    
     var viewModel: SearchViewModel = SearchViewModel()// se crea instancia al ViewModel de MVVM
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -49,6 +50,7 @@ class SearchView: UIViewController {
 }
 
 //MARK: - Extensions TableView
+
 extension SearchView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getMovieCount()
@@ -62,7 +64,7 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row))
-        let vc = DetailsView(ViewModel: viewmodel)
+        let vc = DetailsView(viewModel: viewmodel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -72,6 +74,7 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - Extensions Search bar
+
 extension SearchView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
         viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in
