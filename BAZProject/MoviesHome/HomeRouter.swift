@@ -37,5 +37,3 @@ class HomeRouter: HomeRouterProtocol {
         FavoriteMoviesModule.init(baseController: parent as? UIViewController).present()
     }
 }
-
-

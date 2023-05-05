@@ -35,8 +35,6 @@ class FavoriteMoviesInteractor: FavoriteMoviesInteractorInputProtocol {
         if let favorites: FavoriteMovies = storageManager.retrieve(forKey: .favoriteMovies) {
             self.movies = favorites.movies
             presenter?.presentMovies()
-        } else {
-            print("Favorite movies is empty!")
         }
     }
     

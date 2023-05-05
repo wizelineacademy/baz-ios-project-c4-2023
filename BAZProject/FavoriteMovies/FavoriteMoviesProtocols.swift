@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 //MARK: - View
 
 /// Presenter -> View

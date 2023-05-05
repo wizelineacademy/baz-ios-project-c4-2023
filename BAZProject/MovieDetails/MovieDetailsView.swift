@@ -15,6 +15,7 @@ class MovieDetailsView: UIViewController {
     @IBOutlet private weak var imgVwBackgroundCover: UIImageView! {
         didSet {
             self.imgVwBackgroundCover.image = UIImage(named: "poster")
+            self.imgVwBackgroundCover.showActivityIndicator()
         }
     }
     @IBOutlet private weak var lblTitle: UILabel!
@@ -26,6 +27,7 @@ class MovieDetailsView: UIViewController {
             for button in arrSectionButtons {
                 configSectionButton(button)
             }
+            arrSectionButtons.first(where: {$0.tag == 0})?.isSelected = true
         }
     }
     @IBOutlet private weak var tableViewSection: UITableView!
@@ -55,29 +57,16 @@ class MovieDetailsView: UIViewController {
         presenter?.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        arrSectionButtons.first(where: {$0.tag == 0})?.isSelected = true
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        tableSectionHeight.constant = tableViewSection.contentSize.height
-    }
-    
     private func configView() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.addRightButton(imageName: "heart", action: #selector(self.favoriteAction(_:)), color: .systemBlue)
-        
+        tableViewSection.register(UINib(nibName: MovieListCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: MovieListCell.reusableIdentifier)
         tableViewSection.delegate = self
         tableViewSection.dataSource = self
         tableViewSection.isScrollEnabled = false
         tableViewSection.bounces = false
-        
         scrollView.bounces = false
         scrollView.delegate = self
-        
-        tableViewSection.register(UINib(nibName: MovieListCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: MovieListCell.reusableIdentifier)
     }
     
     private func configSectionButton(_ button: UIButton) {
@@ -110,17 +99,17 @@ class MovieDetailsView: UIViewController {
         setSectionButtonsToDeselectState()
         sender.isSelected = true
         let index = sender.tag
-        switch index {
-        case 0:
+        let subSection = DetailsSubSections(rawValue: index) ?? .review
+        switch subSection {
+        case .review:
             scrllSectionButtons.scrollRectToVisible(sender.frame, animated: true)
             presenter?.showReviewSection()
-        case 1:
+        case .similar:
             scrllSectionButtons.scrollRectToVisible(sender.frame, animated: true)
             presenter?.showSimilarMoviesSection()
-        case 2:
+        case .recommendations:
             scrllSectionButtons.scrollRectToVisible(CGRect(x: self.view.frame.width, y: 0, width: sender.frame.width, height: 10), animated: true)
             presenter?.showRecommendationsSection()
-        default: return
         }
     }
 }
@@ -143,26 +132,27 @@ extension MovieDetailsView: MovieDetailsViewProtocol {
     
     func updateBackdropImage(_ image: UIImage) {
         imgVwBackgroundCover.image = image
+        imgVwBackgroundCover.hideActivityIndicator()
     }
     
     func showMovieReviews(_ reviews: [MovieReviewInfo]) {
         self.reviews = reviews
         self.subSectionSelected = .review
-        self.tableSectionHeight.constant = 80
+        self.tableSectionHeight.constant = reviews.count > 0 ? self.scrollView.frame.height : 80
         self.tableViewSection.reloadData()
     }
     
     func showSimilarMovies(_ movies: [MovieInfo]) {
         self.similarMovies = movies
         self.subSectionSelected = .similar
-        self.tableSectionHeight.constant = CGFloat(movies.count * 120)
+        self.tableSectionHeight.constant = self.scrollView.frame.height
         self.tableViewSection.reloadData()
     }
     
     func showRecommendedMovies(_ movies: [MovieInfo]) {
         self.recommendedMovies = movies
         self.subSectionSelected = .recommendations
-        self.tableSectionHeight.constant = CGFloat(movies.count * 120)
+        self.tableSectionHeight.constant = self.scrollView.frame.height
         self.tableViewSection.reloadData()
     }
     
@@ -195,7 +185,7 @@ extension MovieDetailsView: UITableViewDataSource {
                 config.attributedText = NSAttributedString(string: reviewInfo.author, attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .bold), .foregroundColor: UIColor.gray])
                 config.secondaryText = "\n\(reviewInfo.content)"
             } else {
-                config.text = "No disponible"
+                config.text = "No se encontraron reseñas."
             }
             cell.contentConfiguration = config
             cell.selectionStyle = .none
@@ -237,10 +227,18 @@ extension MovieDetailsView: UITableViewDelegate {
         }
         
     }
-}
-
-extension MovieDetailsView: UIScrollViewDelegate {
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        tableSectionHeight.constant = tableViewSection.contentSize.height
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.scrollView {
+            if scrollView.contentOffset.y >= self.tableViewSection.frame.origin.y {
+                self.tableViewSection.isScrollEnabled = true
+            } else {
+                self.tableViewSection.isScrollEnabled = false
+            }
+        }
     }
 }

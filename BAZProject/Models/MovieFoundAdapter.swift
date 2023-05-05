@@ -22,7 +22,7 @@ struct MovieFoundAdapter: MovieInfo {
     
     var posterPath: String? {
         get {
-            nil
+            movieFound.posterPath
         }
     }
     

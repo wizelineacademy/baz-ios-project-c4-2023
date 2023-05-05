@@ -18,6 +18,10 @@ public protocol StorageProtocol {
     func remove(forKey key: StorageKey) throws
     /// Purges all data in storage
     func purge() throws
+    /// Converts a value to data
+    func toData(_ value: Any) throws -> Data?
+    /// Create an object from data
+    func valueFrom(_ data: Data) -> Any
 }
 
 public extension StorageProtocol {
@@ -33,20 +37,5 @@ public extension StorageProtocol {
             return nil
         }
         return try decoder.decode(T.self, from: data) as T
-    }
-
-    /// Converts a value to data
-    func toData(_ value: Any) throws -> Data? {
-        guard let data = value as? Data else {
-            return try NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: false)
-        }
-        return data
-    }
-
-    /// Create an object from data
-    func valueFrom(_ data: Data) -> Any {
-        guard let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-        else { return data }
-        return object
     }
 }

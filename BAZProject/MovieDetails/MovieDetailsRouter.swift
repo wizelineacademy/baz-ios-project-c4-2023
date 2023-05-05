@@ -34,7 +34,6 @@ class MovieDetailsRouter: MovieDetailsRouterProtocol {
     }
 }
 
-
 public final class MovieDetailsModule {
     private var presenter: MovieDetailsPresenterProtocol
 

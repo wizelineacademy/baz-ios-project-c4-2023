@@ -9,6 +9,6 @@
 import Foundation
 
 struct MovieDetailsEntity {
-    var strNavBarTitle : String = "Details"
+    var strNavBarTitle: String = "Details"
     var movie: MovieInfo
 }

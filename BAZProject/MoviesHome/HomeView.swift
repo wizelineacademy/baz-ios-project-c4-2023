@@ -29,7 +29,7 @@ class HomeView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addRightButton(imageName: "heart", action: #selector(self.showFavoriteMoviesView(_:)), color: .black)
+        self.addRightButton(title: "My List", action: #selector(self.showFavoriteMoviesView(_:)))
     }
     
     private func configView() {
@@ -40,7 +40,7 @@ class HomeView: UIViewController {
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.showsSearchResultsController = true
-        searchController.searchBar.placeholder = "Busqueda"
+        searchController.searchBar.placeholder = "Search"
         self.navigationItem.searchController = searchController
         
         resultVC.tableView.delegate = self
@@ -84,7 +84,6 @@ extension HomeView: HomeViewProtocol {
     }
 }
 
-
 // MARK: - TableView's DataSource
 extension HomeView: UITableViewDataSource {
 
@@ -93,7 +92,9 @@ extension HomeView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        return cell
     }
 }
 
@@ -105,7 +106,7 @@ extension HomeView: UITableViewDelegate {
         if let movieInfo = presenter?.getMovieSearch(for: indexPath) {
             config.text = movieInfo.title
         } else {
-            config.text = "Sin coincidencias"
+            config.text = "Results not found"
         }
         cell.contentConfiguration = config
     }
@@ -119,17 +120,33 @@ extension HomeView: UITableViewDelegate {
     }
 }
 
-
 extension HomeView: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         guard let searchText: String = searchBar.text else { return }
         presenter?.fetchMovies(for: searchText)
     }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        isEmptyResults = false
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            isEmptyResults = false
+            presenter?.resetSearch()
+        } else {
+            presenter?.fetchMovies(for: searchText)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter?.resetSearch()
+    }
 }
 
 extension HomeView: UISearchControllerDelegate {
     func willPresentSearchController(_ searchController: UISearchController) {
-        isEmptyResults = false
         resultVC.view.backgroundColor = .white
         resultVC.tableView.reloadData()
     }

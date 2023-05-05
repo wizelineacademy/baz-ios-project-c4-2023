@@ -260,15 +260,14 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
-				F70C6F6E2A02436A006F2D9D /* StorgeManager */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
+				F70C6F6E2A02436A006F2D9D /* StorgeManager */,
 				F7CBD3A829F0ED4B0049D018 /* Extensions */,
 				F77D594729E0AE9A0099C129 /* Resources */,
 				F77D593929E096AC0099C129 /* Protocols */,
 				F77D593A29E096B60099C129 /* Models */,
 				F782877429FF062E00D7D2D7 /* Enums */,
-				F7CBD3EA29F326E60049D018 /* Delete */,
 				F7CBD3BA29F1A4940049D018 /* MoviesHome */,
 				F7CBD3EB29F329180049D018 /* MovieDetails */,
 				F7CEF5112A0427D10092F84C /* FavoriteMovies */,
@@ -296,8 +295,8 @@
 		F77D593829E0954C0099C129 /* Movie_API */ = {
 			isa = PBXGroup;
 			children = (
-				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				F7135F3E29D629A500EA3B7B /* API_config.swift */,
+				C30893E028A425E1004B1860 /* MovieAPI.swift */,
 				F7B4A5C429F07F0F00F52D14 /* URLSessionManager.swift */,
 			);
 			path = Movie_API;
@@ -422,13 +421,6 @@
 			path = MoviesHome;
 			sourceTree = "<group>";
 		};
-		F7CBD3EA29F326E60049D018 /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Delete;
-			sourceTree = "<group>";
-		};
 		F7CBD3EB29F329180049D018 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +459,7 @@
 				C30893A628A2F42B004B1860 /* Sources */,
 				C30893A728A2F42B004B1860 /* Frameworks */,
 				C30893A828A2F42B004B1860 /* Resources */,
+				F70C6FCC2A0485D9006F2D9D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -565,6 +558,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F70C6FCC2A0485D9006F2D9D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftLint >/dev/null; then\n    swiftLint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C30893A628A2F42B004B1860 /* Sources */ = {

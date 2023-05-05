@@ -9,7 +9,12 @@ import UIKit
 
 class FavoriteMoviesView: UIViewController {
     // MARK: Outlets
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var labelEmptyResult: UILabel! {
+        didSet {
+            labelEmptyResult.isHidden = true
+        }
+    }
     
     // MARK: Properties
     var presenter: FavoriteMoviesPresenterProtocol?
@@ -40,6 +45,13 @@ class FavoriteMoviesView: UIViewController {
         tableView.register(UINib(nibName: MovieListCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: MovieListCell.reusableIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func reloadFavoriteList() {
+        if (presenter?.numberOfRows() ?? 0) == 0 {
+            labelEmptyResult.isHidden = false
+        }
+        tableView.reloadData()
     }
 }
 
@@ -76,12 +88,6 @@ extension FavoriteMoviesView: FavoriteMoviesViewProtocol {
     }
     
     func updateMovies() {
-        self.tableView.reloadData()
+        self.reloadFavoriteList()
     }
 }
-
-
-
-
-
-

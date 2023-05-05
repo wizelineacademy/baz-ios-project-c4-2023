@@ -38,6 +38,8 @@ struct FavoriteMovies: Codable {
     public mutating func addMovie(_ movie: MovieInfo) {
         if let movie = movie as? Movie {
             self.movies.append(movie)
+        } else if let movieFound = movie as? MovieFoundAdapter {
+            self.movies.append(Movie(id: movieFound.id, title: movieFound.title, posterPath: movieFound.posterPath))
         }
     }
 

@@ -29,6 +29,12 @@ class MovieDetailsInteractor: MovieDetailsInteractorInputProtocol {
         self.movie = movie
         self.storageManager = storageManager
     }
+    
+    private func updateMovieInfoEmptyValues() {
+        guard let movie = movie else { return }
+        let movieInfo = Movie(id: movie.id, title: movie.title, posterPath: movie.posterPath)
+        entity?.movie = movieInfo
+    }
 
     func getNavTitle() -> String?{
         entity?.strNavBarTitle
@@ -41,6 +47,7 @@ class MovieDetailsInteractor: MovieDetailsInteractorInputProtocol {
                 self?.movie = movie
                 self?.presenter?.presentMovieDetails(self?.movie)
                 self?.fetchMovieCredtis()
+                self?.updateMovieInfoEmptyValues()
             } else {
                 self?.presenter?.presentMovieCredits(nil)
             }
@@ -53,6 +60,12 @@ class MovieDetailsInteractor: MovieDetailsInteractorInputProtocol {
             self?.movie?.credits = credits
             self?.presenter?.presentMovieCredits(self?.movie?.credits)
         })
+    }
+    
+    func getFavoriteMovies() -> FavoriteMovies? {
+        guard let favoriteMovies: FavoriteMovies = storageManager.retrieve(forKey: .favoriteMovies)
+        else { return nil }
+        return favoriteMovies
     }
     
     func fetchMovieReviews() {
@@ -83,16 +96,12 @@ class MovieDetailsInteractor: MovieDetailsInteractorInputProtocol {
     }
     
     func verifyFavorite() {
-        guard let movieID = entity?.movie.id else { return }
-        if let favoriteMovies: FavoriteMovies = storageManager.retrieve(forKey: .favoriteMovies) {
-            presenter?.presentFavoriteMovie(favoriteMovies.containMovie(for: movieID))
-        } else {
-            print("Movie \(movieID) is not into favorites!")
-        }
+        guard let movieID = entity?.movie.id, let favoriteMovies = getFavoriteMovies() else { return }
+        presenter?.presentFavoriteMovie(favoriteMovies.containMovie(for: movieID))
     }
     
     func saveToFavorites() {
-        guard let movie = entity?.movie as? Movie else { return }
+        guard let movie = entity?.movie else { return }
         if var favorites: FavoriteMovies = storageManager.retrieve(forKey: .favoriteMovies) {
             favorites.addMovie(movie)
             storageManager.store(favorites, forKey: .favoriteMovies)

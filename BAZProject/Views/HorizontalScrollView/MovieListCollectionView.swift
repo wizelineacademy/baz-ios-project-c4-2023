@@ -74,5 +74,4 @@ extension MovieListCollectionView: UICollectionViewDataSource {
         }
     }
     
-    
 }

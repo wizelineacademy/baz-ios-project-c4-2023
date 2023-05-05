@@ -17,6 +17,12 @@ struct Movie: MovieInfo, Codable {
         case posterPath = "poster_path"
     }
     
+    init(id: Int, title: String, posterPath: String?) {
+        self.id = id
+        self.title = title
+        self.posterPath = posterPath
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try values.decode(Int.self, forKey: .id)

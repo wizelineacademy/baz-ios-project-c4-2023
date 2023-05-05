@@ -8,5 +8,5 @@
 import Foundation
 
 struct FavoriteMoviesEntity {
-    var strNavBarTitle : String = "Favorite Movies"
+    var strNavBarTitle: String = "Favorite Movies"
 }

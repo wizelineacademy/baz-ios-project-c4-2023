@@ -15,18 +15,15 @@ class MovieListCollectionCell: UICollectionViewCell, ReusableCell {
             self.imgCover.image = UIImage(named: "poster")
         }
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     public func updateView(with movieInfo: MovieInfo) {
         lblTitle.text = movieInfo.title
+        imgCover.showActivityIndicator()
         guard let posterPath = movieInfo.posterPath else { return }
-        ResourcesManager().downloadImage(from: posterPath) { image in
+        ResourcesManager().downloadImage(from: posterPath) {[weak self] image in
             if let image = image {
-                self.imgCover.image = image
+                self?.imgCover.hideActivityIndicator()
+                self?.imgCover.image = image
             }
         }
     }

@@ -23,6 +23,9 @@ class HomeInteractor: HomeInteractorInputProtocol {
     
     private var arrMovieListSections: [MovieSection] = []
 
+    /**
+     Get screen title.
+     */
     func getNavTitle() -> String?{
         return entity?.strNavBarTitle
     }
@@ -77,6 +80,13 @@ class HomeInteractor: HomeInteractorInputProtocol {
     }
     
     /**
+     Reset movies foundt to begin a new search.
+     */
+    func resetSearch() {
+        self.arrMoviesFound = nil
+    }
+    
+    /**
      Search movies for string key.
      
      - Parameters:
@@ -116,6 +126,12 @@ class HomeInteractor: HomeInteractorInputProtocol {
     }
     
     // MARK: - Private properties
+    /**
+     Set movies to new array values for section.
+     - Parameters:
+        - movies: New array of the movies to update section values.
+        - section: Section where de movies will be updated.
+     */
     private func setMovies(_ movies: [MovieInfo]?, for section: Int) {
         self.arrMovieListSections[section].movies = movies ?? []
         self.presenter?.updateMovies(movies, in: section)

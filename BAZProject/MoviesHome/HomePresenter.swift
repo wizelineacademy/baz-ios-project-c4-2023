@@ -16,6 +16,7 @@ class HomePresenter  {
     var router: HomeRouterProtocol?
     
     var arrScrollingSections = [MovieListCollectionView]()
+    var isNewSearch: Bool = false
 }
 
 extension HomePresenter: HomePresenterProtocol {
@@ -41,13 +42,18 @@ extension HomePresenter: HomePresenterProtocol {
         interactor?.getMovieFoundCount()
     }
     
+    func resetSearch() {
+        isNewSearch = true
+        interactor?.resetSearch()
+    }
+    
     func getMovieSearch(for indexPath: IndexPath) -> MovieFoundInfo? {
         interactor?.getMovieFound(for: indexPath.row)
     }
     
     func goToMovieDetails(for indexPath: IndexPath) {
         if let movieFound = interactor?.getMovieFound(for: indexPath.row) {
-            let movie = MovieFoundAdapter(movieFound)
+            let movie: MovieInfo = MovieFoundAdapter(movieFound)
             router?.goToMovieDetailsView(movie, parent: self.view)
         }
     }
@@ -59,12 +65,12 @@ extension HomePresenter: HomePresenterProtocol {
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     func updateMoviesFound(_ movies: [MovieFoundInfo]?) {
-        if let movies = movies, movies.count > 0 {
+        if (movies?.count ?? 0 > 0) || (isNewSearch) {
             self.view?.reloadSearchResults()
         } else {
             self.view?.showEmptyResults()
         }
-        
+        isNewSearch = false
     }
     
     func updateMovies(_ movies: [MovieInfo]?, in section: Int) {
@@ -93,4 +99,3 @@ extension HomePresenter: MovieListCollectionViewDelegate {
         }
     }
 }
-
