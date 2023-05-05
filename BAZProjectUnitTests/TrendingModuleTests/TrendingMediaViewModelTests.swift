@@ -29,44 +29,47 @@ final class TrendingMediaViewModelTests: XCTestCase {
         let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "movie"), MediaDataObject(title: "title3", mediaType: "movie")]
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 3
+        var actualValue: TrendingMediaViewModel.MediaCollectionSnapShot?
         
         remoteData.mediaItems = mediaItems
         sut.loadData()
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
-        let actualValue = self.sut.getDataSnapshot().numberOfItems(inSection: .movie)
         
-        XCTAssertEqual(mediaItems.count, actualValue)
+        XCTAssertEqual(mediaItems.count, actualValue?.numberOfItems)
     }
     
     func test_GetMovies_Error() {
         let error = NSError(domain: "", code: -666)
         let expectation = XCTestExpectation()
+        var actualError: Error?
         
-        sut.bindError {
+        sut.bindError { (error) in
+            actualError = error
             expectation.fulfill()
         }
         remoteData.error = error
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let actualValue = sut.getError()
         
-        XCTAssertNotNil(actualValue)
+        XCTAssertNotNil(actualError)
     }
     
     func test_GetMovies_MoviesCountShouldBeZeroByNilData() {
         let expectation = XCTestExpectation()
+        var actualValue: TrendingMediaViewModel.MediaCollectionSnapShot?
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let actualValue = sut.getDataSnapshot().numberOfSections
         
-        XCTAssertEqual(0, actualValue)
+        XCTAssertEqual(0, actualValue?.numberOfItems)
     }
     
     func test_getCellConfiguration_rated() {
@@ -101,11 +104,10 @@ final class TrendingMediaViewModelTests: XCTestCase {
     func test_getSectionTitles() {
         let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "tv"), MediaDataObject(title: "title3", mediaType: "person")]
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 3
         
         remoteData.mediaItems = mediaItems
         sut.loadData()
-        sut.bindSnapshot {
+        sut.bindSnapshot { _ in
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.5)

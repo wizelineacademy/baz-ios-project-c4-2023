@@ -41,11 +41,7 @@ class TrendingMediaViewModel {
             }
         }
     }
-    
-    func getError() -> String? {
-        error.value?.localizedDescription
-    }
-    
+
     func getCellConfiguration(item: MediaItem) -> MediaCollectionViewCellModel {
         var subtitle: String?
         var rated = false
@@ -56,11 +52,6 @@ class TrendingMediaViewModel {
             rated = true
         }
         return MediaCollectionViewCellModel(title: item.title, subtitle: subtitle, image: item.posterPath, rated: rated, defaultImage: item.mediaType?.defaultImage)
-    }
-    
-    
-    func getDataSnapshot() -> NSDiffableDataSourceSnapshot<MediaType, MediaItem> {
-        return mediaSnapshot.value
     }
     
     func getGroupTitle(for section: Int) -> String? {
@@ -74,10 +65,12 @@ class TrendingMediaViewModel {
     
     func setSnapshotWithDictionary(dctItems: [MediaType : [MediaItem]]) {
         let sorted = dctItems.sorted(by: { $0.key.order < $1.key.order })
+        var snapshot = MediaCollectionSnapShot()
         sorted.forEach { (key, value) in
-            mediaSnapshot.value.appendSections([key])
-            mediaSnapshot.value.appendItems(value)
+            snapshot.appendSections([key])
+            snapshot.appendItems(value)
         }
+        mediaSnapshot.value = snapshot
     }
     
 }

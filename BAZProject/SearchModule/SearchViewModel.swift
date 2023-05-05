@@ -14,8 +14,7 @@ class SearchViewModel {
     
     private var remoteData: SearchRemoteData
     private var localData: SearchLocalData
-    private var localSnapshot = Box(MediaSnapshot())
-    private var searchSnapshot = Box(MediaSnapshot())
+    private var mediaSnapshot = Box(MediaSnapshot())
     private var error: Box<Error?> = Box(nil)
     
     init(remoteData: SearchRemoteData, localData: SearchLocalData) {
@@ -28,23 +27,11 @@ class SearchViewModel {
         var snapshot = MediaSnapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(initialMedia)
-        localSnapshot.value = snapshot
+        mediaSnapshot.value = snapshot
     }
     
-    func bindLocalSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
-        localSnapshot.bind(bind)
-    }
-    
-    func bindSearchSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
-        searchSnapshot.bind(bind)
-    }
-    
-    func getLocalSnapshot() -> MediaSnapshot {
-        return localSnapshot.value
-    }
-    
-    func getSearchSnapshot() -> MediaSnapshot {
-        return localSnapshot.value
+    func bindSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
+        mediaSnapshot.bind(bind)
     }
     
     func bindError(_ bind: @escaping (Error?) -> Void) {
@@ -80,7 +67,7 @@ class SearchViewModel {
                 var snapshot = MediaSnapshot()
                 snapshot.appendSections([0])
                 snapshot.appendItems(mediaItems)
-                searchSnapshot.value = snapshot
+                mediaSnapshot.value = snapshot
             } catch {
                 self.error.value = error
             }

@@ -32,13 +32,15 @@ final class SearchViewModelTests: XCTestCase {
         let mediaItems = [MediaItem]()
         localData.items = mediaItems
         let expectation = XCTestExpectation()
+        var actualValue: SearchViewModel.MediaSnapshot?
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(mediaItems.count, snapshotItems)
     }

@@ -59,8 +59,7 @@ class TrendingMediaViewController: UICollectionViewController {
     }
     
     private func presentError(_ string: String) {
-        guard let message = viewModel.getError() else { return }
-        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Oops!", message: string, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
     }
