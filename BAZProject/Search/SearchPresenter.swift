@@ -59,5 +59,4 @@ extension SearchPresenter: SearchInteractorOutputProtocol {
         view?.showViewDataMovies(movies: movies)
     }
     
-
 }

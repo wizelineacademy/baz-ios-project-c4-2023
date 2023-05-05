@@ -13,9 +13,7 @@ protocol SearchViewInputProtocol: AnyObject {
     func showViewDataMovies(movies: [ListMovieProtocol]?)
 }
 
-// MARK: - Presenter
-
-// MARK: - (View To Presenter)
+// MARK: - Presenter (View To Presenter)
 protocol SearchViewOutputProtocol {
     // MARK: - Properties
 	var view: SearchViewInputProtocol? { get }
@@ -35,14 +33,11 @@ protocol SearchInteractorOutputProtocol: AnyObject {
 }
 
 // MARK: - Interactor (Presenter To Interactor)
-protocol SearchInteractorInputProtocol {
+protocol SearchInteractorInputProtocol: MainInteractorProtocol {
     // MARK: - Properties
     var presenter: SearchInteractorOutputProtocol? { get }
     // MARK: - Functions
     func getMovieSearch(endPoint: Endpoint, completion: @escaping () -> Void)
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
-    func saveFavorite(index: Int, onSaved: @escaping () -> Void)
-    func deleteFavorite(index: Int, onSaved: @escaping () -> Void)
 }
 
 // MARK: - Router (Presenter To Router)

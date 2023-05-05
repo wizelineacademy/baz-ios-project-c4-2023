@@ -61,8 +61,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     // MARK: Functions
     @objc public func gotoSerch() {
-        let viewController = SearchRouter.createModule()
-        navigationController?.pushViewController(viewController, animated: true)
+        presenter?.showSearchModule()
     }
     
     private func addViews() {
@@ -134,6 +133,13 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let movie = moviesModel?[indexPath.row] {
+            let viewController = DetailRouter.createModule(withMovie: movie)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W
@@ -141,4 +147,5 @@ extension HomeViewController: HomeViewInputProtocol {
     func showViewDataMovies(movies: [ListMovieProtocol]?) {
         self.moviesModel = movies as? [MovieResult]
     }
+
 }

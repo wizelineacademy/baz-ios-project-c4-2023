@@ -43,4 +43,9 @@ extension HomeRouter: HomeRouterProtocol {
         }
     }
     
+    func showSearchModule() {
+        let viewController = SearchRouter.createModule()
+        self.view?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
