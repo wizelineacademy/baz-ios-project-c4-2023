@@ -13,6 +13,8 @@
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
 		4B27A0B82A0563F8003A24D6 /* RequestHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B72A0563F8003A24D6 /* RequestHandlerMock.swift */; };
 		4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B92A05707B003A24D6 /* UIImageTests.swift */; };
+		4B27A0BC2A057B00003A24D6 /* MediaCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0BB2A057B00003A24D6 /* MediaCollectionViewCellTests.swift */; };
+		4B27A0BE2A057E93003A24D6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0BD2A057E92003A24D6 /* Util.swift */; };
 		4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA18D29EF6AB7006BD0EC /* Box.swift */; };
 		4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */; };
 		4B2DA1A629F2089A006BD0EC /* TrendingRemoteDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA1A529F2089A006BD0EC /* TrendingRemoteDataMock.swift */; };
@@ -84,6 +86,8 @@
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B72A0563F8003A24D6 /* RequestHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerMock.swift; sourceTree = "<group>"; };
 		4B27A0B92A05707B003A24D6 /* UIImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageTests.swift; sourceTree = "<group>"; };
+		4B27A0BB2A057B00003A24D6 /* MediaCollectionViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCellTests.swift; sourceTree = "<group>"; };
+		4B27A0BD2A057E92003A24D6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4B2DA18D29EF6AB7006BD0EC /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4B2DA19029EF7E21006BD0EC /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
 		4B2DA1A529F2089A006BD0EC /* TrendingRemoteDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataMock.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				4B27A0AF2A055CC7003A24D6 /* CommonTests */,
 				4B3BBE8229D65856001F4E85 /* TestDoubles */,
 				4B27A0AE2A055C77003A24D6 /* TrendingModuleTests */,
+				4B27A0BB2A057B00003A24D6 /* MediaCollectionViewCellTests.swift */,
+				4B27A0BD2A057E92003A24D6 /* Util.swift */,
 			);
 			path = BAZProjectUnitTests;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */,
 				4B947E7629F247DB00C116E3 /* DataStubs.swift in Sources */,
 				4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */,
+				4B27A0BC2A057B00003A24D6 /* MediaCollectionViewCellTests.swift in Sources */,
 				4B2DA1A829F23E68006BD0EC /* TrendingMediaViewModelTests.swift in Sources */,
 				4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */,
 				4B7060022A03113E00CB142A /* SearchViewControllerTests.swift in Sources */,
@@ -500,6 +507,7 @@
 				4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
 				4B27A0B82A0563F8003A24D6 /* RequestHandlerMock.swift in Sources */,
+				4B27A0BE2A057E93003A24D6 /* Util.swift in Sources */,
 				4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */,
 				4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */,
 				4B37399C29D4C1450056041F /* RequestHandlerUnitTests.swift in Sources */,

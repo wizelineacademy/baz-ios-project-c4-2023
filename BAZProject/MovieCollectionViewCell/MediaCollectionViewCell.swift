@@ -9,10 +9,10 @@ import UIKit
 
 class MediaCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var subtitleLabel: UILabel!
-    @IBOutlet private weak var decorImageView: UIImageView!
+    @IBOutlet private(set) weak var imageView: UIImageView!
+    @IBOutlet private(set) weak var titleLabel: UILabel!
+    @IBOutlet private(set) weak var subtitleLabel: UILabel!
+    @IBOutlet private(set) weak var decorImageView: UIImageView!
     
     func setCell(with model: MediaCollectionViewCellModel) {
         imageView.image = UIImage(named: model.defaultImage ?? "")
@@ -32,7 +32,8 @@ class MediaCollectionViewCell: UICollectionViewCell {
                 decorImageView.tintColor = .systemGray
             }
         } else {
-            subtitleLabel.superview?.isHidden = true
+            subtitleLabel.isHidden = true
+            decorImageView.isHidden = true
         }
     }
     
