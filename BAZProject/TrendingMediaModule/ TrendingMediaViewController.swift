@@ -37,15 +37,16 @@ class TrendingMediaViewController: UICollectionViewController {
     }
     
     private func bindings() {
-        viewModel.bindSnapshot { [weak self] in
+        viewModel.bindSnapshot { [weak self] snapshot in
             self?.dispatchService.async {
-                guard let snapshot = self?.viewModel.getDataSnapshot() else { return }
                 self?.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
-        viewModel.bindError { [weak self] in
-            self?.dispatchService.async {
-                self?.presentError()
+        viewModel.bindError { [weak self] error in
+            if let error = error {
+                self?.dispatchService.async {
+                    self?.presentError(error.localizedDescription)
+                }
             }
         }
     }
@@ -57,7 +58,7 @@ class TrendingMediaViewController: UICollectionViewController {
         configureDataSource()
     }
     
-    private func presentError() {
+    private func presentError(_ string: String) {
         guard let message = viewModel.getError() else { return }
         let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))

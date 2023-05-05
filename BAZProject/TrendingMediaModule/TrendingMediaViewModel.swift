@@ -22,11 +22,11 @@ class TrendingMediaViewModel {
         self.setSnapshotWithDictionary(dctItems: self.formatMediaDataObject(dataObjects))
     }
     
-    func bindSnapshot(_ handler: @escaping () -> Void) {
+    func bindSnapshot(_ handler: @escaping (MediaCollectionSnapShot) -> Void) {
         mediaSnapshot.bind(handler)
     }
     
-    func bindError(_ handler: @escaping () -> Void) {
+    func bindError(_ handler: @escaping (Error?) -> Void) {
         error.bind(handler)
     }
     

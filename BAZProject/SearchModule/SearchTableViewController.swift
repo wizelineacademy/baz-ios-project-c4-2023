@@ -21,6 +21,14 @@ class SearchTableViewController: UITableViewController {
         searchController.searchBar.placeholder = "Search moves, tv series, people..."
         return searchController
     }()
+    
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
 
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -56,10 +64,19 @@ class SearchTableViewController: UITableViewController {
     }
     
     private func bindings() {
-        viewModel.bindSnapshot { [weak self] in
+        viewModel.bindLocalSnapshot { [weak self] snapshot in
             self?.dispatchService.async {
-                guard let snapshot = self?.viewModel.getSnapshot() else { return }
-                self?.dataSource?.apply(snapshot)
+                if !(self?.isFiltering ?? false) {
+                    self?.dataSource?.apply(snapshot)
+                }
+            }
+        }
+        
+        viewModel.bindSearchSnapshot { [weak self] snapshot in
+            self?.dispatchService.async {
+                if self?.isFiltering ?? false {
+                    self?.dataSource?.apply(snapshot)
+                }
             }
         }
     }
@@ -71,6 +88,11 @@ class SearchTableViewController: UITableViewController {
             return cell
         }
         
+    }
+    
+    func searchText(_ searchText: String) {
+        viewModel.searchMedia(keyword: searchText)
+        tableView.reloadData()
     }
     
     private func simpleHeader(title: String) -> UIView {

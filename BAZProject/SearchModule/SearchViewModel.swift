@@ -14,7 +14,8 @@ class SearchViewModel {
     
     private var remoteData: SearchRemoteData
     private var localData: SearchLocalData
-    private var snapshot = Box(MediaSnapshot())
+    private var localSnapshot = Box(MediaSnapshot())
+    private var searchSnapshot = Box(MediaSnapshot())
     private var error: Box<Error?> = Box(nil)
     
     init(remoteData: SearchRemoteData, localData: SearchLocalData) {
@@ -24,23 +25,30 @@ class SearchViewModel {
     
     func loadData() {
         guard let initialMedia = localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) else { return }
-        resetSnapshot(with: initialMedia, section: 0)
+        var snapshot = MediaSnapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(initialMedia)
+        localSnapshot.value = snapshot
     }
     
-    func bindSnapshot(_ bind: @escaping () -> Void) {
-        snapshot.bind(bind)
+    func bindLocalSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
+        localSnapshot.bind(bind)
     }
     
-    func getSnapshot() -> MediaSnapshot? {
-        return snapshot.value
+    func bindSearchSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
+        searchSnapshot.bind(bind)
     }
     
-    func bindError(_ bind: @escaping () -> Void) {
+    func getLocalSnapshot() -> MediaSnapshot {
+        return localSnapshot.value
+    }
+    
+    func getSearchSnapshot() -> MediaSnapshot {
+        return localSnapshot.value
+    }
+    
+    func bindError(_ bind: @escaping (Error?) -> Void) {
         error.bind(bind)
-    }
-    
-    func getError() -> String? {
-        return error.value?.localizedDescription
     }
     
     func getCellModel(for item: MediaItem) -> MediaTableViewCellModel {
@@ -69,7 +77,10 @@ class SearchViewModel {
             do {
                 guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
                 let mediaItems = formatMediaDataObject(mediaObjects)
-                resetSnapshot(with: mediaItems, section: 1)
+                var snapshot = MediaSnapshot()
+                snapshot.appendSections([0])
+                snapshot.appendItems(mediaItems)
+                searchSnapshot.value = snapshot
             } catch {
                 self.error.value = error
             }
@@ -78,12 +89,6 @@ class SearchViewModel {
     
     func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaItem] {
         return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
-    }
-    
-    func resetSnapshot(with items: [MediaItem], section: Int) {
-        snapshot.value.deleteAllItems()
-        snapshot.value.appendSections([section])
-        snapshot.value.appendItems(items)
     }
     
 }
