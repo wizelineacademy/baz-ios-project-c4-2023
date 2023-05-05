@@ -28,7 +28,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
     func test_GetMovies_MoviesCountShouldBeThree() {
         let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "movie"), MediaDataObject(title: "title3", mediaType: "movie")]
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 3
+        expectation.expectedFulfillmentCount = 2
         var actualValue: TrendingMediaViewModel.MediaCollectionSnapShot?
         
         remoteData.mediaItems = mediaItems
@@ -47,11 +47,11 @@ final class TrendingMediaViewModelTests: XCTestCase {
         let expectation = XCTestExpectation()
         var actualError: Error?
         
+        remoteData.error = error
         sut.bindError { (error) in
             actualError = error
             expectation.fulfill()
         }
-        remoteData.error = error
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
         
@@ -104,13 +104,14 @@ final class TrendingMediaViewModelTests: XCTestCase {
     func test_getSectionTitles() {
         let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "tv"), MediaDataObject(title: "title3", mediaType: "person")]
         let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
         
         remoteData.mediaItems = mediaItems
         sut.loadData()
         sut.bindSnapshot { _ in
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 0.1)
         let section1 = sut.getGroupTitle(for: MediaType.movie.order)
         let section2 = sut.getGroupTitle(for: MediaType.tv.order)
         let section3 = sut.getGroupTitle(for: MediaType.person.order)

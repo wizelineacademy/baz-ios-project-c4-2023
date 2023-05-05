@@ -60,7 +60,7 @@ final class SearchViewControllerTests: XCTestCase {
     func test_initialDataLoaded() {
         let media = [MediaItem(mediaType: .movie), MediaItem(mediaType: .tv), MediaItem(mediaType: .person)]
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 3
+        expectation.expectedFulfillmentCount = 1
         setSutWithLocalData(media: media, expectation: expectation)
         
         sut.loadViewIfNeeded()
@@ -70,15 +70,15 @@ final class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(items, media.count)
     }
     
-    func test_searchData_ShouldHaveThreeElements() {
+    func test_searchData_ShouldHaveTwoElements() {
         let media = [MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 4
+        expectation.expectedFulfillmentCount = 3
         setSutWithRemoteData(media: media, expectation: expectation)
         
         sut.loadViewIfNeeded()
         sut.searchController.searchBar.text = "Harry"
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 0.1)
         let items = sut.dataSource?.snapshot().numberOfItems
         
         XCTAssertEqual(items, media.count)

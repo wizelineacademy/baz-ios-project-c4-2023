@@ -72,11 +72,6 @@ class SearchTableViewController: UITableViewController {
         
     }
     
-    func searchText(_ searchText: String) {
-        viewModel.searchMedia(keyword: searchText)
-        tableView.reloadData()
-    }
-    
     private func simpleHeader(title: String) -> UIView {
         let view = UIView()
         view.backgroundColor = .systemBackground

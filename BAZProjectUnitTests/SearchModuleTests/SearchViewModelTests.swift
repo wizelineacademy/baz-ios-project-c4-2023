@@ -48,14 +48,16 @@ final class SearchViewModelTests: XCTestCase {
     func test_loadInitialDataFromLocal_SnapshotShouldBeZeroByNoMedia() {
         let mediaItems = [MediaItem(id: 123)]
         localData.items = mediaItems
+        var actualValue: SearchViewModel.MediaSnapshot?
         let expectation = XCTestExpectation()
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(0, snapshotItems)
     }
@@ -63,27 +65,31 @@ final class SearchViewModelTests: XCTestCase {
     func test_loadInitialDataFromLocal_SnapshotShouldBeTwo() {
         let mediaItems = [MediaItem(mediaType: .person), MediaItem(mediaType: .tv)]
         localData.items = mediaItems
+        var actualValue: SearchViewModel.MediaSnapshot?
         let expectation = XCTestExpectation()
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(mediaItems.count, snapshotItems)
     }
     
     func test_loadInitialDataFromLocal_ShouldNotUpdateSnapshot() {
         let expectation = XCTestExpectation()
+        var actualValue: SearchViewModel.MediaSnapshot?
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.loadData()
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(0, snapshotItems)
     }
@@ -147,15 +153,17 @@ final class SearchViewModelTests: XCTestCase {
     func test_searchMedia_ShouldUpdateSnapshot() {
         let mediaItems = [MediaDataObject(mediaType: "movie"), MediaDataObject(mediaType: "tv")]
         remoteData.mediaObject = mediaItems
+        var actualValue: SearchViewModel.MediaSnapshot?
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 4
+        expectation.expectedFulfillmentCount = 2
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.searchMedia(keyword: "No")
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(mediaItems.count, snapshotItems)
     }
@@ -164,14 +172,16 @@ final class SearchViewModelTests: XCTestCase {
         let mediaItems = [MediaDataObject(id: 1), MediaDataObject(id: 2)]
         remoteData.mediaObject = mediaItems
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 4
+        var actualValue: SearchViewModel.MediaSnapshot?
+        expectation.expectedFulfillmentCount = 1
         
-        sut.bindSnapshot {
+        sut.bindSnapshot { snapshot in
+            actualValue = snapshot
             expectation.fulfill()
         }
         sut.searchMedia(keyword: "No")
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getSnapshot()?.numberOfItems
+        let snapshotItems  = actualValue?.numberOfItems
         
         XCTAssertEqual(0, snapshotItems)
     }
@@ -179,16 +189,17 @@ final class SearchViewModelTests: XCTestCase {
     func test_searchMedia_ErrorShouldUpdateBox() {
         remoteData.error = NSError(domain: "", code: -666)
         let expectation = XCTestExpectation()
+        var actualValue: Error?
         expectation.expectedFulfillmentCount = 2
         
-        sut.bindError {
+        sut.bindError { error in
+            actualValue = error
             expectation.fulfill()
         }
         sut.searchMedia(keyword: "No")
         wait(for: [expectation], timeout: 0.1)
-        let snapshotItems  = sut.getError()
         
-        XCTAssertNotNil(snapshotItems)
+        XCTAssertNotNil(actualValue)
     }
 
 }
