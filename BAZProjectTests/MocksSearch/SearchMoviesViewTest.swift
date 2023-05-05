@@ -83,8 +83,8 @@ final class SearchMoviesViewTest: XCTestCase {
     
     // Creation Mock array 'MoviewData'
     func getMovies() -> [MovieData] {
-        let popularMovies: [MoviesViewModels] = [MoviesViewModels(title: "Spiderman", poster_path: "/path/Spiderman.jpg"),
-                                                 MoviesViewModels(title: "Batman", poster_path: "/path/Batman.jpg")]
+        let popularMovies: [MoviesViewModels] = [MoviesViewModels(title: "Spiderman", poster_path: "/path/Spiderman.jpg", original_title: "Spiderman", id: 2, overview: "pelicula Spiderman"),
+                                                 MoviesViewModels(title: "Batman", poster_path: "/path/Batman.jpg", original_title: "Batman", id: 2, overview: "pelicula Batman")]
         return popularMovies
     }
 
@@ -106,9 +106,9 @@ class SearchTableViewDataSourceMock: NSObject, UITableViewDataSource {
         }
         let infoCell                = movies[indexPath.row]
         cell.descriptionMovie.text  = infoCell.title
-        infoCell.getImage(){ imagen in
+        /*infoCell.getImage(){ imagen in
             cell.imgMovie.image         = imagen
-        }
+        }*/
         return cell
     }
     
