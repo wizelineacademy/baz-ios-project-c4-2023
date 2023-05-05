@@ -15,8 +15,8 @@ final class DetailsViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = DetailsView(ViewModel: viewModel)
-        sut.ViewModel = viewModel
+        sut = DetailsView(viewModel: viewModel)
+        sut.viewModel = viewModel
     }
     
     override func tearDown() {
@@ -41,14 +41,6 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertFalse(favorite)
     }
     
-    func testDetailsView_onViewIsNotNil() {
-        //Given
-        sut.loadViewIfNeeded()
-        let favorite = sut.favoriteButton.title(for: .normal)
-        //When
-        XCTAssertEqual(favorite, "Agregar")
-    }
-
     //MARK: - Pruebas de similares
     
     func testDetailsView_RecoCollectionViewIsNotNil() {

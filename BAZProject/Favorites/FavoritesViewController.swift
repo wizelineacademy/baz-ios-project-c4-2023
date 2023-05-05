@@ -19,7 +19,6 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = StringsTitles.favorites.rawValue
         viewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
         viewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
@@ -30,6 +29,7 @@ class FavoritesViewController: UIViewController {
     
     ///Funcion que setea la vista
     func setView() {
+        self.title = StringsTitles.favorites.rawValue
         tableView.delegate = self
         tableView.dataSource = self
         registerTableViewCells()

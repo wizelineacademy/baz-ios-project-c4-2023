@@ -16,7 +16,7 @@ final class FavoriteViewControllerTests: XCTestCase {
         super.setUp()
         sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as? FavoritesViewController
         model = FavoritesViewModelMock()
-        sut.ViewModel = model
+        sut.viewModel = model
     }
 
     override func tearDown() {

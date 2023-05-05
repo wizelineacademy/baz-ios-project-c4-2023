@@ -17,7 +17,7 @@ final class MovieAPITests: XCTestCase {
         let expectation = XCTestExpectation()
         var actualError: Error?
         session.error = expectedError
-        sut.getMovies(category: .Trending) { _, error in
+        sut.getMovies(category: .trending) { _, error in
             actualError = error
             expectation.fulfill()
         }
