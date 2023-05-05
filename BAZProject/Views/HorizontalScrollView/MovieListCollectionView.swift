@@ -54,7 +54,6 @@ class MovieListCollectionView: UIView {
 
 extension MovieListCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
         delegate?.movieListCollectionView(self, didSelectItemAt: IndexPath(row: indexPath.row, section: self.section))
     }
 }
@@ -74,6 +73,5 @@ extension MovieListCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
     }
-    
     
 }

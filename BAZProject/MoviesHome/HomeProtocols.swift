@@ -17,7 +17,8 @@ protocol HomeViewProtocol: AnyObject {
     
     func setNavigationTitle(for strTitle: String?)
     func updateSectionsData(_ collectionList: [MovieListCollectionView])
-    func showMoviesFound(_ movies: [MovieFoundInfo]?)
+    func reloadSearchResults()
+    func showEmptyResults()
 }
 
 //MARK: - Interactor
@@ -41,6 +42,7 @@ protocol HomeInteractorInputProtocol: AnyObject {
     func fetchMovies(for section: Int)
     func getMovie(for indexPath: IndexPath) -> MovieInfo?
     
+    func resetSearch()
     func searchMovies(for text: String)
     func getMovieFoundCount() -> Int?
     func getMovieFound(for index: Int) -> MovieFoundInfo?
@@ -56,10 +58,12 @@ protocol HomePresenterProtocol: AnyObject {
     
     func getData()
     func fetchMovies()
-    func numberOfRows() -> Int
-    func getSearchMovie(for indexPath: IndexPath) -> MovieInfo?
-    func fetchMovieDetails(for indexPath: IndexPath)
+    func resetSearch()
+    func numberOfRowsForSearch() -> Int?
+    func getMovieSearch(for indexPath: IndexPath) -> MovieFoundInfo?
     func fetchMovies(for text: String?)
+    func goToMovieDetails(for indexPath: IndexPath)
+    func goToFavoriteMovies()
 }
 
 //MARK: - Router
@@ -68,4 +72,5 @@ protocol HomePresenterProtocol: AnyObject {
 protocol HomeRouterProtocol: AnyObject {
     static func createHomeModule(withEntity entity: HomeEntity) -> UIViewController
     func goToMovieDetailsView(_ movie: MovieInfo, parent: HomeViewProtocol?)
+    func goToFavoriteMoviesView(parent: HomeViewProtocol?)
 }

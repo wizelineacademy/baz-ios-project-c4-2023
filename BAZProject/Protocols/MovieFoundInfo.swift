@@ -10,4 +10,5 @@ import Foundation
 protocol MovieFoundInfo {
     var id: Int { get }
     var title: String { get }
+    var posterPath: String? { get }
 }

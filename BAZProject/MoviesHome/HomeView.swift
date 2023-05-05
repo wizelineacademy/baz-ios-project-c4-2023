@@ -17,11 +17,7 @@ class HomeView: UIViewController {
     
     private lazy var resultVC = UITableViewController()
     private lazy var searchController = UISearchController(searchResultsController: resultVC)
-    private var arrMoviesFound: [MovieFoundInfo]? {
-        didSet {
-            self.resultVC.tableView.reloadData()
-        }
-    }
+    private var isEmptyResults: Bool = false
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -33,6 +29,7 @@ class HomeView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.addRightButton(title: "My List", action: #selector(self.showFavoriteMoviesView(_:)))
     }
     
     private func configView() {
@@ -40,15 +37,14 @@ class HomeView: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
+        searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Busqueda"
-        self.navigationItem.searchController = searchController
         searchController.showsSearchResultsController = true
+        searchController.searchBar.placeholder = "Search"
+        self.navigationItem.searchController = searchController
         
         resultVC.tableView.delegate = self
         resultVC.tableView.dataSource = self
-        resultVC.tableView.register(UINib(nibName: "MovieListCell", bundle: nil), forCellReuseIdentifier: MovieListCell.reusableIdentifier)
     }
     
     private func configNavbarTitle(_ strTitle: String?) {
@@ -60,6 +56,10 @@ class HomeView: UIViewController {
     
     private func addSectionView(_ section: MovieListCollectionView) {
         mainStackContainer.addArrangedSubview(section)
+    }
+    
+    @objc private func showFavoriteMoviesView(_ sender: Any) {
+        presenter?.goToFavoriteMovies()
     }
 }
 
@@ -74,26 +74,27 @@ extension HomeView: HomeViewProtocol {
         }
     }
     
-    func showMoviesFound(_ movies: [MovieFoundInfo]?) {
-        self.arrMoviesFound = movies
+    func reloadSearchResults() {
+        self.resultVC.tableView.reloadData()
+    }
+    
+    func showEmptyResults() {
+        self.isEmptyResults = true
+        self.resultVC.tableView.reloadData()
     }
 }
-
 
 // MARK: - TableView's DataSource
 extension HomeView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrMoviesFound?.count ?? 0
+        isEmptyResults ? 1 : presenter?.numberOfRowsForSearch() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieListCell.reusableIdentifier) as? MovieListCell {
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        return cell
     }
 }
 
@@ -101,17 +102,17 @@ extension HomeView: UITableViewDataSource {
 extension HomeView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        guard let movieInfo = presenter?.getSearchMovie(for: indexPath) else { return }
-        guard let movieInfo = arrMoviesFound?[safe: indexPath.row] else { return }
-        (cell as? MovieListCell)?.setData(with: movieInfo)
+        var config = cell.defaultContentConfiguration()
+        if let movieInfo = presenter?.getMovieSearch(for: indexPath) {
+            config.text = movieInfo.title
+        } else {
+            config.text = "Results not found"
+        }
+        cell.contentConfiguration = config
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let movieInfo = presenter?.getMovie(at: indexPath.row) else { return }
-//        let vc = DetailsViewController(movie: movieInfo)
-//        let navController = UINavigationController(rootViewController: vc)
-//        navController.modalPresentationStyle = .formSheet
-//        self.present(navController, animated: true)
+        presenter?.goToMovieDetails(for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -119,19 +120,34 @@ extension HomeView: UITableViewDelegate {
     }
 }
 
-
 extension HomeView: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        presenter?.fetchMovies(for: searchBar.text)
+        guard let searchText: String = searchBar.text else { return }
+        presenter?.fetchMovies(for: searchText)
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        isEmptyResults = false
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            isEmptyResults = false
+            presenter?.resetSearch()
+        } else {
+            presenter?.fetchMovies(for: searchText)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter?.resetSearch()
     }
 }
 
-extension HomeView: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-//        guard let searchBarText = searchController.searchBar.text else { return }
-        // TODO: Call search service with keyword
-        self.resultVC.view.backgroundColor = .white
-//        self.resultVC.tableView.reloadData()
+extension HomeView: UISearchControllerDelegate {
+    func willPresentSearchController(_ searchController: UISearchController) {
+        resultVC.view.backgroundColor = .white
+        resultVC.tableView.reloadData()
     }
-    
 }

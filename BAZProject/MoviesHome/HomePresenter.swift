@@ -6,7 +6,6 @@
 //  
 //
 
-import Foundation
 import UIKit
 
 class HomePresenter  {
@@ -17,6 +16,7 @@ class HomePresenter  {
     var router: HomeRouterProtocol?
     
     var arrScrollingSections = [MovieListCollectionView]()
+    var isNewSearch: Bool = false
 }
 
 extension HomePresenter: HomePresenterProtocol {
@@ -38,21 +38,39 @@ extension HomePresenter: HomePresenterProtocol {
         }
     }
     
-    func numberOfRows() -> Int {
-        interactor?.getMovieFoundCount() ?? 0
+    func numberOfRowsForSearch() -> Int? {
+        interactor?.getMovieFoundCount()
     }
     
-    func getSearchMovie(for indexPath: IndexPath) -> MovieInfo? {
-        return nil
+    func resetSearch() {
+        isNewSearch = true
+        interactor?.resetSearch()
     }
     
-    func fetchMovieDetails(for indexPath: IndexPath) {
+    func getMovieSearch(for indexPath: IndexPath) -> MovieFoundInfo? {
+        interactor?.getMovieFound(for: indexPath.row)
+    }
+    
+    func goToMovieDetails(for indexPath: IndexPath) {
+        if let movieFound = interactor?.getMovieFound(for: indexPath.row) {
+            let movie: MovieInfo = MovieFoundAdapter(movieFound)
+            router?.goToMovieDetailsView(movie, parent: self.view)
+        }
+    }
+    
+    func goToFavoriteMovies() {
+        router?.goToFavoriteMoviesView(parent: self.view)
     }
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     func updateMoviesFound(_ movies: [MovieFoundInfo]?) {
-        self.view?.showMoviesFound(movies)
+        if (movies?.count ?? 0 > 0) || (isNewSearch) {
+            self.view?.reloadSearchResults()
+        } else {
+            self.view?.showEmptyResults()
+        }
+        isNewSearch = false
     }
     
     func updateMovies(_ movies: [MovieInfo]?, in section: Int) {
@@ -81,4 +99,3 @@ extension HomePresenter: MovieListCollectionViewDelegate {
         }
     }
 }
-

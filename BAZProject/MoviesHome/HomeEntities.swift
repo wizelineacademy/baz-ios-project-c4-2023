@@ -10,6 +10,6 @@ import Foundation
 
 struct HomeEntity {
     
-    var strNavBarTitle : String = "Movie App"
+    var strNavBarTitle: String = "Movie App"
     
 }

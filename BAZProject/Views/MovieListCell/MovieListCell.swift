@@ -12,18 +12,19 @@ class MovieListCell: UITableViewCell, ReusableCell {
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var imgCover: UIImageView!
     
-    private var movieInfo: MovieFoundInfo? {
-        didSet {
-            self.updateView()
+    func setData(with movieInfo: MovieInfo) {
+        lblTitle.text = movieInfo.title.firstCapitalized
+        imgCover.showActivityIndicator()
+        guard let posterPath = movieInfo.posterPath else { return }
+        ResourcesManager().downloadImage(from: posterPath) {[weak self] image in
+            if let image = image {
+                self?.imgCover.hideActivityIndicator() 
+                self?.imgCover.image = image
+            }
         }
     }
     
-    func setData(with movieInfo: MovieFoundInfo) {
-        self.movieInfo = movieInfo
-    }
-    
-    func updateView() {
-        guard let movieInfo = self.movieInfo else { return }
-        lblTitle.text = movieInfo.title.firstCapitalized
+    func showEmptyView() {
+        lblTitle.text = "Sin coincidencias"
     }
 }

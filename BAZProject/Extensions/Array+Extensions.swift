@@ -8,6 +8,9 @@
 import Foundation
 
 extension Array {
+    /**
+     Return elemento of array only if exist.
+     */
     subscript (safe index: Int) -> Element? {
         return (index < count && index >= 0) ? self[index] : nil
     }

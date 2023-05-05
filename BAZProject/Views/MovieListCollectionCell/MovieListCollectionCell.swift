@@ -10,20 +10,20 @@ import UIKit
 class MovieListCollectionCell: UICollectionViewCell, ReusableCell {
     
     @IBOutlet private weak var lblTitle: UILabel!
-    @IBOutlet private weak var imgCover: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet private weak var imgCover: UIImageView! {
+        didSet {
+            self.imgCover.image = UIImage(named: "poster")
+        }
     }
     
     public func updateView(with movieInfo: MovieInfo) {
         lblTitle.text = movieInfo.title
-        ResourcesManager().downloadImage(from: movieInfo.posterPath) { image in
+        imgCover.showActivityIndicator()
+        guard let posterPath = movieInfo.posterPath else { return }
+        ResourcesManager().downloadImage(from: posterPath) {[weak self] image in
             if let image = image {
-                self.imgCover.image = image
-            } else {
-                self.imgCover.image = UIImage(named: "poster")
+                self?.imgCover.hideActivityIndicator()
+                self?.imgCover.image = image
             }
         }
     }
