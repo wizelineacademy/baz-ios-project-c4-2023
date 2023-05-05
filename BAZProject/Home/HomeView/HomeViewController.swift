@@ -72,19 +72,19 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == trendingCollectionView {
-            guard let numberOfItems = presenter?.getNumberOfTrendingItems() else { return 0 }
+            guard let numberOfItems = presenter?.getNumberOfItems(presenter?.trendingMovies ?? []) else { return 0 }
             return numberOfItems
         } else if collectionView == nowPlayingCollectionView {
-            guard let numberOfItems = presenter?.getNumberOfNowPlayingItems() else { return 0 }
+            guard let numberOfItems = presenter?.getNumberOfItems(presenter?.nowPlayingMovies ?? []) else { return 0 }
             return numberOfItems
         } else if collectionView == popularCollectionView {
-            guard let numberOfItems = presenter?.getNumberOfPopularItems() else { return 0 }
+            guard let numberOfItems = presenter?.getNumberOfItems(presenter?.popularMovies ?? []) else { return 0 }
             return numberOfItems
         } else if collectionView == topRatedCollectionView {
-            guard let numberOfItems = presenter?.getNumberOfTopRatedItems() else { return 0 }
+            guard let numberOfItems = presenter?.getNumberOfItems(presenter?.topRatedMovies ?? []) else { return 0 }
             return numberOfItems
         } else if collectionView == upcomingCollectionView {
-            guard let numberOfItems = presenter?.getNumberOfUpcomingItems() else { return 0 }
+            guard let numberOfItems = presenter?.getNumberOfItems(presenter?.upcomingMovies ?? []) else { return 0 }
             return numberOfItems
         } else {
             return 0
@@ -96,30 +96,30 @@ extension HomeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeViewCellId", for: indexPath) as? MovieAppCollectionViewCell else { return UICollectionViewCell() }
         
         if collectionView == trendingCollectionView {
-            if let releaseDate = presenter?.getTrendingCellText(index: indexPath) {
-                cell.cellLabel.text = "\(releaseDate.prefix(4))"
+            if let movieDate = presenter?.getCellText(presenter?.trendingMovies ?? [], index: indexPath) {
+                cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
-            cell.cellImageView.image = presenter?.getTrendingCellImage(index: indexPath)
+            cell.cellImageView.image = presenter?.getCellImage(presenter?.trendingMovies ?? [], index: indexPath)
         } else if collectionView == nowPlayingCollectionView {
-            if let releaseDate = presenter?.getNowPlayingCellText(index: indexPath) {
-                cell.cellLabel.text = "\(releaseDate.prefix(4))"
+            if let movieDate = presenter?.getCellText(presenter?.nowPlayingMovies ?? [], index: indexPath) {
+                cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
-            cell.cellImageView.image = presenter?.getNowPlayingCellImage(index: indexPath)
+            cell.cellImageView.image = presenter?.getCellImage(presenter?.nowPlayingMovies ?? [], index: indexPath)
         } else if collectionView == popularCollectionView {
-            if let releaseDate = presenter?.getPopularCellText(index: indexPath) {
-                cell.cellLabel.text = "\(releaseDate.prefix(4))"
+            if let movieDate = presenter?.getCellText(presenter?.popularMovies ?? [], index: indexPath) {
+                cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
-            cell.cellImageView.image = presenter?.getPopularCellImage(index: indexPath)
+            cell.cellImageView.image = presenter?.getCellImage(presenter?.popularMovies ?? [], index: indexPath)
         } else if collectionView == topRatedCollectionView {
-            if let releaseDate = presenter?.getTopRatedCellText(index: indexPath) {
-                cell.cellLabel.text = "\(releaseDate.prefix(4))"
+            if let movieDate = presenter?.getCellText(presenter?.topRatedMovies ?? [], index: indexPath) {
+                cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
-            cell.cellImageView.image = presenter?.getTopRatedCellImage(index: indexPath)
+            cell.cellImageView.image = presenter?.getCellImage(presenter?.topRatedMovies ?? [], index: indexPath)
         } else if collectionView == upcomingCollectionView {
-            if let releaseDate = presenter?.getUpcomingCellText(index: indexPath) {
-                cell.cellLabel.text = "\(releaseDate.prefix(4))"
+            if let movieDate = presenter?.getCellText(presenter?.upcomingMovies ?? [], index: indexPath) {
+                cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
-            cell.cellImageView.image = presenter?.getUpcomingCellImage(index: indexPath)
+            cell.cellImageView.image = presenter?.getCellImage(presenter?.upcomingMovies ?? [], index: indexPath)
         }
         return cell
     }
@@ -137,5 +137,3 @@ extension HomeViewController: PresenterToViewProtocol {
         }
     }
 }
-
-

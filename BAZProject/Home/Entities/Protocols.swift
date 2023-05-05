@@ -11,31 +11,24 @@ import UIKit
 protocol Viewable {
     func getTitle() -> String
     func getImagePath() -> String
-    func getReleaseData() -> String
+    func getReleaseDate() -> String
 }
 
 protocol ViewToPresenterProtocol {
     var interactor: PresenterToInteractor? { get set }
+    var trendingMovies: [Viewable] { get set }
+    var nowPlayingMovies: [Viewable] { get set }
+    var popularMovies: [Viewable] { get set }
+    var topRatedMovies: [Viewable] { get set }
+    var upcomingMovies: [Viewable] { get set }
     
     func getMoviesData()
     
-    func getNumberOfTrendingItems() -> Int
-    func getNumberOfNowPlayingItems() -> Int
-    func getNumberOfPopularItems() -> Int
-    func getNumberOfTopRatedItems() -> Int
-    func getNumberOfUpcomingItems() -> Int
+    func getNumberOfItems(_ items: [Viewable]) -> Int
     
-    func getTrendingCellText(index: IndexPath) -> String
-    func getNowPlayingCellText(index: IndexPath) -> String
-    func getPopularCellText(index: IndexPath) -> String
-    func getTopRatedCellText(index: IndexPath) -> String
-    func getUpcomingCellText(index: IndexPath) -> String
+    func getCellText(_ items: [Viewable],index: IndexPath) -> String
     
-    func getTrendingCellImage(index: IndexPath) -> UIImage
-    func getNowPlayingCellImage(index: IndexPath) -> UIImage
-    func getPopularCellImage(index: IndexPath) -> UIImage
-    func getTopRatedCellImage(index: IndexPath) -> UIImage
-    func getUpcomingCellImage(index: IndexPath) -> UIImage
+    func getCellImage(_ items: [Viewable], index: IndexPath) -> UIImage
 }
 
 protocol PresenterToViewProtocol {

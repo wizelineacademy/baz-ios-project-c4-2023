@@ -46,104 +46,21 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
         interactor?.getMoviesData()
     }
     
-    func getNumberOfTrendingItems() -> Int {
-        return trendingMovies.count
-    }
-    func getNumberOfNowPlayingItems() -> Int {
-        return nowPlayingMovies.count
-    }
-    func getNumberOfPopularItems() -> Int {
-        return popularMovies.count
-    }
-    func getNumberOfTopRatedItems() -> Int {
-        return topRatedMovies.count
-    }
-    func getNumberOfUpcomingItems() -> Int {
-        return upcomingMovies.count
+    func getNumberOfItems(_ items: [Viewable]) -> Int {
+        return items.count
     }
     
-    func getTrendingCellText(index: IndexPath) -> String {
-        return trendingMovies[index.row].getReleaseData()
-    }
-    func getNowPlayingCellText(index: IndexPath) -> String {
-        return nowPlayingMovies[index.row].getReleaseData()
-    }
-    func getPopularCellText(index: IndexPath) -> String {
-        return popularMovies[index.row].getReleaseData()
-    }
-    func getTopRatedCellText(index: IndexPath) -> String {
-        return topRatedMovies[index.row].getReleaseData()
-    }
-    func getUpcomingCellText(index: IndexPath) -> String {
-        return upcomingMovies[index.row].getReleaseData()
+    func getCellText(_ items: [Viewable], index: IndexPath) -> String {
+        return items[index.row].getReleaseDate()
     }
     
-    func getTrendingCellImage(index: IndexPath) -> UIImage {
+    func getCellImage(_ items: [Viewable], index: IndexPath) -> UIImage {
         var returnedImage = UIImage()
         var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(trendingMovies[index.row].getImagePath())
+        basePath.append(items[index.row].getImagePath())
+        
         guard let url = URL(string: basePath) else { return UIImage() }
-        if let cacheImage = loadFromCache(imageAt: url ) {
-            return cacheImage
-        } else {
-            loadImage(url){ image in
-                returnedImage = image!
-            }
-            view?.reloadView()
-            return returnedImage
-        }
-    }
-    func getNowPlayingCellImage(index: IndexPath) -> UIImage {
-        var returnedImage = UIImage()
-        var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(nowPlayingMovies[index.row].getImagePath())
-        guard let url = URL(string: basePath) else { return UIImage() }
-        if let cacheImage = loadFromCache(imageAt: url ) {
-            return cacheImage
-        } else {
-            loadImage(url){ image in
-                returnedImage = image!
-            }
-            view?.reloadView()
-            return returnedImage
-        }
-    }
-    func getPopularCellImage(index: IndexPath) -> UIImage {
-        var returnedImage = UIImage()
-        var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(popularMovies[index.row].getImagePath())
-        guard let url = URL(string: basePath) else { return UIImage() }
-        if let cacheImage = loadFromCache(imageAt: url ) {
-            return cacheImage
-        } else {
-            loadImage(url){ image in
-                returnedImage = image!
-            }
-            view?.reloadView()
-            return returnedImage
-        }
-    }
-    func getTopRatedCellImage(index: IndexPath) -> UIImage {
-        var returnedImage = UIImage()
-        var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(topRatedMovies[index.row].getImagePath())
-        guard let url = URL(string: basePath) else { return UIImage() }
-        if let cacheImage = loadFromCache(imageAt: url ) {
-            return cacheImage
-        } else {
-            loadImage(url){ image in
-                returnedImage = image!
-            }
-            view?.reloadView()
-            return returnedImage
-        }
-    }
-    func getUpcomingCellImage(index: IndexPath) -> UIImage {
-        var returnedImage = UIImage()
-        var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(upcomingMovies[index.row].getImagePath())
-        guard let url = URL(string: basePath) else { return UIImage() }
-        if let cacheImage = loadFromCache(imageAt: url ) {
+        if let cacheImage = loadFromCache(imageAt: url) {
             return cacheImage
         } else {
             loadImage(url){ image in

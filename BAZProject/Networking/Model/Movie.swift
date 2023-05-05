@@ -29,8 +29,3 @@ struct MovieApiResponse: Decodable {
         movies =  try container.decode([Movie].self, forKey: .movies)
     }
 }
-
-//extension MovieApiResponse: Decodable {
-//    
-//    
-//}

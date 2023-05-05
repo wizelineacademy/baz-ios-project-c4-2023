@@ -28,37 +28,7 @@ struct NetworkManager {
     static let MovieApiKey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
     private let router = Router<MovieApi>()
     
-    /// Function to get the trending movies from TheMovieDB using "page" as only argument
-    // TODO: Hacer el getTrendingMoviespara que reciba generica el tipo a castear
-//    func getTrendingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-//        router.request(.trending(page: page)) { data, response, error in
-//            
-//            if error != nil {
-//                completion(nil, "Please check your network connection.")
-//            }
-//            
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.handleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data else {
-//                        completion(nil, NetworkResponse.noData.rawValue)
-//                        return
-//                    }
-//                    do {
-//                        let apiResponse = try self.decodeResponse(data: responseData) as MovieApiResponse
-//                                            completion(apiResponse.movies, nil)
-//                    } catch {
-//                        print(error)
-//                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-//                    }
-//                case .failure(let networkFailureError):
-//                    completion(nil, networkFailureError)
-//                }
-//            }
-//        }
-//    }
-    
+    /// Function to get movies from TheMovieDB using enpoints and a generic parameter
     func getMovies<T: Decodable>(endpoint: MovieApi, completion: @escaping (_ result: T?, _ error: String?) -> Void){
         router.request(endpoint) { data, response, error in
             
@@ -88,7 +58,6 @@ struct NetworkManager {
         }
     }
     
-    
     /// Function to decode response
     func decodeResponse<T: Decodable >(data: Data) throws -> T {
         let decoder = JSONDecoder()
@@ -97,133 +66,6 @@ struct NetworkManager {
             return decodedData
         } catch {
             throw error
-        }
-    }
-    
-    /// Function to get now playing movies from TheMovieDB using "page" as only argument
-    // TODO: Pasar el enum com parámetro y tener una sola función en la capa de network y las necesarias en el interactor
-    func getNowPlayingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-        router.request(.nowPlaying(page: page)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection.")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
-                    } catch {
-                        print(error)
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    /// Function to get popular movies from TheMovieDB using "page" as only argument
-    func getPopularMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-        router.request(.pupular(page: page)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection.")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    /// Function to get top rated movies from TheMovieDB using "page" as only argument
-    func getTopRatedMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-        router.request(.topRated(page: page)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection.")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    /// Function to get upcoming movies from TheMovieDB using "page" as only argument
-    func getUpcomingMovies(page: Int, completion: @escaping (_ movie: [Movie]?, _ error: String?) -> ()){
-        router.request(.upcoming(page: page)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection.")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        print("############## TENEMOS RESPUESTA DEL SERVICIO, LOS DATOS SE VEN COMO: ##############")
-                        print(responseData)
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        print(jsonData)
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
-                        print("############## TERMINA LA RESPUESTA DEL SERVICIO. ##############")
-                    } catch {
-                        print(error)
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
         }
     }
     

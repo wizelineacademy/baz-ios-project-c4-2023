@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // TODO: (SDA) Erase this class
 ///Model that stores the response from TheMobieDB
 class MovieApiResult: Decodable {
@@ -22,16 +21,6 @@ struct Movie {
     var overview: String
     var posterPath: String?
     var releaseDate: String
-
-    ///Initializer to create an instance from Decoder
-//    required init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        id = try container.decodeIfPresent(Int.self, forKey: .id) ?? 0
-//        originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle) ?? ""
-//        overview = try container.decodeIfPresent(String.self, forKey: .overview) ?? ""
-//        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
-//        releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate) ?? ""
-//    }
 }
 
 extension Movie: Decodable {
@@ -65,7 +54,7 @@ extension Movie: Viewable {
         return path
     }
     
-    func getReleaseData() -> String {
+    func getReleaseDate() -> String {
         return releaseDate
     }
 }
