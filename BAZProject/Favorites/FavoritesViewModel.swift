@@ -13,6 +13,7 @@ class FavoritesViewModel: FavoriteListProtocol {
     
     var favoriteMovies: Box<[InfoMoviesProtocol]>?
     let userDefaults = UserDefaults.standard
+    
     ///Funcion que setea el bind para el box 
     func bindMovie(_ listener: @escaping () -> Void) {
         favoriteMovies?.listener = listener
@@ -22,18 +23,22 @@ class FavoritesViewModel: FavoriteListProtocol {
     func getMovieCount() -> Int {
         favoriteMovies?.value.count ?? 0
     }
+    
     ///regresa el campo titulo de la pelicula
     func getTitle(index: Int) -> String? {
         favoriteMovies?.value[index].title
     }
+    
     ///Regresa el path para la consulta de la imagen
     func getPathImage(index: Int) -> String? {
         favoriteMovies?.value[index].poster_path
     }
+    
     ///Regresa la informacion de la pelicula
     func getAllInfoMoview(index: Int) -> InfoMoviesProtocol? {
         favoriteMovies?.value[index]
     }
+    
     //Funcion para poder obtener info de UserDefaults 
     func getFavoritesMovies(key: String) {
         do {

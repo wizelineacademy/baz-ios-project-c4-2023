@@ -19,6 +19,8 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         viewModel.getFavoritesMovies(key: DefaultsKey.favorites.rawValue)
         viewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
@@ -54,13 +56,14 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
+        
         cell.setInfo(viewModel, indexPath: indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        Constant.favoritesCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

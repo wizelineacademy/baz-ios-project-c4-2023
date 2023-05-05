@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+final class SearchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageVire: UIImageView!
     @IBOutlet weak var labelText: UILabel!

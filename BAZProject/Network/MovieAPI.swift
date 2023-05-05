@@ -15,6 +15,7 @@ class MovieAPI {
     }
     ///Función generica que consulta las  de peliculas de acuerdo a la categoria
     func getMovies(category: CategoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
+        
         var urlStruct =  ""
         switch category {
          case .trending:
@@ -36,6 +37,7 @@ class MovieAPI {
         }
         
         guard let url = URL(string: urlStruct) else { return }
+        
         service.get(url) { (result: Result<Movies , Error>) in
             switch result {
             case .success(let apiResults): completion(apiResults.results ?? [], nil)
@@ -48,7 +50,7 @@ class MovieAPI {
     func getCast(idMovie: Int,  completion: @escaping ([CastInfoProtocol], Error?) -> Void) {
         let urlStruct = "\(CategoriesFilter.similar.url)\(idMovie)/credits?api_key=\(urls.apikey.rawValue)&language=es"
         guard let url = URL(string: urlStruct) else { return }
-        print("- \(url)")
+        
         service.get(url) { (result: Result<Casts, Error>) in
             switch result {
             case .success(let apiResults): completion(apiResults.cast ?? [], nil)

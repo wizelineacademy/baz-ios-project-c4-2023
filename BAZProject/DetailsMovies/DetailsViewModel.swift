@@ -25,10 +25,12 @@ final class DetailsViewModel: DetailsProtocol {
         self.castMovie = Box(value: [Cast()])
         self.movieAPI = remote
     }
+    
     ///regresa el campo titulo de la pelicula
     func getTitle() -> String? {
         movieDetail.value.title
     }
+    
     ///Crear bind que llama al listener
     func bindMovie(_ listener: @escaping () -> Void) {
         movieDetail.listener = listener
@@ -36,18 +38,22 @@ final class DetailsViewModel: DetailsProtocol {
         similarMovies.listener = listener
         recommendationMovies.listener = listener
     }
+    
     /// Regresa el path para la consulta de la imagen
     func getPathImage() -> String? {
         movieDetail.value.poster_path
     }
+    
     ///regresa la reseña de la  peliculas
     func getOverview() -> String? {
         movieDetail.value.overview
     }
+    
     ///regresa el rankinf de la  peliculas
     func getRating() -> String? {
         "\(movieDetail.value.vote_average ?? 0.0)"
     }
+    
     /// Salva la pelicula en UserDefauls de favoritos
     func saveUserDefautls(key: String) {
         do {
@@ -124,14 +130,17 @@ extension DetailsViewModel {
     func getRecommendationMoviesTitle(index: Int) -> String? {
         recommendationMovies.value[index].title
     }
+    
     ///Regresa el conteo del arreglo de peliculas
     func getRecommendationMoviesCount() -> Int? {
         recommendationMovies.value.count
     }
+    
     /// Regresa el path para la consulta de la imagen
     func getRecommendationPath(index: Int) -> String? {
         recommendationMovies.value[index].poster_path
     }
+    
     /// Regresa la informacion de una pelucula
     func getAllIRecoMovie(index: Int) -> InfoMoviesProtocol {
         recommendationMovies.value[index]
@@ -153,14 +162,17 @@ extension DetailsViewModel {
     func getSimilarMoviesTitle(index: Int) -> String? {
         similarMovies.value[index].title
     }
+    
     ///Regresa el conteo del arreglo de peliculas
     func getSimilarMoviesCount() -> Int? {
         similarMovies.value.count
     }
+    
     /// Regresa el path para la consulta de la imagen
     func getSimilarPath(index: Int) -> String? {
         similarMovies.value[index].poster_path
     }
+    
     /// Regresa la informacion de una pelucula
     func getAllSimilarMovie(index: Int) -> InfoMoviesProtocol {
         similarMovies.value[index]
@@ -181,10 +193,12 @@ extension DetailsViewModel {
     func getCastMovieTitle(index: Int) -> String? {
          castMovie.value[index].name
     }
+    
     ///Regresa el conteo del arreglo de peliculas
     func getCastMovieMoviesCount() -> Int? {
         castMovie.value.count
     }
+    
     ///Regresa el personaje que interpreto el actor
     func getCastMovieMoviesCharacter(index: Int) -> String? {
         castMovie.value[index].character

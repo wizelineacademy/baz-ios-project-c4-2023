@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// enumerador para menejar las ulrs del proyecto
+/// Enumerador para menejar las ulrs del proyecto
 enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
@@ -18,7 +18,25 @@ enum Icon {
     static let heartFill: UIImage = UIImage(systemName: "heart.fill") ?? UIImage()
 }
 
-/// enumerador para menejar de los tipos y sus urls
+/// Enumerador para menejar las datos de la aplicacion
+enum Constant {
+    static let favoritesCellHeight = 150.0
+}
+
+/// Enumerador para UserDefauls
+enum DefaultsKey: String {
+    case favorites = "favoritesMovies"
+    case favoriteTests = "favoriteTests"
+}
+
+/// Enumerador para Manejo de titulos
+enum StringsTitles: String {
+    case favorites = "Favoritos"
+    case search = "buscar"
+    case treding = "Trending"
+}
+
+/// Enumerador para menejar de los tipos y sus urls
 enum CategoriesFilter: String {
     case trending = "Trending"
     case nowPlaying = "Now Playing"
@@ -50,17 +68,3 @@ enum CategoriesFilter: String {
         }
     }
 }
-
-//enum para UserDefauls
-enum DefaultsKey: String {
-    case favorites = "favoritesMovies"
-    case favoriteTests = "favoriteTests"
-}
-
-//enum para Manejo de titulos
-enum StringsTitles: String {
-    case favorites = "Favoritos"
-    case search = "buscar"
-    case treding = "Trending"
-}
-
