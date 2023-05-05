@@ -10,11 +10,11 @@ import XCTest
 
 final class SearchViewControllerTests: XCTestCase {
 
-    var sut: SearchView?
+    var sut: SearchViewController?
 
     override func setUp() {
         super.setUp()
-        sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as? SearchView
+        sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as? SearchViewController
     }
 
     override func tearDown() {

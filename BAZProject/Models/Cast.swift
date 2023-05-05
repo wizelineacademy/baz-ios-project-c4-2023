@@ -7,7 +7,8 @@
 
 import Foundation
 
-//MARK: - Protocolos para Actores
+// MARK: - Protocolos para Actores
+
 protocol CastInfoProtocol {
     var id: Int? { get set }
     var name: String? { get set }

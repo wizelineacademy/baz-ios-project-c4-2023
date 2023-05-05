@@ -11,7 +11,8 @@ protocol SearchListProtocol {
     
     var moviesSearched: Box<[InfoMoviesProtocol]> { get set } ///Varible donde se almacenara informacion de las peliculas
 
-    //MARK: - Funciones para la vista
+    // MARK: - Funciones para la vista
+    
     func bindMovies(_ listener: @escaping () -> Void) ///Crear bind que llama al listener
     func getMovieCount() -> Int ///regresa el contador del arreglo de peliculas
     func getTitle(index: Int) -> String? ///regresa el campo titulo de la pelicula

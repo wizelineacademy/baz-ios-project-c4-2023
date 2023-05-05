@@ -23,7 +23,7 @@ final class DetailsViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Pruebas de pantalla principal
+    // MARK: - Pruebas de pantalla principal
     
     func testDetailsModel_MovieExist() {
         //Given
@@ -124,7 +124,8 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, savedData.value.count)
     }
     
-    //MARK: - Funciones auxiliares
+    // MARK: - Funciones auxiliares
+    
     func getUDMovies(key: String) -> Box<[Movie]> {
         var movieArray = Box(value: [Movie()])
         do {
@@ -138,7 +139,7 @@ final class DetailsViewModelTests: XCTestCase {
         return movieArray
     }
     
-    //MARK: - Pruebas de Seccion de recomendaciones
+    // MARK: - Pruebas de Seccion de recomendaciones
 
     func testDetailsViewModel_getRecommendationMovies() {
         //Given
@@ -184,7 +185,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertNotNil(allInfo)
     }
     
-    //MARK: - Pruebas de Seccion de Similares
+    // MARK: - Pruebas de Seccion de Similares
     
     func testDetailsViewModel_getSimilarMovies() {
         //Given
@@ -230,7 +231,7 @@ final class DetailsViewModelTests: XCTestCase {
         XCTAssertNotNil(allInfo)
     }
     
-    //MARK: - Pruebas de Seccion de Reparto
+    // MARK: - Pruebas de Seccion de Reparto
 
     func testDetailsViewModel_getCastMovie() {
         //Given

@@ -9,7 +9,7 @@ import Foundation
 
 final class DetailsViewModel: DetailsProtocol {
 
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     var movieDetail: Box<InfoMoviesProtocol>
     var recommendationMovies: Box<[InfoMoviesProtocol]>
@@ -58,6 +58,7 @@ final class DetailsViewModel: DetailsProtocol {
     func saveUserDefautls(key: String) {
         do {
             guard let movie = movieDetail.value as? Movie else { return }
+            
             if let data = UserDefaults.standard.data(forKey: key) {
                 var UDData = try JSONDecoder().decode([Movie].self, from: data)
                 UDData.append(movie)
@@ -78,6 +79,7 @@ final class DetailsViewModel: DetailsProtocol {
     func deteleUserDefautls(key: String) {
         do {
             guard let movie = movieDetail.value as? Movie else { return }
+            
             if let data = UserDefaults.standard.data(forKey: key) {
                 var UDData = try JSONDecoder().decode([Movie].self, from: data)
                 
@@ -100,7 +102,9 @@ final class DetailsViewModel: DetailsProtocol {
         var fav = false
         do {
             guard let movie = movieDetail.value as? Movie else { return  false }
+            
             guard let data = UserDefaults.standard.data(forKey: DefaultsKey.favorites.rawValue) else { return false }
+            
             let UDData = try JSONDecoder().decode([Movie].self, from: data)
             UDData.forEach { Movie in
                 if movie.id == Movie.id{
@@ -113,9 +117,9 @@ final class DetailsViewModel: DetailsProtocol {
         return fav
     }
 }
-//MARK: - Extensiones
+// MARK: - Extensiones
 
-//MARK: - recommendation movies services
+// MARK: - recommendation movies services
 
 extension DetailsViewModel {
     
@@ -147,7 +151,7 @@ extension DetailsViewModel {
     }
 }
 
-//MARK: - Similar movies services
+// MARK: - Similar movies services
 
 extension DetailsViewModel {
     
@@ -179,7 +183,7 @@ extension DetailsViewModel {
     }
 }
 
-//MARK: - Cast movie services
+// MARK: - Cast movie services
 
 extension DetailsViewModel {
     //Consulta el servicio para obtener los datos

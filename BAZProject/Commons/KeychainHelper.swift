@@ -30,7 +30,7 @@ final class KeychainHelper {
         return (result as? Data)
     }
     
-    //MARK: - Genericos de keyChain
+    // MARK: - Genericos de keyChain
     ///Funcion generica  guardar una estructura
     func genericSave<T>(_ item: T, service: String, account: String) where T : Codable {
         do {
@@ -44,10 +44,8 @@ final class KeychainHelper {
     ///Funcion generica  leer una estructura
     func genericRead<T>(service: String, account: String, type: T.Type) -> T? where T : Codable {
         // Read item data from keychain
-        guard let data = read(service: service, account: account) else {
-            return nil
-        }
-        // Decode JSON data to object
+        guard let data = read(service: service, account: account) else { return nil } // Decode JSON data to object
+        
         do {
             let item = try JSONDecoder().decode(type, from: data)
             return item

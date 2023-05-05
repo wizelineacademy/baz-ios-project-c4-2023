@@ -54,7 +54,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Trending Movies" id="8E9-i5-K0G">
-                        <barButtonItem key="rightBarButtonItem" title="Filtrar" image="film" catalog="system" id="dFR-aZ-Xle">
+                        <barButtonItem key="rightBarButtonItem" title="Filtrar" image="film.fill" catalog="system" id="dFR-aZ-Xle">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="FilterButton:" destination="DF1-ZG-ayL" id="9Ht-bl-ef3"/>
@@ -103,7 +103,7 @@
     </scenes>
     <resources>
         <image name="chart.line.uptrend.xyaxis.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="film" catalog="system" width="128" height="93"/>
+        <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="pencil.tip.crop.circle.badge.arrow.forward" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">

@@ -15,7 +15,8 @@ class SearchViewModel: SearchListProtocol {
         self.service = service
     }
     
-    //MARK: - Funciones para la vista
+    // MARK: - Funciones para la vista
+    
     ///Varible donde se almacenara informacion de las peliculas
     var moviesSearched = Box(value: [InfoMoviesProtocol]())
     ///Crear bind que llama al listener
@@ -43,11 +44,12 @@ class SearchViewModel: SearchListProtocol {
         moviesSearched.value[index]
     }
     
-    //MARK: - Consulta servicio buscar peliculas
+    // MARK: - Consulta servicio buscar peliculas
     
     ///se consulta el servicio para lista de peliculas
     func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping (Error?) -> Void) {
         guard let url = URL(string: "\(CategoriesFilter.search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }
+        
         service.get(url) { [weak self] (result: Result<Movies, Error>) in //service result 
             switch result {
             case .success(let apiResults): self?.moviesSearched.value = apiResults.results ?? []

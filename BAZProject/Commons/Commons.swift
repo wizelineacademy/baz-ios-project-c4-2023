@@ -16,6 +16,8 @@ enum urls: String {
 enum Icon {
     static let heart: UIImage = UIImage(systemName: "heart") ?? UIImage()
     static let heartFill: UIImage = UIImage(systemName: "heart.fill") ?? UIImage()
+    static let magnify: UIImage = UIImage(systemName: "magnifyingglass.circle") ?? UIImage()
+    static let magnifyFill: UIImage = UIImage(systemName: "magnifyingglass.circle.fill") ?? UIImage()
 }
 
 /// Enumerador para menejar las datos de la aplicacion
@@ -34,6 +36,13 @@ enum StringsTitles: String {
     case favorites = "Favoritos"
     case search = "buscar"
     case treding = "Trending"
+}
+
+/// Enumerador para titulos de la app
+enum Titles {
+    static let favorites = "Favoritos"
+    static let search = "buscar"
+    static let treding = "Trending"
 }
 
 /// Enumerador para menejar de los tipos y sus urls

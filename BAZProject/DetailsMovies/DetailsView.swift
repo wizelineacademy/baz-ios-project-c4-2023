@@ -88,7 +88,8 @@ final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-//MARK: - Extensiones
+// MARK: - Extensiones
+
 extension DetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SearchView: UIViewController {
+class SearchViewController: UIViewController {
     
-    //MARK: - OUtlets y variables
+    // MARK: - OUtlets y variables
     
     var viewModel: SearchViewModel = SearchViewModel()// se crea instancia al ViewModel de MVVM
     @IBOutlet weak var tableView: UITableView!
@@ -36,6 +36,7 @@ class SearchView: UIViewController {
         viewModel.searchMovie("") { [weak self] (error) in
             DispatchQueue.main.async {
                 guard let error = error else { return }
+                
                 let alert = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: false)
@@ -49,9 +50,9 @@ class SearchView: UIViewController {
     }
 }
 
-//MARK: - Extensions TableView
+// MARK: - Extensions TableView
 
-extension SearchView: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getMovieCount()
     }
@@ -73,13 +74,14 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//MARK: - Extensions Search bar
+// MARK: - Extensions Search bar
 
-extension SearchView: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
         viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in
             DispatchQueue.main.async {
                 guard let error = error else { return }
+                
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: false)

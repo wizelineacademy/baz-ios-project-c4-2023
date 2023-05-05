@@ -9,7 +9,7 @@ import Foundation
 
 class FavoritesViewModel: FavoriteListProtocol {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     var favoriteMovies: Box<[InfoMoviesProtocol]>?
     let userDefaults = UserDefaults.standard

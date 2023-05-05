@@ -10,7 +10,8 @@ final class TrendingViewController: UITableViewController {
 
     var trendingModel: TrendingListProtocol = TrendingViewModel() // protocolo para para poder realizar Testing
     
-    //MARK: -Oulets
+    // MARK: -Oulets
+    
     @IBOutlet weak var FilterButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -36,12 +37,13 @@ final class TrendingViewController: UITableViewController {
     
     ///Configuracion para cuando se cargue la vista
     func setView() {
-        self.tabBarController?.viewControllers?[1].title = StringsTitles.search.rawValue
-        self.tabBarController?.viewControllers?[2].title = StringsTitles.favorites.rawValue
-        self.tabBarController?.tabBar.items![1].image = UIImage(systemName: "magnifyingglass")
-        self.tabBarController?.tabBar.items![1].selectedImage = UIImage(systemName: "magnifyingglass")
-        self.tabBarController?.tabBar.items![2].image = UIImage(systemName: "heart")
-        self.tabBarController?.tabBar.items![2].selectedImage = UIImage(systemName: "heart.fill")
+        self.tabBarController?.viewControllers?[1].title = Titles.search
+        self.tabBarController?.viewControllers?[2].title = Titles.favorites
+        self.tabBarController?.tabBar.items![1].image = Icon.magnify
+        self.tabBarController?.tabBar.items![1].selectedImage = Icon.magnifyFill
+        self.tabBarController?.tabBar.items![2].image = Icon.heart
+        self.tabBarController?.tabBar.items![2].selectedImage = Icon.heartFill
+        
         trendingModel.bindMovies { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -56,7 +58,8 @@ final class TrendingViewController: UITableViewController {
         self.tableView.register(textFieldCell, forCellReuseIdentifier: "cell")
     }
     
-    //MARK: - Buttons
+    // MARK: - Buttons
+    
     ///Alerta para el filtrado de peliculas
     @IBAction func FilterButton(_ sender: UIBarButtonItem) {
         // Alerta para poder realizar la busqueda por categoria

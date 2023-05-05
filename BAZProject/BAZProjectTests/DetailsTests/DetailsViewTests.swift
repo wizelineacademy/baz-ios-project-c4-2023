@@ -24,7 +24,7 @@ final class DetailsViewTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Pruebas de pantalla principal
+    // MARK: - Pruebas de pantalla principal
     
     func testDetailsView_TitleIsEqualToViewModel() {
         //Given
@@ -41,7 +41,7 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertFalse(favorite)
     }
     
-    //MARK: - Pruebas de similares
+    // MARK: - Pruebas de similares
     
     func testDetailsView_RecoCollectionViewIsNotNil() {
         //Given
@@ -51,7 +51,7 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView(sut.similarCV, numberOfItemsInSection: 0))
     }
     
-    //MARK: - Pruebas de Collections Views
+    // MARK: - Pruebas de Collections Views
     
     func testDetailsView_SimilarCollectionViewIsNotNil() {
         //Given
@@ -61,7 +61,7 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView(sut.recomendationsCV, numberOfItemsInSection: 0))
     }
     
-    //MARK: - Pruebas Cast
+    // MARK: - Pruebas Cast
     func testDetailsView_CastCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
@@ -70,7 +70,7 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertNotNil(sut.collectionView(sut.actorsCV, numberOfItemsInSection: 0))
     }
     
-  //MARK: - Pruebas de mapas
+  // MARK: - Pruebas de mapas
     
     func testDetailsView_CinemaExist() {
         //Given

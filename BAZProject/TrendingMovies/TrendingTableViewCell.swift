@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrendingTableViewCell: UITableViewCell {
+final class TrendingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
