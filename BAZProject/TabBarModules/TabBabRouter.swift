@@ -38,7 +38,7 @@ class MainTabBarRouter {
         switch endpoint {
         case .trendingMovies:
             title = "Trending"
-            image = UIImage(systemName: "trophy")
+            image = UIImage(systemName: "newspaper")
             tag = 0
             
         case .recentsMovies:
@@ -48,12 +48,12 @@ class MainTabBarRouter {
             
         case .topRatedMovies:
             title = "TopRated"
-            image = UIImage(systemName: "square")
+            image = UIImage(systemName: "graduationcap.fill")
             tag = 2
             
         case .upcomingMovies:
             title = "Upcoming"
-            image = UIImage(systemName: "book")
+            image = UIImage(systemName: "infinity.circle")
             tag = 3
         
         default:

@@ -13,27 +13,21 @@ class MovieDetailInteractor {
     
     var remoteDatamanager: MovieDetailRemoteDataManagerInputProtocol?
     var data: MovieDetail?
-    let saveData: SaveMovies = SaveMovies()
+    let saveData: MovieFavorites = MovieFavorites()
 }
 
 extension MovieDetailInteractor: MovieDetailInteractorInputProtocol {
     
-    
-    func deleteToFavoriteMovie() {
-        guard let idMovie = data?.id else { return }
-        saveData.delete(title: .favoriteMovies, idMovie: idMovie)
+    func saveFavoriteMovie(of movieId: Int?) {
+        guard let idMovie = movieId else { return }
+        saveData.favorite(idMovie)
     }
     
-    func saveFavoriteMovie() {
-        do {
-            guard let idMovie = data?.id else { return }
-            if !saveData.isSave(title: .favoriteMovies, idMovie: idMovie) {
-                try saveData.save(idMovie, title: .favoriteMovies)
-            }
-        } catch {
-            debugPrint("Error")
-        }
+    func deleteToFavoriteMovie(of movieId: Int?) {
+        guard let idMovie = movieId else { return}
+        saveData.delete(idMovie)
     }
+    
     
     func fetchMovieDetail(of movieId: Int?) {
         if let movieId = movieId {

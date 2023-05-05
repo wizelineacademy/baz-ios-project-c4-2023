@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import XCTest
-
 @testable import BAZProject
 
 final class SearchInteractorTests: XCTest {
@@ -38,7 +36,5 @@ final class SearchInteractorTests: XCTest {
         let expect = true
         sut.fetchSearchResults(with: "Q")
         XCTAssertEqual(expect, remoteData.calls.contains(.fetchSearchResults))
-        
     }
-    
 }

@@ -24,12 +24,22 @@ enum ImageBarButtonItem {
 class MovieDetailViewController: UIViewController {
     var presenter: MovieDetailPresenterProtocol?
     
+    let favoriteButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Agregar Favoritos", for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     @IBOutlet weak var MovieImage: UIImageView!
     @IBOutlet weak var lblMovieTitle: UILabel!
     @IBOutlet weak var lblMovieOverview: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeUIBarButtonItem()
         isFavorite()
         self.presenter?.notifyViewLoaded()
         // Do any additional setup after loading the view.
@@ -39,55 +49,35 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController: MovieDetailViewProtocol {
     
     private func isFavorite() {
-        if IsSaveMovie() {
-            makeUIBarButtonItem(image: .heartFill)
-
-        } else {
-            makeUIBarButtonItem(image: .heart)
-        }
+        let imageButton: String = IsSaveMovie() ? "heart.fill" : "heart"
+        favoriteButton.setImage(UIImage(systemName: imageButton), for: .normal)
     }
     
-    func makeUIBarButtonItem(image: ImageBarButtonItem) {
-        //let rightButton = UIBarButtonItem(image: UIImage(systemName: image.nameImage), style: .plain, target: self, action: #selector(addFavorite))
-        //self.navigationItem.rightBarButtonItem  = rightButton
-        let bttnfavorites = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        bttnfavorites.setTitleColor(.blue, for: .normal)
-        bttnfavorites.setTitle("Agregar Favoritos", for: .normal)
-        bttnfavorites.setImage(UIImage(systemName: image.nameImage), for: .normal)
-        bttnfavorites.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
-        self.view.addSubview(bttnfavorites)
-        
-        bttnfavorites.translatesAutoresizingMaskIntoConstraints = false
-        
+    func makeUIBarButtonItem() {
+        favoriteButton.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
+        self.view.addSubview(favoriteButton)
         NSLayoutConstraint.activate([
-            bttnfavorites.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bttnfavorites.topAnchor.constraint(equalTo: view.topAnchor, constant: 550)
+            favoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            favoriteButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 550)
         ])
-        
     }
     
     @objc func addFavorite() {
         if IsSaveMovie() {
             presenter?.deleteToFavoriteMovie()
-            makeUIBarButtonItem(image: .heart)
-            /*
-            let alert=UIAlertController(title: "Guardado", message: "Movie saved", preferredStyle: .alert)
-            let okbutton = UIAlertAction(title: "Ok", style: .default)
-            alert.addAction(okbutton)
-            present(alert, animated: true, completion: nil)
-            */
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
             presenter?.saveFavoriteMovie()
-            makeUIBarButtonItem(image: .heartFill)
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
     }
     
     private func IsSaveMovie() -> Bool {
-        if let idMovie = presenter?.movieId, !(presenter?.interactor?.saveData.isSave(title: .favoriteMovies, idMovie: idMovie) ?? true) {
+        guard let movieId = presenter?.movieId,
+              let isSavedMovieId = presenter?.interactor?.saveData.isSave( movieId: movieId) else {
             return false
-        } else {
-            return true
         }
+        return isSavedMovieId
     }
     
     func reloadData() {

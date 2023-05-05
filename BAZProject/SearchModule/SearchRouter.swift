@@ -32,3 +32,9 @@ class SearchRouter: SearchRouterProtocol {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
 }
+
+extension SearchRouter {
+    func goToMovieDetail(of movieID: Int, from view: UIViewController) {
+        view.present(MovieDetailRouter.createMovieDetailModule(of: movieID), animated: false)
+    }
+}

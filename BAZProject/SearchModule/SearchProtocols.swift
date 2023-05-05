@@ -15,6 +15,7 @@ protocol SearchViewProtocol: AnyObject {
 
 protocol SearchRouterProtocol: AnyObject {
     static func createSearchModule() -> UIViewController
+    func goToMovieDetail(of movieID: Int, from view: UIViewController)
 }
 
 protocol SearchPresenterProtocol: AnyObject {
@@ -24,6 +25,7 @@ protocol SearchPresenterProtocol: AnyObject {
     var searchResults: [SearchResult]? { get set }
     
     func searchMovies(with query: String?)
+    func goToMovieDetail(of index: IndexPath, from view: UIViewController)
 }
 
 protocol SearchInteractorOutputProtocol: AnyObject {

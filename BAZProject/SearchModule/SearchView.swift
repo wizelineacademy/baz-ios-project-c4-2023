@@ -53,7 +53,7 @@ extension SearchView {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Crear vista detalle movies
+        self.presenter?.goToMovieDetail(of: indexPath,from: self)
     }
 }
 
