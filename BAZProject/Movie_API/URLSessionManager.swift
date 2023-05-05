@@ -16,7 +16,7 @@ class URLSessionManager {
         else {
             return completion(nil, NSError(domain: "URLSessionManager.URLError", code: -1) )
         }
-//        print("URL:", url.absoluteString)
+//        print("URL Request:", url.absoluteString)
         DispatchQueue.global().async {
             URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
                 if let error = error {
@@ -24,7 +24,7 @@ class URLSessionManager {
                 }
                 guard
                     let data = data,
-//                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                     let response = try? JSONDecoder().decode(Response.self, from: data)
                 else {
                     DispatchQueue.main.async(execute: {
@@ -32,14 +32,12 @@ class URLSessionManager {
                     })
                     return
                 }
-//                print(json)
+//                print("JSON Response:", json)
                 DispatchQueue.main.async(execute: {
-                    completion(response, nil)
+                    completion(response, error as? NSError)
                 })
             }.resume()
         }
     }
     
 }
-
-

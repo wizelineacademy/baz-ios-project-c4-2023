@@ -33,6 +33,9 @@ class HomeRouter: HomeRouterProtocol {
         MovieDetailsModule.init(baseController: parent as? UIViewController, entity: MovieDetailsEntity(movie: movie)).present()
     }
     
+    func goToFavoriteMoviesView(parent: HomeViewProtocol?) {
+        FavoriteMoviesModule.init(baseController: parent as? UIViewController).present()
+    }
 }
 
 

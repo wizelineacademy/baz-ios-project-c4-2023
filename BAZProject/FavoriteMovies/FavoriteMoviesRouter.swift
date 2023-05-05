@@ -1,15 +1,14 @@
 //
-//  MovieDetailsRouter.swift
+//  FavoriteMoviesRouter.swift
 //  BAZProject
 //
-//  Created by Carlos Garcia on 21/04/23.
-//  
+//  Created by Carlos Garcia on 04/05/23.
 //
 
 import Foundation
 import UIKit
 
-class MovieDetailsRouter: MovieDetailsRouterProtocol {
+class FavoriteMoviesRouter: FavoriteMoviesRouterProtocol {
     
     private weak var parentController: UIViewController?
     
@@ -17,15 +16,15 @@ class MovieDetailsRouter: MovieDetailsRouterProtocol {
         self.parentController = parentController
     }
     
-    func present(presenter: MovieDetailsPresenterProtocol) {
-        let controller = MovieDetailsView(presenter: presenter)
+    func present(presenter: FavoriteMoviesPresenterProtocol) {
+        let controller = FavoriteMoviesView(presenter: presenter)
         presenter.attach(view: controller)
         if let navigation = parentController?.navigationController {
             navigation.pushViewController(controller, animated: true)
         }
     }
     
-    func goToMovieDetailsView(_ movie: MovieInfo, parent: MovieDetailsViewProtocol?) {
+    func goToMovieDetailsView(_ movie: MovieInfo, parent: FavoriteMoviesViewProtocol?) {
         MovieDetailsModule.init(baseController: parent as? UIViewController, entity: MovieDetailsEntity(movie: movie)).present()
     }
     
@@ -34,18 +33,16 @@ class MovieDetailsRouter: MovieDetailsRouterProtocol {
     }
 }
 
+public final class FavoriteMoviesModule {
+    private var presenter: FavoriteMoviesPresenterProtocol
 
-public final class MovieDetailsModule {
-    private var presenter: MovieDetailsPresenterProtocol
-
-    init(baseController: UIViewController?, entity: MovieDetailsEntity) {
-        let router = MovieDetailsRouter(parentController: baseController)
-        let interactor = MovieDetailsInteractor(
+    init(baseController: UIViewController?, entity: FavoriteMoviesEntity = FavoriteMoviesEntity()) {
+        let router = FavoriteMoviesRouter(parentController: baseController)
+        let interactor = FavoriteMoviesInteractor(
             entity: entity,
-            movieAPI: MovieAPI(),
             storageManager: StorageManager(storage: FileManager.default)
         )
-        self.presenter = MovieDetailsPresenter(
+        self.presenter = FavoriteMoviesPresenter(
             interactor: interactor,
             router: router
         )

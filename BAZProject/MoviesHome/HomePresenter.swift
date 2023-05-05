@@ -6,7 +6,6 @@
 //  
 //
 
-import Foundation
 import UIKit
 
 class HomePresenter  {
@@ -38,21 +37,34 @@ extension HomePresenter: HomePresenterProtocol {
         }
     }
     
-    func numberOfRows() -> Int {
-        interactor?.getMovieFoundCount() ?? 0
+    func numberOfRowsForSearch() -> Int? {
+        interactor?.getMovieFoundCount()
     }
     
-    func getSearchMovie(for indexPath: IndexPath) -> MovieInfo? {
-        return nil
+    func getMovieSearch(for indexPath: IndexPath) -> MovieFoundInfo? {
+        interactor?.getMovieFound(for: indexPath.row)
     }
     
-    func fetchMovieDetails(for indexPath: IndexPath) {
+    func goToMovieDetails(for indexPath: IndexPath) {
+        if let movieFound = interactor?.getMovieFound(for: indexPath.row) {
+            let movie = MovieFoundAdapter(movieFound)
+            router?.goToMovieDetailsView(movie, parent: self.view)
+        }
+    }
+    
+    func goToFavoriteMovies() {
+        router?.goToFavoriteMoviesView(parent: self.view)
     }
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     func updateMoviesFound(_ movies: [MovieFoundInfo]?) {
-        self.view?.showMoviesFound(movies)
+        if let movies = movies, movies.count > 0 {
+            self.view?.reloadSearchResults()
+        } else {
+            self.view?.showEmptyResults()
+        }
+        
     }
     
     func updateMovies(_ movies: [MovieInfo]?, in section: Int) {

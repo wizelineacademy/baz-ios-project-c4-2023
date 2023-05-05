@@ -91,6 +91,19 @@ final class BAZProjectTests: XCTestCase {
         }
     }
     
+    func testMovieDetails_getMovieNotNil_showMovieInfo() throws {
+        let movieID = 361743
+        api.searchMovieDetails(for: movieID) { movie in
+            XCTAssertNotNil(movie)
+        }
+    }
+    
+    func testMovieReviews_getMovieReviewsGreaterThanZero_showReviews() throws {
+        let movieID = 361743
+        api.searchMovieReviews(for: movieID) { credits, error  in
+            XCTAssertGreaterThan(credits?.count ?? 0, 0)
+        }
+    }
     
 
 //    func testPerformanceExample() throws {

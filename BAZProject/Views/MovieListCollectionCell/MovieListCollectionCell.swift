@@ -10,7 +10,11 @@ import UIKit
 class MovieListCollectionCell: UICollectionViewCell, ReusableCell {
     
     @IBOutlet private weak var lblTitle: UILabel!
-    @IBOutlet private weak var imgCover: UIImageView!
+    @IBOutlet private weak var imgCover: UIImageView! {
+        didSet {
+            self.imgCover.image = UIImage(named: "poster")
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,11 +23,10 @@ class MovieListCollectionCell: UICollectionViewCell, ReusableCell {
     
     public func updateView(with movieInfo: MovieInfo) {
         lblTitle.text = movieInfo.title
-        ResourcesManager().downloadImage(from: movieInfo.posterPath) { image in
+        guard let posterPath = movieInfo.posterPath else { return }
+        ResourcesManager().downloadImage(from: posterPath) { image in
             if let image = image {
                 self.imgCover.image = image
-            } else {
-                self.imgCover.image = UIImage(named: "poster")
             }
         }
     }
