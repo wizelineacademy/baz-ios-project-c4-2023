@@ -13,13 +13,12 @@ class SearchTableViewController: UITableViewController {
     var dataSource: SearchViewModel.MediaTableDataSource?
     var dispatchService: DispatchProtocol = DispatchQueue.main
     
-    lazy var searchController: UISearchController = {
-        let searchController = UISearchController()
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search moves, tv series, people..."
-        return searchController
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "Search moves, tv series, people..."
+        return searchBar
     }()
 
     init(viewModel: SearchViewModel) {
@@ -48,7 +47,7 @@ class SearchTableViewController: UITableViewController {
     }
     
     private func setSearchController() {
-        navigationItem.searchController = searchController
+        navigationItem.titleView = searchBar
     }
     
     private func loadData() {
@@ -89,18 +88,16 @@ class SearchTableViewController: UITableViewController {
     }
 }
 
-extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        dispatchService.asyncAfter(deadline: .now() + 0.8) {
-            if let searchText = searchController.searchBar.text, searchText != "" {
-                self.viewModel.searchMedia(keyword: searchText)
-            }
-        }
-    }
+extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text, searchText != "" {
+            self.viewModel.searchMedia(keyword: searchText)
+        }
     }
     
 }
