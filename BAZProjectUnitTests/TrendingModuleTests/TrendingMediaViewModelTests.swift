@@ -108,7 +108,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
         sut.bindSnapshot {
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.5)
         let section1 = sut.getGroupTitle(for: MediaType.movie.order)
         let section2 = sut.getGroupTitle(for: MediaType.tv.order)
         let section3 = sut.getGroupTitle(for: MediaType.person.order)

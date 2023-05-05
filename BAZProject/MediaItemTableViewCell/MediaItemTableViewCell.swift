@@ -9,11 +9,11 @@ import UIKit
 
 class MediaTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var posterImageView: UIImageView!
-    @IBOutlet private weak var decorImageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var subtitleLabel: UILabel!
-    @IBOutlet private weak var ratingLabel: UILabel!
+    @IBOutlet private(set) weak var posterImageView: UIImageView!
+    @IBOutlet private(set) weak var decorImageView: UIImageView!
+    @IBOutlet private(set) weak var titleLabel: UILabel!
+    @IBOutlet private(set) weak var subtitleLabel: UILabel!
+    @IBOutlet private(set) weak var ratingLabel: UILabel!
     
     func setCell(with model: MediaTableViewCellModel) {
         posterImageView.image = UIImage(named: model.defaultImage ?? "")
@@ -35,7 +35,8 @@ class MediaTableViewCell: UITableViewCell {
                 decorImageView.tintColor = .systemGray
             }
         } else {
-            ratingLabel.superview?.isHidden = true
+            ratingLabel.isHidden = true
+            decorImageView.isHidden = true
         }
     }
     
