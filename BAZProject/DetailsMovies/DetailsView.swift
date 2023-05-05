@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class DetailsView: UIViewController, CLLocationManagerDelegate {
+final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Oulets
     
@@ -36,6 +36,7 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setView()
         setmap()
         viewModel.bindMovie { [weak self] in
@@ -80,14 +81,14 @@ class DetailsView: UIViewController, CLLocationManagerDelegate {
     //MARK: - Buttonsç
     
     @IBAction func favoriteButton(_ sender: UIButton) {
-        viewModel.isMovieFavorite() ? viewModel.deteleUserDefautls(key: UserDKeys.favorites.rawValue) : viewModel.saveUserDefautls(key: UserDKeys.favorites.rawValue)
+        viewModel.isMovieFavorite() ? viewModel.deteleUserDefautls(key: DefaultsKey.favorites.rawValue) : viewModel.saveUserDefautls(key: DefaultsKey.favorites.rawValue)
         setFavoriteButton()
     }
 }
 
 //MARK: - Extensiones
 
-extension DetailsView: UICollectionViewDataSource {
+extension DetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -123,7 +124,7 @@ extension DetailsView: UICollectionViewDataSource {
 
 //MARK: - Funciones de mapas
 
-extension DetailsView {
+extension DetailsViewController {
     ///Configiracion del mapa para setear localicacion
     func setmap() {
         locationManager.requestAlwaysAuthorization()

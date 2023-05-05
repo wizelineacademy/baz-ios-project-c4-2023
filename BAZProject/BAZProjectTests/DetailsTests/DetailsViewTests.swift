@@ -10,12 +10,12 @@ import XCTest
 
 final class DetailsViewTests: XCTestCase {
     
-    var sut: DetailsView!
+    var sut: DetailsViewController!
     var viewModel = DetailsViewModel(movieDetail: Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0))
     
     override func setUp() {
         super.setUp()
-        sut = DetailsView(viewModel: viewModel)
+        sut = DetailsViewController(viewModel: viewModel)
         sut.viewModel = viewModel
     }
     

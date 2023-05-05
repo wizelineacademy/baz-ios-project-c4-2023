@@ -103,7 +103,7 @@ extension TrendingViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewmodel = DetailsViewModel(movieDetail: trendingModel.getAllInfoMoview(index: indexPath.row))
-        let vc = DetailsView(viewModel: viewmodel)
+        let vc = DetailsViewController(viewModel: viewmodel)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

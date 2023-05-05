@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailsViewModel: DetailsProtocol {
+final class DetailsViewModel: DetailsProtocol {
 
     //MARK: - Outlets
     
@@ -94,7 +94,7 @@ class DetailsViewModel: DetailsProtocol {
         var fav = false
         do {
             guard let movie = movieDetail.value as? Movie else { return  false }
-            guard let data = UserDefaults.standard.data(forKey: UserDKeys.favorites.rawValue) else { return false }
+            guard let data = UserDefaults.standard.data(forKey: DefaultsKey.favorites.rawValue) else { return false }
             let UDData = try JSONDecoder().decode([Movie].self, from: data)
             UDData.forEach { Movie in
                 if movie.id == Movie.id{

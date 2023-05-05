@@ -95,7 +95,7 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(count, 0)
     }
     
-    func test_searchMovie_PathExist()  {
+    func test_searchMovie_PathExist() {
         //Given
         let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
         //When
@@ -105,7 +105,7 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertEqual("Av.png", path)
     }
     
-    func test_searchMovie_MovieInfoExist()  {
+    func test_searchMovie_MovieInfoExist() {
         //Given
         let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
         //When

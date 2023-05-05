@@ -46,7 +46,7 @@ enum CategoriesFilter: String {
 }
 
 //enum para UserDefauls
-enum UserDKeys: String {
+enum DefaultsKey: String {
     case favorites = "favoritesMovies"
     case favoriteTests = "favoriteTests"
 }
@@ -57,3 +57,4 @@ enum StringsTitles: String {
     case search = "buscar"
     case treding = "Trending"
 }
+

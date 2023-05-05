@@ -104,22 +104,22 @@ final class DetailsViewModelTests: XCTestCase {
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
         //When
         sut?.movieDetail = Box(value: movie)
-        sut?.saveUserDefautls(key: UserDKeys.favoriteTests.rawValue)
-        let savedData = getUDMovies(key: UserDKeys.favoriteTests.rawValue)
+        sut?.saveUserDefautls(key: DefaultsKey.favoriteTests.rawValue)
+        let savedData = getUDMovies(key: DefaultsKey.favoriteTests.rawValue)
         //Then
         XCTAssertNotNil(savedData)
     }
     
     func testDetailsModel_DeleteUSerDefaults() {
         //Given
-        sut?.userDefaults.removeObject(forKey: UserDKeys.favoriteTests.rawValue)
+        sut?.userDefaults.removeObject(forKey: DefaultsKey.favoriteTests.rawValue)
         let movie = Movie(id: 2, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
         let expectedResult = 0
         //When
         sut?.movieDetail = Box(value: movie)
-        sut?.saveUserDefautls(key: UserDKeys.favoriteTests.rawValue)
-        sut?.deteleUserDefautls(key: UserDKeys.favoriteTests.rawValue)
-        let savedData = getUDMovies(key: UserDKeys.favoriteTests.rawValue)
+        sut?.saveUserDefautls(key: DefaultsKey.favoriteTests.rawValue)
+        sut?.deteleUserDefautls(key: DefaultsKey.favoriteTests.rawValue)
+        let savedData = getUDMovies(key: DefaultsKey.favoriteTests.rawValue)
         //Then
         XCTAssertEqual(expectedResult, savedData.value.count)
     }

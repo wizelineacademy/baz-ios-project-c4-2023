@@ -19,7 +19,7 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.getFavoritesMovies(key: UserDKeys.favorites.rawValue)
+        viewModel.getFavoritesMovies(key: DefaultsKey.favorites.rawValue)
         viewModel.bindMovie { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -65,7 +65,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row) ?? Movie())
-        let vc = DetailsView(viewModel: viewmodel)
+        let vc = DetailsViewController(viewModel: viewmodel)
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }

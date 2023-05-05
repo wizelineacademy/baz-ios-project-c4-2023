@@ -7,13 +7,17 @@
 
 import UIKit
 
-class DetailsCollectionViewCell: UICollectionViewCell {
+final class DetailsCollectionViewCell: UICollectionViewCell {
+   
+    // MARK: - IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var txtLabel: UILabel!
     @IBOutlet weak var characterLabel: UILabel!
     
     private var downloadTask: URLSessionDownloadTask?
+    
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +28,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         characterLabel.text = ""
         imageView.image = UIImage(named: "poster")
     }
+    
     ///Funcion para setear imagenes y titulos
     func setInfo(_ info: DetailsProtocol, indexPath: IndexPath, type: CategoriesFilter) {
         switch type {

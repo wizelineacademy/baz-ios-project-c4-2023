@@ -66,21 +66,21 @@ final class FavoriteViewModelTests: XCTestCase {
         //When
         saveUserDefautls()
         //Then
-        sut!.getFavoritesMovies(key: UserDKeys.favoriteTests.rawValue)
+        sut!.getFavoritesMovies(key: DefaultsKey.favoriteTests.rawValue)
         XCTAssertNotNil(sut?.favoriteMovies)
     }
     
     func saveUserDefautls() {
         let movies = Movie(id: 1, title: "Avatar", poster_path: "avatar.png")
         do {
-            if let data = UserDefaults.standard.data(forKey: UserDKeys.favoriteTests.rawValue) {
+            if let data = UserDefaults.standard.data(forKey: DefaultsKey.favoriteTests.rawValue) {
                 var UDData = try JSONDecoder().decode([Movie].self, from: data)
                 UDData.append(movies)
                 let data = try JSONEncoder().encode(UDData)
-                UserDefaults.standard.set(data, forKey: UserDKeys.favoriteTests.rawValue)
+                UserDefaults.standard.set(data, forKey: DefaultsKey.favoriteTests.rawValue)
             } else {
                 let data = try JSONEncoder().encode([movies])
-                UserDefaults.standard.set(data, forKey: UserDKeys.favoriteTests.rawValue)
+                UserDefaults.standard.set(data, forKey: DefaultsKey.favoriteTests.rawValue)
             }
             
         } catch {
