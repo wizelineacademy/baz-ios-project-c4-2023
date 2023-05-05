@@ -9,7 +9,11 @@ import Foundation
 
 class SearchRemoteData {
     
-    private let requestHandler = RequestHandler(withSession: URLSession.shared)
+    private var requestHandler: RequestHandlerProtocol
+    
+    init(requestHandler: RequestHandlerProtocol = RequestHandler(withSession: URLSession.shared)) {
+        self.requestHandler = requestHandler
+    }
     
     func searchMedia(_ searchText: String) async throws -> [MediaDataObject]? {
         let endpoint = SearchEndpoint.keyword(searchText)

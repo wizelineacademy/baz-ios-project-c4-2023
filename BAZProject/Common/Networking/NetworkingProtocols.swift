@@ -6,6 +6,14 @@
 //
 
 import Foundation
+
+public protocol RequestHandlerProtocol {
+    
+    var urlSession: RequestSessionProtocol { get }
+    
+    func get(_ endpoint: EndpointProtocol) async throws -> Data
+    
+}
  
 public protocol RequestSessionProtocol {
     
