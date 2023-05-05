@@ -61,29 +61,25 @@ class LoginAndRegistrationView: UIViewController {
         let retrievedPassword = String(decoding: data, as: UTF8.self)
         if retrievedPassword == password {
             print("Permitir el login")
+//            TODO: (SDA) Erase next line
 //            defaults.set(user, forKey: "lastLogged")
             
-            // TODO: Change this navigation to fulfill viper
-            let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewId") as? HomeViewController {
-                
-                if #available(iOS 15.0, *) {
-                    view.window?.windowScene?.keyWindow?.rootViewController = vc
-                } else {
-                    // Fallback on earlier versions
-                }
-                if #available(iOS 15.0, *) {
-                    view.window?.windowScene?.keyWindow?.makeKeyAndVisible()
-                } else {
-                    // Fallback on earlier versions
-                }
-                
+            let vc = HomeRouter.ensambleModule()
+            if #available(iOS 15.0, *) {
+                view.window?.windowScene?.keyWindow?.rootViewController = vc
+            } else {
+                // Fallback on earlier versions
             }
-            
+            if #available(iOS 15.0, *) {
+                view.window?.windowScene?.keyWindow?.makeKeyAndVisible()
+            } else {
+                // Fallback on earlier versions
+            }
         } else {
             showAlert("Error", "Incorrect username or password", .alert)
             print("Incorrect password")
         }
+        //            TODO: (SDA) Erase next line
 //        print("Retrieved password: \(retrievedPassword)")
     }
     

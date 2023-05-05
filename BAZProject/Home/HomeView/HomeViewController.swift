@@ -36,9 +36,6 @@ class HomeViewController: UIViewController {
     private func initialConfiguration(){
         registerCollections(nibName: "MovieAppCollectionViewCell", identifier: "HomeViewCellId")
         assignDataSource()
-        
-        // TODO: (SDA) Refactorizar al migrar a Viper
-        self.ensambleModule()
     }
     
     private func registerCollections(nibName: String, identifier: String) {
@@ -54,17 +51,6 @@ class HomeViewController: UIViewController {
         popularCollectionView.dataSource = self
         topRatedCollectionView.dataSource = self
         upcomingCollectionView.dataSource = self
-    }
-    
-    // MARK: Ensambling provisional "Module"
-    private func ensambleModule() {
-        let presenterInstance = Presenter()
-        let interactorInstance = Interactor()
-        
-        presenter = presenterInstance
-        presenterInstance.interactor = interactorInstance
-        interactorInstance.presenter = presenterInstance
-        presenterInstance.view = self
     }
 }
 

@@ -11,16 +11,21 @@ import UIKit
 class HomeRouter {
     
     public static func ensambleModule() -> UIViewController {
-        let vc = HomeViewController(nibName: "HomeView", bundle: nil)
-        let presenterInstance = Presenter()
-        let interactorInstance = Interactor()
-        
-        vc.presenter = presenterInstance
-        presenterInstance.interactor = interactorInstance
-        interactorInstance.presenter = presenterInstance
-        presenterInstance.view = vc
-        
-        return vc
-        
+        let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
+        if let viewcontroller = storyboard.instantiateViewController(withIdentifier: "HomeViewId") as? HomeViewController {
+            
+            let presenterInstance = Presenter()
+            let interactorIntance = Interactor()
+            
+            viewcontroller.presenter = presenterInstance
+            presenterInstance.interactor = interactorIntance
+            interactorIntance.presenter = presenterInstance
+            presenterInstance.view = viewcontroller
+            
+            return viewcontroller
+            
+        } else {
+            return UIViewController()
+        }
     }
 }
