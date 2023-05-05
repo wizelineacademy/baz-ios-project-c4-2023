@@ -12,6 +12,12 @@ enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
 
+/// Enum used to store the icons used through the app.
+enum Icon {
+    static let heart: UIImage = UIImage(systemName: "heart") ?? UIImage()
+    static let heartFill: UIImage = UIImage(systemName: "heart.fill") ?? UIImage()
+}
+
 /// enumerador para menejar de los tipos y sus urls
 enum CategoriesFilter: String {
     case trending = "Trending"

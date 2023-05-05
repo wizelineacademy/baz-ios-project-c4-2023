@@ -11,7 +11,7 @@ import CoreLocation
 
 final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     
-    //MARK: Oulets
+    // MARK: Oulets
     
     var viewModel: DetailsViewModel
     let locationManager = CLLocationManager()
@@ -68,7 +68,7 @@ final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
         voteAverage.text = viewModel.getRating()
     }
     
-    ///Consulta todos los servicios
+    /// Consulta todos los servicios
     func getAllInfo() {
         viewModel.getCastMovie()
         viewModel.getSimilarMovies()
@@ -76,9 +76,11 @@ final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     }
     /// Verifica si la pelicula esta en favoritos y cambia el titulo
     func setFavoriteButton() {
-        viewModel.isMovieFavorite() ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        let icon = viewModel.isMovieFavorite() ? Icon.heartFill : Icon.heart
+        favoriteButton.setImage(icon, for: .normal)
     }
-    //MARK: - Buttonsç
+    
+    // MARK: - Buttons
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         viewModel.isMovieFavorite() ? viewModel.deteleUserDefautls(key: DefaultsKey.favorites.rawValue) : viewModel.saveUserDefautls(key: DefaultsKey.favorites.rawValue)
@@ -122,10 +124,11 @@ extension DetailsViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - Funciones de mapas
+// MARK: - Funciones de mapas
 
 extension DetailsViewController {
-    ///Configiracion del mapa para setear localicacion
+    
+    /// Configiracion del mapa para setear localicacion
     func setmap() {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -137,13 +140,15 @@ extension DetailsViewController {
              }
         }
     }
-    ///Agrega las Ubicaciones de los "cines" cercanos
+    
+    /// Agrega las Ubicaciones de los "cines" cercanos
     func addCinema(lat: CLLocationDegrees, long: CLLocationDegrees) {
         let annotation = MKPointAnnotation()
         annotation.title = "Cine"
         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         mapView.addAnnotation(annotation)
     }
+    
     /// Configuracion cuando se actualiza la localicacio
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -154,7 +159,8 @@ extension DetailsViewController {
             self.mapView.setRegion(region, animated: true)
         }
     }
-    ///Configuracion de las anotaciones del mapa 
+    
+    /// Configuracion de las anotaciones del mapa
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
         
