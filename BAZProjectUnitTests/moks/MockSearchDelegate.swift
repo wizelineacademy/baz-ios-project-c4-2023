@@ -10,7 +10,7 @@ import Foundation
 
 class MockSearchDelegate: SearchDelegate {
     var searchResultsCalled = false
-        
+
     func searchResults() {
         searchResultsCalled = true
     }

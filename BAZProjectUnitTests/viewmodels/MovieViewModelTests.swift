@@ -19,13 +19,13 @@ final class MovieViewModelTests: XCTestCase {
         let movie = Movie(id: 603, title: "Matrix", posterPath: "/ererv5g534.jpg", overview: "Lorem ipsum", voteAverage: 5, releaseDate: "2019-12-10")
         sut = MovieViewModel(movie: movie, repository: fakeRepository)
     }
-    
+
     override func tearDown() {
         sut = nil
         fakeRepository = nil
         super.tearDown()
     }
-    
+
     func testFetchCharacters() {
         var actors: [Actor]?
 
@@ -38,7 +38,7 @@ final class MovieViewModelTests: XCTestCase {
         XCTAssertNotNil(actors)
         XCTAssertEqual(actors?.count, 4)
     }
-    
+
     func testFetchReviews() {
         var reviews: [Review]?
 

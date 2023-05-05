@@ -9,22 +9,21 @@ import Foundation
 import UIKit
 
 class ReusableTableViewDataSource<T: ReusableTableViewCell<U>, U>: NSObject, UITableViewDataSource {
-    
+
     // MARK: - Variables
 
     var items: [U] = []
     var message = ""
     var section = 1
-    
+
     func updateItems(_ items: [U]) {
         self.items = items
     }
 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items.count == 0{
+        if items.count == 0 {
             tableView.setEmptyMessage(message)
-        }else{
+        } else {
             tableView.restore()
         }
         return items.count
@@ -43,8 +42,8 @@ class ReusableTableViewDataSource<T: ReusableTableViewCell<U>, U>: NSObject, UIT
 }
 
 class ReusableTableViewDelegate: NSObject, UITableViewDelegate {
-    
-    var height:CGFloat = 100
+
+    var height: CGFloat = 100
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 

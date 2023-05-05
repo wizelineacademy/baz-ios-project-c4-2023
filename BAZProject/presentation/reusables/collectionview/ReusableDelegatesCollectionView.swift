@@ -9,21 +9,21 @@ import Foundation
 import UIKit
 
 class ReusableCollectionViewDataSource<T: ReusableCollectionViewCell<U>, U>: NSObject, UICollectionViewDataSource {
-    
+
     // MARK: - Variables
 
     var items: [U] = []
     var message = ""
     var section = 1
-    
+
     func updateItems(_ items: [U]) {
         self.items = items
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if items.count == 0{
+        if items.count == 0 {
             collectionView.setEmptyMessage(message)
-        }else{
+        } else {
             collectionView.restore()
         }
         return items.count
@@ -48,6 +48,6 @@ class ReusableCollectionViewDelegateAndFlowLayout: NSObject, UICollectionViewDel
         let collectionViewSize = collectionView.frame.size.width - padding
         return CGSize(width: collectionViewSize, height: collectionViewSize)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
 }

@@ -9,12 +9,13 @@ import UIKit
 
 // MARK: - Class
 class MovieViewController: ReusableViewController {
-    
+
     // MARK: - Properties
     private let movieViewModel: MovieViewModel
     private let moviesDelegateFlowLayout = MoviesFlowLayout()
     private let actorsDelegateFlowLayout = ActorsFlowLayout()
-    
+    private var heightReviews: NSLayoutConstraint!
+
     // MARK: - Input/View and Constraints
 
     private lazy var slwMainContent: UIScrollView = {
@@ -22,7 +23,7 @@ class MovieViewController: ReusableViewController {
         slw.translatesAutoresizingMaskIntoConstraints = false
         return slw
     }()
-    
+
     private func slwMainContentConstraints() {
         view.addSubview(slwMainContent)
         slwMainContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -30,7 +31,7 @@ class MovieViewController: ReusableViewController {
         slwMainContent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         slwMainContent.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
-    
+
     private lazy var imgvPorter: UIImageView = {
         let imgv = UIImageView()
         imgv.contentMode = .scaleToFill
@@ -48,7 +49,7 @@ class MovieViewController: ReusableViewController {
         imgvPorter.leadingAnchor.constraint(equalTo: slwMainContent.leadingAnchor).isActive = true
         imgvPorter.heightAnchor.constraint(equalToConstant: .dim380).isActive = true
     }
-    
+
     private lazy var skwContent: UIStackView = {
         let skw = UIStackView()
         skw.axis = .vertical
@@ -56,7 +57,7 @@ class MovieViewController: ReusableViewController {
         skw.translatesAutoresizingMaskIntoConstraints = false
         return skw
     }()
-    
+
     private func skwContentConstraints() {
         slwMainContent.addSubview(skwContent)
         skwContent.topAnchor.constraint(equalTo: imgvPorter.bottomAnchor, constant: .dim8).isActive = true
@@ -78,7 +79,7 @@ class MovieViewController: ReusableViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
-    
+
     private lazy var skwVoteAndDate: StackVoteAndDate = {
         let vote = movieViewModel.movie.voteAverage
         let date = movieViewModel.movie.releaseDate
@@ -86,7 +87,7 @@ class MovieViewController: ReusableViewController {
         skw.translatesAutoresizingMaskIntoConstraints = false
         return skw
     }()
-    
+
     private lazy var lblOverviewMovie: UILabel = {
         let lbl = UILabel()
         let sizeFont: CGFloat = .dim16
@@ -99,11 +100,11 @@ class MovieViewController: ReusableViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
-    
+
     private lazy var lblCastActorsText: UILabel = {
         return setupLabel(text: "castText".localized)
     }()
-    
+
     private lazy var clvActors: UICollectionView = {
         let flow = UICollectionViewFlowLayout()
         flow.scrollDirection = .horizontal
@@ -113,7 +114,7 @@ class MovieViewController: ReusableViewController {
         clv.translatesAutoresizingMaskIntoConstraints = false
         return clv
     }()
-    
+
     private func addlblCastActorsTextAndClvActors() {
         skwContent.addArrangedSubview(lblCastActorsText)
         skwContent.addArrangedSubview(clvActors)
@@ -122,64 +123,43 @@ class MovieViewController: ReusableViewController {
         clvActors.delegate = actorsDelegateFlowLayout
         clvActors.dataSource = setupActorDataSourceAndConstraints(clvActors)
     }
-    
+
     private lazy var lblSimilarMoviesText: UILabel = {
         return setupLabel(text: "similarMoviesText".localized)
     }()
-    
+
     private lazy var clvSimilarMovies: UICollectionView = {
         return setupMovieCollectionView()
     }()
-    
+
     private func addlblSimilarMoviesTextAndClvSimilarMovies() {
         skwContent.addArrangedSubview(lblSimilarMoviesText)
         skwContent.addArrangedSubview(clvSimilarMovies)
         clvSimilarMovies.delegate = moviesDelegateFlowLayout
         clvSimilarMovies.dataSource = setupMovieDataSourceAndConstraints(.similar, clvSimilarMovies)
     }
-    
+
     private lazy var lblRecommendedMoviesText: UILabel = {
         return setupLabel(text: "recommendedMoviesText".localized)
     }()
-    
+
     private lazy var clvRecommendedMovies: UICollectionView = {
         return setupMovieCollectionView()
     }()
-    
+
     private func addlblRecommendedMoviesTextAndClvRecommendedMovies() {
         skwContent.addArrangedSubview(lblRecommendedMoviesText)
         skwContent.addArrangedSubview(clvRecommendedMovies)
         clvRecommendedMovies.delegate = moviesDelegateFlowLayout
         clvRecommendedMovies.dataSource = setupMovieDataSourceAndConstraints(.recommendations, clvRecommendedMovies)
     }
-    
+
     private lazy var lblMovieReviewsText: UILabel = {
         return setupLabel(text: "movieReviewsText".localized)
     }()
-    
-    private lazy var tvwReviews: UITableView = {
-        let tvw = UITableView()
-        tvw.separatorStyle = .singleLine
-        tvw.isScrollEnabled = false
-        tvw.rowHeight = UITableView.automaticDimension
-        let reuseIdentifier = NSStringFromClass(ReviewItemAdapter.self)
-        tvw.register(ReviewItemAdapter.self, forCellReuseIdentifier: reuseIdentifier)
-        tvw.translatesAutoresizingMaskIntoConstraints = false
-        return tvw
-    }()
-    
-    private func tvwReviewsConstraints() {
-        skwContent.addArrangedSubview(lblMovieReviewsText)
-        skwContent.addArrangedSubview(tvwReviews)
-        self.tvwReviews.widthAnchor.constraint(equalTo: skwContent.widthAnchor).isActive = true
-        let delegates = ReviewsDelegate()
-        tvwReviews.dataSource = setupReviewDataSourceAndConstraints(delegates)
-        tvwReviews.delegate = delegates
-    }
-    
-    private func setupLabel(text: String) -> UILabel {
+
+    private func setupLabel(text: String, _ sizeFont: CGFloat = .dim20) -> UILabel {
         let lbl = UILabel()
-        let sizeFont: CGFloat = .dim20
         lbl.font = UIFont(name: "ArialNarrow", size: sizeFont)
         lbl.font = UIFont.boldSystemFont(ofSize: sizeFont)
         lbl.textColor = .black
@@ -189,7 +169,7 @@ class MovieViewController: ReusableViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }
-    
+
     private func setupActorDataSourceAndConstraints(_ collectionView: UICollectionView) -> ReusableCollectionViewDataSource<ActorItemAdapter, Actor> {
         let dataSourceDelegate = ReusableCollectionViewDataSource<ActorItemAdapter, Actor>()
         dataSourceDelegate.message = "actorsEmptyText".localized
@@ -202,7 +182,7 @@ class MovieViewController: ReusableViewController {
         movieViewModel.fetchCharacters()
         return dataSourceDelegate
     }
-    
+
     private func setupMovieCollectionView() -> UICollectionView {
         let flow = UICollectionViewFlowLayout()
         flow.scrollDirection = .horizontal
@@ -213,7 +193,7 @@ class MovieViewController: ReusableViewController {
         clv.translatesAutoresizingMaskIntoConstraints = false
         return clv
     }
-    
+
     private func setupMovieDataSourceAndConstraints(_ filter: Filters, _ collectionView: UICollectionView) -> MoviesDataSource {
         collectionView.widthAnchor.constraint(equalTo: skwContent.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: .dim220).isActive = true
@@ -230,33 +210,37 @@ class MovieViewController: ReusableViewController {
         moviesViewModel.fetchRelatedMovies(filter, movieViewModel.movie.id)
         return dataSourceDelegate
     }
-    
-    private func setupReviewDataSourceAndConstraints(_ delegates: ReviewsDelegate) -> ReusableTableViewDataSource<ReviewItemAdapter, Review> {
-        let dataSourceDelegate = ReusableTableViewDataSource<ReviewItemAdapter, Review>()
-        dataSourceDelegate.message = "reviewsEmptyText".localized
+
+    private func loadReviews() {
         movieViewModel.onReviewsUpdate = {
             DispatchQueue.main.async {
                 let reviews = self.movieViewModel.reviews
-                dataSourceDelegate.updateItems(reviews)
-                delegates.height = delegates.height * CGFloat(reviews.count)
-                self.tvwReviews.heightAnchor.constraint(equalToConstant: delegates.height).isActive = true
-                self.tvwReviews.reloadData()
+                if reviews.count > 0 {
+                    reviews.forEach { review in
+                        let reviewItem = ReviewItemView(review: review)
+                        self.skwContent.addArrangedSubview(reviewItem)
+                    }
+                } else {
+                    let lblReviewsEmpty = self.setupLabel(text: "reviewsEmptyText".localized, .dim16)
+                    lblReviewsEmpty.textAlignment = .center
+                    self.skwContent.addArrangedSubview(lblReviewsEmpty)
+                }
+                self.skwContent.layoutIfNeeded()
             }
         }
         movieViewModel.fetchReviews()
-        return dataSourceDelegate
     }
-    
+
     init(movie: Movie) {
         let repository: MovieRepository = MovieDataSourceRemote()
         movieViewModel = MovieViewModel(movie: movie, repository: repository)
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Override Functions
     override func setupView() {
         super.setupView()
@@ -264,16 +248,15 @@ class MovieViewController: ReusableViewController {
         slwMainContentConstraints()
         imgvPorterConstraints()
         skwContentConstraints()
-        
+
         skwContent.addArrangedSubview(lblTitleMovie)
         skwContent.addArrangedSubview(skwVoteAndDate)
         skwContent.addArrangedSubview(lblOverviewMovie)
         addlblCastActorsTextAndClvActors()
-        
+
         addlblSimilarMoviesTextAndClvSimilarMovies()
         addlblRecommendedMoviesTextAndClvRecommendedMovies()
-        
-        tvwReviewsConstraints()
+        skwContent.addArrangedSubview(lblMovieReviewsText)
+        loadReviews()
     }
-
 }

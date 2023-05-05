@@ -31,12 +31,12 @@ class ReusableTableViewController<T: ReusableTableViewCell<U>, U>: ReusableViewC
         reusableTableView.delegate = reusableDelegateAndFlowLayout
         let reuseIdentifier = NSStringFromClass(T.self)
         reusableTableView.register(T.self, forCellReuseIdentifier: reuseIdentifier)
-        
+
         reusableTableView.translatesAutoresizingMaskIntoConstraints = false
-        reusableTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        reusableTableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        reusableTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        reusableTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        reusableTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        reusableTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        reusableTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        reusableTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
     // MARK: - Publics Functions

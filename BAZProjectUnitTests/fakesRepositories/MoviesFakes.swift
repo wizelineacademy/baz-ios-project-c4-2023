@@ -9,10 +9,10 @@ import Foundation
 @testable import BAZProject
 
 class MoviesFakes: MoviesRepository {
-    
+
     private var moviesFakes: [Movie] = []
     private var relatedMovies: [Movie] = []
-    
+
     private func setupMovies(filter: Filters) {
         switch filter {
         case .trending:

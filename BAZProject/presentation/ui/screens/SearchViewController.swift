@@ -27,7 +27,7 @@ class SearchViewController: ReusableViewController {
         searchViewModel = SearchViewModel(repository)
         searchViewModel?.delegate = self
     }
-    
+
     private func setupSearchController() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
@@ -37,30 +37,30 @@ class SearchViewController: ReusableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
 
     }
-    
+
     func configTableView() {
         tableView.backgroundColor = .white
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         tableView.register(SearchMovieItemAdapter.self, forCellReuseIdentifier: searchMovieItemAdapterIdentifier)
         tableView.register(SimpleItemAdapter.self, forCellReuseIdentifier: simpleItemAdapterIdentifier)
-        
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-    
+
     private func updateTable() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
         }
     }
-    
+
     private func setupActivityIndicator() {
         activityIndicator.color = .gray
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -100,11 +100,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return searchViewModel?.sectionTitles.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return searchViewModel?.sectionTitles[section]
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = searchViewModel?.sectionTitles[section]
         switch section {
@@ -116,7 +116,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = searchViewModel?.sectionTitles[indexPath.section]
         switch section {
@@ -136,7 +136,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = searchViewModel?.sectionTitles[indexPath.section]
         switch section {

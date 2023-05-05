@@ -9,23 +9,22 @@ import Foundation
 @testable import BAZProject
 
 class MovieFakes: MovieRepository {
-    
+
     func getCast(movieID: Int, completion: @escaping ([Actor]) -> Void) {
         let actors = generateActors(4)
         completion(actors)
     }
 
-
     func getReviews(movieID: Int, completion: @escaping ([Review]) -> Void) {
         let reviews = generateReviews(3)
         completion(reviews)
     }
-    
+
     private func generateActors(_ count: Int) -> [Actor] {
         guard count > 0 else { return [] }
-        
+
         var allActors: [Actor] = []
-        
+
         for _ in 0..<count {
 
             let nameLength = Int.random(in: 9..<15)
@@ -38,15 +37,15 @@ class MovieFakes: MovieRepository {
             let actor = Actor(name: name, profilePath: thumbnail, character: character)
             allActors.append(actor)
         }
-        
+
         return allActors
     }
-    
+
     private func generateReviews(_ count: Int) -> [Review] {
         guard count > 0 else { return [] }
-        
+
         var allReviews: [Review] = []
-        
+
         for _ in 0..<count {
 
             let name = randomString(length: Int.random(in: 9..<15))
@@ -55,7 +54,7 @@ class MovieFakes: MovieRepository {
             let review = Review(author: name, content: content, rating: Int.random(in: 9..<10), createdAt: randomDate())
             allReviews.append(review)
         }
-        
+
         return allReviews
     }
 }

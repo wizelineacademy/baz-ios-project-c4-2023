@@ -12,7 +12,7 @@ class ReusableCollectionViewCell<U>: UICollectionViewCell, CellReusable {
 
     // MARK: - Variables
 
-    var item:U!
+    var item: U!
 
     // MARK: - Override Functions
 

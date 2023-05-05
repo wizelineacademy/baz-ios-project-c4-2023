@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class SimpleItemAdapter: ReusableTableViewCell<String> {
-    
+
     // MARK: - Input/View and Constraints
     private lazy var lblKeyword: UILabel = {
         let lbl = UILabel()
@@ -27,15 +27,15 @@ class SimpleItemAdapter: ReusableTableViewCell<String> {
     private func lblKeywordConstraints() {
         addSubview(lblKeyword)
         lblKeyword.topAnchor.constraint(equalTo: topAnchor, constant: .dim4).isActive = true
-        lblKeyword.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim4).isActive = true
-        lblKeyword.bottomAnchor.constraint(equalTo:  bottomAnchor, constant: -.dim4).isActive = true
-        lblKeyword.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: .dim4).isActive = true
+        lblKeyword.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim4).isActive = true
+        lblKeyword.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.dim4).isActive = true
+        lblKeyword.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .dim4).isActive = true
     }
-    
+
     // MARK: - Override Functions/Variables
 
-    override var item: String!{
-        didSet{
+    override var item: String! {
+        didSet {
             lblKeyword.text = item
         }
     }

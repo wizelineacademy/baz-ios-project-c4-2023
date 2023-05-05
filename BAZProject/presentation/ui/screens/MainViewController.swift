@@ -17,7 +17,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         setupItems()
     }
-    
+
     // MARK: - Private Functions
     /**
      Metodo que carga los UITabBarItem para el UITabBarController
@@ -27,7 +27,7 @@ class MainViewController: UITabBarController {
 
         let searchNav = setupBarItem(SearchViewController(), "searchText".localized, UIImage(systemName: "magnifyingglass"), UIImage(systemName: "magnifyingglass"))
         selectedIndex = 0
-        self.viewControllers = [moviesNav,searchNav]
+        self.viewControllers = [moviesNav, searchNav]
     }
 
     /**

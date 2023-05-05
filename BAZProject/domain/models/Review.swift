@@ -16,7 +16,7 @@ struct Review: Codable {
     let content: String
     let rating: Int?
     let createdAt: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case author
         case content
@@ -35,7 +35,7 @@ extension Review {
         self.rating = try? authorDetails.decode(Int.self, forKey: .rating)
         self.createdAt = try container.decode(String.self, forKey: .createdAt)
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(author, forKey: .author)

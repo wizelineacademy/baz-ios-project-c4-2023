@@ -12,7 +12,7 @@ class MovieAPI {
      Metodo generico para consumir peticiones
      */
     func request<T: Decodable>(url: URL, completion: @escaping ([T]) -> Void) {
-        URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+        URLSession.shared.dataTask(with: .init(url: url)) { data, _, _ in
             var items: [T] = []
             defer {
                 completion(items)

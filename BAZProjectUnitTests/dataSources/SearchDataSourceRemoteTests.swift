@@ -9,7 +9,7 @@ import XCTest
 @testable import BAZProject
 
 final class SearchDataSourceRemoteTests: XCTestCase {
-    
+
     var sut: SearchDataSourceRemote!
 
     override func setUp() {
@@ -21,7 +21,7 @@ final class SearchDataSourceRemoteTests: XCTestCase {
         sut = nil
         super.tearDown()
     }
-    
+
     func testSearchMovies() {
         let expectation = XCTestExpectation(description: "Search movies")
 

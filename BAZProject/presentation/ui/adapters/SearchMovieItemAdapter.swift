@@ -43,15 +43,15 @@ class SearchMovieItemAdapter: ReusableTableViewCell<Movie> {
 
     private func lblTitleMovieConstraints() {
         addSubview(lblTitleMovie)
-        lblTitleMovie.topAnchor.constraint(equalTo:  imgvPorter.topAnchor, constant: .dim8).isActive = true
-        lblTitleMovie.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim8).isActive = true
-        lblTitleMovie.leadingAnchor.constraint(equalTo:  imgvPorter.trailingAnchor, constant: .dim8).isActive = true
+        lblTitleMovie.topAnchor.constraint(equalTo: imgvPorter.topAnchor, constant: .dim8).isActive = true
+        lblTitleMovie.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim8).isActive = true
+        lblTitleMovie.leadingAnchor.constraint(equalTo: imgvPorter.trailingAnchor, constant: .dim8).isActive = true
     }
 
     // MARK: - Override Functions/Variables
 
-    override var item: Movie!{
-        didSet{
+    override var item: Movie! {
+        didSet {
             let placeHolder = UIImage(named: "poster")
             let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.posterPath ?? "")"
             imgvPorter.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)

@@ -18,13 +18,13 @@ final class MoviesViewModelTests: XCTestCase {
         fakeRepository = MoviesFakes()
         sut = MoviesViewModel(fakeRepository)
     }
-    
+
     override func tearDown() {
         sut = nil
         fakeRepository = nil
         super.tearDown()
     }
-    
+
     func testFetchMoviesTrending() {
         var movies: [Movie]?
 
@@ -37,7 +37,7 @@ final class MoviesViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
         XCTAssertEqual(movies?.count, 2)
     }
-    
+
     func testFetchMoviesNowPlaying() {
         var movies: [Movie]?
 
@@ -50,7 +50,7 @@ final class MoviesViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
         XCTAssertEqual(movies?.count, 3)
     }
-    
+
     func testFetchMoviesPopular() {
         var movies: [Movie]?
 
@@ -63,7 +63,7 @@ final class MoviesViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
         XCTAssertEqual(movies?.count, 4)
     }
-    
+
     func testFetchMoviesTopRated() {
         var movies: [Movie]?
 
@@ -76,7 +76,7 @@ final class MoviesViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
         XCTAssertEqual(movies?.count, 5)
     }
-    
+
     func testFetchMoviesUpcoming() {
         var movies: [Movie]?
 
@@ -92,7 +92,7 @@ final class MoviesViewModelTests: XCTestCase {
 
     func testFetchRelatedMoviesSimilar() {
         var movies: [Movie]?
-        
+
         sut.onMoviesUpdate = { [self] in
             movies = sut.movies
         }
@@ -102,10 +102,10 @@ final class MoviesViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
         XCTAssertEqual(movies?.count, 7)
     }
-    
+
     func testFetchRelatedMoviesRecommendations() {
         var movies: [Movie]?
-        
+
         sut.onMoviesUpdate = { [self] in
             movies = sut.movies
         }

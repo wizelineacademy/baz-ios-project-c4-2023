@@ -11,11 +11,11 @@ struct ActorResponse: Codable {
     let cast: [Actor]
 }
 
-struct Actor: Codable{
+struct Actor: Codable {
     let name: String
     let profilePath: String?
     let character: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case name
         case profilePath = "profile_path"

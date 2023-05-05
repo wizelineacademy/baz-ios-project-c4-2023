@@ -42,10 +42,10 @@ class ActorItemAdapter: ReusableCollectionViewCell<Actor> {
 
     private func lblNameActorConstraints() {
         addSubview(lblNameActor)
-        lblNameActor.centerXAnchor.constraint(equalTo:  centerXAnchor).isActive = true
+        lblNameActor.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         lblNameActor.topAnchor.constraint(equalTo: imgvProfile.bottomAnchor, constant: .dim4).isActive = true
-        lblNameActor.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim4).isActive = true
-        lblNameActor.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: .dim4).isActive = true
+        lblNameActor.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim4).isActive = true
+        lblNameActor.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .dim4).isActive = true
     }
 
     private lazy var lblCharacterActor: UILabel = {
@@ -63,16 +63,16 @@ class ActorItemAdapter: ReusableCollectionViewCell<Actor> {
 
     private func lblCharacterActorConstraints() {
         addSubview(lblCharacterActor)
-        lblCharacterActor.centerXAnchor.constraint(equalTo:  centerXAnchor).isActive = true
+        lblCharacterActor.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         lblCharacterActor.topAnchor.constraint(equalTo: lblNameActor.bottomAnchor, constant: .dim4).isActive = true
-        lblCharacterActor.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim4).isActive = true
-        lblCharacterActor.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: .dim4).isActive = true
+        lblCharacterActor.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim4).isActive = true
+        lblCharacterActor.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .dim4).isActive = true
     }
 
     // MARK: - Override Functions/Variables
 
-    override var item: Actor!{
-        didSet{
+    override var item: Actor! {
+        didSet {
             let placeHolder = UIImage(named: "poster")
             let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.profilePath ?? "")"
             imgvProfile.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)

@@ -18,7 +18,7 @@ final class SearchViewModelTests: XCTestCase {
         fakeRepository = SearchFakes()
         sut = SearchViewModel(fakeRepository)
     }
-    
+
     override func tearDown() {
         sut = nil
         fakeRepository = nil
@@ -28,7 +28,7 @@ final class SearchViewModelTests: XCTestCase {
     func testFetchSearchCallsSearchMoviesAndSearchKeyword() {
         let query = "Inception"
         sut.fetchSearch(query)
-        
+
         let expectation = XCTestExpectation(description: "Completion")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertTrue(self.fakeRepository is SearchFakes)
@@ -36,7 +36,7 @@ final class SearchViewModelTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 3.0)
     }
-    
+
     func testFetchSearchSetsSectionTitles() {
         let query = "Inception"
 
@@ -50,7 +50,7 @@ final class SearchViewModelTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 3.0)
     }
-    
+
     func testSearchResults() {
         let mockDelegate = MockSearchDelegate()
         mockDelegate.searchResults()

@@ -17,7 +17,7 @@ struct Movie: Codable {
     let overview: String
     let voteAverage: Float
     let releaseDate: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case id
         case title

@@ -10,7 +10,6 @@ import Foundation
 // MARK: - Class
 class SearchDataSourceRemote: SearchRepository {
 
-
     /**
      Esta funcion implementa el metodo del protocolo SearchRepository
      Obtiene todas las peliculas relacionadas a la palabra clave que se recibe en la variable query y llama al closure de finalización como argumento con los objetos Movie correspondientes.
@@ -49,7 +48,7 @@ class SearchDataSourceRemote: SearchRepository {
     func searchKeyword(query: String, completion: @escaping ([String]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let url = Consts.END_POINTS.SEARCH_FOR_KEYWORD.setParameters(old: "{keyword}", new: query).toUrl()
-            URLSession.shared.dataTask(with: .init(url: url)) { data, response, error in
+            URLSession.shared.dataTask(with: .init(url: url)) { data, _, _ in
                 var keywords: [String] = []
                 defer {
                     completion(keywords)
