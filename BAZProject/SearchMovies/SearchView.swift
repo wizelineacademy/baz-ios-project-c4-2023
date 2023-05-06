@@ -77,6 +77,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Extensions Search bar
 
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
         viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in
             DispatchQueue.main.async {

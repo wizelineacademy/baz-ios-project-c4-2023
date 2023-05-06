@@ -47,4 +47,16 @@ final class DetailsCollectionViewCell: UICollectionViewCell {
             downloadTask = imageView.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w500/\(info.getPathImage() ?? "")")!)
         }
     }
+    
+    ///Funcion para iniciarlizar la celda del Collection View
+    class func initFromNib(named: String? = nil) throws -> Self {
+        let name = named ?? "\(Self.self)"
+        guard
+            let nib = Bundle.main.loadNibNamed(name, owner: nil, options: nil)
+                else { throw NSError(domain: "Tests_LoadNib_NoNib", code: -54) }
+        
+        guard let view = nib.first as? Self else { throw NSError(domain: "Tests_LoadNib_NoView", code: -55) }
+        
+            return view
+    }
 }

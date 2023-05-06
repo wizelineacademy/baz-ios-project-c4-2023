@@ -23,7 +23,7 @@ protocol DetailsProtocol {
     func getRating() -> String? ///regresa el rankinf de la  peliculas
     func saveUserDefautls(key: String) /// Salva la pelicula en UserDefauls de favoritos
     func deteleUserDefautls(key: String) /// Elimina la pelicula en UserDefauls de favoritos/
-    func isMovieFavorite() -> Bool /// Indicaror si la pelicula esta en el arreglo de favoritos
+    func isMovieFavorite(key: String) -> Bool /// Indicaror si la pelicula esta en el arreglo de favoritos
     ///
     // Funciones para Recomendaciones
     func getRecommendationMovies() ///Consulta el servicio para obtener los datos

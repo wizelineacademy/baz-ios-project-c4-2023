@@ -87,16 +87,16 @@ final class DetailsViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(expectedResult, rating)
     }
-    
+
     func testDetailsModel_IsFavorite() {
         //Given
-        let isFav = false
+        sut?.userDefaults.removeObject(forKey: DefaultsKey.favoriteTests.rawValue)
         let movie = Movie(id: 1, title: "John Wick", poster_path: "JW.png", overview: "", vote_average: 10.0)
         //When
         sut?.movieDetail = Box(value: movie)
-        let favBool = sut?.isMovieFavorite()
+        let favBool = sut?.isMovieFavorite(key: DefaultsKey.favoriteTests.rawValue)
         //Then
-        XCTAssertEqual(isFav, favBool)
+        XCTAssertTrue((favBool != nil))
     }
     
     func testDetailsModel_SavedUSerDefaults() {

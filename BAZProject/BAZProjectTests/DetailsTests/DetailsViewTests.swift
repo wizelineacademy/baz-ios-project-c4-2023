@@ -33,12 +33,22 @@ final class DetailsViewTests: XCTestCase {
         XCTAssertEqual(sut.navigationItem.title, viewModel.getTitle())
     }
     
-    func testDetailsView_MovieIsNotFavorite() {
+    func testDetailsView_ImageIsNotFavorite() {
         //Given
         sut.loadViewIfNeeded()
-        let favorite = viewModel.isMovieFavorite()
+        let image = sut.favoriteButton.imageView
         //When
-        XCTAssertFalse(favorite)
+        XCTAssertFalse(image == Icon.heartFill)
+    }
+    
+    func testDetailsView_MIsNotFavorite() {
+        //Given
+        sut.loadViewIfNeeded()
+        sut.favoriteButton(sut.favoriteButton)
+        let image = sut.favoriteButton.imageView
+        
+        //When
+        XCTAssertFalse(image == Icon.heartFill)
     }
     
     // MARK: - Pruebas de similares

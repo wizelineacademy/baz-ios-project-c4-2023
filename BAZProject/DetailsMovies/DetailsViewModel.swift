@@ -98,16 +98,16 @@ final class DetailsViewModel: DetailsProtocol {
     }
     
     /// Indicaror si la pelicula esta en el arreglo de favoritos
-    func isMovieFavorite() -> Bool {
+    func isMovieFavorite(key: String = DefaultsKey.favorites.rawValue) -> Bool {
         var fav = false
         do {
             guard let movie = movieDetail.value as? Movie else { return  false }
             
-            guard let data = UserDefaults.standard.data(forKey: DefaultsKey.favorites.rawValue) else { return false }
+            guard let data = UserDefaults.standard.data(forKey: key) else { return false }
             
             let UDData = try JSONDecoder().decode([Movie].self, from: data)
             UDData.forEach { Movie in
-                if movie.id == Movie.id{
+                if movie.id == Movie.id {
                     fav = true
                 }
             }

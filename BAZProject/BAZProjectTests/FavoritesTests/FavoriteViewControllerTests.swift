@@ -80,4 +80,14 @@ final class FavoriteViewControllerTests: XCTestCase {
         //When
         XCTAssertNotNil(title)
     }
+    
+    func testFavoriteView_ReloadedTable() {
+        //Given
+        sut?.loadViewIfNeeded()
+        sut.reloadButton(sut.reloadButton)
+        //Then
+        let count = sut.tableView.numberOfRows(inSection: 0)
+        //When
+        XCTAssertNotNil(count)
+    }
 }

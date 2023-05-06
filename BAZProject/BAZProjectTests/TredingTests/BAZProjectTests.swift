@@ -43,6 +43,12 @@ final class BAZProjectTests: XCTestCase {
         //When
         XCTAssertNotEqual(color, .gray)
     }
+    
+    func testTredingView_TitleNotChangeWithButton() {
+        //Given
+        sut.loadViewIfNeeded()
+        sut.FilterButton(sut.FilterButton)
+        //When
+        XCTAssertNotEqual(sut.title, "Similar")
+    }
 }
-
-

@@ -56,4 +56,18 @@ final class SearchViewControllerTests: XCTestCase {
         let placeH = sut?.searchBar.placeholder
         XCTAssertEqual(placeH, "Busca tu pelicula")
     }
+    
+    func testSearchView_ButtonClicked() {
+        guard let searchBar = sut?.searchBar else { return }
+        sut?.loadViewIfNeeded()
+        sut?.searchBarCancelButtonClicked(searchBar)
+        XCTAssertEqual(sut?.searchBar.text, "")
+    }
+    
+    func testSearchView_tonClicked() {
+        guard let searchBar = sut?.searchBar else { return }
+        sut?.loadViewIfNeeded()
+        sut?.searchBarSearchButtonClicked(searchBar)
+        XCTAssertNotNil(searchBar.text)
+    }
 }
