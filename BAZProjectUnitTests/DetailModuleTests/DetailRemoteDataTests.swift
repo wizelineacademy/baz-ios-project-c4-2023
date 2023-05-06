@@ -27,9 +27,10 @@ final class DetailRemoteDataTests: XCTestCase {
     }
 
     func test_getDetailData_ShouldReturnMovieDetailDataObject() async throws {
-        let expectedData = [MovieDetailDataObject]()
+        let expectedData = MovieDetailDataObject(id: 18, title: "The Fifth Element", originalTitle: "The Fifth Element", overview: "In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity.", posterPath: "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg", voteAverage: 7.524)
+        requestSession.data = DataStubs().detailData
         
-        let retrievedData = try await sut.getMovieDetails(id: 0)
+        let retrievedData = try await sut.getMovieDetails(id: 18)
         
         XCTAssertEqual(expectedData, retrievedData)
     }
