@@ -18,11 +18,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="1386"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DYx-fx-cc6">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYx-fx-cc6">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="1386"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-NM-gmB">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1386"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-NM-gmB">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1386.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="aCE-iy-kEp">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="526.5"/>
@@ -74,55 +74,61 @@ Actor 10</string>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="NeH-MG-pKO">
-                                    <rect key="frame" x="0.0" y="1116" width="320" height="127"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fsu-9E-ntU">
+                                    <rect key="frame" x="0.0" y="1072.5" width="320" height="128"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wra-G7-StZ">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="lWh-HT-Pp0"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Ou-Qc-dkd">
                                         <size key="itemSize" width="128" height="128"/>
-                                        <size key="headerReferenceSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="r2X-2D-sio">
-                                    <rect key="frame" x="0.0" y="1251" width="320" height="127"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eE0-Fm-Nbs">
+                                    <rect key="frame" x="0.0" y="1208.5" width="320" height="128"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tc5-zd-dgJ">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="eNN-tA-mMl"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2dH-0h-9Wb">
                                         <size key="itemSize" width="128" height="128"/>
-                                        <size key="headerReferenceSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="NeH-MG-pKO" secondAttribute="trailing" id="0MQ-t2-qGX"/>
                                 <constraint firstItem="Pcw-Zh-LUw" firstAttribute="top" secondItem="FGR-M4-GZ7" secondAttribute="bottom" constant="8" symbolic="YES" id="0Q0-SF-nIJ"/>
                                 <constraint firstItem="yQf-WP-Jsy" firstAttribute="top" secondItem="b5d-RN-VsT" secondAttribute="bottom" constant="8" symbolic="YES" id="3ov-90-Cx5"/>
                                 <constraint firstAttribute="trailing" secondItem="1Z9-gB-QZT" secondAttribute="trailing" constant="8" id="4XI-H0-6xi"/>
-                                <constraint firstItem="NeH-MG-pKO" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" id="8Ol-Nb-0Vr"/>
+                                <constraint firstItem="eE0-Fm-Nbs" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" id="6JU-Tb-gI4"/>
                                 <constraint firstItem="gy7-yE-CxD" firstAttribute="top" secondItem="Pcw-Zh-LUw" secondAttribute="bottom" constant="8" symbolic="YES" id="98b-rN-3LF"/>
-                                <constraint firstItem="r2X-2D-sio" firstAttribute="top" secondItem="NeH-MG-pKO" secondAttribute="bottom" constant="8" symbolic="YES" id="B8p-Db-1Bz"/>
                                 <constraint firstAttribute="trailing" secondItem="yQf-WP-Jsy" secondAttribute="trailing" constant="8" id="BCl-Tr-taw"/>
                                 <constraint firstAttribute="trailing" secondItem="b5d-RN-VsT" secondAttribute="trailing" constant="8" id="Bdt-uj-jl1"/>
                                 <constraint firstItem="b5d-RN-VsT" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="Gj8-cc-kAb"/>
-                                <constraint firstAttribute="trailing" secondItem="r2X-2D-sio" secondAttribute="trailing" id="K7h-lU-LBe"/>
-                                <constraint firstItem="r2X-2D-sio" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" id="R5X-vO-Py6"/>
+                                <constraint firstItem="fsu-9E-ntU" firstAttribute="top" secondItem="gy7-yE-CxD" secondAttribute="bottom" constant="8" id="HKv-6g-99A"/>
                                 <constraint firstItem="aCE-iy-kEp" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" id="RRz-K2-eqK"/>
                                 <constraint firstItem="1Z9-gB-QZT" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="bQv-L2-hYx"/>
                                 <constraint firstItem="1Z9-gB-QZT" firstAttribute="top" secondItem="yQf-WP-Jsy" secondAttribute="bottom" constant="8" id="c5S-of-akG"/>
+                                <constraint firstAttribute="bottom" secondItem="eE0-Fm-Nbs" secondAttribute="bottom" constant="50" id="d0U-Ty-NzY"/>
                                 <constraint firstItem="yQf-WP-Jsy" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="d91-t4-gkc"/>
-                                <constraint firstItem="NeH-MG-pKO" firstAttribute="top" secondItem="gy7-yE-CxD" secondAttribute="bottom" constant="8" symbolic="YES" id="dKw-s2-hzx"/>
                                 <constraint firstItem="b5d-RN-VsT" firstAttribute="top" secondItem="aCE-iy-kEp" secondAttribute="bottom" constant="8" id="eyo-bt-TsE"/>
+                                <constraint firstItem="eE0-Fm-Nbs" firstAttribute="top" secondItem="fsu-9E-ntU" secondAttribute="bottom" constant="8" symbolic="YES" id="fyk-Ye-BHc"/>
+                                <constraint firstAttribute="trailing" secondItem="eE0-Fm-Nbs" secondAttribute="trailing" id="ghF-AL-9s7"/>
                                 <constraint firstItem="gy7-yE-CxD" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="iL1-io-j28"/>
                                 <constraint firstAttribute="trailing" secondItem="FGR-M4-GZ7" secondAttribute="trailing" constant="8" id="kg7-S0-8Gn"/>
+                                <constraint firstAttribute="trailing" secondItem="fsu-9E-ntU" secondAttribute="trailing" id="lIH-kP-chx"/>
                                 <constraint firstAttribute="trailing" secondItem="Pcw-Zh-LUw" secondAttribute="trailing" constant="8" id="lWq-XY-c3u"/>
                                 <constraint firstItem="FGR-M4-GZ7" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="mw7-9T-d78"/>
                                 <constraint firstItem="aCE-iy-kEp" firstAttribute="top" secondItem="xIN-NM-gmB" secondAttribute="top" id="pBl-EK-PdP"/>
                                 <constraint firstAttribute="trailing" secondItem="aCE-iy-kEp" secondAttribute="trailing" id="qaO-9y-duc"/>
-                                <constraint firstAttribute="bottom" secondItem="r2X-2D-sio" secondAttribute="bottom" constant="8" id="qhk-OG-W6m"/>
                                 <constraint firstItem="FGR-M4-GZ7" firstAttribute="top" secondItem="1Z9-gB-QZT" secondAttribute="bottom" constant="8" symbolic="YES" id="rw7-Lr-bwB"/>
+                                <constraint firstItem="fsu-9E-ntU" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" id="tqm-IV-qFd"/>
                                 <constraint firstAttribute="trailing" secondItem="gy7-yE-CxD" secondAttribute="trailing" constant="8" id="uOO-Ds-8Bc"/>
                                 <constraint firstItem="Pcw-Zh-LUw" firstAttribute="leading" secondItem="xIN-NM-gmB" secondAttribute="leading" constant="8" id="yiU-Bt-CCv"/>
                             </constraints>
@@ -140,6 +146,7 @@ Actor 10</string>
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="aCE-iy-kEp" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.38" id="1bf-wa-d9N"/>
                 <constraint firstItem="DYx-fx-cc6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AAt-Sc-V1l"/>
@@ -155,9 +162,6 @@ Actor 10</string>
         <image name="poster" width="500" height="743"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

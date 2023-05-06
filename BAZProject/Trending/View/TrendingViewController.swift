@@ -9,6 +9,7 @@ import UIKit
 
 class TrendingViewController: UITableViewController {
     
+    @IBOutlet weak var sgmListMovie: UISegmentedControl!
     var presenter: TrendingPresenterProtocol?
     var entity: TrendingEntity?
     
@@ -24,9 +25,27 @@ class TrendingViewController: UITableViewController {
     }
     
     func refreshDetail(){
+        Loader.start()
         presenter?.willFetchMovies()
     }
 
+    @IBAction func sgmSelection(_ sender: Any) {
+        let selection = TypeList(rawValue: sgmListMovie.selectedSegmentIndex)
+        switch selection{
+        case .trending:
+            print("selected \(sgmListMovie.selectedSegmentIndex)")
+        case .nowPlaying:
+            print("selected \(sgmListMovie.selectedSegmentIndex)")
+        case .popular:
+            print("selected \(sgmListMovie.selectedSegmentIndex)")
+        case .topRated:
+            print("selected \(sgmListMovie.selectedSegmentIndex)")
+        case .upcoming:
+            print("selected \(sgmListMovie.selectedSegmentIndex)")
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - TableView's DataSource
@@ -47,6 +66,13 @@ extension TrendingViewController {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = entity?.result?[indexPath.row]
+        let detailMovieEntity = DetailMovieEntity(baseInfo: movie)
+        let detail = DetailMovieRouter.createDetailMovieModule(withEntity: detailMovieEntity)
+        self.navigationController?.pushViewController(detail, animated: true)
+    }
 
 }
 
@@ -65,6 +91,7 @@ extension TrendingViewController: TrendingViewProtocol {
     func updataView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            Loader.stop()
         }
     }
     
@@ -72,4 +99,12 @@ extension TrendingViewController: TrendingViewProtocol {
         tableView.register(UINib(nibName: GeneralTableViewCell.identifier, bundle : nil), forCellReuseIdentifier: GeneralTableViewCell.identifier)
     }
     
+}
+
+enum TypeList: Int {
+    case trending = 0
+    case nowPlaying = 1
+    case popular = 2
+    case topRated = 3
+    case upcoming = 4
 }

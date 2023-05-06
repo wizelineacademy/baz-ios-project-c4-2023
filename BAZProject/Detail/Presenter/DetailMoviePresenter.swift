@@ -21,10 +21,22 @@ class DetailMoviePresenter  {
 extension DetailMoviePresenter: DetailMoviePresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
-        view?.setNavigationTitle(for: interactor?.getNavTitle())
+    }
+    
+    func willFetchDetailsMovie() {
+        Loader.start()
+        interactor?.fetchDetailsMovie()
     }
 }
 
 extension DetailMoviePresenter: DetailMovieInteractorOutputProtocol {
+    func onReceivedMovieDetails(_ result: DetailMovieEntity) {
+      //  <#code#>
+    }
+    
+    func showSearchedMoviesError(_ error: Error) {
+       // <#code#>
+    }
+    
     // TODO: implement interactor output methods
 }

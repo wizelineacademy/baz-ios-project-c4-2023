@@ -15,6 +15,11 @@ class DetailMovieView: UIViewController {
     var presenter: DetailMoviePresenterProtocol?
 
     // MARK: Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.willFetchDetailsMovie()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +28,11 @@ class DetailMovieView: UIViewController {
 }
 
 extension DetailMovieView: DetailMovieViewProtocol {
-    // TODO: implement view output methods
-    func setNavigationTitle(for strTitle: String?){
-        navigationItem.title = strTitle
+    func registrerCell() {
+       // <#code#>
+    }
+    
+    func updateData(_ result: [Movie]) {
+      //  <#code#>
     }
 }

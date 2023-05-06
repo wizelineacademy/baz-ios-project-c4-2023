@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrendingViewController" customModule="BAZProject" customModuleProvider="target">
             <connections>
+                <outlet property="sgmListMovie" destination="9cY-Hs-qGi" id="S6h-tU-O6t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,6 +20,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="9cY-Hs-qGi">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="32"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <segments>
+                    <segment title="" image="chart.line.uptrend.xyaxis" catalog="system"/>
+                    <segment title="" image="play.tv.fill" catalog="system"/>
+                    <segment title="" image="star.circle.fill" catalog="system"/>
+                    <segment title="" image="list.number" catalog="system"/>
+                    <segment title="" image="flame.fill" catalog="system"/>
+                </segments>
+                <connections>
+                    <action selector="sgmSelection:" destination="-1" eventType="valueChanged" id="yvY-nk-37o"/>
+                </connections>
+            </segmentedControl>
             <connections>
                 <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
                 <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
@@ -28,6 +42,11 @@
         </tableView>
     </objects>
     <resources>
+        <image name="chart.line.uptrend.xyaxis" catalog="system" width="128" height="102"/>
+        <image name="flame.fill" catalog="system" width="106" height="128"/>
+        <image name="list.number" catalog="system" width="128" height="97"/>
+        <image name="play.tv.fill" catalog="system" width="128" height="95"/>
+        <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

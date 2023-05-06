@@ -13,7 +13,6 @@ class SearchInteractor: SearchInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: SearchInteractorOutputProtocol?
-    //var localDatamanager: SearchLocalDataManagerInputProtocol?
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol?
     var entity: SearchEntity?
 

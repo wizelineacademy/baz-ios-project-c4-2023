@@ -11,8 +11,8 @@ import UIKit
 
 class DetailMovieRouter: DetailMovieRouterProtocol {
 
-    //class func createDetailMovieModule(withEntity entity: DetailMovieEntity = DetailMovieEntity()) -> UIViewController {
-    class func createDetailMovieModule() -> UIViewController {
+    class func createDetailMovieModule(withEntity entity: DetailMovieEntity = DetailMovieEntity()) -> UIViewController {
+    //class func createDetailMovieModule() -> UIViewController {
         let view = DetailMovieView()
         let presenter: DetailMoviePresenterProtocol & DetailMovieInteractorOutputProtocol = DetailMoviePresenter()
         let interactor: DetailMovieInteractorInputProtocol & DetailMovieRemoteDataManagerOutputProtocol = DetailMovieInteractor()
@@ -27,7 +27,7 @@ class DetailMovieRouter: DetailMovieRouterProtocol {
         interactor.presenter = presenter
         //interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
-        //interactor.entity = entity
+        interactor.entity = entity
         remoteDataManager.remoteRequestHandler = interactor
         
         return view

@@ -94,6 +94,7 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         guard let url = addQueryParams(url: URL(string: urlString), newParams: params) else {return}
         
         let finalURL = URLRequest(url: url)
+        print("URL to Request: \(finalURL)")
         DispatchQueue.global().async {
             let task = self.session.performDataTask(with: finalURL) { (data, response, error) in
 
@@ -120,6 +121,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
                 }
 
                 do {
+                    let debugJSONPrinteable = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    print(debugJSONPrinteable)
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                     callback(.success(decodedData))
                 } catch {
