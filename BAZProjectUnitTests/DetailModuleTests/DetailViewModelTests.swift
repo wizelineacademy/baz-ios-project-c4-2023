@@ -27,29 +27,41 @@ final class DetailViewModelTests: XCTestCase {
     func setViewModel(mediaItem: MediaItem) {
         sut = DetailViewModel(remoteData: remoteData, item: mediaItem)
     }
+    
+    func test_BindSnapshot_ShouldPerformBinding() {
+        let expectation = XCTestExpectation()
+        setViewModel(mediaItem: MediaItem())
+        
+        sut.bindSnapshot { snapshot in
+            XCTAssertNotNil(snapshot)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+        
+    }
 
     func test_getData_MovieItemDetailSectionsShouldBeEqual() {
         setViewModel(mediaItem: DataStubs.singleMovieMediaData)
-        
+
         let sections = sut.getDetailSections()
-        
+
         XCTAssertEqual(sections, [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar])
-    }
-    
-    func test_getData_TVItemDetailSectionsShouldBeEqual() {
-        setViewModel(mediaItem: DataStubs.singleTVMediaData)
-        
-        let sections = sut.getDetailSections()
-        
-        XCTAssertEqual(sections, [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar])
-    }
-    
-    func test_getData_PersonItemDetailSectionsShouldBeEqual() {
-        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
-        
-        let sections = sut.getDetailSections()
-        
-        XCTAssertEqual(sections, [DetailSection.heading, DetailSection.overview, DetailSection.filmography])
     }
 
+    func test_getData_TVItemDetailSectionsShouldBeEqual() {
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+
+        let sections = sut.getDetailSections()
+
+        XCTAssertEqual(sections, [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar])
+    }
+
+    func test_getData_PersonItemDetailSectionsShouldBeEqual() {
+        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
+
+        let sections = sut.getDetailSections()
+
+        XCTAssertEqual(sections, [DetailSection.heading, DetailSection.overview, DetailSection.filmography])
+    }
+    
 }
