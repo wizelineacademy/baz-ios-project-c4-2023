@@ -18,6 +18,10 @@
 		C30893E328A425E1004B1860 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* Movie.swift */; };
 		C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */ = {isa = PBXBuildFile; fileRef = C383356D28CA917400FCE0D5 /* code-review-rubric.md */; };
 		E00A192F2A0597DD00D86597 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A192E2A0597DD00D86597 /* DetailsView.swift */; };
+		E00A19322A06F85400D86597 /* TrendingTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A19302A06F7EA00D86597 /* TrendingTableViewCellTests.swift */; };
+		E00A19352A06FE4A00D86597 /* FavoriteTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A19332A06FE3400D86597 /* FavoriteTableViewCellTests.swift */; };
+		E00A19392A07085400D86597 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A19382A07085400D86597 /* UIView+.swift */; };
+		E00A193F2A070FA700D86597 /* SearchTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A193D2A070F7F00D86597 /* SearchTableViewCellTests.swift */; };
 		E03141412A00B6EE00F42F9D /* SearchListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03141402A00B6EE00F42F9D /* SearchListProtocol.swift */; };
 		E03141442A00BA2100F42F9D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03141422A00BA2100F42F9D /* SearchTableViewCell.swift */; };
 		E03141452A00BA2100F42F9D /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E03141432A00BA2100F42F9D /* SearchTableViewCell.xib */; };
@@ -88,6 +92,10 @@
 		C30893E128A425E1004B1860 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		C383356D28CA917400FCE0D5 /* code-review-rubric.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "code-review-rubric.md"; sourceTree = "<group>"; };
 		E00A192E2A0597DD00D86597 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		E00A19302A06F7EA00D86597 /* TrendingTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCellTests.swift; sourceTree = "<group>"; };
+		E00A19332A06FE3400D86597 /* FavoriteTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCellTests.swift; sourceTree = "<group>"; };
+		E00A19382A07085400D86597 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		E00A193D2A070F7F00D86597 /* SearchTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellTests.swift; sourceTree = "<group>"; };
 		E03141402A00B6EE00F42F9D /* SearchListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListProtocol.swift; sourceTree = "<group>"; };
 		E03141422A00BA2100F42F9D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E03141432A00BA2100F42F9D /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -214,6 +222,7 @@
 				E0D2C92B2A004E7900D90A49 /* CommonsTests */,
 				E0D2C92A2A004E6000D90A49 /* SearchTests */,
 				E0D2C9292A004E4600D90A49 /* TredingTests */,
+				E00A19382A07085400D86597 /* UIView+.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -276,6 +285,7 @@
 			children = (
 				E0558CE529D6917800DF5AA1 /* BAZProjectTests.swift */,
 				E0558CEE29D6AD1200DF5AA1 /* TrendingViewModelTests.swift */,
+				E00A19302A06F7EA00D86597 /* TrendingTableViewCellTests.swift */,
 			);
 			path = TredingTests;
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 				E0AB764529F204B2004074B5 /* SearchViewModelTests.swift */,
 				E0558CEC29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift */,
 				E0A44E1529F31A0200CE7215 /* SearchViewControllerTests.swift */,
+				E00A193D2A070F7F00D86597 /* SearchTableViewCellTests.swift */,
 			);
 			path = SearchTests;
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 				E0D2C9302A00788300D90A49 /* FavoriteViewModelTests.swift */,
 				E0D2C9332A00812B00D90A49 /* FavoriteViewControllerTests.swift */,
 				E0D2C9362A00819400D90A49 /* FavoriteViewControllerMock.swift */,
+				E00A19332A06FE3400D86597 /* FavoriteTableViewCellTests.swift */,
 			);
 			path = FavoritesTests;
 			sourceTree = "<group>";
@@ -471,6 +483,7 @@
 				E0D4833329F9819000B6D8C3 /* DetailsViewModel.swift in Sources */,
 				C30893E328A425E1004B1860 /* Movie.swift in Sources */,
 				E070192D29E492F400111F2B /* TrendingViewProtocols.swift in Sources */,
+				E00A19392A07085400D86597 /* UIView+.swift in Sources */,
 				E03141482A00BECB00F42F9D /* TrendingTableViewCell.swift in Sources */,
 				E0D4833F29F9DB2F00B6D8C3 /* KeychainHelper.swift in Sources */,
 				E0A4AAF22A009D77000383F7 /* MovieApiMock.swift in Sources */,
@@ -485,7 +498,9 @@
 			files = (
 				E0558CED29D6A1A700DF5AA1 /* TrendingViewControllerMock.swift in Sources */,
 				E0558CE629D6917800DF5AA1 /* BAZProjectTests.swift in Sources */,
+				E00A19352A06FE4A00D86597 /* FavoriteTableViewCellTests.swift in Sources */,
 				E0A4AAED2A008541000383F7 /* DetailsViewModelTests.swift in Sources */,
+				E00A193F2A070FA700D86597 /* SearchTableViewCellTests.swift in Sources */,
 				E0A44E1629F31A0200CE7215 /* SearchViewControllerTests.swift in Sources */,
 				E0D2C92E2A004F7800D90A49 /* KeyChainTests.swift in Sources */,
 				E0D2C9382A00826D00D90A49 /* FavoriteViewControllerMock.swift in Sources */,
@@ -493,6 +508,7 @@
 				E0D2C9352A00814900D90A49 /* FavoriteViewControllerTests.swift in Sources */,
 				E0558CEF29D6AD1200DF5AA1 /* TrendingViewModelTests.swift in Sources */,
 				E0AB764929F2FBEE004074B5 /* MovieAPITests.swift in Sources */,
+				E00A19322A06F85400D86597 /* TrendingTableViewCellTests.swift in Sources */,
 				E0A44E1429F30B2C00CE7215 /* ServiceMocks.swift in Sources */,
 				E0AB764429F1F79A004074B5 /* BindingTest.swift in Sources */,
 				E0AB764729F204CE004074B5 /* SearchViewModelTests.swift in Sources */,

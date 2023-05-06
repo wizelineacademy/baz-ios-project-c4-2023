@@ -8,13 +8,14 @@
 import UIKit
 
 final class TrendingTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
     private var downloadTask: URLSessionDownloadTask?
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
         downloadTask?.cancel()
         downloadTask = nil
         titleLable.text = ""

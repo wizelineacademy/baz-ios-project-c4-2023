@@ -39,7 +39,7 @@ class FavoritesViewModel: FavoriteListProtocol {
         favoriteMovies?.value[index]
     }
     
-    //Funcion para poder obtener info de UserDefaults 
+    ///Funcion para poder obtener info de UserDefaults 
     func getFavoritesMovies(key: String) {
         do {
             if let data = UserDefaults.standard.data(forKey: key) {

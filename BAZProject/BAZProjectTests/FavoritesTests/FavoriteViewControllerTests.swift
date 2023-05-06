@@ -53,7 +53,7 @@ final class FavoriteViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.navigationItem.title, "Favoritos")
     }
     
-    func testSearchView_ButtonIsEqualToView() {
+    func testFavoriteView_ButtonIsEqualToView() {
         //Given
         sut?.loadViewIfNeeded()
         //Then
@@ -62,12 +62,22 @@ final class FavoriteViewControllerTests: XCTestCase {
         XCTAssertNotEqual(button, UIColor(ciColor: .red))
     }
     
-    func testSearchView_onIsEqualToView() {
+    func testFavoriteView_HeigthIsNotNil() {
         //Given
         sut?.loadViewIfNeeded()
         //Then
         let tamaño = sut.tableView.heightAnchor
         //When
         XCTAssertNotNil(tamaño)
+    }
+    
+    func testFavoriteView_LabelIsNotNil() {
+        //Given
+        sut?.loadViewIfNeeded()
+        sut.viewWillAppear(true)
+        //Then
+        let title = sut.title
+        //When
+        XCTAssertNotNil(title)
     }
 }
