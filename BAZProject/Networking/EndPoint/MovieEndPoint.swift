@@ -21,6 +21,11 @@ public enum MovieApi {
     case topRated(page: Int)
     case upcoming(page: Int)
     case newMovies(page: Int) // TODO: (SDA) Erase this case
+    case cast(movieId: Int)
+    case similar (movieId: Int)
+    case recommendations (movieId:Int)
+    case reviews (movieId: Int)
+    case multi (searching: String)
 }
 
 extension MovieApi: EndPointType {
@@ -52,6 +57,16 @@ extension MovieApi: EndPointType {
             return "movie/upcoming"
         case .newMovies:
             return "movie/now_playing" // TODO: (SDA) Erase this case
+        case .cast(let movieId):
+            return "movie/\(movieId)/credits"
+        case .similar(let movieId):
+            return "movie/\(movieId)/similar"
+        case .recommendations(let movieId):
+            return "movie/\(movieId)/recommendations"
+        case .reviews(let movieId):
+            return "movie/\(movieId)/reviews"
+        case .multi(let searching):
+            return "/search/multi"
         }
     }
     
@@ -90,6 +105,29 @@ extension MovieApi: EndPointType {
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: ["api_key": NetworkManager.MovieApiKey,
                                                       "page": page])
+        case .cast(let movieId):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey])
+        case .similar(let movieId):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey])
+        case .recommendations(let movieId):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey])
+        case .reviews(let movieId):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "language": "es"])
+        case .multi(let searching):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "query": "\(searching)",
+                                                      "page": 1])
         default:
             return .request
         }

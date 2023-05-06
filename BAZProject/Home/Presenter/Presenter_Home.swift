@@ -51,13 +51,16 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
     }
     
     func getCellText(_ items: [Viewable], index: IndexPath) -> String {
-        return items[index.row].getReleaseDate()
+        guard let optionalInfo = items[index.row].getAdditionalInfo() else { return "" }
+        return optionalInfo
     }
     
     func getCellImage(_ items: [Viewable], index: IndexPath) -> UIImage {
         var returnedImage = UIImage()
         var basePath = "https://image.tmdb.org/t/p/w500"
-        basePath.append(items[index.row].getImagePath())
+        //TODO: Change the next line to show a defaul image when imagePath is nil
+        guard let image = items[index.row].getImagePath() else {return UIImage()}
+        basePath.append(image)
         
         guard let url = URL(string: basePath) else { return UIImage() }
         if let cacheImage = loadFromCache(imageAt: url) {
@@ -90,6 +93,12 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
             DispatchQueue.main.async {
                 completion(image)
             }
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            self.view?.showAlertFromPresenter(title: title, message: message)
         }
     }
 }

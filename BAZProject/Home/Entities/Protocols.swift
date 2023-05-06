@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-protocol Viewable {
-    func getTitle() -> String
-    func getImagePath() -> String
-    func getReleaseDate() -> String
-}
-
 protocol ViewToPresenterProtocol {
     var interactor: PresenterToInteractor? { get set }
     var trendingMovies: [Viewable] { get set }
@@ -33,6 +27,7 @@ protocol ViewToPresenterProtocol {
 
 protocol PresenterToViewProtocol {
     func reloadView()
+    func showAlertFromPresenter(title: String, message: String)
 }
 
 protocol PresenterToInteractor {
@@ -45,4 +40,6 @@ protocol InteractorToPresenter {
     var popularMovies: [Viewable] { get set }
     var topRatedMovies: [Viewable] { get set }
     var upcomingMovies: [Viewable] { get set }
+    
+    func showAlert(title: String, message: String)
 }

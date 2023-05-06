@@ -20,10 +20,12 @@ class Interactor: PresenterToInteractor {
         networkManager.getMovies(endpoint: .trending(page: 1)) { (result: MovieApiResponse?, error) in
             if let error = error {
                 // TODO: (SDA) Presentar error
+                
                 print(error)
                 return
             } else if let trendingMovies = result?.movies{
                 self.presenter?.trendingMovies = trendingMovies
+                self.presenter?.showAlert(title: "Success", message: "Trending movies has been consulted...")
             }
         }
         
@@ -70,5 +72,55 @@ class Interactor: PresenterToInteractor {
                 self.presenter?.upcomingMovies = upcomingMovies
             }
         }
+        
+//        networkManager.getMovies(endpoint: .cast(movieId: 447365)) { (result: CastResponse?, error) in
+//            if let error = error {
+//                print("TENEMOS ERROR EN LA CONSULTA DE CAST")
+//                return
+//            } else if let resultado = result {
+//                print("TENEMOS RESPUESTA EN EL CAST(REPARTO):")
+//                print(resultado)
+//            }
+//        }
+//
+//        networkManager.getMovies(endpoint: .similar(movieId: 603)) { (result: MovieApiResponse?, error) in
+//            if let error = error {
+//                print("TENEMOS ERROR EN LA CONSULTA DE SIMILAR")
+//                return
+//            } else if let resultado = result {
+//                print("TENEMOS RESPUESTA EN LAS PELÍCULAS SIMILARES:")
+//                print(resultado)
+//            }
+//        }
+//
+//        networkManager.getMovies(endpoint: .recommendations(movieId: 603)){(result: MovieApiResponse?, error) in
+//            if let error = error {
+//                print("TENEMOS ERROR EN LA CONSULTA DE RECOMMENDATIONS")
+//                return
+//            } else if let resultado = result {
+//                print("TENEMOS RESPUESTA EN LAS PELÍCULAS RECOMENDADAS:")
+//                print(resultado)
+//            }
+//        }
+//
+//        networkManager.getMovies(endpoint: .reviews(movieId: 603)){(result: ReviewsResponse?, error) in
+//            if let error = error {
+//                print("TENEMOS ERROR EN LA CONSULTA DE REVIEWS")
+//                return
+//            } else if let resultado = result {
+//                print("TENEMOS RESPUESTA EN LAS REVIEWS:")
+//                print(resultado)
+//            }
+//        }
+        
+//        networkManager.getMovies(endpoint: .multi(searching: "pine")){(result: MediaApiResponse?, error)in
+//            if let error = error {
+//                print("TENEMOS ERROR EN LA CONSULTA MÚLTIPLE")
+//                return
+//            } else if let resultado = result {
+//                print("TENEMOS RESPUESTA EN LA BÚSQUEDA MÚLTIPLE:")
+//                print(resultado)
+//            }
+//        }
     }
 }

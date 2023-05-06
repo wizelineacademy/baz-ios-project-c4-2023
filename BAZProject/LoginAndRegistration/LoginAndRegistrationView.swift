@@ -38,8 +38,6 @@ class LoginAndRegistrationView: UIViewController {
         loginButton.setTitleColor(.lightGray, for: .disabled)
         registerButton.setTitleColor(.lightGray, for: .disabled)
         
-        
-        
         if let previousUser = defaults.string(forKey: "lastLogged") {
             welcomeLabel.text = "Welcome back!"
             userNameTextField.text = previousUser

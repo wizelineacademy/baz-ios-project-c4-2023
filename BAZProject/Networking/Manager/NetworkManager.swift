@@ -48,10 +48,13 @@ struct NetworkManager {
                         let apiResponse = try self.decodeResponse(data: responseData) as T
                         completion(apiResponse, nil)
                     } catch {
+                        print("Error en el decodeResponse-NetworkManager")
                         print(error)
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
+                    print("Error en el handleNetworkResponse-NetworkManger")
+                    print(networkFailureError)
                     completion(nil, networkFailureError)
                 }
             }
@@ -65,6 +68,7 @@ struct NetworkManager {
             let decodedData = try decoder.decode(T.self, from: data)
             return decodedData
         } catch {
+            print("ERROR EN EL DECODE")
             throw error
         }
     }

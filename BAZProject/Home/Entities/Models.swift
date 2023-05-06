@@ -7,54 +7,53 @@
 
 import Foundation
 
-// TODO: (SDA) Erase this class
-///Model that stores the response from TheMobieDB
-class MovieApiResult: Decodable {
-    var results: [Movie]?
-}
-
 // TODO: (SDA) Se how changes the implementation
 ///Model that stores a movie information, such as id, original title, overview, poster path and release date
 struct Movie {
-    var id: Int
-    var originalTitle: String
+    var id: Int?
+    var title: String
     var overview: String
-    var posterPath: String?
-    var releaseDate: String
+    var imagePath: String?
+    var additionalInfo: String?
 }
 
 extension Movie: Decodable {
     ///Enumeration to get rid of underscores
     enum MovieCodingKeys: String, CodingKey {
         case id
-        case originalTitle = "original_title"
+        case title = "original_title"
         case overview
-        case posterPath = "poster_path"
-        case releaseDate = "release_date"
+        case imagePath = "poster_path"
+        case aditionalInfo = "release_date"
     }
     
     init(from decoder: Decoder) throws {
         let movieContainer = try decoder.container(keyedBy: MovieCodingKeys.self)
         
         id = try movieContainer.decode(Int.self, forKey: .id)
-        originalTitle = try movieContainer.decode(String.self, forKey: .originalTitle)
+        title = try movieContainer.decode(String.self, forKey: .title)
         overview =  try movieContainer.decode(String.self, forKey: .overview)
-        posterPath = try movieContainer.decode(String.self, forKey: .posterPath)
-        releaseDate = try movieContainer.decode(String.self, forKey: .releaseDate)
+        imagePath = try movieContainer.decode(String.self, forKey: .imagePath)
+        additionalInfo = try movieContainer.decode(String.self, forKey: .aditionalInfo)
     }
 }
 
 extension Movie: Viewable {
-    func getTitle() -> String {
-        return originalTitle
+    func getId() -> Int? {
+        guard let optionalId = id else {return 0}
+        return optionalId
     }
-    
-    func getImagePath() -> String {
-        guard let path = posterPath else { return "" }
+    func getTitle() -> String {
+        return title
+    }
+    func getOverview() -> String {
+        return overview
+    }
+    func getImagePath() -> String? {
+        guard let path = imagePath else { return "" }
         return path
     }
-    
-    func getReleaseDate() -> String {
-        return releaseDate
+    func getAdditionalInfo() -> String? {
+        return additionalInfo
     }
 }

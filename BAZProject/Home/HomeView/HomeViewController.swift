@@ -13,7 +13,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, AlertPresentable {
     
     // MARK: Variables
     var presenter: ViewToPresenterProtocol?
@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         initialConfiguration()
         presenter?.getMoviesData()
+        
     }
     
     // MARK: Initial configurations
@@ -86,6 +87,8 @@ extension HomeViewController: UICollectionViewDataSource {
                 cell.cellLabel.text = "\(movieDate.prefix(4))"
             }
             cell.cellImageView.image = presenter?.getCellImage(presenter?.trendingMovies ?? [], index: indexPath)
+            // TODO: (SDA) Erase the next line
+//            showAlert("Done", "You have shown an alert")
         } else if collectionView == nowPlayingCollectionView {
             if let movieDate = presenter?.getCellText(presenter?.nowPlayingMovies ?? [], index: indexPath) {
                 cell.cellLabel.text = "\(movieDate.prefix(4))"
@@ -121,5 +124,9 @@ extension HomeViewController: PresenterToViewProtocol {
             self?.topRatedCollectionView.reloadData()
             self?.upcomingCollectionView.reloadData()
         }
+    }
+    
+    func showAlertFromPresenter(title: String, message: String) {
+        showAlert(title, message)
     }
 }
