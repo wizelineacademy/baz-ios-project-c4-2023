@@ -18,6 +18,6 @@ struct PersonDetailDataObject: Decodable {
 
 struct PersonCastingDataObject: Decodable, Equatable {
     
-    var cast: Set<MediaDataObject>
+    var cast: [MediaDataObject]
     
 }

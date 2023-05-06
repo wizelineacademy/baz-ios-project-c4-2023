@@ -14,6 +14,7 @@ public enum DetailSection: Int, Hashable {
     case recommended = 2
     case similar = 3
     case filmography = 4
+    case reviews = 5
     
     public var title: String? {
         switch self {
@@ -21,6 +22,7 @@ public enum DetailSection: Int, Hashable {
         case .recommended: return "Recommendations"
         case .similar: return "More like this"
         case .filmography: return "Filmography"
+        case .reviews: return "Top Reviews"
         default: return nil
         }
     }

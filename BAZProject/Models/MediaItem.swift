@@ -20,8 +20,8 @@ struct MediaItem: Hashable {
 
 extension MediaItem {
     
-    init(dataObject: MediaDataObject) {
-        self.mediaType = MediaType(rawValue: dataObject.mediaType ?? "")
+    init(dataObject: MediaDataObject, mediaType: MediaType? = nil) {
+        self.mediaType = MediaType(rawValue: dataObject.mediaType ?? "") ?? mediaType
         self.rating = dataObject.voteAverage
         self.id = dataObject.id
         self.title = dataObject.title ?? dataObject.name

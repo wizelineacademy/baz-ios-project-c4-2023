@@ -9,11 +9,11 @@ import Foundation
 
 struct CastDataObject: Decodable, Equatable {
     
-    var cast: Set<CastMemberDataObject>?
+    var cast: [CastMemberDataObject]?
     
 }
 
-struct CastMemberDataObject: Decodable, Equatable, Hashable {
+struct CastMemberDataObject: Decodable, Equatable {
     
     var id: Int?
     var name: String?

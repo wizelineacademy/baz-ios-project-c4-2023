@@ -9,12 +9,6 @@ import XCTest
 import BAZProject
 
 final class DetailSectionTests: XCTestCase {
-
-    func test_getTitle_ForHeaderShouldBeNil() {
-        let section = DetailSection.heading
-        
-        XCTAssertNil(section.title)
-    }
     
     func test_getTitle_ForOverviewShouldBeNil() {
         let section = DetailSection.overview

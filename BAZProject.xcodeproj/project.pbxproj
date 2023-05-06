@@ -27,6 +27,11 @@
 		4B2675A42A061738005C60A4 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675A32A061738005C60A4 /* SectionProtocol.swift */; };
 		4B2675A62A0627BD005C60A4 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675A52A0627BD005C60A4 /* DetailSection.swift */; };
 		4B2675A82A0627F5005C60A4 /* DetailSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675A72A0627F5005C60A4 /* DetailSectionTests.swift */; };
+		4B2675AA2A06D336005C60A4 /* DetailOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675A92A06D336005C60A4 /* DetailOverview.swift */; };
+		4B2675AC2A06D44A005C60A4 /* DetailReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675AB2A06D44A005C60A4 /* DetailReview.swift */; };
+		4B2675B02A06DCC8005C60A4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675AF2A06DCC8005C60A4 /* Array.swift */; };
+		4B2675B22A06FB8F005C60A4 /* DetailCastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */; };
+		4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B32A0703F5005C60A4 /* Calendar.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -120,6 +125,11 @@
 		4B2675A32A061738005C60A4 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
 		4B2675A52A0627BD005C60A4 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		4B2675A72A0627F5005C60A4 /* DetailSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionTests.swift; sourceTree = "<group>"; };
+		4B2675A92A06D336005C60A4 /* DetailOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOverview.swift; sourceTree = "<group>"; };
+		4B2675AB2A06D44A005C60A4 /* DetailReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReview.swift; sourceTree = "<group>"; };
+		4B2675AF2A06DCC8005C60A4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCastMember.swift; sourceTree = "<group>"; };
+		4B2675B32A0703F5005C60A4 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -220,6 +230,9 @@
 				4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */,
 				4B26759C2A06092F005C60A4 /* DetailViewModel.swift */,
 				4B2675A52A0627BD005C60A4 /* DetailSection.swift */,
+				4B2675A92A06D336005C60A4 /* DetailOverview.swift */,
+				4B2675AB2A06D44A005C60A4 /* DetailReview.swift */,
+				4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */,
 			);
 			path = DetailModule;
 			sourceTree = "<group>";
@@ -382,6 +395,8 @@
 				4B6BB29329FDD931007A20D7 /* UIImage.swift */,
 				4B6BB2B52A006DAE007A20D7 /* DateFormatter.swift */,
 				4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */,
+				4B2675AF2A06DCC8005C60A4 /* Array.swift */,
+				4B2675B32A0703F5005C60A4 /* Calendar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -622,8 +637,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */,
+				4B2675AA2A06D336005C60A4 /* DetailOverview.swift in Sources */,
 				4B2675972A05F280005C60A4 /* TVDetailDataObject.swift in Sources */,
 				4B6BB29429FDD931007A20D7 /* UIImage.swift in Sources */,
+				4B2675AC2A06D44A005C60A4 /* DetailReview.swift in Sources */,
 				C30893C428A2F845004B1860 /*  TrendingMediaViewController.swift in Sources */,
 				4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */,
 				4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */,
@@ -636,7 +653,9 @@
 				4B8FBDB529F9E2E600F9422B /* MediaType.swift in Sources */,
 				4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */,
 				4B3BBE8129D65674001F4E85 /* NetworkingProtocols.swift in Sources */,
+				4B2675B02A06DCC8005C60A4 /* Array.swift in Sources */,
 				4B2675932A05E9D9005C60A4 /* ReviewCollectionDataObject.swift in Sources */,
+				4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */,
 				4B6BB2A229FE38F3007A20D7 /* SearchRemoteData.swift in Sources */,
 				4B2675952A05EDFD005C60A4 /* CastDataObject.swift in Sources */,
 				4B6BB2A529FE3F1A007A20D7 /* SearchLocalData.swift in Sources */,
@@ -657,6 +676,7 @@
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
 				4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */,
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
+				4B2675B22A06FB8F005C60A4 /* DetailCastMember.swift in Sources */,
 				4B0E5C682A05A01600D38F4D /* DetailRemoteData.swift in Sources */,
 				4B37399229D4B4550056041F /* GenericResponseDataObject.swift in Sources */,
 				4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */,
