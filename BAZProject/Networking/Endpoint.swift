@@ -7,9 +7,7 @@
 
 import Foundation
 
-/**
-An enumeration representing the endpoints of the The Movie Database API.
-*/
+/// An enumeration representing the endpoints of the The Movie Database API.
 enum Endpoint {
     
     /// The base URL for the API.
@@ -52,11 +50,8 @@ enum Endpoint {
     case reviews(id_movie: Int)
 }
 
-/**
-This extension adds a computed property "url" to the Endpoint enum in Swift. This property returns an optional URL value.
-
-Note: The URL value is constructed using a base URL, an API key and a path, based on the enum case.
-*/
+/// This extension adds a computed property "url" to the Endpoint enum in Swift. This property returns an optional URL value.
+/// Note: The URL value is constructed using a base URL, an API key and a path, based on the enum case.
 extension Endpoint {
     
     /// Computed property that returns a URL constructed from the Endpoint enum case

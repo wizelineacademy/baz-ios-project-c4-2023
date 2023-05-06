@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - SearchViewController
+/// This Swift code represents a view controller that displays a list of movies and allows the user to search for movies by typing a query in a text field.
 final class SearchViewController: UIViewController {
     
     // MARK: - Outlets
@@ -79,7 +79,7 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let query = textField.text {
             viewModel?.search(query: query) { [weak self] in
-                    self?.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }

@@ -19,7 +19,6 @@ internal extension String {
     }
     
     /// Converts an HTML string to an attributed string.
-    ///
     /// - Returns: An NSAttributedString object if conversion succeeds, or nil if an error occurs during conversion.
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
