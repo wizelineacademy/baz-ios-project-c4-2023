@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */; };
+		4B0E5C652A059F2800D38F4D /* DetailRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C642A059F2800D38F4D /* DetailRemoteDataTests.swift */; };
+		4B0E5C682A05A01600D38F4D /* DetailRemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */; };
+		4B0E5C6A2A05A28900D38F4D /* MovieDetailResponse.json in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C692A05A28900D38F4D /* MovieDetailResponse.json */; };
+		4B0E5C6D2A05A34700D38F4D /* TVDetailResponse.json in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C6C2A05A34700D38F4D /* TVDetailResponse.json */; };
+		4B0E5C6F2A05A37600D38F4D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C6E2A05A37600D38F4D /* ImageData.swift */; };
+		4B0E5C712A05CAEE00D38F4D /* MovieDetailDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E5C702A05CAEE00D38F4D /* MovieDetailDataObject.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -82,6 +88,12 @@
 
 /* Begin PBXFileReference section */
 		4B09466429DCEC9B001CB55F /* TrendingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEndpoint.swift; sourceTree = "<group>"; };
+		4B0E5C642A059F2800D38F4D /* DetailRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemoteDataTests.swift; sourceTree = "<group>"; };
+		4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemoteData.swift; sourceTree = "<group>"; };
+		4B0E5C692A05A28900D38F4D /* MovieDetailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MovieDetailResponse.json; sourceTree = "<group>"; };
+		4B0E5C6C2A05A34700D38F4D /* TVDetailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TVDetailResponse.json; sourceTree = "<group>"; };
+		4B0E5C6E2A05A37600D38F4D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		4B0E5C702A05CAEE00D38F4D /* MovieDetailDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDataObject.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -165,6 +177,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B0E5C632A059EF600D38F4D /* DetailModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B0E5C642A059F2800D38F4D /* DetailRemoteDataTests.swift */,
+			);
+			path = DetailModuleTests;
+			sourceTree = "<group>";
+		};
+		4B0E5C662A05A00200D38F4D /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		4B0E5C6B2A05A30800D38F4D /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				4B0E5C692A05A28900D38F4D /* MovieDetailResponse.json */,
+				4B0E5C6C2A05A34700D38F4D /* TVDetailResponse.json */,
+				4B0E5C6E2A05A37600D38F4D /* ImageData.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		4B27A0AE2A055C77003A24D6 /* TrendingModuleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +284,7 @@
 			children = (
 				4B37399129D4B4550056041F /* GenericResponseDataObject.swift */,
 				C30893E128A425E1004B1860 /* MediaDataObject.swift */,
+				4B0E5C702A05CAEE00D38F4D /* MovieDetailDataObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +292,7 @@
 		4B37399A29D4C1450056041F /* BAZProjectUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				4B0E5C632A059EF600D38F4D /* DetailModuleTests */,
 				4B27A0B02A055CE2003A24D6 /* SearchModuleTests */,
 				4B27A0AF2A055CC7003A24D6 /* CommonTests */,
 				4B3BBE8229D65856001F4E85 /* TestDoubles */,
@@ -267,6 +307,7 @@
 		4B3BBE8229D65856001F4E85 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				4B0E5C6B2A05A30800D38F4D /* Responses */,
 				4B3BBE8329D65860001F4E85 /* Mocks */,
 				4B947E7B29F24F8100C116E3 /* GenericEndpoint.swift */,
 				4B947E7529F247DB00C116E3 /* DataStubs.swift */,
@@ -370,6 +411,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				4B0E5C662A05A00200D38F4D /* DetailModule */,
 				4B6BB2A329FE39FC007A20D7 /* MediaItemTableViewCell */,
 				4B6BB29A29FE37D7007A20D7 /* SearchModule */,
 				4B6BB29029FB3695007A20D7 /* SimpleCollectionViewHeaderView */,
@@ -493,8 +535,10 @@
 			files = (
 				4B2DA1A629F2089A006BD0EC /* TrendingRemoteDataMock.swift in Sources */,
 				4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */,
+				4B0E5C652A059F2800D38F4D /* DetailRemoteDataTests.swift in Sources */,
 				4B947E7629F247DB00C116E3 /* DataStubs.swift in Sources */,
 				4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */,
+				4B0E5C6D2A05A34700D38F4D /* TVDetailResponse.json in Sources */,
 				4B27A0BC2A057B00003A24D6 /* MediaCollectionViewCellTests.swift in Sources */,
 				4B27A0C02A0583E1003A24D6 /* MediaTableViewCellTests.swift in Sources */,
 				4B2DA1A829F23E68006BD0EC /* TrendingMediaViewModelTests.swift in Sources */,
@@ -506,10 +550,12 @@
 				4B3BBE8929D658E2001F4E85 /* EndpointMock.swift in Sources */,
 				4B3BBE8529D65879001F4E85 /* RequestSessionMock.swift in Sources */,
 				4B2DA1AC29F23F1C006BD0EC /* DecoderTests.swift in Sources */,
+				4B0E5C6A2A05A28900D38F4D /* MovieDetailResponse.json in Sources */,
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
 				4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */,
 				4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
+				4B0E5C6F2A05A37600D38F4D /* ImageData.swift in Sources */,
 				4B27A0B82A0563F8003A24D6 /* RequestHandlerMock.swift in Sources */,
 				4B27A0BE2A057E93003A24D6 /* Util.swift in Sources */,
 				4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */,
@@ -544,6 +590,7 @@
 				4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */,
 				C30893E228A425E1004B1860 /* TrendingMediaRemoteData.swift in Sources */,
 				4B37398C29D4A88B0056041F /* RequestHandler.swift in Sources */,
+				4B0E5C712A05CAEE00D38F4D /* MovieDetailDataObject.swift in Sources */,
 				C30893E328A425E1004B1860 /* MediaDataObject.swift in Sources */,
 				4B6BB2AC2A00394A007A20D7 /* MediaItemTableViewCell.swift in Sources */,
 				4B8FBDB329F9E28B00F9422B /* MediaItem.swift in Sources */,
@@ -551,6 +598,7 @@
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
 				4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */,
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
+				4B0E5C682A05A01600D38F4D /* DetailRemoteData.swift in Sources */,
 				4B37399229D4B4550056041F /* GenericResponseDataObject.swift in Sources */,
 				4B8FBDB029F9C23F00F9422B /* MediaCollectionViewCell.swift in Sources */,
 			);

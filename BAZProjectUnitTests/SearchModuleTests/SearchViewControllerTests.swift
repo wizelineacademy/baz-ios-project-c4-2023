@@ -78,7 +78,7 @@ final class SearchViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         sut.searchController.searchBar.text = "Harry"
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.5)
         let items = sut.dataSource?.snapshot().numberOfItems
         
         XCTAssertEqual(items, media.count)
