@@ -33,6 +33,11 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
     func handleGetCreditsMovie(_ result: MovieCreditsResult) {
         entity?.credits = result
         entity?.casting = result.cast
+        let casting = entity?.casting
+        let arrayNamesCast: [String] = casting?.map{$0.name} ?? []
+        let firstTenActors = arrayNamesCast.prefix(10)
+        let processedCast: String = firstTenActors.joined(separator: "\n")
+        entity?.processedCast = processedCast
         guard let entity = self.entity, let baseInfo = entity.baseInfo else {return}
         remoteDatamanager?.getGetMovieRecommendations(baseInfo.id)
     }
@@ -45,8 +50,11 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
     
     func handleGetSimilarMovies(_ result: [Movie]) {
         entity?.similarMovies = result
-        Loader.stop()
-        //TODO:llamar al presenter, para parar al spinner y regresar la info
+        DispatchQueue.main.async {
+            Loader.stop()
+        }
+        guard let entity = self.entity else {return}
+        presenter?.onReceivedMovieDetails(entity)
     }
     
     func handleGetErrorServiceDetailMovies(_ error: Error) {

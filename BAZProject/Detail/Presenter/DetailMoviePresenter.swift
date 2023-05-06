@@ -15,12 +15,23 @@ class DetailMoviePresenter  {
     weak var view: DetailMovieViewProtocol?
     var interactor: DetailMovieInteractorInputProtocol?
     var router: DetailMovieRouterProtocol?
+    var entity: DetailMovieEntity?
     
 }
 
 extension DetailMoviePresenter: DetailMoviePresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
+        
+    }
+    
+    func update() {
+        guard let entity = self.entity, let movie = entity.baseInfo else {return}
+        view?.getImage(movie.backdrop_path ?? "")
+        view?.titleMovie(movie.title)
+        view?.overview(movie.overview)
+        view?.cast(entity.processedCast)
+        
     }
     
     func willFetchDetailsMovie() {
@@ -31,7 +42,8 @@ extension DetailMoviePresenter: DetailMoviePresenterProtocol {
 
 extension DetailMoviePresenter: DetailMovieInteractorOutputProtocol {
     func onReceivedMovieDetails(_ result: DetailMovieEntity) {
-      //  <#code#>
+        self.entity = result
+        update()
     }
     
     func showSearchedMoviesError(_ error: Error) {

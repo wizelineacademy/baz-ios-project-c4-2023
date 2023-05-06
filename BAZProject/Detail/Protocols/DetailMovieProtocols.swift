@@ -14,8 +14,13 @@ import UIKit
 /// Presenter -> View
 protocol DetailMovieViewProtocol: AnyObject {
     var presenter: DetailMoviePresenterProtocol? { get set }
+    
     func registrerCell()
-    func updateData(_ result: [Movie])
+    func updateData()
+    func getImage(_ linkPosterBack: String)
+    func titleMovie(_ title: String)
+    func overview(_ overview: String)
+    func cast(_ cast: String)
 }
 
 //MARK: - Interactor
@@ -45,6 +50,7 @@ protocol DetailMoviePresenterProtocol: AnyObject {
     var router: DetailMovieRouterProtocol? { get set }
     
     func viewDidLoad()
+    func update()
     func willFetchDetailsMovie()
 }
 

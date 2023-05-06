@@ -14,6 +14,8 @@ struct DetailMovieEntity {
     var reviews: [MovieReviews] = []
     var credits: MovieCreditsResult?
     var casting: [MovieCast] = []
+    var processedCast: String = ""
+    var genere: String = ""
     var recomendations: [Movie] = []
     var similarMovies: [Movie] = []
 
