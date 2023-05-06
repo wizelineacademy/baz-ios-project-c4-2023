@@ -10,12 +10,15 @@ import Foundation
 /**
 A view model for a movie object.
 */
-struct MovieViewModel {
+final class MovieViewModel {
     
     // MARK: - Properties
     
-    /// The underlying movie object.
+    /// The movie object associated with this view model.
     private let movie:Movie
+    
+    /// An array of actors associated with this movie.
+    private var actors: [Actor] = []
     
     private let dateFormatter = DateFormatter()
     
@@ -46,11 +49,15 @@ extension MovieViewModel {
         }
     }
     
-    //TODO: Prueba unitaria
+
+    /// The overview of the movie. If the overview is nil, an empty string is returned.
+    /// - Returns: A string representing the overview of the movie.
     var overview: String {
         return movie.overview ?? ""
     }
     
+    /// The year of the movie's release date. If the release date is nil, an empty string is returned.
+    /// - Returns: A string representing the year of the movie's release date.
     var year: String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -61,7 +68,53 @@ extension MovieViewModel {
         return "\(Calendar.current.component(.year, from: date))"
     }
     
+    /// The vote average of the movie. If the vote average is nil, 0% is returned.
+    /// - Returns: A string representing the vote average of the movie.
     var vote_average: String {
-        return "\((Int(movie.vote_average ?? 0) ) * 10 )% de coincidencia"
+        return "\((Int(movie.vote_average ?? 0) ) * 10 )% de calificación"
+    }
+}
+
+extension MovieViewModel {
+    
+    /// Set the actors for the movie.
+    /// - Parameter actors: An array of `Actor` objects representing the cast of the movie.
+    func setActors(_ actors: [Actor]) {
+        self.actors = actors
+    }
+    
+    /// Get a string representation of the top three actors in the movie.
+    /// - Returns: A string containing the names of the top three actors in the movie, separated by commas.
+    private func getCast() -> String {
+        String(self.actors.prefix(3).reduce("") { "\($0), \($1.name ?? "")" }.dropFirst(2))
+    }
+    
+    /// Load the cast of the movie from the API and call the completion handler with the cast as a string.
+    /// - Parameter completion: A closure that takes a string containing the cast of the movie as its only parameter.
+    func loadCast(completion: @escaping (String) -> ()) {
+        let resource = Resource<Credits>(url: Endpoint.credits(id_movie: movie.id).url) { data in
+            return try? JSONDecoder().decode(Credits.self, from: data)
+        }
+        
+        MovieAPI().load(resource: resource) { [weak self] result in
+            if let actors = result {
+                self?.setActors(actors.cast)
+                completion(self?.getCast() ?? "")
+            }
+        }
+    }
+    
+    /// Load the reviews for the movie from the API and call the completion handler with an array of `Review` objects.
+    /// - Parameter completion: A closure that takes an array of `Review` objects as its only parameter.
+    func loadReviews(completion: @escaping ([Review]) -> ()) {
+        let resource = Resource<ReviewList>(url: Endpoint.reviews(id_movie: movie.id).url) { data in
+            return try? JSONDecoder().decode(ReviewList.self, from: data)
+        }
+        
+        MovieAPI().load(resource: resource) { result in
+            if let reviews = result {
+                completion(reviews.results)
+            }
+        }
     }
 }
