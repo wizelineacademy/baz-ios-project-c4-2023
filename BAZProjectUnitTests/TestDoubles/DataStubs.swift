@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import BAZProject
 
 class DataStubs {
     
@@ -15,6 +16,8 @@ class DataStubs {
 
     static let extraData = String("{\"results\":[{\"id\":3465,\"title\":\"df_SAWERQ\",\"poster_path\":\"path//\", \"people\":\"john\"}]}").data(using: .utf8)!
     static let imageData: Data = Data(base64Encoded: ImageData.string, options: .ignoreUnknownCharacters)!
+    
+    static let singleMovieMediaData = MediaItem(id: 18, posterPath: "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg", title: "The Fifth Element", rating: 7.5, mediaType: .movie, releaseDate: DateFormatter.getDate(from: "1997-07-02"))
     
     var movieDetailData: Data {
         let bundle = Bundle(for: type(of: self))

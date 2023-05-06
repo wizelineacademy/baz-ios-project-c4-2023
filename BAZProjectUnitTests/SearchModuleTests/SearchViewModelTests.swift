@@ -105,7 +105,7 @@ final class SearchViewModelTests: XCTestCase {
     
     func test_getCellModel_FootnoteShouldBeDateWhenDateAfterToday() {
         let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
+        let tomorrowsStringDate = DateFormatter.getString(from: tomorrowsDate)
         let person = MediaItem(id: 1, posterPath: "path", title: "title", rating: 1.2, mediaType: .tv, releaseDate: tomorrowsDate)
         let expectedModel = MediaTableViewCellModel(title: "title", subtitle: MediaType.tv.itemTitle, image: "path", defaultImage: MediaType.tv.defaultImage, footNote: tomorrowsStringDate, rated: false)
         

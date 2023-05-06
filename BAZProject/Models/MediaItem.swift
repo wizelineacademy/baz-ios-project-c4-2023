@@ -26,9 +26,7 @@ extension MediaItem {
         self.id = dataObject.id
         self.title = dataObject.title ?? dataObject.name
         self.posterPath = dataObject.posterPath ?? dataObject.profilePath
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.releaseDate = dateFormatter.date(from: dataObject.releaseDate ?? "")
+        self.releaseDate = DateFormatter.getDate(from: dataObject.releaseDate)
     }
     
 }

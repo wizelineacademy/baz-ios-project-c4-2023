@@ -46,7 +46,8 @@ class SearchViewModel {
             var footnote: String?
             var rated = false
             if let releaseDate = item.releaseDate, releaseDate > Date() {
-                footnote = DateFormatter.common.string(from: releaseDate)
+                footnote =
+                DateFormatter.getString(from: releaseDate)
             } else if let average = item.rating, average != 0 {
                 footnote = String(round(average * 10) / 10)
                 rated = true

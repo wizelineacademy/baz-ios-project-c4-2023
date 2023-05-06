@@ -46,7 +46,8 @@ class TrendingMediaViewModel {
         var subtitle: String?
         var rated = false
         if let releaseDate = item.releaseDate, releaseDate > Date() {
-            subtitle = DateFormatter.common.string(from: releaseDate)
+            subtitle =
+            DateFormatter.getString(from: releaseDate)
         } else if let average = item.rating, average != 0 {
             subtitle = String(round(average * 10) / 10)
             rated = true
