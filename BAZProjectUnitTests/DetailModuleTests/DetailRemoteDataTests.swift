@@ -43,12 +43,7 @@ final class DetailRemoteDataTests: XCTestCase {
         
         let retrievedData = try await sut.getTVDetails(id: 18)
         
-        XCTAssertEqual(expectedData?.id, retrievedData?.id)
-        XCTAssertEqual(expectedData?.name, retrievedData?.name)
         XCTAssertEqual(expectedData?.overview, retrievedData?.overview)
-        XCTAssertEqual(expectedData?.posterPath, retrievedData?.posterPath)
-        XCTAssertEqual(expectedData?.originalName, retrievedData?.originalName)
-        XCTAssertEqual(expectedData?.voteAverage, retrievedData?.voteAverage)
         XCTAssertEqual(expectedData?.status, retrievedData?.status)
         XCTAssertEqual(expectedData?.recommendations, retrievedData?.recommendations)
         XCTAssertEqual(expectedData?.similar, retrievedData?.similar)
@@ -64,10 +59,7 @@ final class DetailRemoteDataTests: XCTestCase {
         
         let retrievedData = try await sut.getPersonDetails(id: 18)
         
-        XCTAssertEqual(expectedData?.id, retrievedData?.id)
-        XCTAssertEqual(expectedData?.name, retrievedData?.name)
         XCTAssertEqual(expectedData?.biography, retrievedData?.biography)
-        XCTAssertEqual(expectedData?.profilePath, retrievedData?.profilePath)
         XCTAssertEqual(expectedData?.deathday, retrievedData?.deathday)
         XCTAssertEqual(expectedData?.birthday, retrievedData?.birthday)
         XCTAssertEqual(expectedData?.combinedCredits, retrievedData?.combinedCredits)

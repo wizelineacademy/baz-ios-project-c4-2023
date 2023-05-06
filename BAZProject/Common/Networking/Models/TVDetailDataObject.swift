@@ -9,13 +9,10 @@ import Foundation
 
 struct TVDetailDataObject: Decodable {
     
-    var id: Int?
-    var name: String?
     var overview: String?
-    var posterPath: String?
-    var originalName: String?
-    var voteAverage: Float?
     var status: String?
+    var first_air_date: String?
+    var last_air_date: String?
     var recommendations: GenericResponseDataObject?
     var similar: GenericResponseDataObject?
     var reviews: ReviewCollectionDataOject?

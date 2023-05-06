@@ -26,7 +26,7 @@ extension MediaItem {
         self.id = dataObject.id
         self.title = dataObject.title ?? dataObject.name
         self.posterPath = dataObject.posterPath ?? dataObject.profilePath
-        self.releaseDate = DateFormatter.getDate(from: dataObject.releaseDate)
+        self.releaseDate = DateFormatter.getDate(from: dataObject.releaseDate ?? dataObject.firstAirDate)
     }
     
 }

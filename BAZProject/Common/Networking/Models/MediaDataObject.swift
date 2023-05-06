@@ -17,5 +17,6 @@ struct MediaDataObject: Decodable, Equatable, Hashable {
     var name: String?
     var releaseDate: String?
     var profilePath: String?
+    var firstAirDate: String?
     
 }

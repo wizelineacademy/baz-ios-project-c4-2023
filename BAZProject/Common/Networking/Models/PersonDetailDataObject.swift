@@ -9,12 +9,9 @@ import Foundation
 
 struct PersonDetailDataObject: Decodable {
     
-    var id: Int?
     var biography: String?
     var deathday: String?
     var birthday: String?
-    var name: String?
-    var profilePath: String?
     var combinedCredits: PersonCastingDataObject?
     
 }

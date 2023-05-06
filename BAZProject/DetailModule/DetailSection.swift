@@ -7,9 +7,14 @@
 
 import Foundation
 
-public enum DetailSection: SectionProtocol {
+public enum DetailSection: Int, Hashable {
     
-    case heading, overview, cast, recommended, similar, filmography
+    case heading = 0
+    case overview = 1
+    case cast = 2
+    case recommended = 3
+    case similar = 4
+    case filmography = 5
     
     public var title: String? {
         switch self {
