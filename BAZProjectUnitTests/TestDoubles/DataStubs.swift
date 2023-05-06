@@ -8,6 +8,7 @@
 import Foundation
 
 class DataStubs {
+    
     static let completeData = String("{\"results\":[{\"id\":3465,\"title\":\"df_SAWERQ\",\"poster_path\":\"path//\"}]}").data(using: .utf8)!
 
     static let missingData = String("{\"results\":[{\"id\":3465,\"title\":\"df_SAWERQ\"}]}").data(using: .utf8)!
@@ -20,4 +21,5 @@ class DataStubs {
         let file = bundle.url(forResource: "MovieDetailResponse", withExtension: "json")!
         return try! Data(contentsOf: file)
     }
+    
 }

@@ -15,5 +15,8 @@ struct MovieDetailDataObject: Decodable, Equatable {
     var overview: String?
     var posterPath: String?
     var voteAverage: Float?
-    
+    var recommendations: GenericResponseDataObject?
+    var reviews: ReviewCollectionDataOject?
+    var similar: GenericResponseDataObject?
+    var credits: CastDataObject?
 }
