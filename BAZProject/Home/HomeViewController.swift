@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
+        self.movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.HomeCellId)
         let exitButtom: UIBarButtonItem
         exitButtom = UIBarButtonItem(title: LocalizableString.searchTitle.localized,
                                      style: .plain,
@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     private func setupViews() {
         movieTableView.dataSource = self
         movieTableView.delegate = self
-        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
+        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.HomeCellId)
     }
     
     @objc func selectSection(_ sender: UISegmentedControl) {
@@ -121,7 +121,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as? HomeCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.HomeCellId, for: indexPath) as? HomeCell
         else { return UITableViewCell() }
         cell.isHome = true
         cell.presenter = presenter

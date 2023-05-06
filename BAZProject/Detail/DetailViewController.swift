@@ -35,10 +35,11 @@ class DetailViewController: UIViewController {
     }()
     private lazy var movieView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .redraw
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .white
         imageView.image = UIImage(named: "loader")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
         return imageView
     }()
     private lazy var movieTitle: GreenLabel = {
@@ -81,7 +82,7 @@ class DetailViewController: UIViewController {
         collection.backgroundColor = .yellow
         collection.delegate = self
         collection.dataSource = self
-        collection.register(DetailMovieCell.self, forCellWithReuseIdentifier: "DetailMovieCell")
+        collection.register(DetailMovieCell.self, forCellWithReuseIdentifier: CellConstants.detailMovieCellId)
         return collection
     }()
     
@@ -98,7 +99,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        movieView.image = UIImage(named: "poster")
+        self.movieView.image = UIImage(named: "poster")
         navigationItem.title = detailMovieModel?.title
         self.movieTitle.text = "Original Title: \(detailMovieModel?.originalTitle ?? detailMovieModel?.title ?? "")"
         self.movieDate.text = "Release Date: \(detailMovieModel?.releaseDate ?? "")"
@@ -107,8 +108,9 @@ class DetailViewController: UIViewController {
         self.popularity.text = "Popularity: \(detailMovieModel?.popularity ?? 0.0)"
         self.voteAverage.text = "Vote Average: \(detailMovieModel?.voteAverage ?? 0.0)"
         self.voteCount.text = "Vote Count: \(detailMovieModel?.voteCount ?? 0)"
-        self.presenter?.getOriginalMovieImage(imagePath: detailMovieModel?.backdropPath ?? "", completion: { imageData in
-            self.movieView.image = imageData
+        self.presenter?.getOriginalMovieImage(imagePath: detailMovieModel?.backdropPath ?? "", completion: {[weak self] imageData in
+            self?.movieView.image = imageData
+            self?.movieView.isHidden = false
         })
     }
     
@@ -163,7 +165,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailMovieCell", for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellConstants.detailMovieCellId, for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
         cell.producersTitle.text = "Celda"
         return cell
     }

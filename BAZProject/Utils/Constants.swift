@@ -11,7 +11,8 @@ struct CellConstants {
     static let viewHeightAnchor = 140.0
     static let coverViewHeight = 120.0
     static let coverViewCenterY = 90.0
-    static let cellID = "HomeCell"
+    static let HomeCellId = "HomeCell"
+    static let detailMovieCellId = "DetailMovieCell"
 }
 
 struct ConstraintConstants {

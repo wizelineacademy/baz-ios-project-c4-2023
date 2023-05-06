@@ -69,7 +69,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     private func setupTableView() {
         movieTableView.dataSource = self
         movieTableView.delegate = self
-        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
+        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.HomeCellId)
     }
     
     // MARK: - searchBar Delegates
@@ -86,7 +86,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
 // MARK: - Extensions
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID) as? HomeCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.HomeCellId) as? HomeCell else { return UITableViewCell() }
         cell.isHome = false
         cell.searchPresenter = presenter
         cell.index = indexPath.row
