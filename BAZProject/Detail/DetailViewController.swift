@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBarDelegate*/ {
+class DetailViewController: UIViewController {
     // MARK: Properties
     private lazy var scroll: UIScrollView = {
         let scroll = UIScrollView(frame: .zero)
@@ -74,17 +74,16 @@ class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBar
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.3, height: 170)
         layout.scrollDirection = .horizontal
-        
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.backgroundColor = .clear
+        collection.backgroundColor = .yellow
         collection.delegate = self
         collection.dataSource = self
         collection.register(DetailMovieCell.self, forCellWithReuseIdentifier: "DetailMovieCell")
         return collection
     }()
-    var presenter: DetailViewOutputProtocol?
     
+    var presenter: DetailViewOutputProtocol?
     private var detailMovieModel: ListMovieProtocol?
     
     // MARK: Lifecycle
@@ -106,6 +105,9 @@ class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBar
         self.popularity.text = "Popularity: \(detailMovieModel?.popularity ?? 0.0)"
         self.voteAverage.text = "Vote Average: \(detailMovieModel?.voteAverage ?? 0.0)"
         self.voteCount.text = "Vote Count: \(detailMovieModel?.voteCount ?? 0)"
+        self.presenter?.getOriginalMovieImage(imagePath: detailMovieModel?.backdropPath ?? "", completion: { imageData in
+            self.movieView.image = imageData
+        })
     }
     
     // MARK: Functions
@@ -128,8 +130,8 @@ class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBar
         
         NSLayoutConstraint.activate([
             scroll.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            scroll.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8),
-            scroll.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
+            scroll.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: ConstraintConstants.small),
+            scroll.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -ConstraintConstants.small),
             scroll.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             
             container.topAnchor.constraint(equalTo: contentScroll.topAnchor),
@@ -143,11 +145,9 @@ class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBar
             stackView.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
             
-            movieView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 8),
-            movieView.heightAnchor.constraint(equalToConstant: 320),
-            movieView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-32),
-            movieView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-            movieView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -8),
+            movieView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: ConstraintConstants.small),
+            movieView.heightAnchor.constraint(equalToConstant: 300),
+            movieView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-ConstraintConstants.regular),
             
             similarCollectionView.heightAnchor.constraint(equalToConstant: 170)
         ])
@@ -155,29 +155,22 @@ class DetailViewController: UIViewController/*, UITableViewDelegate, UISearchBar
 }
 
 // MARK: - Extensions
-
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailMovieCell", for: indexPath) as! DetailMovieCell
-        //guard let source = presenter.getProducers() else { return cell }
-        //cell.model = source[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailMovieCell", for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
         cell.producersTitle.text = "Celda"
         return cell
     }
-    
-    
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W
 extension DetailViewController: DetailViewInputProtocol {
     func showDetailMovie(detailMovie: ListMovieProtocol) {
-        //navigationItem.title = detailMovie.title
         self.detailMovieModel = detailMovie
     }
-    
 }
 

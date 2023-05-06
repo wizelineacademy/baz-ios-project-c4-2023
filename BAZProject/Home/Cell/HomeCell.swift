@@ -8,9 +8,11 @@
 import UIKit
 
 //MARK: - Class
-class HomeCell: UITableViewCell {
+
+/// The UITableViewCell to be reused in some modules
+final class HomeCell: UITableViewCell {
     //MARK: - Properties
-    private let coverView: UIImageView = {
+    lazy var coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .redraw
         imageView.backgroundColor = .white
@@ -20,7 +22,7 @@ class HomeCell: UITableViewCell {
         return imageView
     }()
     
-    private let movieDescription: GreenLabel = {
+    private lazy var movieDescription: GreenLabel = {
         let label = GreenLabel(frame: .zero)
         label.sizeToFit()
         label.numberOfLines = 0
@@ -28,7 +30,7 @@ class HomeCell: UITableViewCell {
         return label
     }()
     
-    private let favoriteButton: UIButton = {
+    private lazy var favoriteButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(systemName: "star"), for: .normal)
         button.tintColor = .cyan
@@ -57,15 +59,6 @@ class HomeCell: UITableViewCell {
     var model: MovieResult? {
         didSet {
             movieDescription.text = model?.title
-            if isHome {
-                self.presenter?.getMovieImage(index: index ?? 0, completion: {[weak self] imageData in
-                    self?.coverView.image = imageData
-                })
-            } else {
-                self.searchPresenter?.getMovieImage(index: index ?? 0, completion: {[weak self] imageData in
-                    self?.coverView.image = imageData
-                })
-            }
             let outLine: UIImage = UIImage(systemName: "star")?.withTintColor(.cyan) ?? UIImage()
             let filled: UIImage = UIImage(systemName: "star.fill")?.withTintColor(.cyan) ?? UIImage()
             favoriteButton.setImage(model?.isFavorite ?? false ? filled : outLine, for: .normal)
@@ -88,17 +81,13 @@ class HomeCell: UITableViewCell {
             coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ConstraintConstants.small),
             coverView.heightAnchor.constraint(equalToConstant: CellConstants.coverViewHeight),
             coverView.widthAnchor.constraint(equalToConstant: CellConstants.coverViewCenterY),
-            coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
+            coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             favoriteButton.rightAnchor.constraint(equalTo: coverView.rightAnchor, constant: 8),
             favoriteButton.heightAnchor.constraint(equalToConstant: 40),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
+            favoriteButton.widthAnchor.constraint(equalToConstant: 40),
+            
             movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: ConstraintConstants.small),
             movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: ConstraintConstants.medium),
             movieDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

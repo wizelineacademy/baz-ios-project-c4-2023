@@ -24,7 +24,6 @@ class DetailPresenter {
         self.router = router
         self.detailMovie = detailMovie
     }
-    
 }
 
 // MARK: - Extensions
@@ -35,30 +34,9 @@ extension DetailPresenter: DetailViewOutputProtocol {
         interactor.getDetailMovie(detailMoviePI: self.detailMovie)
     }
     
-//    func getMovieSearch(endPoint: Endpoint) {
-//        self.router.showAnimation {
-//            self.pEndpoint = endPoint
-//            self.interactor.getMovieSearch(endPoint: self.pEndpoint) {
-//                self.router.hideAnimation {}
-//            }
-//        }
-//    }
-//
-//    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-//        interactor.getMovieImage(index: index, completion: completion)
-//    }
-//
-//    func saveFavorite(index: Int) {
-//        interactor.saveFavorite(index: index) {
-//            self.getMovieSearch(endPoint: self.pEndpoint)
-//        }
-//    }
-//
-//    func deleteFavorite(index: Int) {
-//        interactor.deleteFavorite(index: index) {
-//            self.getMovieSearch(endPoint: self.pEndpoint)
-//        }
-//    }
+    func getOriginalMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
+        interactor.getOriginalMovieImage(imagePath: imagePath, completion: completion)
+    }
 }
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
@@ -66,14 +44,4 @@ extension DetailPresenter: DetailInteractorOutputProtocol {
     func presentDetailMovie(detailMovie: ListMovieProtocol) {
         view?.showDetailMovie(detailMovie: detailMovie)
     }
-    
-//    func getDetailMovie() {
-//        interactor.getDetailMovie(detailMoviePI: self.detailMovie)
-//    }
-    
-//    func presentDataMovies(movies: [ListMovieProtocol]?) {
-//        view?.showViewDataMovies(movies: movies)
-//    }
-    
 }
-

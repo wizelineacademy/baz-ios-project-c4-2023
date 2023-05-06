@@ -24,7 +24,7 @@ extension MainInteractorProtocol {
      - Version: 1.0.0
     */
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-        if let path = URL(string: "\(MovieAPIConstans.baseUrlImage)\(movies?[index].posterPath ?? "")") ?? URL(string: "") {
+        if let path = URL(string: MovieAPIConstans.getPosterUrl(path: movies?[index].posterPath ?? "")) ?? URL(string: "") {
             let imageLoader: ImageLoader = ImageLoader()
             imageLoader.loadImage(from: path) { image in
                 completion(image)

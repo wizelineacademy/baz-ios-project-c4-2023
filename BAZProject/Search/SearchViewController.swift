@@ -81,20 +81,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
-
 }
 
 // MARK: - Extensions
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID) as? HomeCell {
-            cell.isHome = false
-            cell.searchPresenter = presenter
-            cell.index = indexPath.row
-            cell.model = self.moviesModel?[indexPath.row]
-            return cell
-        }
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID) as? HomeCell else { return UITableViewCell() }
+        cell.isHome = false
+        cell.searchPresenter = presenter
+        cell.index = indexPath.row
+        cell.model = self.moviesModel?[indexPath.row]
+        self.presenter?.getMovieImage(index: indexPath.row, completion: { imageData in
+            cell.coverView.image = imageData
+        })
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

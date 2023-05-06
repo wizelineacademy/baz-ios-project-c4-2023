@@ -5,7 +5,7 @@
 
 import UIKit
 
-// MARK: - View (Presenter To View)
+// MARK: - V I E W (Presenter To View)
 protocol HomeViewInputProtocol: AnyObject {
     // MARK: - Properties
     var presenter: HomeViewOutputProtocol? { get }
@@ -13,7 +13,7 @@ protocol HomeViewInputProtocol: AnyObject {
     func showViewDataMovies(movies: [ListMovieProtocol]?)
 }
 
-// MARK: - Presenter (View To Presenter)
+// MARK: - P R E S E N T E R (View To Presenter)
 protocol HomeViewOutputProtocol {
     // MARK: - Properties
     var view: HomeViewInputProtocol? { get }
@@ -27,13 +27,13 @@ protocol HomeViewOutputProtocol {
     func showSearchModule()
 }
 
-// MARK: - (Interactor To Presenter)
+// MARK: - P R E S E N T E R (Interactor To Presenter)
 protocol HomeInteractorOutputProtocol: AnyObject {
     // MARK: - Functions
     func presentDataMovies(movies: [ListMovieProtocol]?)
 }
 
-// MARK: - Interactor (Presenter To Interactor)
+// MARK: - I N T E R A C T O R (Presenter To Interactor)
 protocol HomeInteractorInputProtocol: MainInteractorProtocol {
     // MARK: - Properties
     var presenter: HomeInteractorOutputProtocol? { get }
@@ -41,7 +41,7 @@ protocol HomeInteractorInputProtocol: MainInteractorProtocol {
     func getDataMovies(endPoint: Endpoint, completion: @escaping () -> Void)
 }
 
-// MARK: - Router (Presenter To Router)
+// MARK: - R O U T E R (Presenter To Router)
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
     func showAnimation(completion: @escaping () -> Void)

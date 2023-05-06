@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailMovieCell: UICollectionViewCell {
-    private let coverView: UIImageView = {
+    private lazy var coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
