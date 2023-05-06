@@ -19,8 +19,8 @@ struct MovieList: Decodable {
 /// - poster_path: An optional string that represents the movie's poster path.
 /// - overview: An optional string that represents overview of the movie's plot.
 /// - release_date: An optional string that represents the release date of the movie.
-/// - popularity: An optional string that represents the popularity score of the movie.
-/// - vote_average: An optional string that represents the average rating score of the movie.
+/// - popularity: An optional double that represents the popularity score of the movie.
+/// - vote_average: An optional double that represents the average rating score of the movie.
 struct Movie: Decodable {
     let id: Int
     let title: String?
