@@ -13,8 +13,8 @@ final class MoviesDetailPresenter {
     var interactor      : MoviesDetailInteractorInputProtocol?
     var router          : MoviesDetailRouterProtocol?
     var resultReviews           : [ReviewsMovieData]    = []
-    var resultRecomendations    : [RecomendationsData]  = []
-    var resultSimilars          : [RecomendationsData]  = []
+    var resultRecomendations    : [InfoDetailData]      = []
+    var resultSimilars          : [InfoDetailData]      = []
     
     init(view: MoviesDetailViewInputProtocol? = nil,
          interactor: MoviesDetailInteractorInputProtocol? = nil,
@@ -35,6 +35,21 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
         interactor?.getSimilars()
     }
     
+    func getInfoFavoritesMovies() {
+        if let getFavoriteMovies = interactor?.getFavoriteMovies(){
+            interactor?.bIsFavorite = getFavoriteMovies
+            view?.setBtnLike(bsIsOn: getFavoriteMovies)
+        }
+    }
+    
+    func addMovieToFavorite() {
+        if interactor?.bIsFavorite ?? false{
+            interactor?.removeFavoriteMovies()
+        }else{
+            interactor?.addFavoriteMovies()
+        }
+    }
+    
 }
 extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
     
@@ -44,7 +59,7 @@ extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
         view?.setReviews()
     }
     
-    func setResponseDetail(with result: [RecomendationsData], detail typeDetail: OptionDetail?) {
+    func setResponseDetail(with result: [InfoDetailData], detail typeDetail: OptionDetail?) {
         switch typeDetail {
         case .Recomendations:
             self.resultRecomendations.removeAll()
@@ -57,6 +72,10 @@ extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
         default: break;
         }
         
+    }
+    
+    func showBtnFavorites(with bIsOn: Bool?) {
+        view?.setBtnLike(bsIsOn: bIsOn ?? false)
     }
     
     func setError() {

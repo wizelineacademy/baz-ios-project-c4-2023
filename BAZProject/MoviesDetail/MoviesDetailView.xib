@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesDetailView" customModule="BAZProject" customModuleProvider="target">
             <connections>
+                <outlet property="btnLikes" destination="7X8-Ah-5dJ" id="vVZ-13-d2a"/>
                 <outlet property="collecionSimilars" destination="lRd-Rq-juc" id="03T-Jz-ozE"/>
                 <outlet property="collectionRecomendations" destination="WrL-TE-ITq" id="2cR-sr-SWB"/>
                 <outlet property="collectionReviews" destination="P6T-MQ-XR7" id="V7Y-zE-WrA"/>
@@ -177,6 +178,17 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7X8-Ah-5dJ">
+                            <rect key="frame" x="325" y="157" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="CdZ-aQ-TWc"/>
+                                <constraint firstAttribute="height" constant="25" id="pub-G5-7Tc"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="btnLike:" destination="-1" eventType="touchUpInside" id="AtU-w7-OnG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="r3J-1X-DxW" secondAttribute="trailing" constant="19" id="94X-jB-0nG"/>
@@ -188,6 +200,8 @@
                         <constraint firstItem="r3J-1X-DxW" firstAttribute="centerX" secondItem="QYI-O1-UZO" secondAttribute="centerX" id="ZgL-qs-hN7"/>
                         <constraint firstAttribute="trailing" secondItem="zPh-f5-Pul" secondAttribute="trailing" id="c2C-Bk-IND"/>
                         <constraint firstAttribute="trailing" secondItem="3jz-ya-p06" secondAttribute="trailing" constant="19" id="f2X-AD-RZX"/>
+                        <constraint firstAttribute="trailing" secondItem="7X8-Ah-5dJ" secondAttribute="trailing" constant="25" id="gQ8-NZ-Tyi"/>
+                        <constraint firstItem="3jz-ya-p06" firstAttribute="top" secondItem="7X8-Ah-5dJ" secondAttribute="bottom" constant="23" id="iFV-Zd-hoj"/>
                         <constraint firstItem="zUD-lW-2Sw" firstAttribute="leading" secondItem="QYI-O1-UZO" secondAttribute="leading" id="jd8-Ab-XfR"/>
                         <constraint firstItem="zUD-lW-2Sw" firstAttribute="trailing" secondItem="QYI-O1-UZO" secondAttribute="trailing" id="lLR-8q-nSr"/>
                         <constraint firstAttribute="bottom" secondItem="zPh-f5-Pul" secondAttribute="bottom" constant="66.5" id="mMG-8a-d7x"/>
@@ -208,7 +222,7 @@
                 <constraint firstItem="QYI-O1-UZO" firstAttribute="leading" secondItem="f4x-kW-jXw" secondAttribute="leading" id="up1-lF-CvL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="56.799999999999997" y="99.400299850074973"/>
+            <point key="canvasLocation" x="56.799999999999997" y="98.950524737631198"/>
         </view>
     </objects>
     <resources>

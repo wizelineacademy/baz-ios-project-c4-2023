@@ -18,8 +18,4 @@ final class CellMovies: UITableViewCell{
         descriptionMovie.text = nil
     }
     
-    func setInfoToCell(){
-        
-    }
-    
 }

@@ -25,7 +25,7 @@ class CollectionRecomendationsCell: UICollectionViewCell{
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func setCell(with infoReview: RecomendationsData?){
+    func setCell(with infoReview: InfoDetailData?){
         lblTitle.text   = infoReview?.title
         imgPoster.image = UIImage(named: "movie")
         if let posterPath = infoReview?.posterPath{

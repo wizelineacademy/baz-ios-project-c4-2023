@@ -9,10 +9,10 @@ import UIKit
 
 final class MoviesDetailView: UIViewController{
     
-    
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var imgDetailMov: UIImageView!
+    @IBOutlet weak var btnLikes         : UIButton!
+    @IBOutlet weak var lblDescription   : UILabel!
+    @IBOutlet weak var lblTitle         : UILabel!
+    @IBOutlet weak var imgDetailMov     : UIImageView!
     @IBOutlet weak var collectionReviews: UICollectionView!{
         didSet {
             collectionReviews.delegate = self
@@ -69,7 +69,17 @@ final class MoviesDetailView: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.getInfoFavoritesMovies()
         presenter?.consultReviews()
+    }
+    
+    @IBAction func btnLike(_ sender: Any) {
+        presenter?.addMovieToFavorite()
+    }
+    
+    func setBtnLike(bsIsOn:Bool) {
+        let nameImage = bsIsOn ? "suit.heart.fill" : "suit.heart"
+        btnLikes.setImage(UIImage(systemName: nameImage), for: .normal)
     }
     
 }

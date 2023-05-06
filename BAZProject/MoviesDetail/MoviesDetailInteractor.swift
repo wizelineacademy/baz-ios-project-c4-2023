@@ -17,6 +17,7 @@ final class MoviesDetailInteractor {
     
     var movieApi        : Service
     var moviesInfo      : MovieData?
+    var bIsFavorite     : Bool?
     
     init(movieApi: Service, moviesInfo: MovieData?) {
         self.movieApi   = movieApi
@@ -91,13 +92,38 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
     }
     
     func setInfoDetail(with resultRecomendations: [Movie]?, typeDetail optionDetail: OptionDetail?){
-        var recomendationData              : [RecomendationsData] = []
+        var recomendationData              : [InfoDetailData] = []
         for infoRecomendations in resultRecomendations ?? [Movie](){
-            recomendationData.append(RecomendationsModel(title: infoRecomendations.title ?? "",
+            recomendationData.append(InfoDetailModel(title: infoRecomendations.title ?? "",
                                                       posterPath: infoRecomendations.posterPath,
                                                       overview: infoRecomendations.overview ?? ""))
         }
         self.presenter?.setResponseDetail(with: recomendationData, detail: optionDetail)
+    }
+    
+    func addFavoriteMovies() {
+        bIsFavorite = true
+        guard var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return }
+        favoritesMovies.append(moviesInfo?.id ?? 0)
+        UserDefaultMannager.set(value: favoritesMovies, key: .favoriteMovies)
+        presenter?.showBtnFavorites(with: true)
+    }
+    
+    func getFavoriteMovies() -> Bool {
+        guard let favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return false }
+        return favoritesMovies.contains(moviesInfo?.id ?? 0)
+    }
+    
+    func removeFavoriteMovies() {
+        guard var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return }
+        for (index, value) in favoritesMovies.enumerated(){
+            if value == moviesInfo?.id ?? 0 {
+                bIsFavorite = false
+                favoritesMovies.remove(at: index)
+            }
+        }
+        UserDefaultMannager.set(value: favoritesMovies, key: .favoriteMovies)
+        presenter?.showBtnFavorites(with: bIsFavorite)
     }
     
 }

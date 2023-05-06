@@ -38,14 +38,14 @@ protocol ReviewsMovieData {
     
 }
 
-struct RecomendationsModel: RecomendationsData {
+struct InfoDetailModel: InfoDetailData {
     
     var title       : String
     var posterPath  : String?
     var overview    : String
 }
 
-protocol RecomendationsData {
+protocol InfoDetailData {
     
     var title           : String { get }
     var posterPath      : String? { get }
