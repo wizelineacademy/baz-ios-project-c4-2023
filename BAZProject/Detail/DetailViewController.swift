@@ -14,6 +14,8 @@ class DetailViewController: UIViewController {
         scroll.sizeToFit()
         scroll.backgroundColor = .clear
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.showsVerticalScrollIndicator = false
+        scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
     private lazy var container: UIView = {

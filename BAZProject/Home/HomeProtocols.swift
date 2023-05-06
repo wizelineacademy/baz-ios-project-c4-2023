@@ -25,6 +25,7 @@ protocol HomeViewOutputProtocol {
     func saveFavorite(index: Int)
     func deleteFavorite(index: Int)
     func showSearchModule()
+    func showDetailModule(movie: ListMovieProtocol)
 }
 
 // MARK: - P R E S E N T E R (Interactor To Presenter)
@@ -47,4 +48,5 @@ protocol HomeRouterProtocol {
     func showAnimation(completion: @escaping () -> Void)
     func hideAnimation(completion: @escaping () -> Void)
     func showSearchModule()
+    func showDetailModule(movie: ListMovieProtocol)
 }

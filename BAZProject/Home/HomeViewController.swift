@@ -139,8 +139,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let movie = moviesModel?[indexPath.row] {
-            let viewController = DetailRouter.createModule(withMovie: movie)
-            navigationController?.pushViewController(viewController, animated: true)
+            presenter?.showDetailModule(movie: movie)
         }
     }
 }

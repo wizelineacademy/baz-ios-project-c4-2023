@@ -48,4 +48,9 @@ extension HomeRouter: HomeRouterProtocol {
         self.view?.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func showDetailModule(movie: ListMovieProtocol) {
+        let viewController = DetailRouter.createModule(withMovie: movie)
+        self.view?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }

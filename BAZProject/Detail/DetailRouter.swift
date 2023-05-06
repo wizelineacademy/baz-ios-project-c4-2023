@@ -14,7 +14,7 @@ class DetailRouter {
     //private var animationView: UIAlertController?
     
     // MARK: - Functions
-    static func createModule(withMovie movie: MovieResult) -> UIViewController {
+    static func createModule(withMovie movie: ListMovieProtocol) -> UIViewController {
         let view = DetailViewController()
         let interactor = DetailInteractor()
         let router = DetailRouter()

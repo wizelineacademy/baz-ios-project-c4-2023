@@ -54,6 +54,10 @@ extension HomePresenter: HomeViewOutputProtocol {
     func showSearchModule() {
         router.showSearchModule()
     }
+    
+    func showDetailModule(movie: ListMovieProtocol) {
+        router.showDetailModule(movie: movie)
+    }
 }
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
