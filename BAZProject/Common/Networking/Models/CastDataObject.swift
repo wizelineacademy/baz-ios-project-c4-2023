@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CastDataObject: Decodable, Equatable, Hashable {
+struct CastDataObject: Decodable, Equatable {
     
     var cast: Set<CastMemberDataObject>?
     

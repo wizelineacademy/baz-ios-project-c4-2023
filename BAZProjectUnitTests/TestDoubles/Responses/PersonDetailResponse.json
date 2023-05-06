@@ -1,0 +1,44 @@
+{
+    "adult": false,
+    "also_known_as": [],
+    "biography": "From Wikipedia, the free encyclopedia.  Scott MacDonald (born 1959) is an American actor. He is best known for his recurring roles as Captain Manning on short-lived series Threshold, Burley from HBO series Carnivàle, and as Commander Dolim from Star Trek: Enterprise, and as the title character from 1996 horror film Jack Frost.\n\nHe grew up in Libby, Montana and graduated from Washington State University and received an MFA in acting/theatre from the California Institute of the Arts. He has also done stage acting, including on Broadway.\n\nDescription above from the Wikipedia article Scott MacDonald (actor), licensed under CC-BY-SA, full list of contributors on Wikipedia.     ",
+    "birthday": "1959-01-01",
+    "deathday": null,
+    "gender": 2,
+    "homepage": null,
+    "id": 132,
+    "imdb_id": "nm0531924",
+    "known_for_department": "Acting",
+    "name": "Scott MacDonald",
+    "place_of_birth": "Libby, Montana, USA",
+    "popularity": 5.076,
+    "profile_path": "/pBXNUejSwDHfWCD9GgmvRbIPBdb.jpg",
+    "combined_credits": {
+        "cast": [
+            {
+                "adult": false,
+                "backdrop_path": "/65fXLi8dFQm5FkGIbGt0ZlBLQNi.jpg",
+                "genre_ids": [
+                    14,
+                    27,
+                    35
+                ],
+                "id": 27318,
+                "original_language": "en",
+                "original_title": "Jack Frost",
+                "overview": "As a notorious serial killer is being driven to his execution, the truck carrying him encounters a bizarre accident that transforms him into a mutant snowman. The sheriff who originally caught the psychopath has remained concerned about his return, and it seems that his fears were well-founded. Before long, bodies pile up, all killed in gruesome wintry ways. Can the sheriff stop the murderer's icy reign of terror?",
+                "popularity": 7.616,
+                "poster_path": "/sXOATwGluNbb9ezfG6DvXCiXvJp.jpg",
+                "release_date": "1997-11-18",
+                "title": "Jack Frost",
+                "video": false,
+                "vote_average": 5.14,
+                "vote_count": 193,
+                "character": "Jack Frost",
+                "credit_id": "52fe4541c3a368484e04fb2f",
+                "order": 0,
+                "media_type": "movie"
+            }
+        ]
+    }
+}

@@ -28,4 +28,10 @@ class DataStubs {
         return try! Data(contentsOf: file)
     }
     
+    var personDetailData: Data {
+        let bundle = Bundle(for: type(of: self))
+        let file = bundle.url(forResource: "PersonDetailResponse", withExtension: "json")!
+        return try! Data(contentsOf: file)
+    }
+    
 }

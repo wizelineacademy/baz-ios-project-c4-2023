@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaDataObject: Decodable, Equatable {
+struct MediaDataObject: Decodable, Equatable, Hashable {
     
     var id: Int?
     var title: String?
