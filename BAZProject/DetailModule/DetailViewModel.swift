@@ -17,35 +17,19 @@ class DetailViewModel {
         self.remoteData = remoteData
     }
     
-    func getDetailSections() -> [DetailSections]? {
+    func getDetailSections() -> [DetailSection]? {
         return item.mediaType?.section
-    }
-    
-}
-
-enum DetailSections: SectionProtocol {
-    
-    case heading, overview, cast, recommended, similar, filmography
-    
-    var title: String? {
-        switch self {
-        case .cast: return "Top billed cast"
-        case .recommended: return "Recommendations"
-        case .similar: return "More like this"
-        case .filmography: return "Filmography"
-        default: return nil
-        }
     }
     
 }
 
 private extension MediaType {
     
-    var section: [DetailSections] {
+    var section: [DetailSection] {
         switch self {
-        case .tv: return [DetailSections.heading, DetailSections.overview, DetailSections.cast, DetailSections.recommended, DetailSections.similar]
-        case .movie: return [DetailSections.heading, DetailSections.overview, DetailSections.cast, DetailSections.recommended, DetailSections.similar]
-        case .person: return [DetailSections.heading, DetailSections.overview, DetailSections.filmography]
+        case .tv: return [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
+        case .movie: return [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
+        case .person: return [DetailSection.heading, DetailSection.overview, DetailSection.filmography]
         }
     }
     
