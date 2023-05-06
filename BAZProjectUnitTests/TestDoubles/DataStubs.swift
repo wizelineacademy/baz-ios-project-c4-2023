@@ -19,7 +19,7 @@ class DataStubs {
     
     static let singleMovieMediaData = MediaItem(id: 18, posterPath: "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg", title: "The Fifth Element", rating: 5.643, mediaType: .movie, releaseDate: DateFormatter.getDate(from: "1997-07-02"))
     
-    static let singleTVMediaData = MediaItem(id: 18, posterPath: "/eKcpqTutiVxQeAPbwupjSV5DXE.jpg", title: "W*A*L*T*E*R", rating: 5.6, mediaType: .tv, releaseDate: DateFormatter.getDate(from: "1984-07-17"))
+    static let singleTVMediaData = MediaItem(id: 18, posterPath: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", title: "W*A*L*T*E*R", rating: 5.6, mediaType: .tv, releaseDate: DateFormatter.getDate(from: "1984-07-17"))
     
     static let singlePersonMediaData = MediaItem(id: 132, posterPath: "/pBXNUejSwDHfWCD9GgmvRbIPBdb.jpg", title: "Scott MacDonald", rating: nil, mediaType: .person, releaseDate: nil)
     

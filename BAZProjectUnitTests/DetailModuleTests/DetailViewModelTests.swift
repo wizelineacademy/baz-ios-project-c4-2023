@@ -45,7 +45,7 @@ final class DetailViewModelTests: XCTestCase {
 
         let sections = sut.getDetailSections()
 
-        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar])
+        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar, DetailSection.reviews])
     }
 
     func test_getDetailSections_TVItemDetailSectionsShouldBeEqual() {
@@ -53,7 +53,7 @@ final class DetailViewModelTests: XCTestCase {
 
         let sections = sut.getDetailSections()
 
-        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar])
+        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar, DetailSection.reviews])
     }
 
     func test_getDetailSections_PersonItemDetailSectionsShouldBeEqual() {
@@ -85,8 +85,8 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssertEqual(data?.credits, expectedData?.credits)
         XCTAssertEqual(data?.reviews, expectedData?.reviews)
         XCTAssertEqual(data?.similar, expectedData?.similar)
-        XCTAssertEqual(data?.first_air_date, expectedData?.first_air_date)
-        XCTAssertEqual(data?.last_air_date, expectedData?.last_air_date)
+        XCTAssertEqual(data?.firstAirDate, expectedData?.firstAirDate)
+        XCTAssertEqual(data?.lastAirDate, expectedData?.lastAirDate)
         XCTAssertEqual(data?.status, expectedData?.status)
         XCTAssertEqual(data?.recommendations, expectedData?.recommendations)
     }
@@ -113,7 +113,7 @@ final class DetailViewModelTests: XCTestCase {
         let person = try await sut.getPersonDetails(id: 12)!
         let dictionary = sut.buildDictionary(from: person)
 
-        XCTAssertEqual(sut.getDetailSections(), Array(dictionary.keys))
+        XCTAssertEqual(sut.getDetailSections()?.sorted(by: { $0.rawValue < $1.rawValue}), Array(dictionary.keys).sorted(by: { $0.rawValue < $1.rawValue}))
         XCTAssertEqual(expectedDictionary[.overview], dictionary[.overview])
         XCTAssertEqual(expectedDictionary[.filmography], dictionary[.filmography])
     }
@@ -131,6 +131,32 @@ final class DetailViewModelTests: XCTestCase {
             ]
         let movie = try await sut.getMovieDetails(id: 12)!
         let dictionary = sut.buildDictionary(from: movie)
+
+        XCTAssertEqual(sut.getDetailSections()?.sorted(by: { $0.rawValue < $1.rawValue}), Array(dictionary.keys).sorted(by: { $0.rawValue < $1.rawValue}))
+        XCTAssertEqual(expectedDictionary[.overview], dictionary[.overview])
+        XCTAssertEqual(expectedDictionary[.cast], dictionary[.cast])
+        XCTAssertEqual(expectedDictionary[.reviews], dictionary[.reviews])
+        XCTAssertEqual(expectedDictionary[.similar], dictionary[.similar])
+        XCTAssertEqual(expectedDictionary[.recommended], dictionary[.recommended])
+    }
+    
+    func test_formatTVDataObject() async throws {
+        let dataObject = try TVDetailDataObject(data: DataStubs().tvDetailData)!
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+        remoteData.tvDetails = dataObject
+        let expectedDictionary: [DetailSection: [AnyHashable]] =
+            [.overview: [OverviewModel(largeTitle: "W*A*L*T*E*R", smallSubtitle: "1984", image: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", description: "wally", defaultImage: "poster")],
+             
+             .cast: [DetailCastMember(actor: MediaItem(id: 89547, posterPath: "/3klT2K1UGl1wvmHKuDcSPuUFasV.jpg", title: "Brian Dobson", rating: nil, mediaType: .person, releaseDate: nil), character: "Ben Grimm (voice)")],
+             
+             .similar: [MediaItem(id: 87415, posterPath: "/pah40fuJA2tZBcY1rhvpSlj0Ys1.jpg", title: "Shadow", rating: 6.4, mediaType: .tv, releaseDate: DateFormatter.getDate(from: "2019-03-08"))],
+             
+             .recommended: [MediaItem(id: 11294, posterPath: "/10XpD4aEOExWcOg9bxCA28NNsMQ.jpg", title: "Kitchen Nightmares", rating: 7.48, mediaType: .tv, releaseDate: DateFormatter.getDate(from: "2007-09-19"))],
+             
+                .reviews: [DetailReview(author: "Peter89Spencer", content: "liked", date: DateFormatter.getDate(from: "2021-06-23T15:58:47.976Z", format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))]
+            ]
+        let tv = try await sut.getTVDetails(id: 12)!
+        let dictionary = sut.buildDictionary(from: tv)
 
         XCTAssertEqual(sut.getDetailSections()?.sorted(by: { $0.rawValue < $1.rawValue}), Array(dictionary.keys).sorted(by: { $0.rawValue < $1.rawValue}))
         XCTAssertEqual(expectedDictionary[.overview], dictionary[.overview])

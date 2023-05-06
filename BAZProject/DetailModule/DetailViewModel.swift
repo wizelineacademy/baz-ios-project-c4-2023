@@ -66,8 +66,15 @@ class DetailViewModel {
     
     func buildDictionary(from object: TVDetailDataObject) -> [DetailSection: [AnyHashable]] {
         var dictionary = [DetailSection: [AnyHashable]]()
-        dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: Calendar.getString(component: .year, from: item.releaseDate), image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
-        dictionary[.similar] = object.similar?.results?.trim(max: 20).map({ MediaItem(dataObject: $0, mediaType: .movie) })
+        var timelabel: String?
+        if let firstAirDate = Calendar.getString(component: .year, from: DateFormatter.getDate(from: object.firstAirDate)) {
+            timelabel = String(firstAirDate)
+            if let lastAirDate = object.lastAirDate, let lastDate = Calendar.getString(component: .year, from: DateFormatter.getDate(from: lastAirDate)) {
+                timelabel?.append(" - \(lastDate)")
+            }
+        }
+        dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: timelabel, image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
+        dictionary[.similar] = object.similar?.results?.trim(max: 20).map({ MediaItem(dataObject: $0, mediaType: .tv) })
         dictionary[.recommended] = object.recommendations?.results?.trim(max: 20).map({ MediaItem(dataObject: $0) })
         let mainCast = object.credits?.cast?.filter({ ($0.order ?? 100) < 20 })
         dictionary[.cast] = mainCast?.trim(max: 20).map({ DetailCastMember(actor: MediaItem(id: $0.id, posterPath: $0.profilePath, title: $0.name, rating: nil, mediaType: .person, releaseDate: nil), character: $0.character) })

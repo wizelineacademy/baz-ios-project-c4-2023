@@ -11,8 +11,8 @@ struct TVDetailDataObject: Decodable {
     
     var overview: String?
     var status: String?
-    var first_air_date: String?
-    var last_air_date: String?
+    var firstAirDate: String?
+    var lastAirDate: String?
     var recommendations: GenericResponseDataObject?
     var similar: GenericResponseDataObject?
     var reviews: ReviewCollectionDataOject?
