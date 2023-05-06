@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="90" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-3d-Ljc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="HdB-H7-gjh">
+                                <rect key="frame" x="5" y="10" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="aDi-i0-A44"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7W-UY-vbt">
+                                <rect key="frame" x="70" y="30" width="339" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f7W-UY-vbt" firstAttribute="leading" secondItem="HdB-H7-gjh" secondAttribute="trailing" constant="5" id="Brc-3Y-pwU"/>
+                            <constraint firstItem="HdB-H7-gjh" firstAttribute="top" secondItem="Pbf-3d-Ljc" secondAttribute="top" constant="10" id="EN7-Xu-tYg"/>
+                            <constraint firstItem="f7W-UY-vbt" firstAttribute="centerY" secondItem="HdB-H7-gjh" secondAttribute="centerY" id="N26-wG-hIA"/>
+                            <constraint firstItem="HdB-H7-gjh" firstAttribute="leading" secondItem="Pbf-3d-Ljc" secondAttribute="leading" constant="5" id="RCa-NT-BpG"/>
+                            <constraint firstAttribute="bottom" secondItem="HdB-H7-gjh" secondAttribute="bottom" constant="10" id="gXv-1A-2fW"/>
+                            <constraint firstAttribute="trailing" secondItem="f7W-UY-vbt" secondAttribute="trailing" constant="5" id="ldJ-zT-xlE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Pbf-3d-Ljc" secondAttribute="trailing" id="JZa-Hr-mQp"/>
+                    <constraint firstItem="Pbf-3d-Ljc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ME1-AH-rPG"/>
+                    <constraint firstAttribute="bottom" secondItem="Pbf-3d-Ljc" secondAttribute="bottom" id="MhW-uS-9Dq"/>
+                    <constraint firstItem="Pbf-3d-Ljc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="m81-t7-Ofp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgView" destination="HdB-H7-gjh" id="AdZ-rD-8rg"/>
+                <outlet property="lblDescription" destination="f7W-UY-vbt" id="NOY-p7-9vl"/>
+                <outlet property="view" destination="Pbf-3d-Ljc" id="plh-qH-ozY"/>
+            </connections>
+            <point key="canvasLocation" x="184.73282442748092" y="35.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="poster" width="500" height="743"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
