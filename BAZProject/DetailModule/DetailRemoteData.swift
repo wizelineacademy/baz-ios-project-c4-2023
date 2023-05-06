@@ -20,4 +20,9 @@ class DetailRemoteData {
         return try MovieDetailDataObject(data: data)
     }
     
+    func getTVDetails(id: Int) async throws -> TVDetailDataObject? {
+        let data = try await sessionHandler.get(DetailEndpoint.tv(id))
+        return try TVDetailDataObject(data: data)
+    }
+    
 }
