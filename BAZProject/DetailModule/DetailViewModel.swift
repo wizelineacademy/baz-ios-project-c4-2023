@@ -34,9 +34,9 @@ private extension MediaType {
     
     var sections: [DetailSection] {
         switch self {
-        case .tv: return [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
-        case .movie: return [DetailSection.heading, DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
-        case .person: return [DetailSection.heading, DetailSection.overview, DetailSection.filmography]
+        case .tv: return [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
+        case .movie: return [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar]
+        case .person: return [DetailSection.overview, DetailSection.filmography]
         }
     }
     

@@ -9,12 +9,11 @@ import Foundation
 
 public enum DetailSection: Int, Hashable {
     
-    case heading = 0
-    case overview = 1
-    case cast = 2
-    case recommended = 3
-    case similar = 4
-    case filmography = 5
+    case overview = 0
+    case cast = 1
+    case recommended = 2
+    case similar = 3
+    case filmography = 4
     
     public var title: String? {
         switch self {
