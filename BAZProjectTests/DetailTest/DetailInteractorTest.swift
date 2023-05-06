@@ -122,14 +122,17 @@ final class DetailInteractorTest: XCTestCase {
     
     func testReviewSucessfullResponseWithResults() {
         //Given
-        let iTotalExpected = 1
+        let strAuthorExpected = "Antonio Alaminos-Fernández"
         sut?.setUpEntity(withMovie: testMovie)
         mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("review"))
         sut?.networking = mockServer
         //When
         sut?.getCurrentData()
         //Then
-        XCTAssertEqual(arrReviews?.count, iTotalExpected)
+        XCTAssertEqual(arrReviews?.first?.strTitle, strAuthorExpected)
+        XCTAssertNotNil(arrReviews?.first?.strOverView)
+        XCTAssertNil(arrReviews?.first?.strDate)
+        XCTAssertNil(arrReviews?.first?.urlConfiguration)
     }
 }
 
