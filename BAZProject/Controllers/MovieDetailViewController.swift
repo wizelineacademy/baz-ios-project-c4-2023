@@ -7,12 +7,15 @@
 
 import UIKit
 
-// MARK: - MovieDetailViewController
+/// This class represents the movie detail view controller, responsible for displaying the details of a movie.
 final class MovieDetailViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The view model of the movie.
     var movieVM: MovieViewModel?
+    
+    /// The image loader used to load the movie poster image.
     private let imageLoader: ImageLoader = ImageLoader()
     
     // MARK: - Outlets
@@ -21,7 +24,9 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblVote: UILabel!
     @IBOutlet weak var lblYear: UILabel!
+    @IBOutlet weak var lblCast: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
+    @IBOutlet weak var vwReview: UIView!
     
     // MARK: - Lifecycle
     
@@ -36,18 +41,29 @@ final class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController {
 
+    /// Sets up the view with the movie details.
     func setupView() {
         
         lblTitle.text = movieVM?.title
-        lblOverview.text = movieVM?.overview
         lblVote.text = movieVM?.vote_average
         lblYear.text = movieVM?.year
+        lblOverview.text = movieVM?.overview
         
         if let url = URL(string: movieVM?.poster_path ?? "") {
             imageLoader.getImage(from: url) { [weak self] image in
                 self?.imgView.image = image
             }
         }
+        
+        movieVM?.loadCast { actors in
+            self.lblCast.text = actors
+        }
+        
+        movieVM?.loadReviews { [weak self] reviews in
+            for review in reviews {
+                guard let view = UserReview.instanceFromNib(review) else { continue }
+                self?.vwReview.addSubview(view)
+            }
+        }
     }
-    
 }
