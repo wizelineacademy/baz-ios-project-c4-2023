@@ -19,4 +19,5 @@ struct MovieDetailDataObject: Decodable, Equatable {
     var reviews: ReviewCollectionDataOject?
     var similar: GenericResponseDataObject?
     var credits: CastDataObject?
+    
 }
