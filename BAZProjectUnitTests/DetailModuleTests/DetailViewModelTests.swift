@@ -28,12 +28,28 @@ final class DetailViewModelTests: XCTestCase {
         sut = DetailViewModel(remoteData: remoteData, item: mediaItem)
     }
 
-    func test_getData_SnapshotShouldGetMediaItemSections() {
+    func test_getData_MovieItemDetailSectionsShouldBeEqual() {
         setViewModel(mediaItem: DataStubs.singleMovieMediaData)
         
         let sections = sut.getDetailSections()
         
         XCTAssertEqual(sections, [DetailSections.heading, DetailSections.overview, DetailSections.cast, DetailSections.recommended, DetailSections.similar])
+    }
+    
+    func test_getData_TVItemDetailSectionsShouldBeEqual() {
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+        
+        let sections = sut.getDetailSections()
+        
+        XCTAssertEqual(sections, [DetailSections.heading, DetailSections.overview, DetailSections.cast, DetailSections.recommended, DetailSections.similar])
+    }
+    
+    func test_getData_PersonItemDetailSectionsShouldBeEqual() {
+        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
+        
+        let sections = sut.getDetailSections()
+        
+        XCTAssertEqual(sections, [DetailSections.heading, DetailSections.overview, DetailSections.filmography])
     }
 
 }
