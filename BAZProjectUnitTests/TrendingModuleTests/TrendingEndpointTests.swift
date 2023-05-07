@@ -23,7 +23,7 @@ final class TrendingEndpointTests: XCTestCase {
         
         let path = endpoint.path
         
-        XCTAssertEqual(path, "/movie/upcoming")
+        XCTAssertEqual(path, "/3/movie/upcoming")
     }
     
     func test_pathShouldBeEqualForNowPlaying() {
@@ -31,7 +31,7 @@ final class TrendingEndpointTests: XCTestCase {
         
         let path = endpoint.path
         
-        XCTAssertEqual(path, "/movie/now_playing")
+        XCTAssertEqual(path, "/3/movie/now_playing")
     }
     
     func test_pathShouldBeEqualForTopRated() {
@@ -39,7 +39,7 @@ final class TrendingEndpointTests: XCTestCase {
         
         let path = endpoint.path
         
-        XCTAssertEqual(path, "/movie/top_rated")
+        XCTAssertEqual(path, "/3/movie/top_rated")
     }
     
     func test_pathShouldBeEqualForPopular() {
@@ -47,7 +47,7 @@ final class TrendingEndpointTests: XCTestCase {
         
         let path = endpoint.path
         
-        XCTAssertEqual(path, "/movie/popular")
+        XCTAssertEqual(path, "/3/movie/popular")
     }
     
 }

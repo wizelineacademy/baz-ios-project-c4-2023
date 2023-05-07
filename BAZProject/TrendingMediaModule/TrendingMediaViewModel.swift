@@ -37,7 +37,7 @@ class TrendingMediaViewModel {
                 async let popularMedia = remoteData.getMediaItems(section: .popular)
                 async let topRatedMedia = remoteData.getMediaItems(section: .topRated)
                 async let upcomingMedia = remoteData.getMediaItems(section: .upcoming)
-                var dictionary = try await formatMediaDataObject(trending: trendingMedia, popular: popularMedia, upcoming: upcomingMedia, topRated: topRatedMedia, nowPlaying: nowPlayingMedia)
+                let dictionary = try await formatMediaDataObject(trending: trendingMedia, popular: popularMedia, upcoming: upcomingMedia, topRated: topRatedMedia, nowPlaying: nowPlayingMedia)
                 setSnapshotWithDictionary(dctItems: dictionary)
             } catch {
                 self.error.value = error
