@@ -233,8 +233,8 @@ final class SearchViewModelTests: XCTestCase {
     }
     
     func test_getSearchScope() {
-        let items = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
-        
+        var items = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        items.append("All")
         let scope = sut.getSearchScope()
         
         XCTAssertEqual(items, scope)

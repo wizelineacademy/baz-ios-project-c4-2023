@@ -21,4 +21,28 @@ class SearchRemoteDataMock: SearchRemoteData {
         }
     }
     
+    override func searchPeople(_ searchText: String) async throws -> [MediaDataObject]? {
+        if let error = error {
+            throw error
+        } else {
+            return mediaObject
+        }
+    }
+    
+    override func searchMovies(_ searchText: String) async throws -> [MediaDataObject]? {
+        if let error = error {
+            throw error
+        } else {
+            return mediaObject
+        }
+    }
+    
+    override func searchSeries(_ searchText: String) async throws -> [MediaDataObject]? {
+        if let error = error {
+            throw error
+        } else {
+            return mediaObject
+        }
+    }
+    
 }
