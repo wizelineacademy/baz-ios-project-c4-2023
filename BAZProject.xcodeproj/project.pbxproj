@@ -32,6 +32,8 @@
 		4B2675B02A06DCC8005C60A4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675AF2A06DCC8005C60A4 /* Array.swift */; };
 		4B2675B22A06FB8F005C60A4 /* DetailCastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */; };
 		4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B32A0703F5005C60A4 /* Calendar.swift */; };
+		4B2675B62A07289C005C60A4 /* DetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B52A07289C005C60A4 /* DetailCollectionViewController.swift */; };
+		4B2675B82A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B72A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -130,6 +132,8 @@
 		4B2675AF2A06DCC8005C60A4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCastMember.swift; sourceTree = "<group>"; };
 		4B2675B32A0703F5005C60A4 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		4B2675B52A07289C005C60A4 /* DetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewController.swift; sourceTree = "<group>"; };
+		4B2675B72A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewControllerTests.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				4B0E5C642A059F2800D38F4D /* DetailRemoteDataTests.swift */,
 				4B26759E2A06095A005C60A4 /* DetailViewModelTests.swift */,
 				4B2675A72A0627F5005C60A4 /* DetailSectionTests.swift */,
+				4B2675B72A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift */,
 			);
 			path = DetailModuleTests;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				4B2675A92A06D336005C60A4 /* DetailOverview.swift */,
 				4B2675AB2A06D44A005C60A4 /* DetailReview.swift */,
 				4B2675B12A06FB8F005C60A4 /* DetailCastMember.swift */,
+				4B2675B52A07289C005C60A4 /* DetailCollectionViewController.swift */,
 			);
 			path = DetailModule;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				4B2DA1AC29F23F1C006BD0EC /* DecoderTests.swift in Sources */,
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
 				4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */,
+				4B2675B82A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift in Sources */,
 				4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
 				4B0E5C6F2A05A37600D38F4D /* ImageData.swift in Sources */,
@@ -636,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2675B62A07289C005C60A4 /* DetailCollectionViewController.swift in Sources */,
 				4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */,
 				4B2675AA2A06D336005C60A4 /* DetailOverview.swift in Sources */,
 				4B2675972A05F280005C60A4 /* TVDetailDataObject.swift in Sources */,
