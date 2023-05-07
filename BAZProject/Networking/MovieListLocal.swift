@@ -18,16 +18,16 @@ protocol StorableProtocol {
 }
 
 class MovieListLocal {
-    var moveList: MovieList?
+    var movieList: MovieList = MovieList(results: [])
     
     init() {
         getMovies() { [weak self] moveList in
-            self?.moveList = moveList
+            self?.movieList = moveList
         }
     }
     
     func addMovie(_ movie: Movie, completion: @escaping (ResultStorageOperation) -> ()) {
-        moveList?.results.append(movie)
+        movieList.results.append(movie)
         storeData(completion: completion)
     }
     
@@ -46,16 +46,16 @@ class MovieListLocal {
     
     func deleteMovie(_ movie_id: Int, completion: @escaping (ResultStorageOperation) -> ()) {
 
-        if let index = moveList?.results.firstIndex(where: { $0.id == movie_id }) {
-            moveList?.results.remove(at: index)
+        if let index = movieList.results.firstIndex(where: { $0.id == movie_id }) {
+            movieList.results.remove(at: index)
             storeData(completion: completion)
         }
     }
     
     func findMovie(_ movie_id: Int) -> Movie? {
         
-        if let index = moveList?.results.firstIndex(where: { $0.id == movie_id }) {
-            return moveList?.results[index]
+        if let index = movieList.results.firstIndex(where: { $0.id == movie_id }) {
+            return movieList.results[index]
         }
         
         return nil
@@ -74,7 +74,7 @@ extension MovieListLocal: StorableProtocol {
         
         do {
             let encoder = JSONEncoder()
-            let data = try encoder.encode(moveList)
+            let data = try encoder.encode(movieList)
             UserDefaults.shared.set(data, forKey: "MovieList")
             completion(ResultStorageOperation.success)
         } catch {
