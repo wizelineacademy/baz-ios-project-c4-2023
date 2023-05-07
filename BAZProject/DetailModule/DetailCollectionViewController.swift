@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class DetailCollectionViewController: UICollectionViewController {
     
     private var viewModel: DetailViewModel
@@ -25,6 +23,25 @@ class DetailCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationItem.title = viewModel.getTitle()
+    }
+    
+}
+
+// MARK: - CollectionViewFlowLayout
+extension DetailCollectionViewController {
+
+}
+
+// MARK: - CollectionViewDataSource
+extension DetailCollectionViewController {
+    
+    typealias MediaCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, MediaItem>
+    
+    func cellRegistrationForMediaSection() -> MediaCellRegistration {
+        let nib = UINib(nibName: "DetailOverviewCollectionViewCell", bundle: nil)
+        return MediaCellRegistration(cellNib: nib){ (cell: MediaCollectionViewCell, indexPath, item: MediaItem) in
+            cell.setCell(with: MediaCollectionViewCellModel(from: item))
+        }
     }
     
 }

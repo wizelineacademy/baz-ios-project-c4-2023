@@ -71,27 +71,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
         
         XCTAssertEqual(0, actualValue?.numberOfItems)
     }
-    
-    func test_getCellConfiguration_rated() {
-        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: Date())
-        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: "1.0", image: "", rated: true, defaultImage: MediaType.movie.defaultImage)
-        
-        let model = sut.getCellConfiguration(item: item)
-        
-        XCTAssertEqual(model, expectedModel)
-    }
-    
-    func test_getCellConfigurationForItemNotYetRated_ShouldBeEqual() {
-        let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
-        let tomorrowsStringDate = DateFormatter.getString(from: tomorrowsDate)
-        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: tomorrowsDate)
-        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: tomorrowsStringDate, image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
-        
-        let model = sut.getCellConfiguration(item: item)
-        
-        XCTAssertEqual(model, expectedModel)
-    }
-    
+
     func test_getFormattedObjects() {
         let dataObjects = [MediaDataObject(mediaType: "movie"), MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
         let dctObject = [MediaType.movie: [MediaItem(mediaType: .movie)], MediaType.tv: [MediaItem(mediaType: .tv)], MediaType.person: [MediaItem(mediaType: .person)]]

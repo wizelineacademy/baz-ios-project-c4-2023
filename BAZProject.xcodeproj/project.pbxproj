@@ -470,14 +470,14 @@
 			path = MediaItemTableViewCell;
 			sourceTree = "<group>";
 		};
-		4B8FBDAD29F9C22500F9422B /* MovieCollectionViewCell */ = {
+		4B8FBDAD29F9C22500F9422B /* MediaCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				4B8FBDAE29F9C23F00F9422B /* MediaCollectionViewCell.swift */,
 				4B8FBDAF29F9C23F00F9422B /* MediaCollectionViewCell.xib */,
 				4B6BB28B29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift */,
 			);
-			path = MovieCollectionViewCell;
+			path = MediaCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		4B8FBDB629F9EBD300F9422B /* Models */ = {
@@ -517,7 +517,7 @@
 				4B6BB2A329FE39FC007A20D7 /* MediaItemTableViewCell */,
 				4B6BB29A29FE37D7007A20D7 /* SearchModule */,
 				4B6BB29029FB3695007A20D7 /* SimpleCollectionViewHeaderView */,
-				4B8FBDAD29F9C22500F9422B /* MovieCollectionViewCell */,
+				4B8FBDAD29F9C22500F9422B /* MediaCollectionViewCell */,
 				4B2DA18C29EF6AA4006BD0EC /* Common */,
 				4B8FBDB629F9EBD300F9422B /* Models */,
 				4B37398029D395900056041F /* TrendingMediaModule */,

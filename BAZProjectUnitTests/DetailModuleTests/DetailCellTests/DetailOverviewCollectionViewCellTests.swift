@@ -22,15 +22,16 @@ final class DetailOverviewCollectionViewCellTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_SetCellWith_ModelDataShouldApplyToCell() {
+    func test_SetCellWith_ModelDataShouldApplyToCell_defaultImage() {
         let model = DetailOverview(largeTitle: "Harry Potter", smallSubtitle: "The boy who livec", image: nil, description: "WOW", defaultImage: "poster")
         let expectedImage = UIImage(named: "poster")
         
-        sut.setCell(with: model)
+        sut.setCell(with: model, session: RequestSessionMock())
         
         XCTAssertEqual(sut.titleLabel.text, model.largeTitle)
         XCTAssertEqual(sut.subtitleLable.text, model.smallSubtitle)
         XCTAssertEqual(sut.descriptionLabel.text, model.description)
         XCTAssertEqual(sut.posterImage.image, expectedImage)
     }
+    
 }
