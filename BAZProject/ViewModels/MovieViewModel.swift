@@ -5,7 +5,11 @@
 //  Created by jmgarciaca on 30/03/23.
 //
 
-import Foundation
+import UIKit
+
+protocol MovieViewModelProtocol {
+    func updateImageButton(image: UIImage?)
+}
 
 /**
 A view model for a movie object.
@@ -22,6 +26,9 @@ final class MovieViewModel {
     
     private let dateFormatter = DateFormatter()
     
+    ///
+    var delegate: MovieViewModelProtocol?
+    
     // MARK: - Initialization
     
     /// Initializes a new instance of `MovieViewModel`.
@@ -36,7 +43,7 @@ extension MovieViewModel {
     /// The title of the movie. If the title is nil, an empty string is returned.
     /// - Returns: A string representing the title of the movie.
     var title: String {
-        return movie.title ?? ""
+        movie.title ?? ""
     }
     
     /// The URL path of the movie's poster image. If the poster path is nil, nil is returned.
@@ -53,7 +60,7 @@ extension MovieViewModel {
     /// The overview of the movie. If the overview is nil, an empty string is returned.
     /// - Returns: A string representing the overview of the movie.
     var overview: String {
-        return movie.overview ?? ""
+        movie.overview ?? ""
     }
     
     /// The year of the movie's release date. If the release date is nil, an empty string is returned.
@@ -71,7 +78,11 @@ extension MovieViewModel {
     /// The vote average of the movie. If the vote average is nil, 0% is returned.
     /// - Returns: A string representing the vote average of the movie.
     var vote_average: String {
-        return "\((Int(movie.vote_average ?? 0) ) * 10 )% de calificación"
+        "\( Int(((movie.vote_average ?? 0) * 10).rounded()) )% de calificación"
+    }
+    
+    var icon_favorite: UIImage? {
+        isFavorite() ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
     }
 }
 
@@ -116,5 +127,29 @@ extension MovieViewModel {
                 completion(reviews.results)
             }
         }
+    }
+}
+
+extension MovieViewModel {
+    func doFavoriteButtonAction() {
+        if isFavorite() {
+            MovieListLocal().deleteMovie(movie.id) { [weak self] result in
+                if result == .success {
+                    self?.delegate?.updateImageButton(image: UIImage(systemName: "heart"))
+                }
+            }
+        } else {
+            MovieListLocal().addMovie(movie) { [weak self] result in
+                if result == .success {
+                    self?.delegate?.updateImageButton(image: UIImage(systemName: "heart.fill"))
+                }
+            }
+        }
+    }
+    
+    private func isFavorite() -> Bool {
+        guard let _ = MovieListLocal().findMovie(movie.id) else { return false }
+        
+        return true
     }
 }
