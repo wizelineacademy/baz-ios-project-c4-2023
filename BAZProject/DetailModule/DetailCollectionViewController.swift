@@ -28,19 +28,50 @@ class DetailCollectionViewController: UICollectionViewController {
 }
 
 // MARK: - CollectionViewFlowLayout
-extension DetailCollectionViewController {
+extension DetailCollectionViewController {}
 
-}
-
-// MARK: - CollectionViewDataSource
+// MARK: - CollectionView DataSource
 extension DetailCollectionViewController {
     
+    
+    
+}
+
+// MARK: - CollectionView Cell Registration
+extension DetailCollectionViewController {
+    
+    typealias OverviewCellRegistration = UICollectionView.CellRegistration<DetailOverviewCollectionViewCell, DetailOverview>
+    typealias CastCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, DetailCastMember>
+    typealias ReviewCellRegistration = UICollectionView.CellRegistration<DetailReviewCollectionViewCell, DetailReview>
     typealias MediaCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, MediaItem>
     
     func cellRegistrationForMediaSection() -> MediaCellRegistration {
-        let nib = UINib(nibName: "DetailOverviewCollectionViewCell", bundle: nil)
-        return MediaCellRegistration(cellNib: nib){ (cell: MediaCollectionViewCell, indexPath, item: MediaItem) in
+        let nib = UINib(nibName: "MediaCollectionViewCell", bundle: nil)
+        return MediaCellRegistration(cellNib: nib){ (cell , indexPath, item) in
             cell.setCell(with: MediaCollectionViewCellModel(from: item))
+        }
+    }
+    
+    func cellRegistrationForOverviewSection() -> OverviewCellRegistration {
+        let nib = UINib(nibName: "DetailOverviewCollectionViewCell", bundle: nil)
+        return OverviewCellRegistration(cellNib: nib){ (cell, indexPath, item) in
+            cell.setCell(with: item)
+        }
+    }
+    
+    func cellRegistrationForCastSection() -> CastCellRegistration {
+        let nib = UINib(nibName: "MediaCollectionViewCell", bundle: nil)
+        return CastCellRegistration(cellNib: nib){ (cell, indexPath, item) in
+            var model = MediaCollectionViewCellModel(from: item.actor)
+            model.subtitle = item.character
+            cell.setCell(with: model)
+        }
+    }
+    
+    func cellRegistrationForReviewSection() -> ReviewCellRegistration {
+        let nib = UINib(nibName: "DetailReviewCollectionViewCell", bundle: nil)
+        return ReviewCellRegistration(cellNib: nib){ (cell, indexPath, item) in
+            cell.setCell(with: item)
         }
     }
     
