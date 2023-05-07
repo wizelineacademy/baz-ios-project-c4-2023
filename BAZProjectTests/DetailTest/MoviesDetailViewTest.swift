@@ -54,10 +54,25 @@ final class MoviesDetailViewTest: XCTestCase {
     // MARK: TableView - Test
     func test_CollectionHasSetDatasource() {
         XCTAssertNotNil(sut.collectionRecomendations.dataSource)
+        XCTAssertNotNil(sut.collecionSimilars.dataSource)
+        XCTAssertNotNil(sut.collectionReviews.dataSource)
+    }
+    
+    func test_CollectionHasSetDelegate() {
+        XCTAssertNotNil(sut.collectionRecomendations.delegate)
+        XCTAssertNotNil(sut.collecionSimilars.delegate)
+        XCTAssertNotNil(sut.collectionReviews.delegate)
+    }
+    
+    func test_CollectionConformToDelegate() {
+        XCTAssert(sut.conforms(to: UICollectionViewDelegate.self))
+        XCTAssertTrue(sut.responds(to: #selector(sut.collectionView(_:cellForItemAt:))))
     }
     
     func test_Collection_WhenCellRowHasZeroElements(){
         XCTAssertEqual(sut.collectionRecomendations.dataSource?.collectionView(sut.collectionRecomendations, numberOfItemsInSection: 0), 0)
+        XCTAssertEqual(sut.collecionSimilars.dataSource?.collectionView(sut.collecionSimilars, numberOfItemsInSection: 0), 0)
+        XCTAssertEqual(sut.collectionReviews.dataSource?.collectionView(sut.collectionReviews, numberOfItemsInSection: 0), 0)
     }
 
 }

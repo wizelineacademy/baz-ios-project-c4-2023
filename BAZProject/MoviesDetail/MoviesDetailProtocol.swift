@@ -46,6 +46,7 @@ protocol MoviesDetailInteractorOutputProtocol: AnyObject {
 protocol MoviesDetailRouterProtocol {
     
     var view        : MoviesDetailView? { get }
+    func presentAlert(_ alert: UIAlertController)
     
 }
 

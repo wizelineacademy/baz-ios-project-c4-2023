@@ -79,7 +79,7 @@ extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
     }
     
     func setError() {
-        print("error...")
+        router?.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"))
     }
     
 }

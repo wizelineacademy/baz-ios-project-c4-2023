@@ -81,6 +81,23 @@ final class SearchMoviesViewTest: XCTestCase {
         XCTAssertEqual(sut.descriptionMovie.text, "Spiderman")
     }
     
+    func testTableSearchConfromsToTableDelegate_Protocol() {
+            XCTAssertTrue(sut.conforms(to: UITableViewDelegate.self))
+            XCTAssertTrue(sut.responds(to: #selector(sut.tableView(_:didSelectRowAt:))))
+    }
+    
+    func testTableSearchConformsToTableDataSource_Protocol() {
+            XCTAssertTrue(sut.conforms(to: UITableViewDataSource.self))
+            XCTAssertTrue(sut.responds(to: #selector(sut.numberOfSections(in:))))
+            XCTAssertTrue(sut.responds(to: #selector(sut.tableView(_:numberOfRowsInSection:))))
+            XCTAssertTrue(sut.responds(to: #selector(sut.tableView(_:cellForRowAt:))))
+        }
+    
+    func testTableCellHasCorrectLabelText() {
+        let cell = sut.tableView(sut.tblSearch, cellForRowAt: IndexPath(item: 0, section: 0)) as? CellMovies
+        XCTAssertNil(cell?.descriptionMovie.text)
+    }
+    
     // Creation Mock array 'MoviewData'
     func getMovies() -> [MovieData] {
         let popularMovies: [MoviesViewModels] = [MoviesViewModels(title: "Spiderman", poster_path: "/path/Spiderman.jpg", original_title: "Spiderman", id: 2, overview: "pelicula Spiderman"),
@@ -106,9 +123,9 @@ class SearchTableViewDataSourceMock: NSObject, UITableViewDataSource {
         }
         let infoCell                = movies[indexPath.row]
         cell.descriptionMovie.text  = infoCell.title
-        /*infoCell.getImage(){ imagen in
-            cell.imgMovie.image         = imagen
-        }*/
+        if let posterPath = infoCell.poster_path{
+            cell.imgMovie.download(poster_path: posterPath)
+        }
         return cell
     }
     

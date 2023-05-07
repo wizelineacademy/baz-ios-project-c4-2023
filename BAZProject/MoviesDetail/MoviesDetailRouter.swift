@@ -27,4 +27,8 @@ final class MoviesDetailRouter: MoviesDetailRouterProtocol{
         return view
     }
     
+    func presentAlert(_ alert: UIAlertController) {
+        view?.present(alert, animated: true)
+    }
+    
 }
