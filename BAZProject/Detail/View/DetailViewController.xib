@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,27 +15,42 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="840" height="1170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-mn-OUZ">
-                    <rect key="frame" x="0.0" y="20" width="414" height="128"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-mn-OUZ" userLabel="TopView">
+                    <rect key="frame" x="0.0" y="20" width="840" height="316"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pyM-at-kww" userLabel="ImageView">
+                            <rect key="frame" x="322.33333333333331" y="0.0" width="195.33333333333331" height="316"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pyM-at-kww" firstAttribute="centerX" secondItem="gJl-mn-OUZ" secondAttribute="centerX" id="367-Nz-Utg"/>
+                        <constraint firstItem="pyM-at-kww" firstAttribute="width" secondItem="gJl-mn-OUZ" secondAttribute="height" multiplier="0.618" id="gR9-H7-E1l"/>
+                        <constraint firstAttribute="bottom" secondItem="pyM-at-kww" secondAttribute="bottom" id="iR3-Ct-q2o"/>
+                        <constraint firstItem="pyM-at-kww" firstAttribute="top" secondItem="gJl-mn-OUZ" secondAttribute="top" id="mgq-a1-5AX"/>
+                    </constraints>
                 </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMp-fj-f5r">
+                    <rect key="frame" x="0.0" y="336" width="840" height="834"/>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gJl-mn-OUZ" secondAttribute="trailing" id="8t8-iq-DrV"/>
+                <constraint firstItem="vMp-fj-f5r" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Cb7-7F-18i"/>
                 <constraint firstItem="gJl-mn-OUZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ciu-Lj-pfd"/>
+                <constraint firstItem="gJl-mn-OUZ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.27" id="KuU-gE-CIs"/>
+                <constraint firstItem="vMp-fj-f5r" firstAttribute="top" secondItem="gJl-mn-OUZ" secondAttribute="bottom" id="hPS-sq-MqH"/>
                 <constraint firstItem="gJl-mn-OUZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kYJ-11-6Zw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vMp-fj-f5r" secondAttribute="bottom" id="scg-CX-h3M"/>
+                <constraint firstItem="vMp-fj-f5r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vW0-LT-MkS"/>
             </constraints>
-            <point key="canvasLocation" x="113" y="21"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="507.24637681159425" y="208.69565217391306"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
