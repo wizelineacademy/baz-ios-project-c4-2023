@@ -28,9 +28,6 @@ class MasterMovieTableViewController: UITableViewController {
         
         // Configure the table view
         configureTable()
-        
-        // Configure the navigation bar
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(named: "background") ?? .white, tintColor: .white, title: "Movies", preferredLargeTitle: true)
     }
 }
 
