@@ -9,7 +9,7 @@ import Foundation
 
 class DetailLocalData {
     
-    private var userDefaultsManager: UserDefaultsProtocol!
+    private var userDefaultsManager: UserDefaultsProtocol
     
     init(userDefaultsManager: UserDefaultsProtocol = UserDefaults.standard) {
         self.userDefaultsManager = userDefaultsManager
