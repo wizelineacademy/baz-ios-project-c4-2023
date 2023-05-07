@@ -77,7 +77,7 @@ class DetailViewModel {
     
     
     func getDetailSections() -> [DetailSection]? {
-        return item.mediaType?.sections
+        return item.mediaType?.sections.sorted(by: { $0.rawValue < $1.rawValue })
     }
     
     func getMovieDetails(id: Int) async throws -> MovieDetailDataObject? {

@@ -47,10 +47,11 @@ class DetailCollectionViewController: UICollectionViewController {
 extension DetailCollectionViewController {
     
     private func createLayout() -> UICollectionViewLayout {
-        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            guard let detailSection = DetailSection(rawValue: sectionIndex) else { return nil }
+        let sectionProvider = { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let detailSection = self?.viewModel.getDetailSections()?[sectionIndex] else { return nil }
             var group: NSCollectionLayoutGroup!
             var section: NSCollectionLayoutSection!
+            var titleSupplementary: NSCollectionLayoutBoundarySupplementaryItem?
             switch detailSection {
             case .overview:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(187))
@@ -65,6 +66,8 @@ extension DetailCollectionViewController {
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
                 group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
                 section = NSCollectionLayoutSection(group: group)
+                let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+                titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem( layoutSize: titleSize, elementKind: SimpleCollectionViewHeaderView.kind, alignment: .top)
             default:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(0.33), heightDimension: .fractionalHeight(0.95))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -72,10 +75,14 @@ extension DetailCollectionViewController {
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
                 group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
                 section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+                let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+                titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem( layoutSize: titleSize, elementKind: SimpleCollectionViewHeaderView.kind, alignment: .top)
             }
             section.orthogonalScrollingBehavior = .continuous
-            
+            if let titleSupplementary = titleSupplementary {
+                section.boundarySupplementaryItems = [titleSupplementary]
+            }
             return section
         }
 
@@ -110,6 +117,15 @@ extension DetailCollectionViewController {
             } else {
                 return collectionView.dequeueConfiguredReusableCell(using: mediaCellRegistration, for: indexPath, item: MediaItem())
             }
+        }
+        
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<SimpleCollectionViewHeaderView>(elementKind: SimpleCollectionViewHeaderView.kind) { [weak self] (supplementaryView, elementKind, indexPath) in
+            guard let detailSection = self?.viewModel.getDetailSections()?[indexPath.section],
+                  let title = detailSection.title else { return }
+            supplementaryView.title.text = title
+        }
+        dataSource?.supplementaryViewProvider = { [weak self] (view, kind, index) in
+            return self?.collectionView.dequeueConfiguredReusableSupplementary( using: supplementaryRegistration, for: index)
         }
 
     }
