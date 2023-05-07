@@ -26,6 +26,7 @@ class HomeRouter {
 
 // MARK: - Extensions
 extension HomeRouter: HomeRouterProtocol {
+    // MARK: - Functions
     func showAnimation(completion: @escaping () -> Void) {
         animationView = UIAlertController.GlobalViews.animationView
         DispatchQueue.main.async {

@@ -52,6 +52,10 @@ extension SearchPresenter: SearchViewOutputProtocol {
             self.getMovieSearch(endPoint: self.pEndpoint)
         }
     }
+    
+    func showDetailModule(movie: ListMovieProtocol) {
+        router.showDetail(movie: movie)
+    }
 }
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R

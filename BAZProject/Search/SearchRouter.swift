@@ -44,4 +44,9 @@ extension SearchRouter: SearchRouterProtocol {
         }
     }
     
+    func showDetail(movie: ListMovieProtocol) {
+        let viewController = DetailRouter.createModule(withMovie: movie)
+        self.view?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }

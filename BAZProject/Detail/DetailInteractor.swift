@@ -42,7 +42,7 @@ extension DetailInteractor: DetailInteractorInputProtocol {
         }
     }
     
-    func getSimilarMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
+    func getMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
             switch result {
@@ -52,7 +52,7 @@ extension DetailInteractor: DetailInteractorInputProtocol {
             case .success(let response):
                 self?.movies = response.results
                 guard let favorites = self?.getFavorites(), let origin = self?.movies else {
-                    self?.presenter?.presentSimilarMovies(movies: self?.movies)
+                    self?.presenter?.presentMovies(movies: self?.movies)
                     completion()
                     return
                 }
@@ -63,7 +63,7 @@ extension DetailInteractor: DetailInteractorInputProtocol {
                         }
                     }
                 }
-                self?.presenter?.presentSimilarMovies(movies: self?.movies)
+                self?.presenter?.presentMovies(movies: self?.movies)
                 completion()
             }
         }

@@ -39,8 +39,8 @@ extension DetailPresenter: DetailViewOutputProtocol {
         interactor.getOriginalMovieImage(imagePath: imagePath, completion: completion)
     }
     
-    func getSimilarMovies(endPoint: Endpoint) {
-        interactor.getSimilarMovies(endPoint: endPoint) {
+    func getMovies(endPoint: Endpoint) {
+        interactor.getMovies(endPoint: endPoint) {
             
         }
     }
@@ -57,7 +57,7 @@ extension DetailPresenter: DetailInteractorOutputProtocol {
         view?.showDetailMovie(detailMovie: detailMovie)
     }
     
-    func presentSimilarMovies(movies: [ListMovieProtocol]?) {
-        view?.showSimilarMovies(movies: movies)
+    func presentMovies(movies: [ListMovieProtocol]?) {
+        view?.showMovies(movies: movies)
     }
 }

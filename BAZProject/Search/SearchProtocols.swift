@@ -24,6 +24,7 @@ protocol SearchViewOutputProtocol {
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int)
     func deleteFavorite(index: Int)
+    func showDetailModule(movie: ListMovieProtocol)
 }
 
 // MARK: - (Interactor To Presenter)
@@ -45,4 +46,5 @@ protocol SearchRouterProtocol {
     var view: UIViewController? { get }
     func showAnimation(completion: @escaping () -> Void)
     func hideAnimation(completion: @escaping () -> Void)
+    func showDetail(movie: ListMovieProtocol)
 }

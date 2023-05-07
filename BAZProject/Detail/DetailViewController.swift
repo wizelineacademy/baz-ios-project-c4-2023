@@ -109,7 +109,7 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = UIColor.AppColors.homeCellBackgroundColor
         presenter?.getDetailMovie()
         let movieId = detailMovieModel?.id.description ?? ""
-        presenter?.getSimilarMovies(endPoint: .similar(movieId: movieId))
+        presenter?.getMovies(endPoint: .similar(movieId: movieId))
         setupView()
     }
     
@@ -203,7 +203,7 @@ extension DetailViewController: DetailViewInputProtocol {
         self.detailMovieModel = detailMovie
     }
     
-    func showSimilarMovies(movies: [ListMovieProtocol]?) {
+    func showMovies(movies: [ListMovieProtocol]?) {
         self.similarMovies = movies as? [MovieResult]
     }
 }

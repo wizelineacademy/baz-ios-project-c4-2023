@@ -101,6 +101,12 @@ extension SearchViewController: UITableViewDataSource {
         return moviesModel?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let movie = moviesModel?[indexPath.row] {
+            presenter?.showDetailModule(movie: movie)
+        }
+    }
+    
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W
