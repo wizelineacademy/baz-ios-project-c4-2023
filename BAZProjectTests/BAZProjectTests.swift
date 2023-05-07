@@ -91,9 +91,9 @@ final class BAZProjectTests: XCTestCase {
     
     // Validate url image of the first position of array
     func test_ValidateImage(){
-        /*getMovies().first?.getImage{ imagen in
-            XCTAssertNotNil(imagen)
-        }*/
+        if let image = getMovies().first?.poster_path{
+            XCTAssertNotNil(image)
+        }
     }
     
     func getUrlImage(posterPath: String) -> URL? {

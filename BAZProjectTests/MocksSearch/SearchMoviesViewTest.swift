@@ -98,6 +98,10 @@ final class SearchMoviesViewTest: XCTestCase {
         XCTAssertNil(cell?.descriptionMovie.text)
     }
     
+    func test_did_select_a_cell() {
+        XCTAssertNotNil(sut.tableView(sut.tblSearch, didSelectRowAt: IndexPath(row: 0, section: 0)))
+    }
+    
     // Creation Mock array 'MoviewData'
     func getMovies() -> [MovieData] {
         let popularMovies: [MoviesViewModels] = [MoviesViewModels(title: "Spiderman", poster_path: "/path/Spiderman.jpg", original_title: "Spiderman", id: 2, overview: "pelicula Spiderman"),

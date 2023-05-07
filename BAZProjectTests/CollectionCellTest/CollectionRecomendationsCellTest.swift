@@ -44,7 +44,7 @@ final class CollectionRecomendationsCellTest: XCTestCase {
         
     }
     
-    // Creation Mock array 'ReviewsInformation'
+    // Creation Mock array 'InfoDetailData'
     func getMovies() -> [InfoDetailData] {
         
         let popularMovies: [InfoDetailModel] = [InfoDetailModel(title: "My Teacher Ate My Friend", posterPath: "/5MiVG39r82aYUAtvs3bTycmbewJ.jpg", overview: "Tomás, an 11-year-old boy living in his own fantasy world, must use his vast monster knowledge to fight against his new English teacher: a wicked woman who is, in fact, a child-eating monster."),
