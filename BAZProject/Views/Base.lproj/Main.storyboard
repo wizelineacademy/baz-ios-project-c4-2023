@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="1193" y="-423"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="oHy-n8-QwF">
             <objects>
                 <viewController storyboardIdentifier="SearchVC" id="bHX-Rr-LAg" customClass="SearchViewController" customModule="BAZProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                             <constraint firstItem="5MU-DR-ibJ" firstAttribute="leading" secondItem="Xel-C0-aya" secondAttribute="leading" id="sEa-eA-tFz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="v5y-or-lbD"/>
+                    <navigationItem key="navigationItem" title="Search" id="v5y-or-lbD"/>
                     <connections>
                         <outlet property="tableView" destination="5MU-DR-ibJ" id="gNP-GD-OcI"/>
                         <outlet property="txfSearch" destination="ozg-0b-ZPC" id="jwA-x1-K5M"/>
@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-W9-CiN">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Nb-jO-q82">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="930.5"/>
@@ -241,7 +241,7 @@
                     <navigationItem key="navigationItem" title="Movie Detail" id="ajh-0j-Omu">
                         <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="oNg-Im-R5n">
                             <connections>
-                                <action selector="favoriteButtonAction:" destination="U4K-dd-9Ox" id="Njo-H7-q5d"/>
+                                <action selector="favoriteButtonAction:" destination="U4K-dd-9Ox" id="1KM-cb-xUI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
