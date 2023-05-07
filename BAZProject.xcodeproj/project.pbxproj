@@ -41,6 +41,8 @@
 		4B2675C42A074F5C005C60A4 /* DetailReviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2675C22A074F5C005C60A4 /* DetailReviewCollectionViewCell.xib */; };
 		4B2675C62A074F79005C60A4 /* DetailReviewCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675C52A074F79005C60A4 /* DetailReviewCollectionViewCellTests.swift */; };
 		4B2675CA2A080D1A005C60A4 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675C92A080D1A005C60A4 /* ArrayExtensionTests.swift */; };
+		4B2675CC2A08465F005C60A4 /* TrendingMediaSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675CB2A08465F005C60A4 /* TrendingMediaSections.swift */; };
+		4B2675D02A0846AC005C60A4 /* TrendingMediaSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -148,6 +150,8 @@
 		4B2675C22A074F5C005C60A4 /* DetailReviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailReviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B2675C52A074F79005C60A4 /* DetailReviewCollectionViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewCollectionViewCellTests.swift; sourceTree = "<group>"; };
 		4B2675C92A080D1A005C60A4 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
+		4B2675CB2A08465F005C60A4 /* TrendingMediaSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaSections.swift; sourceTree = "<group>"; };
+		4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaSectionsTests.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			children = (
 				4B3BBE8D29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift */,
 				4B2DA1A729F23E68006BD0EC /* TrendingMediaViewModelTests.swift */,
+				4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */,
 			);
 			path = TrendingModuleTests;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				C30893E028A425E1004B1860 /* TrendingMediaRemoteData.swift */,
 				C30893C328A2F845004B1860 /* TrendingMediaViewController.swift */,
 				4B37399329D4BA560056041F /* TrendingMediaViewModel.swift */,
+				4B2675CB2A08465F005C60A4 /* TrendingMediaSections.swift */,
 			);
 			path = TrendingMediaModule;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 				4B2675B82A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift in Sources */,
 				4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
+				4B2675D02A0846AC005C60A4 /* TrendingMediaSectionsTests.swift in Sources */,
 				4B0E5C6F2A05A37600D38F4D /* ImageData.swift in Sources */,
 				4B2675A82A0627F5005C60A4 /* DetailSectionTests.swift in Sources */,
 				4B27A0B82A0563F8003A24D6 /* RequestHandlerMock.swift in Sources */,
@@ -713,6 +720,7 @@
 				4B6BB2AF2A003B77007A20D7 /* MediaTableViewCellModel.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				4B3A946529D609F100C25BF4 /* Decodable.swift in Sources */,
+				4B2675CC2A08465F005C60A4 /* TrendingMediaSections.swift in Sources */,
 				4B09466529DCEC9B001CB55F /* TrendingEndpoint.swift in Sources */,
 				C30893E228A425E1004B1860 /* TrendingMediaRemoteData.swift in Sources */,
 				4B37398C29D4A88B0056041F /* RequestHandler.swift in Sources */,
