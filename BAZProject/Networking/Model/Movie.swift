@@ -169,6 +169,86 @@ extension Review: Viewable {
     }
 }
 
+struct SearchItem: Decodable {
+    //TODO: (Revisar) asignar un valor por default a parte de nil??
+    var mediaType: String?
+    
+    var id: Int
+    var title: String = "" // original_name / name
+    var overview: String = "" // overview / original_name
+    var imagePath: String? // poster_path / profile_path
+    var additionalInfo: String = "" // release_date / known_for_department
+//    var movies: String = "" // nil / known_for
+
+    private enum SearchItemCodingKeys: String, CodingKey {
+        case mediaType = "media_type"
+        
+        case id
+        
+        case title = "original_title"
+        case name
+        
+        case overview
+        case originalName = "original_name"
+        
+        case imagePath = "poster_path"
+        case profilePath = "profile_path"
+        
+        case additionalInfo = "release_date"
+        case castDepartment = "known_for_department"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: SearchItemCodingKeys.self)
+        
+        let decodedMediaType = try container.decode(String.self, forKey: .mediaType)
+        let decodedId = try container.decode(Int.self, forKey: .id)
+        let decodedCastDepartment = try container.decodeIfPresent(String.self, forKey: .castDepartment)
+        
+        if decodedMediaType == "movie" {
+            mediaType = decodedMediaType
+            id = decodedId
+            title = try container.decode(String.self, forKey: .title)
+            overview = try container.decode(String.self, forKey: .overview)
+            imagePath = try container.decodeIfPresent(String.self, forKey: .imagePath)
+            additionalInfo = try container.decode(String.self, forKey: .additionalInfo)
+        } else if decodedMediaType == "person" && decodedCastDepartment == "Acting" {
+            mediaType = decodedMediaType
+            id = decodedId
+            title = try container.decode(String.self, forKey: .name)
+            overview = try container.decode(String.self, forKey: .originalName)
+            imagePath = try container.decodeIfPresent(String.self, forKey: .profilePath)
+            additionalInfo = try container.decodeIfPresent(String.self, forKey: .castDepartment) ?? additionalInfo
+        } else {
+            mediaType = ""
+            id = 0
+            title = ""
+            overview = ""
+            imagePath = ""
+            additionalInfo = ""
+        }
+    }
+}
+
+struct MultipleSearchResponse: Decodable {
+    var items: [SearchItem]
+    
+    enum MultipleSearchResponseCodingKeys: String, CodingKey {
+        case actors = "results"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: MultipleSearchResponseCodingKeys.self)
+        
+        //TODO: (borrar) la expresión de abajo es equivalente
+//        items = try container.decode([SearchItem].self, forKey: .actors)
+        
+        let decodedItems = try container.decode([SearchItem].self, forKey: .actors)
+        self.items = decodedItems
+        
+    }
+}
+
 //struct MediaApiResponse: Decodable {
 //    let results: [Viewable]
 //    

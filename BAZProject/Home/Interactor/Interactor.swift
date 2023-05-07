@@ -122,5 +122,14 @@ class Interactor: PresenterToInteractor {
 //                print(resultado)
 //            }
 //        }
+        networkManager.getMovies(endpoint: .multi(searching: "pine")){(result: MultipleSearchResponse?, error) in
+            if let error = error {
+                print("TENEMOS ERROR EN LA CONSULTA MÚLTIPLE")
+                return
+            } else if let resultado = result {
+                print("TENEMOS RESPUESTA EN LA BÚSQUEDA MÚLTIPLE:")
+                print(resultado)
+            }
+        }
     }
 }
