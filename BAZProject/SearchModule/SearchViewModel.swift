@@ -61,10 +61,11 @@ class SearchViewModel {
     }
     
     func searchMedia(keyword: String, scope: Int = -1) {
+        let mediaType = MediaType.allCases.first(where: { $0.order == scope })
         Task {
             do {
-                if let mediaObjects = try await remoteData.searchMedia(keyword) {
-                    let mediaItems = formatMediaDataObject(mediaObjects)
+                if let mediaObjects = try await getMedia(mediaType: mediaType, keyword: keyword) {
+                    let mediaItems = formatMediaDataObject(mediaObjects, for: mediaType)
                     var snapshot = MediaSnapshot()
                     snapshot.appendSections([0])
                     snapshot.appendItems(mediaItems)
@@ -76,8 +77,25 @@ class SearchViewModel {
         }
     }
     
-    func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaItem] {
-        return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+    func getMedia(mediaType: MediaType?, keyword: String) async throws -> [MediaDataObject]? {
+        switch mediaType {
+        case .none: return try await remoteData.searchMedia(keyword)
+        case .movie: return try await remoteData.searchMovies(keyword)
+        case .tv: return try await remoteData.searchSeries(keyword)
+        case .person: return try await remoteData.searchPeople(keyword)
+        }
+    }
+    
+    func formatMediaDataObject(_ dataObject: [MediaDataObject], for mediaType: MediaType?) -> [MediaItem] {
+        if let mediaTypeToAppend = mediaType {
+            return dataObject.map({
+                var item = MediaItem(dataObject: $0)
+                item.mediaType = mediaTypeToAppend
+                return item
+            }).filter({ $0.mediaType != nil })
+        } else {
+            return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+        }
     }
     
     func getDetailView(for item: MediaItem?) -> UIViewController? {
