@@ -14,9 +14,9 @@ enum TrendigMoviesViewControllerMockCalls{
     case loadSearchData
 }
 
-final class TrendigMoviesViewControllerMock: UIViewController, TrendingMoviesViewProtocol{
-
-    var presenter: BAZProject.TrendingMoviesPresenterProtocol?
+final class TrendigMoviesViewControllerMock: UIViewController, MoviesViewProtocol{
+    var type: (BAZProject.ApiPathProtocol & BAZProject.ViewPropertiesProtocol)?
+    var presenter: BAZProject.MoviesPresenterProtocol?
     var resultsTableController: BAZProject.ResultsTableController?
     var restoredState: BAZProject.RestorableStateProtocol = BAZProject.SearchControllerRestorableState()
     var calls: [TrendigMoviesViewControllerMockCalls]
@@ -24,7 +24,7 @@ final class TrendigMoviesViewControllerMock: UIViewController, TrendingMoviesVie
     var searchResultMovies: [BAZProject.ListMovieProtocol]
     
     
-    init(presenter: BAZProject.TrendingMoviesPresenterProtocol? = nil,
+    init(presenter: BAZProject.MoviesPresenterProtocol? = nil,
          resultsTableController: BAZProject.ResultsTableController? = nil,
          restoredState: BAZProject.RestorableStateProtocol,
          movies: [BAZProject.ListMovieProtocol] = [],

@@ -17,13 +17,10 @@ final class TrendingMoviesViewControllerTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        presenter = TrendingMoviesPresenterMock(router: TrendingMoviesRouter())
+        presenter = TrendingMoviesPresenterMock(router: MoviesRouter())
         restorableState = SearchControllerRestorableState()
         
-        movies = [Movie(id: 0, title: "ejemplo 1", posterPath: "ejemplo de path 1"),
-                  Movie(id: 1, title: "ejemplo 2", posterPath: "ejemplo de path 2"),
-                  Movie(id: 2, title: "ejemplo 3", posterPath: "ejemplo de path 3"),
-                  Movie(id: 3, title: "ejemplo 4", posterPath: "ejemplo de path 4")]
+        movies = [Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10, isFavorite: false)]
         
         sut = TrendigMoviesViewControllerMock(presenter: presenter,
                                               restoredState: restorableState,

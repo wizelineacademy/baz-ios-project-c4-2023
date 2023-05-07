@@ -12,29 +12,30 @@ import Foundation
 import UIKit
 
 //MARK: Wireframe -
-protocol TrendingMoviesWireframeProtocol: AnyObject {
+protocol MoviesWireframeProtocol: AnyObject {
+    func sendToDetail(with movie: Movie)
 }
 //MARK: Presenter -
-protocol TrendingMoviesPresenterProtocol: AnyObject {
+protocol MoviesPresenterProtocol: AnyObject {
     func getMovies()
     func setMovies(result: [ListMovieProtocol])
     func findMovies(for string: String?)
     func loadFindMovies(movies: [ListMovieProtocol])
     func cleanStringForSearch(_ string: String?) -> String
+    func sendToDetail(movie: Movie)
 }
 
 //MARK: Interactor -
-protocol TrendingMoviesInteractorProtocol: AnyObject {
-    var presenter: TrendingMoviesPresenterProtocol?  { get set }
-    func getMovies()
+protocol MoviesInteractorProtocol: AnyObject {
+    var presenter: MoviesPresenterProtocol?  { get set }
+    func getMovies(urlRequest: URLRequest)
     func findMovies(for string: String)
-    func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?
-    func getMoviesUrlRequest() -> URLRequest?
 }
 
 //MARK: View -
-protocol TrendingMoviesViewProtocol: AnyObject {
-    var presenter: TrendingMoviesPresenterProtocol?  { get set }
+protocol MoviesViewProtocol: AnyObject {
+    var type: (ViewPropertiesProtocol & ApiPathProtocol)? { get  set}
+    var presenter: MoviesPresenterProtocol?  { get set }
     var restoredState: RestorableStateProtocol { get set }
     var resultsTableController: ResultsTableController? { get set }
     var movies: [ListMovieProtocol] { get set }

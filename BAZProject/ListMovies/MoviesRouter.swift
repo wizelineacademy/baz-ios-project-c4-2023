@@ -10,25 +10,29 @@
 
 import UIKit
 ///Router del modulo VIPER Trending Movies
-final class TrendingMoviesRouter: TrendingMoviesWireframeProtocol {
+final class MoviesRouter: MoviesWireframeProtocol {
     /// Intancia del View  del modulo VIPER Trending Movies
     weak var viewController: UIViewController?
     /**
      Metodo que regresa un UIviewcontroller con la implementacion del modulo VIPER
         - Returns: Regrea un UIViewController con la implentacion del modulo VIPER.
      */
-    static func createModule() -> UIViewController {
+    static func createModule(type: ViewPropertiesProtocol & ApiPathProtocol) -> UIViewController {
         // Change to get view from storyboard if not using progammatic UI
-        guard let viewController: TrendingMoviesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrendingMoviesViewController") as? TrendingMoviesViewController else { return UIViewController()}
-        let view = viewController
-        let interactor = TrendingMoviesInteractor(movieAPI: MovieAPI())
-        let router = TrendingMoviesRouter()
-        let presenter = TrendingMoviesPresenter(interface: view, interactor: interactor, router: router)
+        guard let view: MoviesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrendingMoviesViewController") as? MoviesViewController else { return UIViewController() }
         
+        let interactor = MoviesInteractor(movieAPI: MovieAPI())
+        let router = MoviesRouter()
+        let presenter = MoviesPresenter(interface: view, interactor: interactor, router: router)
+        view.type = type
         view.presenter = presenter
         interactor.presenter = presenter
         router.viewController = view
         
         return view
+    }
+    
+    func sendToDetail(with movie: Movie) {
+        viewController?.navigationController?.pushViewController(MoviewDetailRouter.createModule(movie: movie), animated: true)
     }
 }

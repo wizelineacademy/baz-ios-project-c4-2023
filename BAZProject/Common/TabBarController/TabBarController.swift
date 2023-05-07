@@ -18,18 +18,23 @@ final class TabBarController: UITabBarController {
     /// - returns:
     ///   Devuelve un arreglo de UIViewController's `
     func setUpViewController() -> [UIViewController]{
-        return [createBarController(for: .trendeing)]
+        return [createBarController(for: .trending),
+                createBarController(for: .nowPlaying),
+                createBarController(for: .popular),
+                createBarController(for: .topRated),
+                createBarController(for: .upComing)]
     }
     /// Esta funcion regresa un UIViewController que implementa un TabBarItem
     /// - parameters:
     ///    - controller: Enum TabViewControllers que contine la estructura de un tabBarITem
     /// - returns:
     ///   Devuelve un TabViewControllers
-    private func createBarController(for controller: TabViewControllers) -> UIViewController{
-        let navBarController = UINavigationController(rootViewController: controller.controller)
+    private func createBarController(for controller: ViewControllerElements) -> UIViewController{
+        let viewController = MoviesRouter.createModule(type: controller)
+        let navBarController = UINavigationController(rootViewController: viewController)
         navBarController.tabBarItem.title = controller.title
         navBarController.tabBarItem.image = controller.image
-        controller.controller.navigationItem.title = controller.title
+        viewController.navigationItem.title = controller.title
         return navBarController
     }
 }

@@ -18,9 +18,17 @@ import UIKit
 ///    - searchResultMovies: The frame size of the bicycle, in centimeters
 ///    - restoredState: The frame size of the bicycle, in centimeters
 /// - Returns: Regrea un ViewController
-final class TrendingMoviesViewController: UITableViewController, TrendingMoviesViewProtocol {
+final class MoviesViewController: UITableViewController, MoviesViewProtocol {
+    /// Indica el tipo de contenido que despliega la pantalla
+    var type: (ViewPropertiesProtocol & ApiPathProtocol)?{
+        didSet{
+            DispatchQueue.main.async { [weak self] in
+                self?.title = self?.type?.title
+            }
+        }
+    }
     /// Intancia del Presenter  del modulo VIPER Trending Movies
-	var presenter: TrendingMoviesPresenterProtocol?
+	var presenter: MoviesPresenterProtocol?
     /// Intancia de un UISearchController  que permite buscar una pelicula en la api de MovieDB
     var searchController: UISearchController?
     /// Intancia de un UITableViewContrller  muestra los resuiltados una pelicula en la api de MovieDB
@@ -42,17 +50,21 @@ final class TrendingMoviesViewController: UITableViewController, TrendingMoviesV
     
 	override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.getMovies()
         resultsTableController = configureTableViewSearch()
         searchController = configureSearch()
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.getMovies()
     }
 }
 
 // MARK: - SearchBarController Configuration
 
-extension TrendingMoviesViewController{
+extension MoviesViewController{
     ///Metodo que establece la configuracion inicial de SearchBArViewController
     func configureSearch() -> UISearchController{
         guard let resultsTableController = resultsTableController else { return UISearchController() }
@@ -71,7 +83,7 @@ extension TrendingMoviesViewController{
 
 // MARK: - View - Presenter Method's
 
-extension TrendingMoviesViewController{
+extension MoviesViewController{
     ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB y recarga la el UITableView
     /// - Parameters:
     ///     -Movies: Array de ListMovieProtocol
@@ -88,7 +100,7 @@ extension TrendingMoviesViewController{
 
 // MARK: - TableView's DataSource
 
-extension TrendingMoviesViewController {
+extension MoviesViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
@@ -99,15 +111,30 @@ extension TrendingMoviesViewController {
         let movie = movies[indexPath.row]
         guard let url = movie.urlImage else { return UITableViewCell() }
         cell.textLabel?.text = movie.title
+        cell.detailTextLabel?.text = "\nValoracion: \(movie.voteAverage)★\nPopularidad: \(movie.popularity)🔥"
         cell.imageView?.loadRemoteImage(url: url)
         return cell
     }
 
 }
 
+// MARK: - TableView's Delegate
+
+extension MoviesViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150.0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let movie = movies[indexPath.row] as? Movie else { return }
+        presenter?.sendToDetail(movie: movie)
+    }
+}
+
 // MARK: - UISearchBarDelegate
 
-extension TrendingMoviesViewController: UISearchBarDelegate {
+extension MoviesViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -121,7 +148,7 @@ extension TrendingMoviesViewController: UISearchBarDelegate {
 }
 // MARK: - UISearchResultsUpdating
 
-extension TrendingMoviesViewController: UISearchResultsUpdating{
+extension MoviesViewController: UISearchResultsUpdating{
 
     func updateSearchResults(for searchController: UISearchController) {
         presenter?.findMovies(for: searchController.searchBar.text)

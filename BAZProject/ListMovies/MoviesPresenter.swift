@@ -10,13 +10,13 @@
 
 import UIKit
 /// Presenter del modulo VIPER Trending Movies
-final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
+final class MoviesPresenter: MoviesPresenterProtocol {
     /// Intancia del View  del modulo VIPER Trending Movies
-    weak private var view: TrendingMoviesViewProtocol?
+    weak private var view: MoviesViewProtocol?
     /// Intancia del Interactor  del modulo VIPER Trending Movies
-    var interactor: TrendingMoviesInteractorProtocol?
+    var interactor: MoviesInteractorProtocol?
     /// Intancia del Router  del modulo VIPER Trending Movies
-    private let router: TrendingMoviesWireframeProtocol
+    private let router: MoviesWireframeProtocol
     /// Inicializador del Presenter del modulo VIPER de Trending Movies
     /// - parameters:
     ///    - interface: View del modulo ViPER
@@ -24,14 +24,15 @@ final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
     ///    - router: Router del modulo VIPER
     /// - returns:
     ///   Devuelve el Presenter del modulo VIPER Trending Movies
-    init(interface: TrendingMoviesViewProtocol, interactor: TrendingMoviesInteractorProtocol?, router: TrendingMoviesWireframeProtocol) {
+    init(interface: MoviesViewProtocol, interactor: MoviesInteractorProtocol?, router: MoviesWireframeProtocol) {
         self.view = interface
         self.interactor = interactor
         self.router = router
     }
     ///Funcion que llama al interactor para obtener las las peliculas del la api de MovieDB
     func getMovies() {
-        interactor?.getMovies()
+        guard let urlRequest = view?.type?.urlRequest else { return }
+        interactor?.getMovies(urlRequest: urlRequest)
     }
     ///Funcion que llama al view  para setear  las las peliculas del la api de MovieDB
     func setMovies(result: [ListMovieProtocol]) {
@@ -39,13 +40,16 @@ final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
     }
     ///Funcion que llama al interactor para obtener las las peliculas deacuerdo a un criterio de busqueda del la api de MovieDB
     func findMovies(for string: String?) {
-        interactor?.findMovies(for: cleanStringForSearch(string))
+        if cleanStringForSearch(string).count > 3{
+            interactor?.findMovies(for: cleanStringForSearch(string))
+        }
+        
     }
     /// Limpia el texto a buscar
     /// - parameters:
     ///    - string: String
     func cleanStringForSearch(_ string: String?) -> String {
-        return string?.count ?? 0 > 3 ? string ?? "" : ""
+        return  string ?? ""
     }
     /// Inicializa los valores para desplegar la busqueda en ResultsTableController
     /// - parameters:
@@ -54,6 +58,8 @@ final class TrendingMoviesPresenter: TrendingMoviesPresenterProtocol {
         view?.resultsTableController?.filteredProducts = movies
     }
     
-
+    func sendToDetail(movie: Movie) {
+        router.sendToDetail(with: movie)
+    }
     
 }

@@ -7,7 +7,8 @@
 import Foundation
 ///Clase que implementa el protocolo GenericApi para obtener Peliculas de la  Api MovieDB
 /// - parameters:
-///    - request: Request  a consumir
+///    - movieURLRequest: Request  a consumir
 /// - returns:
 ///   Devuelve un Result con <Modelo, error>
-final class MovieAPI: GenericAPIProtocol {}
+final class MovieAPI: GenericAPIProtocol {
+}

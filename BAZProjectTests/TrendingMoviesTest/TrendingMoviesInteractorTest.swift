@@ -17,7 +17,7 @@ final class TrendingMoviesInteractorTest: XCTestCase {
     override func setUp() {
         super.setUp()
         fakeMovieApi = FakeMovieApi(resultType: .sucess)
-        presenter = TrendingMoviesPresenterMock(router: TrendingMoviesRouter())
+        presenter = TrendingMoviesPresenterMock(router: MoviesRouter())
         sut = TrendingMoviesInteractorMock(movieAPI: fakeMovieApi)
         sut.presenter = presenter
     }
@@ -30,7 +30,8 @@ final class TrendingMoviesInteractorTest: XCTestCase {
     }
     
     func test_getMovies_callsApiAndSendInfo(){
-        sut.getMovies()
+        guard let request = ViewControllerElements.topRated.urlRequest else { return }
+        sut.getMovies(urlRequest: request)
         XCTAssertEqual(sut.calls, [.getMovies])
     }
     

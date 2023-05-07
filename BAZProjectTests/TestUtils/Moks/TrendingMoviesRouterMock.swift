@@ -11,15 +11,21 @@ import UIKit
 
 enum TrendingMoviesRouterMockCalls{
     case getResultViewController
+    case sendToDetail
 }
 
-final class TrendingMoviesRouterMock: TrendingMoviesWireframeProtocol {
+final class TrendingMoviesRouterMock: MoviesWireframeProtocol {
+
     
     var calls: [TrendingMoviesRouterMockCalls] = []
     
     func getResultViewController() -> UIViewController {
         calls.append(.getResultViewController)
-        return BAZProject.TrendingMoviesViewController()
+        return BAZProject.MoviesViewController()
     }
+    func sendToDetail(with movie: BAZProject.Movie) {
+        calls.append(.sendToDetail)
+    }
+    
 
 }

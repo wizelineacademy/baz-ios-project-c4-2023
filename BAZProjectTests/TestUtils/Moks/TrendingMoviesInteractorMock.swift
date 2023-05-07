@@ -15,9 +15,9 @@ enum TrendingMoviesInteractorMockCalls{
     case findMovies
 }
 
-final class TrendingMoviesInteractorMock: TrendingMoviesInteractorProtocol{
+final class TrendingMoviesInteractorMock: MoviesInteractorProtocol{
     
-    var presenter: BAZProject.TrendingMoviesPresenterProtocol?
+    var presenter: BAZProject.MoviesPresenterProtocol?
     var calls: [TrendingMoviesInteractorMockCalls] = []
     var fakeMovieApi: FakeMovieApi
     
@@ -25,12 +25,14 @@ final class TrendingMoviesInteractorMock: TrendingMoviesInteractorProtocol{
         self.fakeMovieApi = movieAPI  as! FakeMovieApi
     }
     
-    func getMovies() {
-        calls.append(.getMovies)
-    }
     
     func findMovies(for string: String) {
         presenter?.findMovies(for: string)
         calls.append(.findMovies)
     }
+    
+    func getMovies(urlRequest: URLRequest) {
+        calls.append(.getMovies)
+    }
+    
 }

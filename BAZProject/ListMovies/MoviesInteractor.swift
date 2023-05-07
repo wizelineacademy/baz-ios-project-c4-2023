@@ -10,29 +10,11 @@
 
 import UIKit
 
-extension TrendingMoviesInteractorProtocol{
-    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB
-    ///- Returns: Devuelve una URLRequest
-    func getMoviesUrlRequest() -> URLRequest?{
-        guard let url = URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey) else { return nil }
-        return URLRequest(url: url)
-    }
-    ///Metodo que regresa la url necesaria para consumir el Api de MovieDB de acuerdo a un criterio de busqueda
-    ///- Parameters:
-    /// - searchString: Criterio de busqueda
-    ///- Returns: Devuelve una URLRequest
-    func getSearchMoviewUrlRequest(searchString : String) -> URLRequest?{
-        let stringToSearch = "&query=\(searchString.replacingOccurrences(of: " ", with: "") )"
-        guard let url = URL(string: ApiConstans.baseURL + ApiConstans.search + ApiConstans.apiKey + stringToSearch) else { return nil}
-        return URLRequest(url: url)
-    }
-}
-
-final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
+final class MoviesInteractor: MoviesInteractorProtocol {
     /// Intancia del presenter  del modulo VIPER Trending Movies
-    weak var presenter: TrendingMoviesPresenterProtocol?
+    weak var presenter: MoviesPresenterProtocol?
     /// Intancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
-    let movieAPI: GenericAPIProtocol
+    var movieAPI: GenericAPIProtocol
     /**
      Inicializador del Iteractor del modulo VIPER de Trending Movies
      - Parameters:
@@ -43,9 +25,8 @@ final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
         self.movieAPI = movieAPI
     }
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
-    func getMovies() {
-        guard let urlRequest = getMoviesUrlRequest() else { return }
-        movieAPI.fetch(request: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
+    func getMovies(urlRequest: URLRequest) {
+        movieAPI.fetch(movieURLRequest: urlRequest) { [weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
                 print(fail)
@@ -56,8 +37,8 @@ final class TrendingMoviesInteractor: TrendingMoviesInteractorProtocol {
     }
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies de acuerdo a criterio de busqueda
     func findMovies(for string: String) {
-        guard let request = getSearchMoviewUrlRequest(searchString: string) else { return }
-        movieAPI.fetch(request: request) {(result: Result<MovieResult?, Error>) in
+        guard let request = ApiConstans.search(string).urlRequest else { return }
+        movieAPI.fetch(movieURLRequest: request){(result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
                 print(fail)

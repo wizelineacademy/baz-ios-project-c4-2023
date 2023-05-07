@@ -15,11 +15,12 @@ enum ResultType{
 
 
 final class FakeMovieApi: GenericAPIProtocol{
-    
+    var movieURLRequest: URLRequest
     private var resultType: ResultType
     
     init(resultType: ResultType){
         self.resultType = resultType
+        self.movieURLRequest = URLRequest(url: URL(string: "fake/url")!)
     }
     
     func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void) {

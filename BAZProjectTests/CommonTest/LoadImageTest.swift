@@ -17,8 +17,8 @@ final class LoadImageTest: XCTestCase {
     override func setUp() {
         super.setUp()
         sut = ImageRemoteLoader()
-        url = URL(string: ApiConstans.baseUrlImage + "/8c4a8kE7PizaGQQnditMmI1xbRp.jpg")
-        corruptedURL = URL(string: ApiConstans.baseUrlImage + "nilimage.jpg")
+        url = ApiConstans.image("/8c4a8kE7PizaGQQnditMmI1xbRp.jpg").imageUrl
+        corruptedURL = URL(string: "nilimage.jpg")
     }
     
     override func tearDown() {

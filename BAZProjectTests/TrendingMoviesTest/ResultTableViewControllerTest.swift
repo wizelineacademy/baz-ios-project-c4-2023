@@ -27,7 +27,8 @@ final class ResultTableViewControllerTest: XCTestCase {
     }
     
     func test_numberOfRowsInSection(){
-        fakeApi.fetch(request: URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)) {[weak self] (result: Result<MovieResult?, Error>) in
+        guard let url = ViewControllerElements.topRated.urlRequest else { return }
+        fakeApi.fetch(request: url) {[weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .success(let success):
                 guard let expectedResult = success?.results else { return }
@@ -42,7 +43,8 @@ final class ResultTableViewControllerTest: XCTestCase {
     }
     
     func test_tableViewCellForRowAt(){
-        fakeApi.fetch(request: URLRequest(url: URL(string: ApiConstans.baseURL + ApiConstans.trending + ApiConstans.apiKey)!)) {[weak self] (result: Result<MovieResult?, Error>) in
+        guard let url = ViewControllerElements.topRated.urlRequest else { return }
+        fakeApi.fetch(request: url) {[weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .success(let success):
                 guard let expectedResult = success?.results,

@@ -16,20 +16,19 @@ enum TrendingMoviesPresenterCalls{
     case findMovies
     case loadFindMovies
     case cleanStringForSearch
+    case sendToDetail
 }
 
-final class TrendingMoviesPresenterMock: TrendingMoviesPresenterProtocol{
-
-    
+final class TrendingMoviesPresenterMock: MoviesPresenterProtocol{
 
     var calls: [TrendingMoviesPresenterCalls] = []
     var interface: TrendigMoviesViewControllerMock? = TrendigMoviesViewControllerMock(restoredState: SearchControllerRestorableState())
-    var interactor: TrendingMoviesInteractorProtocol?
-    var router: TrendingMoviesWireframeProtocol
+    var interactor: MoviesInteractorProtocol?
+    var router: MoviesWireframeProtocol
     var textToSearch: String?
     
     
-    init(textToSearch: String? = nil, interface: TrendingMoviesViewProtocol? = nil, interactor: TrendingMoviesInteractorProtocol? = nil, router: TrendingMoviesWireframeProtocol) {
+    init(textToSearch: String? = nil, interface: MoviesViewProtocol? = nil, interactor: MoviesInteractorProtocol? = nil, router: MoviesWireframeProtocol) {
         self.textToSearch = textToSearch
         self.interface = interface as? TrendigMoviesViewControllerMock
         self.interactor = interactor
@@ -59,6 +58,10 @@ final class TrendingMoviesPresenterMock: TrendingMoviesPresenterProtocol{
     func cleanStringForSearch(_ string: String?) -> String {
         calls.append(.cleanStringForSearch)
         return string ?? ""
+    }
+    
+    func sendToDetail(movie: BAZProject.Movie) {
+        calls.append(.sendToDetail)
     }
 
 }
