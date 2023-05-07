@@ -9,17 +9,16 @@ import UIKit
 
 class TrendingMediaViewModel {
     
-    typealias MediaCollectionDataSource = UICollectionViewDiffableDataSource<MediaType, MediaItem>
-    typealias MediaCollectionSnapShot = NSDiffableDataSourceSnapshot<MediaType, MediaItem>
+    typealias MediaCollectionDataSource = UICollectionViewDiffableDataSource<TrendingMediaSection, MediaItem>
+    typealias MediaCollectionSnapShot = NSDiffableDataSourceSnapshot<TrendingMediaSection, MediaItem>
     typealias MediaCollectionCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, MediaItem>
     
     var error: Box<Error?> = Box(nil)
     var remoteData: TrendingMediaRemoteData
     private var mediaSnapshot = Box(MediaCollectionSnapShot())
     
-    init(dataObjects: [MediaDataObject] = [], remoteData: TrendingMediaRemoteData) {
+    init(remoteData: TrendingMediaRemoteData) {
         self.remoteData = remoteData
-        self.setSnapshotWithDictionary(dctItems: self.formatMediaDataObject(dataObjects))
     }
     
     func bindSnapshot(_ handler: @escaping (MediaCollectionSnapShot) -> Void) {
@@ -33,9 +32,13 @@ class TrendingMediaViewModel {
     func loadData() {
         Task {
             do {
-                guard let mediaArray = try await remoteData.getMediaItems() else { return }
-                let formattedMedia = formatMediaDataObject(mediaArray)
-                setSnapshotWithDictionary(dctItems: formattedMedia)
+                async let trendingMedia = remoteData.getMediaItems(section: .trending)
+                async let nowPlayingMedia = remoteData.getMediaItems(section: .nowPlaying)
+                async let popularMedia = remoteData.getMediaItems(section: .popular)
+                async let topRatedMedia = remoteData.getMediaItems(section: .topRated)
+                async let upcomingMedia = remoteData.getMediaItems(section: .upcoming)
+                var dictionary = try await formatMediaDataObject(trending: trendingMedia, popular: popularMedia, upcoming: upcomingMedia, topRated: topRatedMedia, nowPlaying: nowPlayingMedia)
+                setSnapshotWithDictionary(dctItems: dictionary)
             } catch {
                 self.error.value = error
             }
@@ -43,16 +46,31 @@ class TrendingMediaViewModel {
     }
     
     func getGroupTitle(for section: Int) -> String? {
-        return mediaSnapshot.value.sectionIdentifiers[section].groupTitle
+        return mediaSnapshot.value.sectionIdentifiers[section].title
     }
     
-    func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaType : [MediaItem]] {
-        let mediaItems = dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
-        return Dictionary(grouping: mediaItems, by: { $0.mediaType! })
+    func formatMediaDataObject(trending: [MediaDataObject]?, popular: [MediaDataObject]?, upcoming: [MediaDataObject]?, topRated: [MediaDataObject]?, nowPlaying: [MediaDataObject]?) -> [TrendingMediaSection: [MediaItem]] {
+        var dictionary = [TrendingMediaSection: [MediaItem]]()
+        if let trending = trending {
+            dictionary[.trending] = trending.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+        }
+        if let popular = popular {
+            dictionary[.popular] = popular.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+        }
+        if let upcoming = upcoming {
+            dictionary[.upcoming] = upcoming.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+        }
+        if let topRated = topRated {
+            dictionary[.topRated] = topRated.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+        }
+        if let nowPlaying = nowPlaying {
+            dictionary[.nowPlaying] = nowPlaying.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+        }
+        return dictionary
     }
     
-    func setSnapshotWithDictionary(dctItems: [MediaType : [MediaItem]]) {
-        let sorted = dctItems.sorted(by: { $0.key.order < $1.key.order })
+    func setSnapshotWithDictionary(dctItems: [TrendingMediaSection : [MediaItem]]) {
+        let sorted = dctItems.sorted(by: { $0.key.rawValue < $1.key.rawValue })
         var snapshot = MediaCollectionSnapShot()
         sorted.forEach { (key, value) in
             snapshot.appendSections([key])

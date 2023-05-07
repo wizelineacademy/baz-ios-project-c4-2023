@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum TrendingMediaSection: Int, SectionProtocol {
+public enum TrendingMediaSection: Int, SectionProtocol, Hashable {
     
     case trending, nowPlaying, popular, topRated, upcoming
     
