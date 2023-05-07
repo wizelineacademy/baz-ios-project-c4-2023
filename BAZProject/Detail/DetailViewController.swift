@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
         let stack = UIStackView(frame: .zero)
         stack.backgroundColor = .clear
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = ConstraintConstants.regular
         stack.distribution = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -38,6 +38,8 @@ class DetailViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .white
         imageView.image = UIImage(named: "loader")
+        imageView.layer.cornerRadius = ConstraintConstants.cornerRadius
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isHidden = true
         return imageView
@@ -73,13 +75,19 @@ class DetailViewController: UIViewController {
         let label = GreenLabel(frame: .zero)
         return label
     }()
+    private lazy var similarTitle: GreenLabel = {
+        let label = GreenLabel(frame: .zero)
+        label.text = "Similar movies"
+        label.textAlignment = .center
+        return label
+    }()
     private lazy var similarCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.3, height: 170)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.3, height: CellConstants.CollectionViewHeightAnchor)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.backgroundColor = .yellow
+        collection.backgroundColor = .clear
         collection.delegate = self
         collection.dataSource = self
         collection.register(DetailMovieCell.self, forCellWithReuseIdentifier: CellConstants.detailMovieCellId)
@@ -88,12 +96,20 @@ class DetailViewController: UIViewController {
     
     var presenter: DetailViewOutputProtocol?
     private var detailMovieModel: ListMovieProtocol?
+    private var similarMovies: [MovieResult]?
+    {
+        didSet {
+            self.similarCollectionView.reloadData()
+        }
+    }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.AppColors.homeCellBackgroundColor
         presenter?.getDetailMovie()
+        let movieId = detailMovieModel?.id.description ?? ""
+        presenter?.getSimilarMovies(endPoint: .similar(movieId: movieId))
         setupView()
     }
     
@@ -127,6 +143,7 @@ class DetailViewController: UIViewController {
         stackView.addArrangedSubview(popularity)
         stackView.addArrangedSubview(voteAverage)
         stackView.addArrangedSubview(voteCount)
+        stackView.addArrangedSubview(similarTitle)
         stackView.addArrangedSubview(similarCollectionView)
         
         let safeArea = self.view.safeAreaLayoutGuide
@@ -153,28 +170,41 @@ class DetailViewController: UIViewController {
             movieView.heightAnchor.constraint(equalToConstant: 300),
             movieView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-ConstraintConstants.regular),
             
-            similarCollectionView.heightAnchor.constraint(equalToConstant: 170)
+            similarCollectionView.heightAnchor.constraint(equalToConstant: CellConstants.CollectionViewHeightAnchor)
         ])
     }
 }
 
 // MARK: - Extensions
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    // MARK: Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        guard let source = self.similarMovies else { return 0 }
+        
+        self.similarCollectionView.isHidden = source.count > 0 ? false : true
+        self.similarTitle.isHidden = source.count > 0 ? false : true
+        return source.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellConstants.detailMovieCellId, for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
-        cell.producersTitle.text = "Celda"
+        cell.model = similarMovies?[indexPath.row]
+        self.presenter?.getMovieImage(index: indexPath.row, completion: { imageData in
+            cell.coverView.image = imageData
+        })
         return cell
     }
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W
 extension DetailViewController: DetailViewInputProtocol {
+    // MARK: Functions
     func showDetailMovie(detailMovie: ListMovieProtocol) {
         self.detailMovieModel = detailMovie
+    }
+    
+    func showSimilarMovies(movies: [ListMovieProtocol]?) {
+        self.similarMovies = movies as? [MovieResult]
     }
 }
 

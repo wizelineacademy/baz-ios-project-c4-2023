@@ -1,8 +1,7 @@
-//
 //  Movie.swift
 //  BAZProject
 //
-//
+//  Created by jehernandezg
 
 import Foundation
 
@@ -23,12 +22,12 @@ protocol ListMovieProtocol {
     
 }
 
-/// Structure that contains the data that will be used in the view
+/// Structure that contains an array of the movie data that will be used in the view
 struct Movie: Codable {
     let results: [MovieResult]?
 }
 
-// MARK: - Result
+/// Movie object
 struct MovieResult: Codable, ListMovieProtocol {
     var id: Int
     var title: String?

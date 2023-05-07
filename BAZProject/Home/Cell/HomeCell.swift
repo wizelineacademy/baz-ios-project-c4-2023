@@ -15,7 +15,7 @@ final class HomeCell: UITableViewCell {
     lazy var coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .redraw
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = ConstraintConstants.cornerRadius
         imageView.layer.masksToBounds = true
@@ -62,7 +62,6 @@ final class HomeCell: UITableViewCell {
             let outLine: UIImage = UIImage(systemName: "star")?.withTintColor(.cyan) ?? UIImage()
             let filled: UIImage = UIImage(systemName: "star.fill")?.withTintColor(.cyan) ?? UIImage()
             favoriteButton.setImage(model?.isFavorite ?? false ? filled : outLine, for: .normal)
-            //favoriteButton.isHidden = comesFromFavorite
         }
     }
     
@@ -83,10 +82,10 @@ final class HomeCell: UITableViewCell {
             coverView.widthAnchor.constraint(equalToConstant: CellConstants.coverViewCenterY),
             coverView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            favoriteButton.rightAnchor.constraint(equalTo: coverView.rightAnchor, constant: 8),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 40),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 40),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.small),
+            favoriteButton.rightAnchor.constraint(equalTo: coverView.rightAnchor, constant: ConstraintConstants.small),
+            favoriteButton.heightAnchor.constraint(equalToConstant: CellConstants.buttonHeightAndWidth),
+            favoriteButton.widthAnchor.constraint(equalToConstant: CellConstants.buttonHeightAndWidth),
             
             movieDescription.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: ConstraintConstants.small),
             movieDescription.leadingAnchor.constraint(equalTo: coverView.trailingAnchor, constant: ConstraintConstants.medium),

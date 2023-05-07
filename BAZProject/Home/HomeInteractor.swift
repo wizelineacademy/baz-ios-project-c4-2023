@@ -21,6 +21,12 @@ extension HomeInteractor: HomeInteractorInputProtocol {
      Function that gets an array of movies
      - Version: 1.0.0
     */
+    
+    
+    /// Function that gets an array of movies
+    /// - Parameters:
+    ///   - endPoint: the URL of endpoint
+    ///   - completion: Indicates that the list of movies has already been returned
     func getDataMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in

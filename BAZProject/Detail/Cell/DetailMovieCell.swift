@@ -8,27 +8,28 @@
 import UIKit
 
 class DetailMovieCell: UICollectionViewCell {
-    private lazy var coverView: UIImageView = {
+    lazy var coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
-        imageView.image = UIImage(named: "loader")
+        imageView.layer.cornerRadius = ConstraintConstants.cornerRadius
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    var producersTitle: GreenLabel = {
+    private lazy var producersTitle: GreenLabel = {
         let label = GreenLabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
-//    var model: Production_companies? {
-//        didSet {
-//            coverView.downloadImage(path: model?.logo_path ?? "")
-//            producersTitle.text = model?.name
-//        }
-//    }
-    
-    //var presenter: HomeViewOutput?
+    var model: ListMovieProtocol? {
+        didSet {
+            producersTitle.text = model?.title
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,21 +41,21 @@ class DetailMovieCell: UICollectionViewCell {
     }
     
     func setup() {
-        self.contentView.layer.cornerRadius = 10
-        //self.contentView.backgroundColor = UIColor.AppColors.navigationColor
+        self.contentView.layer.cornerRadius = ConstraintConstants.cornerRadius
+        self.contentView.backgroundColor = UIColor.AppColors.backgroudColor
         self.contentView.addSubview(coverView)
         self.contentView.addSubview(producersTitle)
         
-        coverView.translatesAutoresizingMaskIntoConstraints = false
-        coverView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coverView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 4).isActive = true
-        coverView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
-        coverView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        coverView.layer.cornerRadius = 8
-        
-        producersTitle.translatesAutoresizingMaskIntoConstraints = false
-        producersTitle.topAnchor.constraint(equalTo: coverView.bottomAnchor, constant: 4).isActive = true
-        producersTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        producersTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        NSLayoutConstraint.activate([
+            coverView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.semiSmall),
+            coverView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: ConstraintConstants.semiSmall),
+            coverView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -ConstraintConstants.semiSmall),
+            coverView.heightAnchor.constraint(equalToConstant: CellConstants.coverViewHeight),
+            
+            producersTitle.topAnchor.constraint(equalTo: coverView.bottomAnchor, constant: ConstraintConstants.semiSmall),
+            producersTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ConstraintConstants.small),
+            producersTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ConstraintConstants.small),
+            producersTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }

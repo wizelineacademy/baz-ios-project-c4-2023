@@ -30,6 +30,7 @@ class DetailPresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension DetailPresenter: DetailViewOutputProtocol {
+    // MARK: - Functions
     func getDetailMovie() {
         interactor.getDetailMovie(detailMoviePI: self.detailMovie)
     }
@@ -37,11 +38,26 @@ extension DetailPresenter: DetailViewOutputProtocol {
     func getOriginalMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
         interactor.getOriginalMovieImage(imagePath: imagePath, completion: completion)
     }
+    
+    func getSimilarMovies(endPoint: Endpoint) {
+        interactor.getSimilarMovies(endPoint: endPoint) {
+            
+        }
+    }
+    
+    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
+        interactor.getMovieImage(index: index, completion: completion)
+    }
 }
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
 extension DetailPresenter: DetailInteractorOutputProtocol {
+    // MARK: - Functions
     func presentDetailMovie(detailMovie: ListMovieProtocol) {
         view?.showDetailMovie(detailMovie: detailMovie)
+    }
+    
+    func presentSimilarMovies(movies: [ListMovieProtocol]?) {
+        view?.showSimilarMovies(movies: movies)
     }
 }

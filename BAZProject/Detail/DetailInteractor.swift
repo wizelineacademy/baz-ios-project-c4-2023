@@ -11,6 +11,7 @@ import UIKit
 class DetailInteractor {
     // MARK: - Properties
     weak var presenter: DetailInteractorOutputProtocol?
+    var movies: [ListMovieProtocol]? = []
 }
 
 // MARK: - Extensions
@@ -37,6 +38,33 @@ extension DetailInteractor: DetailInteractorInputProtocol {
             let imageLoader: ImageLoader = ImageLoader()
             imageLoader.loadImage(from: path) { image in
                 completion(image)
+            }
+        }
+    }
+    
+    func getSimilarMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
+        let movieApi = MovieAPI()
+        movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
+            switch result {
+            case .failure(let fail):
+                completion()
+                print(fail.localizedDescription)
+            case .success(let response):
+                self?.movies = response.results
+                guard let favorites = self?.getFavorites(), let origin = self?.movies else {
+                    self?.presenter?.presentSimilarMovies(movies: self?.movies)
+                    completion()
+                    return
+                }
+                for i in 0..<origin.count {
+                    for j in 0..<favorites.count {
+                        if origin[i].id == favorites[j].id {
+                            self?.movies?[i].isFavorite = true
+                        }
+                    }
+                }
+                self?.presenter?.presentSimilarMovies(movies: self?.movies)
+                completion()
             }
         }
     }

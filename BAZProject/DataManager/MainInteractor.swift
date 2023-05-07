@@ -7,7 +7,9 @@
 
 import UIKit
 
+/// Protocol that shares generic functions of more than one interactor
 protocol MainInteractorProtocol {
+    // MARK: - Methods
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int, onSaved: @escaping () -> Void)
     func getFavorites() -> [MovieResult]?
@@ -15,14 +17,13 @@ protocol MainInteractorProtocol {
 }
 
 extension MainInteractorProtocol {
-    /**
-     Function that returns a `UIImage` for a specific movie
-     - Parameters:
-        - index: The index of the url image
-        - completion: Returns a UIImage
-     - Returns: The image from data.
-     - Version: 1.0.0
-    */
+    // MARK: - Methods
+    
+    /// Function that returns a `UIImage` for a specific movie
+    /// - Parameters:
+    ///   - index: The index of the url image
+    ///   - completion: Returns a UIImage
+    ///   - Version: 1.0.0
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
         if let path = URL(string: MovieAPIConstans.getPosterUrl(path: movies?[index].posterPath ?? "")) ?? URL(string: "") {
             let imageLoader: ImageLoader = ImageLoader()
@@ -32,7 +33,12 @@ extension MainInteractorProtocol {
         }
     }
     
-    ///
+    
+    /// Save a favorite movie using userDefaults
+    /// - Parameters:
+    ///   - index: The index of the movie
+    ///   - onSaved: Indicates that the list of movies has already been returned
+    ///   - Version: 1.0.0
     func saveFavorite(index: Int, onSaved: @escaping () -> Void) {
         guard let favorite = self.movies?[index] as? MovieResult else { return }
         if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
@@ -46,7 +52,6 @@ extension MainInteractorProtocol {
                 }
                 if let encoded = try? JSONEncoder().encode(updatedList) {
                     UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
-                    //debugPrint(updatedList)
                     onSaved()
                     return
                 }
@@ -56,13 +61,17 @@ extension MainInteractorProtocol {
             updatedList.append(favorite)
             if let encoded = try? JSONEncoder().encode(updatedList) {
                 UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
-                //debugPrint(updatedList)
                 onSaved()
                 return
             }
         }
     }
     
+    /// Save a favorite movie using userDefaults
+    /// - Parameters:
+    ///   - index: The index of the movie
+    ///   - onSaved: Indicates that the movie list has already been removed
+    ///   - Version: 1.0.0
     func deleteFavorite(index: Int, onSaved: @escaping () -> Void) {
         guard let favorite = self.movies?[index] as? MovieResult else { return }
         //se obtiene data de favoritos previos
@@ -74,7 +83,6 @@ extension MainInteractorProtocol {
                 if let encoded = try? JSONEncoder().encode(updatedList) {
                     //se guarda el arreglo de favoritos actualizado en UserDefaults encodeado
                     UserDefaults.standard.set(encoded, forKey: KUserDefaultsKeys.kFavorite.rawValue)
-                    //debugPrint(updatedList)
                     onSaved()
                     return
                 }
@@ -83,6 +91,10 @@ extension MainInteractorProtocol {
         onSaved()
     }
     
+    
+    /// Return movies saved as favorites
+    /// - Returns: List of favorite movies
+    /// - Version: 1.0.0
     func getFavorites() -> [MovieResult]? {
         if let data = UserDefaults.standard.data(forKey: KUserDefaultsKeys.kFavorite.rawValue) {
             if let decoded = try? JSONDecoder().decode([MovieResult].self, from: data) {

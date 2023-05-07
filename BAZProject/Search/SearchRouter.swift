@@ -26,6 +26,7 @@ class SearchRouter {
 
 // MARK: - Extensions
 extension SearchRouter: SearchRouterProtocol {
+    // MARK: - Functions
     func showAnimation(completion: @escaping () -> Void) {
         animationView = UIAlertController.GlobalViews.animationView
         DispatchQueue.main.async {

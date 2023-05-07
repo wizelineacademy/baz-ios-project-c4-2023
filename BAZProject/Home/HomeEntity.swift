@@ -20,6 +20,7 @@ struct MovieAPIConstans {
     static let searchConfig = "&language=es&page=1&query="
     static let urlPosterImage = "https://image.tmdb.org/t/p/w500"
     static let urlOriginalImage = "https://image.tmdb.org/t/p/original"
+    static let similar = "movie/"
     
     static func getOriginalUrl(path: String) -> String {
         return "\(MovieAPIConstans.urlOriginalImage)\(path)"
@@ -38,6 +39,7 @@ enum Endpoint {
     case topRated
     case upcoming
     case search(query: String)
+    case similar(movieId: String)
 }
 
 extension Endpoint {
@@ -55,6 +57,8 @@ extension Endpoint {
             return MovieAPIConstans.upcoming
         case .search(query: let query):
             return "\(MovieAPIConstans.search)\(query.replacingOccurrences(of: " ", with: "%20"))"
+        case .similar(movieId: let movieId):
+            return "\(MovieAPIConstans.similar)\(movieId)/similar\(MovieAPIConstans.apiKey)"
         }
     }
     

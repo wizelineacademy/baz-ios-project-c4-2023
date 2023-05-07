@@ -27,6 +27,7 @@ class SearchPresenter {
 
 // MARK: - V I E W · T O · P R E S E N T E R
 extension SearchPresenter: SearchViewOutputProtocol {
+    // MARK: - Functions
     func getMovieSearch(endPoint: Endpoint) {
         self.router.showAnimation {
             self.pEndpoint = endPoint
@@ -55,6 +56,7 @@ extension SearchPresenter: SearchViewOutputProtocol {
 
 // MARK: - I N T E R A C T O R · T O · P R E S E N T E R
 extension SearchPresenter: SearchInteractorOutputProtocol {
+    // MARK: - Functions
     func presentDataMovies(movies: [ListMovieProtocol]?) {
         view?.showViewDataMovies(movies: movies)
     }

@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let items = ["Trending","NowPlaying","Popular","TopRated","Upcoming"]
         let segmented = UISegmentedControl(items: items)
         segmented.selectedSegmentTintColor = .white
-        segmented.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)], for: .normal)
+        segmented.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: ConstraintConstants.medium)], for: .normal)
         segmented.backgroundColor = UIColor.AppColors.labelGreen
         segmented.selectedSegmentIndex = 0
         segmented.translatesAutoresizingMaskIntoConstraints = false

@@ -28,6 +28,7 @@ extension SearchInteractor: SearchInteractorInputProtocol {
         apiMovie.fetchData(model: Movie.self, endPoint) { [weak self] objResult in
             switch objResult {
             case .failure(let fail):
+                completion()
                 print(fail.localizedDescription)
             case .success(let objResponse):
                 self?.movies = objResponse.results
