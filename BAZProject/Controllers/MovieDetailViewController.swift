@@ -27,7 +27,13 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var lblCast: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var vwReview: UIView!
+    @IBOutlet weak var btnFavorite: UIBarButtonItem!
     
+    // MARK: - Actions
+    
+    @IBAction func favoriteButtonAction(_ sender: UIBarButtonItem) {
+        movieVM?.doFavoriteButtonAction()
+    }
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -35,7 +41,14 @@ final class MovieDetailViewController: UIViewController {
 
         configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(named: "background") ?? .white, tintColor: .white, title: movieVM?.title ?? "Detail", preferredLargeTitle: true)
         
+        movieVM?.delegate = self
+        
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        btnFavorite.image = movieVM?.icon_favorite
     }
 }
 
@@ -48,6 +61,7 @@ extension MovieDetailViewController {
         lblVote.text = movieVM?.vote_average
         lblYear.text = movieVM?.year
         lblOverview.text = movieVM?.overview
+        btnFavorite.image = movieVM?.icon_favorite
         
         if let url = URL(string: movieVM?.poster_path ?? "") {
             imageLoader.getImage(from: url) { [weak self] image in
@@ -64,6 +78,14 @@ extension MovieDetailViewController {
                 guard let view = UserReview.instanceFromNib(review) else { continue }
                 self?.vwReview.addSubview(view)
             }
+        }
+    }
+}
+
+extension MovieDetailViewController: MovieViewModelProtocol {
+    func updateImageButton(image: UIImage?) {
+        if let image = image {
+            btnFavorite.image = image
         }
     }
 }
