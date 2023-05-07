@@ -232,6 +232,14 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(view as! DetailCollectionViewController)
     }
     
+    func test_getSearchScope() {
+        let items = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        
+        let scope = sut.getSearchScope()
+        
+        XCTAssertEqual(items, scope)
+    }
+    
 }
 
 

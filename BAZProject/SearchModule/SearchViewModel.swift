@@ -60,7 +60,7 @@ class SearchViewModel {
         return section == 0 ? "Recent" : "Results"
     }
     
-    func searchMedia(keyword: String) {
+    func searchMedia(keyword: String, scope: Int = -1) {
         Task {
             do {
                 guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
@@ -83,6 +83,10 @@ class SearchViewModel {
         guard let mediaItem = item, mediaItem.id != nil, mediaItem.mediaType != nil else { return nil }
         let viewModel = DetailViewModel(item: mediaItem)
         return DetailCollectionViewController(viewModel: viewModel)
+    }
+    
+    func getSearchScope() -> [String] {
+        return MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
     }
     
 }
