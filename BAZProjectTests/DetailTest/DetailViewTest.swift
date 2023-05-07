@@ -15,6 +15,7 @@ final class DetailViewTest: XCTestCase {
     var info: CellPersonalizedTableViewProtocol?
     var arrSimilar: [CellPersonalizedTableViewProtocol]?
     var arrReviews: [CellPersonalizedTableViewProtocol]?
+    var arrCast: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -28,6 +29,8 @@ final class DetailViewTest: XCTestCase {
         sut = nil
         info = nil
         arrSimilar = nil
+        arrReviews = nil
+        arrCast = nil
     }
     
     func testNavigationTitleUpdated() {
@@ -109,5 +112,9 @@ extension DetailViewTest: DetailBusinessLogic {
     func searchForReview() {
         arrReviews = [Review(strReview: "Una review", strAuthor: "Un autor"), Review(strReview: "Una review2", strAuthor: "Un autor2")]
         sut?.reloadReviews(with: arrReviews!)
+    }
+    
+    func searcForCast() {
+        arrCast = [Cast(strName: "Un nombre", strProfilePath: "Kohane.jpg", strCharacter: "Kohane"), Cast(strName: "Otro nombre", strProfilePath: "Kohane2.jpg", strCharacter: "Kohane Azusawa")]
     }
 }

@@ -17,6 +17,7 @@
 		332AD74229EE34F700279703 /* SearchInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AD74129EE34F700279703 /* SearchInteractorTest.swift */; };
 		33319F972A073F4F00941BE5 /* CastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33319F962A073F4F00941BE5 /* CastService.swift */; };
 		33319F992A07406500941BE5 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33319F982A07406500941BE5 /* Cast.swift */; };
+		33319F9B2A07497100941BE5 /* cast.json in Resources */ = {isa = PBXBuildFile; fileRef = 33319F9A2A07497100941BE5 /* cast.json */; };
 		3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */; };
 		3343AD4129D4A58D00F4CAB9 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */; };
 		3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */; };
@@ -87,6 +88,7 @@
 		332AD74129EE34F700279703 /* SearchInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTest.swift; sourceTree = "<group>"; };
 		33319F962A073F4F00941BE5 /* CastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastService.swift; sourceTree = "<group>"; };
 		33319F982A07406500941BE5 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		33319F9A2A07497100941BE5 /* cast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cast.json; sourceTree = "<group>"; };
 		3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenter.swift; sourceTree = "<group>"; };
 		3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRouter.swift; sourceTree = "<group>"; };
 		3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProtocols.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		336DDA9D29E8D4EF00E9ACBF /* NetworkingMocks */ = {
 			isa = PBXGroup;
 			children = (
+				33319F9A2A07497100941BE5 /* cast.json */,
 				3344B23729FCCD2F0047B095 /* review.json */,
 				3327F7ED29EEEE3100F46759 /* searchVoid.json */,
 				3327F7EB29EEE57C00F46759 /* responseSearchMock.json */,
@@ -463,6 +466,7 @@
 				3327F7EC29EEE57C00F46759 /* responseSearchMock.json in Resources */,
 				3327F7EE29EEEE3100F46759 /* searchVoid.json in Resources */,
 				336DDAA129E8D79500E9ACBF /* responseMock.json in Resources */,
+				33319F9B2A07497100941BE5 /* cast.json in Resources */,
 				339ED99529FAD18000A1A538 /* similarMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

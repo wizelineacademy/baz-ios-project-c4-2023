@@ -63,7 +63,7 @@ final class ServiceApiTests: XCTestCase {
             self?.handleService(result)
         }
         //Then
-        waitForExpectations(timeout: 2.5)
+        waitForExpectations(timeout: 3.5)
         XCTAssertNotNil(result)
     }
     

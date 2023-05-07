@@ -18,6 +18,7 @@ final class DetailInteractorTest: XCTestCase {
     private var errorService: ErrorApi?
     private var arrSimilar: [CellPersonalizedTableViewProtocol]?
     private var arrReviews: [CellPersonalizedTableViewProtocol]?
+    private var arrCast: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -134,6 +135,22 @@ final class DetailInteractorTest: XCTestCase {
         XCTAssertNil(arrReviews?.first?.strDate)
         XCTAssertNil(arrReviews?.first?.urlConfiguration)
     }
+    
+    func testCastSuccessfullResponseWithResults() {
+        //Given
+        let strActor = "Keanu Reeves"
+        sut?.setUpEntity(withMovie: testMovie)
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("cast"))
+        sut?.networking = mockServer
+        //When
+        sut?.getCurrentData()
+        //Then
+        XCTAssertEqual(arrCast?.first?.strTitle, strActor)
+        XCTAssertNotNil(arrCast?.first?.strDate)
+        XCTAssertNotNil(arrCast?.first?.urlConfiguration)
+        XCTAssertNil(arrCast?.first?.strOverView)
+        
+    }
 }
 
 extension DetailInteractorTest: DetailPresentationLogic {
@@ -151,5 +168,9 @@ extension DetailInteractorTest: DetailPresentationLogic {
     
     func reviewsWereObtained(with arrReviews: [CellPersonalizedTableViewProtocol]?) {
         self.arrReviews = arrReviews
+    }
+    
+    func castobtained(with arrCast: [CellPersonalizedTableViewProtocol]?) {
+        self.arrCast = arrCast
     }
 }
