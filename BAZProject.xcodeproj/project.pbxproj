@@ -15,6 +15,8 @@
 		3327F7FA29EF1AE100F46759 /* SearchViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327F7F929EF1AE100F46759 /* SearchViewTest.swift */; };
 		332AD74029EE347400279703 /* SearchEnumError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AD73F29EE347400279703 /* SearchEnumError.swift */; };
 		332AD74229EE34F700279703 /* SearchInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AD74129EE34F700279703 /* SearchInteractorTest.swift */; };
+		33319F972A073F4F00941BE5 /* CastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33319F962A073F4F00941BE5 /* CastService.swift */; };
+		33319F992A07406500941BE5 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33319F982A07406500941BE5 /* Cast.swift */; };
 		3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */; };
 		3343AD4129D4A58D00F4CAB9 /* TrendingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */; };
 		3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */; };
@@ -83,6 +85,8 @@
 		3327F7F929EF1AE100F46759 /* SearchViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewTest.swift; sourceTree = "<group>"; };
 		332AD73F29EE347400279703 /* SearchEnumError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEnumError.swift; sourceTree = "<group>"; };
 		332AD74129EE34F700279703 /* SearchInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTest.swift; sourceTree = "<group>"; };
+		33319F962A073F4F00941BE5 /* CastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastService.swift; sourceTree = "<group>"; };
+		33319F982A07406500941BE5 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		3343AD3629D4A58D00F4CAB9 /* TrendingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenter.swift; sourceTree = "<group>"; };
 		3343AD3829D4A58D00F4CAB9 /* TrendingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRouter.swift; sourceTree = "<group>"; };
 		3343AD3929D4A58D00F4CAB9 /* TrendingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingProtocols.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 			children = (
 				33DCC78029F9CD590077BD78 /* DetailInfo.swift */,
 				3344B23D29FCD00E0047B095 /* Review.swift */,
+				33319F982A07406500941BE5 /* Cast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 			children = (
 				33E7CEAA29E8750A00681265 /* MovieService.swift */,
 				3344B23529FCC8D20047B095 /* ReviewService.swift */,
+				33319F962A073F4F00941BE5 /* CastService.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 				C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */,
 				3327F7F029EEF49A00F46759 /* EmptySearch.swift in Sources */,
 				3344B23B29FCCE9F0047B095 /* ReviewTableViewCell.swift in Sources */,
+				33319F972A073F4F00941BE5 /* CastService.swift in Sources */,
 				33ACA7A929ECFE0F00FD0421 /* SearchViewController.swift in Sources */,
 				3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */,
 				33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */,
@@ -520,6 +527,7 @@
 				3343AD4429D4A58D00F4CAB9 /* TrendingView.swift in Sources */,
 				33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */,
 				3343AD3F29D4A58D00F4CAB9 /* TrendingPresenter.swift in Sources */,
+				33319F992A07406500941BE5 /* Cast.swift in Sources */,
 				3344B23629FCC8D20047B095 /* ReviewService.swift in Sources */,
 				33DCC77D29F9987D0077BD78 /* DetailInteractor.swift in Sources */,
 				3343AD4329D4A58D00F4CAB9 /* TrendingInteractor.swift in Sources */,

@@ -30,17 +30,19 @@ public class DetailInteractor {
 }
 
 extension DetailInteractor: DetailBusinessLogic {
-    public func getCurrentData() {
-        presenter?.currentInfo(movie: entity?.movie)
-        searchForReview()
-        searchForSimilar()
-    }
     
-    private func searchForSimilar() {
+    public func getCurrentData() {
         guard let iMovieId = entity?.movie.id else {
             presenter?.serviceDidFailed(with: .badParameter)
             return
         }
+        presenter?.currentInfo(movie: entity?.movie)
+        searchForCast(forMovie: iMovieId)
+        searchForReview(forMovie: iMovieId)
+        searchForSimilar(forMovie: iMovieId)
+    }
+    
+    private func searchForSimilar(forMovie iMovieId: Int) {
         networking?.updatePath(with: .similarMovies(strMovieId: "\(iMovieId)"))
         networking?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>) in
             switch result {
@@ -52,16 +54,24 @@ extension DetailInteractor: DetailBusinessLogic {
         })
     }
     
-    private func searchForReview() {
-        guard let iMovieId = entity?.movie.id else {
-            presenter?.serviceDidFailed(with: .badParameter)
-            return
-        }
+    private func searchForReview(forMovie iMovieId: Int) {
         networking?.updatePath(with: .review(strMovieId: "\(iMovieId)"))
         networking?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<ReviewService>, ErrorApi>) in
             switch result {
             case .success(let success):
                 self?.handleSuccessReview(with: success.results)
+            case .failure(let failure):
+                self?.presenter?.serviceDidFailed(with: failure)
+            }
+        })
+    }
+    
+    private func searchForCast(forMovie iMovieId: Int) {
+        networking?.updatePath(with: .cast(strMovieId: "\(iMovieId)"))
+        networking?.search(withCompletionHandler: { [weak self] (result: Result<CastResults, ErrorApi>) in
+            switch result {
+            case .success(let success):
+                self?.handleSuccessCast(with: success.cast)
             case .failure(let failure):
                 self?.presenter?.serviceDidFailed(with: failure)
             }
@@ -82,4 +92,10 @@ extension DetailInteractor: DetailBusinessLogic {
         }
     }
     
+    private func handleSuccessCast(with arrResponse: [CastService]?) {
+        entity?.updateCast(with: arrResponse)
+        if let arrCast = entity?.arrCast {
+            presenter?.castobtained(with: arrCast)
+        }
+    }
 }

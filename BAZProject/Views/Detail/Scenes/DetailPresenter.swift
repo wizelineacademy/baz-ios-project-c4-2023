@@ -12,6 +12,7 @@ public protocol DetailPresentationLogic {
     
     func currentInfo(movie: CellPersonalizedTableViewProtocol?)
     func serviceDidFailed(with error: ErrorApi)
+    func castobtained(with arrCast: [CellPersonalizedTableViewProtocol]?)
     func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?)
     func reviewsWereObtained(with arrReviews: [CellPersonalizedTableViewProtocol]?)
 }
@@ -29,6 +30,12 @@ extension DetailPresenter: DetailPresentationLogic {
     
     public func serviceDidFailed(with error: ErrorApi) {
         view?.serviceDidFailed(with: error.getMessage())
+    }
+    
+    public func castobtained(with arrCast: [CellPersonalizedTableViewProtocol]?) {
+        guard let arrCast = arrCast else { return }
+        let arrToView = filter(array: arrCast, upTo: 7)
+        view?.reloadCast(withCast: arrToView)
     }
     
     public func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?) {

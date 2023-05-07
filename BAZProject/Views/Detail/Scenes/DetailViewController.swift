@@ -11,6 +11,7 @@ public protocol DetailSearchDisplayLogic: AnyObject {
     var interactor: DetailBusinessLogic? { get }
     
     func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?)
+    func reloadCast(withCast arrCast: [CellPersonalizedTableViewProtocol])
     func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol])
     func reloadSimilarMovies(with arrSimilar: [CellPersonalizedTableViewProtocol])
     func serviceDidFailed(with strMessage: String)
@@ -28,6 +29,11 @@ public class DetailViewController: UIViewController {
         didSet {
             navigationItem.title = currentData?.strTitle ?? ""
             tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+        }
+    }
+    private var arrCast: [CellPersonalizedTableViewProtocol]? {
+        didSet {
+            tblMovieInfo.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
         }
     }
     private var arrReviews: [CellPersonalizedTableViewProtocol]? {
@@ -68,6 +74,10 @@ extension DetailViewController: DetailSearchDisplayLogic {
         present(alert, animated: true)
     }
     
+    public func reloadCast(withCast arrCast: [CellPersonalizedTableViewProtocol]) {
+        self.arrCast = arrCast
+    }
+    
     public func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol]) {
         self.arrReviews = arrReviews
     }
@@ -85,6 +95,8 @@ extension DetailViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
+        case 1:
+            return NSLocalizedString("Cast", comment: "Cast")
         case 2:
             return NSLocalizedString("Reviews", comment: "Reviews")
         case 3:
@@ -98,6 +110,8 @@ extension DetailViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 1
+        case 1:
+            return arrCast?.count ?? 0
         case 2:
             return arrReviews?.count ?? 0
         case 3:
@@ -111,6 +125,9 @@ extension DetailViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             return configure(forMovie: currentData, andRow: indexPath)
+        case 1:
+            let cast = arrCast?[indexPath.row]
+            return configure(forMovie: cast, andRow: indexPath)
         case 2:
             let review = arrReviews?[indexPath.row]
             return configure(forReview: review, andIndexPath: indexPath)

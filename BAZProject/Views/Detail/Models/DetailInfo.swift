@@ -10,6 +10,7 @@ import Foundation
 public struct DetailInfo {
     public var movie: Movie
     private var arrRecomended: [Movie]?
+    public var arrCast: [Cast]?
     public var arrSimilar: [Movie]?
     public var arrReviews: [Review]?
     
@@ -17,6 +18,16 @@ public struct DetailInfo {
         self.movie = movie
         self.arrRecomended = arrRecomended
         self.arrSimilar = arrSimilar
+    }
+    
+    mutating func updateCast(with response: [CastService]?) {
+        arrCast = nil
+        arrCast = [Cast]()
+        if let response = response, !response.isEmpty {
+            for castResponse in response {
+                arrCast?.append(castResponse.createCastApp())
+            }
+        }
     }
     
     mutating func updateSimilarArray(with response: [MovieDetailService]?) {
