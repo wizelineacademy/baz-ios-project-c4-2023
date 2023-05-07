@@ -12,20 +12,24 @@ final class DetailViewModelTests: XCTestCase {
     
     var sut: DetailViewModel!
     var remoteData: DetailRemoteDataMock!
+    var udManager: UserDefaultsMock!
     
     override func setUp() {
         super.setUp()
         remoteData = DetailRemoteDataMock()
+        udManager = UserDefaultsMock()
     }
     
     override func tearDown() {
         sut = nil
         remoteData = nil
+        udManager = nil
         super.tearDown()
     }
     
     func setViewModel(mediaItem: MediaItem) {
-        sut = DetailViewModel(remoteData: remoteData, item: mediaItem)
+        let localData = DetailLocalData(userDefaultsManager: udManager)
+        sut = DetailViewModel(remoteData: remoteData, localData: localData, item: mediaItem)
     }
     
     func test_BindSnapshot_ShouldPerformBinding() {
@@ -367,6 +371,11 @@ final class DetailViewModelTests: XCTestCase {
         let actualTitle = sut.getTitle()
         
         XCTAssertEqual(title, actualTitle)
+    }
+    
+    func test_InitialItemShouldBeFavourite() {
+        let expectation = XCTestExpectation()
+        
     }
 
 }

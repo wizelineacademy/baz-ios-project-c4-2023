@@ -34,4 +34,5 @@ final class DetailLocalDataTests: XCTestCase {
         
         XCTAssertEqual(data, retrieved)
     }
+    
 }

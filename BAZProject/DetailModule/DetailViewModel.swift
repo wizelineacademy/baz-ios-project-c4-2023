@@ -14,11 +14,13 @@ class DetailViewModel {
     private var remoteData: DetailRemoteData
     private var item: MediaItem
     private var snapshot = Box(DetailSnapshot())
+    private var localData: DetailLocalData
     private var error: Box<Error?> = Box(nil)
     
-    init(remoteData: DetailRemoteData = DetailRemoteData(), item: MediaItem) {
+    init(remoteData: DetailRemoteData = DetailRemoteData(), localData: DetailLocalData = DetailLocalData(), item: MediaItem) {
         self.item = item
         self.remoteData = remoteData
+        self.localData = localData
     }
     
     func bindSnapshot(_ listener: @escaping (DetailSnapshot) -> Void) {
