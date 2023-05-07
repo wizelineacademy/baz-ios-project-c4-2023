@@ -45,6 +45,10 @@
 		4B2675D02A0846AC005C60A4 /* TrendingMediaSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */; };
 		4B2675D22A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D12A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift */; };
 		4B2675D42A084D04005C60A4 /* TrendingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D32A084D04005C60A4 /* TrendingEndpointTests.swift */; };
+		4B2675D62A08628A005C60A4 /* DetailLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D52A08628A005C60A4 /* DetailLocalData.swift */; };
+		4B2675D82A0862B3005C60A4 /* DetailLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D72A0862B3005C60A4 /* DetailLocalDataTests.swift */; };
+		4B2675DA2A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D92A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift */; };
+		4B2675DC2A086729005C60A4 /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -156,6 +160,10 @@
 		4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaSectionsTests.swift; sourceTree = "<group>"; };
 		4B2675D12A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaRemoteDataTests.swift; sourceTree = "<group>"; };
 		4B2675D32A084D04005C60A4 /* TrendingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEndpointTests.swift; sourceTree = "<group>"; };
+		4B2675D52A08628A005C60A4 /* DetailLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocalData.swift; sourceTree = "<group>"; };
+		4B2675D72A0862B3005C60A4 /* DetailLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailLocalDataTests.swift; path = BAZProjectUnitTests/DetailModuleTests/DetailLocalDataTests.swift; sourceTree = SOURCE_ROOT; };
+		4B2675D92A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+UserDefaultsProtocol.swift"; sourceTree = "<group>"; };
+		4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsMock.swift; path = Mocks/UserDefaultsMock.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -282,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				4B2675A12A060A2B005C60A4 /* DetailRemoteDataMock.swift */,
+				4B2675D72A0862B3005C60A4 /* DetailLocalDataTests.swift */,
 			);
 			path = DetailTestDoubles;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				4B2675BF2A073605005C60A4 /* DetailOverviewCollectionViewCell.xib */,
 				4B2675C12A074F5C005C60A4 /* DetailReviewCollectionViewCell.swift */,
 				4B2675C22A074F5C005C60A4 /* DetailReviewCollectionViewCell.xib */,
+				4B2675D52A08628A005C60A4 /* DetailLocalData.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 				4B3BBE8329D65860001F4E85 /* Mocks */,
 				4B947E7B29F24F8100C116E3 /* GenericEndpoint.swift */,
 				4B947E7529F247DB00C116E3 /* DataStubs.swift */,
+				4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -452,6 +463,7 @@
 				4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */,
 				4B2675AF2A06DCC8005C60A4 /* Array.swift */,
 				4B2675B32A0703F5005C60A4 /* Calendar.swift */,
+				4B2675D92A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 				4B2DA1A829F23E68006BD0EC /* TrendingMediaViewModelTests.swift in Sources */,
 				4B26758F2A05D3CF005C60A4 /* DetailEndpointTests.swift in Sources */,
 				4B2675BB2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift in Sources */,
+				4B2675DC2A086729005C60A4 /* UserDefaultsMock.swift in Sources */,
 				4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */,
 				4B2675A22A060A2B005C60A4 /* DetailRemoteDataMock.swift in Sources */,
 				4B2675D22A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift in Sources */,
@@ -680,6 +693,7 @@
 				4B2DA1AC29F23F1C006BD0EC /* DecoderTests.swift in Sources */,
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
 				4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */,
+				4B2675D82A0862B3005C60A4 /* DetailLocalDataTests.swift in Sources */,
 				4B2675B82A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift in Sources */,
 				4B27A0BA2A05707B003A24D6 /* UIImageTests.swift in Sources */,
 				4B947E7829F24C9900C116E3 /* EndpointTests.swift in Sources */,
@@ -700,6 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2675D62A08628A005C60A4 /* DetailLocalData.swift in Sources */,
 				4B2675B62A07289C005C60A4 /* DetailCollectionViewController.swift in Sources */,
 				4B6BB29229FB36B1007A20D7 /* SimpleCollectionViewHeaderView.swift in Sources */,
 				4B2675AA2A06D336005C60A4 /* DetailOverview.swift in Sources */,
@@ -718,6 +733,7 @@
 				4B8FBDB529F9E2E600F9422B /* MediaType.swift in Sources */,
 				4B37398629D3B1980056041F /* MainTabBarController.swift in Sources */,
 				4B3BBE8129D65674001F4E85 /* NetworkingProtocols.swift in Sources */,
+				4B2675DA2A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift in Sources */,
 				4B2675B02A06DCC8005C60A4 /* Array.swift in Sources */,
 				4B2675932A05E9D9005C60A4 /* ReviewCollectionDataObject.swift in Sources */,
 				4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */,
