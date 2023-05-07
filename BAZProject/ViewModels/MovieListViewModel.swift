@@ -25,6 +25,13 @@ enum MovieFilter: String {
 
     /// Represents upcoming movies.
     case upcoming   = "Upcoming"
+    
+    /// Represents favorite movies.
+    case favorites  = "Favorites"
+}
+
+protocol MovieListViewModelProtocol {
+    func reloadData()
 }
 
 // MARK: - MovieListViewModel
@@ -34,6 +41,8 @@ final class MovieListViewModel {
     
     private var filterType: MovieFilter = MovieFilter.trending
     private var movies: [Movie] = []
+    
+    var delegate: MovieListViewModelProtocol?
     
     // MARK: - Initializer
 
@@ -46,7 +55,6 @@ final class MovieListViewModel {
     init(_ filterType: MovieFilter) {
         self.filterType = filterType
     }
-    
 }
 
 extension MovieListViewModel {
@@ -71,6 +79,7 @@ extension MovieListViewModel {
     /// - Parameter movies: An array of `Movie` objects representing the movies to set in the list.
     func setMovies(_ movies: [Movie]) {
         self.movies = movies
+        delegate?.reloadData()
     }
     
     /// Applies a filter to the movie list and loads the filtered movies from the API.
@@ -94,6 +103,8 @@ extension MovieListViewModel {
             url = Endpoint.topRated.url
         case .upcoming:
             url = Endpoint.upcoming.url
+        case .favorites:
+            url = nil
         }
         
         let resource = Resource<MovieList>(url: url) { data in
