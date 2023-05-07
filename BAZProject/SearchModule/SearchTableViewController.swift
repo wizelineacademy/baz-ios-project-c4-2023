@@ -67,6 +67,7 @@ class SearchTableViewController: UITableViewController {
         dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath) as? MediaTableViewCell, let model = self?.viewModel.getCellModel(for: itemIdentifier) else { return UITableViewCell() }
             cell.setCell(with: model)
+            cell.selectionStyle = .none
             return cell
         }
         
@@ -117,6 +118,11 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailView = viewModel.getDetailView(for: dataSource?.itemIdentifier(for: indexPath)) else { return }
+        navigationController?.pushViewController(detailView, animated: true)
     }
     
 }

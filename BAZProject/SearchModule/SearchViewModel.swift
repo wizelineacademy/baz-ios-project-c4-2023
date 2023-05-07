@@ -79,4 +79,10 @@ class SearchViewModel {
         return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
     }
     
+    func getDetailView(for item: MediaItem?) -> UIViewController? {
+        guard let mediaItem = item, mediaItem.id != nil, mediaItem.mediaType != nil else { return nil }
+        let viewModel = DetailViewModel(item: mediaItem)
+        return DetailCollectionViewController(viewModel: viewModel)
+    }
+    
 }

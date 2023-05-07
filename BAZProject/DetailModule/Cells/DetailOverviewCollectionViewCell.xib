@@ -101,6 +101,9 @@
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="M4C-bQ-N29" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="j4w-Tw-G0F" secondAttribute="bottom" id="UST-R7-p5b"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>

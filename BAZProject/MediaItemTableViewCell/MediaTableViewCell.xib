@@ -73,16 +73,13 @@
                                                 <constraint firstItem="hoH-vH-Rfh" firstAttribute="centerY" secondItem="iRu-wc-1FM" secondAttribute="centerY" id="zzG-kk-zV9"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CB-Gk-2Kg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CB-Gk-2Kg">
                                             <rect key="frame" x="16" y="0.0" width="287" height="50"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="7CB-Gk-2Kg" firstAttribute="height" secondItem="IZu-Kx-yGK" secondAttribute="height" id="2TU-ty-jg9"/>
-                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>
