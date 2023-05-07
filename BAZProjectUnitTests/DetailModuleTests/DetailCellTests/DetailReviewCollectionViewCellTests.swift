@@ -30,7 +30,7 @@ final class DetailReviewCollectionViewCellTests: XCTestCase {
         
         XCTAssertEqual(sut.authorLabel.text, model.author)
         XCTAssertEqual(sut.contentLabel.text, model.content)
-        XCTAssertEqual(sut.dateLabel.text, model.content)
+        XCTAssertEqual(sut.dateLabel.text, model.date)
     }
 
 }

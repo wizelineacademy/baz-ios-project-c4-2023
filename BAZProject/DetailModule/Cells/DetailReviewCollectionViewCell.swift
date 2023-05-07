@@ -14,7 +14,9 @@ class DetailReviewCollectionViewCell: UICollectionViewCell {
     @IBOutlet private(set) weak var dateLabel: UILabel!
 
     func setCell(with model: DetailReview) {
-        
+        authorLabel.text = model.author
+        contentLabel.text = model.content
+        dateLabel.text = model.date
     }
 
 }
