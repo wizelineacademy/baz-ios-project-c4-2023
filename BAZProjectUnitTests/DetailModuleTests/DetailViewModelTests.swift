@@ -45,7 +45,7 @@ final class DetailViewModelTests: XCTestCase {
 
         let sections = sut.getDetailSections()
 
-        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar, DetailSection.reviews])
+        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.reviews, DetailSection.recommended, DetailSection.similar])
     }
 
     func test_getDetailSections_TVItemDetailSectionsShouldBeEqual() {
@@ -53,7 +53,7 @@ final class DetailViewModelTests: XCTestCase {
 
         let sections = sut.getDetailSections()
 
-        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.recommended, DetailSection.similar, DetailSection.reviews])
+        XCTAssertEqual(sections, [DetailSection.overview, DetailSection.cast, DetailSection.reviews, DetailSection.recommended, DetailSection.similar])
     }
 
     func test_getDetailSections_PersonItemDetailSectionsShouldBeEqual() {
