@@ -12,7 +12,7 @@ final class DetailCollectionViewControllerTests: XCTestCase {
 
     var sut: DetailCollectionViewController!
     var remoteData: DetailRemoteDataMock!
-    
+    var viewModel: DetailViewModel!
     override func setUp() {
         super.setUp()
         remoteData = DetailRemoteDataMock()
@@ -25,7 +25,7 @@ final class DetailCollectionViewControllerTests: XCTestCase {
     }
     
     func setViewController(mediaItem: MediaItem) {
-        let viewModel = DetailViewModel(remoteData: remoteData, item: mediaItem)
+        viewModel = DetailViewModel(remoteData: remoteData, item: mediaItem)
         let vc = DetailCollectionViewController(viewModel: viewModel)
         sut = UINavigationController(rootViewController: vc).topViewController as? DetailCollectionViewController
     }
@@ -41,5 +41,18 @@ final class DetailCollectionViewControllerTests: XCTestCase {
         
         XCTAssertEqual(navBarTitle, title)
     }
-
+    
+    func test_bindSnapshot() {
+        setViewController(mediaItem: MediaItem())
+        let expectation = XCTestExpectation()
+        sut.dispatchService = DispatchMock(expectation: expectation)
+        
+        sut.loadViewIfNeeded()
+        sut.bindSnapshot()
+        wait(for: [expectation], timeout: 0.5)
+        let snapshot = sut.dataSource?.snapshot()
+        
+        XCTAssertNotNil(snapshot)
+    }
+    
 }

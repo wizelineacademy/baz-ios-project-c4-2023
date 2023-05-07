@@ -112,4 +112,9 @@ extension TrendingMediaViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let detailView = viewModel.getDetailView(for: dataSource?.itemIdentifier(for: indexPath)) else { return }
+        navigationController?.pushViewController(detailView, animated: true)
+    }
+    
 }

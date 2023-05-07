@@ -16,7 +16,7 @@ class DetailViewModel {
     private var snapshot = Box(DetailSnapshot())
     private var error: Box<Error?> = Box(nil)
     
-    init(remoteData: DetailRemoteData, item: MediaItem) {
+    init(remoteData: DetailRemoteData = DetailRemoteData(), item: MediaItem) {
         self.item = item
         self.remoteData = remoteData
     }

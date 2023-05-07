@@ -25,8 +25,19 @@ class DetailCollectionViewController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        navigationController?.navigationItem.title = viewModel.getTitle()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = viewModel.getTitle()
+        bindSnapshot()
         configureDataSource()
+        viewModel.getDetails()
+    }
+    
+    func bindSnapshot() {
+        viewModel.bindSnapshot { [weak self] snapshot in
+            self?.dispatchService.async {
+                self?.dataSource?.apply(snapshot, animatingDifferences: false)
+            }
+        }
     }
     
 }
