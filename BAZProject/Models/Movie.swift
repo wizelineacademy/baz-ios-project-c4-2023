@@ -8,8 +8,8 @@ import Foundation
 
 /// MovieList is a Decodable struct that represents a list of movies.
 /// It contains an array of Movie objects.
-struct MovieList: Decodable {
-    let results: [Movie]
+struct MovieList: Codable {
+    var results: [Movie]
 }
 
 /// Movie is a Decodable struct that represents a single movie.
@@ -21,7 +21,7 @@ struct MovieList: Decodable {
 /// - release_date: An optional string that represents the release date of the movie.
 /// - popularity: An optional double that represents the popularity score of the movie.
 /// - vote_average: An optional double that represents the average rating score of the movie.
-struct Movie: Decodable {
+struct Movie: Codable {
     let id: Int
     let title: String?
     let poster_path: String?
