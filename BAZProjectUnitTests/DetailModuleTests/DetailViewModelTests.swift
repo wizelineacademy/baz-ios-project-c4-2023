@@ -149,4 +149,214 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssertEqual(expectedDictionary[.recommended], dictionary[.recommended])
     }
     
+    
+    func test_setSnapshotWithDictionary_shouldUpdateSnapshotWithTV() throws {
+        let dataObject = try TVDetailDataObject(data: DataStubs().tvDetailData)!
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+        remoteData.tvDetails = dataObject
+        let expectedDictionary = DataStubs.tvDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.setSnapshotWithDictionary(dictionary: expectedDictionary)
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .reviews), expectedDictionary[.reviews])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .cast), expectedDictionary[.cast])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .similar), expectedDictionary[.similar])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .recommended), expectedDictionary[.recommended])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_setSnapshotWithDictionary_shouldUpdateSnapshotWithPerson() throws {
+        let dataObject = try PersonDetailDataObject(data: DataStubs().personDetailData)!
+        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
+        remoteData.personDetails = dataObject
+        let expectedDictionary = DataStubs.personDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.setSnapshotWithDictionary(dictionary: expectedDictionary)
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .filmography), expectedDictionary[.filmography])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_setSnapshotWithDictionary_shouldUpdateSnapshotWithMovie() throws {
+        let dataObject = try MovieDetailDataObject(data: DataStubs().movieDetailData)!
+        setViewModel(mediaItem: DataStubs.singleMovieMediaData)
+        remoteData.movieDetails = dataObject
+        let expectedDictionary = DataStubs.movieDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.setSnapshotWithDictionary(dictionary: expectedDictionary)
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .reviews), expectedDictionary[.reviews])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .cast), expectedDictionary[.cast])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .similar), expectedDictionary[.similar])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .recommended), expectedDictionary[.recommended])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_getDetails_shouldUpdateSnapshotWithTV() throws {
+        let dataObject = try TVDetailDataObject(data: DataStubs().tvDetailData)!
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+        remoteData.tvDetails = dataObject
+        let expectedDictionary = DataStubs.tvDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .reviews), expectedDictionary[.reviews])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .cast), expectedDictionary[.cast])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .similar), expectedDictionary[.similar])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .recommended), expectedDictionary[.recommended])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_getDetails_shouldUpdateSnapshotWithPerson() throws {
+        let dataObject = try PersonDetailDataObject(data: DataStubs().personDetailData)!
+        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
+        remoteData.personDetails = dataObject
+        let expectedDictionary = DataStubs.personDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .filmography), expectedDictionary[.filmography])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_getDetails_shouldUpdateSnapshotWithMovie() throws {
+        let dataObject = try MovieDetailDataObject(data: DataStubs().movieDetailData)!
+        setViewModel(mediaItem: DataStubs.singleMovieMediaData)
+        remoteData.movieDetails = dataObject
+        let expectedDictionary = DataStubs.movieDetailDictionary
+        var returnedSnapshot: DetailViewModel.DetailSnapshot?
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindSnapshot { snapshot in
+            returnedSnapshot = snapshot
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(returnedSnapshot?.sectionIdentifiers, Array(expectedDictionary.keys).sorted(by: { $0.rawValue < $1.rawValue }))
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .reviews), expectedDictionary[.reviews])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .cast), expectedDictionary[.cast])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .similar), expectedDictionary[.similar])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .recommended), expectedDictionary[.recommended])
+        XCTAssertEqual(returnedSnapshot?.itemIdentifiers(inSection: .overview), expectedDictionary[.overview])
+    }
+    
+    func test_getDetails_shouldGetErrorDueToNoIDOrNoMediaType() throws {
+        setViewModel(mediaItem: MediaItem())
+        let expectation = XCTestExpectation()
+        var actualError: NSError?
+        let expectedError = NSError(domain: "DetailModule.NoID_NoMediaType", code: -666)
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindError { error in
+            actualError = error as NSError?
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(actualError, expectedError)
+    }
+    
+    func test_getDetails_shouldGetErrorDueRemoteError_movieCase() throws {
+        setViewModel(mediaItem: DataStubs.singleMovieMediaData)
+        let expectedError = NSError(domain: "OhNONONOStickToTheStuffYouKnow", code: -666)
+        remoteData.error = expectedError
+        let expectation = XCTestExpectation()
+        var actualError: NSError?
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindError { error in
+            actualError = error as NSError?
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(actualError, expectedError)
+    }
+    
+    func test_getDetails_shouldGetErrorDueRemoteError_personCase() throws {
+        setViewModel(mediaItem: DataStubs.singlePersonMediaData)
+        let expectedError = NSError(domain: "OhNONONOStickToTheStuffYouKnow", code: -666)
+        remoteData.error = expectedError
+        let expectation = XCTestExpectation()
+        var actualError: NSError?
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindError { error in
+            actualError = error as NSError?
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(actualError, expectedError)
+    }
+    
+    func test_getDetails_shouldGetErrorDueRemoteError_tvCase() throws {
+        setViewModel(mediaItem: DataStubs.singleTVMediaData)
+        let expectedError = NSError(domain: "OhNONONOStickToTheStuffYouKnow", code: -666)
+        remoteData.error = expectedError
+        let expectation = XCTestExpectation()
+        var actualError: NSError?
+        expectation.expectedFulfillmentCount = 2
+        
+        sut.bindError { error in
+            actualError = error as NSError?
+            expectation.fulfill()
+        }
+        sut.getDetails()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertEqual(actualError, expectedError)
+    }
+
 }

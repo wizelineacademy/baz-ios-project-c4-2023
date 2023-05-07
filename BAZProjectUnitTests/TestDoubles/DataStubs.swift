@@ -52,7 +52,7 @@ class DataStubs {
     ]
     
     static let tvDetailDictionary: [DetailSection: [AnyHashable]] =
-    [.overview: [OverviewModel(largeTitle: "W*A*L*T*E*R", smallSubtitle: "1984", image: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", description: "wally", defaultImage: "poster")],
+    [.overview: [OverviewModel(largeTitle: "W*A*L*T*E*R", smallSubtitle: "1984 - 1999", image: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", description: "wally", defaultImage: "poster")],
      
      .cast: [DetailCastMember(actor: MediaItem(id: 89547, posterPath: "/3klT2K1UGl1wvmHKuDcSPuUFasV.jpg", title: "Brian Dobson", rating: nil, mediaType: .person, releaseDate: nil), character: "Ben Grimm (voice)")],
      

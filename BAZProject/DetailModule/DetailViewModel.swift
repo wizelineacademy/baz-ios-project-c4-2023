@@ -13,7 +13,8 @@ class DetailViewModel {
     
     private var remoteData: DetailRemoteData
     private var item: MediaItem
-    var snapshot = Box(DetailSnapshot())
+    private var snapshot = Box(DetailSnapshot())
+    private var error: Box<Error?> = Box(nil)
     
     init(remoteData: DetailRemoteData, item: MediaItem) {
         self.item = item
@@ -23,6 +24,53 @@ class DetailViewModel {
     func bindSnapshot(_ listener: @escaping (DetailSnapshot) -> Void) {
         snapshot.bind(listener)
     }
+    
+    func bindError(_ listener: @escaping (Error?) -> Void) {
+        error.bind(listener)
+    }
+    
+    func getDetails() {
+        guard let id = item.id, let mediaType = item.mediaType else {
+            error.value = NSError(domain: "DetailModule.NoID_NoMediaType", code: -666)
+            return
+        }
+        switch mediaType {
+        case .tv:
+            Task {
+                do {
+                    if let dataObject = try await getTVDetails(id: id) {
+                        let dictionary = buildDictionary(from: dataObject)
+                        setSnapshotWithDictionary(dictionary: dictionary)
+                    }
+                } catch {
+                    self.error.value = error
+                }
+            }
+        case .movie:
+            Task {
+                do {
+                    if let dataObject = try await getMovieDetails(id: id) {
+                        let dictionary = buildDictionary(from: dataObject)
+                        setSnapshotWithDictionary(dictionary: dictionary)
+                    }
+                } catch {
+                    self.error.value = error
+                }
+            }
+        case .person:
+            Task {
+                do {
+                    if let dataObject = try await getPersonDetails(id: id) {
+                        let dictionary = buildDictionary(from: dataObject)
+                        setSnapshotWithDictionary(dictionary: dictionary)
+                    }
+                } catch {
+                    self.error.value = error
+                }
+            }
+        }
+    }
+    
     
     func getDetailSections() -> [DetailSection]? {
         return item.mediaType?.sections
@@ -69,8 +117,8 @@ class DetailViewModel {
         var timelabel: String?
         if let firstAirDate = Calendar.getString(component: .year, from: DateFormatter.getDate(from: object.firstAirDate)) {
             timelabel = String(firstAirDate)
-            if let lastAirDate = object.lastAirDate, let lastDate = Calendar.getString(component: .year, from: DateFormatter.getDate(from: lastAirDate)) {
-                timelabel?.append(" - \(lastDate)")
+            if object.status == "Ended", let lastAirDate = object.lastAirDate, let lastDate = Calendar.getString(component: .year, from: DateFormatter.getDate(from: lastAirDate)) {
+                    timelabel?.append(" - \(lastDate)")
             }
         }
         dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: timelabel, image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
@@ -80,6 +128,16 @@ class DetailViewModel {
         dictionary[.cast] = mainCast?.trim(max: 20).map({ DetailCastMember(actor: MediaItem(id: $0.id, posterPath: $0.profilePath, title: $0.name, rating: nil, mediaType: .person, releaseDate: nil), character: $0.character) })
         dictionary[.reviews] = object.reviews?.reviews?.trim(max: 20).map({ DetailReview(from: $0) })
         return dictionary
+    }
+    
+    func setSnapshotWithDictionary(dictionary: [DetailSection: [AnyHashable]]) {
+        let sections = Array(dictionary.keys).sorted(by: { $0.rawValue < $1.rawValue })
+        var auxSnapshot = DetailSnapshot()
+        auxSnapshot.appendSections(sections)
+        dictionary.forEach { key, value in
+            auxSnapshot.appendItems(value, toSection: key)
+        }
+        snapshot.value = auxSnapshot
     }
     
 }
