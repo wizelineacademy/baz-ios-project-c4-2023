@@ -29,6 +29,10 @@ class DetailViewModel {
         error.bind(listener)
     }
     
+    func getTitle() -> String? {
+        return item.title
+    }
+    
     func getDetails() {
         guard let id = item.id, let mediaType = item.mediaType else {
             error.value = NSError(domain: "DetailModule.NoID_NoMediaType", code: -666)

@@ -358,5 +358,15 @@ final class DetailViewModelTests: XCTestCase {
         
         XCTAssertEqual(actualError, expectedError)
     }
+    
+    func test_getTitle_ShouldGetMediaItemTitle() {
+        let title = "High School Musical"
+        let mediaItem = MediaItem(title: title)
+        setViewModel(mediaItem: mediaItem)
+        
+        let actualTitle = sut.getTitle()
+        
+        XCTAssertEqual(title, actualTitle)
+    }
 
 }
