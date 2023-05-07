@@ -96,7 +96,7 @@
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C30893B628A2F42D004B1860 /* Assets.xcassets */; };
 		C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B828A2F42D004B1860 /* LaunchScreen.storyboard */; };
-		C30893C428A2F845004B1860 /*  TrendingMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893C328A2F845004B1860 /*  TrendingMediaViewController.swift */; };
+		C30893C428A2F845004B1860 /* TrendingMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893C328A2F845004B1860 /* TrendingMediaViewController.swift */; };
 		C30893DB28A42481004B1860 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C30893DA28A42481004B1860 /* README.md */; };
 		C30893E228A425E1004B1860 /* TrendingMediaRemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E028A425E1004B1860 /* TrendingMediaRemoteData.swift */; };
 		C30893E328A425E1004B1860 /* MediaDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893E128A425E1004B1860 /* MediaDataObject.swift */; };
@@ -206,7 +206,7 @@
 		C30893B628A2F42D004B1860 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C30893B928A2F42D004B1860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C30893BB28A2F42D004B1860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C30893C328A2F845004B1860 /*  TrendingMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " TrendingMediaViewController.swift"; sourceTree = "<group>"; };
+		C30893C328A2F845004B1860 /* TrendingMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaViewController.swift; sourceTree = "<group>"; };
 		C30893DA28A42481004B1860 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C30893E028A425E1004B1860 /* TrendingMediaRemoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingMediaRemoteData.swift; sourceTree = "<group>"; };
 		C30893E128A425E1004B1860 /* MediaDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDataObject.swift; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				C30893E028A425E1004B1860 /* TrendingMediaRemoteData.swift */,
-				C30893C328A2F845004B1860 /*  TrendingMediaViewController.swift */,
+				C30893C328A2F845004B1860 /* TrendingMediaViewController.swift */,
 				4B37399329D4BA560056041F /* TrendingMediaViewModel.swift */,
 			);
 			path = TrendingMediaModule;
@@ -691,7 +691,7 @@
 				4B2675972A05F280005C60A4 /* TVDetailDataObject.swift in Sources */,
 				4B6BB29429FDD931007A20D7 /* UIImage.swift in Sources */,
 				4B2675AC2A06D44A005C60A4 /* DetailReview.swift in Sources */,
-				C30893C428A2F845004B1860 /*  TrendingMediaViewController.swift in Sources */,
+				C30893C428A2F845004B1860 /* TrendingMediaViewController.swift in Sources */,
 				4B2DA18E29EF6AB7006BD0EC /* Box.swift in Sources */,
 				4B2DA19129EF7E21006BD0EC /* SearchEndpoint.swift in Sources */,
 				4B2675A62A0627BD005C60A4 /* DetailSection.swift in Sources */,
