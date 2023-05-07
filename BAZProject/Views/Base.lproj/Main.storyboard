@@ -239,9 +239,14 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Movie Detail" id="ajh-0j-Omu">
-                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="oNg-Im-R5n"/>
+                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="oNg-Im-R5n">
+                            <connections>
+                                <action selector="favoriteButtonAction:" destination="U4K-dd-9Ox" id="Njo-H7-q5d"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnFavorite" destination="oNg-Im-R5n" id="Ylw-fs-oKa"/>
                         <outlet property="imgView" destination="GD8-tf-wLz" id="nKP-bz-hu3"/>
                         <outlet property="lblCast" destination="2Dx-K7-Bes" id="8Va-pj-U7R"/>
                         <outlet property="lblOverview" destination="FxS-4Z-taQ" id="XYs-OO-5As"/>
@@ -269,7 +274,7 @@
                             <outlet property="delegate" destination="EaY-Gt-4p2" id="Itn-k2-sAU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="KM4-zg-eIz"/>
+                    <navigationItem key="navigationItem" title="Favorite Movies" id="KM4-zg-eIz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="U4K-dd-9Ox" kind="show" identifier="FavoritesVCToMovieDetailVC" id="pRr-hk-4YP"/>
@@ -300,7 +305,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Uf2-nZ-cLk"/>
+        <segue reference="pRr-hk-4YP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
