@@ -19,6 +19,9 @@ final class MoviesViewController: MasterMovieTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure the navigation bar
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(named: "background") ?? .white, tintColor: .white, title: "Movies", preferredLargeTitle: true)
+        
         setupViewModel(MovieListViewModel(.trending))
         setupView()
         applyFilter()
