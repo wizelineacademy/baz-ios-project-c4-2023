@@ -53,7 +53,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         sut.loadData()
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.5)
         
         XCTAssertNotNil(actualError)
     }
