@@ -30,10 +30,11 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var btnFavorite: UIBarButtonItem!
     
     // MARK: - Actions
-    
-    @IBAction func favoriteButtonAction(_ sender: UIBarButtonItem) {
+
+    @IBAction func favoriteButtonAction(_ sender: Any) {
         movieVM?.doFavoriteButtonAction()
     }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {

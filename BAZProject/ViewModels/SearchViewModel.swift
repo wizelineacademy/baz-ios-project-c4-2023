@@ -23,6 +23,12 @@ class SearchViewModel {
 }
 
 extension SearchViewModel {
+    var title: String {
+        "Search"
+    }
+}
+
+extension SearchViewModel {
     
     /// Returns the number of sections in the search results table view.
     /// - Returns: The number of sections in the search results table view.
@@ -48,7 +54,7 @@ extension SearchViewModel {
     
     /// Sets the search results to the given list of movies.
     /// - Parameter movies: A list of movies to set as the search results.
-    private func setMovies(_ movies: [Movie]) {
+    func setMovies(_ movies: [Movie]) {
         self.movies = movies
     }
 }

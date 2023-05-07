@@ -34,7 +34,7 @@ final class SearchViewController: UIViewController {
 // MARK: - Methods
 
 extension SearchViewController {
-    private func setupTable() {
+    func setupTable() {
         tableView.delegate = self
         tableView.dataSource = self
         

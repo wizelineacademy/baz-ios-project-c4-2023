@@ -147,7 +147,7 @@ extension MovieViewModel {
         }
     }
     
-    private func isFavorite() -> Bool {
+    func isFavorite() -> Bool {
         guard let _ = MovieListLocal().findMovie(movie.id) else { return false }
         
         return true
