@@ -98,7 +98,7 @@ class DetailViewModel {
         if let birthday = DateFormatter.getString(from: DateFormatter.getDate(from: object.birthday)) {
             ageTitle = "Birth: \(birthday)"
         }
-        dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: ageTitle, image: item.posterPath, description: object.biography)]
+        dictionary[.overview] = [DetailOverview(largeTitle: item.title, smallSubtitle: ageTitle, image: item.posterPath, description: object.biography)]
         if let credits = object.combinedCredits?.cast {
             dictionary[.filmography] = credits.trim(max: 20).map({ MediaItem(dataObject: $0) }).trim(max: 20)
         }
@@ -107,7 +107,7 @@ class DetailViewModel {
     
     func buildDictionary(from object: MovieDetailDataObject) -> [DetailSection: [AnyHashable]] {
         var dictionary = [DetailSection: [AnyHashable]]()
-        dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: Calendar.getString(component: .year, from: item.releaseDate), image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
+        dictionary[.overview] = [DetailOverview(largeTitle: item.title, smallSubtitle: Calendar.getString(component: .year, from: item.releaseDate), image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
         dictionary[.similar] = object.similar?.results?.trim(max: 20).map({ MediaItem(dataObject: $0, mediaType: .movie) })
         dictionary[.recommended] = object.recommendations?.results?.trim(max: 20).map({ MediaItem(dataObject: $0) })
         let mainCast = object.credits?.cast?.filter({ ($0.order ?? 100) < 20 })
@@ -125,7 +125,7 @@ class DetailViewModel {
                     timelabel?.append(" - \(lastDate)")
             }
         }
-        dictionary[.overview] = [OverviewModel(largeTitle: item.title, smallSubtitle: timelabel, image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
+        dictionary[.overview] = [DetailOverview(largeTitle: item.title, smallSubtitle: timelabel, image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
         dictionary[.similar] = object.similar?.results?.trim(max: 20).map({ MediaItem(dataObject: $0, mediaType: .tv) })
         dictionary[.recommended] = object.recommendations?.results?.trim(max: 20).map({ MediaItem(dataObject: $0) })
         let mainCast = object.credits?.cast?.filter({ ($0.order ?? 100) < 20 })

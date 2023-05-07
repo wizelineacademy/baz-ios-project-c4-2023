@@ -41,10 +41,10 @@ class DataStubs {
         return try! Data(contentsOf: file)
     }
     
-    static let personDetailDictionary: [DetailSection: [AnyHashable]] = [.overview: [OverviewModel(largeTitle: "Scott MacDonald", smallSubtitle: "Birth: 1/1/59", image: "/pBXNUejSwDHfWCD9GgmvRbIPBdb.jpg", description: "biography", defaultImage: nil)],
+    static let personDetailDictionary: [DetailSection: [AnyHashable]] = [.overview: [DetailOverview(largeTitle: "Scott MacDonald", smallSubtitle: "Birth: 1/1/59", image: "/pBXNUejSwDHfWCD9GgmvRbIPBdb.jpg", description: "biography", defaultImage: nil)],
                                                                   .filmography: [MediaItem(id: 27318, posterPath: "/sXOATwGluNbb9ezfG6DvXCiXvJp.jpg", title: "Jack Frost", rating: 5.14, mediaType: .movie, releaseDate: DateFormatter.getDate(from: "1997-11-18"))]]
     static let movieDetailDictionary: [DetailSection: [AnyHashable]] =
-    [.overview: [OverviewModel(largeTitle: "The Fifth Element", smallSubtitle: "1997", image: "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg", description: "fifthElement", defaultImage: "poster")],
+    [.overview: [DetailOverview(largeTitle: "The Fifth Element", smallSubtitle: "1997", image: "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg", description: "fifthElement", defaultImage: "poster")],
      .cast: [DetailCastMember(actor: MediaItem(id: 62, posterPath: "/caX3KtMU42EP3VLRFFBwqIIrch5.jpg", title: "Bruce Willis", rating: nil, mediaType: .person, releaseDate: nil), character: "Korben Dallas")],
      .similar: [MediaItem(id: 2486, posterPath: "/k8f8WZjTzZ6TJYrKpyayCB4zKlw.jpg", title: "Eragon", rating: 5.066, mediaType: .movie, releaseDate: DateFormatter.getDate(from: "2006-12-14"))],
      .recommended: [MediaItem(id: 607, posterPath: "/uLOmOF5IzWoyrgIF5MfUnh5pa1X.jpg", title: "Men in Black", rating: 7.18, mediaType: .movie, releaseDate: DateFormatter.getDate(from: "1997-07-02"))],
@@ -52,7 +52,7 @@ class DataStubs {
     ]
     
     static let tvDetailDictionary: [DetailSection: [AnyHashable]] =
-    [.overview: [OverviewModel(largeTitle: "W*A*L*T*E*R", smallSubtitle: "1984 - 1999", image: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", description: "wally", defaultImage: "poster")],
+    [.overview: [DetailOverview(largeTitle: "W*A*L*T*E*R", smallSubtitle: "1984 - 1999", image: "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg", description: "wally", defaultImage: "poster")],
      
      .cast: [DetailCastMember(actor: MediaItem(id: 89547, posterPath: "/3klT2K1UGl1wvmHKuDcSPuUFasV.jpg", title: "Brian Dobson", rating: nil, mediaType: .person, releaseDate: nil), character: "Ben Grimm (voice)")],
      

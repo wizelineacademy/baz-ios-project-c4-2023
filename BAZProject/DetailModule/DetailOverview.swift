@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OverviewModel: Hashable {
+struct DetailOverview: Hashable {
     
     var largeTitle: String?
     var smallSubtitle: String?

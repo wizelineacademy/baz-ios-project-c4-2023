@@ -34,6 +34,9 @@
 		4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B32A0703F5005C60A4 /* Calendar.swift */; };
 		4B2675B62A07289C005C60A4 /* DetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B52A07289C005C60A4 /* DetailCollectionViewController.swift */; };
 		4B2675B82A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675B72A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift */; };
+		4B2675BB2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675BA2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift */; };
+		4B2675BE2A07328C005C60A4 /* DetailOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675BD2A07328C005C60A4 /* DetailOverviewCollectionViewCell.swift */; };
+		4B2675C02A073605005C60A4 /* DetailOverviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2675BF2A073605005C60A4 /* DetailOverviewCollectionViewCell.xib */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -134,6 +137,9 @@
 		4B2675B32A0703F5005C60A4 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		4B2675B52A07289C005C60A4 /* DetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewController.swift; sourceTree = "<group>"; };
 		4B2675B72A0728FA005C60A4 /* DetailCollectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewControllerTests.swift; sourceTree = "<group>"; };
+		4B2675BA2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOverviewCollectionViewCellTests.swift; sourceTree = "<group>"; };
+		4B2675BD2A07328C005C60A4 /* DetailOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B2675BF2A073605005C60A4 /* DetailOverviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailOverviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -220,6 +226,7 @@
 		4B0E5C632A059EF600D38F4D /* DetailModuleTests */ = {
 			isa = PBXGroup;
 			children = (
+				4B2675B92A073216005C60A4 /* DetailCellTests */,
 				4B2675A02A0609F0005C60A4 /* DetailTestDoubles */,
 				4B0E5C642A059F2800D38F4D /* DetailRemoteDataTests.swift */,
 				4B26759E2A06095A005C60A4 /* DetailViewModelTests.swift */,
@@ -232,6 +239,7 @@
 		4B0E5C662A05A00200D38F4D /* DetailModule */ = {
 			isa = PBXGroup;
 			children = (
+				4B2675BC2A07326C005C60A4 /* Cells */,
 				4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */,
 				4B26759C2A06092F005C60A4 /* DetailViewModel.swift */,
 				4B2675A52A0627BD005C60A4 /* DetailSection.swift */,
@@ -260,6 +268,23 @@
 				4B2675A12A060A2B005C60A4 /* DetailRemoteDataMock.swift */,
 			);
 			path = DetailTestDoubles;
+			sourceTree = "<group>";
+		};
+		4B2675B92A073216005C60A4 /* DetailCellTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B2675BA2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift */,
+			);
+			path = DetailCellTests;
+			sourceTree = "<group>";
+		};
+		4B2675BC2A07326C005C60A4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4B2675BD2A07328C005C60A4 /* DetailOverviewCollectionViewCell.swift */,
+				4B2675BF2A073605005C60A4 /* DetailOverviewCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4B27A0AE2A055C77003A24D6 /* TrendingModuleTests */ = {
@@ -591,6 +616,7 @@
 				4B6BB2B12A003E9C007A20D7 /* MediaTableViewCell.xib in Resources */,
 				4B8FBDB129F9C23F00F9422B /* MediaCollectionViewCell.xib in Resources */,
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
+				4B2675C02A073605005C60A4 /* DetailOverviewCollectionViewCell.xib in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
@@ -613,6 +639,7 @@
 				4B27A0C02A0583E1003A24D6 /* MediaTableViewCellTests.swift in Sources */,
 				4B2DA1A829F23E68006BD0EC /* TrendingMediaViewModelTests.swift in Sources */,
 				4B26758F2A05D3CF005C60A4 /* DetailEndpointTests.swift in Sources */,
+				4B2675BB2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift in Sources */,
 				4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */,
 				4B2675A22A060A2B005C60A4 /* DetailRemoteDataMock.swift in Sources */,
 				4B26759F2A06095A005C60A4 /* DetailViewModelTests.swift in Sources */,
@@ -683,6 +710,7 @@
 				4B6BB2B62A006DAE007A20D7 /* DateFormatter.swift in Sources */,
 				4B6BB28C29FB1E8E007A20D7 /* MediaCollectionViewCellModel.swift in Sources */,
 				4B6BB2A029FE38D7007A20D7 /* SearchViewModel.swift in Sources */,
+				4B2675BE2A07328C005C60A4 /* DetailOverviewCollectionViewCell.swift in Sources */,
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
 				4B2675B22A06FB8F005C60A4 /* DetailCastMember.swift in Sources */,
 				4B0E5C682A05A01600D38F4D /* DetailRemoteData.swift in Sources */,
