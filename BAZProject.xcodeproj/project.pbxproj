@@ -10,6 +10,8 @@
 		B51D476629F237100089DBBB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476429F237100089DBBB /* SearchTableViewController.swift */; };
 		B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51D476529F237100089DBBB /* SearchTableViewController.xib */; };
 		B51D476A29F250900089DBBB /* keysString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476929F250900089DBBB /* keysString.swift */; };
+		B540A2082A0724EC0095E82F /* ReviewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B540A2062A0724EC0095E82F /* ReviewsCollectionViewCell.swift */; };
+		B540A2092A0724EC0095E82F /* ReviewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B540A2072A0724EC0095E82F /* ReviewsCollectionViewCell.xib */; };
 		B54DC53429F757CF0078AEAD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DC53329F757CF0078AEAD /* Movie.swift */; };
 		B55E880B2A037B490081680C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E880A2A037B490081680C /* Loader.swift */; };
 		B5A19F4D29F706B300ACD625 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */; };
@@ -17,6 +19,10 @@
 		B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A19F5129F7086600ACD625 /* GeneralServices.swift */; };
 		B5BE779129D75CF20077737A /* TrendingMovies.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BE779029D75CF20077737A /* TrendingMovies.json */; };
 		B5BE779B29D765440077737A /* MockGeneralTaskCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */; };
+		B5C4F09B2A062B060040D983 /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4F0992A062B060040D983 /* GeneralCollectionViewCell.swift */; };
+		B5C4F09C2A062B060040D983 /* GeneralCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C4F09A2A062B060040D983 /* GeneralCollectionViewCell.xib */; };
+		B5C4F0A02A062F990040D983 /* TitleSectionCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4F09E2A062F990040D983 /* TitleSectionCollectionReusableView.swift */; };
+		B5C4F0A12A062F990040D983 /* TitleSectionCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C4F09F2A062F990040D983 /* TitleSectionCollectionReusableView.xib */; };
 		B5CCD72829F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCD72729F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift */; };
 		B5CCD73C29F8874700DE3701 /* TrendingRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */; };
 		B5CCD73D29F8874700DE3701 /* TrendingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156629F09EDC00AEE166 /* TrendingInteractor.swift */; };
@@ -120,6 +126,8 @@
 		B51D476429F237100089DBBB /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B51D476529F237100089DBBB /* SearchTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewController.xib; sourceTree = "<group>"; };
 		B51D476929F250900089DBBB /* keysString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keysString.swift; sourceTree = "<group>"; };
+		B540A2062A0724EC0095E82F /* ReviewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B540A2072A0724EC0095E82F /* ReviewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B54DC53329F757CF0078AEAD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		B55E880A2A037B490081680C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		B5A19F4B29F706B300ACD625 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralTableViewCell.swift; path = BAZProject/Network/Services/GeneralTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -127,6 +135,10 @@
 		B5A19F5129F7086600ACD625 /* GeneralServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServices.swift; sourceTree = "<group>"; };
 		B5BE779029D75CF20077737A /* TrendingMovies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrendingMovies.json; sourceTree = "<group>"; };
 		B5BE779A29D765440077737A /* MockGeneralTaskCordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGeneralTaskCordinator.swift; sourceTree = "<group>"; };
+		B5C4F0992A062B060040D983 /* GeneralCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralCollectionViewCell.swift; path = BAZProject/Generics/GenericsCollection/GeneralCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		B5C4F09A2A062B060040D983 /* GeneralCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GeneralCollectionViewCell.xib; path = BAZProject/Generics/GenericsCollection/GeneralCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		B5C4F09E2A062F990040D983 /* TitleSectionCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSectionCollectionReusableView.swift; sourceTree = "<group>"; };
+		B5C4F09F2A062F990040D983 /* TitleSectionCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleSectionCollectionReusableView.xib; sourceTree = "<group>"; };
 		B5CCD72729F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManagerMock.swift; sourceTree = "<group>"; };
 		B5CCD75B29F8887800DE3701 /* TrendingInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractorMock.swift; sourceTree = "<group>"; };
 		B5CCD75D29F8891700DE3701 /* TrendingPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPresenterMock.swift; sourceTree = "<group>"; };
@@ -265,6 +277,7 @@
 		B5C259D82A02C1A200E49E3F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5C4F0982A062A830040D983 /* Cells */,
 				B5EC48CE2A02C58F00AB8462 /* DetailMovieView.swift */,
 				B5EC48D02A02C58F00AB8462 /* DetailMovieView.xib */,
 			);
@@ -310,6 +323,26 @@
 				B5EC48D12A02C58F00AB8462 /* DetailMovieEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		B5C4F0982A062A830040D983 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B540A2062A0724EC0095E82F /* ReviewsCollectionViewCell.swift */,
+				B540A2072A0724EC0095E82F /* ReviewsCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B5C4F09D2A062F450040D983 /* GenericsCollection */ = {
+			isa = PBXGroup;
+			children = (
+				B5C4F0992A062B060040D983 /* GeneralCollectionViewCell.swift */,
+				B5C4F09A2A062B060040D983 /* GeneralCollectionViewCell.xib */,
+				B5C4F09E2A062F990040D983 /* TitleSectionCollectionReusableView.swift */,
+				B5C4F09F2A062F990040D983 /* TitleSectionCollectionReusableView.xib */,
+			);
+			path = GenericsCollection;
 			sourceTree = "<group>";
 		};
 		B5CCD71729F880AD00DE3701 /* Trending */ = {
@@ -503,6 +536,7 @@
 			children = (
 				D3357AF829F045B000A81AD8 /* Base */,
 				D3357AF929F045BC00A81AD8 /* GenericsTable */,
+				B5C4F09D2A062F450040D983 /* GenericsCollection */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -744,9 +778,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C4F0A12A062F990040D983 /* TitleSectionCollectionReusableView.xib in Resources */,
 				D3357B1329F06FAE00A81AD8 /* TrendingTableViewCell.xib in Resources */,
 				C30893BA28A2F42D004B1860 /* LaunchScreen.storyboard in Resources */,
 				C30893DB28A42481004B1860 /* README.md in Resources */,
+				B540A2092A0724EC0095E82F /* ReviewsCollectionViewCell.xib in Resources */,
+				B5C4F09C2A062B060040D983 /* GeneralCollectionViewCell.xib in Resources */,
 				C30893B728A2F42D004B1860 /* Assets.xcassets in Resources */,
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
 				B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */,
@@ -799,6 +836,7 @@
 				D309CC6529F0830C007A76D1 /* SearchInteractor.swift in Sources */,
 				D343156C29F09EDC00AEE166 /* TrendingLocalDataManager.swift in Sources */,
 				D309CC6929F0830C007A76D1 /* SearchEntity.swift in Sources */,
+				B5C4F09B2A062B060040D983 /* GeneralCollectionViewCell.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				B5A19F5229F7086600ACD625 /* GeneralServices.swift in Sources */,
 				B51D476A29F250900089DBBB /* keysString.swift in Sources */,
@@ -806,6 +844,7 @@
 				B5EC48D82A02C58F00AB8462 /* DetailMovieProtocols.swift in Sources */,
 				D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */,
 				D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */,
+				B540A2082A0724EC0095E82F /* ReviewsCollectionViewCell.swift in Sources */,
 				D3357B0E29F06C7400A81AD8 /* TrendingViewController.swift in Sources */,
 				D343157329F09EDC00AEE166 /* TrendingEntity.swift in Sources */,
 				D343156F29F09EDC00AEE166 /* TrendingInteractor.swift in Sources */,
@@ -815,6 +854,7 @@
 				D309CC6729F0830C007A76D1 /* SearchRemoteDataManager.swift in Sources */,
 				B5EC48DC2A02C58F00AB8462 /* DetailMovieView.swift in Sources */,
 				D343156D29F09EDC00AEE166 /* TrendingRouter.swift in Sources */,
+				B5C4F0A02A062F990040D983 /* TitleSectionCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1059,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9QVX2YQBJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1032,7 +1073,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.BAZProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.Ben.BAZProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1047,6 +1088,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9QVX2YQBJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BAZProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1060,7 +1102,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.BAZProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wizeline.Ben.BAZProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

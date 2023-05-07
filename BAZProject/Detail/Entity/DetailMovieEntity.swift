@@ -18,6 +18,7 @@ struct DetailMovieEntity {
     var genere: String = ""
     var recomendations: [Movie] = []
     var similarMovies: [Movie] = []
+    var movieDetailData: MovieDetailData = MovieDetailData()
 
 }
 
@@ -85,4 +86,53 @@ struct MovieRecommendationsResult: Decodable{
 
 struct SimilarMoviesResult: Decodable{
     var results:  [Movie]
+}
+
+struct MovieDetailData {
+    var similarMovies: ListSection = {
+        .similarMovies([])
+        
+    }()
+    var recommendsMovies: ListSection = {
+        .recommendsMovies([])
+        
+    }()
+    var reviews: ListSection = {
+        .similarMovies([])
+        
+    }()
+    
+    var pageData: [ListSection] {
+        [reviews, similarMovies, recommendsMovies]
+    }
+}
+
+enum ListSection {
+    case similarMovies([Movie])
+    case recommendsMovies([Movie])
+    case reviews([MovieReviews])
+    
+    var items: Array<Any> {
+        switch self{
+        case .similarMovies(let items), .recommendsMovies(let items):
+            return items
+        case .reviews(let items):
+            return items
+        }
+    }
+    
+    var count: Int{
+        items.count
+    }
+    
+    var title: String{
+        switch self {
+        case .similarMovies:
+            return "Similar"
+        case .recommendsMovies:
+            return "Recommends"
+        case .reviews:
+            return "Reviews"
+        }
+    }
 }

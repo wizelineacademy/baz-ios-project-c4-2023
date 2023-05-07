@@ -16,7 +16,7 @@ protocol DetailMovieViewProtocol: AnyObject {
     var presenter: DetailMoviePresenterProtocol? { get set }
     
     func registrerCell()
-    func updateData()
+    func updateData(data: [ListSection])
     func getImage(_ linkPosterBack: String)
     func titleMovie(_ title: String)
     func overview(_ overview: String)
@@ -79,6 +79,7 @@ protocol DetailMovieRemoteDataManagerOutputProtocol: AnyObject {
     func handleGetCreditsMovie(_ result: MovieCreditsResult)
     func handleGetMovieRecommendations(_ result: [Movie])
     func handleGetSimilarMovies(_ result: [Movie])
+    func collectionData(_ entity: DetailMovieEntity?) -> DetailMovieEntity?
     func handleGetErrorServiceDetailMovies(_ error: Error)
 }
 

@@ -22,7 +22,7 @@ class DetailMoviePresenter  {
 extension DetailMoviePresenter: DetailMoviePresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
-        
+        view?.registrerCell()
     }
     
     func update() {
@@ -31,6 +31,7 @@ extension DetailMoviePresenter: DetailMoviePresenterProtocol {
         view?.titleMovie(movie.title)
         view?.overview(movie.overview)
         view?.cast(entity.processedCast)
+        view?.updateData(data: entity.movieDetailData.pageData)
         
     }
     
@@ -49,6 +50,4 @@ extension DetailMoviePresenter: DetailMovieInteractorOutputProtocol {
     func showSearchedMoviesError(_ error: Error) {
        // <#code#>
     }
-    
-    // TODO: implement interactor output methods
 }

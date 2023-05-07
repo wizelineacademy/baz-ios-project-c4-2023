@@ -53,8 +53,23 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
         DispatchQueue.main.async {
             Loader.stop()
         }
-        guard let entity = self.entity else {return}
+        
+        guard let entity = collectionData(self.entity) else {return}
+        
         presenter?.onReceivedMovieDetails(entity)
+    }
+    
+    func collectionData(_ entity: DetailMovieEntity?) -> DetailMovieEntity?{
+        var arr: [ListSection] = []
+        var localEntity = entity
+        guard let safeEntity = localEntity else { return entity }
+        let similar = safeEntity.similarMovies
+        let recommends = safeEntity.recomendations
+        let reviews = safeEntity.reviews
+        localEntity?.movieDetailData.similarMovies = ListSection.similarMovies(similar)
+        localEntity?.movieDetailData.recommendsMovies = ListSection.recommendsMovies(recommends)
+        localEntity?.movieDetailData.reviews = ListSection.reviews(reviews)
+        return localEntity
     }
     
     func handleGetErrorServiceDetailMovies(_ error: Error) {
@@ -63,6 +78,4 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
         }
         
     }
-    
-    // TODO: Implement use case methods
 }
