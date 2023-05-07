@@ -101,4 +101,34 @@ final class TrendingMediaViewModelTests: XCTestCase {
         XCTAssertEqual(section3, MediaType.person.groupTitle)
     }
     
+    func test_DetDetailView_NoMediaShouldReturnNil() {
+        let view = sut.getDetailView(for: nil)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoMediaTypeInItemShouldReturnNil() {
+        let media = MediaItem(id: 12)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoIdInItemShouldReturnNil() {
+        let media = MediaItem(mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_ShouldReturnDetailViewController() {
+        let media = MediaItem(id: 12,  mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNotNil(view as! DetailCollectionViewController)
+    }
+    
 }
