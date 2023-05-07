@@ -26,9 +26,14 @@ final class TrendingMediaRemoteDataTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_getTrendingItems_shouldGetDataFromRequestHandler() async throws {
+    func test_getTrendingItems_shouldGetDataFromRequestHandler_Trending() async throws {
         let data = DataStubs.completeData
-        let item = [try GenericResponseDataObject(data: data)]
+        let expectedItem = try GenericResponseDataObject(data: data)?.results
+        requestSession.data = data
+        
+        let item = try await sut.getMediaItems(section: .trending)
+        
+        XCTAssertEqual(item, expectedItem)
     }
 
 }
