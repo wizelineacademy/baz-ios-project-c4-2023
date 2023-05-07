@@ -43,6 +43,8 @@
 		4B2675CA2A080D1A005C60A4 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675C92A080D1A005C60A4 /* ArrayExtensionTests.swift */; };
 		4B2675CC2A08465F005C60A4 /* TrendingMediaSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675CB2A08465F005C60A4 /* TrendingMediaSections.swift */; };
 		4B2675D02A0846AC005C60A4 /* TrendingMediaSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */; };
+		4B2675D22A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D12A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift */; };
+		4B2675D42A084D04005C60A4 /* TrendingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2675D32A084D04005C60A4 /* TrendingEndpointTests.swift */; };
 		4B27A0B22A055D39003A24D6 /* ImageEndpoitnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */; };
 		4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */; };
 		4B27A0B62A056316003A24D6 /* SearchRemoteDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */; };
@@ -152,6 +154,8 @@
 		4B2675C92A080D1A005C60A4 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		4B2675CB2A08465F005C60A4 /* TrendingMediaSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaSections.swift; sourceTree = "<group>"; };
 		4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaSectionsTests.swift; sourceTree = "<group>"; };
+		4B2675D12A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMediaRemoteDataTests.swift; sourceTree = "<group>"; };
+		4B2675D32A084D04005C60A4 /* TrendingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEndpointTests.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				4B3BBE8D29D69CFE001F4E85 /* TrendingMediaViewControllerTests.swift */,
 				4B2DA1A729F23E68006BD0EC /* TrendingMediaViewModelTests.swift */,
 				4B2675CF2A0846AC005C60A4 /* TrendingMediaSectionsTests.swift */,
+				4B2675D12A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift */,
+				4B2675D32A084D04005C60A4 /* TrendingEndpointTests.swift */,
 			);
 			path = TrendingModuleTests;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				4B2675BB2A07322F005C60A4 /* DetailOverviewCollectionViewCellTests.swift in Sources */,
 				4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */,
 				4B2675A22A060A2B005C60A4 /* DetailRemoteDataMock.swift in Sources */,
+				4B2675D22A084A34005C60A4 /* TrendingMediaRemoteDataTests.swift in Sources */,
 				4B26759F2A06095A005C60A4 /* DetailViewModelTests.swift in Sources */,
 				4B2675CA2A080D1A005C60A4 /* ArrayExtensionTests.swift in Sources */,
 				4B7060022A03113E00CB142A /* SearchViewControllerTests.swift in Sources */,
@@ -669,6 +676,7 @@
 				4B6BB28829FB0CDC007A20D7 /* MediaTypeTests.swift in Sources */,
 				4B3BBE8929D658E2001F4E85 /* EndpointMock.swift in Sources */,
 				4B3BBE8529D65879001F4E85 /* RequestSessionMock.swift in Sources */,
+				4B2675D42A084D04005C60A4 /* TrendingEndpointTests.swift in Sources */,
 				4B2DA1AC29F23F1C006BD0EC /* DecoderTests.swift in Sources */,
 				4B947E7A29F24DDA00C116E3 /* RequestHandlerErrorTests.swift in Sources */,
 				4B6BB2C42A00AFEC007A20D7 /* SearchRemoteDataMock.swift in Sources */,
