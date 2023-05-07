@@ -63,12 +63,13 @@ class SearchViewModel {
     func searchMedia(keyword: String, scope: Int = -1) {
         Task {
             do {
-                guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
-                let mediaItems = formatMediaDataObject(mediaObjects)
-                var snapshot = MediaSnapshot()
-                snapshot.appendSections([0])
-                snapshot.appendItems(mediaItems)
-                mediaSnapshot.value = snapshot
+                if let mediaObjects = try await remoteData.searchMedia(keyword) {
+                    let mediaItems = formatMediaDataObject(mediaObjects)
+                    var snapshot = MediaSnapshot()
+                    snapshot.appendSections([0])
+                    snapshot.appendItems(mediaItems)
+                    mediaSnapshot.value = snapshot
+                }
             } catch {
                 self.error.value = error
             }
@@ -86,7 +87,9 @@ class SearchViewModel {
     }
     
     func getSearchScope() -> [String] {
-        return MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        var titles = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        titles.append("All")
+        return titles
     }
     
 }
