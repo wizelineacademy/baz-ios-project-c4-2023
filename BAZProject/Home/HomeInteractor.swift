@@ -9,7 +9,7 @@ import UIKit
 class HomeInteractor {
     // MARK: - Properties
     weak var presenter: HomeInteractorOutputProtocol?
-    private(set) var movies: [ListMovieProtocol]? = []
+    var movies: [ListMovieProtocol]? = []
 }
 
 // MARK: - Extensions

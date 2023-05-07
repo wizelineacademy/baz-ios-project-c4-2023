@@ -9,7 +9,7 @@ import UIKit
 class SearchInteractor {
     // MARK: - Properties
     weak var presenter: SearchInteractorOutputProtocol?
-    private(set) var movies: [ListMovieProtocol]? = []
+    var movies: [ListMovieProtocol]? = []
 }
 
 // MARK: - Extensions

@@ -13,7 +13,7 @@ protocol MainInteractorProtocol {
     func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int, onSaved: @escaping () -> Void)
     func getFavorites() -> [MovieResult]?
-    var movies: [ListMovieProtocol]? { get }
+    var movies: [ListMovieProtocol]? { get set }
 }
 
 extension MainInteractorProtocol {

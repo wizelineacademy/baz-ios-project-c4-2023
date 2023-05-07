@@ -40,7 +40,9 @@ final class BAZProjectTests: XCTestCase {
         // Given
         let resultExpected = 1
         // When
-        homeInteractor?.getDataMovies(endPoint: .trending)
+        homeInteractor?.getDataMovies(endPoint: .trending, completion: {
+            print(self.homeInteractor?.movies?.count ?? 0)
+        })
         // Then
         XCTAssertEqual(homePresenter?.arrMovies.count, resultExpected)
     }
@@ -65,7 +67,10 @@ final class BAZProjectTests: XCTestCase {
         // Given
         let resultExpected = 1
         // When
-        searchInteractor?.getMovieSearch(endPoint: .search(query: "El"))
+        searchInteractor?.getMovieSearch(endPoint: .search(query: "Los"), completion: {
+            print(self.searchInteractor?.movies?.count ?? 0)
+        })
+        
         // Then
         XCTAssertEqual(searchPresenter?.arrSeaerchMovies.count, resultExpected)
     }

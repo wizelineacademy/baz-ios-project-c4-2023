@@ -12,9 +12,9 @@ class DetailMovieCell: UICollectionViewCell {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = ConstraintConstants.cornerRadius
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     private lazy var producersTitle: GreenLabel = {
