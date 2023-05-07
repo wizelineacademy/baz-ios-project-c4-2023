@@ -128,8 +128,7 @@ class DetailViewModel {
         dictionary[.overview] = [DetailOverview(largeTitle: item.title, smallSubtitle: timelabel, image: item.posterPath, description: object.overview, defaultImage: item.mediaType?.defaultImage)]
         dictionary[.similar] = object.similar?.results?.trim(max: 20).map({ MediaItem(dataObject: $0, mediaType: .tv) })
         dictionary[.recommended] = object.recommendations?.results?.trim(max: 20).map({ MediaItem(dataObject: $0) })
-        let mainCast = object.credits?.cast?.filter({ ($0.order ?? 100) < 20 })
-        dictionary[.cast] = mainCast?.trim(max: 20).map({ DetailCastMember(actor: MediaItem(id: $0.id, posterPath: $0.profilePath, title: $0.name, rating: nil, mediaType: .person, releaseDate: nil), character: $0.character) })
+        dictionary[.cast] = object.credits?.cast?.filter({ ($0.order != nil)}).filter({ $0.order! < 20 }).trim(max: 20).map({ DetailCastMember(actor: MediaItem(id: $0.id, posterPath: $0.profilePath, title: $0.name, rating: nil, mediaType: .person, releaseDate: nil), character: $0.character) })
         dictionary[.reviews] = object.reviews?.reviews?.trim(max: 20).map({ DetailReview(from: $0) })
         return dictionary
     }

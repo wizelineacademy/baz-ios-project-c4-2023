@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     func trim(max size: Int) -> Array {
         var new = self
