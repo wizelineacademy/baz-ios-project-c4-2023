@@ -101,6 +101,8 @@
 		4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B947E7B29F24F8100C116E3 /* GenericEndpoint.swift */; };
 		4B9BEBAB2A09536D00EC9243 /* FavouritesLocalDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBAA2A09536D00EC9243 /* FavouritesLocalDataTests.swift */; };
 		4B9BEBAD2A0953DF00EC9243 /* FavouritesLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */; };
+		4B9BEBAF2A0954E200EC9243 /* FavouritesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBAE2A0954E200EC9243 /* FavouritesViewModelTests.swift */; };
+		4B9BEBB12A0956FD00EC9243 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */; };
 		4BC398A72A0349550003A03F /* DispatchQueue+DispatchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */; };
 		4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC398A92A034B2C0003A03F /* DispatchQueueMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
@@ -220,6 +222,8 @@
 		4B947E7B29F24F8100C116E3 /* GenericEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericEndpoint.swift; sourceTree = "<group>"; };
 		4B9BEBAA2A09536D00EC9243 /* FavouritesLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesLocalDataTests.swift; sourceTree = "<group>"; };
 		4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesLocalData.swift; sourceTree = "<group>"; };
+		4B9BEBAE2A0954E200EC9243 /* FavouritesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModelTests.swift; sourceTree = "<group>"; };
+		4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchProtocol.swift"; sourceTree = "<group>"; };
 		4BC398A92A034B2C0003A03F /* DispatchQueueMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -529,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */,
+				4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */,
 			);
 			path = FavouritesModule;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9BEBAA2A09536D00EC9243 /* FavouritesLocalDataTests.swift */,
+				4B9BEBAE2A0954E200EC9243 /* FavouritesViewModelTests.swift */,
 			);
 			path = FavouritesModuleTests;
 			sourceTree = "<group>";
@@ -733,6 +739,7 @@
 				4B947E7C29F24F8100C116E3 /* GenericEndpoint.swift in Sources */,
 				4B6BB2BF2A00ADC6007A20D7 /* SearchViewModelTests.swift in Sources */,
 				4B37399C29D4C1450056041F /* RequestHandlerUnitTests.swift in Sources */,
+				4B9BEBAF2A0954E200EC9243 /* FavouritesViewModelTests.swift in Sources */,
 				4B27A0B42A0560EB003A24D6 /* SearchLocalDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,6 +773,7 @@
 				4B2675B42A0703F5005C60A4 /* Calendar.swift in Sources */,
 				4B6BB2A229FE38F3007A20D7 /* SearchRemoteData.swift in Sources */,
 				4B2675952A05EDFD005C60A4 /* CastDataObject.swift in Sources */,
+				4B9BEBB12A0956FD00EC9243 /* FavouritesViewModel.swift in Sources */,
 				4B6BB2A529FE3F1A007A20D7 /* SearchLocalData.swift in Sources */,
 				4B37399429D4BA560056041F /* TrendingMediaViewModel.swift in Sources */,
 				4B6BB2AF2A003B77007A20D7 /* MediaTableViewCellModel.swift in Sources */,
