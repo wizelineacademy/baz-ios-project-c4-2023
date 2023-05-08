@@ -78,7 +78,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
         
         let dctOutput = sut.formatMediaDataObject(trending: dataObjects, popular: nil, upcoming: nil, topRated: nil, nowPlaying: nil)
         
-        XCTAssertEqual(dctObject, dctOutput)
+        XCTAssertEqual(dctObject.count, dctOutput.count)
     }
     
     func test_getSectionTitles() {

@@ -16,7 +16,7 @@ final class DetailLocalDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
         udManager = UserDefaultsMock()
-        sut = DetailLocalData(userDefaultsManager: udManager)
+        sut = DetailLocalData(userDefaults: udManager)
     }
     
     override func tearDown() {
@@ -25,25 +25,27 @@ final class DetailLocalDataTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_SaveFavourite_ShouldSave() {
-        let image = UIImage(named: "poster")!
-        let data = image.pngData()!
+    func test_SaveFavourite_ShouldSave() throws {
+        let item = MediaItem()
+        let arritem = [item]
         
-        sut.save(data: data, key: "data")
-        let retrieved = sut.findItem(for: "data")
+        try sut.saveRecentlySearched(item)
+        let retrieved = try sut.getExistingItems(key: "")
         
-        XCTAssert(retrieved)
+        XCTAssertEqual(retrieved, arritem)
     }
     
-    func test_deleteFavourite_ShouldDelete() {
-        let data = Data()
-        udManager.data = data
+    func test_deleteFavourite_ShouldDelete() throws {
+        let data = [MediaItem()]
+        udManager.data = try JSONEncoder().encode(data)
         
-        XCTAssert(sut.findItem(for: "key"))
+        let existing = try sut.getExistingItems(key: "")
+        XCTAssertEqual(existing?.count, data.count)
         
-        sut.deleteItem(for: "key")
+        try sut.saveOrDeleteFavourite(item: data.first!)
+        let existingAfter = try sut.getExistingItems(key: "")
         
-        XCTAssertFalse(sut.findItem(for: "key"))
+        XCTAssert(existingAfter!.isEmpty)
     }
     
 }

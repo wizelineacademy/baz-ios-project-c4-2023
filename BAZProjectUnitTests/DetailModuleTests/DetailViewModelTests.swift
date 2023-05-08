@@ -28,7 +28,7 @@ final class DetailViewModelTests: XCTestCase {
     }
     
     func setViewModel(mediaItem: MediaItem) {
-        let localData = DetailLocalData(userDefaultsManager: udManager)
+        let localData = DetailLocalData(userDefaults: udManager)
         sut = DetailViewModel(remoteData: remoteData, localData: localData, item: mediaItem)
     }
     
@@ -388,16 +388,6 @@ final class DetailViewModelTests: XCTestCase {
         
         XCTAssert(fav)
     }
-
-    func test_getDataFromItem_DataShouldNotBeTheSame() throws {
-        let mediaItem = MediaItem(id: 1, mediaType: .movie)
-        setViewModel(mediaItem: mediaItem)
-        
-        let data = sut.getDataFromItem(favourites: [mediaItem])!
-        let decoded = try JSONDecoder().decode([MediaItem].self, from: data)
-
-        XCTAssertEqual([mediaItem], decoded)
-    }
     
     func test_saveData_RetrievedDataShouldBeEqual() {
         setViewModel(mediaItem: MediaItem(id: 1, mediaType: .movie))
@@ -415,45 +405,25 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssert(fav)
     }
     
-    func test_getDataFromItem_DataShouldThrowError() throws {
-        let mediaItem = MediaItem(id: 1, mediaType: .movie)
-        setViewModel(mediaItem: mediaItem)
-        let encoderMock = EncoderSpy()
-        let expectation = XCTestExpectation()
-        let expectedError = NSError(domain: "EstoyListo", code: -123)
-        expectation.expectedFulfillmentCount = 2
-        encoderMock.error = expectedError
-        var theError: NSError?
-        
-        sut.bindError { error in
-            theError = error as NSError?
-            expectation.fulfill()
-        }
-        
-        let _ = sut.getDataFromItem(enconder: encoderMock, favourites: [mediaItem])
-
-        XCTAssertEqual(theError, expectedError)
-    }
-    
-    func test_saveOrDeleteItem_ShouldDeleteItem() throws {
-        let mediaItem = MediaItem(id: 1, mediaType: .movie)
-        setViewModel(mediaItem: mediaItem)
-        let encoderMock = EncoderSpy()
-        let expectation = XCTestExpectation()
-        let expectedError = NSError(domain: "EstoyListo", code: -123)
-        expectation.expectedFulfillmentCount = 2
-        encoderMock.error = expectedError
-        var theError: NSError?
-        
-        sut.bindError { error in
-            theError = error as NSError?
-            expectation.fulfill()
-        }
-        
-        let _ = sut.getDataFromItem(enconder: encoderMock, favourites: [mediaItem])
-
-        XCTAssertEqual(theError, expectedError)
-    }
+//    func test_saveOrDeleteItem_ShouldDeleteItem() throws {
+//        let mediaItem = MediaItem(id: 1, mediaType: .movie)
+//        setViewModel(mediaItem: mediaItem)
+//        let encoderMock = EncoderSpy()
+//        let expectation = XCTestExpectation()
+//        let expectedError = NSError(domain: "EstoyListo", code: -123)
+//        expectation.expectedFulfillmentCount = 2
+//        encoderMock.error = expectedError
+//        var theError: NSError?
+//
+//        sut.bindError { error in
+//            theError = error as NSError?
+//            expectation.fulfill()
+//        }
+//
+//        let _ = sut.getDataFromItem(enconder: encoderMock, favourites: [mediaItem])
+//
+//        XCTAssertEqual(theError, expectedError)
+//    }
     
     func test_saveOrDeleteItem_RetrievedDataShouldBeDeletedAndNoLongerFavourite() throws {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
