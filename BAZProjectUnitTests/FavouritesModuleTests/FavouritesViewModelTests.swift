@@ -122,7 +122,24 @@ final class FavouritesViewModelTests: XCTestCase {
 
         XCTAssertEqual(snapshotHolder.numberOfItems, data.count)
         XCTAssertEqual(snapshotHolder.sectionIdentifier(containingItem: item1), 0)
-        XCTAssertTrue(udData?.contains(item1) ?? false)
+        XCTAssertTrue(udData!.contains(item1))
     }
     
+    func test_getDetailView_shouldReturnNil() {
+        let local = FavouritesLocalData(udManager: UserDefaultsMock(), decoder: DecoderSpy(), encoder: EncoderSpy())
+        let sut = FavouritesViewModel(localData: local)
+        
+        let vc = sut.getDetailView(for: MediaItem())
+        
+        XCTAssertNil(vc)
+    }
+    
+    func test_getDetailView_shouldReturnVC() {
+        let local = FavouritesLocalData(udManager: UserDefaultsMock(), decoder: DecoderSpy(), encoder: EncoderSpy())
+        let sut = FavouritesViewModel(localData: local)
+        
+        let vc = sut.getDetailView(for: MediaItem(id: 1, mediaType: .movie))
+        
+        XCTAssertNotNil(vc)
+    }
 }
