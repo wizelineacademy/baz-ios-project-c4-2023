@@ -11,12 +11,18 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         let trendingTab = getTrendingTab()
-        setViewControllers([trendingTab], animated: false)
+        let searchTab = getSearchTab()
+        setViewControllers([trendingTab, searchTab], animated: false)
     }
     
     private func getTrendingTab() -> UIViewController {
         let viewModel = TrendingMediaViewModel(remoteData: TrendingMediaRemoteData())
         return UINavigationController(rootViewController: TrendingMediaViewController(viewModel: viewModel))
+    }
+    
+    private func getSearchTab() -> UIViewController {
+        let viewModel = SearchViewModel(remoteData: SearchRemoteData(), localData: SearchLocalData())
+        return UINavigationController(rootViewController: SearchTableViewController(viewModel: viewModel))
     }
     
 }

@@ -12,9 +12,11 @@ import Foundation
 
 class RequestSessionMock: RequestSessionProtocol {
     
-    var urlResponse = HTTPURLResponse(url: URL(string: "file://")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+    var data: Data?
+    var urlResponse: HTTPURLResponse = HTTPURLResponse(url: URL(string: "file://")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     
     func data(for request: URLRequest) async throws -> (Data, URLResponse) {
-        return (Data(), urlResponse)
+        return (data ?? Data(), urlResponse)
     }
+    
 }

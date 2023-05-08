@@ -13,7 +13,7 @@ class TrendingMediaViewModel {
     typealias MediaCollectionSnapShot = NSDiffableDataSourceSnapshot<MediaType, MediaItem>
     typealias MediaCollectionCellRegistration = UICollectionView.CellRegistration<MediaCollectionViewCell, MediaItem>
     
-    var error: Box<Error> = Box(nil)
+    var error: Box<Error?> = Box(nil)
     var remoteData: TrendingMediaRemoteData
     private var mediaSnapshot = Box(MediaCollectionSnapShot())
     
@@ -22,11 +22,11 @@ class TrendingMediaViewModel {
         self.setSnapshotWithDictionary(dctItems: self.formatMediaDataObject(dataObjects))
     }
     
-    func bindSnapshot(_ handler: @escaping () -> Void) {
+    func bindSnapshot(_ handler: @escaping (MediaCollectionSnapShot) -> Void) {
         mediaSnapshot.bind(handler)
     }
     
-    func bindError(_ handler: @escaping () -> Void) {
+    func bindError(_ handler: @escaping (Error?) -> Void) {
         error.bind(handler)
     }
     
@@ -41,35 +41,21 @@ class TrendingMediaViewModel {
             }
         }
     }
-    
-    func getError() -> String? {
-        error.value?.localizedDescription
-    }
-    
+
     func getCellConfiguration(item: MediaItem) -> MediaCollectionViewCellModel {
         var subtitle: String?
         var rated = false
         if let releaseDate = item.releaseDate, releaseDate > Date() {
-            let stringFormatter = DateFormatter()
-            stringFormatter.dateStyle = .short
-            stringFormatter.timeStyle = .none
-            stringFormatter.locale = Locale.current
-            subtitle = stringFormatter.string(from: releaseDate)
+            subtitle = DateFormatter.common.string(from: releaseDate)
         } else if let average = item.rating, average != 0 {
             subtitle = String(round(average * 10) / 10)
             rated = true
         }
-        
-        return MediaCollectionViewCellModel(title: item.title ?? "", subtitle: subtitle, image: item.posterPath ?? "", rated: rated, defaultImage: item.mediaType?.defaultImage)
-    }
-    
-    
-    func getDataSnapshot() -> NSDiffableDataSourceSnapshot<MediaType, MediaItem> {
-        return mediaSnapshot.value ?? NSDiffableDataSourceSnapshot<MediaType, MediaItem>()
+        return MediaCollectionViewCellModel(title: item.title, subtitle: subtitle, image: item.posterPath, rated: rated, defaultImage: item.mediaType?.defaultImage)
     }
     
     func getGroupTitle(for section: Int) -> String? {
-        return mediaSnapshot.value?.sectionIdentifiers[section].groupTitle
+        return mediaSnapshot.value.sectionIdentifiers[section].groupTitle
     }
     
     func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaType : [MediaItem]] {
@@ -79,23 +65,12 @@ class TrendingMediaViewModel {
     
     func setSnapshotWithDictionary(dctItems: [MediaType : [MediaItem]]) {
         let sorted = dctItems.sorted(by: { $0.key.order < $1.key.order })
+        var snapshot = MediaCollectionSnapShot()
         sorted.forEach { (key, value) in
-            mediaSnapshot.value?.appendSections([key])
-            mediaSnapshot.value?.appendItems(value)
+            snapshot.appendSections([key])
+            snapshot.appendItems(value)
         }
+        mediaSnapshot.value = snapshot
     }
     
-}
-
-fileprivate extension MediaItem {
-    init(dataObject: MediaDataObject) {
-        self.mediaType = MediaType(dataObject.mediaType)
-        self.rating = dataObject.voteAverage
-        self.id = dataObject.id
-        self.title = dataObject.title ?? dataObject.name
-        self.posterPath = dataObject.posterPath ?? dataObject.profilePath
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.releaseDate = dateFormatter.date(from: dataObject.releaseDate ?? "")
-    }
 }

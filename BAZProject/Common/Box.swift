@@ -9,21 +9,21 @@ import Foundation
 
 struct Box<T> {
     
-    private var listener: (() -> Void)?
+    private var listener: ((T) -> Void)?
 
-    var value: T? {
+    var value: T {
         didSet {
-            listener?()
+            listener?(value)
         }
     }
     
-    init(_ value: T?) {
+    init(_ value: T) {
         self.value = value
     }
     
-    mutating func bind(_ listener: @escaping (() -> Void)) {
+    mutating func bind(_ listener: @escaping ((T) -> Void)) {
         self.listener = listener
-        self.listener?()
+        self.listener?(value)
     }
     
 }

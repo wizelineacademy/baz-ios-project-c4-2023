@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestHandler {
+class RequestHandler: RequestHandlerProtocol {
     
     var urlSession: RequestSessionProtocol
     

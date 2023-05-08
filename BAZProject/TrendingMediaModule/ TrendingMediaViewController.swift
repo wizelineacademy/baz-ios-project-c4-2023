@@ -10,6 +10,7 @@ class TrendingMediaViewController: UICollectionViewController {
     
     var viewModel: TrendingMediaViewModel
     var dataSource: TrendingMediaViewModel.MediaCollectionDataSource?
+    var dispatchService: DispatchProtocol = DispatchQueue.main
     
     init(viewModel: TrendingMediaViewModel) {
         self.viewModel = viewModel
@@ -36,15 +37,16 @@ class TrendingMediaViewController: UICollectionViewController {
     }
     
     private func bindings() {
-        viewModel.bindSnapshot { [weak self] in
-            DispatchQueue.main.async {
-                guard let snapshot = self?.viewModel.getDataSnapshot() else { return }
+        viewModel.bindSnapshot { [weak self] snapshot in
+            self?.dispatchService.async {
                 self?.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
-        viewModel.bindError { [weak self] in
-            DispatchQueue.main.async {
-                self?.presentError()
+        viewModel.bindError { [weak self] error in
+            if let error = error {
+                self?.dispatchService.async {
+                    self?.presentError(error.localizedDescription)
+                }
             }
         }
     }
@@ -56,9 +58,8 @@ class TrendingMediaViewController: UICollectionViewController {
         configureDataSource()
     }
     
-    private func presentError() {
-        guard let message = viewModel.getError() else { return }
-        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+    private func presentError(_ string: String) {
+        let alert = UIAlertController(title: "Oops!", message: string, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
     }
