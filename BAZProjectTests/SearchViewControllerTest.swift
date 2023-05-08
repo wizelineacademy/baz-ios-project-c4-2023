@@ -97,4 +97,3 @@ final class SearchViewControllerTest: XCTestCase {
         XCTAssertTrue(sut.tableView.dataSource!.tableView(sut.tableView, numberOfRowsInSection: 0) > 0)
     }
 }
-

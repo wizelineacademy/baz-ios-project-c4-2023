@@ -40,4 +40,3 @@ final class StringExtensionsTest: XCTestCase {
         XCTAssertNotNil(sut.htmlToAttributedString)
     }
 }
-

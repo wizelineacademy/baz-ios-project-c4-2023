@@ -51,4 +51,3 @@ final class FavoritesViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.navigationController?.navigationBar.prefersLargeTitles, false)
     }
 }
-
