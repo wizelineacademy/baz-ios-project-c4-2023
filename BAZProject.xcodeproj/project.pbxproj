@@ -15,6 +15,8 @@
 		A714CF7029E5265A00D1AE22 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A714CF6F29E5265A00D1AE22 /* Protocols.swift */; };
 		A721069F29D6BEFB00824E59 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721069E29D6BEFB00824E59 /* BAZProjectTests.swift */; };
 		A774941E2A04BEC80051D7B3 /* UtilsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A774941D2A04BEC80051D7B3 /* UtilsProtocols.swift */; };
+		A786FD382A08BB730061C078 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A786FD362A08BB730061C078 /* SearchViewController.swift */; };
+		A786FD392A08BB730061C078 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A786FD372A08BB730061C078 /* SearchViewController.xib */; };
 		A7AB63BA29D3AF3900D37546 /* MovieAppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB63B829D3AF3900D37546 /* MovieAppCollectionViewCell.swift */; };
 		A7AB63BB29D3AF3900D37546 /* MovieAppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AB63B929D3AF3900D37546 /* MovieAppCollectionViewCell.xib */; };
 		A7DE3F5A29E5CEFC00D614C6 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE3F5929E5CEFC00D614C6 /* EndPointType.swift */; };
@@ -63,6 +65,8 @@
 		A721069C29D6BEFB00824E59 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A721069E29D6BEFB00824E59 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
 		A774941D2A04BEC80051D7B3 /* UtilsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsProtocols.swift; sourceTree = "<group>"; };
+		A786FD362A08BB730061C078 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A786FD372A08BB730061C078 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		A7AB63B829D3AF3900D37546 /* MovieAppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7AB63B929D3AF3900D37546 /* MovieAppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieAppCollectionViewCell.xib; sourceTree = "<group>"; };
 		A7DE3F5929E5CEFC00D614C6 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
@@ -160,6 +164,15 @@
 				A774941D2A04BEC80051D7B3 /* UtilsProtocols.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A77494242A08A2840051D7B3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A786FD362A08BB730061C078 /* SearchViewController.swift */,
+				A786FD372A08BB730061C078 /* SearchViewController.xib */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		A7DE3F5729E5CECC00D614C6 /* Networking */ = {
@@ -298,6 +311,7 @@
 		C30893AC28A2F42B004B1860 /* BAZProject */ = {
 			isa = PBXGroup;
 			children = (
+				A77494242A08A2840051D7B3 /* Search */,
 				A7E3D4942A00990A0069DC83 /* LoginAndRegistration */,
 				A7E3D49E2A01C90F0069DC83 /* Home */,
 				A7E3D49F2A01C9480069DC83 /* Detail */,
@@ -412,6 +426,7 @@
 				C383356E28CA917400FCE0D5 /* code-review-rubric.md in Resources */,
 				A7E3D49A2A00C3100069DC83 /* LoginAndRegistration.storyboard in Resources */,
 				A7AB63BB29D3AF3900D37546 /* MovieAppCollectionViewCell.xib in Resources */,
+				A786FD392A08BB730061C078 /* SearchViewController.xib in Resources */,
 				C30893B528A2F42B004B1860 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +461,7 @@
 				A7E3D4A22A01C9B50069DC83 /* HomeRouter.swift in Sources */,
 				A7DE3F5E29E5D36900D614C6 /* HTTPTask.swift in Sources */,
 				A7DE3F5A29E5CEFC00D614C6 /* EndPointType.swift in Sources */,
+				A786FD382A08BB730061C078 /* SearchViewController.swift in Sources */,
 				A7DE3F6329E5D98300D614C6 /* URLParameterEncoder.swift in Sources */,
 				A7E3D4A62A01CB050069DC83 /* DetailViewController.swift in Sources */,
 				A714CF7029E5265A00D1AE22 /* Protocols.swift in Sources */,

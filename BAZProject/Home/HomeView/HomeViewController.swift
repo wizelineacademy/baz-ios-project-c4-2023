@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, AlertPresentable {
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
+    @IBOutlet weak var SearchButton: UIButton!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ class HomeViewController: UIViewController, AlertPresentable {
         topRatedCollectionView.register(UINib(nibName: nibName, bundle: .main), forCellWithReuseIdentifier: identifier)
         upcomingCollectionView.register(UINib(nibName: nibName, bundle: .main), forCellWithReuseIdentifier: identifier)
     }
+    
     private func assignDataSource(){
         trendingCollectionView.dataSource = self
         nowPlayingCollectionView.dataSource = self
@@ -62,6 +64,13 @@ class HomeViewController: UIViewController, AlertPresentable {
         topRatedCollectionView.delegate = self
         upcomingCollectionView.delegate = self
     }
+    
+    @IBAction func SearchButtonTapped(_ sender: UIButton) {
+        let vc = SearchViewController(nibName: "SearchViewController", bundle: .main)
+//        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
 }
 
 // MARK: Data source extension

@@ -138,6 +138,14 @@
                                                 </collectionViewFlowLayout>
                                                 <cells/>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipu-Gj-gDe">
+                                                <rect key="frame" x="0.0" y="16" width="103" height="35"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass.circle" catalog="system" title="Search"/>
+                                                <connections>
+                                                    <action selector="SearchButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FqK-wD-sLx"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -154,6 +162,7 @@
                                             <constraint firstAttribute="trailing" secondItem="jne-2a-29j" secondAttribute="trailing" constant="16" id="Dc4-mf-OHv"/>
                                             <constraint firstItem="bXi-aW-ysw" firstAttribute="top" secondItem="wGA-bg-x67" secondAttribute="bottom" constant="8" id="EyY-T9-kla"/>
                                             <constraint firstItem="6Wd-Rk-BJn" firstAttribute="top" secondItem="SQs-OX-AZ8" secondAttribute="bottom" constant="24" id="HWq-Bv-nQE"/>
+                                            <constraint firstItem="ipu-Gj-gDe" firstAttribute="top" secondItem="l69-qV-OFY" secondAttribute="top" constant="16" id="JjB-sq-cPl"/>
                                             <constraint firstAttribute="trailing" secondItem="ypV-If-bBV" secondAttribute="trailing" id="OBS-rs-d8I"/>
                                             <constraint firstItem="Kbk-0F-wWl" firstAttribute="leading" secondItem="l69-qV-OFY" secondAttribute="leading" constant="16" id="Rl6-fe-5W1"/>
                                             <constraint firstAttribute="trailing" secondItem="SQs-OX-AZ8" secondAttribute="trailing" id="TEH-gA-Bz5"/>
@@ -167,6 +176,7 @@
                                             <constraint firstItem="jne-2a-29j" firstAttribute="top" secondItem="bXi-aW-ysw" secondAttribute="bottom" constant="24" id="njg-RX-RfI"/>
                                             <constraint firstItem="wGA-bg-x67" firstAttribute="top" secondItem="l69-qV-OFY" secondAttribute="top" constant="24" id="prD-fw-T8B"/>
                                             <constraint firstItem="SQs-OX-AZ8" firstAttribute="leading" secondItem="l69-qV-OFY" secondAttribute="leading" id="qPi-Da-5qe"/>
+                                            <constraint firstItem="ipu-Gj-gDe" firstAttribute="leading" secondItem="l69-qV-OFY" secondAttribute="leading" id="seD-7V-Pv8"/>
                                             <constraint firstAttribute="height" constant="1022" id="t6U-QG-YI4"/>
                                             <constraint firstItem="SQs-OX-AZ8" firstAttribute="top" secondItem="jne-2a-29j" secondAttribute="bottom" constant="8" id="wew-vQ-Pc4"/>
                                             <constraint firstItem="q2X-yZ-Yso" firstAttribute="top" secondItem="G6z-sR-ivY" secondAttribute="bottom" constant="8" id="wfY-Gp-6gi"/>
@@ -196,6 +206,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="1082"/>
                     <connections>
+                        <outlet property="SearchButton" destination="ipu-Gj-gDe" id="u0C-Vg-VrL"/>
                         <outlet property="nowPlayingCollectionView" destination="SQs-OX-AZ8" id="esv-Yo-0OM"/>
                         <outlet property="popularCollectionView" destination="ypV-If-bBV" id="14w-zB-m03"/>
                         <outlet property="topRatedCollectionView" destination="3Ek-cP-m3Y" id="dnA-k3-aGT"/>
@@ -209,6 +220,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
