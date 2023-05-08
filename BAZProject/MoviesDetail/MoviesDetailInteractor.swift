@@ -9,6 +9,7 @@ import Foundation
 enum OptionDetail {
     case Recomendations
     case Similars
+    case Reviews
 }
 final class MoviesDetailInteractor {
     
@@ -28,19 +29,26 @@ final class MoviesDetailInteractor {
 // MARK: Extension
 extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
     
-    func getReview() {
-        movieApi.getMovies(OptionMovie.getReviews(moviesInfo?.id ?? 0).request){ [weak self] (result: Result< MovieDetailResult, Error>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let moviesReponse):
-                    if moviesReponse.movies?.count ?? 0 > 0{
-                        self?.setReviews(with: moviesReponse.movies)
-                    }else{
-                        self?.presenter?.setError()
-                    }
-                default:
-                    self?.presenter?.setError()
+    func getInfo(detail typeDetail: OptionDetail?) {
+        switch typeDetail{
+        case .Similars: movieApi.getMovies((OptionMovie.getSimilars(moviesInfo?.id ?? 0).request), callback: handlerResponseSimilarsResult(result:))
+        case .Recomendations: movieApi.getMovies((OptionMovie.getRecomendations(moviesInfo?.id ?? 0).request), callback: handlerResponseDetailResult(result:))
+        case .Reviews: movieApi.getMovies((OptionMovie.getReviews(moviesInfo?.id ?? 0).request), callback: handlerResponse(result:))
+        default: return
+        }
+    }
+    
+    func handlerResponse(result: Result <MovieDetailResult, Error>){
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let moviesReponse):
+                if moviesReponse.movies?.count ?? 0 > 0{
+                    self.setReviews(with: moviesReponse.movies)
+                }else{
+                    self.presenter?.setError()
                 }
+            default:
+                self.presenter?.setError()
             }
         }
     }
@@ -55,38 +63,34 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         self.presenter?.setResponseDetailsMovies(with: detailReviews)
     }
     
-    func getRecomendations() {
-        movieApi.getMovies(OptionMovie.getRecomendations(moviesInfo?.id ?? 0).request){ [weak self] (result: Result< RecomendationsResult, Error>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let moviesReponse):
-                    if moviesReponse.recomendations?.count ?? 0 > 0{
-                        self?.setInfoDetail(with: moviesReponse.recomendations,
-                                                typeDetail: .Recomendations)
-                    }else{
-                        self?.presenter?.setError()
-                    }
-                default:
-                    self?.presenter?.setError()
+    func handlerResponseDetailResult(result: Result <RecomendationsResult, Error>){
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let moviesReponse):
+                if moviesReponse.recomendations?.count ?? 0 > 0{
+                    self.setInfoDetail(with: moviesReponse.recomendations,
+                                            typeDetail: .Recomendations)
+                }else{
+                    self.presenter?.setError()
                 }
+            default:
+                self.presenter?.setError()
             }
         }
     }
     
-    func getSimilars(){
-        movieApi.getMovies(OptionMovie.getSimilars(moviesInfo?.id ?? 0).request){ [weak self] (result: Result< MovieSimilars, Error>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let moviesReponse):
-                    if moviesReponse.similars?.count ?? 0 > 0{
-                        self?.setInfoDetail(with: moviesReponse.similars,
-                                                typeDetail: .Similars)
-                    }else{
-                        self?.presenter?.setError()
-                    }
-                default:
-                    self?.presenter?.setError()
+    func handlerResponseSimilarsResult(result: Result <MovieSimilars, Error>){
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let moviesReponse):
+                if moviesReponse.similars?.count ?? 0 > 0{
+                    self.setInfoDetail(with: moviesReponse.similars,
+                                            typeDetail: .Similars)
+                }else{
+                    self.presenter?.setError()
                 }
+            default:
+                self.presenter?.setError()
             }
         }
     }

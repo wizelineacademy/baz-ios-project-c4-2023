@@ -57,9 +57,7 @@ protocol MoviesDetailInteractorInputProtocol {
     var moviesInfo  : MovieData? { get set }
     var bIsFavorite : Bool? { get set }
     
-    func getReview()
-    func getRecomendations()
-    func getSimilars()
+    func getInfo(detail typeDetail: OptionDetail?)
     func addFavoriteMovies()
     func getFavoriteMovies() -> Bool
     func removeFavoriteMovies()

@@ -57,7 +57,7 @@ final class CollectionRecomendationsCellTest: XCTestCase {
     }
 
 }
-class CollectionRecomendationsDataSourceTest: NSObject, UICollectionViewDataSource {
+final class CollectionRecomendationsDataSourceTest: NSObject, UICollectionViewDataSource {
     
     let movies: [InfoDetailData]
     init(movies: [InfoDetailData]) {

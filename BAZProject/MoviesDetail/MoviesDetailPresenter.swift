@@ -30,9 +30,9 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
     
     func consultReviews() {
         view?.setInfoMovie(with: interactor?.moviesInfo)
-        interactor?.getReview()
-        interactor?.getRecomendations()
-        interactor?.getSimilars()
+        interactor?.getInfo(detail: .Reviews)
+        interactor?.getInfo(detail: .Recomendations)
+        interactor?.getInfo(detail: .Similars)
     }
     
     func getInfoFavoritesMovies() {

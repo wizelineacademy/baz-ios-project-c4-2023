@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionRecomendationsCell: UICollectionViewCell{
+final class CollectionRecomendationsCell: UICollectionViewCell{
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgPoster: UIImageView!

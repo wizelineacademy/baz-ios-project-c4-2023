@@ -82,11 +82,11 @@ final class MoviesDetailInteractorTest: XCTestCase{
     }
     
     func test_consultService(){
-        sut.getSimilars()
+        sut.getInfo(detail: .Similars)
     }
     
 }
-class MockMoviesDetailPresenter: MoviesDetailInteractorOutputProtocol {
+final class MockMoviesDetailPresenter: MoviesDetailInteractorOutputProtocol {
     
     var moviesMockReview    : [ReviewsMovieData]    = [ReviewsMovieData]()
     var moviesMockDetail    : [InfoDetailData]      = [InfoDetailData]()

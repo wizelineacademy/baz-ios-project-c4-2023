@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionReviewsCell: UICollectionViewCell{
+final class CollectionReviewsCell: UICollectionViewCell{
     
     //MARK: Static Properties
     public class var nib: UINib {
