@@ -20,4 +20,13 @@ final class SearchLocalDataTests: XCTestCase {
         
         XCTAssertEqual(items?.count, mediaItems.count)
     }
+    
+    func test_getRecentlySearchedMedia_ShouldGetNil() throws {
+        let udMock = UserDefaultsMock()
+        let sut = SearchLocalData(udManager: udMock)
+        
+        let items = try sut.getRecentlySearchedMedia()
+        
+        XCTAssertNil(items)
+    }
 }
