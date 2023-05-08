@@ -11,7 +11,7 @@ import XCTest
 final class DetailsViewTests: XCTestCase {
     
     var sut: DetailsViewController!
-    var viewModel = DetailsViewModel(movieDetail: Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0))
+    var viewModel = DetailsViewModel(movieDetail: Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asusta", vote_average: 8.0))
     
     override func setUp() {
         super.setUp()
@@ -56,7 +56,7 @@ final class DetailsViewTests: XCTestCase {
     func testDetailsView_RecoCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
-        viewModel.similarMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0)])
+        viewModel.similarMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asusta", vote_average: 8.0)])
         //When
         XCTAssertNotNil(sut.collectionView(sut.similarCV, numberOfItemsInSection: 0))
     }
@@ -66,7 +66,7 @@ final class DetailsViewTests: XCTestCase {
     func testDetailsView_SimilarCollectionViewIsNotNil() {
         //Given
         sut.loadViewIfNeeded()
-        viewModel.recommendationMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asista", vote_average: 8.0)])
+        viewModel.recommendationMovies = Box(value: [Movie(id: 1, title: "Evil Dead", poster_path: "evil.jpg", overview: "Esta si asusta", vote_average: 8.0)])
         //When
         XCTAssertNotNil(sut.collectionView(sut.recomendationsCV, numberOfItemsInSection: 0))
     }

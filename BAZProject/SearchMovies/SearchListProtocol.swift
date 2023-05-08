@@ -19,5 +19,8 @@ protocol SearchListProtocol {
     func cleanMoviesArray() ///Limpia el arreglo para otra consulta
     func getImagePath(index: Int) -> String? ///regresa el campo del path para la imagen de la pelicula
     func getAllInfoMoview(index: Int) -> InfoMoviesProtocol ///Funcion que devolvera la informacion de una pelicula
-    func searchMovie(_ title: String, apiKey: String, completion: @escaping (Error?) -> Void) ///se consulta el servicio para lista de peliculas
+    func searchMovie(title: String) ///se consulta el servicio para lista de peliculas
+    func getPhotoPath(index: Int) -> String? /// regresa el path para la foto
+    func getActorName(index: Int) -> String? /// regresa el nombre del actor
+    func getActorsArray() -> Int  /// regresa el contador del arreglo 
 }

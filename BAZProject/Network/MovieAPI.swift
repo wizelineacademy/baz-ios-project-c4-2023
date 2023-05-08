@@ -58,4 +58,29 @@ class MovieAPI {
             }
         }
     }
+    
+    ///Funcion que obtiene el actor desde el servicio
+    func getActor(name: String,  completion: @escaping ([Cast], Error?) -> Void) {
+        let urlStruct = "\(CategoriesFilter.actor.url)\(urls.apikey.rawValue)&language=es&query=\(name)&page=1"
+        guard let url = URL(string: urlStruct) else { return }
+        print(url)
+        service.get(url) { (result: Result<ActorInfo, Error>) in
+            switch result {
+            case .success(let apiResults): completion(apiResults.results ?? [Cast()], nil)
+            case .failure(let error): completion([Cast()], error)
+            }
+        }
+    }
+    
+    ///se consulta el servicio para lista de peliculas
+    func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping ([InfoMoviesProtocol], Error?) -> Void) {
+        guard let url = URL(string: "\(CategoriesFilter.search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }
+        
+        service.get(url) { (result: Result<Movies, Error>) in //service result
+            switch result {
+            case .success(let apiResults): completion(apiResults.results ?? [], nil)
+            case .failure(let error): completion([], error)
+            }
+        }
+    }
 }

@@ -56,6 +56,7 @@ enum CategoriesFilter: String {
     case recommendation = "Recommendation Movies"
     case similar = "similar Movies"
     case cast = "cast"
+    case actor = "actor"
     
     var url: String {
         let baseURL = "https://api.themoviedb.org/3/movie/"
@@ -72,6 +73,8 @@ enum CategoriesFilter: String {
             return "\(baseURL)upcoming?api_key="
         case .search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
+        case .actor:
+            return  "https://api.themoviedb.org/3/search/person?api_key="
         case .recommendation, .similar, .cast:
             return baseURL
         }
