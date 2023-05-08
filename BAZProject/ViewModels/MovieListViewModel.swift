@@ -125,9 +125,14 @@ extension MovieListViewModel {
         self.filterType.rawValue
     }
     
+    /// Checks if the local movie list needs to be updated and updates it if necessary.
     func updateIfNecesary() {
+        
+        // Get the current list of movies from the local storage
         MovieListLocal().getMovies() { [weak self] movieList in
+            // Compare the count of the current list of movies with the count of the list of movies received
             if self?.movies.count != movieList.results.count {
+                // Update the local list of movies with the new list received
                 self?.setMovies(movieList.results)
             }
         }
