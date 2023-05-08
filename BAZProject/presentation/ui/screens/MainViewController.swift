@@ -26,8 +26,9 @@ class MainViewController: UITabBarController {
         let moviesNav = setupBarItem(MoviesViewController(), "moviesText".localized, UIImage(systemName: "tv"), UIImage(systemName: "tv"))
 
         let searchNav = setupBarItem(SearchViewController(), "searchText".localized, UIImage(systemName: "magnifyingglass"), UIImage(systemName: "magnifyingglass"))
+        let favorites = setupBarItem(MoviesFavoritesViewController(), "favoritesText".localized, UIImage(systemName: "star.fill"), UIImage(systemName: "star.fill"))
         selectedIndex = 0
-        self.viewControllers = [moviesNav, searchNav]
+        self.viewControllers = [moviesNav, searchNav, favorites]
     }
 
     /**

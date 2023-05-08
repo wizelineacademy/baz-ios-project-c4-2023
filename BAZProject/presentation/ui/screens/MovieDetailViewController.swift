@@ -1,5 +1,5 @@
 //
-//  MovieViewController.swift
+//  MovieDetailViewController.swift
 //  BAZProject
 //
 //  Created by Ivan Tecpanecatl Martinez on 15/04/23.
@@ -8,13 +8,13 @@
 import UIKit
 
 // MARK: - Class
-class MovieViewController: ReusableViewController {
+class MovieDetailViewController: ReusableViewController {
 
     // MARK: - Properties
     private let movieViewModel: MovieViewModel
+    private let movieFavoriteViewModel = MoviesFavoritesViewModel()
     private let moviesDelegateFlowLayout = MoviesFlowLayout()
     private let actorsDelegateFlowLayout = ActorsFlowLayout()
-    private var heightReviews: NSLayoutConstraint!
 
     // MARK: - Input/View and Constraints
 
@@ -48,6 +48,31 @@ class MovieViewController: ReusableViewController {
         imgvPorter.trailingAnchor.constraint(equalTo: slwMainContent.trailingAnchor).isActive = true
         imgvPorter.leadingAnchor.constraint(equalTo: slwMainContent.leadingAnchor).isActive = true
         imgvPorter.heightAnchor.constraint(equalToConstant: .dim380).isActive = true
+    }
+    
+    private lazy var imgvStarFavorite: UIImageView = {
+        let imgv = UIImageView()
+        imgv.contentMode = .scaleAspectFit
+        imgv.tintColor = .white
+        imgv.image = UIImage(systemName: "star.fill")
+        imgv.translatesAutoresizingMaskIntoConstraints = false
+        return imgv
+    }()
+
+    private func imgvStarFavoriteConstraints() {
+        slwMainContent.addSubview(imgvStarFavorite)
+        imgvStarFavorite.topAnchor.constraint(equalTo: imgvPorter.topAnchor, constant: .dim12).isActive = true
+        imgvStarFavorite.leadingAnchor.constraint(equalTo: imgvPorter.leadingAnchor, constant: .dim12).isActive = true
+        imgvStarFavorite.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imgvStarFavorite.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let movieID = movieViewModel.movie.id
+        movieFavoriteViewModel.setupMovieFavorite(movieID)
+        let isFavorite = movieFavoriteViewModel.isMovieFavorite ?? false
+        imgvStarFavorite.tintColor = isFavorite ? .yellow : .white
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addOrRemoveMovieToFavorites))
+        imgvStarFavorite.addGestureRecognizer(tapGesture)
+        imgvStarFavorite.isUserInteractionEnabled = true
     }
 
     private lazy var skwContent: UIStackView = {
@@ -247,6 +272,7 @@ class MovieViewController: ReusableViewController {
         self.navigationController?.navigationBar.topItem?.title = "moviesText".localized
         slwMainContentConstraints()
         imgvPorterConstraints()
+        imgvStarFavoriteConstraints()
         skwContentConstraints()
 
         skwContent.addArrangedSubview(lblTitleMovie)
@@ -258,5 +284,19 @@ class MovieViewController: ReusableViewController {
         addlblRecommendedMoviesTextAndClvRecommendedMovies()
         skwContent.addArrangedSubview(lblMovieReviewsText)
         loadReviews()
+    }
+
+    @objc
+    private func addOrRemoveMovieToFavorites() {
+        let movie = self.movieViewModel.movie
+        movieFavoriteViewModel.setupMovieFavorite(movie.id)
+        let isFavorite = movieFavoriteViewModel.isMovieFavorite ?? false
+        if isFavorite {
+            movieFavoriteViewModel.removeMovieFavorite(movie.id)
+            imgvStarFavorite.tintColor = .white
+        } else {
+            movieFavoriteViewModel.addMovieToFavorites(movie)
+            imgvStarFavorite.tintColor = .yellow
+        }
     }
 }

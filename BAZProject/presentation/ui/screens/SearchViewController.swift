@@ -148,6 +148,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return 44
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = searchViewModel?.sectionTitles[indexPath.section]
+        if section == "moviesText".localized {
+            if let movie = searchViewModel?.movies[indexPath.row] {
+                let movieDetailVC = MovieDetailViewController(movie: movie)
+                self.navigationController?.pushViewController(movieDetailVC, animated: true)
+            }
+        }
+    }
 }
 
 extension SearchViewController: SearchDelegate {

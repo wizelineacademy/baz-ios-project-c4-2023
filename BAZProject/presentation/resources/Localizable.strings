@@ -22,3 +22,5 @@
 "moviesEmptyText" = "No hay peliculas disponibles";
 "reviewsEmptyText" = "No hay reseñas disponibles";
 "searchQuestionText" = "¿Qué estás buscando?";
+"favoritesText" = "Favoritos";
+"favoritesEmpty" = "No hay películas favoritas disponibles";
