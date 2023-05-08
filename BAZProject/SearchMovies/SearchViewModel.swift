@@ -7,20 +7,28 @@
 
 import Foundation
 
-class SearchViewModel {
+class SearchViewModel: SearchListProtocol {
     
     private var service: Service
+    private var movieAPI: MovieAPI
     
-    init(service: Service = ServiceAPI(session: URLSession.shared)) {
+    init(service: Service = ServiceAPI(session: URLSession.shared), remote: MovieAPI = MovieAPI()) {
         self.service = service
+        self.movieAPI = remote
     }
     
-    //MARK: - Funciones para la vista
-    var moviesSearched = Box(value: [ListMoviesProtocol]())
+    // MARK: - Funciones para la vista
+    
+    ///Varible donde se almacenara informacion de las peliculas
+    var moviesSearched = Box(value: [InfoMoviesProtocol]())
+    
+    /// Variable para almacenar los actores
+    var actorSearched = Box(value: [Cast]())
     
     ///Crear bind que llama al listener
     func bindMovies(_ listener: @escaping () -> Void) {
         moviesSearched.listener = listener
+        actorSearched.listener = listener
     }
     
     ///regresa el contador del arreglo de peliculas
@@ -33,21 +41,48 @@ class SearchViewModel {
         moviesSearched.value[index].title
     }
     
-    ///Limpia el arreglo para otra consulta
-    func cleanMoviesArray(){
-        moviesSearched.value = []
+    ///regresa el campo del path para la imagen de la pelicula
+    func getImagePath(index: Int) -> String? {
+        moviesSearched.value[index].poster_path
     }
     
-    //MARK: - Consulta servicio buscar peliculas
+    ///Limpia el arreglo para otra consulta
+    func cleanMoviesArray() {
+        moviesSearched.value = []
+        actorSearched.value = []
+    }
     
-    ///se consulta el servicio para lista de peliculas
-    func searchMovie(_ title: String, apiKey: String = urls.apikey.rawValue, completion: @escaping (Error?) -> Void) {
-        guard let url = URL(string: "\(categoriesFilter.Search.url)\(apiKey)&query=\(title.formatterMovieName())") else { return }
-        service.get(url) { [weak self] (result: Result<Movies, Error>) in //service result 
-            switch result {
-            case .success(let apiResults): self?.moviesSearched.value = apiResults.results ?? []
-            case .failure(let error): completion(error)
-            }
+    ///Funcion que devolvera la informacion de una pelicula
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
+        moviesSearched.value[index]
+    }
+    
+    /// regresa el nombre del actor
+    func getActorName(index: Int) -> String? {
+        actorSearched.value[index].name
+    }
+    
+    /// regresa el contador del arreglo
+    func getActorsArray() -> Int {
+        actorSearched.value.count
+    }
+    
+    ///regresa el campo del path para la imagen de la pelicula
+    func getPhotoPath(index: Int) -> String? {
+        actorSearched.value[index].profile_path
+    }
+    
+    /// funcion que busca las peliculas
+    func searchMovie(title: String) {
+        movieAPI.searchMovie(title) { [weak self] movieArray, _ in
+            self?.moviesSearched.value = movieArray
+        }
+    }
+
+    /// funcion que busca al actor 
+    func searchActor(name: String) {
+        movieAPI.getActor(name: name.formatterMovieName()) { [weak self] movieArray, _ in
+            self?.actorSearched.value = movieArray
         }
     }
 }

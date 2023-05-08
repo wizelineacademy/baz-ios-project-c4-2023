@@ -18,7 +18,6 @@ class SessionMock: URLSessionProtocol {
         completionHandler(data, urlResponse, error)
         return DataTaskMock()
     }
-    
 }
 
 class DataTaskMock: URLSessionDataTaskProtocol {

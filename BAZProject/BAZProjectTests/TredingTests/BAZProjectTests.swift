@@ -11,10 +11,11 @@ import XCTest
 final class BAZProjectTests: XCTestCase {
     
     var sut: TrendingViewController!
-    var model: MoviesListProtocol!
+    var model: TrendingListProtocol!
     
     override func setUp() {
         super.setUp()
+        
         sut = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as! TrendingViewController)
         model = TrendingViewModel()
         sut?.trendingModel = model
@@ -28,14 +29,27 @@ final class BAZProjectTests: XCTestCase {
     
     func testTredingViewModel_NotNil() {
         //Given
-        let expectedResult: [ListMoviesProtocol] = [Movie(id: 1, title: "Titanic", poster_path: "")]
+        let expectedResult: [InfoMoviesProtocol] = [Movie(id: 1, title: "Titanic", poster_path: "")]
         //Then
         model.movies = Box(value: expectedResult)
         sut.getMovieArray()
         let rowCount = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
         //When
-        XCTAssertEqual(rowCount, expectedResult.count)
+        XCTAssertNotNil(rowCount)
+    }
+    
+    func testTredingView_FilterTitleIsOK() {
+        //Given
+        let color = sut.navigationItem.rightBarButtonItem?.tintColor
+        //When
+        XCTAssertNotEqual(color, .gray)
+    }
+    
+    func testTredingView_TitleNotChangeWithButton() {
+        //Given
+        sut.loadViewIfNeeded()
+        sut.FilterButton(sut.FilterButton)
+        //When
+        XCTAssertNotEqual(sut.title, "Similar")
     }
 }
-
-

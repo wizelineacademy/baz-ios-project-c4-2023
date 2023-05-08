@@ -7,64 +7,75 @@
 
 import UIKit
 
-
-/// enumerador para menejar las ulrs del proyecto
+/// Enumerador para menejar las ulrs del proyecto
 enum urls: String {
     case apikey = "f6cd5c1a9e6c6b965fdcab0fa6ddd38a"
 }
 
+/// Enum used to store the icons used through the app.
+enum Icon {
+    static let heart: UIImage = UIImage(systemName: "heart") ?? UIImage()
+    static let heartFill: UIImage = UIImage(systemName: "heart.fill") ?? UIImage()
+    static let magnify: UIImage = UIImage(systemName: "magnifyingglass.circle") ?? UIImage()
+    static let magnifyFill: UIImage = UIImage(systemName: "magnifyingglass.circle.fill") ?? UIImage()
+}
 
-enum categoriesFilter: String {
-    case Trending = "Trending"
-    case NowPlaying = "Now Playing"
-    case Popular = "Popular"
-    case TopRated = "Top Rated"
-    case Upcoming = "Upcoming"
-    case Search =  "Search"
+/// Enumerador para menejar las datos de la aplicacion
+enum Constant {
+    static let favoritesCellHeight = 150.0
+}
+
+/// Enumerador para UserDefauls
+enum DefaultsKey: String {
+    case favorites = "favoritesMovies"
+    case favoriteTests = "favoriteTests"
+}
+
+/// Enumerador para titulos de la app
+enum Titles {
+    static let favorites = "Favoritos"
+    static let search = "buscar"
+    static let treding = "Trending"
+}
+
+/// Enumerador para el index de la barra de  busqueda
+enum SearchTypes {
+    static let Movie = 0
+    static let actor = 1
+}
+
+/// Enumerador para menejar de los tipos y sus urls
+enum CategoriesFilter: String {
+    case trending = "Trending"
+    case nowPlaying = "Now Playing"
+    case popular = "Popular"
+    case topRated = "Top Rated"
+    case upcoming = "Upcoming"
+    case search =  "Search"
+    case recommendation = "Recommendation Movies"
+    case similar = "similar Movies"
+    case cast = "cast"
+    case actor = "actor"
     
     var url: String {
+        let baseURL = "https://api.themoviedb.org/3/movie/"
         switch self {
-        case .Trending:
+        case .trending:
             return "https://api.themoviedb.org/3/trending/movie/day?api_key="
-        case .NowPlaying:
-            return "https://api.themoviedb.org/3/movie/now_playing?api_key="
-        case .Popular:
-            return "https://api.themoviedb.org/3/movie/popular?api_key="
-        case .TopRated:
-            return "https://api.themoviedb.org/3/movie/top_rated?api_key="
-        case .Upcoming:
-            return "https://api.themoviedb.org/3/movie/upcoming?api_key="
-        case .Search:
+        case .nowPlaying:
+            return "\(baseURL)now_playing?api_key="
+        case .popular:
+            return "\(baseURL)popular?api_key="
+        case .topRated:
+            return "\(baseURL)top_rated?api_key="
+        case .upcoming:
+            return "\(baseURL)upcoming?api_key="
+        case .search:
             return "https://api.themoviedb.org/3/search/movie?api_key="
+        case .actor:
+            return  "https://api.themoviedb.org/3/search/person?api_key="
+        case .recommendation, .similar, .cast:
+            return baseURL
         }
-    }
-}
-
-//MARK: - Extensiones
-
-// Metodos extras para el uso de peliculas con Strings
-extension String {
-    /// Formato del nombre de la pelicula para poder buscarla
-    func formatterMovieName() -> String {
-        self.replacingOccurrences(of: " ", with: "%20", options: NSString.CompareOptions.literal, range: nil) //Dividir palabras para la busqueda
-        
-    }
-}
-
-// Metodos extras para la colocacion de las imagenes
-extension UIImageView{
-    /// Consulta desde una url para colocar la imagen
-    func loadImage(url: URL) -> URLSessionDownloadTask {
-        let session = URLSession.shared
-        let downloadTask = session.downloadTask(with: url){[weak self] url, response, error in
-            guard let self = self else { return }
-            if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data){
-                DispatchQueue.main.async {
-                    self.image = image
-                }
-            }
-        }
-        downloadTask.resume()
-        return downloadTask
     }
 }

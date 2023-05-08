@@ -27,6 +27,7 @@ class ServiceAPI: Service {
                     callback(.failure(ServiceError.noData))
                     return
                 }
+                
                 do {
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data) // decodificacion de los datos
                     callback(.success(decodedData))

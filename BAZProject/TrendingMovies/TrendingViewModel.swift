@@ -7,17 +7,16 @@
 
 import Foundation
 
-
-final class TrendingViewModel: MoviesListProtocol {
-   
-    var movies = Box(value: [ListMoviesProtocol]())
+final class TrendingViewModel: TrendingListProtocol {
+    
+    var movies = Box(value: [InfoMoviesProtocol]())
     private var movieAPI: MovieAPI
     
     init(remote: MovieAPI = MovieAPI()) {
         self.movieAPI = remote
     }
     ///se consulta el servicio para lista de peliculas
-    func getmovies(category: categoriesFilter) {
+    func getmovies(category: CategoriesFilter) {
         movieAPI.getMovies(category: category) { [weak self] moviearray, _ in
             self?.movies.value = moviearray
         }
@@ -34,8 +33,12 @@ final class TrendingViewModel: MoviesListProtocol {
     func getTitle(index: Int) -> String? {
         movies.value[index].title
     }
-    
+    /// Regresa el path para la consulta de la imagen
     func getPathImage(index: Int) -> String? {
         movies.value[index].poster_path
+    }
+    /// Regresa la informacion de una pelucula
+    func getAllInfoMoview(index: Int) -> InfoMoviesProtocol {
+        movies.value[index]
     }
 }

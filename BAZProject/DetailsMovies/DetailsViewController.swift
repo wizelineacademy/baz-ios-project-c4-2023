@@ -88,7 +88,7 @@ final class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-// MARK: - Extensiones
+//MARK: - Extensiones
 
 extension DetailsViewController: UICollectionViewDataSource {
     
@@ -125,6 +125,7 @@ extension DetailsViewController: UICollectionViewDataSource {
 }
 
 // MARK: - Funciones de mapas
+
 extension DetailsViewController {
     
     /// Configiracion del mapa para setear localicacion

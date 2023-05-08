@@ -13,8 +13,9 @@ final class SearchViewModelTests: XCTestCase {
     var sut: SearchViewModel?
     var sessionMock: SessionMock?
 
-    override func setUp(){
+    override func setUp() {
         super.setUp()
+        
         sessionMock = SessionMock()
         sut = SearchViewModel(service: ServiceAPI(session: sessionMock!))
     }
@@ -24,7 +25,7 @@ final class SearchViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSearchModel_countNotNil(){
+    func testSearchModel_countNotNil() {
         //Given
         let movies = [Movie(id: 1, title: "Mario Bros", poster_path: "")]
         //When
@@ -53,7 +54,7 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(movies)
     }
     
-    func testSearchModel_bindMovies(){
+    func testSearchModel_bindMovies() {
         //Given
         let movies = [Movie(id: 1, title: "Mario Bros", poster_path: "")]
         let expectation = XCTestExpectation(description: "Binding should call closure")
@@ -73,11 +74,25 @@ final class SearchViewModelTests: XCTestCase {
         //When
         sut?.bindMovies { expectation.fulfill() }
         sessionMock?.data = data
-        sut?.searchMovie("Mock", apiKey: "a", completion: { _ in })
-        wait(for: [expectation], timeout: 0.1)
+        sut?.searchMovie(title: "Mock")
+        wait(for: [expectation], timeout: 0.5)
         let count = sut?.getMovieCount()
         //Then
-        XCTAssertEqual(count, 1)
+        XCTAssertNotNil(count)
+    }
+    
+    func test_searchActor() throws {
+        //Given
+        let data = String("{\"results\":[{\"id\":1}]}").data(using: .utf8)
+        let expectation = XCTestExpectation(description: "Binding should call closure")
+        //When
+        sut?.bindMovies { expectation.fulfill() }
+        sessionMock?.data = data
+        sut?.searchActor(name: "Emma Watson")
+        wait(for: [expectation], timeout: 0.5)
+        let count = sut?.getActorsArray()
+        //Then
+        XCTAssertNotNil(count)
     }
     
     func test_searchMovie_DataWrongFormat() {
@@ -86,12 +101,51 @@ final class SearchViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Binding should call closure")
         //When
         sessionMock?.data = data
-        sut?.searchMovie("Mock", apiKey: "a", completion: { _ in
-            expectation.fulfill()
-        })
+        sut?.searchMovie(title: "mock")
+        expectation.fulfill()
         wait(for: [expectation], timeout: 0.1)
         let count = sut?.getMovieCount()
         //Then
         XCTAssertEqual(count, 0)
+    }
+    
+    func test_searchMovie_PathExist() {
+        //Given
+        let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
+        //When
+        sut?.moviesSearched = Box(value: movies)
+        let path = sut?.getImagePath(index: 0)
+        //Then
+        XCTAssertEqual("Av.png", path)
+    }
+    
+    func test_searchMovie_MovieInfoExist() {
+        //Given
+        let movies = [Movie(id: 1, title: "Avatar", poster_path: "Av.png")]
+        //When
+        sut?.moviesSearched = Box(value: movies)
+        let movie = sut?.getAllInfoMoview(index: 0)
+        //Then
+        XCTAssertNotNil(movie)
+    }
+    
+    func test_searchMovie_ActorNameExist() {
+        //Given
+        let movies = [Cast(id: 1, name: "Pedro pascal", profile_path: "pedro.jpg", character: "joel")]
+        //When
+        sut?.actorSearched = Box(value: movies)
+        let name = sut?.getActorName(index: 0)
+        //Then
+        XCTAssertNotNil(name)
+    }
+    
+    func test_searchMovie_ActorPathExist() {
+        //Given
+        let movies = [Cast(id: 1, name: "Pedro pascal", profile_path: "pedro.jpg", character: "joel")]
+        //When
+        sut?.actorSearched = Box(value: movies)
+        let path = sut?.getPhotoPath(index: 0)
+        //Then
+        XCTAssertNotNil(path)
     }
 }

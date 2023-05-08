@@ -7,20 +7,26 @@
 
 import UIKit
 
-class SearchView: UIViewController {
+class SearchViewController: UIViewController {
+    
+    // MARK: - OUtlets y variables
     
     var viewModel: SearchViewModel = SearchViewModel()// se crea instancia al ViewModel de MVVM
-     
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            searchBar.showsScopeBar = true
+            searchBar.scopeButtonTitles = ["Pelicula","Actor"]
+            searchBar.sizeToFit()
         }
     }
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         configureView()
     }
+
 /// Configuracion necesaria para la vista
     func configureView() {
         self.title = "Buscar"
@@ -28,46 +34,61 @@ class SearchView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
+        searchBar.selectedScopeButtonIndex = SearchTypes.Movie
+        registerTableViewCells()
         viewModel.bindMovies { [weak self] in // Bind para relacionar Vista con ViewModel
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
         }
-        viewModel.searchMovie("") { [weak self] (error) in
-            DispatchQueue.main.async {
-                guard let error = error else { return }
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self?.present(alert, animated: false)
-            }
-        }
+        viewModel.searchMovie(title: searchBar.text ?? "")
+    }
+    ///Registro de las celas de las peliculas
+    private func registerTableViewCells() {
+        let textFieldCell = UINib(nibName: "SearchTableViewCell", bundle: nil)
+        self.tableView.register(textFieldCell, forCellReuseIdentifier: "cell")
     }
 }
 
-//MARK: - Extensions
-extension SearchView: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Extensions TableView
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getMovieCount()
+        if searchBar.selectedScopeButtonIndex == SearchTypes.Movie {
+            return  viewModel.getMovieCount()
+        } else {
+            return  viewModel.getActorsArray()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell? ?? UITableViewCell()
-        cell.textLabel?.text = viewModel.getTitle(index: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchTableViewCell
+        
+        searchBar.selectedScopeButtonIndex == SearchTypes.Movie ? cell.setInfo(viewModel, indexPath: indexPath) :             cell.setActorInfo(viewModel, indexPath: indexPath)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchBar.selectedScopeButtonIndex == SearchTypes.Movie {
+            let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row))
+            let vc = DetailsViewController(viewModel: viewmodel)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Constant.favoritesCellHeight
     }
 }
 
-extension SearchView: UISearchBarDelegate {
+// MARK: - Extensions Search bar
+
+extension SearchViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
-        viewModel.searchMovie(searchBar.text ?? "") { [weak self] (error) in
-            DispatchQueue.main.async {
-                guard let error = error else { return }
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self?.present(alert, animated: false)
-            }
-        }
+        searchBar.selectedScopeButtonIndex == SearchTypes.Movie ? viewModel.searchMovie(title: searchBar.text ?? "") : viewModel.searchActor(name: searchBar.text ?? "")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
