@@ -20,7 +20,7 @@ class FavouritesLocalData {
     }
     
     func getFavourites() throws -> [MediaItem]? {
-        if let existingData = udManager.getData(forKey: "Recent") {
+        if let existingData = udManager.getData(forKey: "Favourites") {
             return try decoder.decode([MediaItem].self, from: existingData)
         }
         return nil
