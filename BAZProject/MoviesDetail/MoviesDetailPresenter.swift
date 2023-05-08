@@ -8,7 +8,7 @@
 import Foundation
 final class MoviesDetailPresenter {
     
-    // MARK: Properties
+    // MARK: - Properties
     weak var view       : MoviesDetailViewInputProtocol?
     var interactor      : MoviesDetailInteractorInputProtocol?
     var router          : MoviesDetailRouterProtocol?
@@ -25,10 +25,10 @@ final class MoviesDetailPresenter {
     }
     
 }
-// MARK: Extension
+// MARK: - Extension
 extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
     
-    func consultReviews() {
+    func viewDidLoad() {
         view?.setInfoMovie(with: interactor?.moviesInfo)
         interactor?.getInfo(detail: .Reviews)
         interactor?.getInfo(detail: .Recomendations)

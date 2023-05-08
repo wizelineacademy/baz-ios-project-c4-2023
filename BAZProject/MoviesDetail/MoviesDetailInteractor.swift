@@ -29,6 +29,9 @@ final class MoviesDetailInteractor {
 // MARK: Extension
 extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
     
+    // MARK: - Functions getInfo
+    /// this  Generic function calls service
+    /// - Parameter typeDetail: Type of request to make
     func getInfo(detail typeDetail: OptionDetail?) {
         switch typeDetail{
         case .Similars: movieApi.getMovies((OptionMovie.getSimilars(moviesInfo?.id ?? 0).request), callback: handlerResponseSimilarsResult(result:))
@@ -105,6 +108,7 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         self.presenter?.setResponseDetail(with: recomendationData, detail: optionDetail)
     }
     
+    ///This function adds the favorite movie to the UserDefaults
     func addFavoriteMovies() {
         bIsFavorite = true
         guard var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return }
@@ -113,11 +117,13 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         presenter?.showBtnFavorites(with: true)
     }
     
+    ///This function gets favorite movie from UserDefaults
     func getFavoriteMovies() -> Bool {
         guard let favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return false }
         return favoritesMovies.contains(moviesInfo?.id ?? 0)
     }
     
+    ///This function removes the favorite movie from UserDefaults
     func removeFavoriteMovies() {
         guard var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return }
         for (index, value) in favoritesMovies.enumerated(){

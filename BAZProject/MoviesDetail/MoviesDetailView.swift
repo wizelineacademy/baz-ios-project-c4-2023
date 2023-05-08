@@ -9,6 +9,7 @@ import UIKit
 
 final class MoviesDetailView: UIViewController{
     
+    // MARK: Properties
     @IBOutlet weak var btnLikes         : UIButton!
     @IBOutlet weak var lblDescription   : UILabel!
     @IBOutlet weak var lblTitle         : UILabel!
@@ -70,7 +71,7 @@ final class MoviesDetailView: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getInfoFavoritesMovies()
-        presenter?.consultReviews()
+        presenter?.viewDidLoad()
     }
     
     @IBAction func btnLike(_ sender: Any) {
@@ -83,7 +84,7 @@ final class MoviesDetailView: UIViewController{
     }
     
 }
-// MARK: Extension
+// MARK: - Extension
 extension MoviesDetailView: MoviesDetailViewInputProtocol{
     
     func setInfoMovie(with movieData: MovieData?) {
@@ -110,7 +111,7 @@ extension MoviesDetailView: MoviesDetailViewInputProtocol{
     }
     
 }
-
+//MARK: - DataSource UICollectionViewDataSource
 extension MoviesDetailView: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -135,7 +136,7 @@ extension MoviesDetailView: UICollectionViewDataSource{
     }
     
 }
-
+//MARK: - FlowLayout UICollectionViewDelegateFlowLayout
 extension MoviesDetailView: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -143,7 +144,7 @@ extension MoviesDetailView: UICollectionViewDelegateFlowLayout{
     }
     
 }
-
+//MARK: - Collection UICollectionViewDelegate
 extension MoviesDetailView: UICollectionViewDelegate{
     
 }

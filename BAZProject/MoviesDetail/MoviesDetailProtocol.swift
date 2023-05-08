@@ -29,7 +29,7 @@ protocol MoviesDetailViewOutputProtocol {
     var resultRecomendations : [InfoDetailData] { get }
     var resultSimilars       : [InfoDetailData] { get }
     
-    func consultReviews()
+    func viewDidLoad()
     func getInfoFavoritesMovies()
     func addMovieToFavorite()
     
