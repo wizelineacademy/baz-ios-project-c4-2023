@@ -16,6 +16,7 @@ final class TrendingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setView()
         keychain()
     }
@@ -72,7 +73,7 @@ final class TrendingViewController: UITableViewController {
             self?.navigationItem.title = CategoriesFilter.nowPlaying.rawValue
             self?.trendingModel.getmovies(category: .nowPlaying)
         })
-        alert.addAction(UIAlertAction(title: CategoriesFilter.popular.rawValue, style: UIAlertAction.Style.default) {[weak self] _ in
+        alert.addAction(UIAlertAction(title: CategoriesFilter.popular.rawValue, style: UIAlertAction.Style.default) { [weak self] _ in
             self?.navigationItem.title = CategoriesFilter.popular.rawValue
             self?.trendingModel.getmovies(category: .popular)
         })

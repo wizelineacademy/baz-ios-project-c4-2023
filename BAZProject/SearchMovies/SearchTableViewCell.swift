@@ -15,6 +15,7 @@ final class SearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         downloadTask?.cancel()
         downloadTask = nil
         labelText.text = ""

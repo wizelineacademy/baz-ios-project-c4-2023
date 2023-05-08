@@ -16,6 +16,7 @@ final class BoxTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         sutString = Box<String>(value: "")
         sutInt = Box<Int>(value: 0)
         sut = Box<Bool>(value: false)

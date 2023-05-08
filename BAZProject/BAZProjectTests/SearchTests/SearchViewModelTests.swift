@@ -15,6 +15,7 @@ final class SearchViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
         sessionMock = SessionMock()
         sut = SearchViewModel(service: ServiceAPI(session: sessionMock!))
     }
@@ -145,6 +146,6 @@ final class SearchViewModelTests: XCTestCase {
         sut?.actorSearched = Box(value: movies)
         let path = sut?.getPhotoPath(index: 0)
         //Then
-        XCTAssertNotNil(name)
+        XCTAssertNotNil(path)
     }
 }

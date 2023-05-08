@@ -14,7 +14,7 @@ class MovieAPI {
         self.service = service
     }
     ///Función generica que consulta las  de peliculas de acuerdo a la categoria
-    func getMovies(category: CategoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void){
+    func getMovies(category: CategoriesFilter , idMovie: Int = 0,  completion: @escaping ([InfoMoviesProtocol], Error?) -> Void) {
         
         var urlStruct =  ""
         switch category {

@@ -15,6 +15,7 @@ final class DetailsViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         sut = DetailsViewController(viewModel: viewModel)
         sut.viewModel = viewModel
     }

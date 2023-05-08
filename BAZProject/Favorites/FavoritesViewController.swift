@@ -15,6 +15,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setView()
     }
     
@@ -31,7 +32,7 @@ class FavoritesViewController: UIViewController {
     
     ///Funcion que setea la vista
     func setView() {
-        self.title = StringsTitles.favorites.rawValue
+        self.title = Titles.favorites
         tableView.delegate = self
         tableView.dataSource = self
         registerTableViewCells()

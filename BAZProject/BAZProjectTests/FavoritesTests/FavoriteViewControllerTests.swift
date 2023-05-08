@@ -14,6 +14,7 @@ final class FavoriteViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         sut = UIStoryboard(name: "Favorites", bundle: nil).instantiateViewController(withIdentifier: "Main") as? FavoritesViewController
         model = FavoritesViewModelMock()
         sut.viewModel = model

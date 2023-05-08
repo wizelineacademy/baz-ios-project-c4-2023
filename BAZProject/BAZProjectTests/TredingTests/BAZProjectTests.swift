@@ -15,6 +15,7 @@ final class BAZProjectTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         sut = (UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TrendingViewController") as! TrendingViewController)
         model = TrendingViewModel()
         sut?.trendingModel = model

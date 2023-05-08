@@ -14,6 +14,7 @@ final class FavoriteViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
         sut = FavoritesViewModel()
     }
 

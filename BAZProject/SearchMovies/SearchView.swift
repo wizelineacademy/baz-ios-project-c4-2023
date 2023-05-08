@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureView()
     }
 
@@ -33,6 +34,7 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        searchBar.selectedScopeButtonIndex = SearchTypes.Movie
         registerTableViewCells()
         viewModel.bindMovies { [weak self] in // Bind para relacionar Vista con ViewModel
             DispatchQueue.main.async {
@@ -53,7 +55,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.selectedScopeButtonIndex == 0 {
+        if searchBar.selectedScopeButtonIndex == SearchTypes.Movie {
             return  viewModel.getMovieCount()
         } else {
             return  viewModel.getActorsArray()
@@ -63,13 +65,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchTableViewCell
         
-        searchBar.selectedScopeButtonIndex == 0 ? cell.setInfo(viewModel, indexPath: indexPath) :             cell.setActorInfo(viewModel, indexPath: indexPath)
+        searchBar.selectedScopeButtonIndex == SearchTypes.Movie ? cell.setInfo(viewModel, indexPath: indexPath) :             cell.setActorInfo(viewModel, indexPath: indexPath)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchBar.selectedScopeButtonIndex == 0 {
+        if searchBar.selectedScopeButtonIndex == SearchTypes.Movie {
             let viewmodel = DetailsViewModel(movieDetail: viewModel.getAllInfoMoview(index: indexPath.row))
             let vc = DetailsViewController(viewModel: viewmodel)
             navigationController?.pushViewController(vc, animated: true)
@@ -86,7 +88,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // solo buscara cuanso se le de click, no mientras escribe cada caracter
-        searchBar.selectedScopeButtonIndex == 0 ? viewModel.searchMovie(title: searchBar.text ?? "") :             viewModel.searchActor(name: searchBar.text ?? "")
+        searchBar.selectedScopeButtonIndex == SearchTypes.Movie ? viewModel.searchMovie(title: searchBar.text ?? "") : viewModel.searchActor(name: searchBar.text ?? "")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

@@ -31,18 +31,17 @@ enum DefaultsKey: String {
     case favoriteTests = "favoriteTests"
 }
 
-/// Enumerador para Manejo de titulos
-enum StringsTitles: String {
-    case favorites = "Favoritos"
-    case search = "buscar"
-    case treding = "Trending"
-}
-
 /// Enumerador para titulos de la app
 enum Titles {
     static let favorites = "Favoritos"
     static let search = "buscar"
     static let treding = "Trending"
+}
+
+/// Enumerador para el index de la barra de  busqueda
+enum SearchTypes {
+    static let Movie = 0
+    static let actor = 1
 }
 
 /// Enumerador para menejar de los tipos y sus urls

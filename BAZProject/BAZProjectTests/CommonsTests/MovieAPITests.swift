@@ -16,6 +16,7 @@ final class MovieAPITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
         session = SessionMock()
         sut = MovieAPI(service: ServiceAPI(session: session))
     }

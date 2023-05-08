@@ -14,6 +14,7 @@ final class DetailsViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
         movieAPIMock = MovieApiMock(service: ServiceAPI(session: SessionMock()))
         sut = DetailsViewModel(movieDetail: Movie(), remote: movieAPIMock!)
     }

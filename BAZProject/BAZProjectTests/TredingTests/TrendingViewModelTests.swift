@@ -15,6 +15,7 @@ final class TrendingViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
         movieAPIMock = MovieApiMock(service: ServiceAPI(session: SessionMock()))
         sut = TrendingViewModel(remote: movieAPIMock!)
     }

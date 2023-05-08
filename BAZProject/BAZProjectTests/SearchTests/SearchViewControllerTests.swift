@@ -14,6 +14,7 @@ final class SearchViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
         sut = UIStoryboard(name: "SearchView", bundle: nil).instantiateViewController(withIdentifier: "Main") as? SearchViewController
     }
 
@@ -85,7 +86,7 @@ final class SearchViewControllerTests: XCTestCase {
     
     func testSearchView_TypeSearch_IsActor() {
         //Given
-        guard let searchBar = sut?.searchBar else { return }
+        guard (sut?.searchBar) != nil else { return }
         sut?.loadViewIfNeeded()
         //Then
         let index = sut?.searchBar.selectedScopeButtonIndex
