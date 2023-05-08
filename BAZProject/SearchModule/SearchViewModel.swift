@@ -23,11 +23,16 @@ class SearchViewModel {
     }
     
     func loadData() {
-        guard let initialMedia = localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) else { return }
-        var snapshot = MediaSnapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(initialMedia)
-        mediaSnapshot.value = snapshot
+        do {
+            if let initialMedia = try localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) {
+                var snapshot = MediaSnapshot()
+                snapshot.appendSections([0])
+                snapshot.appendItems(initialMedia)
+                mediaSnapshot.value = snapshot
+            }
+        } catch {
+            self.error.value = error
+        }
     }
     
     func bindSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
@@ -101,6 +106,7 @@ class SearchViewModel {
     func getDetailView(for item: MediaItem?) -> UIViewController? {
         guard let mediaItem = item, mediaItem.id != nil, mediaItem.mediaType != nil else { return nil }
         let viewModel = DetailViewModel(item: mediaItem)
+        viewModel.saveRecentlySearched()
         return DetailCollectionViewController(viewModel: viewModel)
     }
     

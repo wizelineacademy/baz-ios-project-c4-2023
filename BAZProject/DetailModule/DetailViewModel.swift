@@ -50,8 +50,8 @@ class DetailViewModel {
         }
     }
     
-    func getExistingFavourites(decoder: JSONDecoder = JSONDecoder()) -> [MediaItem]? {
-        if let existingData = localData.getItem(for: "Favourites") {
+    func getExistingItem(decoder: JSONDecoder = JSONDecoder(), key: String = "Recent") -> [MediaItem]? {
+        if let existingData = localData.getItem(for: key) {
             do {
                 return try decoder.decode([MediaItem].self, from: existingData)
             } catch {
@@ -62,11 +62,11 @@ class DetailViewModel {
     }
     
     func isCurrentFavourite() -> Bool {
-        return getExistingFavourites()?.contains(item) ?? false
+        return getExistingItem(key: "Favourites")?.contains(item) ?? false
     }
     
-    func saveOrDeleteItem() {
-        if let existingElements = getExistingFavourites() {
+    func saveOrDeleteFavourite() {
+        if let existingElements = getExistingItem(key: "Favourites") {
             var elements = existingElements
             if !existingElements.contains(item) {
                 elements.append(item)
@@ -84,6 +84,20 @@ class DetailViewModel {
             localData.save(data: encoded, key: "Favourites")
         }
         favourite.value = isCurrentFavourite()
+    }
+    
+    func saveRecentlySearched() {
+        if let existingElements = getExistingItem(key: "Recent") {
+            var elements = existingElements
+            if !existingElements.contains(item) {
+                elements.append(item)
+                if let data = getDataFromItem(favourites: elements) {
+                    localData.save(data: data, key: "Recent")
+                }
+            }
+        } else if let encoded = getDataFromItem(favourites: [item]) {
+            localData.save(data: encoded, key: "Recent")
+        }
     }
     
     func getDetails() {

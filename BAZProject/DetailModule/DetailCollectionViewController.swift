@@ -55,7 +55,7 @@ class DetailCollectionViewController: UICollectionViewController {
     }
     
     @objc func saveOrRemoveItemToFavourites() {
-        viewModel.saveOrDeleteItem()
+        viewModel.saveOrDeleteFavourite()
     }
     
 }
