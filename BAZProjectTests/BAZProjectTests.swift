@@ -15,13 +15,15 @@ final class BAZProjectTests: XCTestCase {
     var view: HomeViewController!
     var router: HomeRouter!
     var movieApi: MovieAPI!
+    var favManager: FavouriteManager!
     var imageLoader: ImageLoader!
     
     override func setUp() {
         super.setUp()
+        favManager = FavouriteManager()
         movieApi = MovieAPI()
         imageLoader = ImageLoader()
-        interactor = HomeInteractor(movieAPI: movieApi)
+        interactor = HomeInteractor(movieAPI: movieApi, favouriteManager: favManager)
         let storyboard = UIStoryboard(name: "HomeMovies", bundle: nil)
         view = (storyboard.instantiateViewController(withIdentifier: "HomeMovies") as? HomeViewController)
         view.loadViewIfNeeded()
@@ -30,7 +32,9 @@ final class BAZProjectTests: XCTestCase {
         interactor?.presenter = presenter
         view.movies = getMockPopularMovies()
         view.populars = getMockPopularMovies()
-        view.cineMovie = getMockPopularMovies()
+        view.cineMovies = getMockPopularMovies()
+        view.topMovies = getMockPopularMovies()
+        view.upcomingMovies = getMockPopularMovies()
     }
     
     override func tearDown() {
@@ -129,22 +133,26 @@ final class BAZProjectTests: XCTestCase {
     // Test collection view sections
     func testNumberOfSections() {
         // Verify that the table view has one section
-        XCTAssertEqual(view.moviesCollectionView.numberOfSections , 3)
+        XCTAssertEqual(view.moviesCollectionView.numberOfSections , 5)
     }
     // Test number of rows at section in a collection view
     func testNumberOfRowsInSection() {
         // Verify that the table view has three rows in the first section
         XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.movies.count), 0)
         XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.populars.count), 0)
-        XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.cineMovie.count), 0)
-        
+        XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.cineMovies.count), 0)
+        XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.topMovies.count), 0)
+        XCTAssertEqual(view.collectionView(view.moviesCollectionView, numberOfItemsInSection: view.upcomingMovies.count), 0)
         presenter.fetchCategories(url: "trending/movie/day?api_key", section: 0)
         presenter.fetchCategories(url: "movie/popular?api_key=", section: 1)
         presenter.fetchCategories(url: "movie/now_playing?api_key=", section: 2)
+        presenter.fetchCategories(url: "movie/top_rated?api_key=", section: 3)
+        presenter.fetchCategories(url: "movie/upcoming?api_key=", section: 4)
         XCTAssertNotNil(view.showCategories(movies: view.movies, section: 0))
         XCTAssertNotNil(view.showCategories(movies: view.populars, section: 1))
-        XCTAssertNotNil(view.showCategories(movies: view.cineMovie, section: 2))
-        
+        XCTAssertNotNil(view.showCategories(movies: view.cineMovies, section: 2))
+        XCTAssertNotNil(view.showCategories(movies: view.cineMovies, section: 3))
+        XCTAssertNotNil(view.showCategories(movies: view.cineMovies, section: 4))
     }
     // Test number of items in a section and informatión not nil
     func testCellForRow() {
@@ -160,9 +168,16 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertNotNil(cell?.movieImage)
         XCTAssertNotNil(view.moviesCollectionView.numberOfSections)
         XCTAssertNotNil(cell2?.movieImage)
-        XCTAssertNotNil(view.moviesCollectionView.numberOfSections)
         XCTAssertNotNil(cell3?.movieImage)
-        XCTAssertNotNil(view.moviesCollectionView.numberOfSections)
+        let indexPath4 = IndexPath(row: 0, section: 3)
+        let cell4 = view.collectionView(view.moviesCollectionView, cellForItemAt: indexPath4) as? MoviesCollectionViewCell
+        XCTAssertNotNil(cell4?.movieImage)
+        let indexPath5 = IndexPath(row: 0, section: 4)
+        let cell5 = view.collectionView(view.moviesCollectionView, cellForItemAt: indexPath5) as? MoviesCollectionViewCell
+        XCTAssertNotNil(cell5?.movieImage)
+        let indexPath6 = IndexPath(row: 0, section: 0)
+        let cell6 = view.collectionView(view.categoriesMenuCollection, cellForItemAt: indexPath6) as? CategoriesMenuCollectionViewCell
+        XCTAssertNotNil(cell6?.categoriesLabel)
     }
     // Test when section don´t have information to show
     func testNumberOfRowsInSectionWithoutMovies() {
@@ -173,8 +188,10 @@ final class BAZProjectTests: XCTestCase {
     // Test Present category movies
     func testPresentMovieCategories() {
         presenter.presenterCategories(movies: view.movies, section: 0)
-        presenter.presenterCategories(movies: view.movies, section: 1)
-        presenter.presenterCategories(movies: view.movies, section: 2)
+        presenter.presenterCategories(movies: view.populars, section: 1)
+        presenter.presenterCategories(movies: view.cineMovies, section: 2)
+        presenter.presenterCategories(movies: view.topMovies, section: 2)
+        presenter.presenterCategories(movies: view.upcomingMovies, section: 2)
         XCTAssertNotNil(view.moviesCollectionView)
         
     }
@@ -183,6 +200,47 @@ final class BAZProjectTests: XCTestCase {
         let viewToPush = SearchMoviesRouter.createModule()
         XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
+    
+    func testPushVCFavs() {
+        let viewToPush = FavouriteMoviesRouter.createModule()
+        XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
+    }
+    
+    func testPushVCReview() {
+        guard let movieToReview = getMockPopularMovies().first else {
+            XCTAssertNil(getMockPopularMovies().first)
+            return
+        }
+        let viewToPush = ReviewMoviesRouter.createModule(movieReview: movieToReview)
+        XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
+    }
+    
+    func testRegisterUserDefaults() {
+        XCTAssertNotNil(view.upcomingMovies.first)
+        guard let movieFav = view.upcomingMovies.first else {
+            return
+        }
+        XCTAssertNotNil(presenter.storeFav(movieFav: movieFav))
+        XCTAssertNotNil(presenter.storeFav(movieFav: movieFav))
+    }
+    
+    func testSelectAnyItem() {
+        let indexPath = IndexPath(row: 0, section: 1)
+        view.collectionView(view.categoriesMenuCollection, didSelectItemAt: indexPath)
+    }
+    func testSelectAnyItemCategories() {
+        var indexPath = IndexPath(row: 0, section: 0)
+        XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
+        indexPath.section = 1
+        XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
+        indexPath.section = 2
+        XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
+        indexPath.section = 3
+        XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
+        indexPath.section = 4
+        XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
+    }
+    
     // Mock of popular movies
     func getMockPopularMovies() -> [Movie] {
         let popularMockMovies: [Movie] = [Movie(id: 100, title: "Avengers", poster_path: "path/avengers"),

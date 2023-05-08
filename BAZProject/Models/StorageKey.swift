@@ -18,7 +18,5 @@ public struct StorageKey: RawRepresentable {
 }
 
 extension StorageKey {
-    static let movieName = StorageKey(rawValue: "movieName")
-    static let movieId = StorageKey(rawValue: "movieId")
     static let moviesFavourites = StorageKey(rawValue: "moviesFavourites")
 }
