@@ -34,7 +34,5 @@ final class MovieInteractorMock: MovieInteractorInputProtocol, MovieRemoteDataMa
         self.catchedError = (error as? ServiceError)
         calls.append(.handleService)
     }
-    
-    
 }
 

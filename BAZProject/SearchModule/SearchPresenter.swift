@@ -25,6 +25,10 @@ extension SearchPresenter: SearchPresenterProtocol {
         }
     }
     
+    /// Función para entrar al detalle de Movie
+    /// - Parameters:
+    ///   - indexPath
+    ///   - view
     func goToMovieDetail(of indexPath: IndexPath,from view: UIViewController) {
         if let movieID = self.searchResults?[indexPath.row].id {
             self.router?.goToMovieDetail(of: movieID, from: view)

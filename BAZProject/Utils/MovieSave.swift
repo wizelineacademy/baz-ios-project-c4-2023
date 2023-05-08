@@ -11,15 +11,21 @@ public final class MovieFavorites {
     
     private let userDefaults = UserDefaults.standard
     
+    /// Función para agregar a favoritos
+    /// - Parameter movieId: movieId
     func favorite(_ movieId: Int) {
-        
         userDefaults.set(true, forKey: "\(movieId)")
     }
     
+    /// Función para eliminar de favoritos.
+    /// - Parameter movieId: movieId
     func delete(_ movieId: Int) {
         userDefaults.set(false, forKey: "\(movieId)")
     }
     
+    /// Función para verificar si esta añadido en favoritos.
+    /// - Parameter movieId: movieId
+    /// - Returns: True/False
     func isSave(movieId: Int) -> Bool{
         userDefaults.bool(forKey: "\(movieId)")
     }

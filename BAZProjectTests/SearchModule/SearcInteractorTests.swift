@@ -1,16 +1,15 @@
 //
-//  SearchInteractorTests.swift
+//  SearcInteractorTests.swift
 //  BAZProjectTests
 //
-//  Created by Ricardo Omar Martinez Nava on 04/05/23.
+//  Created by Ricardo Omar Martinez Nava on 08/05/23.
 //
 
-import Foundation
 import XCTest
 @testable import BAZProject
 
-final class SearchInteractorTests: XCTest {
-    
+final class SearcInteractorTests: XCTestCase {
+
     var sut: SearchInteractorInputProtocol!
     var remoteData: SearchRemoteDataManagerMock!
     

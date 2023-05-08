@@ -1,12 +1,11 @@
 //
-//  TrendingDataTests.swift
+//  MovieDatTests.swift
 //  BAZProjectTests
 //
-//  Created by Ricardo Omar Martinez Nava on 20/04/23.
+//  Created by Ricardo Omar Martinez Nava on 08/05/23.
 //
 
 import Foundation
-
 import XCTest
 @testable import BAZProject
 

@@ -17,18 +17,23 @@ class MovieDetailInteractor {
 }
 
 extension MovieDetailInteractor: MovieDetailInteractorInputProtocol {
-    
+
+    /// Función para guardar en favoritos.
+    /// - Parameter movieId: movieId
     func saveFavoriteMovie(of movieId: Int?) {
         guard let idMovie = movieId else { return }
         saveData.favorite(idMovie)
     }
     
+    /// Función para eliminar de favoritos.
+    /// - Parameter movieId: movieId
     func deleteToFavoriteMovie(of movieId: Int?) {
         guard let idMovie = movieId else { return}
         saveData.delete(idMovie)
     }
     
-    
+    /// Función para traer vista del detalle de pelicula.
+    /// - Parameter movieId: movieId
     func fetchMovieDetail(of movieId: Int?) {
         if let movieId = movieId {
             self.remoteDatamanager?.fetchMovieDetail(of: movieId)

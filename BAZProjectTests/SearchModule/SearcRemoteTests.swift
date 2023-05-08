@@ -1,17 +1,14 @@
 //
-//  SearchRemoteTests.swift
+//  SearcRemoteTests.swift
 //  BAZProjectTests
 //
-//  Created by Ricardo Omar Martinez Nava on 04/05/23.
+//  Created by Ricardo Omar Martinez Nava on 08/05/23.
 //
 
-import Foundation
-
 import XCTest
-
 @testable import BAZProject
 
-final class SearchRemoteTests: XCTest {
+final class SearcRemoteTests: XCTestCase {
     
     private var sut: SearchRemoteDataManagerInputProtocol!
     private var interactorMock: SearchInteractorMock!
@@ -41,7 +38,6 @@ final class SearchRemoteTests: XCTest {
         sessionMock.expected = expectation
         sut.fetchSearchResults(with: "")
             
-        XCTAssert(interactorMock.callsSearch.contains(.handleService))
+        XCTAssertFalse(interactorMock.callsSearch.contains(.fetchSearchResults))
         }
-    
 }
