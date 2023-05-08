@@ -15,6 +15,7 @@ struct MediaItem: Hashable, Codable {
     var rating: Float?
     var mediaType: MediaType?
     var releaseDate: Date?
+    var category: TrendingMediaSection?
     
 }
 

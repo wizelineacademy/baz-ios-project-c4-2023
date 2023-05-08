@@ -52,19 +52,20 @@ class TrendingMediaViewModel {
     func formatMediaDataObject(trending: [MediaDataObject]?, popular: [MediaDataObject]?, upcoming: [MediaDataObject]?, topRated: [MediaDataObject]?, nowPlaying: [MediaDataObject]?) -> [TrendingMediaSection: [MediaItem]] {
         var dictionary = [TrendingMediaSection: [MediaItem]]()
         if let trending = trending {
-            dictionary[.trending] = trending.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+            dictionary[.trending] = trending.map({
+                var item = MediaItem(dataObject: $0); item.category = .trending; return item }).filter({ $0.mediaType != nil })
         }
         if let popular = popular {
-            dictionary[.popular] = popular.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+            dictionary[.popular] = popular.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; item.category = .popular; return item })
         }
         if let upcoming = upcoming {
-            dictionary[.upcoming] = upcoming.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+            dictionary[.upcoming] = upcoming.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; item.category = .upcoming; return item })
         }
         if let topRated = topRated {
-            dictionary[.topRated] = topRated.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+            dictionary[.topRated] = topRated.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; item.category = .topRated; return item })
         }
         if let nowPlaying = nowPlaying {
-            dictionary[.nowPlaying] = nowPlaying.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; return item })
+            dictionary[.nowPlaying] = nowPlaying.map({ var item = MediaItem(dataObject: $0); item.mediaType = .movie; item.category = .nowPlaying; return item })
         }
         return dictionary
     }

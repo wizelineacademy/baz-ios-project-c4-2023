@@ -53,4 +53,10 @@ class FavouritesViewModel {
             return  nil
         }
     }
+    
+    func getDetailView(for item: MediaItem?) -> UIViewController? {
+        guard let mediaItem = item, mediaItem.id != nil, mediaItem.mediaType != nil else { return nil }
+        let detailViewModel = DetailViewModel(item: mediaItem)
+        return DetailCollectionViewController(viewModel: detailViewModel)
+    }
 }

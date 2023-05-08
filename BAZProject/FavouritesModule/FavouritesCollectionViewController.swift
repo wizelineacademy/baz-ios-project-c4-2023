@@ -73,6 +73,12 @@ extension FavouritesCollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let detail = viewModel.getDetailView(for: dataSource?.itemIdentifier(for: indexPath)) {
+            navigationController?.pushViewController(detail, animated: true)
+        }
+    }
+    
 }
 
 extension FavouritesCollectionViewController: UICollectionViewDelegateFlowLayout {
