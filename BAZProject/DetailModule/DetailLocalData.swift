@@ -27,4 +27,8 @@ class DetailLocalData {
         userDefaultsManager.delete(for: key)
     }
     
+    func getItem(for key: String) -> Data? {
+        userDefaultsManager.getData(forKey: key)
+    }
+    
 }

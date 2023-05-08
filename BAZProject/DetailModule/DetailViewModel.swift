@@ -22,7 +22,7 @@ class DetailViewModel {
         self.item = item
         self.remoteData = remoteData
         self.localData = localData
-        self.favourite.value = localData.findItem(for: "\(item.mediaType ?? .movie)_\(item.id ?? -1)")
+        self.favourite.value = self.isCurrentFavourite()
     }
     
     func bindSnapshot(_ listener: @escaping (DetailSnapshot) -> Void) {
@@ -41,26 +41,49 @@ class DetailViewModel {
         return item.title
     }
     
-    func getDataFromItem(enconder: JSONEncoder = JSONEncoder()) -> Data? {
+    func getDataFromItem(enconder: JSONEncoder = JSONEncoder(), favourites: [MediaItem]) -> Data? {
         do {
-            return try enconder.encode(item)
+            return try enconder.encode(favourites)
         } catch {
             self.error.value = error
             return nil
         }
     }
     
-    func saveOrDeleteItem() {
-        if let id = item.id,
-           let type = item.mediaType {
-            if favourite.value {
-                localData.deleteItem(for: "\(type)_\(id)")
-                favourite.value = localData.findItem(for: "\(type)_\(id)")
-            } else if let data = getDataFromItem() {
-                localData.save(data: data, key: "\(type)_\(id)")
-                favourite.value = localData.findItem(for: "\(type)_\(id)")
+    func getExistingFavourites(decoder: JSONDecoder = JSONDecoder()) -> [MediaItem]? {
+        if let existingData = localData.getItem(for: "Favourites") {
+            do {
+                return try decoder.decode([MediaItem].self, from: existingData)
+            } catch {
+                self.error.value = error
             }
         }
+        return nil
+    }
+    
+    func isCurrentFavourite() -> Bool {
+        return getExistingFavourites()?.contains(item) ?? false
+    }
+    
+    func saveOrDeleteItem() {
+        if let existingElements = getExistingFavourites() {
+            var elements = existingElements
+            if !existingElements.contains(item) {
+                elements.append(item)
+            } else {
+                elements.removeAll(where: { $0 == item})
+            }
+            if elements.count > 0 {
+                if let data = getDataFromItem(favourites: elements) {
+                    localData.save(data: data, key: "Favourites")
+                }
+            } else {
+                localData.deleteItem(for: "Favourites")
+            }
+        } else if let encoded = getDataFromItem(favourites: [item]) {
+            localData.save(data: encoded, key: "Favourites")
+        }
+        favourite.value = isCurrentFavourite()
     }
     
     func getDetails() {

@@ -374,8 +374,9 @@ final class DetailViewModelTests: XCTestCase {
     }
     
     func test_InitialItemShouldBeFavourite() {
-        udManager.data = Data()
-        setViewModel(mediaItem: MediaItem())
+        let mediaItem = MediaItem()
+        udManager.data = try! JSONEncoder().encode([mediaItem])
+        setViewModel(mediaItem: mediaItem)
         let expectation = XCTestExpectation()
         var fav = false
         
@@ -392,10 +393,10 @@ final class DetailViewModelTests: XCTestCase {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
         setViewModel(mediaItem: mediaItem)
         
-        let data = sut.getDataFromItem()!
-        let decoded = try JSONDecoder().decode(MediaItem.self, from: data)
+        let data = sut.getDataFromItem(favourites: [mediaItem])!
+        let decoded = try JSONDecoder().decode([MediaItem].self, from: data)
 
-        XCTAssertEqual(mediaItem, decoded)
+        XCTAssertEqual([mediaItem], decoded)
     }
     
     func test_saveData_RetrievedDataShouldBeEqual() {
@@ -429,7 +430,7 @@ final class DetailViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        let _ = sut.getDataFromItem(enconder: encoderMock)
+        let _ = sut.getDataFromItem(enconder: encoderMock, favourites: [mediaItem])
 
         XCTAssertEqual(theError, expectedError)
     }
@@ -449,18 +450,18 @@ final class DetailViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        let _ = sut.getDataFromItem(enconder: encoderMock)
+        let _ = sut.getDataFromItem(enconder: encoderMock, favourites: [mediaItem])
 
         XCTAssertEqual(theError, expectedError)
     }
     
-    func test_saveOrDeleteItem_RetrievedDataShouldBeFalse() {
+    func test_saveOrDeleteItem_RetrievedDataShouldBeDeletedAndNoLongerFavourite() {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
-        udManager.data = try! JSONEncoder().encode(mediaItem)
+        udManager.data = try! JSONEncoder().encode([mediaItem])
         setViewModel(mediaItem: mediaItem)
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
-        var fav = false
+        var fav = true
         
         sut.bindFavourite { bool in
             fav = bool
