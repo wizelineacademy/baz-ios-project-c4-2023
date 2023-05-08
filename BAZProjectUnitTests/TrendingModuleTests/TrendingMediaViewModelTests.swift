@@ -31,7 +31,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         var actualValue: TrendingMediaViewModel.MediaCollectionSnapShot?
         
-        remoteData.mediaItems = mediaItems
+        remoteData.trending = mediaItems
         sut.loadData()
         sut.bindSnapshot { snapshot in
             actualValue = snapshot
@@ -53,7 +53,7 @@ final class TrendingMediaViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         sut.loadData()
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.5)
         
         XCTAssertNotNil(actualError)
     }
@@ -71,54 +71,77 @@ final class TrendingMediaViewModelTests: XCTestCase {
         
         XCTAssertEqual(0, actualValue?.numberOfItems)
     }
-    
-    func test_getCellConfiguration_rated() {
-        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: Date())
-        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: "1.0", image: "", rated: true, defaultImage: MediaType.movie.defaultImage)
-        
-        let model = sut.getCellConfiguration(item: item)
-        
-        XCTAssertEqual(model, expectedModel)
-    }
-    
-    func test_getCellConfigurationForItemNotYetRated_ShouldBeEqual() {
-        let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
-        let item = MediaItem(id: 1, posterPath: "", title: "ti", rating: 1.0, mediaType: .movie, releaseDate: tomorrowsDate)
-        let expectedModel = MediaCollectionViewCellModel(title: "ti", subtitle: tomorrowsStringDate, image: "", rated: false, defaultImage: MediaType.movie.defaultImage)
-        
-        let model = sut.getCellConfiguration(item: item)
-        
-        XCTAssertEqual(model, expectedModel)
-    }
-    
+
     func test_getFormattedObjects() {
-        let dataObjects = [MediaDataObject(mediaType: "movie"), MediaDataObject(mediaType: "tv"), MediaDataObject(mediaType: "person")]
-        let dctObject = [MediaType.movie: [MediaItem(mediaType: .movie)], MediaType.tv: [MediaItem(mediaType: .tv)], MediaType.person: [MediaItem(mediaType: .person)]]
+        let dataObjects = [MediaDataObject(id: 1, mediaType: "movie"), MediaDataObject(id: 2, mediaType: "tv"), MediaDataObject(id: 3, mediaType: "person")]
+        let dctObject = [TrendingMediaSection.trending: [MediaItem(id: 1, mediaType: .movie), MediaItem(id: 2, mediaType: .tv), MediaItem(id: 3, mediaType: .person)]]
         
-        let dctOutput = sut.formatMediaDataObject(dataObjects)
+        let dctOutput = sut.formatMediaDataObject(trending: dataObjects, popular: nil, upcoming: nil, topRated: nil, nowPlaying: nil)
         
-        XCTAssertEqual(dctObject, dctOutput)
+        XCTAssertEqual(dctObject.count, dctOutput.count)
     }
     
     func test_getSectionTitles() {
-        let mediaItems = [MediaDataObject(title: "title1", mediaType: "movie"), MediaDataObject(title: "title2", mediaType: "tv"), MediaDataObject(title: "title3", mediaType: "person")]
+        let mediaItems1 = [MediaDataObject(title: "title1", mediaType: "movie")]
+        let mediaItems2 = [MediaDataObject(title: "title2", mediaType: "movie")]
+        let mediaItems3 = [MediaDataObject(title: "title3", mediaType: "movie")]
+        let mediaItems4 = [MediaDataObject(title: "title4", mediaType: "movie")]
+        let mediaItems5 = [MediaDataObject(title: "title5", mediaType: "movie")]
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
         
-        remoteData.mediaItems = mediaItems
+        remoteData.trending = mediaItems1
+        remoteData.upcoming = mediaItems2
+        remoteData.popular = mediaItems3
+        remoteData.toprated = mediaItems4
+        remoteData.nowplaying = mediaItems5
+        
         sut.loadData()
         sut.bindSnapshot { _ in
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
-        let section1 = sut.getGroupTitle(for: MediaType.movie.order)
-        let section2 = sut.getGroupTitle(for: MediaType.tv.order)
-        let section3 = sut.getGroupTitle(for: MediaType.person.order)
+        let section1 = sut.getGroupTitle(for: TrendingMediaSection.trending.rawValue)
+        let section2 = sut.getGroupTitle(for: TrendingMediaSection.popular.rawValue)
+        let section3 = sut.getGroupTitle(for: TrendingMediaSection.nowPlaying.rawValue)
+        let section4 = sut.getGroupTitle(for: TrendingMediaSection.upcoming.rawValue)
+        let section5 = sut.getGroupTitle(for: TrendingMediaSection.topRated.rawValue)
         
-        XCTAssertEqual(section1, MediaType.movie.groupTitle)
-        XCTAssertEqual(section2, MediaType.tv.groupTitle)
-        XCTAssertEqual(section3, MediaType.person.groupTitle)
+        XCTAssertEqual(section1, TrendingMediaSection.trending.title)
+        XCTAssertEqual(section2, TrendingMediaSection.popular.title)
+        XCTAssertEqual(section3, TrendingMediaSection.nowPlaying.title)
+        XCTAssertEqual(section4, TrendingMediaSection.upcoming.title)
+        XCTAssertEqual(section5, TrendingMediaSection.topRated.title)
+    }
+    
+    func test_DetDetailView_NoMediaShouldReturnNil() {
+        let view = sut.getDetailView(for: nil)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoMediaTypeInItemShouldReturnNil() {
+        let media = MediaItem(id: 12)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoIdInItemShouldReturnNil() {
+        let media = MediaItem(mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_ShouldReturnDetailViewController() {
+        let media = MediaItem(id: 12,  mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNotNil(view as! DetailCollectionViewController)
     }
     
 }

@@ -24,7 +24,7 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
 
     func test_SetCellWithModel_ShouldSetElements() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: "subtitle", image: nil, rated: true, defaultImage: "poster")
+        let model = MediaCollectionViewCellModel(from: DataStubs.singleMovieMediaData)
         let expectedImage = UIImage(named: "poster")
         
         sut.setCell(with: model)
@@ -35,7 +35,7 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
     
     func test_SetCellWithModel_ShouldSetDecorImageStar() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: "subtitle", image: nil, rated: true, defaultImage: "poster")
+        let model = MediaCollectionViewCellModel(from: DataStubs.singleMovieMediaData)
         let expectedImage = UIImage(systemName: "star.fill")
         
         sut.setCell(with: model)
@@ -44,7 +44,7 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
     
     func test_SetCellWithModel_ShouldSetDecorClock() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: "subtitle", image: nil, rated: false, defaultImage: "poster")
+        let model = MediaCollectionViewCellModel(from: DataStubs.singleMovieNotRatedMediaData)
         let expectedImage = UIImage(systemName: "clock")
         
         sut.setCell(with: model)
@@ -53,7 +53,7 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
     
     func test_SetCellWithModel_ShouldHideSubtitleSection() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: nil, image: nil, rated: false, defaultImage: "poster")
+        let model = MediaCollectionViewCellModel(from: DataStubs.singlePersonMediaData)
         
         sut.setCell(with: model)
         
@@ -62,7 +62,7 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
     
     func test_prepareForReuse_ShouldFlushImage() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: nil, image: nil, rated: false, defaultImage: "poster")
+        let model = MediaCollectionViewCellModel(from: DataStubs.singleMovieMediaData)
         
         sut.setCell(with: model)
         sut.prepareForReuse()
@@ -71,7 +71,8 @@ final class MediaCollectionViewCellTests: XCTestCase {
     }
     
     func test_SetCellWithModel_ShouldBeNilImage() {
-        let model = MediaCollectionViewCellModel(title: "title", subtitle: nil, image: nil, rated: false, defaultImage: nil)
+        var model = MediaCollectionViewCellModel(from: DataStubs.singleMovieMediaData)
+        model.defaultImage = nil
         
         sut.setCell(with: model)
         

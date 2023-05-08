@@ -1,0 +1,174 @@
+{
+    "adult": false,
+    "backdrop_path": null,
+    "created_by": [
+        {
+            "id": 19138,
+            "credit_id": "52532eca19c295794000526e",
+            "name": "Bill Bixby",
+            "gender": 2,
+            "profile_path": "/eKcpqTutiVxQeAPbwupjSV5DXE.jpg"
+        }
+    ],
+    "episode_run_time": [
+        25
+    ],
+    "first_air_date": "1984-07-17",
+    "last_air_date": "1999-01-01",
+    "genres": [
+        {
+            "id": 35,
+            "name": "Comedy"
+        }
+    ],
+    "homepage": "",
+    "id": 18,
+    "in_production": false,
+    "languages": [
+        "en"
+    ],
+    "last_air_date": null,
+    "last_episode_to_air": null,
+    "name": "W*A*L*T*E*R",
+    "next_episode_to_air": null,
+    "networks": [
+        {
+            "id": 16,
+            "logo_path": "/wju8KhOUsR5y4bH9p3Jc50hhaLO.png",
+            "name": "CBS",
+            "origin_country": "US"
+        }
+    ],
+    "number_of_episodes": 0,
+    "number_of_seasons": 0,
+    "origin_country": [
+        "US"
+    ],
+    "original_language": "en",
+    "original_name": "W*A*L*T*E*R",
+    "overview": "wally",
+    "popularity": 3.175,
+    "poster_path": "/fwSw4fl08MVl5w6Q9lVUGIFkZQ2.jpg",
+    "production_companies": [
+        {
+            "id": 1556,
+            "logo_path": "/31h94rG9hzjprXoYNy3L1ErUya2.png",
+            "name": "20th Century Fox Television",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [],
+    "seasons": [
+        {
+            "air_date": "1984-07-17",
+            "episode_count": 1,
+            "id": 2328167,
+            "name": "Specials",
+            "overview": "",
+            "poster_path": "/8drf61LPLW4XaSC8CzVKsqf6Lz9.jpg",
+            "season_number": 0
+        }
+    ],
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Ended",
+    "tagline": "",
+    "type": "Scripted",
+    "vote_average": 5.643,
+    "vote_count": 7,
+    "recommendations": {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/pdRwz41dLvB8P7zOb9QWTWEkpJx.jpg",
+                "id": 11294,
+                "name": "Kitchen Nightmares",
+                "original_language": "en",
+                "original_name": "Kitchen Nightmares",
+                "overview": "Chef Ramsay attempts to do the impossible: turn one ordinary and empty restaurant into the most popular, sought-after venue in town. There's no time for polite small talk as he embarks on his mission to turn around the fortunes of each restaurant in just one week and save them from their living nightmares.",
+                "poster_path": "/10XpD4aEOExWcOg9bxCA28NNsMQ.jpg",
+                "media_type": "tv",
+                "genre_ids": [
+                    10764
+                ],
+                "popularity": 16.772,
+                "first_air_date": "2007-09-19",
+                "vote_average": 7.48,
+                "vote_count": 127,
+                "origin_country": [
+                    "US"
+                ]
+            }
+        ]
+    },
+    "similar": {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/3PKQxHD3PK23IRAL79Ww3zY0gbt.jpg",
+                "genre_ids": [
+                    10759,
+                    80
+                ],
+                "id": 87415,
+                "origin_country": [
+                    "ZA"
+                ],
+                "original_language": "en",
+                "original_name": "Shadow",
+                "overview": "Haunted by a tragic loss, an ex-cop with a rare inability to feel pain strikes out on his own to catch offenders who've eluded Johannesburg police.",
+                "popularity": 3.969,
+                "poster_path": "/pah40fuJA2tZBcY1rhvpSlj0Ys1.jpg",
+                "first_air_date": "2019-03-08",
+                "name": "Shadow",
+                "vote_average": 6.4,
+                "vote_count": 9
+            }
+        ]
+    },
+    "reviews": {
+        "page": 1,
+        "results": [
+            {
+                "author": "Peter89Spencer",
+                "author_details": {
+                    "name": "",
+                    "username": "Peter89Spencer",
+                    "avatar_path": "/https://secure.gravatar.com/avatar/dadb1b759a8516c815cdcc58abcefc85.jpg",
+                    "rating": 7.0
+                },
+                "content": "liked",
+                "created_at": "2020-11-25T11:57:59.643Z",
+                "id": "5fbe46c757530e00423b9f0c",
+                "updated_at": "2021-06-23T15:58:47.976Z",
+                "url": "https://www.themoviedb.org/review/5fbe46c757530e00423b9f0c"
+            }
+        ],
+        "total_pages": 1,
+        "total_results": 1
+    },
+    "credits": {
+        "cast": [
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 89547,
+                "known_for_department": "Acting",
+                "name": "Brian Dobson",
+                "original_name": "Brian Dobson",
+                "popularity": 1.484,
+                "profile_path": "/3klT2K1UGl1wvmHKuDcSPuUFasV.jpg",
+                "character": "Ben Grimm (voice)",
+                "credit_id": "52533d3219c295794007be5e",
+                "order": 0
+            }
+        ]
+    }
+}

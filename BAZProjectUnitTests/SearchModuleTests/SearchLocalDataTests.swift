@@ -10,11 +10,23 @@ import XCTest
 
 final class SearchLocalDataTests: XCTestCase {
 
-    func test_getRecentlySearchedMedia_ShouldGetMockedData() {
-        let sut = SearchLocalData()
+    func test_getRecentlySearchedMedia_ShouldGetMockedData() throws {
+        let mediaItems = [MediaItem(), MediaItem()]
+        let udMock = UserDefaultsMock()
+        udMock.data = try JSONEncoder().encode(mediaItems)
+        let sut = SearchLocalData(udManager: udMock)
         
-        let items = sut.getRecentlySearchedMedia()
+        let items = try sut.getRecentlySearchedMedia()
         
-        XCTAssertNotNil(items)
+        XCTAssertEqual(items?.count, mediaItems.count)
+    }
+    
+    func test_getRecentlySearchedMedia_ShouldGetNil() throws {
+        let udMock = UserDefaultsMock()
+        let sut = SearchLocalData(udManager: udMock)
+        
+        let items = try sut.getRecentlySearchedMedia()
+        
+        XCTAssertNil(items)
     }
 }

@@ -1,0 +1,44 @@
+{
+    "adult": false,
+    "also_known_as": [],
+    "biography": "biography",
+    "birthday": "1959-01-01",
+    "deathday": null,
+    "gender": 2,
+    "homepage": null,
+    "id": 132,
+    "imdb_id": "nm0531924",
+    "known_for_department": "Acting",
+    "name": "Scott MacDonald",
+    "place_of_birth": "Libby, Montana, USA",
+    "popularity": 5.076,
+    "profile_path": "/pBXNUejSwDHfWCD9GgmvRbIPBdb.jpg",
+    "combined_credits": {
+        "cast": [
+            {
+                "adult": false,
+                "backdrop_path": "/65fXLi8dFQm5FkGIbGt0ZlBLQNi.jpg",
+                "genre_ids": [
+                    14,
+                    27,
+                    35
+                ],
+                "id": 27318,
+                "original_language": "en",
+                "original_title": "Jack Frost",
+                "overview": "overview",
+                "popularity": 7.616,
+                "poster_path": "/sXOATwGluNbb9ezfG6DvXCiXvJp.jpg",
+                "release_date": "1997-11-18",
+                "title": "Jack Frost",
+                "video": false,
+                "vote_average": 5.14,
+                "vote_count": 193,
+                "character": "Jack Frost",
+                "credit_id": "52fe4541c3a368484e04fb2f",
+                "order": 0,
+                "media_type": "movie"
+            }
+        ]
+    }
+}

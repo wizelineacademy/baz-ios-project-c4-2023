@@ -5,9 +5,7 @@
 //  Created by gescarcega on 30/03/23.
 //
 
-import Foundation
-
-import Foundation
+import XCTest
 @testable import BAZProject
 
 class RequestSessionMock: RequestSessionProtocol {

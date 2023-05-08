@@ -23,11 +23,16 @@ class SearchViewModel {
     }
     
     func loadData() {
-        guard let initialMedia = localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) else { return }
-        var snapshot = MediaSnapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(initialMedia)
-        mediaSnapshot.value = snapshot
+        do {
+            if let initialMedia = try localData.getRecentlySearchedMedia()?.filter({ $0.mediaType != nil }) {
+                var snapshot = MediaSnapshot()
+                snapshot.appendSections([0])
+                snapshot.appendItems(initialMedia)
+                mediaSnapshot.value = snapshot
+            }
+        } catch {
+            self.error.value = error
+        }
     }
     
     func bindSnapshot(_ bind: @escaping (MediaSnapshot) -> Void) {
@@ -46,7 +51,8 @@ class SearchViewModel {
             var footnote: String?
             var rated = false
             if let releaseDate = item.releaseDate, releaseDate > Date() {
-                footnote = DateFormatter.common.string(from: releaseDate)
+                footnote =
+                DateFormatter.getString(from: releaseDate)
             } else if let average = item.rating, average != 0 {
                 footnote = String(round(average * 10) / 10)
                 rated = true
@@ -59,23 +65,55 @@ class SearchViewModel {
         return section == 0 ? "Recent" : "Results"
     }
     
-    func searchMedia(keyword: String) {
+    func searchMedia(keyword: String, scope: Int = -1) {
+        let mediaType = MediaType.allCases.first(where: { $0.order == scope })
         Task {
             do {
-                guard let mediaObjects = try await remoteData.searchMedia(keyword) else { return }
-                let mediaItems = formatMediaDataObject(mediaObjects)
-                var snapshot = MediaSnapshot()
-                snapshot.appendSections([0])
-                snapshot.appendItems(mediaItems)
-                mediaSnapshot.value = snapshot
+                if let mediaObjects = try await getMedia(mediaType: mediaType, keyword: keyword) {
+                    let mediaItems = formatMediaDataObject(mediaObjects, for: mediaType)
+                    var snapshot = MediaSnapshot()
+                    snapshot.appendSections([0])
+                    snapshot.appendItems(mediaItems)
+                    mediaSnapshot.value = snapshot
+                }
             } catch {
                 self.error.value = error
             }
         }
     }
     
-    func formatMediaDataObject(_ dataObject: [MediaDataObject]) -> [MediaItem] {
-        return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+    func getMedia(mediaType: MediaType?, keyword: String) async throws -> [MediaDataObject]? {
+        switch mediaType {
+        case .none: return try await remoteData.searchMedia(keyword)
+        case .movie: return try await remoteData.searchMovies(keyword)
+        case .tv: return try await remoteData.searchSeries(keyword)
+        case .person: return try await remoteData.searchPeople(keyword)
+        }
+    }
+    
+    func formatMediaDataObject(_ dataObject: [MediaDataObject], for mediaType: MediaType?) -> [MediaItem] {
+        if let mediaTypeToAppend = mediaType {
+            return dataObject.map({
+                var item = MediaItem(dataObject: $0)
+                item.mediaType = mediaTypeToAppend
+                return item
+            }).filter({ $0.mediaType != nil })
+        } else {
+            return dataObject.map({ MediaItem(dataObject: $0) }).filter({ $0.mediaType != nil })
+        }
+    }
+    
+    func getDetailView(for item: MediaItem?) -> UIViewController? {
+        guard let mediaItem = item, mediaItem.id != nil, mediaItem.mediaType != nil else { return nil }
+        let viewModel = DetailViewModel(item: mediaItem)
+        viewModel.saveRecentlySearched()
+        return DetailCollectionViewController(viewModel: viewModel)
+    }
+    
+    func getSearchScope() -> [String] {
+        var titles = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        titles.append("All")
+        return titles
     }
     
 }

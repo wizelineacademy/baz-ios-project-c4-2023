@@ -19,6 +19,11 @@ class SearchTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search moves, tv series, people..."
+        if #available(iOS 16.0, *) {
+            searchController.scopeBarActivation = .onSearchActivation
+        } else {
+            searchController.automaticallyShowsScopeBar = true
+        }
         return searchController
     }()
 
@@ -48,7 +53,8 @@ class SearchTableViewController: UITableViewController {
     }
     
     private func setSearchController() {
-        navigationItem.searchController = searchController
+        navigationItem.searchController =  searchController
+        searchController.searchBar.scopeButtonTitles = viewModel.getSearchScope()
     }
     
     private func loadData() {
@@ -67,6 +73,7 @@ class SearchTableViewController: UITableViewController {
         dataSource = SearchViewModel.MediaTableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, itemIdentifier) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaTableViewCell", for: indexPath) as? MediaTableViewCell, let model = self?.viewModel.getCellModel(for: itemIdentifier) else { return UITableViewCell() }
             cell.setCell(with: model)
+            cell.selectionStyle = .none
             return cell
         }
         
@@ -93,7 +100,7 @@ extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegat
     func updateSearchResults(for searchController: UISearchController) {
         dispatchService.asyncAfter(deadline: .now() + 0.8) {
             if let searchText = searchController.searchBar.text, searchText != "" {
-                self.viewModel.searchMedia(keyword: searchText)
+                self.viewModel.searchMedia(keyword: searchText, scope: searchController.searchBar.selectedScopeButtonIndex)
             }
         }
     }
@@ -101,7 +108,6 @@ extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegat
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadData()
     }
-    
 }
 
 extension SearchTableViewController {
@@ -117,6 +123,11 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailView = viewModel.getDetailView(for: dataSource?.itemIdentifier(for: indexPath)) else { return }
+        navigationController?.pushViewController(detailView, animated: true)
     }
     
 }

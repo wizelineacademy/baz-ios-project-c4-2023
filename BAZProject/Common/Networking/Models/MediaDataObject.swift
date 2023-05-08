@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaDataObject: Decodable, Equatable {
+struct MediaDataObject: Decodable, Equatable, Hashable {
     
     var id: Int?
     var title: String?
@@ -17,5 +17,6 @@ struct MediaDataObject: Decodable, Equatable {
     var name: String?
     var releaseDate: String?
     var profilePath: String?
+    var firstAirDate: String?
     
 }

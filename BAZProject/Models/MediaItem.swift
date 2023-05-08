@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaItem: Hashable {
+struct MediaItem: Hashable, Codable {
     
     var id: Int?
     var posterPath: String?
@@ -15,20 +15,19 @@ struct MediaItem: Hashable {
     var rating: Float?
     var mediaType: MediaType?
     var releaseDate: Date?
+    var category: TrendingMediaSection?
     
 }
 
 extension MediaItem {
     
-    init(dataObject: MediaDataObject) {
-        self.mediaType = MediaType(rawValue: dataObject.mediaType ?? "")
+    init(dataObject: MediaDataObject, mediaType: MediaType? = nil) {
+        self.mediaType = MediaType(rawValue: dataObject.mediaType ?? "") ?? mediaType
         self.rating = dataObject.voteAverage
         self.id = dataObject.id
         self.title = dataObject.title ?? dataObject.name
         self.posterPath = dataObject.posterPath ?? dataObject.profilePath
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.releaseDate = dateFormatter.date(from: dataObject.releaseDate ?? "")
+        self.releaseDate = DateFormatter.getDate(from: dataObject.releaseDate ?? dataObject.firstAirDate)
     }
     
 }

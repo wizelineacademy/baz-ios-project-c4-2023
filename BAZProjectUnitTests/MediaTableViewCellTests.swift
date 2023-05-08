@@ -76,7 +76,7 @@ final class MediaTableViewCellTests: XCTestCase {
         
         sut.setCell(with: model)
         
-        XCTAssert(sut.subtitleLabel.superview?.isHidden ?? false)
+        XCTAssert(sut.subtitleLabel.superview!.isHidden)
     }
     
     func test_prepareForReuse_ShouldFlushImage() {

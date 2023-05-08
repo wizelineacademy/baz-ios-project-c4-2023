@@ -8,10 +8,14 @@ import Foundation
 
 class TrendingMediaRemoteData {
     
-    private let requestHandler = RequestHandler(withSession: URLSession.shared)
+    private var requestHandler: RequestHandlerProtocol
+    
+    init(requestHandler: RequestHandlerProtocol = RequestHandler(withSession: URLSession.shared)) {
+        self.requestHandler = requestHandler
+    }
 
-    func getMediaItems() async throws -> [MediaDataObject]? {
-        let data = try await requestHandler.get(TrendingEndpoint())
+    func getMediaItems(section: TrendingMediaSection) async throws -> [MediaDataObject]? {
+        let data = try await requestHandler.get(TrendingEndpoint(section: section))
         return try GenericResponseDataObject(data: data)?.results
     }
     

@@ -1,0 +1,143 @@
+{
+    "adult": false,
+    "backdrop_path": "/dwN0kPGrLbFRxyL3F3J3t4ShQx.jpg",
+    "belongs_to_collection": null,
+    "budget": 90000000,
+    "genres": [
+        {
+            "id": 12,
+            "name": "Adventure"
+        }
+    ],
+    "homepage": "",
+    "id": 18,
+    "imdb_id": "tt0119116",
+    "original_language": "en",
+    "original_title": "The Fifth Element",
+    "overview": "fifthElement",
+    "popularity": 46.006,
+    "poster_path": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+    "production_companies": [
+        {
+            "id": 9,
+            "logo_path": "/nda3dTUYdDrJ6rZqBpYvY865aDv.png",
+            "name": "Gaumont",
+            "origin_country": "FR"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "FR",
+            "name": "France"
+        }
+    ],
+    "release_date": "1997-05-02",
+    "revenue": 263920180,
+    "runtime": 126,
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "There is no future without it.",
+    "title": "The Fifth Element",
+    "video": false,
+    "vote_average": 7.524,
+    "vote_count": 9650,
+    "recommendations": {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/wM1aNIXSqB8GSeQY38LOUHYMYIw.jpg",
+                "id": 607,
+                "title": "Men in Black",
+                "original_language": "en",
+                "original_title": "MenIBlack",
+                "overview": "MenIBlack",
+                "poster_path": "/uLOmOF5IzWoyrgIF5MfUnh5pa1X.jpg",
+                "media_type": "movie",
+                "genre_ids": [
+                    28,
+                    12,
+                    35,
+                    878
+                ],
+                "popularity": 38.99,
+                "release_date": "1997-07-02",
+                "video": false,
+                "vote_average": 7.18,
+                "vote_count": 12454
+            }
+        ],
+        "total_pages": 1,
+        "total_results": 4
+    },
+    "similar": {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/jqMzqcuAj1Fmtw1F4CikWaTuXFb.jpg",
+                "genre_ids": [
+                    14,
+                    28,
+                    12,
+                    10751
+                ],
+                "id": 2486,
+                "original_language": "en",
+                "original_title": "Eragon",
+                "overview": "In his homeland of Alagaesia, a farm boy happens upon a dragon's egg -- a discovery that leads him on a predestined journey where he realized he's the one person who can defend his home against an evil king.",
+                "popularity": 17.065,
+                "poster_path": "/k8f8WZjTzZ6TJYrKpyayCB4zKlw.jpg",
+                "release_date": "2006-12-14",
+                "title": "Eragon",
+                "video": false,
+                "vote_average": 5.066,
+                "vote_count": 2968
+            }
+        ],
+        "total_pages": 260,
+        "total_results": 5185
+    },
+    "credits": {
+        "cast": [
+            {
+                "adult": false,
+                "gender": 2,
+                "id": 62,
+                "known_for_department": "Acting",
+                "name": "Bruce Willis",
+                "original_name": "Bruce Willis",
+                "popularity": 24.512,
+                "profile_path": "/caX3KtMU42EP3VLRFFBwqIIrch5.jpg",
+                "cast_id": 5,
+                "character": "Korben Dallas",
+                "credit_id": "52fe420fc3a36847f8000b53",
+                "order": 0
+            }
+        ]
+    },
+    "reviews": {
+        "page": 1,
+        "results": [
+            {
+                "author": "GeekMasher",
+                "author_details": {
+                    "name": "",
+                    "username": "GeekMasher",
+                    "avatar_path": "/https://secure.gravatar.com/avatar/46a1a92c7411a32e58148c83a9f596d7.jpg",
+                    "rating": 9.5
+                },
+                "content": "best movies",
+                "id": "51429e9c19c295563404fc6e",
+                "created_at": "2021-06-23T15:57:20.936Z",
+                "url": "https://www.themoviedb.org/review/51429e9c19c295563404fc6e"
+            }
+        ]
+    }
+}

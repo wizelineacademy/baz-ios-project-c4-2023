@@ -12,7 +12,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         let trendingTab = getTrendingTab()
         let searchTab = getSearchTab()
-        setViewControllers([trendingTab, searchTab], animated: false)
+        let favouritesTab = getFavouritesTab()
+        setViewControllers([trendingTab, searchTab, favouritesTab], animated: false)
     }
     
     private func getTrendingTab() -> UIViewController {
@@ -23,6 +24,11 @@ class MainTabBarController: UITabBarController {
     private func getSearchTab() -> UIViewController {
         let viewModel = SearchViewModel(remoteData: SearchRemoteData(), localData: SearchLocalData())
         return UINavigationController(rootViewController: SearchTableViewController(viewModel: viewModel))
+    }
+    
+    private func getFavouritesTab() -> UIViewController {
+        let viewModel = FavouritesViewModel(localData: FavouritesLocalData())
+        return UINavigationController(rootViewController: FavouritesCollectionViewController(viewModel: viewModel))
     }
     
 }

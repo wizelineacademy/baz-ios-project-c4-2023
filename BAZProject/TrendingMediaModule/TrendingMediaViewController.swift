@@ -97,9 +97,8 @@ extension TrendingMediaViewController {
     }
     
     private func configureDataSource() {
-        let cellRegistration = TrendingMediaViewModel.MediaCollectionCellRegistration(cellNib: UINib(nibName: "MediaCollectionViewCell", bundle: nil)) { [weak self] (cell, indexPath, item) in
-            guard let cellModel = self?.viewModel.getCellConfiguration(item: item) else { return }
-            cell.setCell(with: cellModel)
+        let cellRegistration = TrendingMediaViewModel.MediaCollectionCellRegistration(cellNib: UINib(nibName: "MediaCollectionViewCell", bundle: nil)) { (cell, indexPath, item) in
+            cell.setCell(with: MediaCollectionViewCellModel(from: item))
         }
         dataSource = TrendingMediaViewModel.MediaCollectionDataSource(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -111,6 +110,11 @@ extension TrendingMediaViewController {
         dataSource?.supplementaryViewProvider = { [weak self] (view, kind, index) in
             return self?.collectionView.dequeueConfiguredReusableSupplementary( using: supplementaryRegistration, for: index)
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let detailView = viewModel.getDetailView(for: dataSource?.itemIdentifier(for: indexPath)) else { return }
+        navigationController?.pushViewController(detailView, animated: true)
     }
     
 }

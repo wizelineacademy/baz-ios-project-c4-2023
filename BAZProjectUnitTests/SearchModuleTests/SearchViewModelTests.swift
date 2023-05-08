@@ -105,7 +105,7 @@ final class SearchViewModelTests: XCTestCase {
     
     func test_getCellModel_FootnoteShouldBeDateWhenDateAfterToday() {
         let tomorrowsDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-        let tomorrowsStringDate = DateFormatter.common.string(from: tomorrowsDate)
+        let tomorrowsStringDate = DateFormatter.getString(from: tomorrowsDate)
         let person = MediaItem(id: 1, posterPath: "path", title: "title", rating: 1.2, mediaType: .tv, releaseDate: tomorrowsDate)
         let expectedModel = MediaTableViewCellModel(title: "title", subtitle: MediaType.tv.itemTitle, image: "path", defaultImage: MediaType.tv.defaultImage, footNote: tomorrowsStringDate, rated: false)
         
@@ -201,7 +201,45 @@ final class SearchViewModelTests: XCTestCase {
         
         XCTAssertNotNil(actualValue)
     }
-
+    
+    func test_DetDetailView_NoMediaShouldReturnNil() {
+        let view = sut.getDetailView(for: nil)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoMediaTypeInItemShouldReturnNil() {
+        let media = MediaItem(id: 12)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_NoIdInItemShouldReturnNil() {
+        let media = MediaItem(mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNil(view)
+    }
+    
+    func test_DetDetailView_ShouldReturnDetailViewController() {
+        let media = MediaItem(id: 12,  mediaType: .movie)
+        
+        let view = sut.getDetailView(for: media)
+        
+        XCTAssertNotNil(view as! DetailCollectionViewController)
+    }
+    
+    func test_getSearchScope() {
+        var items = MediaType.allCases.sorted(by: { $0.order < $1.order}).map({ $0.groupTitle })
+        items.append("All")
+        let scope = sut.getSearchScope()
+        
+        XCTAssertEqual(items, scope)
+    }
+    
 }
 
 
