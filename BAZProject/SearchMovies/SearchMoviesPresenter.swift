@@ -38,7 +38,7 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol {
 }
 
 extension SearchMoviesPresenter: SearchMoviesInteractorOutputProtocol {
-    func presenterSearchMovies(movies: [MovieProtocol]) {
+    func presenterSearchMovies(movies: [Movie]) {
         // Presenter return movie Information from the fecth
         view?.showSearchMovies(movies: movies)
     }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct SectionsMovies {
-    var sections: [MovieProtocol]
+    var sections: [Movie]
 }

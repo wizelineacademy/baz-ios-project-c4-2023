@@ -10,20 +10,25 @@ import Foundation
 final class FavouriteMoviesInteractor {
     var presenter: FavouriteMoviesInteractorOutputProtocol?
     let movieApi: MovieAPIProtocol
-    var movie: MovieProtocol? = nil
-    init(movieAPI: MovieAPIProtocol) {
-            self.movieApi = movieAPI
+    var movies: [Movie]? = nil
+    var favouriteManager: FavouritesManagerProtocol
+    init(movieAPI: MovieAPIProtocol, favouriteManager: FavouritesManagerProtocol) {
+        self.movieApi = movieAPI
+        self.favouriteManager = favouriteManager
     }
 }
 
-extension FavouriteMoviesInteractor: FavouriteMoviesInteractorInputProtocol {
+extension FavouriteMoviesInteractor: FavouriteMoviesInteractorInputProtocol {    
+    func deleteFavouritesMovies() {
+        favouriteManager.deleteAllFavorites()
+        favouriteMovies()
+    }
+    
     /// Fecth for the search movie with a url and a key if this is required
     /// - parameters:
     ///    - url: a String url fetch
     ///    - key: a String to be searched
-    func FavouriteMovies(idMovie: String) {
-        
-        
-        presenter?.presenterFavouriteMovies(movieFavourite: movie!)
+    func favouriteMovies() {
+        presenter?.presenterFavouriteMovies(moviesFavourite: favouriteManager.getFavouriteMovies())
     } 
 }

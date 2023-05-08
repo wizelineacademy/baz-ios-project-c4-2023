@@ -13,7 +13,7 @@ final class ReviewMoviesRouter {
     weak var view: UIViewController?
     
     // Create a Search module VIPER
-    static func createModule() -> UIViewController {
+    static func createModule(movieReview: Movie) -> UIViewController {
         let storyboard = UIStoryboard(name: "ReviewMovies", bundle: nil)
         guard let view = storyboard.instantiateViewController(withIdentifier: "ReviewStory") as? ReviewMoviesViewController else {
             return UIViewController()
@@ -22,6 +22,7 @@ final class ReviewMoviesRouter {
         let interactor = ReviewMoviesInteractor(movieAPI: movieApi)
         let router = ReviewMoviesRouter()
         let presenter = ReviewMoviesPresenter(view: view, interactor: interactor, router: router)
+        view.movie = movieReview
         view.presenter = presenter
         interactor.presenter = presenter
         router.view = view

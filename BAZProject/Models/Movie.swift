@@ -7,7 +7,7 @@
 import Foundation
 
 // Movie implements the protocol for use properties and add some more optionals
-struct Movie: Decodable, MovieProtocol {
+struct Movie: Encodable, Decodable, MovieProtocol {
 
     var id: Int?
     var title: String?

@@ -12,7 +12,7 @@ import UIKit
 protocol SearchMoviesViewInputProtocol: AnyObject {
     var presenter: SearchMoviesViewOutputProtocol? { get }
     // Movies that return the ftch to be showed
-    func showSearchMovies(movies: [MovieProtocol])
+    func showSearchMovies(movies: [Movie])
 }
 
 // MARK: - Presenter
@@ -33,8 +33,8 @@ protocol SearchMoviesViewOutputProtocol: AnyObject {
 protocol SearchMoviesInteractorOutputProtocol {
     /// interactor returns the movies obtained from the fecth
     /// - Parameters:
-    ///    - movies: receive a [MovieProtocol]
-    func presenterSearchMovies(movies: [MovieProtocol])
+    ///    - movies: receive a [Movie]
+    func presenterSearchMovies(movies: [Movie])
 }
 
 // MARK: - Router

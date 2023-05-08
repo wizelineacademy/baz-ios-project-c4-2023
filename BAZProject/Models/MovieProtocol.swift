@@ -14,7 +14,4 @@ protocol MovieProtocol: Decodable {
     var poster_path: String? { get }
 }
 
-struct MoviesGeneral {
-    var section: Int
-    var movies: [MovieProtocol]
-}
+

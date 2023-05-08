@@ -11,12 +11,13 @@ final class HomeViewController: UIViewController {
     
     var presenter: HomeViewOutputProtocol?
     var sectionsMovies: SectionsMovies?
-    var movies:  [MovieProtocol] = []
-    var populars: [MovieProtocol] = []
-    var cineMovies: [MovieProtocol] = []
-    var topMovies: [MovieProtocol] = []
-    var upcomingMovies: [MovieProtocol] = []
-    var allMovies: [MoviesGeneral] = []
+    var movies:  [Movie] = []
+    var populars: [Movie] = []
+    var cineMovies: [Movie] = []
+    var topMovies: [Movie] = []
+    var upcomingMovies: [Movie] = []
+    var allMovies: [Movie] = []
+    var movieSelected : Movie? = nil
     let categorias = ["Todas", "Tendencias", "Populares", "Solo en cines", "Top", "Proximamente"]
     private let imageLoader: ImageLoader = ImageLoader()
     
@@ -75,14 +76,18 @@ final class HomeViewController: UIViewController {
         presenter?.pushSearchViewController(view: seacrhView)
     }
     
+    @IBAction func goFavoritesView(_ sender: UIButton) {
+        let favoritesView = FavouriteMoviesRouter.createModule()
+        self.presenter?.pushSearchViewController(view: favoritesView)
+    }
 }
 
 extension HomeViewController: HomeViewInputProtocol {
     /// Movies and section that return the fecth
     /// - Parameters:
-    ///   - movies: a [MovieProtocol]
+    ///   - movies: a [Movie]
     ///   - section: the section where the information will be displayed
-    func showCategories(movies: [MovieProtocol], section: Int) {
+    func showCategories(movies: [Movie], section: Int) {
         
         switch section {
         case 0:
@@ -112,13 +117,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == moviesCollectionView {
-            guard let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCollectionCell",
-                                                                           for: indexPath) as? MoviesCollectionViewCell else {
+            guard let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCollectionCell", for: indexPath) as? MoviesCollectionViewCell else {
                 return UICollectionViewCell()
             }
             switch indexPath.section {
             case 0:
-                
+                cell.subscribeButtonAction = {
+                    self.presenter?.storeFav(movieFav: self.movies[indexPath.row])
+                }
+                cell.movieData = self.movies[indexPath.row]
                 cell.titleLabel = self.movies[indexPath.row].title ?? ""
                 guard let url = imageLoader.getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
                     return cell
@@ -128,6 +135,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             case 1:
+                cell.subscribeButtonAction = {
+                    self.presenter?.storeFav(movieFav: self.populars[indexPath.row])
+                }
+                cell.movieData = self.populars[indexPath.row]
                 cell.movieTitle.text = self.populars[indexPath.row].title
                 guard let url = imageLoader.getURLImage(poster_path: self.populars[indexPath.row].poster_path ?? "") else {
                     return cell
@@ -137,6 +148,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             case 2:
+                cell.subscribeButtonAction = {
+                    self.presenter?.storeFav(movieFav: self.cineMovies[indexPath.row])
+                }
+                cell.movieData = self.cineMovies[indexPath.row]
                 cell.movieTitle.text = self.cineMovies[indexPath.row].title
                 guard let url = imageLoader.getURLImage(poster_path: self.cineMovies[indexPath.row].poster_path ?? "") else {
                     return cell
@@ -146,6 +161,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             case 3:
+                cell.subscribeButtonAction = {
+                    self.presenter?.storeFav(movieFav: self.topMovies[indexPath.row])
+                }
+                cell.movieData = self.topMovies[indexPath.row]
                 cell.movieTitle.text = self.topMovies[indexPath.row].title
                 guard let url = imageLoader.getURLImage(poster_path: self.topMovies[indexPath.row].poster_path ?? "") else {
                     return cell
@@ -155,6 +174,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             case 4:
+                cell.subscribeButtonAction = {
+                    self.presenter?.storeFav(movieFav: self.upcomingMovies[indexPath.row])
+                }
+                cell.movieData = self.upcomingMovies[indexPath.row]
                 cell.movieTitle.text = self.upcomingMovies[indexPath.row].title
                 guard let url = imageLoader.getURLImage(poster_path: self.upcomingMovies[indexPath.row].poster_path ?? "") else {
                     return cell
@@ -249,6 +272,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return UICollectionViewCell()
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoriesMenuCollection {
             //            debugPrint("Elemento seleccionado: ", indexPath.row)
@@ -264,6 +288,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             //                }
             //            }
             moviesCollectionView.presentationSectionIndex(forDataSourceSectionIndex: indexPath.section)
+        } else if collectionView == moviesCollectionView {
+            switch indexPath.section {
+            case 0:
+                movieSelected = self.movies[indexPath.row]
+            case 1:
+                movieSelected = self.populars[indexPath.row]
+            case 2:
+                movieSelected = self.cineMovies[indexPath.row]
+            case 3:
+                movieSelected = self.topMovies[indexPath.row]
+            case 4:
+                movieSelected = self.upcomingMovies[indexPath.row]
+            default:
+                debugPrint("Ningún elemento seleccionado")
+            }
+            guard let movieToReview = movieSelected else {
+                debugPrint("No pudimos obtener la pelicula seleccionada")
+                return
+            }
+            let reviewView = ReviewMoviesRouter.createModule(movieReview: movieToReview)
+            self.presenter?.pushSearchViewController(view: reviewView)
         }
     }
 }

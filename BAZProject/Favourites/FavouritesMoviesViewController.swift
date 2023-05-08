@@ -10,23 +10,24 @@ import UIKit
 final class FavouriteMoviesViewController: UIViewController {
     
     var presenter: FavouriteMoviesViewOutputProtocol?
-    var movie: MovieProtocol? = nil
+    var movies: [Movie] = []
     private let imageLoader: ImageLoader = ImageLoader()
+    @IBOutlet weak var favoritesTableView: UITableView!
     
-    @IBOutlet weak var searchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Favoritos"
         registerTable()
-        presenter?.FavouriteMovies(idMovie: "603")
+        presenter?.favouriteMovies()
     }
     // FavouriteMoviesViewController configuration to be used
     func registerTable() {
-        searchTableView.delegate = self
-        searchTableView.dataSource = self
-        searchTableView.register(UINib(nibName: "MoviesTableViewCell",
+        favoritesTableView.delegate = self
+        favoritesTableView.dataSource = self
+        favoritesTableView.register(UINib(nibName: "MoviesTableViewCell",
                                        bundle: Bundle(for: FavouriteMoviesViewController.self)),
                                  forCellReuseIdentifier: "MoviesCell")
-        searchTableView.register(UINib(nibName: "MoviesErrorTableViewCell",
+        favoritesTableView.register(UINib(nibName: "MoviesErrorTableViewCell",
                                        bundle: Bundle(for: FavouriteMoviesViewController.self)),
                                  forCellReuseIdentifier: "MoviesErrorCell")
     }
@@ -36,16 +37,19 @@ final class FavouriteMoviesViewController: UIViewController {
         presenter?.popViewController()
     }
     
+    @IBAction func deleteButton(_ sender: UIButton) {
+        presenter?.deleteFavouritesMovies()
+    }
 }
 
 extension FavouriteMoviesViewController: FavouriteMoviesViewInputProtocol {
     
     /// Fecth return movie information with movies
     /// - Parameters:
-    ///    - movies: receive a [MovieProtocol]
-    func showFavouriteMovies(movie: MovieProtocol) {
-        self.movie = movie
-        searchTableView.reloadData()
+    ///    - movies: receive a [Movie]
+    func showFavouriteMovies(movies: [Movie]) {
+        self.movies = movies
+        favoritesTableView.reloadData()
     }
 }
 
@@ -53,26 +57,31 @@ extension FavouriteMoviesViewController: UITableViewDelegate, UITableViewDataSou
     
     // Configuration for Table View with datasource of movies
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return  1
+        return  self.movies.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return  600.0
+            return  220.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = searchTableView.dequeueReusableCell(withIdentifier: "MoviesCell") as? MoviesTableViewCell else {
+        guard let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "MoviesCell") as? MoviesTableViewCell else {
             return UITableViewCell()
         }
-        cell.movieTitleLabel.text = self.movie?.title ?? "titúlo"
-        guard let url = imageLoader.getURLImage(poster_path: self.movie?.poster_path ?? "") else {
+        cell.movieTitleLabel.text = self.movies[indexPath.row].title ?? "titúlo"
+        guard let url = imageLoader.getURLImage(poster_path: self.movies[indexPath.row].poster_path ?? "") else {
             return cell
         }
         imageLoader.loadImage(urlData: url) { image in
             cell.movieImage.image = image
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reviewView = ReviewMoviesRouter.createModule(movieReview: self.movies[indexPath.row])
+        self.navigationController?.pushViewController(reviewView, animated: true)
     }
     
 }

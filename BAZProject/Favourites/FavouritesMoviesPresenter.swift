@@ -23,6 +23,10 @@ final class FavouriteMoviesPresenter {
 }
 
 extension FavouriteMoviesPresenter: FavouriteMoviesViewOutputProtocol {
+    func deleteFavouritesMovies() {
+        interactor.deleteFavouritesMovies()
+    }
+    
     // Presenter notify to Router Pop a VC
     func popViewController() {
         router.popViewController()
@@ -32,15 +36,15 @@ extension FavouriteMoviesPresenter: FavouriteMoviesViewOutputProtocol {
     /// - parameters:
     ///    - url: a String url fetch
     ///    - key: a String to be searched
-    func FavouriteMovies(idMovie: String) {
-        interactor.FavouriteMovies(idMovie: idMovie)
+    func favouriteMovies() {
+        interactor.favouriteMovies()
     }
 }
 
 extension FavouriteMoviesPresenter: FavouriteMoviesInteractorOutputProtocol {
-    func presenterFavouriteMovies(movieFavourite movie: MovieProtocol) {
+    func presenterFavouriteMovies(moviesFavourite: [Movie]) {
         // Presenter return movie Information from the fecth
-        view?.showFavouriteMovies(movie: movie)
+        view?.showFavouriteMovies(movies: moviesFavourite)
     }
 }
 

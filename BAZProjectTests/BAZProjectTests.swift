@@ -184,8 +184,8 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
     // Mock of popular movies
-    func getMockPopularMovies() -> [MovieProtocol] {
-        let popularMockMovies: [MovieProtocol] = [Movie(id: 100, title: "Avengers", poster_path: "path/avengers"),
+    func getMockPopularMovies() -> [Movie] {
+        let popularMockMovies: [Movie] = [Movie(id: 100, title: "Avengers", poster_path: "path/avengers"),
                                               Movie(id: 1726, title: "Iron Man", poster_path: "/tFCTNx7foAsUQpgu2x1KjAJD1wT.jpg"),
                                               Movie(id: 101, title: "Batman", poster_path: "path/batman"),
                                               Movie(id: 155, title: "El caballero oscuro", poster_path: "/8QDQExnfNFOtabLDKqfDQuHDsIg.jpg"),

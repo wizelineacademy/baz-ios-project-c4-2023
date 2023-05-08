@@ -10,7 +10,7 @@ import UIKit
 final class SearchMoviesViewController: UIViewController {
     
     var presenter: SearchMoviesViewOutputProtocol?
-    var movies: [MovieProtocol] = []
+    var movies: [Movie] = []
     private let imageLoader: ImageLoader = ImageLoader()
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,8 +48,8 @@ final class SearchMoviesViewController: UIViewController {
 extension SearchMoviesViewController: SearchMoviesViewInputProtocol {
     /// Fecth return movie information with movies
     /// - Parameters:
-    ///    - movies: receive a [MovieProtocol]
-    func showSearchMovies(movies: [MovieProtocol]) {
+    ///    - movies: receive a [Movie]
+    func showSearchMovies(movies: [Movie]) {
         self.movies = movies
         searchTableView.reloadData()
     }
@@ -106,6 +106,11 @@ extension SearchMoviesViewController: UITableViewDelegate, UITableViewDataSource
             cell.movieImage.image = image
         }
         return cell
+    }
+ 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reviewView = ReviewMoviesRouter.createModule(movieReview: self.movies[indexPath.row])
+        self.navigationController?.pushViewController(reviewView, animated: true)
     }
     
 }

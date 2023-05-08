@@ -14,12 +14,13 @@ final class FavouriteMoviesRouter {
     
     // Create a Search module VIPER
     static func createModule() -> UIViewController {
-        let storyboard = UIStoryboard(name: "FavouriteMovies", bundle: nil)
+        let storyboard = UIStoryboard(name: "FavouritesMovies", bundle: nil)
         guard let view = storyboard.instantiateViewController(withIdentifier: "FavouriteStory") as? FavouriteMoviesViewController else {
             return UIViewController()
         }
+        let favouriteManager = FavouriteManager()
         let movieApi = MovieAPI()
-        let interactor = FavouriteMoviesInteractor(movieAPI: movieApi)
+        let interactor = FavouriteMoviesInteractor(movieAPI: movieApi, favouriteManager: favouriteManager)
         let router = FavouriteMoviesRouter()
         let presenter = FavouriteMoviesPresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter

@@ -12,7 +12,7 @@ import UIKit
 protocol FavouriteMoviesViewInputProtocol: AnyObject {
     var presenter: FavouriteMoviesViewOutputProtocol? { get }
     // Movies that return the ftch to be showed
-    func showFavouriteMovies(movie: MovieProtocol)
+    func showFavouriteMovies(movies: [Movie])
 }
 
 // MARK: - Presenter
@@ -25,16 +25,18 @@ protocol FavouriteMoviesViewOutputProtocol: AnyObject {
     /// - Parameters:
     ///    - url: a String url fetch
     ///    - key: a String to be searched
-    func FavouriteMovies(idMovie: String)
+    func favouriteMovies()
     // Comunication between View and Presenter for pop VC
     func popViewController()
+    
+    func deleteFavouritesMovies()
 }
 
 protocol FavouriteMoviesInteractorOutputProtocol {
     /// interactor returns the movies obtained from the fecth
     /// - Parameters:
-    ///    - movies: receive a [MovieProtocol]
-    func presenterFavouriteMovies(movieFavourite: MovieProtocol)
+    ///    - movies: receive a [Movie]
+    func presenterFavouriteMovies(moviesFavourite: [Movie])
 }
 
 // MARK: - Router
@@ -51,5 +53,8 @@ protocol FavouriteMoviesInteractorInputProtocol {
     /// - Parameters:
     ///    - url: a String url fetch
     ///    - key: a String to be searched
-    func FavouriteMovies(idMovie: String)
+    func favouriteMovies()
+    
+    func deleteFavouritesMovies()
+
 }

@@ -11,13 +11,22 @@ import Foundation
 final class HomeInteractor {
     var presenter: HomeInteractorOutputProtocol?
     var movieApi: MovieAPIProtocol
-    var movies: [MovieProtocol] = []
-    init(movieAPI: MovieAPIProtocol) {
+    var movies: [Movie] = []
+    var favouriteManager: FavouritesManagerProtocol
+    init(movieAPI: MovieAPIProtocol, favouriteManager: FavouritesManagerProtocol) {
             self.movieApi = movieAPI
+            self.favouriteManager = favouriteManager
     }
 }
 
 extension HomeInteractor: HomeInteractorInputProtocol {
+    func storeFav(movieFav: Movie) {
+        favouriteManager.registerFav(movieData: movieFav)
+    }
+    
+    func getFavs() -> [Movie] {
+        favouriteManager.getFavouriteMovies()
+    }
     
     /// This fetch function works for get the movie data from API
     /// - parameters:

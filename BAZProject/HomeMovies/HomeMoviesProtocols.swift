@@ -12,7 +12,7 @@ import UIKit
 protocol HomeViewInputProtocol: AnyObject {
     var presenter: HomeViewOutputProtocol? { get }
     // Presenter return information to view
-    func showCategories(movies: [MovieProtocol], section: Int)
+    func showCategories(movies: [Movie], section: Int)
     
 }
 
@@ -29,14 +29,16 @@ protocol HomeViewOutputProtocol: AnyObject {
     /// - Parameters:
     ///    - view: receive a view to be pushed
     func pushSearchViewController(view: UIViewController)
+    
+    func storeFav(movieFav: Movie)
 }
 
 protocol HomeInteractorOutputProtocol {
     /// Interactor return information of the fetch to pressnter
     /// - Parameters:
-    ///   - movies: a [MovieProtocol]
+    ///   - movies: a [Movie]
     ///   - section: the section where the information will be displayed
-    func presenterCategories(movies: [MovieProtocol], section: Int)
+    func presenterCategories(movies: [Movie], section: Int)
     
 }
 
@@ -55,5 +57,7 @@ protocol HomeInteractorInputProtocol {
     ///   - movies: a String url fetch
     ///   - section: the section where the information will be displayed
     func fetchCategories(url: String, section: Int)
+    
+    func storeFav(movieFav: Movie)
     
 }

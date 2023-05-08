@@ -10,7 +10,7 @@ import Foundation
 final class SearchMoviesInteractor {
     var presenter: SearchMoviesInteractorOutputProtocol?
     let movieApi: MovieAPIProtocol
-    var movies: [MovieProtocol] = []
+    var movies: [Movie] = []
     init(movieAPI: MovieAPIProtocol) {
             self.movieApi = movieAPI
     }

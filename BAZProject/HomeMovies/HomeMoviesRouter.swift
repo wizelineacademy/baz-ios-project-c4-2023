@@ -20,7 +20,8 @@ final class HomeRouter {
         }
         
         let movieApi = MovieAPI()
-        let interactor = HomeInteractor(movieAPI: movieApi)
+        let favouriteManager = FavouriteManager()
+        let interactor = HomeInteractor(movieAPI: movieApi, favouriteManager: favouriteManager)
         let router = HomeRouter()
         let presenter = HomePresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter
