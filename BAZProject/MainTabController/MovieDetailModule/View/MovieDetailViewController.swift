@@ -10,22 +10,64 @@ import UIKit
 final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieCollection: UICollectionView!
     var presenter: MovieDetailPresenterProtocol?
-
+    var storageObject: StorageProtocol?
+    private var movie: Movie?
+    private var isFavorite: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let movie = presenter?.movieModel[0].items[0] as? Movie
+        movie = presenter?.movieModel[0].items[0] as? Movie
         title = movie?.title
+        setFavoriteItem()
         presenter?.getMovieBanner()
         presenter?.searchForActors(in: movie?.id ?? 0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.presenter?.searchForReviews(for: movie?.id ?? 0)
+            self.presenter?.searchForReviews(for: self.movie?.id ?? 0)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.presenter?.searchForSimilarMovies(of: movie?.id ?? 0)
-            self.presenter?.searchForRecommendedMovies(of: movie?.id ?? 0)
+            self.presenter?.searchForSimilarMovies(of: self.movie?.id ?? 0)
+            self.presenter?.searchForRecommendedMovies(of: self.movie?.id ?? 0)
         }
         movieCollection.collectionViewLayout = createLayout()
+    }
+    
+    @objc func becomeFavoriteMovie(sender: UIBarButtonItem) {
+        isFavorite = !isFavorite
+        updateFavoriteItem()
+    }
+    
+    private func setFavoriteItem() {
+        do {
+            let movie = try storageObject?.retrieve(Movie.self, forKey: .init(rawValue: "\(movie?.id ?? 0)"))
+            if movie != nil {
+                isFavorite = true
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "heart.fill"), style: .done, target: self, action: #selector(self.becomeFavoriteMovie(sender:)))
+            } else {
+                isFavorite = false
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(self.becomeFavoriteMovie(sender:)))
+            }
+        } catch {
+            print("Can not store:", error)
+        }
+    }
+    
+    private func updateFavoriteItem() {
+        if isFavorite {
+            do {
+                if let movie = movie {
+                    try storageObject?.store(movie, forKey: .init(rawValue: "\(movie.id)"))
+                }
+            } catch {
+                print("Can not store:", error)
+            }
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+        } else {
+            if let movie = movie {
+                storageObject?.remove(forKey: .init(rawValue: "\(movie.id)"))
+            }
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+        }
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {

@@ -18,6 +18,7 @@ final class MovieDetailRouter: MovieDetailRouterProtocol {
         let detailRemoteData = MovieDetailDataManager(service: service)
         
         movieDetailView.presenter = presenter
+        movieDetailView.storageObject = UserDefaults.standard
         presenter.movieModel = movie
         presenter.linkDependencies(view: movieDetailView, router: self, interactor: interactor)
         interactor.linkDependencies(remoteData: detailRemoteData, presenter: presenter)

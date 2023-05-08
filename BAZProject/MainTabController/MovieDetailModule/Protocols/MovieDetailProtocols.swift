@@ -30,6 +30,7 @@ protocol MovieDetailRouterProtocol {
 // View > Presenter
 protocol MovieDetailViewControllerProtocol: AnyObject {
     var presenter: MovieDetailPresenterProtocol? { get set }
+    var storageObject: StorageProtocol? { get set }
     
     /**
      Function that reload the view.
