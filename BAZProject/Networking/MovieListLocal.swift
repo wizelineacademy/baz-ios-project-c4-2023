@@ -27,7 +27,7 @@ protocol StorableProtocol {
 }
 
 /// Class that manages the local storage of a list of movies.
-class MovieListLocal {
+final class MovieListLocal {
     
     /// The list of movies stored locally.
     var movieList: MovieList = MovieList(results: [])
