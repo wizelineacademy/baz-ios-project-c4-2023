@@ -16,11 +16,13 @@ class DetailViewModel {
     private var snapshot = Box(DetailSnapshot())
     private var localData: DetailLocalData
     private var error: Box<Error?> = Box(nil)
+    private var favourite = Box(false)
     
     init(remoteData: DetailRemoteData = DetailRemoteData(), localData: DetailLocalData = DetailLocalData(), item: MediaItem) {
         self.item = item
         self.remoteData = remoteData
         self.localData = localData
+        self.favourite.value = localData.findItem(for: "\(item.mediaType ?? .movie)_\(item.id ?? -1)")
     }
     
     func bindSnapshot(_ listener: @escaping (DetailSnapshot) -> Void) {
@@ -31,8 +33,30 @@ class DetailViewModel {
         error.bind(listener)
     }
     
+    func bindFavourite(_ listener: @escaping (Bool) -> Void) {
+        favourite.bind(listener)
+    }
+    
     func getTitle() -> String? {
         return item.title
+    }
+    
+    func getDataFromItem(enconder: JSONEncoder = JSONEncoder()) -> Data? {
+        do {
+            return try enconder.encode(item)
+        } catch {
+            self.error.value = error
+            return nil
+        }
+    }
+    
+    func saveItem() {
+        if let id = item.id,
+           let type = item.mediaType,
+           let data = getDataFromItem() {
+            localData.save(data: data, key: "\(type)_\(id)")
+            favourite.value = localData.findItem(for: "\(type)_\(id)")
+        }
     }
     
     func getDetails() {

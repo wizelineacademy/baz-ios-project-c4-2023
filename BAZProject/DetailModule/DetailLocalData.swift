@@ -19,8 +19,8 @@ class DetailLocalData {
         userDefaultsManager.save(data, forKey: key)
     }
     
-    func getItem(for key: String) -> Data? {
-        return userDefaultsManager.getData(forKey: key)
+    func findItem(for key: String) -> Bool {
+        return userDefaultsManager.find(key: key)
     }
     
 }

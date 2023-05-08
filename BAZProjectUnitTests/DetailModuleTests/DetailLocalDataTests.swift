@@ -30,9 +30,9 @@ final class DetailLocalDataTests: XCTestCase {
         let data = image.pngData()!
         
         sut.save(data: data, key: "data")
-        let retrieved = sut.getItem(for: "data")
+        let retrieved = sut.findItem(for: "data")
         
-        XCTAssertEqual(data, retrieved)
+        XCTAssert(retrieved)
     }
     
 }

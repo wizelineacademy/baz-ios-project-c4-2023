@@ -9,7 +9,7 @@ import Foundation
 @testable import BAZProject
 
 class UserDefaultsMock: UserDefaultsProtocol {
-    
+
     var data: Data?
     
     func save(_ value: Any?, forKey: String) {
@@ -18,6 +18,10 @@ class UserDefaultsMock: UserDefaultsProtocol {
     
     func getData(forKey: String) -> Data? {
         return data
+    }
+    
+    func find(key: String) -> Bool {
+        return data != nil
     }
     
 }

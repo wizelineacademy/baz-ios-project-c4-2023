@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaItem: Hashable {
+struct MediaItem: Hashable, Codable {
     
     var id: Int?
     var posterPath: String?

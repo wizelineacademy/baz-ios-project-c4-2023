@@ -374,8 +374,78 @@ final class DetailViewModelTests: XCTestCase {
     }
     
     func test_InitialItemShouldBeFavourite() {
+        udManager.data = Data()
+        setViewModel(mediaItem: MediaItem())
         let expectation = XCTestExpectation()
+        var fav = false
         
+        sut.bindFavourite { bool in
+            fav = bool
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssert(fav)
     }
 
+    func test_getDataFromItem_DataShouldNotBeTheSame() throws {
+        let mediaItem = MediaItem(id: 1, mediaType: .movie)
+        setViewModel(mediaItem: mediaItem)
+        
+        let data = sut.getDataFromItem()!
+        let decoded = try JSONDecoder().decode(MediaItem.self, from: data)
+
+        XCTAssertEqual(mediaItem, decoded)
+    }
+    
+    func test_saveData_RetrievedDataShouldBeEqual() {
+        setViewModel(mediaItem: MediaItem(id: 1, mediaType: .movie))
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        var fav = false
+        
+        sut.bindFavourite { bool in
+            fav = bool
+            expectation.fulfill()
+        }
+        sut.saveItem()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssert(fav)
+    }
+    
+    func test_getDataFromItem_DataShouldThrowError() throws {
+        let mediaItem = MediaItem(id: 1, mediaType: .movie)
+        setViewModel(mediaItem: mediaItem)
+        let encoderMock = EncoderMock()
+        let expectation = XCTestExpectation()
+        let expectedError = NSError(domain: "EstoyListo", code: -123)
+        expectation.expectedFulfillmentCount = 2
+        encoderMock.error = expectedError
+        var theError: NSError?
+        
+        sut.bindError { error in
+            theError = error as NSError?
+            expectation.fulfill()
+        }
+        
+        let data = sut.getDataFromItem(enconder: encoderMock)
+
+        XCTAssertEqual(theError, expectedError)
+    }
+}
+
+
+class EncoderMock: JSONEncoder {
+    
+    var error: Error?
+    
+    override func encode<T>(_ value: T) throws -> Data where T : Encodable {
+        if let error = error {
+            throw error
+        } else {
+            return try super.encode(value)
+        }
+    }
+    
 }

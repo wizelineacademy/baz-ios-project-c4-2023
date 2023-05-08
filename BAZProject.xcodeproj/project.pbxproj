@@ -163,7 +163,7 @@
 		4B2675D52A08628A005C60A4 /* DetailLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocalData.swift; sourceTree = "<group>"; };
 		4B2675D72A0862B3005C60A4 /* DetailLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailLocalDataTests.swift; path = BAZProjectUnitTests/DetailModuleTests/DetailLocalDataTests.swift; sourceTree = SOURCE_ROOT; };
 		4B2675D92A0866B9005C60A4 /* UserDefaults+UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+UserDefaultsProtocol.swift"; sourceTree = "<group>"; };
-		4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsMock.swift; path = Mocks/UserDefaultsMock.swift; sourceTree = "<group>"; };
+		4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
 		4B27A0B12A055D39003A24D6 /* ImageEndpoitnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndpoitnTests.swift; sourceTree = "<group>"; };
 		4B27A0B32A0560EB003A24D6 /* SearchLocalDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataTests.swift; sourceTree = "<group>"; };
 		4B27A0B52A056316003A24D6 /* SearchRemoteDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataTests.swift; sourceTree = "<group>"; };
@@ -265,6 +265,7 @@
 			children = (
 				4B2675BC2A07326C005C60A4 /* Cells */,
 				4B0E5C672A05A01600D38F4D /* DetailRemoteData.swift */,
+				4B2675D52A08628A005C60A4 /* DetailLocalData.swift */,
 				4B26759C2A06092F005C60A4 /* DetailViewModel.swift */,
 				4B2675A52A0627BD005C60A4 /* DetailSection.swift */,
 				4B2675A92A06D336005C60A4 /* DetailOverview.swift */,
@@ -311,7 +312,6 @@
 				4B2675BF2A073605005C60A4 /* DetailOverviewCollectionViewCell.xib */,
 				4B2675C12A074F5C005C60A4 /* DetailReviewCollectionViewCell.swift */,
 				4B2675C22A074F5C005C60A4 /* DetailReviewCollectionViewCell.xib */,
-				4B2675D52A08628A005C60A4 /* DetailLocalData.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -435,7 +435,6 @@
 				4B3BBE8329D65860001F4E85 /* Mocks */,
 				4B947E7B29F24F8100C116E3 /* GenericEndpoint.swift */,
 				4B947E7529F247DB00C116E3 /* DataStubs.swift */,
-				4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -443,6 +442,7 @@
 		4B3BBE8329D65860001F4E85 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				4B2675DB2A086729005C60A4 /* UserDefaultsMock.swift */,
 				4B27A0B72A0563F8003A24D6 /* RequestHandlerMock.swift */,
 				4B3BBE8429D65879001F4E85 /* RequestSessionMock.swift */,
 				4B3BBE8829D658E2001F4E85 /* EndpointMock.swift */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MediaType: String, Hashable, CaseIterable {
+public enum MediaType: String, Hashable, CaseIterable, Codable {
     
     case tv, movie, person
     
