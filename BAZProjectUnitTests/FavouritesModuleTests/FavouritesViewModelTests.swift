@@ -91,4 +91,38 @@ final class FavouritesViewModelTests: XCTestCase {
         XCTAssertFalse(udData?.contains(item1) ?? true)
     }
     
+    func test_removeFavourite_ShouldNotRemoveOnError() throws {
+        let decoder = DecoderSpy()
+        let encoder = EncoderSpy()
+        let udMock = UserDefaultsMock()
+        let item1 = MediaItem(id: 1)
+        var data = [MediaItem(id: 2), MediaItem(id: 3)]
+        data.append(item1)
+        udMock.data = try JSONEncoder().encode(data)
+        let local = FavouritesLocalData(udManager: udMock, decoder: decoder, encoder: encoder)
+        let sut = FavouritesViewModel(localData: local)
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        var snapshotHolder = NSDiffableDataSourceSnapshot<Int, MediaItem>()
+        let errorMario = NSError(domain: "It's-aMeMario", code: -12345)
+        
+        sut.loadFavourites()
+        encoder.error = errorMario
+        sut.removeFavourite(item1)
+        sut.bindSnapshot { snapshot in
+            snapshotHolder = snapshot
+            expectation.fulfill()
+        }
+        sut.bindError { error in
+            XCTAssertEqual(error as? NSError, errorMario)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.5)
+        let udData = sut.getLocalData()
+
+        XCTAssertEqual(snapshotHolder.numberOfItems, data.count)
+        XCTAssertEqual(snapshotHolder.sectionIdentifier(containingItem: item1), 0)
+        XCTAssertTrue(udData?.contains(item1) ?? false)
+    }
+    
 }

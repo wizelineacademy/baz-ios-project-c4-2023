@@ -73,12 +73,8 @@ class DetailViewModel {
             } else {
                 elements.removeAll(where: { $0 == item})
             }
-            if elements.count > 0 {
-                if let data = getDataFromItem(favourites: elements) {
-                    localData.save(data: data, key: "Favourites")
-                }
-            } else {
-                localData.deleteItem(for: "Favourites")
+            if let data = getDataFromItem(favourites: elements) {
+                localData.save(data: data, key: "Favourites")
             }
         } else if let encoded = getDataFromItem(favourites: [item]) {
             localData.save(data: encoded, key: "Favourites")
