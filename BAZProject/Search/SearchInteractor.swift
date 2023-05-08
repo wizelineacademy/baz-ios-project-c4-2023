@@ -17,12 +17,11 @@ class SearchInteractor {
 // MARK: - P R E S E N T E R · T O · I N T E R A C T O R
 extension SearchInteractor: SearchInteractorInputProtocol {
     // MARK: - Functions
-    /**
-     Function that gets an array of movies
-     - Parameters:
-        - movieName: The movie string to search for
-     - Version: 1.0.0
-    */
+    
+    /// Function that gets an array of searched movies
+    /// - Parameters:
+    ///   - endPoint: the URL of endpoint
+    ///   - completion: Indicates that the list of movies has already been returned
     func getMovieSearch(endPoint: Endpoint, completion: @escaping () -> Void) {
         let apiMovie = MovieAPI()
         apiMovie.fetchData(model: Movie.self, endPoint) { [weak self] objResult in

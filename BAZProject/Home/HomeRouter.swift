@@ -12,6 +12,9 @@ class HomeRouter {
     private var animationView: UIAlertController?
     
     // MARK: - Functions
+    
+    /// Create the Home module
+    /// - Returns: The Home module
     static func createModule() -> UIViewController {
         let view = HomeViewController()
         let interactor = HomeInteractor()
@@ -27,6 +30,9 @@ class HomeRouter {
 // MARK: - Extensions
 extension HomeRouter: HomeRouterProtocol {
     // MARK: - Functions
+    
+    /// Show the animation alert from service
+    /// - Parameter completion: The implementation while showing animation alert
     func showAnimation(completion: @escaping () -> Void) {
         animationView = UIAlertController.GlobalViews.animationView
         DispatchQueue.main.async {
@@ -36,19 +42,22 @@ extension HomeRouter: HomeRouterProtocol {
         }
     }
     
-    func hideAnimation(completion: @escaping () -> Void) {
+    /// Hide the animation alert from service
+    /// - Parameter completion: Finish the animation
+    func hideAnimation(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            self.animationView?.dismiss(animated: true, completion: {
-                completion()
-            })
+            self.animationView?.dismiss(animated: true, completion: completion)
         }
     }
     
+    /// Shoe the Search module
     func showSearchModule() {
         let viewController = SearchRouter.createModule()
         self.view?.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    /// Show the Detail module
+    /// - Parameter movie: The data of selected movie
     func showDetailModule(movie: ListMovieProtocol) {
         let viewController = DetailRouter.createModule(withMovie: movie)
         self.view?.navigationController?.pushViewController(viewController, animated: true)

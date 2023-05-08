@@ -134,7 +134,7 @@ class DetailViewController: UIViewController {
         presenter?.getDetailMovie()
         let movieId = detailMovieModel?.id.description ?? ""
         presenter?.getMovies(endPoint: .similar(movieId: movieId))
-        presenter?.getRecomendations(endPoint: .topRated)
+        presenter?.getRecomendations(endPoint: .recomended(movieId: movieId))
         setupView()
     }
     
@@ -214,12 +214,13 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             self.similarCollectionView.isHidden = source.count > 0 ? false : true
             self.similarTitle.isHidden = source.count > 0 ? false : true
             return source.count
+        } else {
+            guard let source = self.recomendationMovies else { return 0 }
+            
+            self.recomendationCollectionView.isHidden = source.count > 0 ? false : true
+            self.recomendationTitle.isHidden = source.count > 0 ? false : true
+            return source.count
         }
-        guard let source = self.recomendationMovies else { return 0 }
-        
-        self.recomendationCollectionView.isHidden = source.count > 0 ? false : true
-        self.recomendationTitle.isHidden = source.count > 0 ? false : true
-        return source.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

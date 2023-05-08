@@ -28,6 +28,10 @@ extension DetailInteractor: DetailInteractorInputProtocol {
         presenter?.presentDetailMovie(detailMovie: detailMovie)
     }
     
+    /// Function that gets an array of similar movies
+    /// - Parameters:
+    ///   - endPoint: the URL of endpoint
+    ///   - completion: Indicates that the list of similar movies has already been returned
     func getMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
@@ -42,6 +46,11 @@ extension DetailInteractor: DetailInteractorInputProtocol {
         }
     }
     
+    
+    /// Function that gets an array of recomended movies
+    /// - Parameters:
+    ///   - endPoint: the URL of endpoint
+    ///   - completion: Indicates that the list of recomended movies has already been returned
     func getRecomendations(endPoint: Endpoint, completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in

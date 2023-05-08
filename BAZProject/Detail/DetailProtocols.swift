@@ -54,6 +54,4 @@ protocol DetailRouterProtocol {
     // MARK: - Properties
     var view: UIViewController? { get }
     // MARK: - Functions
-//    func showAnimation(completion: @escaping () -> Void)
-//    func hideAnimation(completion: @escaping () -> Void)
 }

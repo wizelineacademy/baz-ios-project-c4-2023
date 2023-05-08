@@ -11,7 +11,6 @@ import UIKit
 class DetailRouter {
     // MARK: - Properties
     weak var view: UIViewController?
-    //private var animationView: UIAlertController?
     
     // MARK: - Functions
     static func createModule(withMovie movie: ListMovieProtocol) -> UIViewController {
@@ -28,22 +27,6 @@ class DetailRouter {
 
 // MARK: - Extensions
 extension DetailRouter: DetailRouterProtocol {
-//    func showAnimation(completion: @escaping () -> Void) {
-//        animationView = UIAlertController.GlobalViews.animationView
-//        DispatchQueue.main.async {
-//            self.view?.present(self.animationView ?? UIAlertController(), animated: true, completion: {
-//                completion()
-//            })
-//        }
-//    }
-//
-//    func hideAnimation(completion: @escaping () -> Void) {
-//        DispatchQueue.main.async {
-//            self.animationView?.dismiss(animated: true, completion: {
-//                completion()
-//            })
-//        }
-//    }
     
 }
 

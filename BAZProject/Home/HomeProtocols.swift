@@ -46,7 +46,7 @@ protocol HomeInteractorInputProtocol: MainInteractorProtocol {
 protocol HomeRouterProtocol {
     var view: UIViewController? { get }
     func showAnimation(completion: @escaping () -> Void)
-    func hideAnimation(completion: @escaping () -> Void)
+    func hideAnimation(completion: (() -> Void)?)
     func showSearchModule()
     func showDetailModule(movie: ListMovieProtocol)
 }
