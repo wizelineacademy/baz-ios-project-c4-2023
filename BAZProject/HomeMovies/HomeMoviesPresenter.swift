@@ -23,6 +23,7 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomeViewOutputProtocol {
+    /// call to intercator for set one movie to favs
     func storeFav(movieFav: Movie) {
         interactor.storeFav(movieFav: movieFav)
     }

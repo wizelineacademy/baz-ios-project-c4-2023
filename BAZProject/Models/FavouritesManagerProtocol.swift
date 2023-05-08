@@ -7,6 +7,7 @@
 
 import Foundation
 
+// protocol that define funcs for CRUD in UserDefaults
 protocol FavouritesManagerProtocol {
     func registerFav (movieData: Movie)
     func setFavorites(favMovies: [Movie])

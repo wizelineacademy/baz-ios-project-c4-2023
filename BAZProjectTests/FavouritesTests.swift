@@ -40,20 +40,19 @@ final class FavouriteTests: XCTestCase {
         view = nil
         router = nil
     }
-    
+    // test register table for show all the favourites movies
     func testInitTableOfSearch() {
         XCTAssertNotNil(view.registerTable())
     }
-    
+    // test call to fetch all favourites movies
     func testMoviesFetchReviewCallPresenter() {
         XCTAssertNotNil(presenter.favouriteMovies())
     }
-    
+    // test number of sections of the table favourites
     func testNumberOfSectionsInTable() {
-        // Verify that the table view has one section
-        XCTAssertEqual(view.favoritesTableView.numberOfSections , 1)
+       XCTAssertEqual(view.favoritesTableView.numberOfSections , 1)
     }
-    
+    // test to delete all fovourites movies that have in UserDefaults
     func testWhenDeleteFavourites() {
         XCTAssertNotNil(presenter.deleteFavouritesMovies())
     }
@@ -61,19 +60,14 @@ final class FavouriteTests: XCTestCase {
     // Test number of items in a section and informatión not nil
     func testCellForRow() {
         XCTAssertNotNil(view.favoritesTableView)
-        // Verify that the cell at row 0 has the correct text label
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = view.tableView(view.favoritesTableView, cellForRowAt: indexPath) as? MoviesTableViewCell
         XCTAssertNotNil(cell?.movieTitleLabel)
         XCTAssertNotNil(cell?.movieImage)
     }
-    
+    // test pop to Home
     func testPopViewController() {
         XCTAssertNotNil(presenter.popViewController())
-    }
-    
-    func testDeleteAllFavourites() {
-        XCTAssertNotNil(presenter.deleteFavouritesMovies())
     }
 }
 

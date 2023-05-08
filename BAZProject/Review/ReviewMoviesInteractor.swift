@@ -90,7 +90,9 @@ extension ReviewMoviesInteractor: ReviewMoviesInteractorInputProtocol {
             }
         }
     }
-    
+    /// get a URLRequest for the fetch
+    /// - parameters:
+    /// - url: String for complete the URL 
     func getURL(url: String) -> URLRequest? {
         guard let urlFetch = URL(string: movieApi.basePath + url + movieApi.apiKey) else {
             return nil

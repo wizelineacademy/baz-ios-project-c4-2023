@@ -32,7 +32,7 @@ final class FavouriteMoviesRouter {
 }
 
 extension FavouriteMoviesRouter: FavouriteMoviesRouterProtocol {
-    // Router pop a VC
+    // Router pop a VC (Home ViewController)
     func popViewController() {
         self.view?.navigationController?.popViewController(animated: true)
     }

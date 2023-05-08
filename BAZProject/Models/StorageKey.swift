@@ -7,14 +7,13 @@
 
 import Foundation
 
+/// Storage key is a constant defined for localize easy some value/key
 public struct StorageKey: RawRepresentable {
-    
-    public let rawValue: String
 
+    public let rawValue: String
     public init(rawValue: String) {
         self.rawValue = rawValue
     }
-
 }
 
 extension StorageKey {

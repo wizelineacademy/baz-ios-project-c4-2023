@@ -10,7 +10,6 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     var presenter: HomeViewOutputProtocol?
-    var sectionsMovies: SectionsMovies?
     var movies:  [Movie] = []
     var populars: [Movie] = []
     var cineMovies: [Movie] = []
@@ -225,8 +224,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == moviesCollectionView {
             return 5
@@ -275,18 +272,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoriesMenuCollection {
-            //            debugPrint("Elemento seleccionado: ", indexPath.row)
-            //                if indexPath.row > 1 {
-            //                    let width  = (view.frame.width-10)/3.5
-            //                    let itemsPerRow = Double(moviesCollectionView.numberOfItems(inSection: indexPath.row-1)/3)
-            //                    let heightEachItem = width * 2.2
-            //                    let setScroll: CGFloat = (itemsPerRow * Double(indexPath.row)-2)*heightEachItem
-            //                    debugPrint("setScroll: ", setScroll)
-            //                    moviesCollectionView.setContentOffset(CGPoint(x: 0, y: setScroll), animated: true)
-            //                }else{
-            //                    moviesCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            //                }
-            //            }
+            
             moviesCollectionView.presentationSectionIndex(forDataSourceSectionIndex: indexPath.section)
         } else if collectionView == moviesCollectionView {
             switch indexPath.section {

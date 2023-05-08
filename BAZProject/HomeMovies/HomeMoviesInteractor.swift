@@ -20,10 +20,13 @@ final class HomeInteractor {
 }
 
 extension HomeInteractor: HomeInteractorInputProtocol {
+    /// Store or set in UserDefaults one movie if the  user touch in fav button
+    /// - parameters:
+    /// - movieFav: is the movie that the user select
     func storeFav(movieFav: Movie) {
         favouriteManager.registerFav(movieData: movieFav)
     }
-    
+    /// Get all favs storage in UserDefaults
     func getFavs() -> [Movie] {
         favouriteManager.getFavouriteMovies()
     }

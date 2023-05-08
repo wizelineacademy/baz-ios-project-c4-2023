@@ -29,7 +29,9 @@ protocol HomeViewOutputProtocol: AnyObject {
     /// - Parameters:
     ///    - view: receive a view to be pushed
     func pushSearchViewController(view: UIViewController)
-    
+    /// Store or set in UserDefaults one movie if the  user touch in fav button View to presenter
+    /// - parameters:
+    /// - movieFav: is the movie that the user select
     func storeFav(movieFav: Movie)
 }
 
@@ -57,7 +59,9 @@ protocol HomeInteractorInputProtocol {
     ///   - movies: a String url fetch
     ///   - section: the section where the information will be displayed
     func fetchCategories(url: String, section: Int)
-    
+    /// Store or set in UserDefaults one movie if the  user touch in fav button Presenter to intercator
+    /// - parameters:
+    /// - movieFav: is the movie that the user select
     func storeFav(movieFav: Movie)
     
 }

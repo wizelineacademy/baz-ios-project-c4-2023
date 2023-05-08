@@ -22,7 +22,6 @@ final class ReviewMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTable()
-        
         presenter?.reviewMovies(url: "movie/\(movie?.id ?? 0)/reviews?api_key=")
         presenter?.recomendedMovies(url: "movie/\(movie?.id ?? 0)/recommendations?api_key=")
         presenter?.similarMovies(url: "movie/\(movie?.id ?? 0)/similar?api_key=")
@@ -127,6 +126,7 @@ extension ReviewMoviesViewController: UITableViewDelegate, UITableViewDataSource
 
 extension ReviewMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    // Configuration for Collection View with datasource of movies
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         2
     }
@@ -173,7 +173,7 @@ extension ReviewMoviesViewController: UICollectionViewDelegate, UICollectionView
             return UICollectionViewCell()
         }
     }
-    
+    /// if select a movie of recomended go to this module with another movie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -187,7 +187,7 @@ extension ReviewMoviesViewController: UICollectionViewDelegate, UICollectionView
         }
     }
 }
-
+// Extension for give format to the raiting
 extension Double {
     func toString() -> String {
         return String(format: "%.1f",self)

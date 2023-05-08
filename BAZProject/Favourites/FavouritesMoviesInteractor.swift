@@ -18,16 +18,14 @@ final class FavouriteMoviesInteractor {
     }
 }
 
-extension FavouriteMoviesInteractor: FavouriteMoviesInteractorInputProtocol {    
+extension FavouriteMoviesInteractor: FavouriteMoviesInteractorInputProtocol {
+    /// Delete allFavouriteMovies in storage of UserDefaults
     func deleteFavouritesMovies() {
         favouriteManager.deleteAllFavorites()
         favouriteMovies()
     }
     
-    /// Fecth for the search movie with a url and a key if this is required
-    /// - parameters:
-    ///    - url: a String url fetch
-    ///    - key: a String to be searched
+    /// Fecth favourites movies storage in UserDefaults
     func favouriteMovies() {
         presenter?.presenterFavouriteMovies(moviesFavourite: favouriteManager.getFavouriteMovies())
     } 

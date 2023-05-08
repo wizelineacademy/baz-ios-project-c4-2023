@@ -40,42 +40,39 @@ final class ReviewTests: XCTestCase {
         view = nil
         router = nil
     }
-        
+    // test register of table that show information of review movie
     func testInitTableOfSearch() {
         XCTAssertNotNil(view.registerTable())
     }
-    
+    // test to fetch the review of one movie
     func testMoviesFetchReviewCallPresenter() {
         XCTAssertNotNil(presenter.reviewMovies(url: "movie/603/reviews?api_key="))
     }
-    
+    // test for know number of sections in collection view
     func testNumberOfSectionsInCollection() {
-        // Verify that the table view has one section
         XCTAssertEqual(view.recomendationsCollectionView.numberOfSections , 2)
     }
-    
+    // test for know number of sections in collection view
     func testNumberOfSectionsInTable() {
-        // Verify that the table view has one section
-        XCTAssertEqual(view.recomendationsCollectionView.numberOfSections , 2)
+        XCTAssertEqual(view.reviewTableView.numberOfSections , 2)
     }
-    
+    // test the number of rows in sections of recomendationsCollectionView
     func testNumberOfRowsInSection() {
-        // Verify that the table view has three rows in the first section
         XCTAssertEqual(view.collectionView(view.recomendationsCollectionView, numberOfItemsInSection: view.moviesSimiliar.count), 0)
         presenter?.recomendedMovies(url: "movie/603/recommendations?api_key=")
         presenter?.similarMovies(url: "movie/603/similar?api_key=")
         XCTAssertNotNil(view.showSimilarMovies(similarMovies: view.moviesSimiliar))
         XCTAssertNotNil(view.showRecomendedMovies(recomendedMoviess: view.moviesRecomendations))
     }
-    
+    // test the pop of VC
     func testPopViewController() {
         XCTAssertNotNil(presenter.popViewController())
     }
-    
+    // test show movies that retrieve from service
     func testShowReviewMoviesInTVC() {
         XCTAssertNotNil(view.showReviewMovies(movie: MockMoviesFecth.moviesmockReview))
     }
-    
+    // test the cell for any section of table view
     func testCellForRowTableReview() {
         XCTAssertNotNil(view.reviewTableView)
         // Verify that the cell at row 0 has the correct text label
@@ -88,7 +85,7 @@ final class ReviewTests: XCTestCase {
         XCTAssertNotNil(cell2?.infoLabel)
         XCTAssertNotNil(cell2?.ratingLabel)
     }
-    
+    // test the cell for any section of collection view (recomended and similar)
     func testCellForRowCollectionRecomended() {
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = view.collectionView(view.recomendationsCollectionView, cellForItemAt: indexPath) as? MoviesCollectionViewCell
@@ -97,7 +94,7 @@ final class ReviewTests: XCTestCase {
         let cell1 = view.collectionView(view.recomendationsCollectionView, cellForItemAt: indexPath1) as? MoviesCollectionViewCell
         XCTAssertNotNil(cell1?.movieTitle.text)
     }
-    
+    // test select any item in collectionView
     func testSelectAnyRecomended() {
         var indexPath = IndexPath(row: 0, section: 0)
         XCTAssertNotNil(view.collectionView(view.recomendationsCollectionView, didSelectItemAt: indexPath))

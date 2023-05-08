@@ -52,17 +52,17 @@ extension ReviewMoviesPresenter: ReviewMoviesViewOutputProtocol {
 
 extension ReviewMoviesPresenter: ReviewMoviesInteractorOutputProtocol {
     func presenterSimiliarMovies(similarMovies: [Movie]) {
-        // Presenter return similar movies Information from the fecth
+        // Presenter return to view similar movies Information from the fecth
         view?.showSimilarMovies(similarMovies: similarMovies)
     }
     
     func presenterRecomendedMovies(recomendedMoviess: [Movie]) {
-        // Presenter return recomended movies Information from the fecth
+        // Presenter return to view recomended movies Information from the fecth
         view?.showRecomendedMovies(recomendedMoviess: recomendedMoviess)
     }
     
     func presenterReviewMovies(movieReview: MovieReview) {
-        // Presenter return movie Information from the fecth
+        // Presenter return to view movie Information from the fecth
         view?.showReviewMovies(movie: movieReview)
     }
 }

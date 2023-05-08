@@ -36,7 +36,7 @@ final class FavouriteMoviesViewController: UIViewController {
     @IBAction func backAction(_ sender: UIButton) {
         presenter?.popViewController()
     }
-    
+    // User tap into trash button for delte all the movies in UserDafaluts
     @IBAction func deleteButton(_ sender: UIButton) {
         presenter?.deleteFavouritesMovies()
     }
@@ -79,6 +79,7 @@ extension FavouriteMoviesViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
+    /// When select a favourite movie  for show the review
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let reviewView = ReviewMoviesRouter.createModule(movieReview: self.movies[indexPath.row])
         self.navigationController?.pushViewController(reviewView, animated: true)

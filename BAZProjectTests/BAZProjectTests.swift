@@ -200,12 +200,12 @@ final class BAZProjectTests: XCTestCase {
         let viewToPush = SearchMoviesRouter.createModule()
         XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
-    
+    // test for create module of Favourites
     func testPushVCFavs() {
         let viewToPush = FavouriteMoviesRouter.createModule()
         XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
-    
+    // test for create module of Review movies
     func testPushVCReview() {
         guard let movieToReview = getMockPopularMovies().first else {
             XCTAssertNil(getMockPopularMovies().first)
@@ -214,7 +214,7 @@ final class BAZProjectTests: XCTestCase {
         let viewToPush = ReviewMoviesRouter.createModule(movieReview: movieToReview)
         XCTAssertNotNil(presenter.pushSearchViewController(view: viewToPush))
     }
-    
+    // test for set a movie in UserDefaults
     func testRegisterUserDefaults() {
         XCTAssertNotNil(view.upcomingMovies.first)
         guard let movieFav = view.upcomingMovies.first else {
@@ -223,11 +223,12 @@ final class BAZProjectTests: XCTestCase {
         XCTAssertNotNil(presenter.storeFav(movieFav: movieFav))
         XCTAssertNotNil(presenter.storeFav(movieFav: movieFav))
     }
-    
+    // test to select any item in collectionView of categories titles
     func testSelectAnyItem() {
         let indexPath = IndexPath(row: 0, section: 1)
         view.collectionView(view.categoriesMenuCollection, didSelectItemAt: indexPath)
     }
+    // test to select any item in collectionView of categories 
     func testSelectAnyItemCategories() {
         var indexPath = IndexPath(row: 0, section: 0)
         XCTAssertNotNil(view.collectionView(view.moviesCollectionView, didSelectItemAt: indexPath))
