@@ -108,7 +108,8 @@ extension MovieApi: EndPointType {
         case .cast(let movieId):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
-                                      urlParameters: ["api_key": NetworkManager.MovieApiKey])
+                                      urlParameters: ["api_key": NetworkManager.MovieApiKey,
+                                                      "page": 1])
         case .similar(let movieId):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,

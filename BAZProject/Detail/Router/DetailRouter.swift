@@ -25,6 +25,8 @@ class DetailRouter {
 //        interactorInstance.presenter = presenterInstance
 //        presenterInstance.view = vc
         
+        vc.model = movie
+        
         return vc
     }
 }

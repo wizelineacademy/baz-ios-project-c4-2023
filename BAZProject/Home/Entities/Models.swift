@@ -15,6 +15,14 @@ struct Movie {
     var overview: String
     var imagePath: String?
     var additionalInfo: String?
+    
+    init() {
+        self.id = 0
+        self.title = ""
+        self.overview = ""
+        self.imagePath = ""
+        self.additionalInfo = ""
+    }
 }
 
 extension Movie: Decodable {
@@ -33,7 +41,7 @@ extension Movie: Decodable {
         id = try movieContainer.decode(Int.self, forKey: .id)
         title = try movieContainer.decode(String.self, forKey: .title)
         overview =  try movieContainer.decode(String.self, forKey: .overview)
-        imagePath = try movieContainer.decode(String.self, forKey: .imagePath)
+        imagePath = try movieContainer.decodeIfPresent(String.self, forKey: .imagePath)
         additionalInfo = try movieContainer.decode(String.self, forKey: .aditionalInfo)
     }
 }

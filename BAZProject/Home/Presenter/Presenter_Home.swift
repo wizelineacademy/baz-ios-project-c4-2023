@@ -13,7 +13,8 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
     // MARK: Variables
     var interactor: PresenterToInteractor?
     var view: PresenterToViewProtocol?
-    var imageCache: NSCache = NSCache<NSString, UIImage>()
+    var router: PresenterToRouterHomeProtocol?
+    var imageCache: NSCache = NSCache< NSString, UIImage>()
     
     var trendingMovies: [Viewable] = [] {
         didSet {
@@ -96,6 +97,12 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
         }
     }
     
+    func prepareDetail(movie: Movie) {
+        print("Presenter recieved object from HomeView")
+        router?.showDetail(item: movie)
+    }
+    
+    // MARK: InteractorToPresenter protocol conformance
     func showAlert(title: String, message: String) {
         DispatchQueue.main.async {
             self.view?.showAlertFromPresenter(title: title, message: message)

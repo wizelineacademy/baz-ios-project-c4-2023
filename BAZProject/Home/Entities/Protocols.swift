@@ -23,6 +23,8 @@ protocol ViewToPresenterProtocol {
     func getCellText(_ items: [Viewable],index: IndexPath) -> String
     
     func getCellImage(_ items: [Viewable], index: IndexPath) -> UIImage
+    
+    func prepareDetail(movie: Movie)
 }
 
 protocol PresenterToViewProtocol {
@@ -42,4 +44,15 @@ protocol InteractorToPresenter {
     var upcomingMovies: [Viewable] { get set }
     
     func showAlert(title: String, message: String)
+}
+
+protocol PresenterToRouterHomeProtocol {
+    var router: PresenterToRouterHomeProtocol? { get set }
+    
+    func showDetail(item: Viewable)
+}
+
+protocol RouterToViewHomeProtocol {
+    
+    func presentDetail(vc: UIViewController)
 }

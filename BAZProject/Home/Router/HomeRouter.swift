@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-class HomeRouter {
+class HomeRouter: PresenterToRouterHomeProtocol {
+    
+    var router: PresenterToRouterHomeProtocol?
+    var view: RouterToViewHomeProtocol?
     
     public static func ensambleModule() -> UIViewController {
         let storyboard = UIStoryboard(name: "HomeView", bundle: nil)
@@ -16,16 +19,25 @@ class HomeRouter {
             
             let presenterInstance = Presenter()
             let interactorIntance = Interactor()
+            let routerInstance = HomeRouter()
             
             viewcontroller.presenter = presenterInstance
             presenterInstance.interactor = interactorIntance
             interactorIntance.presenter = presenterInstance
             presenterInstance.view = viewcontroller
+            presenterInstance.router = routerInstance
+            routerInstance.view = viewcontroller
             
             return viewcontroller
             
         } else {
             return UIViewController()
         }
+    }
+    
+    func showDetail(item: Viewable) {
+        print("Object recieved in router")
+        let vc = DetailRouter.ensambleModule(with: item as! Movie)
+        view?.presentDetail(vc: vc)
     }
 }

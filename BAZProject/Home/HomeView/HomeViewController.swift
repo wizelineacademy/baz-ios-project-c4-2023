@@ -37,6 +37,7 @@ class HomeViewController: UIViewController, AlertPresentable {
     private func initialConfiguration(){
         registerCollections(nibName: "MovieAppCollectionViewCell", identifier: "HomeViewCellId")
         assignDataSource()
+        assignDelegates()
     }
     
     private func registerCollections(nibName: String, identifier: String) {
@@ -52,6 +53,14 @@ class HomeViewController: UIViewController, AlertPresentable {
         popularCollectionView.dataSource = self
         topRatedCollectionView.dataSource = self
         upcomingCollectionView.dataSource = self
+    }
+    
+    private func assignDelegates(){
+        trendingCollectionView.delegate = self
+        nowPlayingCollectionView.delegate = self
+        popularCollectionView.delegate = self
+        topRatedCollectionView.delegate = self
+        upcomingCollectionView.delegate = self
     }
 }
 
@@ -114,6 +123,37 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Home movie selection.")
+        var model:Viewable
+        switch collectionView {
+        case trendingCollectionView:
+            model = (presenter?.trendingMovies[indexPath.row])!
+            print("Trending movie.")
+            presenter?.prepareDetail(movie: model as! Movie)
+        case nowPlayingCollectionView:
+            model = (presenter?.nowPlayingMovies[indexPath.row])!
+            print("Now playing movie.")
+            presenter?.prepareDetail(movie: model as! Movie)
+        case popularCollectionView:
+            model = (presenter?.popularMovies[indexPath.row])!
+            print("Popular movie.")
+            presenter?.prepareDetail(movie: model as! Movie)
+        case topRatedCollectionView:
+            model = (presenter?.topRatedMovies[indexPath.row])!
+            print("Top rated movie.")
+            presenter?.prepareDetail(movie: model as! Movie)
+        case upcomingCollectionView:
+            model = (presenter?.upcomingMovies[indexPath.row])!
+            print("Upcoming movie.")
+            presenter?.prepareDetail(movie: model as! Movie)
+        default:
+            return
+        }
+    }
+}
+
 // MARK: Comformance PresenterToViewProtocol
 extension HomeViewController: PresenterToViewProtocol {
     func reloadView() {
@@ -129,4 +169,11 @@ extension HomeViewController: PresenterToViewProtocol {
     func showAlertFromPresenter(title: String, message: String) {
         showAlert(title, message)
     }
+}
+
+extension HomeViewController: RouterToViewHomeProtocol {
+    func presentDetail(vc: UIViewController) {
+        present(vc, animated: true)
+    }
+    
 }
