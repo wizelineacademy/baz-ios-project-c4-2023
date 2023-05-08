@@ -6,6 +6,7 @@
 // 
 
 import UIKit
+import AVFoundation
 
 class LoginAndRegistrationView: UIViewController {
     
@@ -13,6 +14,7 @@ class LoginAndRegistrationView: UIViewController {
     var isUserNameEmpty = false
     var isPasswordEmpty = false
     private var defaults = UserDefaults.standard
+    var player: AVAudioPlayer?
     
     // MARK: UIElements
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -23,6 +25,7 @@ class LoginAndRegistrationView: UIViewController {
     
     // MARK: Life cycle
     override func viewDidLoad() {
+        playLoginAudio()
         super.viewDidLoad()
         self.initialConfiguration()
     }
@@ -58,6 +61,7 @@ class LoginAndRegistrationView: UIViewController {
         
         let retrievedPassword = String(decoding: data, as: UTF8.self)
         if retrievedPassword == password {
+//            playLoginAudio()
             print("Permitir el login")
 //            TODO: (SDA) Erase next line
 //            defaults.set(user, forKey: "lastLogged")
@@ -79,6 +83,34 @@ class LoginAndRegistrationView: UIViewController {
         }
         //            TODO: (SDA) Erase next line
 //        print("Retrieved password: \(retrievedPassword)")
+    }
+    
+    func playLoginAudio(){
+        print("Trying to play audio!!!")
+        if let player = player, player.isPlaying {
+            //Stop playback
+            print("player stopped")
+//            player.stop()
+        } else {
+            let urlString = Bundle.main.path(forResource: "LoginTune", ofType: "m4a")
+
+            do {
+                try AVAudioSession.sharedInstance().setMode(.default)
+                try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+
+                guard let urlString = urlString else {return}
+
+                player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
+
+                guard let player = player else {
+                    return
+                }
+                print("player playing")
+                player.play()
+            } catch {
+                print("Something went wrong with audio player")
+            }
+        }
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {

@@ -176,7 +176,7 @@ extension HomeViewController: PresenterToViewProtocol {
     }
     
     func showAlertFromPresenter(title: String, message: String) {
-        showAlert(title, message)
+//        showAlert(title, message)
     }
 }
 
