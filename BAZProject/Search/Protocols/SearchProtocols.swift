@@ -31,7 +31,6 @@ protocol SearchInteractorOutputProtocol: AnyObject {
 /// Presenter -> Interactor
 protocol SearchInteractorInputProtocol: AnyObject {
     var presenter: SearchInteractorOutputProtocol? { get set }
-    //var localDatamanager: SearchLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol? { get set }
     var entity: SearchEntity? { get set }
     
@@ -75,7 +74,3 @@ protocol SearchRemoteDataManagerOutputProtocol: AnyObject {
     func handleGetErrorServiceSearchedMovies(_ error: Error)
     
 }
-
-/// Interactor -> Local data manager
-//protocol SearchLocalDataManagerInputProtocol: AnyObject {
-//}

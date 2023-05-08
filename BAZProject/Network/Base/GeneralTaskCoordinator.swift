@@ -14,9 +14,9 @@ protocol GeneralTaskCoordinatorProtocol{
     var apiKey: String {get}
     var api:String {get}
     var languageKey: String {get}
-    var languageValueDefault: String {get}
+    var languageValueDefault: String {get set}
     var regionKey: String {get}
-    var regionValueDefault: String {get}
+    var regionValueDefault: String {get set}
     var pageKey: String {get}
     var pageValueDefault: String {get}
     var queryKey: String {get}
@@ -68,6 +68,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
     var urlPath: String = ""
     var params: [URLQueryItem] = []
     var queryValue: String = ""
+    var regionValueDefault: String = ""
+    var languageValueDefault: String = ""
     
     var session: URLSessionProtocol
     

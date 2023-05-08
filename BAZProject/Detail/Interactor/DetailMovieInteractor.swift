@@ -12,7 +12,6 @@ class DetailMovieInteractor: DetailMovieInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: DetailMovieInteractorOutputProtocol?
-    var localDatamanager: DetailMovieLocalDataManagerInputProtocol?
     var remoteDatamanager: DetailMovieRemoteDataManagerInputProtocol?
     var entity: DetailMovieEntity?
 

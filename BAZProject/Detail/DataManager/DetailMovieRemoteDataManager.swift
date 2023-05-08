@@ -15,6 +15,8 @@ class DetailMovieRemoteDataManager:DetailMovieRemoteDataManagerInputProtocol {
     func getReviewsMovie(_ movie: Int) {
         let session = URLSession.shared
         let coordinator = GeneralTaskCoordinator(session: session)
+        coordinator.languageValueDefault = .languageValueEnglish
+        coordinator.regionValueDefault = .regionValueUSA
         coordinator.urlPath = "movie/\(movie)/reviews"
         
         coordinator.get(){(result: Result<MovieReviewsResult, Error>) in

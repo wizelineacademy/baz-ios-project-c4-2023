@@ -12,7 +12,6 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: TrendingInteractorOutputProtocol?
-//    var localDatamanager: TrendingLocalDataManagerInputProtocol?
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?
     var entity: TrendingEntity?
 

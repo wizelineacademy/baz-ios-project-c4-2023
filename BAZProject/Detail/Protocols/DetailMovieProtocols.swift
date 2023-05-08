@@ -34,7 +34,6 @@ protocol DetailMovieInteractorOutputProtocol: AnyObject {
 /// Presenter -> Interactor
 protocol DetailMovieInteractorInputProtocol: AnyObject {
     var presenter: DetailMovieInteractorOutputProtocol? { get set }
-    //var localDatamanager: DetailMovieLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: DetailMovieRemoteDataManagerInputProtocol? { get set }
     var entity: DetailMovieEntity? { get set }
     
@@ -59,7 +58,6 @@ protocol DetailMoviePresenterProtocol: AnyObject {
 /// Presenter -> Router
 protocol DetailMovieRouterProtocol: AnyObject {
     static func createDetailMovieModule(withEntity entity: DetailMovieEntity) -> UIViewController
-    //static func createDetailMovieModule() -> UIViewController
 }
 
 //MARK: - Data Manager
