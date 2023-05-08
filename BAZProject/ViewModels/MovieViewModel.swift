@@ -7,13 +7,12 @@
 
 import UIKit
 
+/// This protocol defines the methods required to update the image button.
 protocol MovieViewModelProtocol {
     func updateImageButton(image: UIImage?)
 }
 
-/**
-A view model for a movie object.
-*/
+/// A view model class representing a movie.
 final class MovieViewModel {
     
     // MARK: - Properties
@@ -26,7 +25,6 @@ final class MovieViewModel {
     
     private let dateFormatter = DateFormatter()
     
-    ///
     var delegate: MovieViewModelProtocol?
     
     // MARK: - Initialization
@@ -130,24 +128,34 @@ extension MovieViewModel {
     }
 }
 
+/// This extension provides methods to handle the favorite button action of a movie
 extension MovieViewModel {
+    
+    /// Perform the action when the favorite button is tapped
     func doFavoriteButtonAction() {
         if isFavorite() {
+            // Delete the movie from the local movie list
             MovieListLocal().deleteMovie(movie.id) { [weak self] result in
                 if result == .success {
+                    // Update the button image to indicate the movie is no longer a favorite
                     self?.delegate?.updateImageButton(image: UIImage(systemName: "heart"))
                 }
             }
         } else {
+            // Add the movie to the local movie list
             MovieListLocal().addMovie(movie) { [weak self] result in
                 if result == .success {
+                    // Update the button image to indicate the movie is now a favorite
                     self?.delegate?.updateImageButton(image: UIImage(systemName: "heart.fill"))
                 }
             }
         }
     }
     
+    /// Check if the movie is a favorite
+    /// @return True if the movie is a favorite, otherwise false
     func isFavorite() -> Bool {
+        // Find the movie in the local movie list
         guard let _ = MovieListLocal().findMovie(movie.id) else { return false }
         
         return true

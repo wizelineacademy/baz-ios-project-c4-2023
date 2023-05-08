@@ -9,6 +9,8 @@ import UIKit
 
 final class FavoritesViewController: MasterMovieTableViewController {
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,9 +22,7 @@ final class FavoritesViewController: MasterMovieTableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        MovieListLocal().getMovies() { [weak self] movieList in
-            self?.viewModel?.setMovies(movieList.results)
-        }
+        viewModel?.updateIfNecesary()
     }
 }
 
@@ -37,7 +37,10 @@ extension FavoritesViewController: MasterMovieTableViewProtocols {
     }
 }
 
+/// This extension implements the MovieListViewModelProtocol protocol for the FavoritesViewController class.
+/// It provides a method to reload data in the table view.
 extension FavoritesViewController: MovieListViewModelProtocol {
+    /// Reloads data in the table view.
     func reloadData() {
         tableView.reloadData()
     }

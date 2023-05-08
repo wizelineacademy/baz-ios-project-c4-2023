@@ -34,6 +34,7 @@ final class SearchViewController: UIViewController {
 // MARK: - Methods
 
 extension SearchViewController {
+    /// Configures the table view with necessary delegate, data source, and cell registration.
     func setupTable() {
         tableView.delegate = self
         tableView.dataSource = self

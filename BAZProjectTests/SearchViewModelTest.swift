@@ -47,5 +47,4 @@ final class SearchViewModelTest: XCTestCase {
 
         XCTAssertNil(result)
     }
-
 }

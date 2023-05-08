@@ -36,8 +36,6 @@ final class UserReviewTest: XCTestCase {
             XCTFail("Failed on time out")
         }
     }
-    
-    
 }
 
 

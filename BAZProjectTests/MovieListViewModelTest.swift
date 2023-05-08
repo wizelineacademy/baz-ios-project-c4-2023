@@ -95,7 +95,6 @@ final class MovieListViewModelTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 5)
-
     }
     
     func testMoveList_whenReadFromAPI_checkNumberOfPopularMovies() {
@@ -109,7 +108,6 @@ final class MovieListViewModelTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 5)
-
     }
     
     func testMoveList_whenReadFromAPI_checkNumberOfTopRatedMovies() {
@@ -123,7 +121,6 @@ final class MovieListViewModelTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 5)
-
     }
     
     func testMoveList_whenReadFromAPI_checkNumberOfUpcomingMovies() {
@@ -137,7 +134,6 @@ final class MovieListViewModelTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 5)
-
     }
     
     func testMoveList_whenReadFromAPI_checkNumberOfTrendingMovies() {
@@ -151,7 +147,5 @@ final class MovieListViewModelTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 5)
-
     }
-
 }

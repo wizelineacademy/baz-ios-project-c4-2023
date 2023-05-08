@@ -83,7 +83,11 @@ extension MovieDetailViewController {
     }
 }
 
+/// The MovieDetailViewController class conforms to the MovieViewModelProtocol, and implements the updateImageButton method.
 extension MovieDetailViewController: MovieViewModelProtocol {
+    
+    /// Updates the image of the btnFavorite button with the provided image.
+    /// @param image: The new image to be displayed on the btnFavorite button.
     func updateImageButton(image: UIImage?) {
         if let image = image {
             btnFavorite.image = image

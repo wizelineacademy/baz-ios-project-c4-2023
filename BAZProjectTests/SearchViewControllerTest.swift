@@ -77,6 +77,5 @@ final class SearchViewControllerTest: XCTestCase {
     func testSearchViewController_TableViewInitallyHasElements() {
         XCTAssertTrue(sut.tableView.dataSource!.tableView(sut.tableView, numberOfRowsInSection: 0) > 0)
     }
-    
 }
 

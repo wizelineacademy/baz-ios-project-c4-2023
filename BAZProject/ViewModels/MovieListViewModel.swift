@@ -124,4 +124,12 @@ extension MovieListViewModel {
     func getTitle() -> String {
         self.filterType.rawValue
     }
+    
+    func updateIfNecesary() {
+        MovieListLocal().getMovies() { [weak self] movieList in
+            if self?.movies.count != movieList.results.count {
+                self?.setMovies(movieList.results)
+            }
+        }
+    }
 }
