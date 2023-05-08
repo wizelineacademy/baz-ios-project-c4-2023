@@ -35,6 +35,7 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
         interactor?.getInfo(detail: .Similars)
     }
     
+    /// This function calls the interactor to show if it is favorite and set to the view
     func getInfoFavoritesMovies() {
         if let getFavoriteMovies = interactor?.getFavoriteMovies(){
             interactor?.bIsFavorite = getFavoriteMovies
@@ -42,6 +43,7 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
         }
     }
     
+    /// This function calls the interactor to remove or add a movie to favorites
     func addMovieToFavorite() {
         if interactor?.bIsFavorite ?? false{
             interactor?.removeFavoriteMovies()
@@ -53,12 +55,14 @@ extension MoviesDetailPresenter: MoviesDetailViewOutputProtocol{
 }
 extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
     
+    /// This function obtains the result 'Review' of the service to show it in the view
     func setResponseDetailsMovies(with resultReviews: [ReviewsMovieData]) {
         self.resultReviews.removeAll()
         self.resultReviews = resultReviews
         view?.setReviews()
     }
     
+    /// This function obtains the result 'Recomendation and Similars' of the service to show it in the view
     func setResponseDetail(with result: [InfoDetailData], detail typeDetail: OptionDetail?) {
         switch typeDetail {
         case .Recomendations:
@@ -78,6 +82,7 @@ extension MoviesDetailPresenter: MoviesDetailInteractorOutputProtocol{
         view?.setBtnLike(bsIsOn: bIsOn ?? false)
     }
     
+    ///calls an alert to display a message
     func setError() {
         router?.presentAlert(CWAlert.simpleWith(message: "No se encontraron resultados"))
     }

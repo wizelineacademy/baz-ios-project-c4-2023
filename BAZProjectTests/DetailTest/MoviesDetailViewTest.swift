@@ -25,7 +25,7 @@ final class MoviesDetailViewTest: XCTestCase {
         sut = nil
     }
     
-    // MARK: View - Test
+    // MARK: - View - Test
     // Validate backgroundColor of the view
     func test_SearchMoviesView_BackgroundColor() {
         XCTAssertEqual(sut.view.backgroundColor, .systemBackground)
@@ -46,12 +46,12 @@ final class MoviesDetailViewTest: XCTestCase {
         XCTAssertEqual(expected, titleNav)
     }
     
-    // MARK: Button - Test
+    // MARK: - Button - Test
     func test_ButtonFavoritesHasSetImageView() {
         XCTAssertNotNil(sut.btnLikes.imageView)
     }
     
-    // MARK: TableView - Test
+    // MARK: - UICollectionView - Test
     func test_CollectionHasSetDatasource() {
         XCTAssertNotNil(sut.collectionRecomendations.dataSource)
         XCTAssertNotNil(sut.collecionSimilars.dataSource)

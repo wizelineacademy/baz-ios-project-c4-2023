@@ -41,6 +41,8 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         }
     }
     
+    // MARK: - Functions handlerResponse
+    /// this function represents a success or a failure
     func handlerResponse(result: Result <MovieDetailResult, Error>){
         DispatchQueue.main.async {
             switch result {
@@ -66,6 +68,7 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         self.presenter?.setResponseDetailsMovies(with: detailReviews)
     }
     
+    /// this function represents a success or a failure
     func handlerResponseDetailResult(result: Result <RecomendationsResult, Error>){
         DispatchQueue.main.async {
             switch result {
@@ -82,6 +85,7 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
         }
     }
     
+    /// this function represents a success or a failure
     func handlerResponseSimilarsResult(result: Result <MovieSimilars, Error>){
         DispatchQueue.main.async {
             switch result {
@@ -111,9 +115,12 @@ extension MoviesDetailInteractor: MoviesDetailInteractorInputProtocol{
     ///This function adds the favorite movie to the UserDefaults
     func addFavoriteMovies() {
         bIsFavorite = true
-        guard var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies) else { return }
-        favoritesMovies.append(moviesInfo?.id ?? 0)
-        UserDefaultMannager.set(value: favoritesMovies, key: .favoriteMovies)
+        if var favoritesMovies = UserDefaultMannager.get(type: [Int].self, forKey: .favoriteMovies){
+            favoritesMovies.append(moviesInfo?.id ?? 0)
+            UserDefaultMannager.set(value: favoritesMovies, key: .favoriteMovies)
+        }else{
+            UserDefaultMannager.set(value: [moviesInfo?.id ?? 0], key: .favoriteMovies)
+        }
         presenter?.showBtnFavorites(with: true)
     }
     
