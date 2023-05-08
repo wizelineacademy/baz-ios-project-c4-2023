@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Structure containing constant cell values
 struct CellConstants {
     static let viewHeightAnchor = 140.0

@@ -83,7 +83,7 @@ class DetailViewController: UIViewController {
     }()
     private lazy var similarCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.3, height: CellConstants.CollectionViewHeightAnchor)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3.3, height: CellConstants.CollectionViewHeightAnchor)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,7 @@ class DetailViewController: UIViewController {
     }()
     private lazy var recomendationCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.3, height: CellConstants.CollectionViewHeightAnchor)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3.3, height: CellConstants.CollectionViewHeightAnchor)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -224,8 +224,11 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellId = CellConstants.HomeCellId
         if collectionView == self.similarCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellConstants.detailMovieCellId, for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? DetailMovieCell
+            else { return UICollectionViewCell() }
+            
             cell.model = similarMovies?[indexPath.row]
             self.presenter?.getMovieImage(imagePath: similarMovies?[indexPath.row].posterPath ?? "", completion: { imageData in
                 cell.coverView.image = imageData
@@ -233,7 +236,9 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
         else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellConstants.detailMovieCellId, for: indexPath) as? DetailMovieCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? DetailMovieCell
+            else { return UICollectionViewCell() }
+            
             cell.model = recomendationMovies?[indexPath.row]
             self.presenter?.getMovieImage(imagePath: recomendationMovies?[indexPath.row].posterPath ?? "", completion: { imageData in
                 cell.coverView.image = imageData

@@ -121,8 +121,8 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.HomeCellId, for: indexPath) as? HomeCell
-        else { return UITableViewCell() }
+        let cellId = CellConstants.HomeCellId
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? HomeCell else { return UITableViewCell() }
         cell.isHome = true
         cell.presenter = presenter
         cell.index = indexPath.row

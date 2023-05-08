@@ -46,7 +46,6 @@ extension DetailInteractor: DetailInteractorInputProtocol {
         }
     }
     
-    
     /// Function that gets an array of recomended movies
     /// - Parameters:
     ///   - endPoint: the URL of endpoint

@@ -42,7 +42,6 @@ extension SearchRouter: SearchRouterProtocol {
         }
     }
     
-    
     /// Hide the animation alert from service
     /// - Parameter completion: Finish the animation
     func hideAnimation(completion: (() -> Void)? = nil) {
@@ -50,7 +49,6 @@ extension SearchRouter: SearchRouterProtocol {
             self.animationView?.dismiss(animated: true, completion: completion)
         }
     }
-    
     
     /// Show the Detail module
     /// - Parameter movie: The data of selected movie

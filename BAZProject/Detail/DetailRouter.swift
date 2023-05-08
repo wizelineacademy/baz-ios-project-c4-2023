@@ -14,7 +14,6 @@ class DetailRouter {
     
     // MARK: - Functions
     
-    
     /// Create the Detail module
     /// - Parameter movie: The data of selected movie
     /// - Returns: return the Detail ViewController
