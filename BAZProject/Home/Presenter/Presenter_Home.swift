@@ -81,6 +81,7 @@ class Presenter: ViewToPresenterProtocol, InteractorToPresenter {
     }
     
     func loadImage(_ url: URL, completion: @escaping (UIImage?) -> Void) {
+        print("LOADING AN IMAGE!!!!!")
         DispatchQueue.global(qos: .utility).async { [weak self] in
             guard let self = self else { return }
             guard let data = try? Data(contentsOf: url),

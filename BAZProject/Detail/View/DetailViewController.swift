@@ -247,7 +247,10 @@ extension DetailViewController: UICollectionViewDataSource {
             cell.cellImageView.image = self.getImage(using: actors[indexPath.row].getImagePath()!, isTopView: false)
         } else if collectionView == SimilarCollection {
             cell.cellLabel.text = similars[indexPath.row].title
-            cell.cellImageView.image = self.getImage(using: similars[indexPath.row].getImagePath()!, isTopView: false)
+            ImageManager.shared.getImage(urlImage: similars[indexPath.row].getImagePath() ?? "") { image in
+                cell.cellImageView.image = image
+            }
+//            cell.cellImageView.image = self.getImage(using: similars[indexPath.row].getImagePath()!, isTopView: false)
         } else if collectionView == RecommendationCollection {
             cell.cellLabel.text = recomendations[indexPath.row].title
             cell.cellImageView.image = self.getImage(using: recomendations[indexPath.row].getImagePath()!, isTopView: false)
