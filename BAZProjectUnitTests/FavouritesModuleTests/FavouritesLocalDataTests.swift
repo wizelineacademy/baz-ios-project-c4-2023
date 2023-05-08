@@ -45,6 +45,25 @@ final class FavouritesLocalDataTests: XCTestCase {
         
         XCTAssertEqual(fullFavs?.count, itemArray.count)
         XCTAssertFalse(removedFavs?.contains(item1) ?? true)
+        XCTAssertEqual(removedFavs?.count, itemArray.count - 1)
+    }
+    
+    func test_RemoveFavourite_DeleteJustOneItemShouldNotContainItems() throws {
+        let item1 = MediaItem(id: 1)
+        var itemArray: [MediaItem] = []
+        itemArray.append(item1)
+        let udMock = UserDefaultsMock()
+        udMock.data = try JSONEncoder().encode(itemArray)
+        let sut = FavouritesLocalData(udManager: udMock)
+        
+        let fullFavs = try sut.getFavourites()
+        try sut.removeFavourite(item1)
+        let removedFavs = try sut.getFavourites()
+        
+        
+        XCTAssertEqual(fullFavs?.count, itemArray.count)
+        XCTAssertFalse(removedFavs?.contains(item1) ?? true)
+        XCTAssertEqual(removedFavs?.count, itemArray.count - 1)
     }
 
 }

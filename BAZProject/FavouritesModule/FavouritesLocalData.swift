@@ -29,12 +29,8 @@ class FavouritesLocalData {
     func removeFavourite(_ item: MediaItem) throws {
         if var elements = try getFavourites(), elements.contains(item) {
             elements.removeAll(where: { $0 == item})
-            if elements.count > 0 {
-                let data = try enconder.encode(elements)
-                udManager.save(data, forKey: "Favourites")
-            } else {
-                udManager.delete(for: "Favourites")
-            }
+            let data = try enconder.encode(elements)
+            udManager.save(data, forKey: "Favourites")
         }
     }
     
