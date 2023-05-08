@@ -455,7 +455,7 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssertEqual(theError, expectedError)
     }
     
-    func test_saveOrDeleteItem_RetrievedDataShouldBeDeletedAndNoLongerFavourite() {
+    func test_saveOrDeleteItem_RetrievedDataShouldBeDeletedAndNoLongerFavourite() throws {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
         udManager.data = try! JSONEncoder().encode([mediaItem])
         setViewModel(mediaItem: mediaItem)
@@ -469,9 +469,10 @@ final class DetailViewModelTests: XCTestCase {
         }
         sut.saveOrDeleteFavourite()
         wait(for: [expectation], timeout: 0.5)
+        let newArray = try JSONDecoder().decode([MediaItem].self, from: udManager.data!)
         
         XCTAssertFalse(fav)
-        XCTAssertNil(udManager.data)
+        XCTAssertEqual(newArray.count, 0)
     }
     
 }
