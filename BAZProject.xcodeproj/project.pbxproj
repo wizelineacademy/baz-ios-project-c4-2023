@@ -10,6 +10,10 @@
 		B51D476629F237100089DBBB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476429F237100089DBBB /* SearchTableViewController.swift */; };
 		B51D476729F237100089DBBB /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51D476529F237100089DBBB /* SearchTableViewController.xib */; };
 		B51D476A29F250900089DBBB /* keysString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D476929F250900089DBBB /* keysString.swift */; };
+		B5316B692A0950E900DC1226 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E880A2A037B490081680C /* Loader.swift */; };
+		B5316B6A2A0953BA00DC1226 /* ReviewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B540A2062A0724EC0095E82F /* ReviewsCollectionViewCell.swift */; };
+		B5316B6B2A0954E800DC1226 /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4F0992A062B060040D983 /* GeneralCollectionViewCell.swift */; };
+		B5316B6C2A09550000DC1226 /* TitleSectionCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4F09E2A062F990040D983 /* TitleSectionCollectionReusableView.swift */; };
 		B540A2082A0724EC0095E82F /* ReviewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B540A2062A0724EC0095E82F /* ReviewsCollectionViewCell.swift */; };
 		B540A2092A0724EC0095E82F /* ReviewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B540A2072A0724EC0095E82F /* ReviewsCollectionViewCell.xib */; };
 		B54DC53429F757CF0078AEAD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DC53329F757CF0078AEAD /* Movie.swift */; };
@@ -871,14 +875,17 @@
 				B5CCD75329F887BB00DE3701 /* SearchRouter.swift in Sources */,
 				B5CCD72829F8866D00DE3701 /* TrendingRemoteDataManagerMock.swift in Sources */,
 				B5CCD74729F8874700DE3701 /* keysString.swift in Sources */,
+				B5316B6A2A0953BA00DC1226 /* ReviewsCollectionViewCell.swift in Sources */,
 				B5CCD75E29F8891700DE3701 /* TrendingPresenterMock.swift in Sources */,
 				B5EC48DD2A02C58F00AB8462 /* DetailMovieView.swift in Sources */,
 				B5CCD75029F887BB00DE3701 /* SearchEntity.swift in Sources */,
+				B5316B6C2A09550000DC1226 /* TitleSectionCollectionReusableView.swift in Sources */,
 				B5CCD74629F8874700DE3701 /* TrendingProtocols.swift in Sources */,
 				B5CCD74229F8874700DE3701 /* BMTabBar.swift in Sources */,
 				B5CCD76429F88A6500DE3701 /* SearchPresenterMock.swift in Sources */,
 				B5CCD76229F88A4600DE3701 /* SearchInteractorMock.swift in Sources */,
 				B5EC48DB2A02C58F00AB8462 /* DetailMovieInteractor.swift in Sources */,
+				B5316B6B2A0954E800DC1226 /* GeneralCollectionViewCell.swift in Sources */,
 				D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */,
 				B5CCD75129F887BB00DE3701 /* SearchInteractor.swift in Sources */,
 				B5CCD75429F887BB00DE3701 /* SearchProtocols.swift in Sources */,
@@ -886,6 +893,7 @@
 				B5CCD73D29F8874700DE3701 /* TrendingInteractor.swift in Sources */,
 				B5CCD74529F8874700DE3701 /* GeneralServices.swift in Sources */,
 				B5EC48D92A02C58F00AB8462 /* DetailMovieProtocols.swift in Sources */,
+				B5316B692A0950E900DC1226 /* Loader.swift in Sources */,
 				B5CCD75829F887BB00DE3701 /* SearchRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

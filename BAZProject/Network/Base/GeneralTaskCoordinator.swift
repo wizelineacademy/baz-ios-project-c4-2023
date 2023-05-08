@@ -68,8 +68,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
     var urlPath: String = ""
     var params: [URLQueryItem] = []
     var queryValue: String = ""
-    var regionValueDefault: String = ""
-    var languageValueDefault: String = ""
+    var regionValueDefault: String = .regionValueDefault
+    var languageValueDefault: String = .languageValueDefault
     
     var session: URLSessionProtocol
     

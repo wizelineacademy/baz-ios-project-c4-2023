@@ -79,4 +79,5 @@ protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
     func handleGetTopRated(_ result: [Movie])
     func handleGetUpcoming(_ result: [Movie])
     func handleGetErrorServiceMovies(_ error: Error)
+    func moviesData(_ entity: TrendingEntity?, typeIn: ListSectionMovieHome) -> TrendingEntity?
 }
