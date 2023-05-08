@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 @testable import BAZProject
 
-enum TrendingMoviesPresenterCalls{
+enum MoviesPresenterCalls{
     case getMovies
     case setMovies
     case getResultViewController
@@ -19,10 +19,10 @@ enum TrendingMoviesPresenterCalls{
     case sendToDetail
 }
 
-final class TrendingMoviesPresenterMock: MoviesPresenterProtocol{
+final class MoviesPresenterMock: MoviesPresenterProtocol{
 
-    var calls: [TrendingMoviesPresenterCalls] = []
-    var interface: TrendigMoviesViewControllerMock? = TrendigMoviesViewControllerMock(restoredState: SearchControllerRestorableState())
+    var calls: [MoviesPresenterCalls] = []
+    var interface: MoviesViewControllerMock? = MoviesViewControllerMock(restoredState: SearchControllerRestorableState())
     var interactor: MoviesInteractorProtocol?
     var router: MoviesWireframeProtocol
     var textToSearch: String?
@@ -30,7 +30,7 @@ final class TrendingMoviesPresenterMock: MoviesPresenterProtocol{
     
     init(textToSearch: String? = nil, interface: MoviesViewProtocol? = nil, interactor: MoviesInteractorProtocol? = nil, router: MoviesWireframeProtocol) {
         self.textToSearch = textToSearch
-        self.interface = interface as? TrendigMoviesViewControllerMock
+        self.interface = interface as? MoviesViewControllerMock
         self.interactor = interactor
         self.router = router
         self.interactor = interactor

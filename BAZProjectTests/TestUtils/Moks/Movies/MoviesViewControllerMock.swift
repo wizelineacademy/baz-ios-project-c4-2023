@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 @testable import BAZProject
 
-enum TrendigMoviesViewControllerMockCalls{
+enum MoviesViewControllerMockCalls{
     case loadData
     case loadSearchData
 }
 
-final class TrendigMoviesViewControllerMock: UIViewController, MoviesViewProtocol{
+final class MoviesViewControllerMock: UIViewController, MoviesViewProtocol{
     var type: (BAZProject.ApiPathProtocol & BAZProject.ViewPropertiesProtocol)?
     var presenter: BAZProject.MoviesPresenterProtocol?
     var resultsTableController: BAZProject.ResultsTableController?
     var restoredState: BAZProject.RestorableStateProtocol = BAZProject.SearchControllerRestorableState()
-    var calls: [TrendigMoviesViewControllerMockCalls]
+    var calls: [MoviesViewControllerMockCalls]
     var movies: [BAZProject.ListMovieProtocol]
     var searchResultMovies: [BAZProject.ListMovieProtocol]
     

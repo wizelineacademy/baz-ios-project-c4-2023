@@ -10,17 +10,29 @@
 
 import UIKit
 
-class MoviewDetailInteractor: MoviewDetailInteractorProtocol {
+final class MovieDetailInteractor: MoviewDetailInteractorProtocol {
     
+    /// Intancia del presenter  del modulo VIPER MovieDetail
     weak var presenter: MoviewDetailPresenterProtocol?
+    
     /// Intancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
     let movieAPI: GenericAPIProtocol
+    
+    /**
+     Inicializador del Iteractor del modulo VIPER de Trending Movies
+     - Parameters:
+        - MovieApi: Initancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
+     - Returns: Devuelve el Iteractor del modulo VIPER Trending Movies
+     */
     init(movieAPI: GenericAPIProtocol) {
         self.movieAPI = movieAPI
     }
     
+    ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func getSimilar(_ id: String) {
-        guard let urlRequest = ApiConstans.similar(id).urlRequest else { return }
+        guard let urlRequest = MovieDetailInfo.similar(id).urlRequest else { return }
         movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
@@ -31,8 +43,11 @@ class MoviewDetailInteractor: MoviewDetailInteractorProtocol {
         }
     }
     
+    ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func getRecomendation(_ id: String) {
-        guard let urlRequest = ApiConstans.recomended(id).urlRequest else { return }
+        guard let urlRequest = MovieDetailInfo.recomended(id).urlRequest else { return }
         movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
@@ -43,8 +58,11 @@ class MoviewDetailInteractor: MoviewDetailInteractorProtocol {
         }
     }
     
+    ///Metodo que cosume la api de MovieDB y devueve al presenter el Reparto
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func getCast(_ id: String) {
-        guard let urlRequest = ApiConstans.credits(id).urlRequest else { return }
+        guard let urlRequest = MovieDetailInfo.credits(id).urlRequest else { return }
         movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<CastResult?, Error>) in
             switch result {
             case .failure(let fail):
@@ -55,6 +73,24 @@ class MoviewDetailInteractor: MoviewDetailInteractorProtocol {
         }
     }
     
+    ///Metodo que cosume la api de MovieDB y devueve al presenter  las reseñas
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
+    func getReviews(_ id: String) {
+        guard let urlRequest = MovieDetailInfo.reviews(id).urlRequest else { return }
+        movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<ReviewResult?, Error>) in
+            switch result {
+            case .failure(let fail):
+                print(fail)
+            case .success(let response):
+                self?.presenter?.setReviews(response?.results ?? [])
+            }
+        }
+    }
+    
+    ///Metodo que elimina de un userdefault una pelicula
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func deleteFavorite(_ id: Int) {
         guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
               let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
@@ -64,16 +100,24 @@ class MoviewDetailInteractor: MoviewDetailInteractorProtocol {
         presenter?.setFavorite(false)
     }
     
+    ///Metodo que guarda de un userdefault una pelicula
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func saveFavorite(_ movie: ListMovieProtocol) {
-        let encoder = JSONEncoder()
-        guard let movie = movie as? Movie else { return }
-        let dctMovie: [Int: Movie] = [movie.id: movie]
-        if let data = try? encoder.encode(dctMovie){
+        guard let movie = movie as? Movie,
+              let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
+              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
+        var movies = dctMovies
+        movies[movie.id] = movie
+        if let data = try? JSONEncoder().encode(movies){
             UserDefaults.standard.setValue(data, forKey: "favorite_movies")
             presenter?.setFavorite(true)
         }
     }
     
+    ///Metodo que busca de un userdefault una pelicula
+    /// - Parameters:
+    ///     - id:  Idetificador de una Movie
     func findFavoriteMovie(_ id: Int) -> Bool{
         guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
               let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else {

@@ -51,6 +51,7 @@ final class MoviesViewController: UITableViewController, MoviesViewProtocol {
 	override func viewDidLoad() {
         super.viewDidLoad()
         resultsTableController = configureTableViewSearch()
+        resultsTableController?.delegate = self
         searchController = configureSearch()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -152,5 +153,13 @@ extension MoviesViewController: UISearchResultsUpdating{
 
     func updateSearchResults(for searchController: UISearchController) {
         presenter?.findMovies(for: searchController.searchBar.text)
+    }
+}
+
+// MARK: - ResultTableForMoviesDelegate
+
+extension MoviesViewController: ResultTableForMoviesDelegate{
+    func didSelectMovie(_ moview: Movie) {
+        presenter?.sendToDetail(movie: moview)
     }
 }

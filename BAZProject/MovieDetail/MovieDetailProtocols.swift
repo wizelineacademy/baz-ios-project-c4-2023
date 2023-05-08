@@ -12,19 +12,22 @@ import Foundation
 
 //MARK: Wireframe -
 protocol MoviewDetailWireframeProtocol: AnyObject {
-
+    func sendToReviews(reviews: [Review])
 }
 //MARK: Presenter -
 protocol MoviewDetailPresenterProtocol: AnyObject {
     func getSimilar(_ id: String)
     func getRecomendation(_ id: String)
     func getCast(_ id: String)
+    func getReviews(_ id: String)
     func setCast(_ cast: [Cast])
-    func favoriteMovie(_ movie: ListMovieProtocol)
+    func setReviews(_ reviews: [Review])
     func setSimilarMovies(movies: [ListMovieProtocol])
     func setRecomendedMovies(movies: [ListMovieProtocol])
     func setFavorite(_ isFavorite: Bool)
     func findFavoriteMovie(_ id: Int)
+    func favoriteMovie(_ movie: ListMovieProtocol)
+    func sendToReviews(reviews: [Review])
 }
 
 //MARK: Interactor -
@@ -34,6 +37,7 @@ protocol MoviewDetailInteractorProtocol: AnyObject {
     func getRecomendation(_ id: String)
     func getCast(_ id: String)
     func deleteFavorite(_ id: Int)
+    func getReviews(_ id: String)
     func saveFavorite(_ movie: ListMovieProtocol)
     func findFavoriteMovie(_ id: Int) -> Bool
 }
@@ -45,9 +49,11 @@ protocol MoviewDetailViewProtocol: AnyObject {
     var similarMovies: [ListMovieProtocol] { get set }
     var recomendedMovies: [ListMovieProtocol] { get set }
     var cast: [Cast] { get set }
+    var reviews: [Review] { get set }
     
     func setSimilarMovies(movies: [ListMovieProtocol])
     func setRecomendedMovies(movies: [ListMovieProtocol])
     func setCast(_ cast: [Cast])
     func setFavorite(_ isFavorite: Bool)
+    func setReviews(_ reviews: [Review])
 }

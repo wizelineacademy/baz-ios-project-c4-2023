@@ -9,16 +9,16 @@ import Foundation
 import UIKit
 @testable import BAZProject
 
-enum TrendingMoviesInteractorMockCalls{
+enum MoviesInteractorMockCalls{
     case getMovies
     case getRemotImage
     case findMovies
 }
 
-final class TrendingMoviesInteractorMock: MoviesInteractorProtocol{
+final class MoviesInteractorMock: MoviesInteractorProtocol{
     
     var presenter: BAZProject.MoviesPresenterProtocol?
-    var calls: [TrendingMoviesInteractorMockCalls] = []
+    var calls: [MoviesInteractorMockCalls] = []
     var fakeMovieApi: FakeMovieApi
     
     init(movieAPI: GenericAPIProtocol) {

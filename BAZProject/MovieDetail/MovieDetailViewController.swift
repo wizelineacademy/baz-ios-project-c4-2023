@@ -10,22 +10,51 @@
 
 import UIKit
 
-final class MoviewDetailViewController: UIViewController, MoviewDetailViewProtocol {
+///ViewController que contiene la vista del Modulo Viper de MovieDetail
+/// - Parameters:
+///    - presenter: Intancia del Presenter del modulo VIPER
+///    - Movies: Pelicula de detalle
+///    - Reviews: Arreglo con las reseñas
+///    - Cast: Modeo con el reparto de una pelicula
+///    - SimilarMovies: Arrleglo con peliculas similares
+///    - RecomendedMovies: Arreglo con peliculas recomendadas
+/// - Returns: Regrea un ViewController
+///
+final class MovieDetailViewController: UIViewController, MoviewDetailViewProtocol {
+    
+    ///Pelicula de detalle
     var movie: ListMovieProtocol?
+    
+    ///Intancia del Presenter del modulo VIPER
     var presenter: MoviewDetailPresenterProtocol?
+    
+    ///Arreglo con las reseñas
+    var reviews: [Review] = []
+    
+    ///Modeo con el reparto de una pelicula
     var cast: [Cast] = []{
         didSet{
-            collectionCast.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionCast.reloadData()
+            }
         }
     }
+    
+    ///Arrleglo con peliculas similares
     var similarMovies: [ListMovieProtocol] = []{
         didSet{
-            collectionSimilar.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionSimilar.reloadData()
+            }
         }
     }
+    
+    ///Arreglo con peliculas recomendadas
     var recomendedMovies: [ListMovieProtocol] = []{
         didSet{
-            collectionRecomendation.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionRecomendation.reloadData()
+            }
         }
     }
     
@@ -60,18 +89,26 @@ final class MoviewDetailViewController: UIViewController, MoviewDetailViewProtoc
         presenter?.getRecomendation(String(movie?.id ?? 0))
         presenter?.getCast(String(movie?.id ?? 0))
         presenter?.findFavoriteMovie(movie?.id ?? 0)
+        presenter?.getReviews(String(movie?.id ?? 0))
     }
     
+    ///funcion que confirura un UICollectionView
+    /// - Parameters:
+    ///    - collection: UICollectionView a configurar
     private func configureMovieCollectionView(_ collection: UICollectionView){
         collection.dataSource = self
         collection.register(UINib(nibName: MovieCollectionViewCell.idetifier, bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.idetifier)
     }
     
+    ///funcion que confirura un UICollectionView
+    /// - Parameters:
+    ///    - collection: UICollectionView a configurar
     private func configureCastCollectionView(_ collection: UICollectionView){
         collection.dataSource = self
         collection.register(UINib(nibName: CastCollectionViewCell.idetifier, bundle: nil), forCellWithReuseIdentifier: CastCollectionViewCell.idetifier)
     }
     
+    ///funcion que carga la informacion por defecto de una pelicula
     private func setUpInitialInfo(){
         self.title = movie?.title
         lblTitle.text = movie?.title
@@ -79,11 +116,17 @@ final class MoviewDetailViewController: UIViewController, MoviewDetailViewProtoc
         guard let url = movie?.urlBackdropImage else { return }
         imgPoster.loadRemoteImage(url: url)
     }
-
+    
+    ///Accion que va al presenter a lanzar la pantalla de reseñas
+    /// - Parameters:
+    ///    - sender: Any
     @IBAction func goToReviws(_ sender: Any) {
-        
+        presenter?.sendToReviews(reviews: reviews)
     }
     
+    ///Accion que cambia el estatus de un favorito
+    /// - Parameters:
+    ///    - sender: Any
     @IBAction func like(_ sender: Any) {
         guard let movie = self.movie else { return }
         presenter?.favoriteMovie(movie)
@@ -91,27 +134,46 @@ final class MoviewDetailViewController: UIViewController, MoviewDetailViewProtoc
     
 }
 
-extension MoviewDetailViewController{
+extension MovieDetailViewController{
     
+    ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB y recarga la el UICollectionView
+    /// - Parameters:
+    ///     -Movies: Array de ListMovieProtocol
     func setSimilarMovies(movies: [ListMovieProtocol]) {
         self.similarMovies = movies
     }
     
+    ///Funcion que carga en un arreglo de Movies la informacion que regresa el API de MovieDB y recarga la el UICollectionView
+    /// - Parameters:
+    ///     -Movies: Array de ListMovieProtocol
     func setRecomendedMovies(movies: [ListMovieProtocol]) {
         self.recomendedMovies = movies
     }
     
+    ///Funcion que carga en un arreglo de Cast la informacion que regresa el API de MovieDB y recarga la el UICollectionView
+    /// - Parameters:
+    ///     -Cast: Array de Cast
     func setCast(_ cast: [Cast]) {
         self.cast = cast
     }
     
+    ///Funcion que carga en un arreglo de Review la informacion que regresa el API de MovieDB
+    /// - Parameters:
+    ///     -reviews: Array de Review
+    func setReviews(_ reviews: [Review]) {
+        self.reviews = reviews
+    }
+    
+    ///Funcion que cambia el estatus de un favorito
+    /// - Parameters:
+    ///     -isFavorite: conficion 
     func setFavorite(_ isFavorite: Bool) {
         btnLike.tintColor = isFavorite ? .systemPink : .systemGray
     }
     
 }
 
-extension MoviewDetailViewController: UICollectionViewDataSource{
+extension MovieDetailViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionCast{
             return cast.count
@@ -139,9 +201,4 @@ extension MoviewDetailViewController: UICollectionViewDataSource{
             return cell
         }
     }
-}
-
-extension MoviewDetailViewController: UICollectionViewDelegateFlowLayout {
-    
-    
 }

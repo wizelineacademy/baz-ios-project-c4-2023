@@ -29,7 +29,7 @@ final class TabBarController: UITabBarController {
     ///    - controller: Enum TabViewControllers que contine la estructura de un tabBarITem
     /// - returns:
     ///   Devuelve un TabViewControllers
-    private func createBarController(for controller: ViewControllerElements) -> UIViewController{
+    private func createBarController(for controller: MovieCategories) -> UIViewController{
         let viewController = MoviesRouter.createModule(type: controller)
         let navBarController = UINavigationController(rootViewController: viewController)
         navBarController.tabBarItem.title = controller.title

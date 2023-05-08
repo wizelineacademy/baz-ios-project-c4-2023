@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocolo que desacopla la estructura de Cast
 protocol CastProtocol{
     var adult: Bool { get set }
     var gender: Int { get set }
@@ -26,26 +27,44 @@ protocol CastProtocol{
 }
 
 // MARK: - CastResult
+/// Estructura que contine la información que se usara en la vista
 struct CastResult: Codable {
     var id: Int
     var cast, crew: [Cast]
 }
 
 // MARK: - Cast
+/// Estructura de una el elecnco de una pélicula
 struct Cast: Codable, CastProtocol{
-    
+    ///Identificador si es para adultos
     var adult: Bool
-    var gender, id: Int
-    var knownForDepartment, name, originalName: String
+    ///Identificador del genero
+    var gender: Int
+    ///Identificador
+    var id: Int
+    
+    var knownForDepartment: String
+    ///Nombre del la persona del reparto
+    var name: String
+    ///Nombre original de la persona del reparto
+    var originalName: String
+    ///Popularidad de la persona de reparto
     var popularity: Double
+    ///Imagen para identificar a la persona del reparto
     var profilePath: String?
+    ///Identificador del Cast
     var castID: Int?
+    ///Nombre del personaje que interpreta
     var character: String?
+    ///Identificador  del credito
     var creditID: String
+    ///orden de aparicion
     var order: Int?
+    
     var department, job: String?
+    ///Regresa el url del actor
     var urlProfilePath: URL? {
-        return ApiConstans.image(profilePath ?? "").imageUrl
+        return MovieDetailInfo.image(profilePath ?? "").imageUrl
     }
 
     enum CodingKeys: String, CodingKey {

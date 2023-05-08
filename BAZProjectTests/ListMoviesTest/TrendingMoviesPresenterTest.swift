@@ -11,18 +11,18 @@ import XCTest
 
 final class TrendingMoviesPresenterTest: XCTestCase{
     
-    private var sut: TrendingMoviesPresenterMock!
-    private var viewControllerMock: TrendigMoviesViewControllerMock!
-    private var interactorMock: TrendingMoviesInteractorMock!
-    private var routerMock: TrendingMoviesRouterMock!
+    private var sut: MoviesPresenterMock!
+    private var viewControllerMock: MoviesViewControllerMock!
+    private var interactorMock: MoviesInteractorMock!
+    private var routerMock: MoviesRouterMock!
     
     override func setUp() {
         super.setUp()
-        viewControllerMock = TrendigMoviesViewControllerMock(restoredState: SearchControllerRestorableState())
-        interactorMock = TrendingMoviesInteractorMock(movieAPI: FakeMovieApi(resultType: .sucess))
-        routerMock = TrendingMoviesRouterMock()
+        viewControllerMock = MoviesViewControllerMock(restoredState: SearchControllerRestorableState())
+        interactorMock = MoviesInteractorMock(movieAPI: FakeMovieApi(resultType: .sucess))
+        routerMock = MoviesRouterMock()
         
-        sut = TrendingMoviesPresenterMock(textToSearch: "textToSearch",
+        sut = MoviesPresenterMock(textToSearch: "textToSearch",
                                           interface: viewControllerMock,
                                           interactor: interactorMock,
                                           router: routerMock)

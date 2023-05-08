@@ -61,7 +61,8 @@ final class ResultsTableController: UITableViewController, ResultTableForMoviesP
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let movie = filteredProducts[indexPath.row] as? Movie else { return }
-        navigationController?.pushViewController(MoviewDetailRouter.createModule(movie: movie), animated: true)
+        delegate?.didSelectMovie(movie)
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

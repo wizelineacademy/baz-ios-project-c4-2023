@@ -32,7 +32,7 @@ final class ApiTest: XCTestCase {
     
     func test_apicall_retrunSucess(){
         let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
-        guard let url = ViewControllerElements.topRated.urlRequest else { return }
+        guard let url = MovieCategories.topRated.urlRequest else { return }
         sut.fetch(request:url) {(result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):
@@ -66,7 +66,7 @@ final class ApiTestError: XCTestCase {
     
     func test_apicall_retrunError(){
         let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
-        guard let url = ViewControllerElements.topRated.urlRequest else { return }
+        guard let url = MovieCategories.topRated.urlRequest else { return }
         sut.fetch(request: url) {(result: Result<MovieResult?, Error>) in
             switch result {
             case .failure(let fail):

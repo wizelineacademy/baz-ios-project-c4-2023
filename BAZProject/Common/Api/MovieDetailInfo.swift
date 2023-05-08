@@ -27,14 +27,18 @@ extension ApiPathProtocol{
         return "?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=es"
     }
 }
-
-enum ApiConstans: ApiPathProtocol {
+/// Enum con los diferentes elementos del detalle de una pelicula
+enum MovieDetailInfo: ApiPathProtocol {
     case credits(String)
     case similar(String)
     case recomended(String)
     case search(String)
     case image(String)
+    case reviews(String)
     
+    /// Variable que retorna los endpoints del detalle de una pelicula
+    /// - returns:
+    ///     - String con el endPointArmado
     var endPoint: String{
         switch self {
         case .credits(let id):
@@ -43,14 +47,19 @@ enum ApiConstans: ApiPathProtocol {
             return "movie/\(id)/similar"
         case .recomended(let id):
             return "movie/\(id)/recommendations"
+        case .reviews(let id):
+            return "movie/\(id)/reviews"
         case .search(let searchString):
             let cleanString = searchString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             return "&query=\(cleanString)"
         case .image(let id):
             return id
+        
         }
     }
-    
+    /// Variable que retorna un URLRequest con el endpoint armado
+    /// - returns:
+    ///     - URLRequest del elemento del detalle
     var urlRequest: URLRequest?{
         switch self {
         case .search:
@@ -66,7 +75,9 @@ enum ApiConstans: ApiPathProtocol {
         }
         
     }
-    
+    /// Variable que retorna un URL de una imagen
+    /// - returns:
+    ///     - URL del elemento del detalle
     var imageUrl: URL?{
         let urlString = self.imagePathBase + self.endPoint
         return URL(string: urlString)

@@ -10,19 +10,19 @@ import XCTest
 
 final class TrendingMoviesViewControllerTest: XCTestCase {
 
-    private var sut: TrendigMoviesViewControllerMock!
-    private var presenter: TrendingMoviesPresenterMock!
+    private var sut: MoviesViewControllerMock!
+    private var presenter: MoviesPresenterMock!
     private var restorableState: SearchControllerRestorableState!
     private var movies: [ListMovieProtocol]!
     
     override func setUp() {
         super.setUp()
-        presenter = TrendingMoviesPresenterMock(router: MoviesRouter())
+        presenter = MoviesPresenterMock(router: MoviesRouter())
         restorableState = SearchControllerRestorableState()
         
         movies = [Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10, isFavorite: false)]
         
-        sut = TrendigMoviesViewControllerMock(presenter: presenter,
+        sut = MoviesViewControllerMock(presenter: presenter,
                                               restoredState: restorableState,
                                               movies: movies,
                                               searchResultMovies: movies)

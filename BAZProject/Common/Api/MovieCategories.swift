@@ -16,7 +16,7 @@ protocol ViewPropertiesProtocol{
 }
 
 ///Estructura de un tabBarItem
-enum ViewControllerElements {
+enum MovieCategories {
     
     case trending
     case nowPlaying
@@ -26,7 +26,7 @@ enum ViewControllerElements {
    
 }
 
-extension ViewControllerElements: ApiPathProtocol{
+extension MovieCategories: ApiPathProtocol{
     var endPoint: String{
         switch self {
         case .trending:
@@ -56,7 +56,7 @@ extension ViewControllerElements: ApiPathProtocol{
 
 
 
-extension ViewControllerElements: ViewPropertiesProtocol {
+extension MovieCategories: ViewPropertiesProtocol {
     
     var title: String{
         switch self {

@@ -68,10 +68,10 @@ struct Movie: Codable, ListMovieProtocol {
     var voteCount: Int
     ///URL del poster de la pelicula
     var urlImage: URL?{
-        return ApiConstans.image(posterPath).imageUrl
+        return MovieDetailInfo.image(posterPath).imageUrl
     }
     var urlBackdropImage: URL?{
-        return  ApiConstans.image(backdropPath ?? "").imageUrl
+        return  MovieDetailInfo.image(backdropPath ?? "").imageUrl
     }
     var isFavorite: Bool = false
     

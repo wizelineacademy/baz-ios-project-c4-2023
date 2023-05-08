@@ -32,7 +32,10 @@ final class MoviesRouter: MoviesWireframeProtocol {
         return view
     }
     
+    /// Lanza la pantalla del detalle de una pelicula
+    /// - parameters:
+    ///    - Movie: Modelo de una pelicula
     func sendToDetail(with movie: Movie) {
-        viewController?.navigationController?.pushViewController(MoviewDetailRouter.createModule(movie: movie), animated: true)
+        viewController?.navigationController?.pushViewController(MovieDetailRouter.createModule(movie: movie), animated: true)
     }
 }

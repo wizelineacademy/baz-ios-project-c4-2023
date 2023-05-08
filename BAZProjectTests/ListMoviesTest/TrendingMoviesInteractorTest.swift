@@ -10,15 +10,15 @@ import XCTest
 
 final class TrendingMoviesInteractorTest: XCTestCase {
 
-    private var sut: TrendingMoviesInteractorMock!
+    private var sut: MoviesInteractorMock!
     private var fakeMovieApi: FakeMovieApi!
-    private var presenter: TrendingMoviesPresenterMock!
+    private var presenter: MoviesPresenterMock!
     
     override func setUp() {
         super.setUp()
         fakeMovieApi = FakeMovieApi(resultType: .sucess)
-        presenter = TrendingMoviesPresenterMock(router: MoviesRouter())
-        sut = TrendingMoviesInteractorMock(movieAPI: fakeMovieApi)
+        presenter = MoviesPresenterMock(router: MoviesRouter())
+        sut = MoviesInteractorMock(movieAPI: fakeMovieApi)
         sut.presenter = presenter
     }
     
