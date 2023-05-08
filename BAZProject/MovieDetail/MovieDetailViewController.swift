@@ -85,11 +85,11 @@ final class MovieDetailViewController: UIViewController, MoviewDetailViewProtoco
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpInitialInfo()
-        presenter?.getSimilar(String(movie?.id ?? 0))
-        presenter?.getRecomendation(String(movie?.id ?? 0))
-        presenter?.getCast(String(movie?.id ?? 0))
-        presenter?.findFavoriteMovie(movie?.id ?? 0)
-        presenter?.getReviews(String(movie?.id ?? 0))
+        presenter?.getSimilar()
+        presenter?.getRecomendation()
+        presenter?.getCast()
+        presenter?.findFavoriteMovie()
+        presenter?.getReviews()
     }
     
     ///funcion que confirura un UICollectionView
@@ -128,8 +128,7 @@ final class MovieDetailViewController: UIViewController, MoviewDetailViewProtoco
     /// - Parameters:
     ///    - sender: Any
     @IBAction func like(_ sender: Any) {
-        guard let movie = self.movie else { return }
-        presenter?.favoriteMovie(movie)
+        presenter?.favoriteMovie()
     }
     
 }

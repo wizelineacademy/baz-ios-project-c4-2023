@@ -26,23 +26,36 @@ enum MovieDetailPresenterCalls{
 
 
 final class MovieDetailPresenterMock: MoviewDetailPresenterProtocol{
+    var movie: BAZProject.ListMovieProtocol
     
     var calls: [MovieDetailPresenterCalls] = []
     
+    weak private var view: MoviewDetailViewProtocol?
     
-    func getSimilar(_ id: String) {
+    var interactor: MoviewDetailInteractorProtocol?
+    
+    private let router: MoviewDetailWireframeProtocol
+
+    init(movie: BAZProject.ListMovieProtocol, interface: BAZProject.MoviewDetailViewProtocol, interactor: BAZProject.MoviewDetailInteractorProtocol?, router: BAZProject.MoviewDetailWireframeProtocol) {
+        self.view = interface
+        self.interactor = interactor
+        self.router = router
+        self.movie = movie
+    }
+    
+    func getSimilar() {
         calls.append(.getSimilar)
     }
     
-    func getRecomendation(_ id: String) {
+    func getRecomendation() {
         calls.append(.getRecomendation)
     }
     
-    func getCast(_ id: String) {
+    func getCast() {
         calls.append(.getCast)
     }
     
-    func getReviews(_ id: String) {
+    func getReviews() {
         calls.append(.getReviews)
     }
     
@@ -66,11 +79,11 @@ final class MovieDetailPresenterMock: MoviewDetailPresenterProtocol{
         calls.append(.setFavorite)
     }
     
-    func findFavoriteMovie(_ id: Int) {
+    func findFavoriteMovie() {
         calls.append(.findFavoriteMovie)
     }
     
-    func favoriteMovie(_ movie: BAZProject.ListMovieProtocol) {
+    func favoriteMovie() {
         calls.append(.favoriteMovie)
     }
     

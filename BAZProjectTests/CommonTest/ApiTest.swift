@@ -78,4 +78,30 @@ final class ApiTestError: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func test_MoviesCategoriesEnum_returnVariables(){
+        let endpointNowPlaying = BAZProject.MovieCategories.nowPlaying
+        let endpointTopRated = BAZProject.MovieCategories.topRated
+        let endpointPopular = BAZProject.MovieCategories.popular
+        let endpointTrending = BAZProject.MovieCategories.trending
+        let endpointUpComing = BAZProject.MovieCategories.upComing
+        
+        XCTAssertEqual(endpointNowPlaying.endPoint, "movie/now_playing")
+        XCTAssertEqual(endpointTopRated.endPoint, "movie/top_rated")
+        XCTAssertEqual(endpointPopular.endPoint, "movie/popular")
+        XCTAssertEqual(endpointTrending.endPoint, "trending/movie/day")
+        XCTAssertEqual(endpointUpComing.endPoint, "movie/upcoming")
+        
+        let urlString = endpointNowPlaying.pathBase + endpointNowPlaying.endPoint + endpointNowPlaying.apiKey
+        guard let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        
+        XCTAssertEqual(endpointNowPlaying.urlRequest, request)
+        
+        let urlImageString = endpointNowPlaying.imagePathBase + endpointNowPlaying.endPoint
+        let urlImage = URL(string: urlString)
+        
+        XCTAssertEqual(endpointNowPlaying.imageUrl, urlImage)
+        
+    }
 }

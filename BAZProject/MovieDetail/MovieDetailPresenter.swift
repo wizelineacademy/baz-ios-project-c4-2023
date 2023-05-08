@@ -15,6 +15,8 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
     weak private var view: MoviewDetailViewProtocol?
     /// Intancia del Interactor  del modulo VIPER MovieDetail
     var interactor: MoviewDetailInteractorProtocol?
+    /// Identidicador de la pelicula
+    var movie: ListMovieProtocol
     /// Intancia del Router  del modulo VIPER MovieDetail
     private let router: MoviewDetailWireframeProtocol
     /// Inicializador del Presenter del modulo VIPER de MovieDetail
@@ -24,34 +26,35 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
     ///    - router: Router del modulo VIPER
     /// - returns:
     ///   Devuelve el Presenter del modulo VIPER MovieDetail
-    init(interface: MoviewDetailViewProtocol, interactor: MoviewDetailInteractorProtocol?, router: MoviewDetailWireframeProtocol) {
+    init(movie: ListMovieProtocol,interface: MoviewDetailViewProtocol, interactor: MoviewDetailInteractorProtocol?, router: MoviewDetailWireframeProtocol) {
         self.view = interface
         self.interactor = interactor
         self.router = router
+        self.movie = movie
     }
     
     ///Funcion que llama al interactor para obtener las las peliculas similares del la api de MovieDB
-    func getSimilar(_ id: String) {
-        interactor?.getSimilar(id)
+    func getSimilar() {
+        interactor?.getSimilar(getStringID(id: movie.id))
     }
     
     ///Funcion que llama al interactor para obtener las las peliculas recomendadas del la api de MovieDB
-    func getRecomendation(_ id: String) {
-        interactor?.getRecomendation(id)
+    func getRecomendation() {
+        interactor?.getRecomendation(getStringID(id: movie.id))
     }
     
     ///Funcion que llama al interactor para obtener el elenco de una pelicula del  api de MovieDB
-    func getCast(_ id: String) {
-        interactor?.getCast(id)
+    func getCast() {
+        interactor?.getCast(getStringID(id: movie.id))
     }
     
     ///Funcion que llama al interactor para obtener las Reseñas de una pelicila  del  api de MovieDB
-    func getReviews(_ id: String) {
-        interactor?.getReviews(id)
+    func getReviews() {
+        interactor?.getReviews(getStringID(id: movie.id))
     }
     
     ///Funcion que llama al interactor para actualizar el estatus de los favoritos de  peliculas del la api de MovieDB
-    func favoriteMovie(_ movie: ListMovieProtocol) {
+    func favoriteMovie() {
         if interactor?.findFavoriteMovie(movie.id) ?? false{
             interactor?.deleteFavorite(movie.id)
         }else{
@@ -60,8 +63,8 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
     }
     
     ///Funcion que llama al interactor para obtener la  peliculas de los favoritos del usuario
-    func findFavoriteMovie(_ id: Int) {
-        let _ = interactor?.findFavoriteMovie(id)
+    func findFavoriteMovie() {
+        let _ = interactor?.findFavoriteMovie(movie.id)
     }
     
     ///Funcion que llama al view  para setear  las las peliculas similares del la api de MovieDB
@@ -92,5 +95,12 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
     ///Funcion que llama al router para lanzar la pantalla de las reseñas
     func sendToReviews(reviews: [Review]) {
         router.sendToReviews(reviews: reviews)
+    }
+}
+
+extension MovieDetailPresenter{
+    
+    func getStringID(id :Int) -> String{
+        return String(id)
     }
 }

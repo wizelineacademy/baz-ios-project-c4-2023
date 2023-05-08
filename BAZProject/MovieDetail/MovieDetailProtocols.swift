@@ -16,17 +16,19 @@ protocol MoviewDetailWireframeProtocol: AnyObject {
 }
 //MARK: Presenter -
 protocol MoviewDetailPresenterProtocol: AnyObject {
-    func getSimilar(_ id: String)
-    func getRecomendation(_ id: String)
-    func getCast(_ id: String)
-    func getReviews(_ id: String)
+    var movie: ListMovieProtocol { get }
+    func getSimilar()
+    func getRecomendation()
+    func getCast()
+    func getReviews()
+    func findFavoriteMovie()
+    func favoriteMovie()
+    func setFavorite(_ isFavorite: Bool)
     func setCast(_ cast: [Cast])
     func setReviews(_ reviews: [Review])
     func setSimilarMovies(movies: [ListMovieProtocol])
     func setRecomendedMovies(movies: [ListMovieProtocol])
-    func setFavorite(_ isFavorite: Bool)
-    func findFavoriteMovie(_ id: Int)
-    func favoriteMovie(_ movie: ListMovieProtocol)
+    
     func sendToReviews(reviews: [Review])
 }
 

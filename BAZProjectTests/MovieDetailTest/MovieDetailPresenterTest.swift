@@ -7,29 +7,66 @@
 
 import XCTest
 
+@testable import BAZProject
+
 final class MovieDetailPresenterTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private var sut: MoviewDetailPresenterProtocol!
+    private var viewControllerMock: MovieDetailViewconrollerMock!
+    private var interactorMock: MovieDetailInteractorMock!
+    private var routerMock: MovieDetailRouterMock!
+    private var fakeMovie: Movie!
+    
+    override func setUp() {
+        super.setUp()
+        fakeMovie = Movie(id: 123456, title: "Ejmplo", posterPath: "Ejmplo", adult: false, genreIDS: [], originalLanguage: "Ejmplo", originalTitle: "Ejmplo", overview: "Ejmplo", popularity: 1.0, releaseDate: "Ejmplo", video: false, voteAverage: 1.0, voteCount: 1)
+        viewControllerMock = MovieDetailViewconrollerMock()
+        interactorMock = MovieDetailInteractorMock(presenter: sut)
+        routerMock = MovieDetailRouterMock()
+        sut = MovieDetailPresenter(movie: fakeMovie, interface: viewControllerMock, interactor: interactorMock, router: routerMock)
+        
     }
+    
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+        viewControllerMock = nil
+        interactorMock = nil
+        routerMock = nil
+    }
+    
+    func test_getSimilars_callsInteractorGetSimilar() {
+        sut.getSimilar()
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_getRecomendationcallsInteractorGetRecomendation() {
+        sut.getRecomendation()
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_getCast_callsInteractorGetCast() {
+        sut.getCast()
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_getReviews_callsInteractorGetReviews() {
+        sut.getReviews()
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_findFavoriteMovie_callsInteractorGetReviews() {
+        sut.findFavoriteMovie()
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_favoriteMovie_callsInteractorGetReviews() {
+        sut.favoriteMovie()
+        XCTAssertNotNil(sut.movie)
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+        
+    }
+    
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }

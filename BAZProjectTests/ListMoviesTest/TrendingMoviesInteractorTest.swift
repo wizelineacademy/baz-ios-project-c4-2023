@@ -30,7 +30,7 @@ final class TrendingMoviesInteractorTest: XCTestCase {
     }
     
     func test_getMovies_callsApiAndSendInfo(){
-        guard let request = ViewControllerElements.topRated.urlRequest else { return }
+        guard let request = MovieCategories.topRated.urlRequest else { return }
         sut.getMovies(urlRequest: request)
         XCTAssertEqual(sut.calls, [.getMovies])
     }

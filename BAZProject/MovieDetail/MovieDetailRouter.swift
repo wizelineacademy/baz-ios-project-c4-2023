@@ -23,7 +23,7 @@ final class MovieDetailRouter: MoviewDetailWireframeProtocol {
         let view = MovieDetailViewController(nibName: nil, bundle: nil)
         let interactor = MovieDetailInteractor(movieAPI: MovieAPI())
         let router = MovieDetailRouter()
-        let presenter = MovieDetailPresenter(interface: view, interactor: interactor, router: router)
+        let presenter = MovieDetailPresenter(movie: movie, interface: view, interactor: interactor, router: router)
         view.movie = movie
         view.presenter = presenter
         interactor.presenter = presenter
