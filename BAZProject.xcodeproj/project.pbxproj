@@ -103,6 +103,7 @@
 		4B9BEBAD2A0953DF00EC9243 /* FavouritesLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */; };
 		4B9BEBAF2A0954E200EC9243 /* FavouritesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBAE2A0954E200EC9243 /* FavouritesViewModelTests.swift */; };
 		4B9BEBB12A0956FD00EC9243 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */; };
+		4B9BEBB32A09679D00EC9243 /* FavouritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BEBB22A09679D00EC9243 /* FavouritesCollectionViewController.swift */; };
 		4BC398A72A0349550003A03F /* DispatchQueue+DispatchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */; };
 		4BC398AA2A034B2C0003A03F /* DispatchQueueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC398A92A034B2C0003A03F /* DispatchQueueMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
@@ -224,6 +225,7 @@
 		4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesLocalData.swift; sourceTree = "<group>"; };
 		4B9BEBAE2A0954E200EC9243 /* FavouritesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModelTests.swift; sourceTree = "<group>"; };
 		4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		4B9BEBB22A09679D00EC9243 /* FavouritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewController.swift; sourceTree = "<group>"; };
 		4BC398A62A0349550003A03F /* DispatchQueue+DispatchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchProtocol.swift"; sourceTree = "<group>"; };
 		4BC398A92A034B2C0003A03F /* DispatchQueueMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -534,6 +536,7 @@
 			children = (
 				4B9BEBAC2A0953DF00EC9243 /* FavouritesLocalData.swift */,
 				4B9BEBB02A0956FD00EC9243 /* FavouritesViewModel.swift */,
+				4B9BEBB22A09679D00EC9243 /* FavouritesCollectionViewController.swift */,
 			);
 			path = FavouritesModule;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				4B6BB29629FDDC24007A20D7 /* ImageEndpoint.swift in Sources */,
 				4B2675B22A06FB8F005C60A4 /* DetailCastMember.swift in Sources */,
 				4B2675C32A074F5C005C60A4 /* DetailReviewCollectionViewCell.swift in Sources */,
+				4B9BEBB32A09679D00EC9243 /* FavouritesCollectionViewController.swift in Sources */,
 				4B0E5C682A05A01600D38F4D /* DetailRemoteData.swift in Sources */,
 				4B37399229D4B4550056041F /* GenericResponseDataObject.swift in Sources */,
 				4B9BEBAD2A0953DF00EC9243 /* FavouritesLocalData.swift in Sources */,
