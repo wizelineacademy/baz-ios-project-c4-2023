@@ -50,17 +50,11 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
     
     func handleGetSimilarMovies(_ result: [Movie]) {
         entity?.similarMovies = result
-        DispatchQueue.main.async {
-            Loader.stop()
-        }
-        
         guard let entity = collectionData(self.entity) else {return}
-        
         presenter?.onReceivedMovieDetails(entity)
     }
     
     func collectionData(_ entity: DetailMovieEntity?) -> DetailMovieEntity?{
-        var arr: [ListSection] = []
         var localEntity = entity
         guard let safeEntity = localEntity else { return entity }
         let similar = safeEntity.similarMovies

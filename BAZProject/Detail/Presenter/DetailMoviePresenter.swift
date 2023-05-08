@@ -44,6 +44,9 @@ extension DetailMoviePresenter: DetailMoviePresenterProtocol {
 extension DetailMoviePresenter: DetailMovieInteractorOutputProtocol {
     func onReceivedMovieDetails(_ result: DetailMovieEntity) {
         self.entity = result
+        DispatchQueue.main.async {
+            Loader.stop()
+        }
         update()
     }
     

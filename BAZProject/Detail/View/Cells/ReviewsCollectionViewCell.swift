@@ -23,6 +23,8 @@ class ReviewsCollectionViewCell: UICollectionViewCell {
     
     func septup(_ review: MovieReviews){
         uvContent.layer.cornerRadius = 8
+        imgUser.layer.cornerRadius = imgUser.frame.size.width / 2
+        imgUser.clipsToBounds = true
         if let path = review.author_details.avatar_path{
             getUserImage(path)
         }else{

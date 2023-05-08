@@ -18,10 +18,10 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var lycImage: NSLayoutConstraint!
     @IBOutlet weak var clvRevSimRec: UICollectionView!
     
-    private var data = [ListSection]()
-    
+    @IBOutlet weak var lycCollectionViewHeight: NSLayoutConstraint!
     // MARK: Properties
     var presenter: DetailMoviePresenterProtocol?
+    private var data = [ListSection]()
 
     // MARK: Lifecycle
     
@@ -33,6 +33,7 @@ class DetailMovieView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        clvRevSimRec.collectionViewLayout = createLayout()
     }
 }
 
@@ -98,10 +99,53 @@ extension NSLayoutConstraint {
 
 extension DetailMovieView: UICollectionViewDelegate, UICollectionViewDataSource {
     //- MARK: Layout
-    //private func createLayout() -> UICollectionViewCompositionalLayout {
-        
-        //return UICollectionViewCompositionalLayout()
-    //}
+    private func createLayout() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnviorement in
+            guard let self = self else {return nil}
+            let section = self.data[sectionIndex]
+            let width: CGFloat = UIScreen.main.bounds.width * 0.82
+            let height: CGFloat = width * 0.65
+            self.lycCollectionViewHeight.constant = (height + 50) * 3
+            switch section {
+            case .reviews:
+                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(height)), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.interGroupSpacing = 10
+                section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
+                section.supplementariesFollowContentInsets = false
+                return section
+            case .similarMovies:
+                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(width), heightDimension: .absolute(height)), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.interGroupSpacing = 10
+                section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
+                section.supplementariesFollowContentInsets = false
+                return section
+            case .recommendsMovies:
+                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(height)), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.interGroupSpacing = 10
+                section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
+                section.supplementariesFollowContentInsets = false
+                return section
+            
+                
+            }
+        }
+    }
+    
+    private func supplementaryHeaderItem() -> NSCollectionLayoutBoundarySupplementaryItem{
+        .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    }
     //- MARK: Header Manager
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {

@@ -29,18 +29,18 @@ struct MovieReviewsResult: Decodable{
 struct MovieReviews: Decodable, Equatable{
     var author: String
     var author_details: AuthorReviewsDetails
-    var content: String?
+    var content: String
     var created_at: String
     var id: String
-    var updated_at: String?
-    var url: String?
+    var updated_at: String
+    var url: String
 }
 
 struct AuthorReviewsDetails: Decodable, Equatable{
     var name: String?
     var username: String?
     var avatar_path: String?
-    var rating: String?
+    var rating: Int?
 }
 
 struct MovieCreditsResult: Decodable{

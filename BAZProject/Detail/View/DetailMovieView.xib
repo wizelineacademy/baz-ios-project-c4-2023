@@ -15,6 +15,7 @@
                 <outlet property="lblCast" destination="gy7-yE-CxD" id="0DT-3w-mtB"/>
                 <outlet property="lblOverview" destination="yQf-WP-Jsy" id="V2b-Kq-x02"/>
                 <outlet property="lblTitleView" destination="b5d-RN-VsT" id="FR3-QP-fw5"/>
+                <outlet property="lycCollectionViewHeight" destination="lWh-HT-Pp0" id="H6y-Ed-7lP"/>
                 <outlet property="lycImage" destination="1bf-wa-d9N" id="4Wf-dO-EN7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="1386"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-NM-gmB">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="760"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1373"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="aCE-iy-kEp">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="526.5"/>
@@ -70,10 +71,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fsu-9E-ntU">
-                                    <rect key="frame" x="0.0" y="624.5" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="624.5" width="320" height="741"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="128" id="lWh-HT-Pp0"/>
+                                        <constraint firstAttribute="height" constant="741" id="lWh-HT-Pp0"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qpD-Rq-FNa">
                                         <size key="itemSize" width="128" height="128"/>

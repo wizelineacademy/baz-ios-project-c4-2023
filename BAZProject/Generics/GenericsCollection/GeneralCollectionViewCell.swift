@@ -23,6 +23,8 @@ class GeneralCollectionViewCell: UICollectionViewCell {
 extension GeneralCollectionViewCell: GeneralTableViewCellProtocol{
     func setup(_ movie: Movie?) {
         uvContent.layer.cornerRadius = 8
+        imgPoster.layer.cornerRadius = 8
+        imgPoster.clipsToBounds = true
         lblTitle.text = movie?.title
         getPoster(movie?.backdrop_path ?? "")
     }
