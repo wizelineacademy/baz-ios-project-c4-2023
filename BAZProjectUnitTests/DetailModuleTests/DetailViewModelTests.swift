@@ -409,7 +409,7 @@ final class DetailViewModelTests: XCTestCase {
             fav = bool
             expectation.fulfill()
         }
-        sut.saveOrDeleteItem()
+        sut.saveOrDeleteFavourite()
         wait(for: [expectation], timeout: 0.5)
         
         XCTAssert(fav)
@@ -418,7 +418,7 @@ final class DetailViewModelTests: XCTestCase {
     func test_getDataFromItem_DataShouldThrowError() throws {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
         setViewModel(mediaItem: mediaItem)
-        let encoderMock = EncoderMock()
+        let encoderMock = EncoderSpy()
         let expectation = XCTestExpectation()
         let expectedError = NSError(domain: "EstoyListo", code: -123)
         expectation.expectedFulfillmentCount = 2
@@ -438,7 +438,7 @@ final class DetailViewModelTests: XCTestCase {
     func test_saveOrDeleteItem_ShouldDeleteItem() throws {
         let mediaItem = MediaItem(id: 1, mediaType: .movie)
         setViewModel(mediaItem: mediaItem)
-        let encoderMock = EncoderMock()
+        let encoderMock = EncoderSpy()
         let expectation = XCTestExpectation()
         let expectedError = NSError(domain: "EstoyListo", code: -123)
         expectation.expectedFulfillmentCount = 2
@@ -467,7 +467,7 @@ final class DetailViewModelTests: XCTestCase {
             fav = bool
             expectation.fulfill()
         }
-        sut.saveOrDeleteItem()
+        sut.saveOrDeleteFavourite()
         wait(for: [expectation], timeout: 0.5)
         
         XCTAssertFalse(fav)
