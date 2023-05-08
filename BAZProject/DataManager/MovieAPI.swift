@@ -15,7 +15,10 @@ final class MovieAPI {
      - Version: 1.0.0
     */
     func fetchData<T: Decodable>(model: T.Type, _ endpoint: Endpoint, onFinished: @escaping (Result<T, Error>) -> Void) {
-        guard let request = endpoint.request else { return }
+        guard let request = endpoint.request else {
+            onFinished(.failure(NSError()))
+            return
+        }
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {

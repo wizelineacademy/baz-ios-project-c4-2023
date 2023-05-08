@@ -31,9 +31,8 @@ extension HomeInteractor: HomeInteractorInputProtocol {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
             switch result {
-            case .failure(let fail):
+            case .failure(_):
                 completion()
-                print(fail.localizedDescription)
             case .success(let response):
                 self?.movies = response.results
                 guard let favorites = self?.getFavorites(), let origin = self?.movies else {

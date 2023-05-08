@@ -36,11 +36,9 @@ extension SearchRouter: SearchRouterProtocol {
         }
     }
     
-    func hideAnimation(completion: @escaping () -> Void) {
+    func hideAnimation(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            self.animationView?.dismiss(animated: true, completion: {
-                completion()
-            })
+            self.animationView?.dismiss(animated: true, completion: completion)
         }
     }
     

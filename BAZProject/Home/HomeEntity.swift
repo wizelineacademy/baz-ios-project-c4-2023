@@ -35,6 +35,7 @@ enum Endpoint {
     case upcoming
     case search(query: String)
     case similar(movieId: String)
+    case invalid
 }
 
 extension Endpoint {
@@ -54,6 +55,8 @@ extension Endpoint {
             return "\(MovieAPIConstans.search)\(query.replacingOccurrences(of: " ", with: "%20"))"
         case .similar(movieId: let movieId):
             return "\(MovieAPIConstans.similar)\(movieId)/similar\(MovieAPIConstans.apiKey)"
+        case .invalid:
+            return "      #"
         }
     }
     

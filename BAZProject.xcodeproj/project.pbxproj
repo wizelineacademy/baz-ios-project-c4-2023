@@ -28,6 +28,7 @@
 		10B1C37029EF5AE1007D5789 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */; };
 		10B1C37129EF5AE1007D5789 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */; };
 		10B1C37429EF8861007D5789 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1C37329EF8861007D5789 /* HomeCell.swift */; };
+		10CFCE5D2A0892F900635F79 /* MockDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFCE5C2A0892F900635F79 /* MockDetailPresenter.swift */; };
 		10D1E91829F31AD1000A868B /* MockHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E91729F31AD1000A868B /* MockHomePresenter.swift */; };
 		10D1E91A29F31CDE000A868B /* MockSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E91929F31CDE000A868B /* MockSearchPresenter.swift */; };
 		10FA9B6C29F1E66000F17812 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA9B6729F1E66000F17812 /* SearchPresenter.swift */; };
@@ -80,6 +81,7 @@
 		10B1C36B29EF5AE1007D5789 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		10B1C36C29EF5AE1007D5789 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		10B1C37329EF8861007D5789 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		10CFCE5C2A0892F900635F79 /* MockDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailPresenter.swift; sourceTree = "<group>"; };
 		10D1E91729F31AD1000A868B /* MockHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
 		10D1E91929F31CDE000A868B /* MockSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPresenter.swift; sourceTree = "<group>"; };
 		10FA9B6729F1E66000F17812 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				10059BD529D602A70012D295 /* BAZProjectTests.swift */,
 				10D1E91729F31AD1000A868B /* MockHomePresenter.swift */,
 				10D1E91929F31CDE000A868B /* MockSearchPresenter.swift */,
+				10CFCE5C2A0892F900635F79 /* MockDetailPresenter.swift */,
 			);
 			path = BAZProjectTests;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10059BD629D602A70012D295 /* BAZProjectTests.swift in Sources */,
+				10CFCE5D2A0892F900635F79 /* MockDetailPresenter.swift in Sources */,
 				10D1E91A29F31CDE000A868B /* MockSearchPresenter.swift in Sources */,
 				10D1E91829F31AD1000A868B /* MockHomePresenter.swift in Sources */,
 			);

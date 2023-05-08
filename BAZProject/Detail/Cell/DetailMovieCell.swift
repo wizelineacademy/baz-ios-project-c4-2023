@@ -22,6 +22,8 @@ class DetailMovieCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .white
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         return label
     }()
     
@@ -50,11 +52,11 @@ class DetailMovieCell: UICollectionViewCell {
             coverView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.semiSmall),
             coverView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: ConstraintConstants.semiSmall),
             coverView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -ConstraintConstants.semiSmall),
-            coverView.heightAnchor.constraint(equalToConstant: CellConstants.coverViewHeight),
-            
-            producersTitle.topAnchor.constraint(equalTo: coverView.bottomAnchor, constant: ConstraintConstants.semiSmall),
-            producersTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ConstraintConstants.small),
-            producersTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ConstraintConstants.small),
+            coverView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -ConstraintConstants.semiSmall),
+   
+            producersTitle.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.4),
+            producersTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            producersTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             producersTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
