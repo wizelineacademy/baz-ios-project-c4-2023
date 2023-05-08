@@ -18,13 +18,8 @@ struct MovieAPIConstans {
     static let upcoming = "movie/upcoming\(apiKey)\(searchConfig)"
     static let search = "search/movie\(apiKey)\(searchConfig)"
     static let searchConfig = "&language=es&page=1&query="
-    static let urlPosterImage = "https://image.tmdb.org/t/p/w500"
-    static let urlOriginalImage = "https://image.tmdb.org/t/p/original"
+    static let urlPosterImage =   "https://image.tmdb.org/t/p/w500"
     static let similar = "movie/"
-    
-    static func getOriginalUrl(path: String) -> String {
-        return "\(MovieAPIConstans.urlOriginalImage)\(path)"
-    }
     
     static func getPosterUrl(path: String) -> String {
         return "\(MovieAPIConstans.urlPosterImage)\(path)"

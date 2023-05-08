@@ -35,18 +35,16 @@ extension DetailPresenter: DetailViewOutputProtocol {
         interactor.getDetailMovie(detailMoviePI: self.detailMovie)
     }
     
-    func getOriginalMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
-        interactor.getOriginalMovieImage(imagePath: imagePath, completion: completion)
-    }
-    
     func getMovies(endPoint: Endpoint) {
-        interactor.getMovies(endPoint: endPoint) {
-            
-        }
+        interactor.getMovies(endPoint: endPoint) {}
     }
     
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-        interactor.getMovieImage(index: index, completion: completion)
+    func getRecomendations(endPoint: Endpoint) {
+        interactor.getRecomendations(endPoint: endPoint) {}
+    }
+    
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
+        interactor.getMovieImage(imagePath: imagePath, completion: completion)
     }
 }
 
@@ -59,5 +57,9 @@ extension DetailPresenter: DetailInteractorOutputProtocol {
     
     func presentMovies(movies: [ListMovieProtocol]?) {
         view?.showMovies(movies: movies)
+    }
+    
+    func presentRecomendations(movies: [ListMovieProtocol]?) {
+        view?.showRecomendations(movies: movies)
     }
 }

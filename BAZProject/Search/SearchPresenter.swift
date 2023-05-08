@@ -37,8 +37,8 @@ extension SearchPresenter: SearchViewOutputProtocol {
         }
     }
     
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-        interactor.getMovieImage(index: index, completion: completion)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
+        interactor.getMovieImage(imagePath: imagePath, completion: completion)
     }
     
     func saveFavorite(index: Int) {

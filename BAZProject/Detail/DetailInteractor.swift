@@ -12,6 +12,7 @@ class DetailInteractor {
     // MARK: - Properties
     weak var presenter: DetailInteractorOutputProtocol?
     var movies: [ListMovieProtocol]? = []
+    var recomendations: [ListMovieProtocol]? = []
 }
 
 // MARK: - Extensions
@@ -27,21 +28,6 @@ extension DetailInteractor: DetailInteractorInputProtocol {
         presenter?.presentDetailMovie(detailMovie: detailMovie)
     }
     
-    /// Function that returns a `UIImage` for a specific movie
-    /// - Parameters:
-    ///   - imagePath: The final part of the URL image path
-    ///   - completion: Returns a UIImage
-    ///   - Returns: The image from data.
-    ///   Version: 1.0.0
-    func getOriginalMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
-        if let path = URL(string: "\(MovieAPIConstans.getOriginalUrl(path: imagePath))") ?? URL(string: "") {
-            let imageLoader: ImageLoader = ImageLoader()
-            imageLoader.loadImage(from: path) { image in
-                completion(image)
-            }
-        }
-    }
-    
     func getMovies(endPoint: Endpoint, completion: @escaping () -> Void) {
         let movieApi = MovieAPI()
         movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
@@ -51,22 +37,50 @@ extension DetailInteractor: DetailInteractorInputProtocol {
                 print(fail.localizedDescription)
             case .success(let response):
                 self?.movies = response.results
-                guard let favorites = self?.getFavorites(), let origin = self?.movies else {
-                    self?.presenter?.presentMovies(movies: self?.movies)
-                    completion()
-                    return
-                }
-                for i in 0..<origin.count {
-                    for j in 0..<favorites.count {
-                        if origin[i].id == favorites[j].id {
-                            self?.movies?[i].isFavorite = true
-                        }
-                    }
-                }
+//                guard let favorites = self?.getFavorites(), let origin = self?.movies else {
+//                    self?.presenter?.presentMovies(movies: self?.movies)
+//                    completion()
+//                    return
+//                }
+//                for i in 0..<origin.count {
+//                    for j in 0..<favorites.count {
+//                        if origin[i].id == favorites[j].id {
+//                            self?.movies?[i].isFavorite = true
+//                        }
+//                    }
+//                }
                 self?.presenter?.presentMovies(movies: self?.movies)
                 completion()
             }
         }
     }
+    
+    func getRecomendations(endPoint: Endpoint, completion: @escaping () -> Void) {
+        let movieApi = MovieAPI()
+        movieApi.fetchData(model: Movie.self, endPoint) { [weak self] result in
+            switch result {
+            case .failure(let fail):
+                completion()
+                print(fail.localizedDescription)
+            case .success(let response):
+                self?.recomendations = response.results
+//                guard let favorites = self?.getFavorites(), let origin = self?.movies else {
+//                    self?.presenter?.presentRecomendations(movies: self?.movies)
+//                    completion()
+//                    return
+//                }
+//                for i in 0..<origin.count {
+//                    for j in 0..<favorites.count {
+//                        if origin[i].id == favorites[j].id {
+//                            self?.movies?[i].isFavorite = true
+//                        }
+//                    }
+//                }
+                self?.presenter?.presentRecomendations(movies: self?.recomendations)
+                completion()
+            }
+        }
+    }
+    
 }
 

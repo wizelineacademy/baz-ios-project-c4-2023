@@ -21,7 +21,7 @@ protocol SearchViewOutputProtocol {
 	var router: SearchRouterProtocol { get }
     // MARK: - Functions
     func getMovieSearch(endPoint: Endpoint)
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int)
     func deleteFavorite(index: Int)
     func showDetailModule(movie: ListMovieProtocol)

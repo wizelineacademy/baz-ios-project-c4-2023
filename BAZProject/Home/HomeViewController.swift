@@ -127,7 +127,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.presenter = presenter
         cell.index = indexPath.row
         cell.model = self.moviesModel?[indexPath.row]
-        self.presenter?.getMovieImage(index: indexPath.row, completion: { imageData in
+        self.presenter?.getMovieImage(imagePath: self.moviesModel?[indexPath.row].posterPath ?? "", completion: { imageData in
             cell.coverView.image = imageData
         })
         return cell

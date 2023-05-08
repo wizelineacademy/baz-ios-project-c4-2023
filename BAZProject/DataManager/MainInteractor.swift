@@ -10,7 +10,7 @@ import UIKit
 /// Protocol that shares generic functions of more than one interactor
 protocol MainInteractorProtocol {
     // MARK: - Methods
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int, onSaved: @escaping () -> Void)
     func deleteFavorite(index: Int, onSaved: @escaping () -> Void)
     func getFavorites() -> [MovieResult]?
@@ -22,18 +22,17 @@ extension MainInteractorProtocol {
     
     /// Function that returns a `UIImage` for a specific movie
     /// - Parameters:
-    ///   - index: The index of the url image
+    ///   - imagePath: The path of the url image
     ///   - completion: Returns a UIImage
     ///   - Version: 1.0.0
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-        if let path = URL(string: MovieAPIConstans.getPosterUrl(path: movies?[index].posterPath ?? "")) ?? URL(string: "") {
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
+        if let path = URL(string: "\(MovieAPIConstans.getPosterUrl(path: imagePath))") ?? URL(string: "") {
             let imageLoader: ImageLoader = ImageLoader()
             imageLoader.loadImage(from: path) { image in
                 completion(image)
             }
         }
     }
-    
     
     /// Save a favorite movie using userDefaults
     /// - Parameters:
@@ -91,7 +90,6 @@ extension MainInteractorProtocol {
         }
         onSaved()
     }
-    
     
     /// Return movies saved as favorites
     /// - Returns: List of favorite movies

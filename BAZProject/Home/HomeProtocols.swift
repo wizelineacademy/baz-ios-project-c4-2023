@@ -21,7 +21,7 @@ protocol HomeViewOutputProtocol {
     var router: HomeRouterProtocol { get }
     // MARK: - Functions
     func getDataMovies(endPoint: Endpoint)
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void)
     func saveFavorite(index: Int)
     func deleteFavorite(index: Int)
     func showSearchModule()
