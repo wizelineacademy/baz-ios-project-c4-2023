@@ -23,4 +23,8 @@ class DetailLocalData {
         return userDefaultsManager.find(key: key)
     }
     
+    func deleteItem(for key: String) {
+        userDefaultsManager.delete(for: key)
+    }
+    
 }

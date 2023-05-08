@@ -24,4 +24,8 @@ class UserDefaultsMock: UserDefaultsProtocol {
         return data != nil
     }
     
+    func delete(for key: String) {
+        self.data = nil
+    }
+    
 }

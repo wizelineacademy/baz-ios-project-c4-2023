@@ -35,4 +35,15 @@ final class DetailLocalDataTests: XCTestCase {
         XCTAssert(retrieved)
     }
     
+    func test_deleteFavourite_ShouldDelete() {
+        let data = Data()
+        udManager.data = data
+        
+        XCTAssert(sut.findItem(for: "key"))
+        
+        sut.deleteItem(for: "key")
+        
+        XCTAssertFalse(sut.findItem(for: "key"))
+    }
+    
 }

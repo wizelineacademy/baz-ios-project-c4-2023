@@ -50,12 +50,16 @@ class DetailViewModel {
         }
     }
     
-    func saveItem() {
+    func saveOrDeleteItem() {
         if let id = item.id,
-           let type = item.mediaType,
-           let data = getDataFromItem() {
-            localData.save(data: data, key: "\(type)_\(id)")
-            favourite.value = localData.findItem(for: "\(type)_\(id)")
+           let type = item.mediaType {
+            if favourite.value {
+                localData.deleteItem(for: "\(type)_\(id)")
+                favourite.value = localData.findItem(for: "\(type)_\(id)")
+            } else if let data = getDataFromItem() {
+                localData.save(data: data, key: "\(type)_\(id)")
+                favourite.value = localData.findItem(for: "\(type)_\(id)")
+            }
         }
     }
     

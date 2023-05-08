@@ -12,6 +12,7 @@ class DetailCollectionViewController: UICollectionViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<DetailSection, AnyHashable>
     
     private var viewModel: DetailViewModel
+    private var saveButtonImage: UIImage!
     var dispatchService: DispatchProtocol = DispatchQueue.main
     var dataSource: DataSource?
 
@@ -28,6 +29,7 @@ class DetailCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         title = viewModel.getTitle()
         collectionView.collectionViewLayout = createLayout()
+        setSaveButton()
         bindSnapshot()
         configureDataSource()
         viewModel.getDetails()
@@ -39,6 +41,22 @@ class DetailCollectionViewController: UICollectionViewController {
                 self?.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
+    }
+    
+    func bindFavourites() {
+        viewModel.bindFavourite { [weak self] favourite in
+            self?.saveButtonImage.withTintColor(favourite ? .systemBlue : .systemGray, renderingMode: .alwaysTemplate)
+        }
+    }
+    
+    func setSaveButton() {
+        saveButtonImage = UIImage(systemName: "star.fill")
+        let saveButtonItem = UIBarButtonItem(image: saveButtonImage, style: .plain, target: self, action: #selector(saveOrRemoveItemToFavourites))
+        navigationItem.rightBarButtonItem = saveButtonItem
+    }
+    
+    @objc func saveOrRemoveItemToFavourites() {
+        viewModel.saveOrDeleteItem()
     }
     
 }

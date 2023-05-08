@@ -408,7 +408,7 @@ final class DetailViewModelTests: XCTestCase {
             fav = bool
             expectation.fulfill()
         }
-        sut.saveItem()
+        sut.saveOrDeleteItem()
         wait(for: [expectation], timeout: 0.5)
         
         XCTAssert(fav)
@@ -429,9 +429,48 @@ final class DetailViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        let data = sut.getDataFromItem(enconder: encoderMock)
+        let _ = sut.getDataFromItem(enconder: encoderMock)
 
         XCTAssertEqual(theError, expectedError)
+    }
+    
+    func test_saveOrDeleteItem_ShouldDeleteItem() throws {
+        let mediaItem = MediaItem(id: 1, mediaType: .movie)
+        setViewModel(mediaItem: mediaItem)
+        let encoderMock = EncoderMock()
+        let expectation = XCTestExpectation()
+        let expectedError = NSError(domain: "EstoyListo", code: -123)
+        expectation.expectedFulfillmentCount = 2
+        encoderMock.error = expectedError
+        var theError: NSError?
+        
+        sut.bindError { error in
+            theError = error as NSError?
+            expectation.fulfill()
+        }
+        
+        let _ = sut.getDataFromItem(enconder: encoderMock)
+
+        XCTAssertEqual(theError, expectedError)
+    }
+    
+    func test_saveOrDeleteItem_RetrievedDataShouldBeFalse() {
+        let mediaItem = MediaItem(id: 1, mediaType: .movie)
+        udManager.data = try! JSONEncoder().encode(mediaItem)
+        setViewModel(mediaItem: mediaItem)
+        let expectation = XCTestExpectation()
+        expectation.expectedFulfillmentCount = 2
+        var fav = false
+        
+        sut.bindFavourite { bool in
+            fav = bool
+            expectation.fulfill()
+        }
+        sut.saveOrDeleteItem()
+        wait(for: [expectation], timeout: 0.5)
+        
+        XCTAssertFalse(fav)
+        XCTAssertNil(udManager.data)
     }
     
 }
