@@ -85,6 +85,47 @@ final class MoviesDetailInteractorTest: XCTestCase{
         sut.getInfo(detail: .Similars)
     }
     
+    func test_Validate_Response_Reviews(){
+        //Given
+        let expected = 1
+        //When
+        let responseResult = MovieDetailResult(movies: [MovieDetail(author: "The Movie Mob",
+                                                         id: "6455adef5b4fed010143fede",
+                                                         url: "https://www.themoviedb.org/review/6455adef5b4fed010143fede")],
+                                    page: 1,
+                                    totalPages: 2)
+        let _: Result<MovieDetailResult, Error> = .success(responseResult)
+        //Then
+        XCTAssertEqual(expected, responseResult.movies?.count)
+    }
+    
+    func test_Validate_Response_RecomendationsResult(){
+        //Given
+        let expectedTitle = "My Teacher Ate My Friend"
+        //When
+        let responseResult = RecomendationsResult(totalResults: 1, totalPages: 1, recomendations: [Movie(title: "My Teacher Ate My Friend",
+                                                                                                         genreIds: [12, 27, 35],
+                                                                                                         posterPath: "/5MiVG39r82aYUAtvs3bTycmbewJ.jpg")])
+        let _: Result<RecomendationsResult, Error> = .success(responseResult)
+        //Then
+        XCTAssertEqual(expectedTitle, responseResult.recomendations?[0].title)
+    }
+    
+    func test_Validate_Response_SimilarResult(){
+        //Given
+        let expectedPosterPath = "/5MiVG39r82aYUAtvs3bTycmbewJ.jpg"
+        
+        //When
+        let responseResult = MovieSimilars(totalResults: 2,
+                                           page: 1,
+                                           similars: [Movie(title: "My Teacher Ate My Friend",
+                                                            genreIds: [12, 27, 35],
+                                                            posterPath: "/5MiVG39r82aYUAtvs3bTycmbewJ.jpg")])
+        let _: Result<MovieSimilars, Error> = .success(responseResult)
+        //Then
+        XCTAssertEqual(expectedPosterPath, responseResult.similars?[0].posterPath)
+    }
+    
 }
 final class MockMoviesDetailPresenter: MoviesDetailInteractorOutputProtocol {
     
