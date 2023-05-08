@@ -41,59 +41,24 @@ class DetailViewModel {
         return item.title
     }
     
-    func getDataFromItem(enconder: JSONEncoder = JSONEncoder(), favourites: [MediaItem]) -> Data? {
-        do {
-            return try enconder.encode(favourites)
-        } catch {
-            self.error.value = error
-            return nil
-        }
-    }
-    
-    func getExistingItem(decoder: JSONDecoder = JSONDecoder(), key: String = "Recent") -> [MediaItem]? {
-        if let existingData = localData.getItem(for: key) {
-            do {
-                return try decoder.decode([MediaItem].self, from: existingData)
-            } catch {
-                self.error.value = error
-            }
-        }
-        return nil
-    }
-    
     func isCurrentFavourite() -> Bool {
-        return getExistingItem(key: "Favourites")?.contains(item) ?? false
+        if let elements = try? localData.getExistingItems(key: "Favourites") {
+            return localData.favouriteExistsIn(elements, item: item)
+        }
+        return false
     }
     
     func saveOrDeleteFavourite() {
-        if let existingElements = getExistingItem(key: "Favourites") {
-            var elements = existingElements
-            if !existingElements.contains(item) {
-                elements.append(item)
-            } else {
-                elements.removeAll(where: { $0 == item})
-            }
-            if let data = getDataFromItem(favourites: elements) {
-                localData.save(data: data, key: "Favourites")
-            }
-        } else if let encoded = getDataFromItem(favourites: [item]) {
-            localData.save(data: encoded, key: "Favourites")
+        do {
+            try localData.saveOrDeleteFavourite(item: item)
+        } catch {
+            self.error.value = error
         }
         favourite.value = isCurrentFavourite()
     }
     
     func saveRecentlySearched() {
-        if let existingElements = getExistingItem(key: "Recent") {
-            var elements = existingElements
-            if !existingElements.contains(item) {
-                elements.append(item)
-                if let data = getDataFromItem(favourites: elements) {
-                    localData.save(data: data, key: "Recent")
-                }
-            }
-        } else if let encoded = getDataFromItem(favourites: [item]) {
-            localData.save(data: encoded, key: "Recent")
-        }
+        try? localData.saveRecentlySearched(item)
     }
     
     func getDetails() {
