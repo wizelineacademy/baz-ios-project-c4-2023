@@ -60,9 +60,9 @@ extension DetailMovieInteractor: DetailMovieRemoteDataManagerOutputProtocol {
         let similar = safeEntity.similarMovies
         let recommends = safeEntity.recomendations
         let reviews = safeEntity.reviews
-        localEntity?.movieDetailData.similarMovies = ListSection.similarMovies(similar)
-        localEntity?.movieDetailData.recommendsMovies = ListSection.recommendsMovies(recommends)
-        localEntity?.movieDetailData.reviews = ListSection.reviews(reviews)
+        localEntity?.movieDetailData.similarMovies = ListSectionMovieDetail.similarMovies(similar)
+        localEntity?.movieDetailData.recommendsMovies = ListSectionMovieDetail.recommendsMovies(recommends)
+        localEntity?.movieDetailData.reviews = ListSectionMovieDetail.reviews(reviews)
         return localEntity
     }
     

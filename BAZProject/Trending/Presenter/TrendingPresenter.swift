@@ -34,9 +34,9 @@ extension TrendingPresenter: TrendingPresenterProtocol {
 }
 
 extension TrendingPresenter: TrendingInteractorOutputProtocol {
-    func onReceivedMovies(_ result: [Movie]) {
-        self.entity.result = result
-        self.view?.updateData(with: result)
+    func onReceivedMovies(_ entity: TrendingEntity) {
+        self.entity = entity
+        self.view?.updateData(self.entity)
         self.view?.updataView()
     }
     

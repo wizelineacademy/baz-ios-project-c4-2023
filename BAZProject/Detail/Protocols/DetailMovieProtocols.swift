@@ -16,7 +16,7 @@ protocol DetailMovieViewProtocol: AnyObject {
     var presenter: DetailMoviePresenterProtocol? { get set }
     
     func registrerCell()
-    func updateData(data: [ListSection])
+    func updateData(data: [ListSectionMovieDetail])
     func getImage(_ linkPosterBack: String)
     func titleMovie(_ title: String)
     func overview(_ overview: String)

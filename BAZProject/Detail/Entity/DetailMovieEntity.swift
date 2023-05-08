@@ -11,11 +11,11 @@ import Foundation
 struct DetailMovieEntity {
     
     var baseInfo: Movie?
+    var processedCast: String = ""
+    var genere: String = ""
     var reviews: [MovieReviews] = []
     var credits: MovieCreditsResult?
     var casting: [MovieCast] = []
-    var processedCast: String = ""
-    var genere: String = ""
     var recomendations: [Movie] = []
     var similarMovies: [Movie] = []
     var movieDetailData: MovieDetailData = MovieDetailData()
@@ -89,25 +89,25 @@ struct SimilarMoviesResult: Decodable{
 }
 
 struct MovieDetailData {
-    var similarMovies: ListSection = {
+    var similarMovies: ListSectionMovieDetail = {
         .similarMovies([])
         
     }()
-    var recommendsMovies: ListSection = {
+    var recommendsMovies: ListSectionMovieDetail = {
         .recommendsMovies([])
         
     }()
-    var reviews: ListSection = {
+    var reviews: ListSectionMovieDetail = {
         .similarMovies([])
         
     }()
     
-    var pageData: [ListSection] {
+    var pageData: [ListSectionMovieDetail] {
         [reviews, similarMovies, recommendsMovies]
     }
 }
 
-enum ListSection {
+enum ListSectionMovieDetail {
     case similarMovies([Movie])
     case recommendsMovies([Movie])
     case reviews([MovieReviews])

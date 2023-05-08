@@ -19,13 +19,14 @@ class BMTabBar: UITabBarController {
             arrViews = [Trending, Search]
             self.setViewControllers(arrViews, animated: true)
             
-            let trendingIcon: UIImage = UIImage.init(systemName: "chart.line.uptrend.xyaxis.circle.fill") ?? UIImage()
+            let homeIcon: UIImage = UIImage.init(systemName: "play.rectangle") ?? UIImage()
+            //let trendingIcon: UIImage = UIImage.init(systemName: "chart.line.uptrend.xyaxis.circle.fill") ?? UIImage()
             
             let searchIcon: UIImage = UIImage.init(systemName: "magnifyingglass") ?? UIImage()
             guard let items = self.tabBar.items else { return }
             
-            items[0].title = "Trending"
-            items[0].image = trendingIcon
+            items[0].title = "Home"
+            items[0].image = homeIcon
             items[1].title = "Busqueda"
             items[1].image = searchIcon
             

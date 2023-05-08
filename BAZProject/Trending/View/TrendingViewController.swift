@@ -12,6 +12,7 @@ class TrendingViewController: UITableViewController {
     @IBOutlet weak var sgmListMovie: UISegmentedControl!
     var presenter: TrendingPresenterProtocol?
     var entity: TrendingEntity?
+    var data: [Movie] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,17 +32,23 @@ class TrendingViewController: UITableViewController {
 
     @IBAction func sgmSelection(_ sender: Any) {
         let selection = TypeList(rawValue: sgmListMovie.selectedSegmentIndex)
+        guard let entity = self.entity else { return }
         switch selection{
         case .trending:
-            print("selected \(sgmListMovie.selectedSegmentIndex)")
+            data = entity.movieDetailData.trendingMovies.items
+            self.tableView.reloadData()
         case .nowPlaying:
-            print("selected \(sgmListMovie.selectedSegmentIndex)")
+            data = entity.movieDetailData.nowPlayingMovies.items
+            self.tableView.reloadData()
         case .popular:
-            print("selected \(sgmListMovie.selectedSegmentIndex)")
+            data = entity.movieDetailData.popular.items
+            self.tableView.reloadData()
         case .topRated:
-            print("selected \(sgmListMovie.selectedSegmentIndex)")
+            data = entity.movieDetailData.topRated.items
+            self.tableView.reloadData()
         case .upcoming:
-            print("selected \(sgmListMovie.selectedSegmentIndex)")
+            data = entity.movieDetailData.upcoming.items
+            self.tableView.reloadData()
         default:
             break
         }
@@ -53,12 +60,12 @@ class TrendingViewController: UITableViewController {
 extension TrendingViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        entity?.result?.count ?? 0
+        data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: GeneralTableViewCell.identifier, for: indexPath) as? GeneralTableViewCell{
-            let movie = entity?.result?[indexPath.row]
+            let movie = data[indexPath.row]
             cell.setup(movie)
             return cell
         }else{
@@ -68,7 +75,7 @@ extension TrendingViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = entity?.result?[indexPath.row]
+        let movie = data[indexPath.row]
         let detailMovieEntity = DetailMovieEntity(baseInfo: movie)
         let detail = DetailMovieRouter.createDetailMovieModule(withEntity: detailMovieEntity)
         self.navigationController?.pushViewController(detail, animated: true)
@@ -84,8 +91,9 @@ extension TrendingViewController: TrendingViewProtocol {
         navigationItem.title = strTitle
     }
     
-    func updateData(with result: [Movie]) {
-        self.entity?.result = result
+    func updateData(_ entity: TrendingEntity) {
+        self.entity? = entity
+        self.data = entity.movieDetailData.trendingMovies.items
     }
     
     func updataView() {

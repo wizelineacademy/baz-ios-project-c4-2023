@@ -21,7 +21,7 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var lycCollectionViewHeight: NSLayoutConstraint!
     // MARK: Properties
     var presenter: DetailMoviePresenterProtocol?
-    private var data = [ListSection]()
+    private var data = [ListSectionMovieDetail]()
 
     // MARK: Lifecycle
     
@@ -45,7 +45,7 @@ extension DetailMovieView: DetailMovieViewProtocol {
     }
     
     
-    func updateData(data: [ListSection]) {
+    func updateData(data: [ListSectionMovieDetail]) {
         self.data = data
         DispatchQueue.main.async {
             self.clvRevSimRec.reloadData()
