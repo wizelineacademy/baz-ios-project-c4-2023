@@ -13,6 +13,11 @@ class DetailRouter {
     weak var view: UIViewController?
     
     // MARK: - Functions
+    
+    
+    /// Create the Detail module
+    /// - Parameter movie: The data of selected movie
+    /// - Returns: return the Detail ViewController
     static func createModule(withMovie movie: ListMovieProtocol) -> UIViewController {
         let view = DetailViewController()
         let interactor = DetailInteractor()
