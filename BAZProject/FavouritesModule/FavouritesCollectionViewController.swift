@@ -28,7 +28,6 @@ class FavouritesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Favourites"
         bindSnapshot()
         configureDataSource()
     }
@@ -84,8 +83,8 @@ extension FavouritesCollectionViewController {
 extension FavouritesCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width / 2) - 8 - 32
-        let height = width * 1.5
+        let width = (collectionView.frame.width * 0.4)
+        let height = width * 2
         return CGSize(width: width, height: height)
     }
     
