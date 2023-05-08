@@ -96,6 +96,27 @@ final class DetailViewTest: XCTestCase {
         //Then
         XCTAssertEqual(cell?.lblTitle.text, arrSimilar?[1].strTitle)
     }
+    
+    func testCastIsUpdated() {
+        //Given
+        let iTotal = 3
+        //When
+        searcForCast()
+        let iReal = sut?.tblMovieInfo.numberOfRows(inSection: 1)
+        //Then
+        XCTAssertEqual(iTotal, iReal)
+    }
+    
+    func testCastHasInfo() {
+        //Given
+        let indexPath = IndexPath(row: 2, section: 1)
+        //When
+        searcForCast()
+        sut?.tblMovieInfo.reloadData()
+        let cell = sut?.tblMovieInfo.cellForRow(at: indexPath) as? ImageTextTableViewCell
+        //Then
+        XCTAssertEqual(cell?.lblTitle.text, arrCast?[2].strTitle)
+    }
 }
 
 extension DetailViewTest: DetailBusinessLogic {
@@ -115,6 +136,7 @@ extension DetailViewTest: DetailBusinessLogic {
     }
     
     func searcForCast() {
-        arrCast = [Cast(strName: "Un nombre", strProfilePath: "Kohane.jpg", strCharacter: "Kohane"), Cast(strName: "Otro nombre", strProfilePath: "Kohane2.jpg", strCharacter: "Kohane Azusawa")]
+        arrCast = [Cast(strName: "Un nombre", strProfilePath: "Kohane.jpg", strCharacter: "Kohane"), Cast(strName: "Otro nombre", strProfilePath: "Kohane2.jpg", strCharacter: "Kohane Azusawa"), Cast(strName: "Otro nombre 3", strProfilePath: "Kohane3.jpg", strCharacter: "Kohane Azusawa")]
+        sut?.reloadCast(withCast: arrCast!)
     }
 }
