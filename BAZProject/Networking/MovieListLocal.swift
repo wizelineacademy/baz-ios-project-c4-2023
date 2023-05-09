@@ -10,7 +10,8 @@ import Foundation
 /// Enum that represents the result of a storage operation.
 enum ResultStorageOperation {
     case success
-    case fail
+    case decodingError
+    case suiteNotFoundError
 }
 
 /// Protocol for objects that can store and retrieve data.
@@ -109,11 +110,19 @@ extension MovieListLocal: StorableProtocol {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(movieList)
-            UserDefaults.shared.set(data, forKey: MovieListLocal.typeName)
+            
+            guard let defaults = UserDefaults.shared else {
+                completion(ResultStorageOperation.suiteNotFoundError)
+                return
+            }
+            
+            defaults.set(data, forKey: MovieListLocal.typeName)
             completion(ResultStorageOperation.success)
         } catch {
-            completion(ResultStorageOperation.fail)
+            completion(ResultStorageOperation.decodingError)
         }
+        
+        
     }
     
     /// Retrieves the data stored in `UserDefaults` with the key `MovieListLocal.typeName`, and returns the parsed data.
@@ -121,7 +130,11 @@ extension MovieListLocal: StorableProtocol {
     /// - Returns: The parsed data as an instance of `T`. Returns `nil` if the data is not found or cannot be parsed.
     func retriveData<T>(resource: Resource<T>) -> T? {
         
-        if let data = UserDefaults.shared.data(forKey: MovieListLocal.typeName) {
+        guard let defaults = UserDefaults.shared else {
+            return nil
+        }
+        
+        if let data = defaults.data(forKey: MovieListLocal.typeName) {
             return resource.parse(data)
         }
         
