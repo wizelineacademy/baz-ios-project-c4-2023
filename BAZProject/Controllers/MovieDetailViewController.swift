@@ -70,8 +70,8 @@ extension MovieDetailViewController {
             }
         }
         
-        movieVM?.loadCast { actors in
-            self.lblCast.text = actors
+        movieVM?.loadCast { [weak self] actors in
+            self?.lblCast.text = actors
         }
         
         movieVM?.loadReviews { [weak self] reviews in
