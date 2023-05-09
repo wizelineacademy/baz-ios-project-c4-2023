@@ -1,5 +1,5 @@
 //
-//  SearcRemoteTests.swift
+//  MovieDetailRemoteTests.swift
 //  BAZProjectTests
 //
 //  Created by Ricardo Omar Martinez Nava on 08/05/23.
@@ -8,10 +8,11 @@
 import XCTest
 @testable import BAZProject
 
-final class SearcRemoteTests: XCTestCase {
+
+final class MovieDetailRemoteTests: XCTestCase {
     
-    private var sut: SearchRemoteDataManagerInputProtocol!
-    private var interactorMock: SearchInteractorMock!
+    private var sut: MovieDetailRemoteDataManagerInputProtocol!
+    private var interactorMock: DetailInteractorMock!
     private var serviceMock: ServiceMock!
     private var sessionMock: URLSessionMock!
     
@@ -19,9 +20,9 @@ final class SearcRemoteTests: XCTestCase {
         super.setUp()
         sessionMock = URLSessionMock()
         serviceMock = ServiceMock(sessionMock: sessionMock)
-        sut = SearchRemoteDataManager(service: serviceMock)
-        interactorMock = SearchInteractorMock()
-        sut.fetchSearchResults(with: "")
+        sut = MovieDetailRemoteDataManager(service: serviceMock)
+        interactorMock = DetailInteractorMock()
+        sut.fetchMovieDetail(of: 1)
     }
         
     override func tearDown() {
@@ -32,12 +33,13 @@ final class SearcRemoteTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRequestMovieList_whenErrorResponse_callsErrorServiceHandle() {
-        let expectation = XCTestExpectation(description: "Wait for request movie list completion")
+    func testRequestMovieList_whenErrorResponse_callsServiceHandle() {
+        let expectation = XCTestExpectation(description: "Wait for request movie detail list completion")
         sessionMock.data = Data()
         sessionMock.expected = expectation
-        sut.fetchSearchResults(with: "")
+        sut.fetchMovieDetail(of: 1)
             
-        XCTAssertFalse(interactorMock.callsSearch.contains(.fetchSearchResults))
+        XCTAssertFalse(interactorMock.detailCalls.contains(.movieDetailFetched))
     }
+
 }
