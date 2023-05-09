@@ -77,7 +77,7 @@ class DetailViewController: UIViewController {
     }()
     private lazy var similarTitle: GreenLabel = {
         let label = GreenLabel(frame: .zero)
-        label.text = "Similar movies"
+        label.text = LocalizableString.similarTitle.localized
         label.textAlignment = .center
         return label
     }()
@@ -95,7 +95,7 @@ class DetailViewController: UIViewController {
     }()
     private lazy var recomendationTitle: GreenLabel = {
         let label = GreenLabel(frame: .zero)
-        label.text = "Recomendations"
+        label.text = LocalizableString.recomendationTitle.localized
         label.textAlignment = .center
         return label
     }()
@@ -143,12 +143,12 @@ class DetailViewController: UIViewController {
         self.movieView.image = UIImage(named: "poster")
         navigationItem.title = detailMovieModel?.title
         self.movieTitle.text = "\(LocalizableString.originalTitle.localized)\(detailMovieModel?.originalTitle ?? detailMovieModel?.title ?? "")"
-        self.movieDate.text = "Release Date: \(detailMovieModel?.releaseDate ?? "")"
-        self.overview.text = "Overview:\n\(detailMovieModel?.overview ?? "")"
-        self.originalLanguage.text = "Original Languaje: \(detailMovieModel?.originalLanguage?.capitalized ?? "")"
-        self.popularity.text = "Popularity: \(detailMovieModel?.popularity ?? 0.0)"
-        self.voteAverage.text = "Vote Average: \(detailMovieModel?.voteAverage ?? 0.0)"
-        self.voteCount.text = "Vote Count: \(detailMovieModel?.voteCount ?? 0)"
+        self.movieDate.text = "\(LocalizableString.releaseDate.localized)\(detailMovieModel?.releaseDate ?? "")"
+        self.overview.text = "\(LocalizableString.overview.localized)\n\(detailMovieModel?.overview ?? "")"
+        self.originalLanguage.text = "\(LocalizableString.originalLanguaje.localized)\(detailMovieModel?.originalLanguage?.capitalized ?? "")"
+        self.popularity.text = "\(LocalizableString.popularity.localized)\(detailMovieModel?.popularity ?? 0.0)"
+        self.voteAverage.text = "\(LocalizableString.voteAverage.localized)\(detailMovieModel?.voteAverage ?? 0.0)"
+        self.voteCount.text = "\(LocalizableString.voteCount.localized)\(detailMovieModel?.voteCount ?? 0)"
         self.presenter?.getMovieImage(imagePath: detailMovieModel?.backdropPath ?? "", completion: {[weak self] imageData in
             self?.movieView.image = imageData
             self?.movieView.isHidden = false

@@ -10,3 +10,11 @@
 "LocalizableString_searchTitle" = "Search";
 "LocalizableString_searchPlaceholder" = " Search a movie...";
 "LocalizableString_originalTitle" = "Original Title: ";
+"LocalizableString_releaseDate" = "Release Date: ";
+"LocalizableString_overview" = "Overview: ";
+"LocalizableString_originalLanguaje" = "Original Languaje: ";
+"LocalizableString_popularity" = "Popularity: ";
+"LocalizableString_voteAverage" = "Vote Average: ";
+"LocalizableString_voteCount" = "Vote Count: ";
+"LocalizableString_recomendationTitle" = "Recomendations";
+"LocalizableString_similarTitle" = "Similar movies";

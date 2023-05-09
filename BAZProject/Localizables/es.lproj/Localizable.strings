@@ -10,3 +10,11 @@
 "LocalizableString_searchTitle" = "Buscar";
 "LocalizableString_searchPlaceholder" = " Buscar película...";
 "LocalizableString_originalTitle" = "Título original: ";
+"LocalizableString_releaseDate" = "Fecha de lanzamiento: ";
+"LocalizableString_overview" = "Resumen: ";
+"LocalizableString_originalLanguaje" = "Idioma original: ";
+"LocalizableString_popularity" = "Aceptación: ";
+"LocalizableString_voteAverage" = "Promedio de votos: ";
+"LocalizableString_voteCount" = "Recuento de votos: ";
+"LocalizableString_recomendationTitle" = "Recomendaciones";
+"LocalizableString_similarTitle" = "Películas Similares";
