@@ -11,6 +11,7 @@
 		850899992A0417F800DB7363 /* UserReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850899982A0417F800DB7363 /* UserReview.xib */; };
 		8508999D2A04284900DB7363 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8508999C2A04284900DB7363 /* Review.swift */; };
 		854379A32A04C9D10054B8DF /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854379A22A04C9D10054B8DF /* ReviewViewModel.swift */; };
+		856743BC2A09C813009857AE /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856743BB2A09C813009857AE /* Double+Extensions.swift */; };
 		859A75BA29E732F6003DD163 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A75B829E732F6003DD163 /* MovieTableViewCell.swift */; };
 		859A75BB29E732F6003DD163 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859A75B929E732F6003DD163 /* MovieTableViewCell.xib */; };
 		859AA9C929EDC742006C6EBA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859AA9C829EDC742006C6EBA /* UIViewController+Extensions.swift */; };
@@ -72,6 +73,7 @@
 		850899982A0417F800DB7363 /* UserReview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserReview.xib; sourceTree = "<group>"; };
 		8508999C2A04284900DB7363 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		854379A22A04C9D10054B8DF /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		856743BB2A09C813009857AE /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		859A75B829E732F6003DD163 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		859A75B929E732F6003DD163 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		859AA9C829EDC742006C6EBA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				85AAC80C29F1932D00048139 /* String+Extensions.swift */,
 				85AAC82829F25EBE00048139 /* UIImage+Extensions.swift */,
 				85E466662A075C540042770E /* UserDefaults+Extensions.swift */,
+				856743BB2A09C813009857AE /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				859AA9CD29EE3BD0006C6EBA /* MovieListViewModel.swift in Sources */,
 				C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */,
 				C30893E228A425E1004B1860 /* MovieAPI.swift in Sources */,
+				856743BC2A09C813009857AE /* Double+Extensions.swift in Sources */,
 				859AA9C929EDC742006C6EBA /* UIViewController+Extensions.swift in Sources */,
 				859D2E5B29D75BCF008AF807 /* ImageLoader.swift in Sources */,
 				859AA9D329EE5C1C006C6EBA /* MasterMovieTableViewController.swift in Sources */,
