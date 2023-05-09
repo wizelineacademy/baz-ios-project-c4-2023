@@ -142,7 +142,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.movieView.image = UIImage(named: "poster")
         navigationItem.title = detailMovieModel?.title
-        self.movieTitle.text = "Original Title: \(detailMovieModel?.originalTitle ?? detailMovieModel?.title ?? "")"
+        self.movieTitle.text = "\(LocalizableString.originalTitle.localized)\(detailMovieModel?.originalTitle ?? detailMovieModel?.title ?? "")"
         self.movieDate.text = "Release Date: \(detailMovieModel?.releaseDate ?? "")"
         self.overview.text = "Overview:\n\(detailMovieModel?.overview ?? "")"
         self.originalLanguage.text = "Original Languaje: \(detailMovieModel?.originalLanguage?.capitalized ?? "")"
@@ -224,7 +224,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellId = CellConstants.HomeCellId
+        let cellId = CellConstants.detailMovieCellId
         if collectionView == self.similarCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? DetailMovieCell
             else { return UICollectionViewCell() }

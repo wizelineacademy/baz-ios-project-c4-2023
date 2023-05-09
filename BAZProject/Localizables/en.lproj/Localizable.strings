@@ -9,3 +9,4 @@
 "LocalizableString_labelTitle" = "Home";
 "LocalizableString_searchTitle" = "Search";
 "LocalizableString_searchPlaceholder" = " Search a movie...";
+"LocalizableString_originalTitle" = "Original Title: ";

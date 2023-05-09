@@ -13,6 +13,7 @@ enum LocalizableString: String {
     case labelTitle
     case searchTitle
     case searchPlaceholder
+    case originalTitle
     
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "Localizable")
