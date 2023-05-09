@@ -23,7 +23,7 @@ class MoviesFlowLayout: ReusableCollectionViewDelegateAndFlowLayout {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let movie = (collectionView.dataSource as? MoviesDataSource)?.items[indexPath.row] {
-            let movieDetailVC = MovieViewController(movie: movie)
+            let movieDetailVC = MovieDetailViewController(movie: movie)
             viewController?.navigationController?.pushViewController(movieDetailVC, animated: true)
         }
     }

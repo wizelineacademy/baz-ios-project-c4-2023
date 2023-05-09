@@ -43,16 +43,16 @@ class MovieItemAdapter: ReusableCollectionViewCell<Movie> {
 
     private func lblTitleMovieConstraints() {
         addSubview(lblTitleMovie)
-        lblTitleMovie.centerXAnchor.constraint(equalTo:  centerXAnchor).isActive = true
+        lblTitleMovie.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         lblTitleMovie.topAnchor.constraint(equalTo: imgvPorter.bottomAnchor, constant: .dim4).isActive = true
-        lblTitleMovie.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim4).isActive = true
-        lblTitleMovie.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: .dim4).isActive = true
+        lblTitleMovie.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim4).isActive = true
+        lblTitleMovie.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .dim4).isActive = true
     }
 
     // MARK: - Override Functions/Variables
 
-    override var item: Movie!{
-        didSet{
+    override var item: Movie! {
+        didSet {
             let placeHolder = UIImage(named: "poster")
             let posterPath = "\(Consts.END_POINTS.POSTER_PATH)\(item.posterPath ?? "")"
             imgvPorter.loadAsync(from: posterPath.toUrl(), placeHolder: placeHolder)

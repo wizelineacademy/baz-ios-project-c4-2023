@@ -20,7 +20,7 @@ class MoviesViewController: ReusableViewController {
         slw.translatesAutoresizingMaskIntoConstraints = false
         return slw
     }()
-    
+
     private func slwMainContentConstraints() {
         view.addSubview(slwMainContent)
         slwMainContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -28,7 +28,7 @@ class MoviesViewController: ReusableViewController {
         slwMainContent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         slwMainContent.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
-    
+
     private lazy var skwContent: UIStackView = {
         let skw = UIStackView()
         skw.axis = .vertical
@@ -36,7 +36,7 @@ class MoviesViewController: ReusableViewController {
         skw.translatesAutoresizingMaskIntoConstraints = false
         return skw
     }()
-    
+
     private func skwContentConstraints() {
         slwMainContent.addSubview(skwContent)
         skwContent.topAnchor.constraint(equalTo: slwMainContent.topAnchor).isActive = true
@@ -47,9 +47,9 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblTrendingMoviesText: UILabel = {
-        return setupLabel("Tendencias")
+        return setupLabel("trendsText".localized)
     }()
-    
+
     private lazy var clvTrendingMovies: UICollectionView = {
         return setupCollectionView()
     }()
@@ -60,30 +60,30 @@ class MoviesViewController: ReusableViewController {
         clvTrendingMovies.delegate = delegateFlowLayout
         clvTrendingMovies.dataSource = setupDataSourceAndConstraints(.trending, clvTrendingMovies)
     }
-    
+
     private lazy var lblNowPlayingMoviesText: UILabel = {
-        return setupLabel("Reproduciendo Ahora")
+        return setupLabel("playingNowText".localized)
     }()
-    
+
     private lazy var clvNowPlayingMovies: UICollectionView = {
         return setupCollectionView()
     }()
-    
+
     private func addlblNowPlayingMoviesTextAndClvNowPlayingMovies() {
         skwContent.addArrangedSubview(lblNowPlayingMoviesText)
         skwContent.addArrangedSubview(clvNowPlayingMovies)
         clvNowPlayingMovies.delegate = delegateFlowLayout
         clvNowPlayingMovies.dataSource = setupDataSourceAndConstraints(.nowPlaying, clvNowPlayingMovies)
     }
-    
+
     private lazy var lblPopularMoviesText: UILabel = {
-        return setupLabel("Populares")
+        return setupLabel("popularText".localized)
     }()
-    
+
     private lazy var clvPopularMovies: UICollectionView = {
         return setupCollectionView()
     }()
-    
+
     private func addlblPopularMoviesTextAndClvPopularMovies() {
         skwContent.addArrangedSubview(lblPopularMoviesText)
         skwContent.addArrangedSubview(clvPopularMovies)
@@ -92,35 +92,35 @@ class MoviesViewController: ReusableViewController {
     }
 
     private lazy var lblTopRatedMoviesText: UILabel = {
-        return setupLabel("Los más valorados")
+        return setupLabel("topRatedText".localized)
     }()
-    
+
     private lazy var clvTopRatedMovies: UICollectionView = {
         return setupCollectionView()
     }()
-    
+
     private func addlblTopRatedMoviesTextAndClvTopRatedMovies() {
         skwContent.addArrangedSubview(lblTopRatedMoviesText)
         skwContent.addArrangedSubview(clvTopRatedMovies)
         clvTopRatedMovies.delegate = delegateFlowLayout
         clvTopRatedMovies.dataSource = setupDataSourceAndConstraints(.topRated, clvTopRatedMovies)
     }
-    
+
     private lazy var lblUpcomingMoviesText: UILabel = {
-        return setupLabel("Próximamente")
+        return setupLabel("upcomingText".localized)
     }()
-    
+
     private lazy var clvUpcomingMovies: UICollectionView = {
         return setupCollectionView()
     }()
-    
+
     private func addlblUpcomingMoviesTextAndClvUpcomingMoviesConstraints() {
         skwContent.addArrangedSubview(lblUpcomingMoviesText)
         skwContent.addArrangedSubview(clvUpcomingMovies)
         clvUpcomingMovies.delegate = delegateFlowLayout
         clvUpcomingMovies.dataSource = setupDataSourceAndConstraints(.upcoming, clvUpcomingMovies)
     }
-    
+
     private func setupLabel(_ text: String) -> UILabel {
         let lbl = UILabel()
         lbl.text = text
@@ -129,7 +129,7 @@ class MoviesViewController: ReusableViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }
-    
+
     private func setupCollectionView() -> UICollectionView {
         let flow = UICollectionViewFlowLayout()
         flow.scrollDirection = .horizontal
@@ -140,7 +140,7 @@ class MoviesViewController: ReusableViewController {
         clv.translatesAutoresizingMaskIntoConstraints = false
         return clv
     }
-    
+
     private func setupDataSourceAndConstraints(_ filter: Filters, _ collectionView: UICollectionView) -> MoviesDataSource {
         collectionView.widthAnchor.constraint(equalTo: skwContent.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: .dim220).isActive = true
@@ -163,11 +163,11 @@ class MoviesViewController: ReusableViewController {
         delegateFlowLayout.viewController = self
         slwMainContentConstraints()
         skwContentConstraints()
-        
+
         addlblTrendingMoviesTextAndClvTrendingMovies()
-        
+
         addlblNowPlayingMoviesTextAndClvNowPlayingMovies()
-        
+
         addlblPopularMoviesTextAndClvPopularMovies()
 
         addlblTopRatedMoviesTextAndClvTopRatedMovies()

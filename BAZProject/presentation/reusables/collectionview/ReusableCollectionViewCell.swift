@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class ReusableCollectionViewCell<U>: UICollectionViewCell {
+class ReusableCollectionViewCell<U>: UICollectionViewCell, CellReusable {
 
     // MARK: - Variables
 
-    var item:U!
+    var item: U!
 
     // MARK: - Override Functions
 

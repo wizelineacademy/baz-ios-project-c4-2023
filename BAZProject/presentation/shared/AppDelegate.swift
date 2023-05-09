@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // MARK: - Core Data stack
+    /**
+     El contenedor persistente para la aplicación. Esta implementación crea y devuelve un contenedor,
+     habiendo cargado la base de datos para la misma aplicación.
+     Esta propiedad es opcional ya que hay legítimos condiciones de error que podrían hacer que la creación de la base de datos fallara.
+     */
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MoviesDB")
+        container.loadPersistentStores { (storeDescription,error) in
+            if let error = error as NSError? {
+                fatalError("Error sin resolver \(error) ,\(error.userInfo)")
+            }
+        }
+        return container
+    }()
 
+    /**
+     Funcion para usar en el resto de la aplicación
+     */
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges{
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Error sin resolver \(nserror) ,\(nserror.userInfo)")
+            }
+        }
+    }
 }
-

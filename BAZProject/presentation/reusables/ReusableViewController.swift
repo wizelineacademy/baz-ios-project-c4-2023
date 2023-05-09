@@ -23,7 +23,7 @@ class ReusableViewController: UIViewController {
 
     // MARK: - Publics Functions
 
-    func setupView(){
+    func setupView() {
         view.backgroundColor = .white
     }
 }

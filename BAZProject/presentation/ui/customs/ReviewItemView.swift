@@ -1,14 +1,18 @@
 //
-//  ReviewItemAdapter.swift
+//  ReviewItemView.swift
 //  BAZProject
 //
-//  Created by Ivan Tecpanecatl Martinez on 17/04/23.
+//  Created by Ivan Tecpanecatl Martinez on 04/05/23.
 //
 
 import Foundation
 import UIKit
 
-class ReviewItemAdapter: ReusableTableViewCell<Review> {
+// MARK: - Class
+class ReviewItemView: UIView {
+
+    // MARK: - Properties
+    private var review: Review
 
     // MARK: - Override Functions/Variables
 
@@ -19,16 +23,17 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
         lbl.font = UIFont.boldSystemFont(ofSize: sizeFont)
         lbl.textColor = .black
         lbl.numberOfLines = 1
-        //lbl.sizeToFit()
+        // lbl.sizeToFit()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
 
     private func lblAuthorReviewConstraints() {
         addSubview(lblAuthorReview)
+        lblAuthorReview.text = review.author
         lblAuthorReview.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        lblAuthorReview.trailingAnchor.constraint(equalTo:  trailingAnchor).isActive = true
-        lblAuthorReview.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive = true
+        lblAuthorReview.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        lblAuthorReview.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
     }
 
     private lazy var lblContentReview: UILabel = {
@@ -45,9 +50,15 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
 
     private func lblContentReviewConstraints() {
         addSubview(lblContentReview)
+
+        if review.content.count > 100 {
+            lblContentReview.text = String(review.content.prefix(100)) + "..."
+        } else {
+            lblContentReview.text = review.content
+        }
         lblContentReview.topAnchor.constraint(equalTo: lblAuthorReview.bottomAnchor, constant: .dim4).isActive = true
-        lblContentReview.trailingAnchor.constraint(equalTo:  trailingAnchor).isActive = true
-        lblContentReview.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive = true
+        lblContentReview.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        lblContentReview.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
     }
 
     private lazy var imgvStar: UIImageView = {
@@ -81,8 +92,9 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
 
     private func lblRatingReviewConstraints() {
         addSubview(lblRatingReview)
+        lblRatingReview.text = "\(review.rating ?? 0)"
         lblRatingReview.centerYAnchor.constraint(equalTo: imgvStar.centerYAnchor).isActive = true
-        lblRatingReview.leadingAnchor.constraint(equalTo:  imgvStar.trailingAnchor, constant: .dim4).isActive = true
+        lblRatingReview.leadingAnchor.constraint(equalTo: imgvStar.trailingAnchor, constant: .dim4).isActive = true
     }
 
     private lazy var lblDateReview: UILabel = {
@@ -99,25 +111,24 @@ class ReviewItemAdapter: ReusableTableViewCell<Review> {
 
     private func lblDateReviewConstraints() {
         addSubview(lblDateReview)
+        let createdAt = String(review.createdAt.prefix(10))
+        lblDateReview.text = createdAt.formatReleaseDate()
         lblDateReview.centerYAnchor.constraint(equalTo: imgvStar.centerYAnchor).isActive = true
-        lblDateReview.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -.dim8).isActive = true
+        lblDateReview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.dim8).isActive = true
+        bottomAnchor.constraint(equalTo: lblDateReview.bottomAnchor, constant: -.dim12).isActive = true
     }
 
-    override var item: Review!{
-        didSet{
-            lblAuthorReview.text = item.author
-            var content = item.content
-            if item.content.count > 100 {
-                content = String(item.content.prefix(100)) + "..."
-            }
-            lblContentReview.text = content
-            lblRatingReview.text = "\(item.rating ?? 0)"
-            lblDateReview.text = item.createdAt
-        }
+    init(review: Review) {
+        self.review = review
+        super.init(frame: .zero)
+        setupViews()
     }
 
-    override func setupViews() {
-        super.setupViews()
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupViews() {
         lblAuthorReviewConstraints()
         lblContentReviewConstraints()
         imgvStarConstraints()

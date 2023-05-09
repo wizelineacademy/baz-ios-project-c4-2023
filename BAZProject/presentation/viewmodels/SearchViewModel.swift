@@ -7,23 +7,28 @@
 
 import Foundation
 
+// MARK: - Protocol
 protocol SearchDelegate: AnyObject {
     func searchResults()
 }
 
+// MARK: - Class
 class SearchViewModel {
 
+    // MARK: - public variables
     var sectionTitles: [String] = []
     var movies: [Movie] = []
     var keywords: [String] = []
     weak var delegate: SearchDelegate?
 
+    // MARK: - private variables
     private let repository: SearchRepository
 
     init(_ repository: SearchRepository) {
         self.repository = repository
     }
-    
+
+    // MARK: - public functions
     func fetchSearch(_ query: String) {
         let group = DispatchGroup()
         group.enter()
@@ -37,11 +42,11 @@ class SearchViewModel {
             self.keywords = keywords
         }
         group.notify(queue: .main) {
-            if self.movies.count > 0 && !self.sectionTitles.contains("Peliculas") {
-                self.sectionTitles.append("Peliculas")
+            if self.movies.count > 0 && !self.sectionTitles.contains("moviesText".localized) {
+                self.sectionTitles.append("moviesText".localized)
             }
-            if self.keywords.count > 0 && !self.sectionTitles.contains("Otras sugerencias") {
-                self.sectionTitles.append("Otras sugerencias")
+            if self.keywords.count > 0 && !self.sectionTitles.contains("otherSuggestionsText".localized) {
+                self.sectionTitles.append("otherSuggestionsText".localized)
             }
             self.delegate?.searchResults()
         }

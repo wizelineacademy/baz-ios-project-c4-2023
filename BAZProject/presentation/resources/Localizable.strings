@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  BAZProject
+
+  Created by Ivan Tecpanecatl Martinez on 04/05/23.
+  
+*/
+
+"moviesText" = "Peliculas";
+"otherSuggestionsText" = "Otras sugerencias";
+"searchText" = "Buscar";
+"trendsText" = "Tendencias";
+"playingNowText" = "Reproduciendo Ahora";
+"popularText" = "Populares";
+"topRatedText" = "Los más valorados";
+"upcomingText" = "Próximamente";
+"castText" = "Reparto de Actores";
+"similarMoviesText" = "Películas similares";
+"recommendedMoviesText" = "Películas recomendadas";
+"movieReviewsText" = "Reseñas de la película";
+"actorsEmptyText" = "No hay actores disponibles";
+"moviesEmptyText" = "No hay peliculas disponibles";
+"reviewsEmptyText" = "No hay reseñas disponibles";
+"searchQuestionText" = "¿Qué estás buscando?";
+"favoritesText" = "Favoritos";
+"favoritesEmpty" = "No hay películas favoritas disponibles";
