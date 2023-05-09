@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - Class
+
 class DetailMovieCell: UICollectionViewCell {
     lazy var coverView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -27,6 +29,7 @@ class DetailMovieCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: Init methods
     var model: ListMovieProtocol? {
         didSet {
             producersTitle.text = model?.title
@@ -40,6 +43,12 @@ class DetailMovieCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Functions
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.coverView.image = UIImage(named: "poster")
     }
     
     func setup() {

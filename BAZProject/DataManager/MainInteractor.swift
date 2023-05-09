@@ -26,7 +26,7 @@ extension MainInteractorProtocol {
     ///   - completion: Returns a UIImage
     ///   - Version: 1.0.0
     func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
-        if let path = URL(string: "\(MovieAPIConstans.getPosterUrl(path: imagePath))") ?? URL(string: "") {
+        if let path = URL(string: "\(MovieAPIConstans.getPosterUrl(path: imagePath))") {
             let imageLoader: ImageLoader = ImageLoader()
             imageLoader.loadImage(from: path) { image in
                 completion(image)
@@ -88,7 +88,6 @@ extension MainInteractorProtocol {
                 }
             }
         }
-        onSaved()
     }
     
     /// Return movies saved as favorites
