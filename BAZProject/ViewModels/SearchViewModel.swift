@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - A protocol for making objects searchable with a query string.
 protocol SearchableProtocol {
 
