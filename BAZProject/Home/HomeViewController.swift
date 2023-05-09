@@ -6,61 +6,142 @@
 import UIKit
 
 //MARK: - Class
-final class HomeViewController: UITableViewController {
+class HomeViewController: UIViewController, UITableViewDelegate {
     //MARK: - Properties
+    private lazy var movieTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        return tableView
+    }()
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let items = ["Trending","NowPlaying","Popular","TopRated","Upcoming"]
+        let segmented = UISegmentedControl(items: items)
+        segmented.selectedSegmentTintColor = .white
+        segmented.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: ConstraintConstants.medium)], for: .normal)
+        segmented.backgroundColor = UIColor.AppColors.labelGreen
+        segmented.selectedSegmentIndex = 0
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        segmented.addTarget(self, action: #selector(selectSection(_:)), for: .valueChanged)
+        return segmented
+    }()
+    
     var presenter: HomeViewOutputProtocol?
     private var moviesModel: [MovieResult]?
     {
         didSet {
-            self.tableView.reloadData()
+            self.movieTableView.reloadData()
         }
     }
 
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.cellID)
-        presenter?.getDataMovies(endPoint: .trending)
+        self.movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.HomeCellId)
         let exitButtom: UIBarButtonItem
         exitButtom = UIBarButtonItem(title: LocalizableString.searchTitle.localized,
                                      style: .plain,
                                      target: self,
                                      action: #selector(gotoSerch))
+        exitButtom.tintColor = UIColor.AppColors.labelGreen
         navigationItem.setRightBarButton(exitButtom,
                                          animated: false)
         title = LocalizableString.labelTitle.localized
+        self.view.backgroundColor = UIColor.AppColors.homeBackgroundColor
+        addViews()
+        setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectSection(segmentedControl)
     }
     
     // MARK: Functions
     @objc public func gotoSerch() {
-        let viewController = SearchRouter.createModule()
-        navigationController?.pushViewController(viewController, animated: true)
+        presenter?.showSearchModule()
+    }
+    
+    private func addViews() {
+        self.view.addSubview(segmentedControl)
+        self.view.addSubview(movieTableView)
+        
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: ConstraintConstants.small),
+            segmentedControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: ConstraintConstants.extraSmall),
+            segmentedControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -ConstraintConstants.extraSmall),
+            segmentedControl.heightAnchor.constraint(equalToConstant: ConstraintConstants.segmentedHeight),
+            
+            movieTableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: ConstraintConstants.small),
+            movieTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            movieTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            movieTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+    }
+    
+    private func setupViews() {
+        movieTableView.dataSource = self
+        movieTableView.delegate = self
+        movieTableView.register(HomeCell.self, forCellReuseIdentifier: CellConstants.HomeCellId)
+    }
+    
+    @objc func selectSection(_ sender: UISegmentedControl) {
+        var selection: Endpoint = .trending
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selection = .trending
+            break
+        case 1:
+            selection = .nowPlaying
+            break
+        case 2:
+            selection = .popular
+            break
+        case 3:
+            selection = .topRated
+            break
+        case 4:
+            selection = .upcoming
+            break
+        default:
+            break
+        }
+        presenter?.getDataMovies(endPoint: selection)
     }
 
 }
 
 //MARK: - Extensions
-extension HomeViewController {
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moviesModel?.count ?? 0
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        moviesModel?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellConstants.cellID, for: indexPath) as? HomeCell else { return UITableViewCell() }
-        cell.setupTitle(title: self.moviesModel?[indexPath.row].title ?? "")
-        self.presenter?.getMovieImage(index: indexPath.row, completion: { image in
-            let imgDefault = UIImage(named: "poster") ?? UIImage()
-            cell.setupImage(image: (image ?? imgDefault))
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellId = CellConstants.HomeCellId
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? HomeCell else { return UITableViewCell() }
+        cell.isHome = true
+        cell.presenter = presenter
+        cell.index = indexPath.row
+        cell.model = self.moviesModel?[indexPath.row]
+        self.presenter?.getMovieImage(imagePath: self.moviesModel?[indexPath.row].posterPath ?? "", completion: { imageData in
+            cell.coverView.image = imageData
         })
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let movie = moviesModel?[indexPath.row] {
+            presenter?.showDetailModule(movie: movie)
+        }
+    }
 }
 
 // MARK: - P R E S E N T E R · T O · V I E W

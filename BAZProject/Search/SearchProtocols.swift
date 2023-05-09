@@ -13,9 +13,7 @@ protocol SearchViewInputProtocol: AnyObject {
     func showViewDataMovies(movies: [ListMovieProtocol]?)
 }
 
-// MARK: - Presenter
-
-// MARK: - (View To Presenter)
+// MARK: - Presenter (View To Presenter)
 protocol SearchViewOutputProtocol {
     // MARK: - Properties
 	var view: SearchViewInputProtocol? { get }
@@ -23,7 +21,10 @@ protocol SearchViewOutputProtocol {
 	var router: SearchRouterProtocol { get }
     // MARK: - Functions
     func getMovieSearch(endPoint: Endpoint)
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void)
+    func saveFavorite(index: Int)
+    func deleteFavorite(index: Int)
+    func showDetailModule(movie: ListMovieProtocol)
 }
 
 // MARK: - (Interactor To Presenter)
@@ -33,15 +34,17 @@ protocol SearchInteractorOutputProtocol: AnyObject {
 }
 
 // MARK: - Interactor (Presenter To Interactor)
-protocol SearchInteractorInputProtocol {
+protocol SearchInteractorInputProtocol: MainInteractorProtocol {
     // MARK: - Properties
     var presenter: SearchInteractorOutputProtocol? { get }
     // MARK: - Functions
-    func getMovieSearch(endPoint: Endpoint)
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void)
+    func getMovieSearch(endPoint: Endpoint, completion: @escaping () -> Void)
 }
 
 // MARK: - Router (Presenter To Router)
 protocol SearchRouterProtocol {
     var view: UIViewController? { get }
+    func showAnimation(completion: @escaping () -> Void)
+    func hideAnimation(completion: (() -> Void)?)
+    func showDetail(movie: ListMovieProtocol)
 }

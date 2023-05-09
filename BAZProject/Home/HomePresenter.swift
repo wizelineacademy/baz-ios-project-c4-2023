@@ -11,6 +11,7 @@ class HomePresenter {
     weak var view: HomeViewInputProtocol?
     var interactor: HomeInteractorInputProtocol
     var router: HomeRouterProtocol
+    private var pEndpoint: Endpoint = .trending
     
     init(view: HomeViewInputProtocol,
          interactor: HomeInteractorInputProtocol,
@@ -26,11 +27,36 @@ class HomePresenter {
 // MARK: - V I E W · T O · P R E S E N T E R
 extension HomePresenter: HomeViewOutputProtocol {
     func getDataMovies(endPoint: Endpoint) {
-        interactor.getDataMovies(endPoint: endPoint)
+        self.router.showAnimation {
+            self.pEndpoint = endPoint
+            self.interactor.getDataMovies(endPoint: self.pEndpoint) {
+                self.router.hideAnimation {}
+            }
+        }
     }
     
-    func getMovieImage(index: Int, completion: @escaping (UIImage?) -> Void) {
-        interactor.getMovieImage(index: index, completion: completion)
+    func getMovieImage(imagePath: String, completion: @escaping (UIImage?) -> Void) {
+        interactor.getMovieImage(imagePath: imagePath, completion: completion)
+    }
+    
+    func saveFavorite(index: Int) {
+        interactor.saveFavorite(index: index) {
+            self.getDataMovies(endPoint: self.pEndpoint)
+        }
+    }
+    
+    func deleteFavorite(index: Int) {
+        interactor.deleteFavorite(index: index) {
+            self.getDataMovies(endPoint: self.pEndpoint)
+        }
+    }
+    
+    func showSearchModule() {
+        router.showSearchModule()
+    }
+    
+    func showDetailModule(movie: ListMovieProtocol) {
+        router.showDetailModule(movie: movie)
     }
 }
 
