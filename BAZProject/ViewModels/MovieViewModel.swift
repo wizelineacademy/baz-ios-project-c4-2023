@@ -7,6 +7,13 @@
 
 import UIKit
 
+/// Enum used to store the icons used through the app.
+enum Icon {
+    
+    static let heart: UIImage = UIImage(systemName: "heart") ?? UIImage()
+    static let heartFill: UIImage = UIImage(systemName: "heart.fill") ?? UIImage()
+}
+
 /// This protocol defines the methods required to update the image button.
 protocol MovieViewModelProtocol {
     func updateImageButton(image: UIImage?)
@@ -76,11 +83,11 @@ extension MovieViewModel {
     /// The vote average of the movie. If the vote average is nil, 0% is returned.
     /// - Returns: A string representing the vote average of the movie.
     var vote_average: String {
-        "\( Int(((movie.vote_average ?? 0) * 10).rounded()) )% de calificación"
+        movie.vote_average?.toRatingFormat ?? ""
     }
     
     var icon_favorite: UIImage? {
-        isFavorite() ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        isFavorite() ? Icon.heartFill : Icon.heart
     }
 }
 
