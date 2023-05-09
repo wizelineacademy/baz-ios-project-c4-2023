@@ -50,8 +50,9 @@ class BAZProjectTests: XCTestCase {
         interactorSearch?.presenter = searchPresenter
         searchPresenter?.interactor = interactorSearch
         remoteSearchDataManager = SearchRemoteDataManager()
+        guard let remoteSearchDataManager = remoteSearchDataManager else {return}
         interactorSearch?.remoteDatamanager = remoteSearchDataManager
-        remoteSearchDataManager?.remoteRequestHandler = interactorSearchMock
+        remoteSearchDataManager.remoteRequestHandler = interactorSearch
     }
     
     func denitSearchMock(){
@@ -73,7 +74,7 @@ class BAZProjectTests: XCTestCase {
         //Give
         var expetationMovies: [Movie] = []
         trendingPresenterMock?.willFetchMovies()
-        expetationMovies = trendingPresenterMock?.result ?? []
+        expetationMovies = trendingPresenterMock?.entity.result ?? []
         //When
         var result: [Movie] = []
         trendingPresenter?.willFetchMovies()
@@ -96,6 +97,7 @@ class BAZProjectTests: XCTestCase {
     
     func test_DataSearchMovieResponse() async{
         //Give
+        let expectation = expectation(description: "Wait for completion status")
         var expetationMovies: [Movie] = []
         searchPresenterMock?.willFetchMovies(searchQuery)
         expetationMovies = searchPresenterMock?.entity.result ?? []
@@ -103,7 +105,9 @@ class BAZProjectTests: XCTestCase {
         //When
         var result: [Movie] = []
         searchPresenter?.willFetchMovies(searchQuery)
+        wait(for: [expectation], timeout: 6.0)
         result = searchPresenter?.entity.result ?? []
+        expectation.fulfill()
         print(result)
         
         

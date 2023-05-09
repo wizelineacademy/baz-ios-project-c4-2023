@@ -13,6 +13,10 @@ class GeneralTaskCoordinatorMock: GeneralTaskCoordinatorProtocol{
     
     var urlPath: String = ""
     
+    var regionValueDefault: String = ""
+    
+    var languageValueDefault: String = ""
+    
     var queryValue: String = ""
     
     var params: [URLQueryItem] = []

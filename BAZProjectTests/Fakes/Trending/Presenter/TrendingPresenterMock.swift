@@ -15,7 +15,7 @@ class TrendingPresenterMock  {
     var interactor: TrendingInteractorInputProtocol?
     var router: TrendingRouterProtocol?
     
-    var result: [Movie] = []
+    var entity = TrendingEntity()
     
 }
 
@@ -23,7 +23,6 @@ extension TrendingPresenterMock: TrendingPresenterProtocol {
     
     // TODO: implement presenter methods
     func viewDidLoad() {
-        view?.setNavigationTitle(for: interactor?.getNavTitle())
         view?.registrerCell()
     }
     
@@ -33,8 +32,8 @@ extension TrendingPresenterMock: TrendingPresenterProtocol {
 }
 
 extension TrendingPresenterMock: TrendingInteractorOutputProtocol {
-    func onReceivedMovies(_ result: [Movie]) {
-        self.result = result
+    func onReceivedMovies(_ entity: TrendingEntity) {
+        self.entity = entity
     }
     
     func showMoviesError(_ error: Error) {

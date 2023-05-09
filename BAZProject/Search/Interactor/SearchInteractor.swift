@@ -15,10 +15,6 @@ class SearchInteractor: SearchInteractorInputProtocol {
     weak var presenter: SearchInteractorOutputProtocol?
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol?
     var entity: SearchEntity?
-
-    func getNavTitle() -> String?{
-        return entity?.strNavBarTitle
-    }
     
     func fetchMovies(_ movie: String) {
         remoteDatamanager?.getSearchedMovies(movie)

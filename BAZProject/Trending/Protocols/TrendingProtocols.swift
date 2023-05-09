@@ -15,7 +15,6 @@ import UIKit
 protocol TrendingViewProtocol: AnyObject {
     var presenter: TrendingPresenterProtocol? { get set }
     
-    func setNavigationTitle(for strTitle: String?)
     func updateData(_ entity: TrendingEntity)
     func updataView()
     func registrerCell()
@@ -35,7 +34,6 @@ protocol TrendingInteractorInputProtocol: AnyObject {
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol? { get set }
     var entity: TrendingEntity? { get set }
     
-    func getNavTitle() -> String?
     func fetchMovies()
 }
 

@@ -24,7 +24,6 @@ extension TrendingPresenter: TrendingPresenterProtocol {
     
     // TODO: implement presenter methods
     func viewDidLoad() {
-        view?.setNavigationTitle(for: interactor?.getNavTitle())
         view?.registrerCell()
     }
     

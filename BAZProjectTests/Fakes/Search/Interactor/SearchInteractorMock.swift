@@ -19,11 +19,6 @@ class SearchInteractorMock: SearchInteractorInputProtocol {
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol?
     var entity: SearchEntity?
     
-
-    func getNavTitle() -> String?{
-        return entity?.strNavBarTitle
-    }
-    
     func fetchMovies(_ movie: String) {
         remoteDatamanager?.getSearchedMovies(movie)
     }

@@ -14,10 +14,6 @@ class TrendingInteractor: TrendingInteractorInputProtocol {
     weak var presenter: TrendingInteractorOutputProtocol?
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol?
     var entity: TrendingEntity?
-
-    func getNavTitle() -> String?{
-        return entity?.strNavBarTitle
-    }
     
     func fetchMovies() {
         remoteDatamanager?.getMoviesTrending()

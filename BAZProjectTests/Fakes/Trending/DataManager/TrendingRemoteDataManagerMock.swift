@@ -9,6 +9,26 @@ import XCTest
 @testable import BAZProject
 
 class TrendingRemoteDataManagerMock: TrendingRemoteDataManagerInputProtocol {
+    func getMoviesTrending() {
+        //<#code#>
+    }
+    
+    func getNowPlaying() {
+        //<#code#>
+    }
+    
+    func getPopular() {
+        //<#code#>
+    }
+    
+    func getTopRated() {
+        //<#code#>
+    }
+    
+    func getUpcoming() {
+        //<#code#>
+    }
+    
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol?
     
     func getMovies() {

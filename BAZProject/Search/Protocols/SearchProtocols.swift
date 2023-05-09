@@ -15,7 +15,6 @@ import UIKit
 protocol SearchViewProtocol: AnyObject {
     var presenter: SearchPresenterProtocol? { get set }
     
-    func setNavigationTitle(for strTitle: String?)
     func registrerCell()
     func updateData(_ result: [Movie])
 }
@@ -34,7 +33,6 @@ protocol SearchInteractorInputProtocol: AnyObject {
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol? { get set }
     var entity: SearchEntity? { get set }
     
-    func getNavTitle() -> String?
     func fetchMovies(_ movie: String)
 }
 
