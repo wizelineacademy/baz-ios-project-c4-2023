@@ -33,7 +33,6 @@
 		8C8C68CF29E606E700936CE2 /* MovieRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C68C829E606E700936CE2 /* MovieRemoteDataManager.swift */; };
 		8C8C68D029E606E700936CE2 /* MovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C68C929E606E700936CE2 /* MovieRouter.swift */; };
 		8CAF180D29F9A393003000AC /* MovieRemoteDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF180C29F9A393003000AC /* MovieRemoteDataManagerMock.swift */; };
-		8CAF181029F9B9AA003000AC /* SearchPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF180F29F9B9AA003000AC /* SearchPresenterTest.swift */; };
 		8CAF181329F9BAAC003000AC /* SearchInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF181229F9BAAC003000AC /* SearchInteractorMock.swift */; };
 		8CC28EE829F84BD60013FA48 /* MoviePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC28EE729F84BD60013FA48 /* MoviePresenterTests.swift */; };
 		8CC28EEA29F85E570013FA48 /* MovieViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC28EE929F85E570013FA48 /* MovieViewMock.swift */; };
@@ -53,6 +52,10 @@
 		8CFCADD62A097E0F00A52FC2 /* MoviInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADD52A097E0F00A52FC2 /* MoviInteractorTests.swift */; };
 		8CFCADD82A097F0300A52FC2 /* SearcInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADD72A097F0300A52FC2 /* SearcInteractorTests.swift */; };
 		8CFCADDA2A097F8400A52FC2 /* SearcRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADD92A097F8400A52FC2 /* SearcRemoteTests.swift */; };
+		8CFCADDE2A09BF7200A52FC2 /* SearchViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADDD2A09BF7200A52FC2 /* SearchViewMock.swift */; };
+		8CFCADE02A09C08F00A52FC2 /* SearcPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADDF2A09C08F00A52FC2 /* SearcPresenterTests.swift */; };
+		8CFCADE22A09C41300A52FC2 /* MovieDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADE12A09C41300A52FC2 /* MovieDetailPresenterTests.swift */; };
+		8CFCADE42A09C73E00A52FC2 /* DetailViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCADE32A09C73E00A52FC2 /* DetailViewMock.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -104,7 +107,6 @@
 		8C8C68C829E606E700936CE2 /* MovieRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRemoteDataManager.swift; sourceTree = "<group>"; };
 		8C8C68C929E606E700936CE2 /* MovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRouter.swift; sourceTree = "<group>"; };
 		8CAF180C29F9A393003000AC /* MovieRemoteDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRemoteDataManagerMock.swift; sourceTree = "<group>"; };
-		8CAF180F29F9B9AA003000AC /* SearchPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTest.swift; sourceTree = "<group>"; };
 		8CAF181229F9BAAC003000AC /* SearchInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorMock.swift; sourceTree = "<group>"; };
 		8CC28EE729F84BD60013FA48 /* MoviePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresenterTests.swift; sourceTree = "<group>"; };
 		8CC28EE929F85E570013FA48 /* MovieViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewMock.swift; sourceTree = "<group>"; };
@@ -124,6 +126,10 @@
 		8CFCADD52A097E0F00A52FC2 /* MoviInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviInteractorTests.swift; sourceTree = "<group>"; };
 		8CFCADD72A097F0300A52FC2 /* SearcInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcInteractorTests.swift; sourceTree = "<group>"; };
 		8CFCADD92A097F8400A52FC2 /* SearcRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcRemoteTests.swift; sourceTree = "<group>"; };
+		8CFCADDD2A09BF7200A52FC2 /* SearchViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewMock.swift; sourceTree = "<group>"; };
+		8CFCADDF2A09C08F00A52FC2 /* SearcPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcPresenterTests.swift; sourceTree = "<group>"; };
+		8CFCADE12A09C41300A52FC2 /* MovieDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenterTests.swift; sourceTree = "<group>"; };
+		8CFCADE32A09C73E00A52FC2 /* DetailViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewMock.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,9 +265,9 @@
 		8CAF180E29F9B951003000AC /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
-				8CAF180F29F9B9AA003000AC /* SearchPresenterTest.swift */,
 				8CFCADD72A097F0300A52FC2 /* SearcInteractorTests.swift */,
 				8CFCADD92A097F8400A52FC2 /* SearcRemoteTests.swift */,
+				8CFCADDF2A09C08F00A52FC2 /* SearcPresenterTests.swift */,
 			);
 			path = SearchModule;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			children = (
 				8CAF181229F9BAAC003000AC /* SearchInteractorMock.swift */,
 				8C4E8DAC2A0425D000C7937A /* SearchRemoteDataManagerMock.swift */,
+				8CFCADDD2A09BF7200A52FC2 /* SearchViewMock.swift */,
 			);
 			path = SearchMocks;
 			sourceTree = "<group>";
@@ -319,6 +326,7 @@
 			children = (
 				8CFCADCE2A09734A00A52FC2 /* DetailInteractorMock.swift */,
 				8CFCADD02A0975FD00A52FC2 /* DetailInteractorDataManagerMock.swift */,
+				8CFCADE32A09C73E00A52FC2 /* DetailViewMock.swift */,
 			);
 			path = DetailMocks;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				8CFCADD32A09778700A52FC2 /* MovieDetailInteractorTests.swift */,
+				8CFCADE12A09C41300A52FC2 /* MovieDetailPresenterTests.swift */,
 			);
 			path = MovieDetailModule;
 			sourceTree = "<group>";
@@ -478,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFCADDE2A09BF7200A52FC2 /* SearchViewMock.swift in Sources */,
 				8C67189D29F1F9D1004BE8FD /* TrendingRemoteDataManagerMock.swift in Sources */,
 				8C28975F29DC986500DA4FB3 /* URLSessionMock.swift in Sources */,
 				8CFCADD42A09778700A52FC2 /* MovieDetailInteractorTests.swift in Sources */,
@@ -488,9 +498,11 @@
 				8C67189929F1F556004BE8FD /* MovieInteractorMock.swift in Sources */,
 				8CC28EE829F84BD60013FA48 /* MoviePresenterTests.swift in Sources */,
 				8CFCADD82A097F0300A52FC2 /* SearcInteractorTests.swift in Sources */,
-				8CAF181029F9B9AA003000AC /* SearchPresenterTest.swift in Sources */,
 				8CFCADCA2A096B9C00A52FC2 /* MovieDatTests.swift in Sources */,
 				8CFCADDA2A097F8400A52FC2 /* SearcRemoteTests.swift in Sources */,
+				8CFCADE02A09C08F00A52FC2 /* SearcPresenterTests.swift in Sources */,
+				8CFCADE22A09C41300A52FC2 /* MovieDetailPresenterTests.swift in Sources */,
+				8CFCADE42A09C73E00A52FC2 /* DetailViewMock.swift in Sources */,
 				8CFCADD12A0975FD00A52FC2 /* DetailInteractorDataManagerMock.swift in Sources */,
 				8CAF180D29F9A393003000AC /* MovieRemoteDataManagerMock.swift in Sources */,
 				8C4E8DAD2A0425D000C7937A /* SearchRemoteDataManagerMock.swift in Sources */,
