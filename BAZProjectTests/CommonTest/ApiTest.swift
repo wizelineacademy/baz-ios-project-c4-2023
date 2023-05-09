@@ -98,10 +98,36 @@ final class ApiTestError: XCTestCase {
         
         XCTAssertEqual(endpointNowPlaying.urlRequest, request)
         
-        let urlImageString = endpointNowPlaying.imagePathBase + endpointNowPlaying.endPoint
-        let urlImage = URL(string: urlString)
+    }
+    
+    func test_MovieDetailInfoEnum_returnVariables(){
+        let fakeId = "123456789"
+        let endpointSimilar = BAZProject.MovieDetailInfo.similar(fakeId)
+        let endpointRecomended = BAZProject.MovieDetailInfo.recomended(fakeId)
+        let endpointImage = BAZProject.MovieDetailInfo.image(fakeId)
+        let endpointReviews = BAZProject.MovieDetailInfo.reviews(fakeId)
+        let endpointCredits = BAZProject.MovieDetailInfo.credits(fakeId)
+        let endpointSearch = BAZProject.MovieDetailInfo.search(fakeId)
         
-        XCTAssertEqual(endpointNowPlaying.imageUrl, urlImage)
+        XCTAssertEqual(endpointSimilar.endPoint, "movie/\(fakeId)/similar")
+        XCTAssertEqual(endpointRecomended.endPoint, "movie/\(fakeId)/recommendations")
+        XCTAssertEqual(endpointImage.endPoint, fakeId)
+        XCTAssertEqual(endpointReviews.endPoint, "movie/\(fakeId)/reviews")
+        XCTAssertEqual(endpointCredits.endPoint, "movie/\(fakeId)/credits")
+        XCTAssertEqual(endpointSearch.endPoint, "&query=\(fakeId)")
         
+        
+        let urlString = endpointSimilar.pathBase + endpointSimilar.endPoint + endpointSimilar.apiKey
+        guard let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        
+        XCTAssertEqual(endpointSimilar.urlRequest, request)
+        
+        let urlSearchString = endpointSearch.pathBase + "search/movie" + endpointSearch.apiKey + endpointSearch.endPoint
+        guard let searchUrl = URL(string: urlSearchString) else { return }
+        let searchRequest = URLRequest(url: searchUrl)
+        
+        XCTAssertEqual(endpointSearch.urlRequest, searchRequest)
+
     }
 }

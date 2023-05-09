@@ -44,5 +44,7 @@ final class TrendingMoviesViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.movies.count, movies.count)
         XCTAssertEqual(sut.calls, [.loadSearchData])
     }
+    
+    
 
 }

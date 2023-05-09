@@ -58,6 +58,8 @@
 		4CC462792A02E6D4002104F8 /* MovieDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC462732A02E6D4002104F8 /* MovieDetailProtocols.swift */; };
 		4CC4627A2A02E6D4002104F8 /* MovieDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC462742A02E6D4002104F8 /* MovieDetailInteractor.swift */; };
 		4CC4627B2A02E6D4002104F8 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CC462752A02E6D4002104F8 /* MovieDetailViewController.xib */; };
+		4CF0C3232A09BE9D0019C219 /* ReviewsTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0C3222A09BE9D0019C219 /* ReviewsTableViewControllerTest.swift */; };
+		4CF0C3252A09CB730019C219 /* EntitiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0C3242A09CB730019C219 /* EntitiTest.swift */; };
 		C30893AE28A2F42B004B1860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AD28A2F42B004B1860 /* AppDelegate.swift */; };
 		C30893B028A2F42B004B1860 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30893AF28A2F42B004B1860 /* SceneDelegate.swift */; };
 		C30893B528A2F42B004B1860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30893B328A2F42B004B1860 /* Main.storyboard */; };
@@ -132,6 +134,8 @@
 		4CC462732A02E6D4002104F8 /* MovieDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailProtocols.swift; sourceTree = "<group>"; };
 		4CC462742A02E6D4002104F8 /* MovieDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInteractor.swift; sourceTree = "<group>"; };
 		4CC462752A02E6D4002104F8 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		4CF0C3222A09BE9D0019C219 /* ReviewsTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewControllerTest.swift; sourceTree = "<group>"; };
+		4CF0C3242A09CB730019C219 /* EntitiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiTest.swift; sourceTree = "<group>"; };
 		C30893AA28A2F42B004B1860 /* BAZProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAZProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30893AD28A2F42B004B1860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30893AF28A2F42B004B1860 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				4C17BCD82A08A7E800818551 /* MovieDetailInteractorTest.swift */,
 				4C17BCDA2A08A7FB00818551 /* MovieDetailRouterTest.swift */,
 				4C17BCDC2A08A80E00818551 /* MovieDetailViewControllerTest.swift */,
+				4CF0C3222A09BE9D0019C219 /* ReviewsTableViewControllerTest.swift */,
 			);
 			path = MovieDetailTest;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			children = (
 				4C9E3F8029F84B37000B7A96 /* ApiTest.swift */,
 				4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */,
+				4CF0C3242A09CB730019C219 /* EntitiTest.swift */,
 			);
 			path = CommonTest;
 			sourceTree = "<group>";
@@ -566,9 +572,11 @@
 				4C17BCCE2A08A16F00818551 /* MovieDetailPresenterMock.swift in Sources */,
 				4C17BCDB2A08A7FB00818551 /* MovieDetailRouterTest.swift in Sources */,
 				4C9E3F7129F70CB5000B7A96 /* UIVIewControllerSpy.swift in Sources */,
+				4CF0C3252A09CB730019C219 /* EntitiTest.swift in Sources */,
 				4C56782729F6D8D500D5FA23 /* TrendingMoviesPresenterTest.swift in Sources */,
 				4C9E3F8329F8512D000B7A96 /* LoadImageTest.swift in Sources */,
 				4C9E3F6A29F6DFD3000B7A96 /* MoviesRouterMock.swift in Sources */,
+				4CF0C3232A09BE9D0019C219 /* ReviewsTableViewControllerTest.swift in Sources */,
 				4C9E3F6C29F6FBB8000B7A96 /* MoviesPresenterMock.swift in Sources */,
 				4C17BCDD2A08A80E00818551 /* MovieDetailViewControllerTest.swift in Sources */,
 			);
