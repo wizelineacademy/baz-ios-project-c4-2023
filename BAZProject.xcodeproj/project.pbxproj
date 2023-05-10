@@ -106,6 +106,8 @@
 		D343156F29F09EDC00AEE166 /* TrendingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156629F09EDC00AEE166 /* TrendingInteractor.swift */; };
 		D343157129F09EDC00AEE166 /* TrendingRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */; };
 		D343157329F09EDC00AEE166 /* TrendingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D343156A29F09EDC00AEE166 /* TrendingEntity.swift */; };
+		D3A89E412A0A924100F56AB8 /* DetailMovieRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A89E402A0A924100F56AB8 /* DetailMovieRouterTest.swift */; };
+		D3A89E442A0AB11500F56AB8 /* DetailMovieViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A89E432A0AB11400F56AB8 /* DetailMovieViewTest.swift */; };
 		D3DDE23F29D5F68800EF774D /* GeneralTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */; };
 		D3E5443429D48B6E00651AE9 /* BAZProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5443329D48B6E00651AE9 /* BAZProjectTests.swift */; };
 /* End PBXBuildFile section */
@@ -181,6 +183,8 @@
 		D343156629F09EDC00AEE166 /* TrendingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingInteractor.swift; sourceTree = "<group>"; };
 		D343156829F09EDC00AEE166 /* TrendingRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRemoteDataManager.swift; sourceTree = "<group>"; };
 		D343156A29F09EDC00AEE166 /* TrendingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingEntity.swift; sourceTree = "<group>"; };
+		D3A89E402A0A924100F56AB8 /* DetailMovieRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieRouterTest.swift; sourceTree = "<group>"; };
+		D3A89E432A0AB11400F56AB8 /* DetailMovieViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieViewTest.swift; sourceTree = "<group>"; };
 		D3DDE23E29D5F68800EF774D /* GeneralTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTaskCoordinator.swift; sourceTree = "<group>"; };
 		D3E5443129D48B6E00651AE9 /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E5443329D48B6E00651AE9 /* BAZProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAZProjectTests.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				B5CCD71A29F8817500DE3701 /* Network */,
 				B5CCD71929F880DF00DE3701 /* Search */,
 				B5CCD71729F880AD00DE3701 /* Trending */,
+				D3A89E3E2A0A91D600F56AB8 /* Detail */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -670,6 +675,31 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		D3A89E3E2A0A91D600F56AB8 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D3A89E422A0AB0C900F56AB8 /* View */,
+				D3A89E3F2A0A91FC00F56AB8 /* Router */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		D3A89E3F2A0A91FC00F56AB8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D3A89E402A0A924100F56AB8 /* DetailMovieRouterTest.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D3A89E422A0AB0C900F56AB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3A89E432A0AB11400F56AB8 /* DetailMovieViewTest.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D3DDE23D29D5F14300EF774D /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,9 +887,11 @@
 				B5CCD75229F887BB00DE3701 /* SearchPresenter.swift in Sources */,
 				B5EC48D72A02C58F00AB8462 /* DetailMovieRouter.swift in Sources */,
 				B5CCD74C29F8874700DE3701 /* TrendingPresenter.swift in Sources */,
+				D3A89E412A0A924100F56AB8 /* DetailMovieRouterTest.swift in Sources */,
 				B5CCD73E29F8874700DE3701 /* TrendingEntity.swift in Sources */,
 				B5CCD74029F8874700DE3701 /* BMTableViewCell.swift in Sources */,
 				B5CCD74329F8874700DE3701 /* GeneralTableViewCell.swift in Sources */,
+				D3A89E442A0AB11500F56AB8 /* DetailMovieViewTest.swift in Sources */,
 				B5CCD75929F887BB00DE3701 /* SearchTableViewController.swift in Sources */,
 				B5CCD74829F8874700DE3701 /* TrendingTableViewCell.swift in Sources */,
 				B5EC48DF2A02C58F00AB8462 /* DetailMovieRemoteDataManager.swift in Sources */,
