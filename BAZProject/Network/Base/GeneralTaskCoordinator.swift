@@ -14,9 +14,9 @@ protocol GeneralTaskCoordinatorProtocol{
     var apiKey: String {get}
     var api:String {get}
     var languageKey: String {get}
-    var languageValueDefault: String {get}
+    var languageValueDefault: String {get set}
     var regionKey: String {get}
-    var regionValueDefault: String {get}
+    var regionValueDefault: String {get set}
     var pageKey: String {get}
     var pageValueDefault: String {get}
     var queryKey: String {get}
@@ -68,6 +68,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
     var urlPath: String = ""
     var params: [URLQueryItem] = []
     var queryValue: String = ""
+    var regionValueDefault: String = .regionValueDefault
+    var languageValueDefault: String = .languageValueDefault
     
     var session: URLSessionProtocol
     
@@ -94,6 +96,7 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
         guard let url = addQueryParams(url: URL(string: urlString), newParams: params) else {return}
         
         let finalURL = URLRequest(url: url)
+        print("URL to Request: \(finalURL)")
         DispatchQueue.global().async {
             let task = self.session.performDataTask(with: finalURL) { (data, response, error) in
 
@@ -120,6 +123,8 @@ class GeneralTaskCoordinator: GeneralTaskCoordinatorProtocol{
                 }
 
                 do {
+                    let debugJSONPrinteable = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    print(debugJSONPrinteable)
                     let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                     callback(.success(decodedData))
                 } catch {

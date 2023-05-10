@@ -15,8 +15,7 @@ import UIKit
 protocol TrendingViewProtocol: AnyObject {
     var presenter: TrendingPresenterProtocol? { get set }
     
-    func setNavigationTitle(for strTitle: String?)
-    func updateData(with result: [Movie])
+    func updateData(_ entity: TrendingEntity)
     func updataView()
     func registrerCell()
 }
@@ -25,18 +24,16 @@ protocol TrendingViewProtocol: AnyObject {
 
 /// Interactor -> Presenter
 protocol TrendingInteractorOutputProtocol: AnyObject {
-    func onReceivedMovies(_ result: [Movie])
+    func onReceivedMovies(_ entity: TrendingEntity)
     func showMoviesError(_ error: Error)
 }
 
 /// Presenter -> Interactor
 protocol TrendingInteractorInputProtocol: AnyObject {
     var presenter: TrendingInteractorOutputProtocol? { get set }
-//    var localDatamanager: TrendingLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: TrendingRemoteDataManagerInputProtocol? { get set }
     var entity: TrendingEntity? { get set }
     
-    func getNavTitle() -> String?
     func fetchMovies()
 }
 
@@ -65,15 +62,20 @@ protocol TrendingRouterProtocol: AnyObject {
 /// Interactor -> Remote data manager
 protocol TrendingRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: TrendingRemoteDataManagerOutputProtocol? { get set }
-    func getMovies()
+    func getMoviesTrending()
+    func getNowPlaying()
+    func getPopular()
+    func getTopRated()
+    func getUpcoming()
 }
 
 /// Remote data manager -> Interactor
 protocol TrendingRemoteDataManagerOutputProtocol: AnyObject {
     func handleGetMovies(_ result: [Movie])
+    func handleGetNowPlaying(_ result: [Movie])
+    func handleGetPopular(_ result: [Movie])
+    func handleGetTopRated(_ result: [Movie])
+    func handleGetUpcoming(_ result: [Movie])
     func handleGetErrorServiceMovies(_ error: Error)
+    func moviesData(_ entity: TrendingEntity?, typeIn: ListSectionMovieHome) -> TrendingEntity?
 }
-
-/// Interactor -> Local data manager
-//protocol TrendingLocalDataManagerInputProtocol: AnyObject {
-//}

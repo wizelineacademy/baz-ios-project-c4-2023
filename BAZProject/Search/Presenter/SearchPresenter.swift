@@ -23,7 +23,6 @@ class SearchPresenter  {
 
 extension SearchPresenter: SearchPresenterProtocol {
     func viewDidLoad() {
-        view?.setNavigationTitle(for: interactor?.getNavTitle())
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

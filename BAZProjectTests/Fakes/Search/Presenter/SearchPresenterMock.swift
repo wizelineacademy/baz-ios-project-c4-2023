@@ -31,7 +31,6 @@ class SearchPresenterMock  {
 extension SearchPresenterMock : SearchPresenterProtocol {
     
     func viewDidLoad() {
-        view?.setNavigationTitle(for: interactor?.getNavTitle())
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
