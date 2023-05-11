@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieAppCollectionViewCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="164" height="223"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="164" height="223"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfb-qS-o3r">
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="223"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackadam" translatesAutoresizingMaskIntoConstraints="NO" id="oCK-Sz-Ari">
+                                <rect key="frame" x="0.0" y="0.0" width="164" height="223"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLW-tC-qJI">
+                                <rect key="frame" x="0.0" y="202" width="164" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oCK-Sz-Ari" firstAttribute="top" secondItem="Vfb-qS-o3r" secondAttribute="top" id="2pE-ja-AB1"/>
+                            <constraint firstAttribute="trailing" secondItem="BLW-tC-qJI" secondAttribute="trailing" id="DnB-F1-haT"/>
+                            <constraint firstAttribute="trailing" secondItem="oCK-Sz-Ari" secondAttribute="trailing" id="HnS-9U-Quf"/>
+                            <constraint firstAttribute="bottom" secondItem="oCK-Sz-Ari" secondAttribute="bottom" id="Oc4-st-1RT"/>
+                            <constraint firstAttribute="bottom" secondItem="BLW-tC-qJI" secondAttribute="bottom" id="beh-tD-GqI"/>
+                            <constraint firstItem="oCK-Sz-Ari" firstAttribute="leading" secondItem="Vfb-qS-o3r" secondAttribute="leading" id="lrM-fD-fql"/>
+                            <constraint firstItem="BLW-tC-qJI" firstAttribute="leading" secondItem="Vfb-qS-o3r" secondAttribute="leading" id="tya-24-VrA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Vfb-qS-o3r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DfT-8v-flQ"/>
+                <constraint firstItem="Vfb-qS-o3r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ffo-gn-Mf0"/>
+                <constraint firstAttribute="bottom" secondItem="Vfb-qS-o3r" secondAttribute="bottom" id="efW-No-KpJ"/>
+                <constraint firstAttribute="trailing" secondItem="Vfb-qS-o3r" secondAttribute="trailing" id="ft2-p6-ogC"/>
+            </constraints>
+            <size key="customSize" width="164" height="223"/>
+            <connections>
+                <outlet property="cellBottomView" destination="Vfb-qS-o3r" id="Vx2-p3-Ky0"/>
+                <outlet property="cellImageView" destination="oCK-Sz-Ari" id="mhY-a6-deQ"/>
+                <outlet property="cellLabel" destination="BLW-tC-qJI" id="1B2-fz-3tQ"/>
+            </connections>
+            <point key="canvasLocation" x="-70.229007633587784" y="17.95774647887324"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="blackadam" width="1706" height="960"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
