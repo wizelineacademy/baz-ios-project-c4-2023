@@ -31,8 +31,13 @@ final class MoviesPresenter: MoviesPresenterProtocol {
     }
     ///Funcion que llama al interactor para obtener las las peliculas del la api de MovieDB
     func getMovies() {
-        guard let urlRequest = view?.type?.urlRequest else { return }
-        interactor?.getMovies(urlRequest: urlRequest)
+        guard let type  = view?.type as? MovieCategories else { return }
+        if type == .favorites{
+            interactor?.getLocalMovies()
+        }else{
+            guard let urlRequest  = type.urlRequest else { return }
+            interactor?.getMovies(urlRequest: urlRequest)
+        }
     }
     ///Funcion que llama al view  para setear  las las peliculas del la api de MovieDB
     func setMovies(result: [ListMovieProtocol]) {

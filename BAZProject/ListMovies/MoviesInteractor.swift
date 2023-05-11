@@ -35,6 +35,15 @@ final class MoviesInteractor: MoviesInteractorProtocol {
             }
         }
     }
+    
+    func getLocalMovies() {
+        guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
+              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
+        let movies:[Movie] = Array( dctMovies.values )
+        self.presenter?.setMovies(result: movies)
+        
+    }
+    
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies de acuerdo a criterio de busqueda
     func findMovies(for string: String) {
         guard let request = MovieDetailInfo.search(string).urlRequest else { return }

@@ -19,6 +19,7 @@ final class TabBarController: UITabBarController {
     ///   Devuelve un arreglo de UIViewController's `
     func setUpViewController() -> [UIViewController]{
         return [createBarController(for: .trending),
+                createBarController(for: .favorites),
                 createBarController(for: .nowPlaying),
                 createBarController(for: .popular),
                 createBarController(for: .topRated),

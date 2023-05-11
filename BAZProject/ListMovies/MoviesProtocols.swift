@@ -29,6 +29,7 @@ protocol MoviesPresenterProtocol: AnyObject {
 protocol MoviesInteractorProtocol: AnyObject {
     var presenter: MoviesPresenterProtocol?  { get set }
     func getMovies(urlRequest: URLRequest)
+    func getLocalMovies()
     func findMovies(for string: String)
 }
 

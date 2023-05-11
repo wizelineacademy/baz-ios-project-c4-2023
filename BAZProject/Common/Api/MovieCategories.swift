@@ -23,6 +23,7 @@ enum MovieCategories {
     case popular
     case topRated
     case upComing
+    case favorites
    
 }
 
@@ -39,6 +40,8 @@ extension MovieCategories: ApiPathProtocol{
             return "movie/top_rated"
         case .upComing:
             return "movie/upcoming"
+        case .favorites:
+            return ""
         }
     }
     
@@ -70,6 +73,8 @@ extension MovieCategories: ViewPropertiesProtocol {
             return "Top Rated"
         case .upComing:
             return "Upcoming"
+        case .favorites:
+            return "Favoritos"
         }
     }
     
@@ -85,6 +90,8 @@ extension MovieCategories: ViewPropertiesProtocol {
             return UIImage(systemName: "star.fill")
         case .upComing:
             return UIImage(systemName: "display.and.arrow.down")
+        case .favorites:
+            return UIImage(systemName: "heart.fill")
         }
     }
 }
