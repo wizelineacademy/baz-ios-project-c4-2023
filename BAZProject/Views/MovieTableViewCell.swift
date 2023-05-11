@@ -7,8 +7,11 @@
 
 import UIKit
 
+/// The MovieTableViewCell class represents a table view cell that displays movie information.
+/// This class uses the MovieViewModel class to represent the movie information and the ImageLoader class to load the movie poster image from a URL.
 final class MovieTableViewCell: UITableViewCell {
     
+    /// The ImageLoader object used to load the movie poster image from a URL.
     private let imageLoader: ImageLoader = ImageLoader()
     
     /// The identifier used by this cell.
@@ -21,21 +24,17 @@ final class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblDescription: UILabel!
     
+    /// Initializes the cell
     override func awakeFromNib() {
         super.awakeFromNib()
         
         accessoryType = .disclosureIndicator
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 }
 
 extension MovieTableViewCell {
     
     ///  Sets up the cell with the specified movie view model.
-    ///
     ///  - Parameter movieVM: The view model containing the movie information to display.
     func setup(_ movieVM:MovieViewModel) {
         lblDescription.text = movieVM.title

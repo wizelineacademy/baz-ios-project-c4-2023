@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - A protocol for making objects searchable with a query string.
 protocol SearchableProtocol {
 
@@ -20,6 +19,12 @@ protocol SearchableProtocol {
 // MARK: - SearchViewModel
 class SearchViewModel {
     private var movies: [Movie] = []
+}
+
+extension SearchViewModel {
+    var title: String {
+        "Search"
+    }
 }
 
 extension SearchViewModel {
@@ -48,7 +53,7 @@ extension SearchViewModel {
     
     /// Sets the search results to the given list of movies.
     /// - Parameter movies: A list of movies to set as the search results.
-    private func setMovies(_ movies: [Movie]) {
+    func setMovies(_ movies: [Movie]) {
         self.movies = movies
     }
 }

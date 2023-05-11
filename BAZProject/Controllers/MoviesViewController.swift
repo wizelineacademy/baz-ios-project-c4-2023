@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A view controller subclass for displaying a list of movies.
 final class MoviesViewController: MasterMovieTableViewController {
     
     // MARK: - Outlets
@@ -18,6 +19,9 @@ final class MoviesViewController: MasterMovieTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure the navigation bar
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(named: "background") ?? .white, tintColor: .white, title: "Movies", preferredLargeTitle: true)
+        
         setupViewModel(MovieListViewModel(.trending))
         setupView()
         applyFilter()
@@ -28,15 +32,12 @@ final class MoviesViewController: MasterMovieTableViewController {
 
 extension MoviesViewController {
     
-    /**
-     Sets up the view by creating a menu of filter options and assigning it to a button.
-
-     - Returns: Void.
-    */
+    /// Sets up the view by creating a menu of filter options and assigning it to a button.
+    /// - Returns: Void.
     private func setupView() -> Void {
 
-        /// Creates an array of `UIAction` items representing different filter options.
-        /// The `handler` closure of each item applies a filter to the view controller.
+        // Creates an array of `UIAction` items representing different filter options.
+        // The `handler` closure of each item applies a filter to the view controller.
         var menuItems: [UIAction] {
             return [
                 UIAction(title: "Treanding",   handler: { [weak self] _ in self?.applyFilter(.trending)   }),
@@ -51,11 +52,9 @@ extension MoviesViewController {
         btnFilter.menu = UIMenu(title: "Filter", image: nil, identifier: nil, options: [], children: menuItems)
     }
     
-    /**
-     Applies the specified filter to the movie view model and updates the table view with the filtered data.
-
-     - parameter filterType: An optional `Enum_MovieFilters` value representing the type of filter to apply. If this parameter is `nil`, all filters will be removed.
-     */
+    /// Applies the specified filter to the movie view model and updates the table view with the filtered data.
+    /// - Parameters:
+    ///     - filterType:  An optional `Enum_MovieFilters` value representing the type of filter to apply. If this parameter is `nil`, all filters will be removed.
     private func applyFilter(_ filterType: MovieFilter? = nil) {
         viewModel?.applyMovieFilter(filterType) { [weak self] in
             self?.navigationItem.title = self?.viewModel?.getTitle()
@@ -66,12 +65,9 @@ extension MoviesViewController {
 
 extension MoviesViewController: MasterMovieTableViewProtocols {
     
-    /**
-     Sets up the view model for the movies view controller.
-
-     - Parameters:
-         - viewModel: The view model to be set up for the movies view controller.
-     */
+    /// Sets up the view model for the movies view controller.
+    /// - Parameters:
+    ///     - viewModel: The view model to be set up for the movies view controller.
     func setupViewModel(_ viewModel: MovieListViewModel) {
         self.viewModel = viewModel
     }

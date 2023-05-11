@@ -1,0 +1,369 @@
+{
+    "page": 2,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/1wdULm68hAqRwaQH9GuVcGO430e.jpg",
+            "genre_ids": [
+                99
+            ],
+            "id": 850111,
+            "original_language": "en",
+            "original_title": "Delusions End: Breaking Free of the Matrix",
+            "overview": "In a world of lies and deception and false hopes, the time is now to remove the blinders of deception and take back our lives.",
+            "popularity": 1.574,
+            "poster_path": "/5sfH0dXcRrzMmuQ7tBdQl0n9PXv.jpg",
+            "release_date": "2021-07-13",
+            "title": "Delusions End: Breaking Free of the Matrix",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 174615,
+            "original_language": "en",
+            "original_title": "Return to Source: The Philosophy of The Matrix",
+            "overview": "An hour long discussion on the philosophical concepts that inspired, and are presented in the trilogy. This is one of the two feature-length documentaries on disc number 8 of the 10-Disc Ultimate Set.",
+            "popularity": 1.324,
+            "poster_path": "/8y6mcZbXxL0IIV4GJJ4whLwApow.jpg",
+            "release_date": "2004-12-07",
+            "title": "Return to Source: The Philosophy of The Matrix",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 14
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 684740,
+            "original_language": "en",
+            "original_title": "The Matrix Revolutions: Neo Realism - Evolution of Bullet Time",
+            "overview": "A featurette about the special effects of The Matrix Trilogy",
+            "popularity": 1.389,
+            "poster_path": "/2US7uuM36El9pnk8WLdGh1XN39r.jpg",
+            "release_date": "2004-04-06",
+            "title": "The Matrix Revolutions: Neo Realism - Evolution of Bullet Time",
+            "video": false,
+            "vote_average": 7.2,
+            "vote_count": 8
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/b3toMttpZ0cFeYMgLeL042uJJpi.jpg",
+            "genre_ids": [
+                99,
+                28,
+                878
+            ],
+            "id": 684735,
+            "original_language": "en",
+            "original_title": "Making 'Enter the Matrix'",
+            "overview": "A look at Enter the Matrix: The game's story picks up just before The Matrix Reloaded and runs parallel to that of the film. Bend the rules of the Matrix with martial arts, pilot the fastest hovercraft in the fleet, or just fight with lots of guns.",
+            "popularity": 1.4,
+            "poster_path": "/zQbJkJkzpB8EthEJ3r2Y6A2kkP6.jpg",
+            "release_date": "2003-10-14",
+            "title": "Making 'Enter the Matrix'",
+            "video": false,
+            "vote_average": 5.8,
+            "vote_count": 6
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 119742,
+            "original_language": "de",
+            "original_title": "The Living Matrix",
+            "overview": "Becker's documentary presents the arguments of the new-age practice of \"bio-energetic medicine.\"  Presented as a medical documentary, The Living Matrix, promotes healing through energy reading and manipulation.  Director Greg Becker presents his arguments through anecdotal patient stories, and interviews with parapsychology professionals.",
+            "popularity": 1.242,
+            "poster_path": "/ydEBvI3tAp719EbHvhBDUcU3k3V.jpg",
+            "release_date": "2009-10-22",
+            "title": "The Living Matrix",
+            "video": false,
+            "vote_average": 6.0,
+            "vote_count": 5
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 344225,
+            "original_language": "en",
+            "original_title": "Sex and the Matrix",
+            "overview": "A spoof created for the 2000 MTV Movie Awards, combining The Matrix and \"Sex in the City\".",
+            "popularity": 1.541,
+            "poster_path": null,
+            "release_date": "2000-06-03",
+            "title": "Sex and the Matrix",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 4
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 684431,
+            "original_language": "en",
+            "original_title": "Making 'The Matrix'",
+            "overview": "A promotional making-of documentary for the film Matrix, The (1999) that devotes its time to explaining the digital and practical effects contained in the film. This is very interesting, seeing as how they're giving away the cinematic secrets that they created solely for the this movie, that have now been spoofed and referenced in countless other films.",
+            "popularity": 0.799,
+            "poster_path": "/m2yIfRJYwpCgHON1Ig1pNKMWTxp.jpg",
+            "release_date": "1999-09-21",
+            "title": "Making 'The Matrix'",
+            "video": false,
+            "vote_average": 7.8,
+            "vote_count": 12
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 274866,
+            "original_language": "en",
+            "original_title": "The Roots of the Matrix",
+            "overview": "Disc 8 of 10 of 'The Matrix: Ultimate Edition': Probe the philosophical and technological inspirations of The Matrix Trilogy through two insightful documentaries:  - Return to Source: Philosophy &amp; The Matrix documentary – Scholars, philosophers and theorists deconstruct the intellectual underpinnings of the trilogy  - The Hard Problem: The Science Behind the Fiction documentary – Is the notion of a real Matrix plausible? An investigation of the technologies that inspire the metaphor of the Matrix.",
+            "popularity": 2.057,
+            "poster_path": "/qmOtnpPihV3Wj6ukpiNIgzo4Ax7.jpg",
+            "release_date": "2004-12-07",
+            "title": "The Roots of the Matrix",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99,
+                28,
+                878
+            ],
+            "id": 684721,
+            "original_language": "en",
+            "original_title": "The Matrix Revolutions: Super Big Mini Models",
+            "overview": "This making-of piece includes remarks from production designer Owen Paterson, concept artist George Hull, visual effects supervisor John Gaeta, US unit production manager L. Dean Jones Jr., US model unit special effects coordinator Geoffrey Heron, Zion unit sequence lead Rodney Iwashina, high speed first assistant camera Paul Sanchez, US model unit art director Nanci Noblett, conceptual designer Geofrey Darrow, model shop supervisor Michael Lynch, US model unit producer David Dranitzke, prop maker foremen Dave Fogler and Fon Davis, and visual effects supervisor John \"DJ\" Des Jardin.",
+            "popularity": 0.6,
+            "poster_path": "/2US7uuM36El9pnk8WLdGh1XN39r.jpg",
+            "release_date": "2004-04-06",
+            "title": "The Matrix Revolutions: Super Big Mini Models",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 217056,
+            "original_language": "en",
+            "original_title": "Matrix of Evil",
+            "overview": "is a dynamic 2 hour video featuring some of the most informed minds in the world today who expose the latest revelations of the New World Order's agenda in shocking detail.",
+            "popularity": 0.747,
+            "poster_path": "/A2kExZKGqluSZMO4BiilAfs2axG.jpg",
+            "release_date": "2003-01-01",
+            "title": "Matrix of Evil",
+            "video": true,
+            "vote_average": 6.8,
+            "vote_count": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 408912,
+            "original_language": "en",
+            "original_title": "The Zionist Matrix of Power",
+            "overview": "The Zionist Matrix of Power is an amazing video that exposes the real seats of power in the world. It demonstrates the three most important, Media, Finance, and Politics. This video shows the extremists that now dominate this matrix that leads the West the destruction and the World to war and degeneracy.",
+            "popularity": 0.6,
+            "poster_path": null,
+            "release_date": "2010-12-18",
+            "title": "The Zionist Matrix of Power",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                878,
+                14,
+                27
+            ],
+            "id": 259464,
+            "original_language": "en",
+            "original_title": "V-World Matrix",
+            "overview": "Two friends take a cyber vacation to experience a world where they can act out their virtual fantasies! They soon realize they've entered a virtual free-for-all. Forbidden fantasies and desires suddenly appear in the form of the even deadlier \"dark woman\". All the players now end up in a cyber battle for their lives, and sanity, against a beautiful virtual hunter who has one killer fixation - winning the deadly game they started!",
+            "popularity": 0.6,
+            "poster_path": null,
+            "release_date": "1999-01-01",
+            "title": "V-World Matrix",
+            "video": false,
+            "vote_average": 1.0,
+            "vote_count": 1
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                16
+            ],
+            "id": 393587,
+            "original_language": "en",
+            "original_title": "Matrix III",
+            "overview": "An abstract computer-generated animation set to music by Terry Riley.",
+            "popularity": 0.6,
+            "poster_path": "/5OwWTs0guJwcIXFgZdiDqtXLiFm.jpg",
+            "release_date": "1972-01-01",
+            "title": "Matrix III",
+            "video": false,
+            "vote_average": 7.2,
+            "vote_count": 6
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99,
+                28,
+                878
+            ],
+            "id": 684744,
+            "original_language": "en",
+            "original_title": "The Matrix Revolutions: Double Agent Smith",
+            "overview": "The special effects of the Agent Smith scenes in Matrix Revolutions",
+            "popularity": 1.4,
+            "poster_path": "/2US7uuM36El9pnk8WLdGh1XN39r.jpg",
+            "release_date": "2004-04-06",
+            "title": "The Matrix Revolutions: Double Agent Smith",
+            "video": false,
+            "vote_average": 4.5,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 371610,
+            "original_language": "en",
+            "original_title": "David Icke - Secrets of the Matrix",
+            "overview": "Since 1990 David Icke has been on an amazing journey of self and collective discovery to establish the real power behind apparently \"random\" world events like 9/11 and the \"war on terrorism\".\r Here he reveals that a network of interbreeding bloodlines manipulating through their web of interconnecting secret societies have been pursuing an agenda for thousands of years to impose a globally centralized fascist state with total control and surveillance of the population.  The attacks of September 11th - not the work of \"bin Laden\" - and the subsequent \"war on terrorism\" are a means through which this is designed to be achieved.  Over more than six hours and with hundreds of illustrations, David Icke also reveals the illusion that is life in this \"physical\" reality. How is the \"world\" a provable illusion - just a lucid dream? How do we create it and how can we change the dream to one that we would like to experience?",
+            "popularity": 0.6,
+            "poster_path": "/tKSN5gR14arHAVWDaqHa2LPQdoJ.jpg",
+            "release_date": "2004-10-05",
+            "title": "David Icke - Secrets of the Matrix",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 560403,
+            "original_language": "en",
+            "original_title": "Skin Matrix",
+            "overview": "Emshwiller writes that the visually complex and densely textured Skin Matrix is a \"video tapestry... a layering of different manifestations of energy: electronic (light, video, computer), inorganic (dunes, rocks, mud), organic (wood, plants), human (skin, hair), individual (faces, eyes), imagination (sculpture, robot).\" His intricate electronic transformations of tactile surfaces, landscapes and human faces signify a metaphysical process that simultaneously masks and reveals; he achieves an uncanny spatial illusion of depth through layering and movement. Creating sophisticated image patterns and structures with the simple Bally Arcade computer (used for playing video games), Emshwiller weaves together the lush textures and kinetic energy of the organic and the technological.",
+            "popularity": 0.6,
+            "poster_path": "/olKcWYqELJUmhDYj6E4KBM5WgMN.jpg",
+            "release_date": "1984-05-05",
+            "title": "Skin Matrix",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/htYaLEQ41N2Ls7mhWvgP8JD21E3.jpg",
+            "genre_ids": [
+                99
+            ],
+            "id": 505806,
+            "original_language": "en",
+            "original_title": "A Glitch in the Matrix",
+            "overview": "In 'A Glitch in the Matrix', journalist David Fuller analyzes and assesses Dr. Jordan B Peterson's recent viral interview with Cathy Newman, unpacking the deeper political, psychological and archetypal levels of the clash.",
+            "popularity": 0.6,
+            "poster_path": "/qtbYBuXIYKRaajfrjTR3zp4TuBf.jpg",
+            "release_date": "2018-02-17",
+            "title": "A Glitch in the Matrix",
+            "video": false,
+            "vote_average": 6.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/eCJ7a1ndfdkfkziDAA2OvOsNbsz.jpg",
+            "genre_ids": [],
+            "id": 141225,
+            "original_language": "hu",
+            "original_title": "Buhera mátrix",
+            "overview": "",
+            "popularity": 0.967,
+            "poster_path": "/mSA91zntAssOuzGiakE3foA1MM0.jpg",
+            "release_date": "2007-03-29",
+            "title": "Buhera mátrix",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 684709,
+            "original_language": "en",
+            "original_title": "Mind Over Matter: The Physicality of the Matrix Future",
+            "overview": "A look at the stunts of The Matrix Revolutions",
+            "popularity": 0.6,
+            "poster_path": null,
+            "release_date": "2004-04-06",
+            "title": "Mind Over Matter: The Physicality of the Matrix Future",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 8
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                99
+            ],
+            "id": 602546,
+            "original_language": "en",
+            "original_title": "Matrix of Power",
+            "overview": "Who really runs the world? Who controls the money, the politics, and almost every facet of life without you knowing a thing about it? Is such a thing possible? Jordan Maxwell grew up in a family that had high-ranking insiders in international politics and religion, so had access to information that few people could imagine. He continued with a lifetime of investigation and is now considered the worlds foremost authority on ancient religions and modern conspiracies.",
+            "popularity": 0.6,
+            "poster_path": "/yAZ8mHWIblFVW1G99ZZ2ea9bbpe.jpg",
+            "release_date": "2007-02-01",
+            "title": "Matrix of Power",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        }
+    ],
+    "total_pages": 4,
+    "total_results": 80
+}

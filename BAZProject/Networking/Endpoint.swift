@@ -7,9 +7,7 @@
 
 import Foundation
 
-/**
-An enumeration representing the endpoints of the The Movie Database API.
-*/
+/// An enumeration representing the endpoints of the The Movie Database API.
 enum Endpoint {
     
     /// The base URL for the API.
@@ -36,15 +34,24 @@ enum Endpoint {
     /// Represents the endpoint for getting upcoming movies.
     case upcoming
 
-    /// Represents the endpoint for searching for movies with the given query.
+    /// The endpoint for searching movies with a given query string.
+    ///
+    /// - Parameter query: The search query string.
     case search(query: String)
+
+    /// The endpoint for retrieving the credits for a given movie.
+    ///
+    /// - Parameter id_movie: The ID of the movie.
+    case credits(id_movie: Int)
+
+    /// The endpoint for retrieving the reviews for a given movie.
+    ///
+    /// - Parameter id_movie: The ID of the movie.
+    case reviews(id_movie: Int)
 }
 
-/**
-This extension adds a computed property "url" to the Endpoint enum in Swift. This property returns an optional URL value.
-
-Note: The URL value is constructed using a base URL, an API key and a path, based on the enum case.
-*/
+/// This extension adds a computed property "url" to the Endpoint enum in Swift. This property returns an optional URL value.
+/// Note: The URL value is constructed using a base URL, an API key and a path, based on the enum case.
 extension Endpoint {
     
     /// Computed property that returns a URL constructed from the Endpoint enum case
@@ -70,6 +77,10 @@ extension Endpoint {
             guard let query = query.urlEncoded() else { break }
             
             return URL(string: "\(Endpoint.base)\(path)\(Endpoint.apiKey)\(Endpoint.language)&query=\(query)")
+        case .credits(id_movie: let id):
+            path = "/movie/\(id)/credits"
+        case .reviews(id_movie: let id):
+            path = "/movie/\(id)/reviews"
         }
         
         // Returns the URL constructed from the base URL, API key and path

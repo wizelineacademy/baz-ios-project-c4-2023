@@ -13,6 +13,7 @@ class MovieFakes {
     var top_rated:   Data { getDataFrom("top_rated") }
     var upcoming:    Data { getDataFrom("upcoming") }
     var trending:    Data { getDataFrom("trending_movie_day") }
+    var search:      Data { getDataFrom("search") }
     
     private func getDataFrom(_ file: String) -> Data {
         guard let path = Bundle(for: type(of: self)).path(forResource: file, ofType: "json") else {
