@@ -20,9 +20,7 @@ public struct EmptySearch: CellPersonalizedTableViewProtocol {
         return nil
     }
     
-    public var strDate: String? {
-        return nil
-    }
+    public var strDate: String?
     
     public init() {}
 }

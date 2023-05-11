@@ -5,10 +5,12 @@
 //  Created by Daniel Alberto Vazquez Rodriguez on 16/04/23.
 //
 
-import Foundation
 import UIKit
 
-class CleanFactory {
+final class CleanFactory {
+    
+    private init() {}
+    
     static func createSearchModule() -> UIViewController {
         let view = SearchViewController(nibName: "SearchViewController", bundle: nil)
         let interactor = SearchInteractor()
