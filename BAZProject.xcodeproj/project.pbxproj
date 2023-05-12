@@ -49,6 +49,7 @@
 		33ACA7B029ED004500FD0421 /* CleanFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ACA7AF29ED004500FD0421 /* CleanFactory.swift */; };
 		33C9F7E229D21D28008FCEEA /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9F7E129D21D28008FCEEA /* ServiceApi.swift */; };
 		33C9F7E529D21DA3008FCEEA /* ServiceApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */; };
+		33CDE11D2A0D63C8001B8482 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CDE11C2A0D63C8001B8482 /* PersistenceProtocol.swift */; };
 		33DCC77A29F998340077BD78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DCC77829F998340077BD78 /* DetailViewController.swift */; };
 		33DCC77B29F998340077BD78 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33DCC77929F998340077BD78 /* DetailViewController.xib */; };
 		33DCC77D29F9987D0077BD78 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DCC77C29F9987D0077BD78 /* DetailInteractor.swift */; };
@@ -123,6 +124,7 @@
 		33C9F7D829D20ED7008FCEEA /* BAZProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BAZProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C9F7E129D21D28008FCEEA /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
 		33C9F7E429D21DA3008FCEEA /* ServiceApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApiTests.swift; sourceTree = "<group>"; };
+		33CDE11C2A0D63C8001B8482 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
 		33DCC77829F998340077BD78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		33DCC77929F998340077BD78 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		33DCC77C29F9987D0077BD78 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
@@ -285,6 +287,14 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		33CDE11A2A0D632C001B8482 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				33CDE11C2A0D63C8001B8482 /* PersistenceProtocol.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		33DCC77529F98D080077BD78 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +380,7 @@
 			children = (
 				334CD8BF29DB4ADB006D99EA /* Resources */,
 				3343AD3429D4A56A00F4CAB9 /* Views */,
+				33CDE11A2A0D632C001B8482 /* Persistence */,
 				33C9F7E329D21D2E008FCEEA /* Networking */,
 				C30893AD28A2F42B004B1860 /* AppDelegate.swift */,
 				C30893AF28A2F42B004B1860 /* SceneDelegate.swift */,
@@ -524,6 +535,7 @@
 				3343AD4229D4A58D00F4CAB9 /* TrendingProtocols.swift in Sources */,
 				33ACA7AE29ECFF8800FD0421 /* SearchPresenter.swift in Sources */,
 				33DCC77F29F9988A0077BD78 /* DetailPresenter.swift in Sources */,
+				33CDE11D2A0D63C8001B8482 /* PersistenceProtocol.swift in Sources */,
 				3319B75329E7B9D600AC1B25 /* UIImageView+Download.swift in Sources */,
 				3343AD4929D4A63500F4CAB9 /* TabBarManagerViewController.swift in Sources */,
 				334CD8C729DB80EE006D99EA /* URLConfiguration.swift in Sources */,
