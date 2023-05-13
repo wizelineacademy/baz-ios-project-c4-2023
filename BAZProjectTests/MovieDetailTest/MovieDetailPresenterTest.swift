@@ -64,7 +64,25 @@ final class MovieDetailPresenterTest: XCTestCase {
         XCTAssertEqual(sut.movie.id, fakeMovie.id)
     }
     
+    func test_setCast_calls() {
+        sut.setCast([Cast(adult: false, gender: 0, id: 0, knownForDepartment: "ejemplo", name: "ejemplo", originalName: "ejemplo", popularity: 0.0, creditID: "ejemplo")])
+        
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
     
+    func test_setReviews_calls() {
+        let autor = AuthorDetails(name: "ejemplo", username: "ejemplo")
+        sut.setReviews([Review(author: "ejemplo", authorDetails: autor, content: "ejemplo", createdAt: "ejemplo", id: "ejemplo", updatedAt: "ejemplo", url: "ejemplo")])
+        
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
+    
+    func test_sendToReviews() {
+        let autor = AuthorDetails(name: "ejemplo", username: "ejemplo")
+        sut.sendToReviews(reviews: [Review(author: "ejemplo", authorDetails: autor, content: "ejemplo", createdAt: "ejemplo", id: "ejemplo", updatedAt: "ejemplo", url: "ejemplo")])
+        
+        XCTAssertEqual(sut.movie.id, fakeMovie.id)
+    }
 
 
 }

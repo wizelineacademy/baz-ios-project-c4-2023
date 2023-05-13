@@ -66,7 +66,7 @@ final class MovieDetailInteractor: MoviewDetailInteractorProtocol {
     ///     - id:  Idetificador de una Movie
     func deleteFavorite(_ id: Int) {
         userDefault.deleteFavorite(id)
-        presenter?.setFavorite(false)
+        presenter?.isFavorite()
     }
     
     ///Metodo que guarda de un userdefault una pelicula
@@ -74,7 +74,7 @@ final class MovieDetailInteractor: MoviewDetailInteractorProtocol {
     ///     - id:  Idetificador de una Movie
     func saveFavorite(_ movie: ListMovieProtocol) {
         userDefault.saveFavorite(movie: movie as! Movie)
-        presenter?.setFavorite(true)
+        presenter?.isFavorite()
     }
     
     func handlerGetSimilarMovieResult(result: Result<MovieResult?, Error>) {

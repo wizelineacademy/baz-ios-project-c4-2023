@@ -89,11 +89,6 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
         view?.setCast(cast)
     }
     
-    ///Funcion que llama al view  para setear una pelicuia en los favoritos
-    func setFavorite(_ isFavorite: Bool) {
-        view?.setFavorite(isFavorite)
-    }
-    
     ///Funcion que llama al view  para setear  las reseñas en el modelo para ir a la panttalla de las reseñas
     func setReviews(_ reviews: [Review]) {
         view?.setReviews(reviews)
@@ -102,12 +97,5 @@ final class MovieDetailPresenter: MoviewDetailPresenterProtocol {
     ///Funcion que llama al router para lanzar la pantalla de las reseñas
     func sendToReviews(reviews: [Review]) {
         router.sendToReviews(reviews: reviews)
-    }
-}
-
-extension MovieDetailPresenter{
-    
-    func getStringID(id :Int) -> String{
-        return String(id)
     }
 }

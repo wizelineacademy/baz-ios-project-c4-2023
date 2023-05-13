@@ -23,7 +23,6 @@ protocol MoviewDetailPresenterProtocol: AnyObject {
     func getReviews()
     func isFavorite()
     func favoriteMovie()
-    func setFavorite(_ isFavorite: Bool)
     func setCast(_ cast: [Cast])
     func setReviews(_ reviews: [Review])
     func setSimilarMovies(movies: [ListMovieProtocol])
