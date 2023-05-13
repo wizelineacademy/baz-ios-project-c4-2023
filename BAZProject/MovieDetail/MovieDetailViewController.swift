@@ -88,7 +88,7 @@ final class MovieDetailViewController: UIViewController, MoviewDetailViewProtoco
         presenter?.getSimilar()
         presenter?.getRecomendation()
         presenter?.getCast()
-        presenter?.findFavoriteMovie()
+        presenter?.isFavorite()
         presenter?.getReviews()
     }
     

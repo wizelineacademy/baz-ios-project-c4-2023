@@ -27,24 +27,24 @@ final class MovieDetailInteractorMock: MoviewDetailInteractorProtocol{
     }
     
     
-    func getSimilar(_ id: String) {
+    func getSimilar(_ urlRequest: URLRequest) {
         calls.append(.getSimilar)
     }
     
-    func getRecomendation(_ id: String) {
+    func getRecomendation(_ urlRequest: URLRequest) {
         calls.append(.getRecomendation)
     }
     
-    func getCast(_ id: String) {
+    func getCast(_ urlRequest: URLRequest) {
         calls.append(.getCast)
+    }
+    
+    func getReviews(_ urlRequest: URLRequest) {
+        calls.append(.getReviews)
     }
     
     func deleteFavorite(_ id: Int) {
         calls.append(.deleteFavorite)
-    }
-    
-    func getReviews(_ id: String) {
-        calls.append(.getReviews)
     }
     
     func saveFavorite(_ movie: BAZProject.ListMovieProtocol) {

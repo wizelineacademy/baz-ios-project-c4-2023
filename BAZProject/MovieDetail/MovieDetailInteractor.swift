@@ -18,85 +18,54 @@ final class MovieDetailInteractor: MoviewDetailInteractorProtocol {
     /// Intancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
     let movieAPI: GenericAPIProtocol
     
+    /// Intancia de UserDefaultManagerProtocol
+    let userDefault: UserDefaultManagerProtocol
+    
     /**
      Inicializador del Iteractor del modulo VIPER de Trending Movies
      - Parameters:
         - MovieApi: Initancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
+        - userDefault: Intancia de UserDefaultManagerProtocol
      - Returns: Devuelve el Iteractor del modulo VIPER Trending Movies
      */
-    init(movieAPI: GenericAPIProtocol) {
+    init(movieAPI: GenericAPIProtocol, userDefault: UserDefaultManagerProtocol) {
         self.movieAPI = movieAPI
+        self.userDefault = userDefault
     }
     
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
-    func getSimilar(_ id: String) {
-        guard let urlRequest = MovieDetailInfo.similar(id).urlRequest else { return }
-        movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
-            switch result {
-            case .failure(let fail):
-                print(fail)
-            case .success(let response):
-                self?.presenter?.setSimilarMovies(movies: response?.results ?? [])
-            }
-        }
+    func getSimilar(_ urlRequest: URLRequest) {
+        movieAPI.fetch(movieURLRequest: urlRequest, completionHandler: handlerGetSimilarMovieResult(result:))
     }
     
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
-    func getRecomendation(_ id: String) {
-        guard let urlRequest = MovieDetailInfo.recomended(id).urlRequest else { return }
-        movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<MovieResult?, Error>) in
-            switch result {
-            case .failure(let fail):
-                print(fail)
-            case .success(let response):
-                self?.presenter?.setRecomendedMovies(movies: response?.results ?? [])
-            }
-        }
+    func getRecomendation(_ urlRequest: URLRequest) {
+        movieAPI.fetch(movieURLRequest: urlRequest, completionHandler: handlerGetRecomendMovieResult(result:))
     }
     
     ///Metodo que cosume la api de MovieDB y devueve al presenter el Reparto
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
-    func getCast(_ id: String) {
-        guard let urlRequest = MovieDetailInfo.credits(id).urlRequest else { return }
-        movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<CastResult?, Error>) in
-            switch result {
-            case .failure(let fail):
-                print(fail)
-            case .success(let response):
-                self?.presenter?.setCast(response?.cast ?? [])
-            }
-        }
+    func getCast(_ urlRequest: URLRequest) {
+        movieAPI.fetch(movieURLRequest: urlRequest, completionHandler: handlerGetCastResult(result:))
     }
     
     ///Metodo que cosume la api de MovieDB y devueve al presenter  las reseñas
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
-    func getReviews(_ id: String) {
-        guard let urlRequest = MovieDetailInfo.reviews(id).urlRequest else { return }
-        movieAPI.fetch(movieURLRequest: urlRequest) {[weak self] (result: Result<ReviewResult?, Error>) in
-            switch result {
-            case .failure(let fail):
-                print(fail)
-            case .success(let response):
-                self?.presenter?.setReviews(response?.results ?? [])
-            }
-        }
+    func getReviews(_ urlRequest: URLRequest) {
+        movieAPI.fetch(movieURLRequest: urlRequest, completionHandler: handlerGetReviewResult(result:))
     }
     
     ///Metodo que elimina de un userdefault una pelicula
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
     func deleteFavorite(_ id: Int) {
-        guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
-              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
-        var movies = dctMovies
-        movies.removeValue(forKey: id)
-        UserDefaults.standard.setValue(movies, forKey: "favorite_movies")
+        userDefault.deleteFavorite(id)
         presenter?.setFavorite(false)
     }
     
@@ -104,28 +73,44 @@ final class MovieDetailInteractor: MoviewDetailInteractorProtocol {
     /// - Parameters:
     ///     - id:  Idetificador de una Movie
     func saveFavorite(_ movie: ListMovieProtocol) {
-        guard let movie = movie as? Movie,
-              let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
-              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
-        var movies = dctMovies
-        movies[movie.id] = movie
-        if let data = try? JSONEncoder().encode(movies){
-            UserDefaults.standard.setValue(data, forKey: "favorite_movies")
-            presenter?.setFavorite(true)
+        userDefault.saveFavorite(movie: movie as! Movie)
+        presenter?.setFavorite(true)
+    }
+    
+    func handlerGetSimilarMovieResult(result: Result<MovieResult?, Error>) {
+        switch result {
+        case .failure(let fail):
+            print(fail)
+        case .success(let response):
+            presenter?.setSimilarMovies(movies: response?.results ?? [])
         }
     }
     
-    ///Metodo que busca de un userdefault una pelicula
-    /// - Parameters:
-    ///     - id:  Idetificador de una Movie
-    func findFavoriteMovie(_ id: Int) -> Bool{
-        guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
-              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else {
-            presenter?.setFavorite(false)
-            return false
+    func handlerGetRecomendMovieResult(result: Result<MovieResult?, Error>) {
+        switch result {
+        case .failure(let fail):
+            print(fail)
+        case .success(let response):
+            presenter?.setRecomendedMovies(movies: response?.results ?? [])
         }
-        presenter?.setFavorite(dctMovies[id] != nil)
-        return dctMovies[id] != nil
+    }
+    
+    func handlerGetCastResult(result: Result<CastResult?, Error>) {
+        switch result {
+        case .failure(let fail):
+            print(fail)
+        case .success(let response):
+            self.presenter?.setCast(response?.cast ?? [])
+        }
+    }
+    
+    func handlerGetReviewResult(result: Result<ReviewResult?, Error>) {
+        switch result {
+        case .failure(let fail):
+            print(fail)
+        case .success(let response):
+            self.presenter?.setReviews(response?.results ?? [])
+        }
     }
     
 }

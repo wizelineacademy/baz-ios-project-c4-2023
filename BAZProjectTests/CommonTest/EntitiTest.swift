@@ -18,7 +18,7 @@ final class EntitiTest: XCTestCase {
     override func setUp() {
         super.setUp()
         sutCast = Cast(adult: true, gender: 0, id: 0, knownForDepartment: "fakeText", name: "fakeText", originalName: "fakeText", popularity: 0.0, profilePath: "/fakeImagePath.jpg",creditID: "fakeText")
-        sutMoview = Movie(id: 1, title: "ejemplo", posterPath: "/fakeImagePath.jpg", adult: false, backdropPath: "/fakeImagePath.jpg", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10, isFavorite: false)
+        sutMoview = Movie(id: 1, title: "ejemplo", posterPath: "/fakeImagePath.jpg", adult: false, backdropPath: "/fakeImagePath.jpg", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10)
     }
     
     override func tearDown() {

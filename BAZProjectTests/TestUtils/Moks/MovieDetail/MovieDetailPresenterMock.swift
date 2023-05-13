@@ -79,7 +79,7 @@ final class MovieDetailPresenterMock: MoviewDetailPresenterProtocol{
         calls.append(.setFavorite)
     }
     
-    func findFavoriteMovie() {
+    func isFavorite() {
         calls.append(.findFavoriteMovie)
     }
     

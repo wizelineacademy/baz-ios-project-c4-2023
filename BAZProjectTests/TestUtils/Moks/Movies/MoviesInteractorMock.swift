@@ -13,6 +13,7 @@ enum MoviesInteractorMockCalls{
     case getMovies
     case getRemotImage
     case findMovies
+    case getLocalMovies
 }
 
 final class MoviesInteractorMock: MoviesInteractorProtocol{
@@ -33,6 +34,10 @@ final class MoviesInteractorMock: MoviesInteractorProtocol{
     
     func getMovies(urlRequest: URLRequest) {
         calls.append(.getMovies)
+    }
+    
+    func getLocalMovies() {
+        calls.append(.getLocalMovies)
     }
     
 }

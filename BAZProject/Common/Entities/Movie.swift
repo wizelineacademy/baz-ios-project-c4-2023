@@ -9,6 +9,7 @@ import Foundation
 /// Protocolo que desacopla la estructura de Movies
 protocol ListMovieProtocol {
     var id: Int { get set }
+    var idString: String{ get }
     var title: String { get set }
     var posterPath: String { get set }
     var urlImage: URL? { get }
@@ -23,7 +24,6 @@ protocol ListMovieProtocol {
     var video: Bool { get set }
     var voteAverage: Double { get set }
     var voteCount: Int { get set }
-    var isFavorite: Bool { get set }
     var urlBackdropImage: URL? { get }
 }
 
@@ -73,7 +73,9 @@ struct Movie: Codable, ListMovieProtocol {
     var urlBackdropImage: URL?{
         return  MovieDetailInfo.image(backdropPath ?? "").imageUrl
     }
-    var isFavorite: Bool = false
+    var idString: String{
+        return String(id)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, title

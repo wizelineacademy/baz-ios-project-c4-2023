@@ -44,12 +44,13 @@ final class ReviewsTableViewControllerTest: XCTestCase {
     func test_tableView(){
         sut.reviews = reviews
         let rows = sut.tableView.numberOfRows(inSection: 0)
-        let cell = sut.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-
+        guard let cell = sut.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ReviewTableViewCell else { return }
+        
+        cell.prepareForReuse()
         
         XCTAssertEqual(rows, 2)
         XCTAssertNotNil(cell)
-        
+        XCTAssertEqual(cell.lblReview.text, "")        
     }
 
 

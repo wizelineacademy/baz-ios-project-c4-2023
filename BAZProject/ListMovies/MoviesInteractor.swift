@@ -15,14 +15,18 @@ final class MoviesInteractor: MoviesInteractorProtocol {
     weak var presenter: MoviesPresenterProtocol?
     /// Intancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
     var movieAPI: GenericAPIProtocol
+    
+    var userDefaultManager: UserDefaultManagerProtocol
+    
     /**
      Inicializador del Iteractor del modulo VIPER de Trending Movies
      - Parameters:
         - MovieApi: Initancia del protocolo GenericAPIProtocol para las llamadas al Api de MovieDB
      - Returns: Devuelve el Iteractor del modulo VIPER Trending Movies
      */
-    init(movieAPI: GenericAPIProtocol) {
+    init(movieAPI: GenericAPIProtocol, userDefaultManager: UserDefaultManagerProtocol = UserDefaultManager()) {
         self.movieAPI = movieAPI
+        self.userDefaultManager = userDefaultManager
     }
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies
     func getMovies(urlRequest: URLRequest) {
@@ -37,11 +41,7 @@ final class MoviesInteractor: MoviesInteractorProtocol {
     }
     
     func getLocalMovies() {
-        guard let dataMovie = UserDefaults.standard.data(forKey: "favorite_movies"),
-              let dctMovies: [Int : Movie] = try? JSONDecoder().decode([Int : Movie].self, from: dataMovie) else { return }
-        let movies:[Movie] = Array( dctMovies.values )
-        self.presenter?.setMovies(result: movies)
-        
+        self.presenter?.setMovies(result: userDefaultManager.getFavoriteList())
     }
     
     ///Metodo que cosume la api de MovieDB y devueve al presenter las Movies de acuerdo a criterio de busqueda

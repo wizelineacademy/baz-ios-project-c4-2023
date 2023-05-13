@@ -21,7 +21,7 @@ protocol MoviewDetailPresenterProtocol: AnyObject {
     func getRecomendation()
     func getCast()
     func getReviews()
-    func findFavoriteMovie()
+    func isFavorite()
     func favoriteMovie()
     func setFavorite(_ isFavorite: Bool)
     func setCast(_ cast: [Cast])
@@ -35,13 +35,12 @@ protocol MoviewDetailPresenterProtocol: AnyObject {
 //MARK: Interactor -
 protocol MoviewDetailInteractorProtocol: AnyObject {
     var presenter: MoviewDetailPresenterProtocol?  { get set }
-    func getSimilar(_ id: String)
-    func getRecomendation(_ id: String)
-    func getCast(_ id: String)
+    func getSimilar(_ urlRequest: URLRequest)
+    func getRecomendation(_ urlRequest: URLRequest)
+    func getCast(_ urlRequest: URLRequest)
+    func getReviews(_ urlRequest: URLRequest)
     func deleteFavorite(_ id: Int)
-    func getReviews(_ id: String)
     func saveFavorite(_ movie: ListMovieProtocol)
-    func findFavoriteMovie(_ id: Int) -> Bool
 }
 
 //MARK: View -
