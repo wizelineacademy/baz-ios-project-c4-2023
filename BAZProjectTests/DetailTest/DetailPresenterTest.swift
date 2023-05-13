@@ -38,7 +38,7 @@ final class DetailPresenterTest: XCTestCase {
         //Given
         let savedMovie = Movie(id: 1, title: "Primer título", poster_path: "/Kohane.png", overview: "Un mensajes", release_date: "")
         //When
-        sut?.currentInfo(movie: savedMovie)
+        sut?.currentInfo(movie: savedMovie, isFavorite: false)
         //Then
         XCTAssertEqual(savedMovie.strTitle, savedInfo?.strTitle)
     }
@@ -121,6 +121,10 @@ final class DetailPresenterTest: XCTestCase {
 }
 
 extension DetailPresenterTest: DetailSearchDisplayLogic {
+    func favoriteStatus(with bIsFavorite: Bool) {
+        
+    }
+    
     func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?) {
         self.savedInfo = info
     }

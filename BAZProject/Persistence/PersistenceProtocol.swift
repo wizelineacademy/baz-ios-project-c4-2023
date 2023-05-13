@@ -7,8 +7,12 @@
 
 import Foundation
 
+public protocol StorableObject: Codable {
+    var id: Int { get }
+}
+
 public protocol PersistenceProtocol {
-    func save<T: Codable>(info objInfo: T)
-    func getAll<T: Codable>() -> [T]
-    func delete<T: Codable>(info objInfo: T)
+    func save<T: StorableObject>(info objInfo: T)
+    func getAll<T: StorableObject>() -> [T]?
+    func delete<T: StorableObject>(info objInfo: T)
 }

@@ -6,8 +6,8 @@
 
 import Foundation
 
-public struct Movie: CellPersonalizedTableViewProtocol {
-    let id: Int
+public struct Movie: CellPersonalizedTableViewProtocol, StorableObject {
+    public let id: Int
     public let title: String
     let poster_path: String
     let overview: String

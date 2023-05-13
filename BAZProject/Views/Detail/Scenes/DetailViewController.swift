@@ -11,6 +11,7 @@ public protocol DetailSearchDisplayLogic: AnyObject {
     var interactor: DetailBusinessLogic? { get }
     
     func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?)
+    func favoriteStatus(with bIsFavorite: Bool)
     func reloadCast(withCast arrCast: [CellPersonalizedTableViewProtocol])
     func reloadReviews(with arrReviews: [CellPersonalizedTableViewProtocol])
     func reloadSimilarMovies(with arrSimilar: [CellPersonalizedTableViewProtocol])
@@ -25,6 +26,7 @@ public class DetailViewController: UIViewController {
         }
     }
     public var interactor: DetailBusinessLogic?
+    public var bIsFavorite: Bool = false
     private var currentData: CellPersonalizedTableViewProtocol? {
         didSet {
             navigationItem.title = currentData?.strTitle ?? ""
@@ -50,6 +52,10 @@ public class DetailViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interactor?.getCurrentData()
     }
     
@@ -60,11 +66,28 @@ public class DetailViewController: UIViewController {
         nib = UINib(nibName: CellTypes.reviewCell.rawValue, bundle: nil)
         tblMovieInfo.register(nib, forCellReuseIdentifier: CellTypes.reviewCell.rawValue)
     }
+    
+    private func createNavBarButton() {
+        navigationItem.rightBarButtonItem = nil
+        let strAssetName: String = bIsFavorite ? "heart.slash" : "heart"
+        let btnSave: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: strAssetName), style: .done, target: self, action: #selector(saveButtonWasTouch))
+        navigationItem.rightBarButtonItem = btnSave
+    }
+    
+    //MARK: - Action methdos
+    @objc public func saveButtonWasTouch() {
+        interactor?.buttonWasTouched()
+    }
 }
 
 extension DetailViewController: DetailSearchDisplayLogic {
     public func updateTable(withCurrentInfo info: CellPersonalizedTableViewProtocol?) {
         currentData = info
+    }
+    
+    public func favoriteStatus(with bIsFavorite: Bool) {
+        self.bIsFavorite = bIsFavorite
+        createNavBarButton()
     }
     
     public func serviceDidFailed(with strMessage: String) {

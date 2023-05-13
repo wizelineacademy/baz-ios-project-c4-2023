@@ -117,9 +117,32 @@ final class DetailViewTest: XCTestCase {
         //Then
         XCTAssertEqual(cell?.lblTitle.text, arrCast?[2].strTitle)
     }
+    
+    func testButtonFunctions() {
+        //Given
+        sut?.favoriteStatus(with: true)
+        //When
+        sut?.saveButtonWasTouch()
+        //Then
+        XCTAssertFalse(sut?.bIsFavorite ?? true)
+    }
+    
+    func testDoubleTapIsFalse() {
+        //Given
+        sut?.favoriteStatus(with: true)
+        //When
+        sut?.saveButtonWasTouch()
+        sut?.saveButtonWasTouch()
+        //Then
+        XCTAssertTrue(sut?.bIsFavorite ?? false)
+    }
 }
 
 extension DetailViewTest: DetailBusinessLogic {
+    func buttonWasTouched() {
+        sut?.bIsFavorite = !(sut?.bIsFavorite ?? false)
+    }
+    
     func getCurrentData() {
         info = Movie(id: 1, title: "Prueba de inyección", poster_path: "/Kohane.jpg", overview: "No hay", release_date: "2023-12-14")
         sut?.updateTable(withCurrentInfo: info)

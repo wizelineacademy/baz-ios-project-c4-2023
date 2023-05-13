@@ -11,12 +11,15 @@ public protocol DetailBusinessLogic {
     var presenter: DetailPresentationLogic? { get }
     
     func getCurrentData()
+    func buttonWasTouched()
 }
 
 public class DetailInteractor {
     public var presenter: DetailPresentationLogic?
     public var entity: DetailInfo?
     public var networking: NetworkingProtocol?
+    public var favorite: FavoriteSavingManager?
+    public var bIsFavorite: Bool = false
     
     public init(presenter: DetailPresentationLogic? = nil, entity: DetailInfo? = nil) {
         self.presenter = presenter
@@ -36,10 +39,17 @@ extension DetailInteractor: DetailBusinessLogic {
             presenter?.serviceDidFailed(with: .badParameter)
             return
         }
-        presenter?.currentInfo(movie: entity?.movie)
+        bIsFavorite = favorite?.movieIsFavorite(entity?.movie) ?? false
+        presenter?.currentInfo(movie: entity?.movie, isFavorite: bIsFavorite)
         searchForCast(forMovie: iMovieId)
         searchForReview(forMovie: iMovieId)
         searchForSimilar(forMovie: iMovieId)
+    }
+    
+    public func buttonWasTouched() {
+        favorite?.handle(movie: entity?.movie, isFavorite: bIsFavorite)
+        bIsFavorite = favorite?.movieIsFavorite(entity?.movie) ?? false
+        presenter?.currentInfo(movie: entity?.movie, isFavorite: bIsFavorite)
     }
     
     private func searchForSimilar(forMovie iMovieId: Int) {

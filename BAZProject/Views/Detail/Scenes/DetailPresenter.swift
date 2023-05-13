@@ -10,7 +10,7 @@ import Foundation
 public protocol DetailPresentationLogic {
     var view: DetailSearchDisplayLogic? { get }
     
-    func currentInfo(movie: CellPersonalizedTableViewProtocol?)
+    func currentInfo(movie: CellPersonalizedTableViewProtocol?, isFavorite: Bool)
     func serviceDidFailed(with error: ErrorApi)
     func castobtained(with arrCast: [CellPersonalizedTableViewProtocol]?)
     func similarMoviewsObtained(with result: [CellPersonalizedTableViewProtocol]?)
@@ -24,8 +24,9 @@ public class DetailPresenter {
 }
 
 extension DetailPresenter: DetailPresentationLogic {
-    public func currentInfo(movie: CellPersonalizedTableViewProtocol?) {
+    public func currentInfo(movie: CellPersonalizedTableViewProtocol?, isFavorite: Bool) {
         view?.updateTable(withCurrentInfo: movie)
+        view?.favoriteStatus(with: isFavorite)
     }
     
     public func serviceDidFailed(with error: ErrorApi) {
