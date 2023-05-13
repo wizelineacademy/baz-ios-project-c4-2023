@@ -26,4 +26,9 @@ public class FavoriteSavingManager {
         }
         return !filteredArray.isEmpty
     }
+    
+    func getMovies() -> [Movie] {
+        guard let arrFavorites: [Movie] = persistence?.getAll() else { return [Movie]() }
+        return arrFavorites
+    }
 }

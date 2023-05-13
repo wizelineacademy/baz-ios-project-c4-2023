@@ -14,6 +14,7 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
     weak public var presenter: TrendingInteractorOutputProtocol?
     public var serviceApi: NetworkingProtocol?
     public var entity: TrendingEntity?
+    public var favorite: FavoriteSavingManager?
     
     public init(presenter: TrendingInteractorOutputProtocol? = nil, serviceApi: NetworkingProtocol? = nil, entity: TrendingEntity? = nil) {
         self.presenter = presenter
@@ -25,7 +26,15 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
         return entity?.strNavBarTitle
     }
     
-    public func getMovies(withFilter filter: Paths) {
+    public func getMovies(withFilter filter: Paths?) {
+        if let filter = filter {
+            getMoviesInWeb(withFilter: filter)
+        } else {
+            getFavorites()
+        }
+    }
+    
+    private func getMoviesInWeb(withFilter filter: Paths) {
         serviceApi?.updatePath(with: filter)
         serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>) in
             switch result {
@@ -37,6 +46,12 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
                 }
             }
         })
+    }
+    
+    private func getFavorites() {
+        if let arrMovies = favorite?.getMovies() {
+            handleSuccess(for: arrMovies)
+        }
     }
     
     public func getNumberOfRows() -> Int? {
@@ -54,6 +69,10 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
                 arrMovies.append(movie)
             }
         }
+        handleSuccess(for: arrMovies)
+    }
+    
+    private func handleSuccess(for arrMovies: [Movie]) {
         entity?.updateMovies(with: arrMovies)
         presenter?.serviceRespondedSuccess()
     }

@@ -17,6 +17,7 @@ class TrendingRouter: TrendingRouterProtocol {
         let interactor: TrendingInteractorInputProtocol = TrendingInteractor()
         let router: TrendingRouterProtocol = TrendingRouter()
         let serviceApi: NetworkingProtocol = ServiceApi(configuration: URLConfiguration(path: .trending))
+        let favorite: FavoriteSavingManager = FavoriteSavingManager(persistence: UserDefaultsManager())
         
         view.presenter = presenter
         presenter.view = view
@@ -25,6 +26,7 @@ class TrendingRouter: TrendingRouterProtocol {
         interactor.presenter = presenter
         interactor.entity = entity
         interactor.serviceApi = serviceApi
+        interactor.favorite = favorite
         
         return view
     }

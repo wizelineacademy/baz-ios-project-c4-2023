@@ -34,9 +34,10 @@ public protocol TrendingInteractorInputProtocol: AnyObject {
     var presenter: TrendingInteractorOutputProtocol? { get set }
     var serviceApi: NetworkingProtocol? { get set }
     var entity: TrendingEntity? { get set }
+    var favorite: FavoriteSavingManager? { get set }
     
     func getNavTitle() -> String?
-    func getMovies(withFilter filter: Paths)
+    func getMovies(withFilter filter: Paths?)
     func getNumberOfRows() -> Int?
     func getMovie(forRow iRow: Int) -> Movie?
 }
