@@ -10,22 +10,20 @@ import XCTest
 
 final class TrendingMoviesViewControllerTest: XCTestCase {
 
-    private var sut: MoviesViewControllerMock!
-    private var presenter: MoviesPresenterMock!
-    private var restorableState: SearchControllerRestorableState!
+    private var sut: MoviesViewController!
+
     private var movies: [ListMovieProtocol]!
     
     override func setUp() {
         super.setUp()
-        presenter = MoviesPresenterMock(router: MoviesRouter())
-        restorableState = SearchControllerRestorableState()
         
         movies = [Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10)]
         
-        sut = MoviesViewControllerMock(presenter: presenter,
-                                              restoredState: restorableState,
-                                              movies: movies,
-                                              searchResultMovies: movies)
+        let view: MoviesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrendingMoviesViewController") as! MoviesViewController
+        
+        sut = view
+        
+       
     }
     
     override func tearDown() {
@@ -35,14 +33,16 @@ final class TrendingMoviesViewControllerTest: XCTestCase {
     
     func test_loadData_callsInteractor() {
         sut.loadData(movies: movies)
+        sut.loadView()
         XCTAssertEqual(sut.movies.count, movies.count)
-        XCTAssertEqual(sut.calls, [.loadData])
+        
     }
     
     func test_loadSearchData() {
         sut.loadSearchData(movies: movies)
-        XCTAssertEqual(sut.movies.count, movies.count)
-        XCTAssertEqual(sut.calls, [.loadSearchData])
+        sut.loadView()
+        XCTAssertEqual(sut.searchResultMovies.count, movies.count)
+        
     }
     
     

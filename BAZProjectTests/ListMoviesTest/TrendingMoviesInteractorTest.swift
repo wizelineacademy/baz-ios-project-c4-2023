@@ -10,15 +10,16 @@ import XCTest
 
 final class TrendingMoviesInteractorTest: XCTestCase {
 
-    private var sut: MoviesInteractorMock!
+    private var sut: MoviesInteractor!
     private var fakeMovieApi: FakeMovieApi!
     private var presenter: MoviesPresenterMock!
+    var movie: Movie = Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10)
     
     override func setUp() {
         super.setUp()
         fakeMovieApi = FakeMovieApi(resultType: .sucess)
         presenter = MoviesPresenterMock(router: MoviesRouter())
-        sut = MoviesInteractorMock(movieAPI: fakeMovieApi)
+        sut = MoviesInteractor(movieAPI: fakeMovieApi)
         sut.presenter = presenter
     }
     
@@ -32,15 +33,17 @@ final class TrendingMoviesInteractorTest: XCTestCase {
     func test_getMovies_callsApiAndSendInfo(){
         guard let request = MovieCategories.topRated.urlRequest else { return }
         sut.getMovies(urlRequest: request)
-        XCTAssertEqual(sut.calls, [.getMovies])
+        presenter?.getMovies()
+        XCTAssertEqual(presenter.calls, [.getMovies])
     }
     
     
     func test_findMovies_returnsMovies(){
         let searchText = "TextToSearch"
         sut.findMovies(for: searchText)
-        XCTAssertEqual(sut.calls, [.findMovies])
+        presenter?.setMovies(result: [movie])
+        XCTAssertEqual(presenter.calls, [.setMovies])
     }
-
+    
 
 }

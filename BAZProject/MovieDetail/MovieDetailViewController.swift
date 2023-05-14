@@ -109,7 +109,7 @@ final class MovieDetailViewController: UIViewController, MoviewDetailViewProtoco
     }
     
     ///funcion que carga la informacion por defecto de una pelicula
-    private func setUpInitialInfo(){
+    func setUpInitialInfo(){
         self.title = movie?.title
         lblTitle.text = movie?.title
         lblDescription.text = movie?.overview

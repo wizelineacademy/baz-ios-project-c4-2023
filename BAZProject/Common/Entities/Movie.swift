@@ -37,7 +37,7 @@ struct MovieResult: Codable {
 }
 
 /// Estructura de una pelicula
-struct Movie: Codable, ListMovieProtocol {
+struct Movie: Codable, Equatable, ListMovieProtocol {
     ///Identificador de una pelicula
     var id: Int
     ///Drescripcion del titulo de una pelicula

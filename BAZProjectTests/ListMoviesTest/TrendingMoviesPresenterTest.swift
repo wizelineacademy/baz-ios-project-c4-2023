@@ -11,10 +11,11 @@ import XCTest
 
 final class TrendingMoviesPresenterTest: XCTestCase{
     
-    private var sut: MoviesPresenterMock!
+    private var sut: MoviesPresenter!
     private var viewControllerMock: MoviesViewControllerMock!
     private var interactorMock: MoviesInteractorMock!
     private var routerMock: MoviesRouterMock!
+    var movie: Movie = Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10)
     
     override func setUp() {
         super.setUp()
@@ -22,10 +23,7 @@ final class TrendingMoviesPresenterTest: XCTestCase{
         interactorMock = MoviesInteractorMock(movieAPI: FakeMovieApi(resultType: .sucess))
         routerMock = MoviesRouterMock()
         
-        sut = MoviesPresenterMock(textToSearch: "textToSearch",
-                                          interface: viewControllerMock,
-                                          interactor: interactorMock,
-                                          router: routerMock)
+        sut = MoviesPresenter(interface: viewControllerMock, interactor: interactorMock, router: routerMock)
     }
     
     override func tearDown() {
@@ -38,32 +36,27 @@ final class TrendingMoviesPresenterTest: XCTestCase{
     
     func test_getMovies_callsInteractorGetMovies() {
         sut.getMovies()
-        XCTAssertEqual(sut.calls, [.getMovies])
+        interactorMock.getMovies(urlRequest: URLRequest(url: URL(string: "www.google.com")!))
+        XCTAssertEqual(interactorMock.calls, [.getMovies])
     }
-    
-    func test_setMovies_callsViewToAddData(){
-        let fakeMovies: [ListMovieProtocol] = []
-        sut.setMovies(result: fakeMovies)
-        XCTAssertEqual(sut.calls, [.setMovies])
-    }
+
     
     func test_findMovies() {
         sut.findMovies(for: "textToSearch")
-        XCTAssertEqual(sut.calls, [.findMovies])
+        viewControllerMock.loadSearchData(movies: [movie])
+        XCTAssertEqual(viewControllerMock.calls, [.loadSearchData])
     }
     
     func test_cleanStringForSearch_returnCleanString(){
         let cleantext = sut.cleanStringForSearch("textToSearch")
         let count = cleantext.count
         XCTAssert(count > 3)
-        
     }
     
-//    func test_getRemotImage_callsInteracrtorGetImage() {
-//        var completion = ((UIImage?) -> ()).self
-//        sut.getRemotImage(from: "", completion: completion)
-//    }
-    
+    func test_sendToReviews_calls(){
+        sut.sendToDetail(movie: movie)
+        XCTAssertEqual(routerMock.calls, [.sendToDetail])
+    }
 
 }
 

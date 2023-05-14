@@ -81,4 +81,23 @@ final class MovieDetailViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.reviews.count, review.count)
     }
     
+    func test_setFavorite_setData(){
+        sut.loadView()
+        sut.setFavorite(true)
+        let button = sut.btnLike
+        
+        XCTAssertEqual(button?.tintColor, .systemPink)
+    }
+    
+    func test_setUpInitialInfo_calls(){
+        sut.loadView()
+        sut.movie = movie
+        sut.setUpInitialInfo()
+        let textTilte = sut.lblTitle.text
+        let textSub = sut.lblDescription.text
+        
+        XCTAssertEqual(textTilte, "ejemplo")
+        XCTAssertEqual(textSub, "ejemplo")
+    }
+    
 }

@@ -49,6 +49,8 @@
 		4CA2F92C29F2FF8700B6A60B /* SearchControllerRestorableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F92B29F2FF8700B6A60B /* SearchControllerRestorableState.swift */; };
 		4CA2F93529F31DE600B6A60B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2F93429F31DE500B6A60B /* TableCell.xib */; };
 		4CA2F93829F4601500B6A60B /* MovieCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2F93729F4601400B6A60B /* MovieCategories.swift */; };
+		4CAAB1772A104635000E6612 /* UserDefaultManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB1762A104635000E6612 /* UserDefaultManagerTest.swift */; };
+		4CAAB1792A104752000E6612 /* UserDefaultFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB1782A104752000E6612 /* UserDefaultFake.swift */; };
 		4CACA5F429F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */; };
 		4CBDB6F329F1061E000AF2FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDB6F229F1061E000AF2FA /* TabBarController.swift */; };
 		4CC0A35329F1F747003B311D /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0A35229F1F747003B311D /* ResultsTableController.swift */; };
@@ -127,6 +129,8 @@
 		4CA2F92B29F2FF8700B6A60B /* SearchControllerRestorableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerRestorableState.swift; sourceTree = "<group>"; };
 		4CA2F93429F31DE500B6A60B /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		4CA2F93729F4601400B6A60B /* MovieCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategories.swift; sourceTree = "<group>"; };
+		4CAAB1762A104635000E6612 /* UserDefaultManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManagerTest.swift; sourceTree = "<group>"; };
+		4CAAB1782A104752000E6612 /* UserDefaultFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultFake.swift; sourceTree = "<group>"; };
 		4CACA5F329F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesViewControllerTest.swift; sourceTree = "<group>"; };
 		4CBDB6F229F1061E000AF2FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4CC0A35229F1F747003B311D /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 			children = (
 				4C9E3F7529F711D6000B7A96 /* JSON */,
 				4C9E3F7329F711CC000B7A96 /* FakeMovieApi.swift */,
+				4CAAB1782A104752000E6612 /* UserDefaultFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				4C9E3F8029F84B37000B7A96 /* ApiTest.swift */,
 				4C9E3F8229F8512D000B7A96 /* LoadImageTest.swift */,
 				4CF0C3242A09CB730019C219 /* EntitiTest.swift */,
+				4CAAB1762A104635000E6612 /* UserDefaultManagerTest.swift */,
 			);
 			path = CommonTest;
 			sourceTree = "<group>";
@@ -582,12 +588,14 @@
 				4C17BCD02A08A2A900818551 /* MovieDetailRouterMock.swift in Sources */,
 				4CCBEDE82A0ECDB500FE8906 /* MovieCellTests.swift in Sources */,
 				4C17BCD92A08A7E800818551 /* MovieDetailInteractorTest.swift in Sources */,
+				4CAAB1772A104635000E6612 /* UserDefaultManagerTest.swift in Sources */,
 				4CACA5F429F8B0CB00D16E7E /* TrendingMoviesViewControllerTest.swift in Sources */,
 				4C9E3F6829F6DE94000B7A96 /* MoviesInteractorMock.swift in Sources */,
 				4C17BCCE2A08A16F00818551 /* MovieDetailPresenterMock.swift in Sources */,
 				4C17BCDB2A08A7FB00818551 /* MovieDetailRouterTest.swift in Sources */,
 				4C9E3F7129F70CB5000B7A96 /* UIVIewControllerSpy.swift in Sources */,
 				4CF0C3252A09CB730019C219 /* EntitiTest.swift in Sources */,
+				4CAAB1792A104752000E6612 /* UserDefaultFake.swift in Sources */,
 				4C56782729F6D8D500D5FA23 /* TrendingMoviesPresenterTest.swift in Sources */,
 				4C9E3F8329F8512D000B7A96 /* LoadImageTest.swift in Sources */,
 				4C9E3F6A29F6DFD3000B7A96 /* MoviesRouterMock.swift in Sources */,
