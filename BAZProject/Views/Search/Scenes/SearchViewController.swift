@@ -11,20 +11,19 @@ public protocol SearchDisplayLogic: AnyObject {
     var interactor: SearchBusinessLogic? { get }
     
     func placeInLabel(message strMessage: String)
-    func showResults(in arrCellInfo: [ImageTextTableViewProtocol])
+    func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol])
 }
 
 public class SearchViewController: UIViewController {
     public var interactor: SearchBusinessLogic?
-    weak var router: SearchRouter?
-    private var arrCellInfo: [ImageTextTableViewProtocol]?{
+    private var arrCellInfo: [CellPersonalizedTableViewProtocol]?{
         didSet {
             tblResults.reloadData()
         }
     }
     
-    @IBOutlet public weak var txfSearch: UITextField!{
-        didSet{
+    @IBOutlet public weak var txfSearch: UITextField! {
+        didSet {
             txfSearch.placeholder = NSLocalizedString("Search by movie or artist", comment: "Search by movie or artist")
             txfSearch.delegate = self
         }
@@ -59,7 +58,7 @@ extension SearchViewController: SearchDisplayLogic {
         lblErrorMessage.text = strMessage
     }
     
-    public func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
+    public func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
 }
@@ -80,6 +79,10 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let info = arrCellInfo?[indexPath.row] as? Movie {
+            let destinationVC = CleanFactory.createDetailModule(withMovie: info)
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
     }
 }
 

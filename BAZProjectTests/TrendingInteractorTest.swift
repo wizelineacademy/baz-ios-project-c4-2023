@@ -35,10 +35,10 @@ final class TrendingInteractorTest: XCTestCase {
         //Given
         let errorExpected: ErrorApi = .badResponse
         //When
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
     }
     
@@ -46,10 +46,10 @@ final class TrendingInteractorTest: XCTestCase {
         //Given
         let errorExpected: ErrorApi = .badJSON
         //When
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badJSON))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badJSON))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         XCTAssertEqual(errorExpected.getMessage(), errorThrown?.getMessage())
     }
     
@@ -57,10 +57,10 @@ final class TrendingInteractorTest: XCTestCase {
         //Given
         let strFirstTitle = "¡Shazam! La furia de los dioses"
         //When
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         let strTitle = sut.getMovie(forRow: 0)?.title
         XCTAssertEqual(strFirstTitle, strTitle)
     }
@@ -69,10 +69,10 @@ final class TrendingInteractorTest: XCTestCase {
         //Given
         let iNumberExpected = 2
         //When
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseMock"))
         sut.serviceApi = mockServer
         //Then
-        sut.getMovies()
+        sut.getMovies(withFilter: .trending)
         let iNumberGot = sut.getNumberOfRows()
         XCTAssertEqual(iNumberExpected, iNumberGot)
         

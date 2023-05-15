@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EmptySearch: ImageTextTableViewProtocol {
+public struct EmptySearch: CellPersonalizedTableViewProtocol {
     public var strTitle: String {
         return NSLocalizedString("No results found", comment: "No results found")
     }
@@ -17,6 +17,10 @@ public struct EmptySearch: ImageTextTableViewProtocol {
     }
     
     public var urlConfiguration: URLConfiguration? {
+        return nil
+    }
+    
+    public var strDate: String? {
         return nil
     }
     

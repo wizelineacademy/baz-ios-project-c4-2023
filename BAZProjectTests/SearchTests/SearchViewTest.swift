@@ -34,13 +34,24 @@ final class SearchViewTest: XCTestCase {
     
     func testTableViewIsReloaded() {
         //Given
-        let arrCells = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción"), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción")]
+        let arrCells = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción", release_date: ""), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción", release_date: "")]
         //When
         sut?.showResults(in: arrCells)
         //Then
         let iTotalRows = sut?.tblResults.numberOfRows(inSection: 0)
         XCTAssertEqual(arrCells.count, iTotalRows)
         
+    }
+    
+    func testFirstCellHasInfo() {
+        //Given
+        let arrCells = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción", release_date: ""), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción", release_date: "")]
+        //When
+        sut?.showResults(in: arrCells)
+        sut?.tblResults.reloadData()
+        let cell = sut?.tblResults.cellForRow(at: IndexPath(row: 0, section: 0)) as? ImageTextTableViewCell
+        //Then
+        XCTAssertEqual(cell?.lblTitle.text, "Título de prueba")
     }
     
     func testErrorIsShown() {

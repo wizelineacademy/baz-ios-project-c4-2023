@@ -14,7 +14,7 @@ final class SearchInteractorTest: XCTestCase {
     private var searchError: SearchEnumError?
     private var sut: SearchInteractor?
     private var mockServer: NetworkingProtocol?
-    private var arrResults: [ImageTextTableViewProtocol]?
+    private var arrResults: [CellPersonalizedTableViewProtocol]?
     
     override func setUp() {
         super.setUp()
@@ -58,7 +58,7 @@ final class SearchInteractorTest: XCTestCase {
     func testServiceError() {
         //Given
         let errorExpected: SearchEnumError = .serviceProblem
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testError(.badResponse))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "Matrix")
@@ -69,7 +69,7 @@ final class SearchInteractorTest: XCTestCase {
     func testServiceBringResults() {
         //Given
         let iTotal = 4
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseSearchMock"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("responseSearchMock"))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "Matrix")
@@ -80,7 +80,7 @@ final class SearchInteractorTest: XCTestCase {
     
     func testServiceRespondButResultsWereEmpty() {
         //Given
-        mockServer = MockService<MovieService>(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
+        mockServer = MockService(configuration: URLConfiguration(path: .noPath), caseToTest: .testSuccess("searchVoid"))
         sut?.networkingSearch = mockServer
         //When
         sut?.search(withParams: "jaklfakdja")
@@ -95,7 +95,7 @@ extension SearchInteractorTest: SearchPresentationLogic {
         self.searchError = error
     }
     
-    func searchDidBrougntResults(in arrResults: [ImageTextTableViewProtocol]) {
+    func searchDidBrougntResults(in arrResults: [CellPersonalizedTableViewProtocol]) {
         self.arrResults = arrResults
     }
 }

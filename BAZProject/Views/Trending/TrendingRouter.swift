@@ -16,7 +16,7 @@ class TrendingRouter: TrendingRouterProtocol {
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
         let interactor: TrendingInteractorInputProtocol = TrendingInteractor()
         let router: TrendingRouterProtocol = TrendingRouter()
-        let serviceApi: NetworkingProtocol = ServiceApi<MovieService>(configuration: URLConfiguration(path: .trending))
+        let serviceApi: NetworkingProtocol = ServiceApi(configuration: URLConfiguration(path: .trending))
         
         view.presenter = presenter
         presenter.view = view
@@ -30,12 +30,23 @@ class TrendingRouter: TrendingRouterProtocol {
     }
     
     func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?) {
-        if let view = view as? TrendingView{
-            let alert = UIAlertController(title: "Error", message: strMessage, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Aceptar", style: .default)
-            alert.addAction(action)
-            view.present(alert, animated: true)
-        }
+        let alert = UIAlertController(title: "Error", message: strMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Aceptar", style: .default)
+        alert.addAction(action)
+        present(alert, from: view)
     }
     
+    func present(_ viewToPresent: UIViewController, from view: TrendingViewProtocol?) {
+        if let view = view as? TrendingView {
+            view.present(viewToPresent, animated: true)
+        }
+            
+    }
+    
+    func goToDetail(for movie: Movie, from view: TrendingViewProtocol?) {
+        if let view = view as? TrendingView {
+            let destinationVC = CleanFactory.createDetailModule(withMovie: movie)
+            view.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+    }
 }

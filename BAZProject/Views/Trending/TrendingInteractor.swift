@@ -21,12 +21,13 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
         self.entity = entity
     }
 
-    func getNavTitle() -> String? {
+    public func getNavTitle() -> String? {
         return entity?.strNavBarTitle
     }
     
-    public func getMovies() {
-        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>) in
+    public func getMovies(withFilter filter: Paths) {
+        serviceApi?.updatePath(with: filter)
+        serviceApi?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>) in
             switch result {
             case .failure(let error):
                 self?.presenter?.serviceFailed(withError: error)

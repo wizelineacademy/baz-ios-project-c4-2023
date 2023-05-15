@@ -7,6 +7,10 @@
 */
 
 "Trending" = "Novedades";
+"Now Playing" = "Ahora en cines";
+"Popular" = "Popular";
+"Top Rated" = "Mejor calificadas";
+"Upcoming" = "Próximamente";
 "There was a problem creating the url" = "No se pudo crear la URL.";
 "There was a problem parsing the json" = "El json no se pudo parsear.";
 "The service didn't respond" = "El servicio no respondió.";
@@ -14,3 +18,11 @@
 "Search by movie or artist" = "Busca por película o artista.";
 "Please, provide a term to search." = "Por favor proporcione un término para buscar.";
 "No results found" = "No se encontraron resultados.";
+"Release date: %@" = "Fecha de lanzamiento: %@";
+"The parameter was null" = "El parámetro venía vacío";
+"Similar movies" = "Películas similares";
+"Filter options" = "Filtrar";
+"Choose among these options" = "Elige entre las siguientes opciones.";
+"Cancel" = "Cancelar";
+"Reviews" = "Reseñas";
+"Cast" = "Reparto";

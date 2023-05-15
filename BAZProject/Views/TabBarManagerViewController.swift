@@ -15,8 +15,8 @@ final class TabBarManagerViewController: UITabBarController {
     }
     
     private func setUpViews() {
-        let trendingVC = createNavController(for: TrendingRouter.createTrendingModule(), title: NSLocalizedString("Trending", comment: "Trending"), image: UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill"))
-        let searchVC = createNavController(for: SearchRouter.createModule(), title: NSLocalizedString("Search", comment: "Search"), image: UIImage(systemName: "magnifyingglass"))
+        let trendingVC = createNavController(for: TrendingRouter.createTrendingModule(), title: NSLocalizedString("Trending", comment: "Trending"), image: UIImage(systemName: "film"))
+        let searchVC = createNavController(for: CleanFactory.createSearchModule(), title: NSLocalizedString("Search", comment: "Search"), image: UIImage(systemName: "magnifyingglass"))
         viewControllers = [trendingVC, searchVC]
     }
     

@@ -25,6 +25,11 @@ class TrendingView: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
     }
+    
+    //MARK: Action methods
+    @objc private func changeFilterAction() {
+        presenter?.barButtonWasPressed()
+    }
 }
 
 extension TrendingView: TrendingViewProtocol {
@@ -35,6 +40,11 @@ extension TrendingView: TrendingViewProtocol {
     func registerXIB() {
         let nib = UINib(nibName: CellTypes.imageTextCell.rawValue, bundle: nil)
         tblMovies.register(nib, forCellReuseIdentifier: CellTypes.imageTextCell.rawValue)
+    }
+    
+    func createNavigationButton() {
+        let btnFilter = UIBarButtonItem(image: UIImage(systemName: "binoculars"), style: .done, target: self, action: #selector(changeFilterAction))
+        navigationItem.rightBarButtonItem = btnFilter
     }
     
     func reloadTable() {
@@ -61,5 +71,6 @@ extension TrendingView: UITableViewDataSource {
 extension TrendingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.goToDetail(forIndex: indexPath.row)
     }
 }

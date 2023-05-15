@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct MovieService: Decodable {
+public struct MovieService<T: Decodable>: Decodable {
     var page: Int?
-    public var results: [MovieDetailService]?
+    public var results: [T]?
 }
 
 public struct MovieDetailService: Decodable {
@@ -23,6 +23,6 @@ public struct MovieDetailService: Decodable {
 extension MovieDetailService {
     func convertToMovieApp() -> Movie? {
         guard let id = id, let title = title, let poster_path = poster_path, let overview = overview else { return nil }
-        return Movie(id: id, title: title, poster_path: poster_path, overview: overview)
+        return Movie(id: id, title: title, poster_path: poster_path, overview: overview, release_date: release_date ?? "")
     }
 }

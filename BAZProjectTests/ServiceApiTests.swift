@@ -11,7 +11,7 @@ import BAZProject
 final class ServiceApiTests: XCTestCase {
     var errorType: ErrorApi?
     var exp: XCTestExpectation?
-    var result: MovieService?
+    var result: MovieService<MovieDetailService>?
     
     override func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strHostVoid = ""
         let configuration = URLConfiguration(strHost: strHostVoid, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)
@@ -44,7 +44,7 @@ final class ServiceApiTests: XCTestCase {
         //Given
         let strBadHost = "Esto es un mal host"
         let configuration = URLConfiguration(strHost: strBadHost, path: .noPath)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)
@@ -57,17 +57,17 @@ final class ServiceApiTests: XCTestCase {
     func testSerachImplemented() {
         //Given
         let configuration = URLConfiguration(path: .trending)
-        let sut: NetworkingProtocol = ServiceApi<MovieService>(configuration: configuration)
+        let sut: NetworkingProtocol = ServiceApi(configuration: configuration)
         //When
         sut.search { [weak self] (result: Result<MovieService, ErrorApi>) in
             self?.handleService(result)
         }
         //Then
-        waitForExpectations(timeout: 2.5)
+        waitForExpectations(timeout: 3.5)
         XCTAssertNotNil(result)
     }
     
-    private func handleService(_ result: Result<MovieService, ErrorApi>) {
+    private func handleService(_ result: Result<MovieService<MovieDetailService>, ErrorApi>) {
         switch result {
         case .success(let result):
             self.result = result

@@ -12,11 +12,12 @@ import UIKit
 //MARK: - View
 
 /// Presenter -> View
-protocol TrendingViewProtocol: AnyObject {
+public protocol TrendingViewProtocol: AnyObject {
     var presenter: TrendingPresenterProtocol? { get set }
     
     func setNavigationTitle(for strTitle: String?)
     func registerXIB()
+    func createNavigationButton()
     func reloadTable()
 }
 
@@ -29,13 +30,13 @@ public protocol TrendingInteractorOutputProtocol: AnyObject {
 }
 
 /// Presenter -> Interactor
-protocol TrendingInteractorInputProtocol: AnyObject {
+public protocol TrendingInteractorInputProtocol: AnyObject {
     var presenter: TrendingInteractorOutputProtocol? { get set }
     var serviceApi: NetworkingProtocol? { get set }
     var entity: TrendingEntity? { get set }
     
     func getNavTitle() -> String?
-    func getMovies()
+    func getMovies(withFilter filter: Paths)
     func getNumberOfRows() -> Int?
     func getMovie(forRow iRow: Int) -> Movie?
 }
@@ -43,7 +44,7 @@ protocol TrendingInteractorInputProtocol: AnyObject {
 //MARK: - Presenter
 
 /// View -> Presenter
-protocol TrendingPresenterProtocol: AnyObject {
+public protocol TrendingPresenterProtocol: AnyObject {
     var view: TrendingViewProtocol? { get set }
     var interactor: TrendingInteractorInputProtocol? { get set }
     var router: TrendingRouterProtocol? { get set }
@@ -51,13 +52,17 @@ protocol TrendingPresenterProtocol: AnyObject {
     func viewDidLoad()
     func getNumberOfRows() -> Int?
     func getMovie(forRow iRow: Int) -> Movie?
+    func goToDetail(forIndex iRow: Int)
+    func barButtonWasPressed()
 }
 
 //MARK: - Router
 
 /// Presenter -> Router
-protocol TrendingRouterProtocol: AnyObject {
+public protocol TrendingRouterProtocol: AnyObject {
     static func createTrendingModule(withEntity entity: TrendingEntity) -> UIViewController
     
     func showAlert(withMessage strMessage: String, from view: TrendingViewProtocol?)
+    func goToDetail(for movie: Movie, from view: TrendingViewProtocol?)
+    func present(_ viewToPresent: UIViewController, from view: TrendingViewProtocol?)
 }

@@ -37,7 +37,7 @@ extension SearchInteractor: SearchBusinessLogic {
     
     private func searchMovies(withParams strParams: String) {
         networkingSearch?.updatePath(with: .search(strQuery: strParams))
-        networkingSearch?.search(withCompletionHandler: { [weak self] (result: Result<MovieService, ErrorApi>)  in
+        networkingSearch?.search(withCompletionHandler: { [weak self] (result: Result<MovieService<MovieDetailService>, ErrorApi>)  in
             switch result {
             case .success(let response):
                 self?.fillArrMovies(withResponse: response.results)

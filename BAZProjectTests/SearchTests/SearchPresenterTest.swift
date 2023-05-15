@@ -12,7 +12,7 @@ import BAZProject
 final class SearchPresenterTest: XCTestCase {
     var interactor: BAZProject.SearchBusinessLogic?
     private var strMessage: String?
-    private var arrCellInfo: [ImageTextTableViewProtocol]?
+    private var arrCellInfo: [CellPersonalizedTableViewProtocol]?
     private var sut: SearchPresenter?
     
     override func setUp() {
@@ -58,7 +58,7 @@ final class SearchPresenterTest: XCTestCase {
     
     func testSuccessfullSearchArrCount() {
         //Given
-        let arrResponse = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción"), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción")]
+        let arrResponse = [Movie(id: 1, title: "Título de prueba", poster_path: "Algún path", overview: "Alguna descripción", release_date: ""), Movie(id: 2, title: "Otro título de prueba", poster_path: "Algún otro path", overview: "Alguna otra descripción", release_date: "")]
         //When
         sut?.searchDidBrougntResults(in: arrResponse)
         //Then
@@ -83,7 +83,7 @@ extension SearchPresenterTest: SearchDisplayLogic {
         self.strMessage = strMessage
     }
     
-    func showResults(in arrCellInfo: [ImageTextTableViewProtocol]) {
+    func showResults(in arrCellInfo: [CellPersonalizedTableViewProtocol]) {
         self.arrCellInfo = arrCellInfo
     }
 }
