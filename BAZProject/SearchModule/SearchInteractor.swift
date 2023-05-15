@@ -21,7 +21,4 @@ class SearchInteractor: SearchInteractorInputProtocol, SearchRemoteDataManagerOu
         self.presenter?.searchResultsFecthed(searchResults: searchResults)
     }
     
-    func handleService(error: Error) {
-        print(error)
-    }
 }

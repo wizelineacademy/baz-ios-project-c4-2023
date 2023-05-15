@@ -53,7 +53,44 @@ final class MovieDetailPresenterTests: XCTestCase {
         XCTAssertEqual(sut?.movieDetail?.id, 1)
         XCTAssertTrue(viewMock.reloadDataWasCalled)
     }
-
     
+    func testisNotFavorite(){
+        let expect = false
+        let isNotfavorite = sut?.isFavorite
+        XCTAssertEqual(isNotfavorite, expect)
+    }
+    
+    func testisFavorite(){
+        let expect = true
+        let isFavorite = sut?.isFavorite
+        XCTAssertNotEqual(isFavorite, expect)
+    }
+    
+    func testAddFavorites() {
+        let expect = MovieFavorites.isSave(MovieFavorites())
+        //let addfavorites = sut?.saveFavoriteMovie()
+        XCTAssertNotNil(expect)
+    }
+    
+    func testDeletetoFavorites(){
+        XCTAssert(((sut?.deleteToFavoriteMovie()) != nil))
+    }
+    
+    func testAddToFavorites2(){
+        XCTAssert(((sut?.saveFavoriteMovie()) != nil))
+    }
+    
+    func testDeleteFavorites(){
+        let movieId: Int? = sut?.movieDetail?.id
+        let expect = interactorMock.deleteToFavoriteMovie(of: movieId)
+        XCTAssertNotNil(expect)
+    }
+    
+    func testAddToFavorites() {
+        let movieId = 1
+        let expect = interactorMock.saveFavoriteMovie(of: movieId)
+        XCTAssertNotNil(expect)
+    }
+
 
 }

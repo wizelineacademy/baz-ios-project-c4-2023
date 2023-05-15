@@ -43,5 +43,8 @@ final class SearcPresenterTests: XCTestCase {
         XCTAssertEqual(sut?.searchResults?.count, 0)
         XCTAssertTrue(viewMock.reloadDataWasCalled)
     }
-
+    
+    func testSearchMovies() {
+        XCTAssert(((sut?.searchMovies(with: "Mario")) != nil))
+    }
 }

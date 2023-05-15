@@ -25,8 +25,6 @@ class MovieDetailRemoteDataManager: MovieDetailRemoteDataManagerInputProtocol {
                 self?.remoteRequestHandler?.movieDetailFetched(with: movieDetail)
                 break
             case .failure(_):
-                //TODO: Implement error handler
-                print("error")
                 break
             }
         }

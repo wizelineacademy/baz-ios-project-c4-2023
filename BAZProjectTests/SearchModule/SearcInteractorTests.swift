@@ -12,12 +12,14 @@ final class SearcInteractorTests: XCTestCase {
 
     var sut: SearchInteractorInputProtocol!
     var remoteData: SearchRemoteDataManagerMock!
+    var presenter: SearchPresenter!
     
     override func setUp() {
         super.setUp()
         sut = SearchInteractor()
         remoteData = SearchRemoteDataManagerMock()
         sut.remoteDatamanager = remoteData
+        sut.presenter = presenter
     }
 
     override func tearDown() {
@@ -35,5 +37,9 @@ final class SearcInteractorTests: XCTestCase {
         let expect = true
         sut.fetchSearchResults(with: "Q")
         XCTAssertEqual(expect, remoteData.calls.contains(.fetchSearchResults))
+    }
+        
+    func testSearchResultsFetched() {
+        XCTAssertFalse(((sut.presenter?.searchResultsFecthed(searchResults: [SearchResult]())) != nil))
     }
 }

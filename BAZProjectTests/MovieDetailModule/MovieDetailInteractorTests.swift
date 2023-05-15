@@ -31,6 +31,11 @@ final class MovieDetailInteractorTests: XCTestCase {
         XCTAssert(remoteData.detailcalls.contains(.fetchSearchResults))
     }
     
+    func testIsSave(){
+        sut.saveData.isSave(movieId: 1)
+        XCTAssertFalse(remoteData.detailcalls.contains(.fetchSearchResults))
+    }
+    
     func testsaveMovieFavorites(){
         sut.saveFavoriteMovie(of: 1)
         XCTAssertFalse(remoteData.detailcalls.contains(.fetchSearchResults))
@@ -40,5 +45,4 @@ final class MovieDetailInteractorTests: XCTestCase {
         sut.deleteToFavoriteMovie(of: 1)
         XCTAssertFalse(remoteData.detailcalls.contains(.fetchSearchResults))
     }
-
 }

@@ -31,5 +31,4 @@ final class MoviInteractorTests: XCTestCase {
         sut.fetchMovies()
         XCTAssert(remoteData.calls.contains(.fetchMovies))
     }
-        
 }
