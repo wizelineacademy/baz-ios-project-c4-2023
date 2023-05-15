@@ -59,9 +59,13 @@ final class UserDefaultManager: UserDefaultManagerProtocol {
     }
     
     func saveFavorite(movie: Movie){
-        guard let dctMovies: [Int : Movie] = userDefault.returnMoviesDictionary() else { return }
-        var movies = dctMovies
-        movies[movie.id] = movie
+        var movies : [Int : Movie] = [:]
+        if let dctMovies: [Int : Movie] = userDefault.returnMoviesDictionary() {
+            movies = dctMovies
+            movies[movie.id] = movie
+        }else{
+            movies = [movie.id : movie]
+        }
         if let data = try? encoder.encode(movies){
             userDefault.setValue(data, forKey: "favorite_movies")
         }
