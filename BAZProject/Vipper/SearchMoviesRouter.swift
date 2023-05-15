@@ -31,4 +31,9 @@ final class SearchMoviesRouter: SearchMoviesRouterProtocol{
         view?.present(alert, animated: true)
     }
     
+    func pushDetailVC(with infoMovie: MovieData?){
+        let viewController = MoviesDetailRouter.createModule(with: infoMovie)
+        view?.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }

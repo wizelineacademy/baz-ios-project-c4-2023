@@ -5,9 +5,9 @@
 //  Created by nmorenoa on 14/04/23.
 //
 
-import Foundation
+import UIKit
 
-class SearchMoviesPresenter {
+final class SearchMoviesPresenter {
     
     // MARK: Properties
     weak var view       : SearchMoviesViewInputProtocol?
@@ -29,6 +29,10 @@ extension SearchMoviesPresenter: SearchMoviesViewOutputProtocol{
     
     func searchMoview(with word: String) {
         interactor?.consultServiceSearch(with: word)
+    }
+    
+    func selectCell(_ tableView: UITableView, _ indexPath: IndexPath) {
+        router?.pushDetailVC(with: movies[indexPath.row])
     }
     
 }

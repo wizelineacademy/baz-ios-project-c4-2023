@@ -5,10 +5,19 @@
 //
 
 import UIKit
+import Foundation
 
-final class TrendingViewController: UITableViewController, Storyboard {
-
+final class TrendingViewController: UIViewController, Storyboard {
+    
     @IBOutlet weak var btnOptionsFilterMovies: UIBarButtonItem!
+    @IBOutlet weak var tblMovies: UITableView!{
+        didSet{
+            registerNibs(in: tblMovies)
+            style(to: tblMovies)
+            tblMovies.delegate      = self
+            tblMovies.dataSource    = self
+        }
+    }
     var movies              : [MovieData] = []
     var movieApi            : MovieAPI? = nil
     
@@ -16,6 +25,26 @@ final class TrendingViewController: UITableViewController, Storyboard {
         super.viewDidLoad()
         setup()
         callServiceMovieAPI(request: OptionMovie.getMovieDay.request)
+    }
+    
+    /// Configuration is set to the table
+    private func style(to tableView: UITableView){
+        tableView.bounces                        = false
+        tableView.separatorStyle                 = .none
+        tableView.backgroundColor                = .white
+        tableView.allowsSelection                = true
+        tableView.alwaysBounceVertical           = false
+        tableView.alwaysBounceHorizontal         = false
+        tableView.allowsMultipleSelection        = false
+        tableView.showsVerticalScrollIndicator   = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.estimatedRowHeight             = UITableView.automaticDimension
+    }
+    
+    //Registers a nib object that contains a cell with specified identifier.
+    private func registerNibs(in tableView: UITableView) {
+        tableView.register(UINib(nibName: CellMovies.identifier, bundle: nil),
+                           forCellReuseIdentifier: CellMovies.identifier)
     }
     
     /**
@@ -33,11 +62,14 @@ final class TrendingViewController: UITableViewController, Storyboard {
                 if let arrMovies = moviesReponse.movies{
                     for resultArrMovies in arrMovies{
                         self?.movies.append(MoviesViewModels(title: resultArrMovies.title ?? "",
-                                                                    poster_path: resultArrMovies.posterPath ?? ""))
+                                                             poster_path: resultArrMovies.posterPath ?? "",
+                                                             original_title: resultArrMovies.originalTitle ?? "",
+                                                             id: resultArrMovies.id ?? 0,
+                                                             overview: resultArrMovies.overview ?? ""))
                     }
                     
                     DispatchQueue.main.async {
-                        self?.tableView.reloadData()
+                        self?.tblMovies.reloadData()
                     }
                 }
             default:
@@ -79,29 +111,33 @@ final class TrendingViewController: UITableViewController, Storyboard {
     
 }
 
-// MARK: - TableView's DataSource
-extension TrendingViewController {
+// MARK: - TableView's DataSource - Delegate
+extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell")!
-    }
-
-}
-
-// MARK: - TableView's Delegate
-extension TrendingViewController {
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var config = UIListContentConfiguration.cell()
-        let infoMovieCell = movies[indexPath.row]
-        config.text = infoMovieCell.title
-        infoMovieCell.getImage(){ imagen in
-            config.image = imagen
-            cell.contentConfiguration = config
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:"CellMovies", for: indexPath) as? CellMovies else {
+            return UITableViewCell()
         }
-        cell.contentConfiguration = config
+        let infoCell        = movies[indexPath.row]
+        cell.descriptionMovie.text  = infoCell.title
+        if let posterPath = infoCell.poster_path{
+            cell.imgMovie.download(poster_path: posterPath)
+        }
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = MoviesDetailRouter.createModule(with: movies[indexPath.row])
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return UITableView.automaticDimension
+    }
+    
 }

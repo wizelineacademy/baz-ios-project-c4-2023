@@ -19,6 +19,3 @@ extension Storyboard where Self: UIViewController {
         return storyboard.instantiateViewController(identifier: id) as? Self
     }
 }
-extension UITableViewCell {
-    class var identifier: String { return String(describing: self) }
-}
