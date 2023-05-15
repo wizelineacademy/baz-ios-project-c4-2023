@@ -27,7 +27,7 @@ protocol TrendingBarRouterProtocol {
          - nextView: new principal user UIViewController
      */
     func presentMovieSearchViewController(from view: TrendingBarViewControllerProtocol?)
-    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?)
+    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?, withMovie movie: [MovieDetailModel])
 }
 
 // View > Presenter

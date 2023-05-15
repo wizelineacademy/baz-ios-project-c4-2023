@@ -17,6 +17,10 @@ enum EndPointConstants {
     static let topRatedEndPoint: String = "movie/top_rated?api_key=\(apiKey)&language=es&region=MX&page=1"
     static let upcomingEndPoint: String = "movie/upcoming?api_key=\(apiKey)&language=es&region=MX&page=1"
     static let searchMovie: String = "search/movie?api_key=\(apiKey)&language=MX&query="
+    static let recommendedEndPoint: String = "/recommendations?api_key=\(apiKey)&language=es&region=MX&page=1"
+    static let similarEndPoint: String = "/similar?api_key=\(apiKey)&language=es&region=MX&page=1"
+    static let actorsEndPoint: String = "/credits?api_key=\(apiKey)&language=es&region=MX&page=1"
+    static let reviewsEndPoint: String = "/reviews?api_key=\(apiKey)&language=es&region=MX&page=1"
 }
 
 struct Auth: Codable {

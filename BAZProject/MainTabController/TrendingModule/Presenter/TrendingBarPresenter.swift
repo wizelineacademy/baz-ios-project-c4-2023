@@ -11,7 +11,6 @@ final class TrendingBarPresenter {
     weak var view: TrendingBarViewControllerProtocol?
     var router: TrendingBarRouterProtocol?
     var interactor: TrendingBarInteractorInputProtocol?
-    
     var trendingModel: [Movie] = []
 }
 
@@ -65,7 +64,8 @@ extension TrendingBarPresenter: TrendingBarPresenterProtocol {
     }
     
     func didSelectRowAt(_ indexPath: IndexPath) {
-        router?.presentDetailViewController(from: view)
+        let movieDetailArray: MovieDetailModel = .summary([trendingModel[indexPath.row]])
+        router?.presentDetailViewController(from: view, withMovie: [movieDetailArray])
     }
 }
 

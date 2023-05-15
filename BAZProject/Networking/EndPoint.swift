@@ -16,6 +16,10 @@ enum Endpoint {
     case topRated
     case upcoming
     case search(query: String)
+    case recommended(idMovie: Int)
+    case similar(idMovie: Int)
+    case actors(idMovie: Int)
+    case reviews(idMovie: Int)
 }
 
 extension Endpoint: EndPointProtocol {
@@ -33,6 +37,14 @@ extension Endpoint: EndPointProtocol {
             return EndPointConstants.upcomingEndPoint
         case . search(let query):
             return "\(EndPointConstants.searchMovie)\(query.replacingOccurrences(of: " ", with: "%20"))"
+        case .recommended(let idMovie):
+            return "movie/\(idMovie)\(EndPointConstants.recommendedEndPoint)"
+        case .similar(let idMovie):
+            return "movie/\(idMovie)\(EndPointConstants.similarEndPoint)"
+        case .actors(let idMovie):
+            return "movie/\(idMovie)\(EndPointConstants.actorsEndPoint)"
+        case .reviews(idMovie: let idMovie):
+            return "movie/\(idMovie)\(EndPointConstants.reviewsEndPoint)"
         }
     }
     

@@ -35,10 +35,11 @@ final class MovieSearchPresenterTests: XCTestCase {
     }
     
     func test_didSelectRow_callsRouter() {
-        let indexPath = IndexPath()
-        
+        let indexPath = IndexPath(row: 0, section: 0)
+        sut.movieModel.append(Movie(id: 1, title: "", posterPath: Data(), summary: "", backdropPath: "", backdropPathData: nil))
+
         sut.didSelectRowAt(indexPath)
-        
+
         XCTAssertEqual(routerMock.calls, [.presentDetailViewController])
     }
     
@@ -63,7 +64,7 @@ final class MovieSearchPresenterTests: XCTestCase {
     }
     
     func test_onReceivedMovie_callsFillsMovieList() {
-        let movie = Movie(id: 235, title: "prueba", posterPath: Data())
+        let movie = Movie(id: 2, title: "", posterPath: Data(), summary: "", backdropPath: "", backdropPathData: nil)
         
         sut.onReceivedMovie(with: movie)
         

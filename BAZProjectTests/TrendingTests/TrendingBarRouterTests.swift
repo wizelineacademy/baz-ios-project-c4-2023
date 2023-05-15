@@ -27,7 +27,7 @@ final class TrendingBarRouterTests: XCTestCase {
         let initialController = TrendingBarViewControllerMock()
         let navigationControllerSpy = NavigationControllerSpy(rootViewController: initialController)
         
-        sut.presentDetailViewController(from: initialController)
+        sut.presentDetailViewController(from: initialController, withMovie: [])
         
         XCTAssert(navigationControllerSpy.pushedViewController is BAZProject.MovieDetailViewController)
     }

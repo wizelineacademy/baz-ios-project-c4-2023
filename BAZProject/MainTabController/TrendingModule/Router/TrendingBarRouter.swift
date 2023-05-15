@@ -30,10 +30,12 @@ final class TrendingBarRouter: TrendingBarRouterProtocol {
         viewController.navigationController?.pushViewController(searchViewController, animated: true)
     }
     
-    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?) {
+    func presentDetailViewController(from view: TrendingBarViewControllerProtocol?, withMovie movie: [MovieDetailModel]) {
         guard let viewController: UIViewController = view as? UIViewController else { return }
-        let emptyViewController = MovieDetailViewController()
-        viewController.navigationController?.pushViewController(emptyViewController, animated: true)
+        let movieDetailRouter: MovieDetailRouterProtocol = MovieDetailRouter()
+        let movieDetail = movieDetailRouter.createMovieDetailModule(withMovie: movie)
+        movieDetail.hidesBottomBarWhenPushed = true
+        viewController.navigationController?.pushViewController(movieDetail, animated: true)
     }
     
     func presentNextViewController(from view: TrendingBarViewControllerProtocol?, to nextView: UIViewController) {

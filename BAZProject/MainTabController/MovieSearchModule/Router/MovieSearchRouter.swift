@@ -23,9 +23,11 @@ final class MovieSearchRouter: MovieSearchRouterProtocol {
         return searchView
     }
     
-    func presentDetailViewController(from view: MovieSearchViewControllerProtocol?) {
+    func presentDetailViewController(from view: MovieSearchViewControllerProtocol?, withMovie movie: [MovieDetailModel]) {
         guard let viewController: UIViewController = view as? UIViewController else { return }
-        let emptyViewController = MovieDetailViewController()
-        viewController.navigationController?.pushViewController(emptyViewController, animated: true)
+        let movieDetailRouter: MovieDetailRouterProtocol = MovieDetailRouter()
+        let movieDetail = movieDetailRouter.createMovieDetailModule(withMovie: movie)
+        movieDetail.hidesBottomBarWhenPushed = true
+        viewController.navigationController?.pushViewController(movieDetail, animated: true)
     }
 }

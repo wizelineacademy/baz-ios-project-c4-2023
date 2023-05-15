@@ -23,7 +23,7 @@ extension TrendingBarInteractor: TrendingBarInteractorInputProtocol {
     func fetchImageFrom(_ movie: MovieResult) {
         remoteData?.requestImageData(urlString: "\(EndPointConstants.mediaEndPoint)\(movie.posterPath ?? "")", completion: { [weak self] data in
             guard let imageData = data else { return }
-            self?.presenter?.onReceivedMovie(with: Movie(id: movie.id ?? 0, title: movie.title ?? "", posterPath: imageData))
+            self?.presenter?.onReceivedMovie(with: Movie(id: movie.id ?? 0, title: movie.title ?? "", posterPath: imageData, summary: movie.overview ?? "", backdropPath: movie.backdropPath ?? "", backdropPathData: nil))
         })
     }
 }

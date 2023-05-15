@@ -57,8 +57,11 @@ struct MovieResult: Decodable {
     }
 }
 
-struct Movie {
+struct Movie: Codable {
     let id: Int
     let title: String
     let posterPath: Data
+    let summary: String
+    let backdropPath: String
+    let backdropPathData: Data?
 }
