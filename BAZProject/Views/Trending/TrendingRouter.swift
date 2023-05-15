@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TrendingRouter: TrendingRouterProtocol {
-
     class func createTrendingModule(withEntity entity: TrendingEntity = TrendingEntity()) -> UIViewController {
         let view = TrendingView()
         let presenter: TrendingPresenterProtocol & TrendingInteractorOutputProtocol = TrendingPresenter()
@@ -42,7 +41,6 @@ class TrendingRouter: TrendingRouterProtocol {
         if let view = view as? TrendingView {
             view.present(viewToPresent, animated: true)
         }
-            
     }
     
     func goToDetail(for movie: Movie, from view: TrendingViewProtocol?) {

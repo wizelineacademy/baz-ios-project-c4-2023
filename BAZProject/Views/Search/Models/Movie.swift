@@ -31,7 +31,6 @@ public struct Movie: CellPersonalizedTableViewProtocol, StorableObject {
         let urlConfiguration = URLConfiguration(strHost: "image.tmdb.org", path: .image(strFile: poster_path))
         return urlConfiguration
     }
-    
     public var strDate: String? {
         return String.localizedStringWithFormat(NSLocalizedString("Release date: %@", comment: "Release date: %@"), release_date ?? "")
     }

@@ -11,15 +11,8 @@ public struct EmptySearch: CellPersonalizedTableViewProtocol {
     public var strTitle: String {
         return NSLocalizedString("No results found", comment: "No results found")
     }
-    
-    public var strOverView: String? {
-        return nil
-    }
-    
-    public var urlConfiguration: URLConfiguration? {
-        return nil
-    }
-    
+    public var strOverView: String?
+    public var urlConfiguration: URLConfiguration?
     public var strDate: String?
     
     public init() {}

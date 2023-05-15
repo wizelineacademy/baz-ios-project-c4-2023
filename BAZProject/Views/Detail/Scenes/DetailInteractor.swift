@@ -33,7 +33,6 @@ public class DetailInteractor {
 }
 
 extension DetailInteractor: DetailBusinessLogic {
-    
     public func getCurrentData() {
         guard let iMovieId = entity?.movie.id else {
             presenter?.serviceDidFailed(with: .badParameter)

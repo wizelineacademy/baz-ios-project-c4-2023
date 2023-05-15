@@ -9,7 +9,6 @@
 import Foundation
 
 public class TrendingInteractor: TrendingInteractorInputProtocol {
-
     // MARK: Properties
     weak public var presenter: TrendingInteractorOutputProtocol?
     public var serviceApi: NetworkingProtocol?
@@ -76,5 +75,4 @@ public class TrendingInteractor: TrendingInteractorInputProtocol {
         entity?.updateMovies(with: arrMovies)
         presenter?.serviceRespondedSuccess()
     }
-    
 }

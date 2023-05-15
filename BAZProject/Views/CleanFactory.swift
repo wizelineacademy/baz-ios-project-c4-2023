@@ -8,7 +8,6 @@
 import UIKit
 
 final class CleanFactory {
-    
     private init() {}
     
     static func createSearchModule() -> UIViewController {

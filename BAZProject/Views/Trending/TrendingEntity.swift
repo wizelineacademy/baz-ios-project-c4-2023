@@ -9,7 +9,6 @@
 import Foundation
 
 public struct TrendingEntity {
-    
     var strNavBarTitle: String = NSLocalizedString("Trending", comment: "Trending")
     private var arrMovies: [Movie]?
     

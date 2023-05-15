@@ -8,7 +8,6 @@
 import UIKit
 
 public class ReviewTableViewCell: UITableViewCell {
-    
     @IBOutlet public weak var lblReview: UILabel!
     @IBOutlet weak var lblAuthor: UILabel!
     
@@ -18,7 +17,7 @@ public class ReviewTableViewCell: UITableViewCell {
         lblAuthor.text = ""
     }
     
-    func set(info review: CellPersonalizedTableViewProtocol){
+    func set(info review: CellPersonalizedTableViewProtocol) {
         lblReview.text = review.strOverView
         lblAuthor.text = review.strTitle
     }

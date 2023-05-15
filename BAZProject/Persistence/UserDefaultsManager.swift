@@ -34,7 +34,6 @@ public class UserDefaultsManager: PersistenceProtocol {
         let arrNew = arrSaved.filter { objInArray in
             return objInArray.id != objInfo.id
         }
-        
         saveList(arrNew)
     }
     

@@ -22,7 +22,6 @@ public class SearchInteractor {
         self.presenter = presenter
         self.networkingSearch = networkingSearch
     }
-    
 }
 
 extension SearchInteractor: SearchBusinessLogic {
@@ -31,7 +30,6 @@ extension SearchInteractor: SearchBusinessLogic {
             presenter?.search(FailedWith: .invalidString)
             return
         }
-        
         searchMovies(withParams: strQuery)
     }
     
@@ -57,8 +55,6 @@ extension SearchInteractor: SearchBusinessLogic {
                 }
             }
         }
-        
-        
         presenter?.searchDidBrougntResults(in: arrMovies ?? [Movie]())
     }
 }

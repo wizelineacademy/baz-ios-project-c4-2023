@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public class TrendingPresenter {
-    
     // MARK: Properties
     weak public var view: TrendingViewProtocol?
     public var interactor: TrendingInteractorInputProtocol?
@@ -21,7 +20,6 @@ public class TrendingPresenter {
         self.interactor = interactor
         self.router = router
     }
-    
 }
 
 extension TrendingPresenter: TrendingPresenterProtocol {

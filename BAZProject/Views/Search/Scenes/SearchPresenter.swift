@@ -25,13 +25,10 @@ public class SearchPresenter {
 extension SearchPresenter: SearchPresentationLogic {
     public func search(FailedWith error: SearchEnumError) {
         view?.placeInLabel(message: error.getString())
-        
     }
     
     public func searchDidBrougntResults(in arrResults: [CellPersonalizedTableViewProtocol]) {
         view?.placeInLabel(message: "")
-        
         view?.showResults(in: arrResults.isEmpty ? [EmptySearch()] : arrResults)
-        
     }
 }
