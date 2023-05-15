@@ -19,17 +19,9 @@ public struct Review: CellPersonalizedTableViewProtocol {
     public var strTitle: String {
         return strAuthor ?? ""
     }
-    
     public var strOverView: String? {
         return strReview
     }
-    
-    public var strDate: String? {
-        return nil
-    }
-    
-    public var urlConfiguration: URLConfiguration? {
-        return nil
-    }
-    
+    public var strDate: String?
+    public var urlConfiguration: URLConfiguration?
 }

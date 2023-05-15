@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Cast: CellPersonalizedTableViewProtocol {
-    
     var strName: String?
     var strProfilePath: String?
     var strCharacter: String?
@@ -22,15 +21,10 @@ public struct Cast: CellPersonalizedTableViewProtocol {
     public var strTitle: String {
         return strName ?? ""
     }
-    
-    public var strOverView: String? {
-        return nil
-    }
-    
+    public var strOverView: String?
     public var strDate: String? {
         return strCharacter
     }
-    
     public var urlConfiguration: URLConfiguration? {
         let urlConfiguration = URLConfiguration(strHost: "image.tmdb.org", path: .image(strFile: strProfilePath ?? ""))
         return urlConfiguration

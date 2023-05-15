@@ -16,25 +16,22 @@ public protocol SearchDisplayLogic: AnyObject {
 
 public class SearchViewController: UIViewController {
     public var interactor: SearchBusinessLogic?
-    private var arrCellInfo: [CellPersonalizedTableViewProtocol]?{
+    private var arrCellInfo: [CellPersonalizedTableViewProtocol]? {
         didSet {
             tblResults.reloadData()
         }
     }
-    
     @IBOutlet public weak var txfSearch: UITextField! {
         didSet {
             txfSearch.placeholder = NSLocalizedString("Search by movie or artist", comment: "Search by movie or artist")
             txfSearch.delegate = self
         }
     }
-    
     @IBOutlet public weak var lblErrorMessage: UILabel! {
         didSet {
             lblErrorMessage.text = ""
         }
     }
-    
     @IBOutlet public weak var tblResults: UITableView! {
         didSet {
             tblResults.dataSource = self

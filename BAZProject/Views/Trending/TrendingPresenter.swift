@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public class TrendingPresenter {
-    
     // MARK: Properties
     weak public var view: TrendingViewProtocol?
     public var interactor: TrendingInteractorInputProtocol?
@@ -21,7 +20,6 @@ public class TrendingPresenter {
         self.interactor = interactor
         self.router = router
     }
-    
 }
 
 extension TrendingPresenter: TrendingPresenterProtocol {
@@ -78,6 +76,11 @@ extension TrendingPresenter: TrendingPresenterProtocol {
             self?.interactor?.getMovies(withFilter: .upcoming)
         }
         alert.addAction(upcomingAction)
+        let favoriteAction = UIAlertAction(title: NSLocalizedString("Favorites", comment: "Favorites"), style: .default) { [weak self] _ in
+            self?.view?.setNavigationTitle(for: NSLocalizedString("Favorites", comment: "Favorites"))
+            self?.interactor?.getMovies(withFilter: nil)
+        }
+        alert.addAction(favoriteAction)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel)
         alert.addAction(cancelAction)
         return alert

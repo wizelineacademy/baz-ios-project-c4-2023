@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TrendingView: UIViewController {
-
     // MARK: Properties
     var presenter: TrendingPresenterProtocol?
     @IBOutlet weak var tblMovies: UITableView! {
@@ -64,8 +63,6 @@ extension TrendingView: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-    
 }
 
 extension TrendingView: UITableViewDelegate {

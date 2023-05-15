@@ -19,12 +19,16 @@ final class DetailInteractorTest: XCTestCase {
     private var arrSimilar: [CellPersonalizedTableViewProtocol]?
     private var arrReviews: [CellPersonalizedTableViewProtocol]?
     private var arrCast: [CellPersonalizedTableViewProtocol]?
+    private var mockPersistence: MockPersistence!
+    private var bIsFavorite: Bool = false
     
     override func setUp() {
         super.setUp()
         sut = DetailInteractor()
         sut?.presenter = self
         testMovie = Movie(id: 1, title: "Prueba de inyección", poster_path: "/Kohane.jpg", overview: "No hay", release_date: "2023-12-14")
+        mockPersistence = MockPersistence()
+        sut?.favorite = FavoriteSavingManager(persistence: mockPersistence)
     }
     
     override func tearDown() {
@@ -149,13 +153,22 @@ final class DetailInteractorTest: XCTestCase {
         XCTAssertNotNil(arrCast?.first?.strDate)
         XCTAssertNotNil(arrCast?.first?.urlConfiguration)
         XCTAssertNil(arrCast?.first?.strOverView)
-        
+    }
+    
+    func testMovieIsSaved() {
+        //Given
+        sut?.setUpEntity(withMovie: testMovie)
+        //When
+        sut?.buttonWasTouched()
+        //Then
+        XCTAssertTrue(sut?.bIsFavorite ?? false)
     }
 }
 
 extension DetailInteractorTest: DetailPresentationLogic {
-    func currentInfo(movie: CellPersonalizedTableViewProtocol?) {
+    func currentInfo(movie: CellPersonalizedTableViewProtocol?, isFavorite: Bool) {
         self.movie = movie
+        bIsFavorite = isFavorite
     }
     
     func serviceDidFailed(with error: ErrorApi) {
