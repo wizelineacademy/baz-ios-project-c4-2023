@@ -11,9 +11,9 @@ import Foundation
 
 class UserDefaultsFake: UserDefaultsProtocol {
     
-    var fakeMoview: [Int : Movie]
+    var fakeMoview: [Int : Movie]?
     
-    init(fakeMoview: [Int : Movie]){
+    init(fakeMoview: [Int : Movie]?){
         self.fakeMoview = fakeMoview
     }
     

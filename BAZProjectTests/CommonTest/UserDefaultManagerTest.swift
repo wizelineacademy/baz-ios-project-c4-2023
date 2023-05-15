@@ -47,7 +47,11 @@ final class UserDefaultManagerTest: XCTestCase {
         XCTAssertEqual(fakeUserDefault.fakeMoview, [1234 : movie])
     }
      
-    
+    func test_deleteDicitonay(){
+        sut.deleteFavorite(1234)
+        fakeUserDefault.fakeMoview = nil
+        XCTAssertNil(sut.getFavorite(id: 1234))
+    }
 
     
 }
