@@ -10,11 +10,15 @@ import UIKit
 // Custom cell for show all movies in a Collection View
 final class MoviesCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var movieFavButton: UIButton!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
+    var subscribeButtonAction : (() -> ())?
+
+    var movieData: Movie? = nil
+    var storeUserDefaults: MoviesStorageProtocol? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func prepareForReuse() {
@@ -22,5 +26,23 @@ final class MoviesCollectionViewCell: UICollectionViewCell {
         movieImage.image = nil
         movieTitle.text = nil
     }
-
+    
+    var titleLabel: String = "" {
+        didSet{
+            movieTitle.text = titleLabel
+        }
+    }
+   
+    var image: UIImage = UIImage() {
+        didSet{
+            movieImage.image = image
+        }
+    }
+    
+    @IBAction func favButton(_ sender: UIButton) {
+        guard let movieFav = movieData else {
+            return
+        }
+        subscribeButtonAction?()
+    }
 }

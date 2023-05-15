@@ -23,6 +23,11 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomeViewOutputProtocol {
+    /// call to intercator for set one movie to favs
+    func storeFav(movieFav: Movie) {
+        interactor.storeFav(movieFav: movieFav)
+    }
+    
     func pushSearchViewController(view: UIViewController) {
         /// conection between view and presenter for push a Search VC
         /// - Parameters:
@@ -42,10 +47,10 @@ extension HomePresenter: HomeViewOutputProtocol {
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
-    func presenterCategories(movies: [MovieProtocol], section: Int) {
+    func presenterCategories(movies: [Movie], section: Int) {
         /// Conection between interactor and presenter to share movie information to the view
         /// - Parameters:
-        ///   - movies: a [MovieProtocol]
+        ///   - movies: a [Movie]
         ///   - section: the section where the information will be displayed
         view?.showCategories(movies: movies, section: section)
     }

@@ -13,3 +13,5 @@ protocol MovieProtocol: Decodable {
     var title: String? { get }
     var poster_path: String? { get }
 }
+
+

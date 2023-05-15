@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,6 +30,22 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANW-Ii-T09">
+                        <rect key="frame" x="140" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="JXq-6R-2Ta"/>
+                            <constraint firstAttribute="height" constant="40" id="uIJ-rv-ZzM"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal">
+                            <imageReference key="image" image="suit.heart" catalog="system" symbolScale="medium"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                        </state>
+                        <connections>
+                            <action selector="favButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="1Z3-Og-j7d"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -36,6 +53,8 @@
                 <constraint firstItem="s1w-LL-M9I" firstAttribute="top" secondItem="egc-NP-CSs" secondAttribute="bottom" constant="6" id="1lO-Ey-rzV"/>
                 <constraint firstItem="egc-NP-CSs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="5tG-5L-UtC"/>
                 <constraint firstItem="s1w-LL-M9I" firstAttribute="top" secondItem="egc-NP-CSs" secondAttribute="bottom" constant="6" id="6eD-bZ-MUd"/>
+                <constraint firstAttribute="trailing" secondItem="ANW-Ii-T09" secondAttribute="trailing" id="9Ma-w9-05A"/>
+                <constraint firstItem="ANW-Ii-T09" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="CHs-b7-1Nz"/>
                 <constraint firstItem="s1w-LL-M9I" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="OAG-es-vSE"/>
                 <constraint firstAttribute="trailing" secondItem="egc-NP-CSs" secondAttribute="trailing" constant="10" id="OrI-sT-Gzq"/>
                 <constraint firstAttribute="trailing" secondItem="s1w-LL-M9I" secondAttribute="trailing" constant="10" id="T32-nC-QTU"/>
@@ -44,10 +63,14 @@
                 <constraint firstItem="egc-NP-CSs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="y1h-Gv-r3N"/>
             </constraints>
             <connections>
+                <outlet property="movieFavButton" destination="ANW-Ii-T09" id="vD0-xG-mVg"/>
                 <outlet property="movieImage" destination="egc-NP-CSs" id="uno-of-TS3"/>
                 <outlet property="movieTitle" destination="s1w-LL-M9I" id="Kdk-v7-2jV"/>
             </connections>
             <point key="canvasLocation" x="-26" y="20"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="suit.heart" catalog="system" width="128" height="107"/>
+    </resources>
 </document>
