@@ -8,7 +8,7 @@
 import Foundation
 ///Protocolo para implementar una llamada al Api MovieDB
 protocol GenericAPIProtocol {
-    func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void)
+    func fetch<T: Decodable>(movieURLRequest: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void)
     func decode<T: Decodable>(data: Data?, decoder: JSONDecoder) -> T?
 }
 
@@ -18,8 +18,8 @@ extension GenericAPIProtocol {
     ///    - request: Request  a consumir
     /// - returns:
     ///   Devuelve un Result con <Modelo, error>
-    func fetch<T: Decodable>(request: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void) {
-        URLSession.shared.dataTask(with: request) { data, response, error in
+    func fetch<T: Decodable>(movieURLRequest: URLRequest, completionHandler: @escaping (Result<T?, Error>) -> Void) {
+        URLSession.shared.dataTask(with: movieURLRequest) { data, response, error in
             if let decodedResponse: T = self.decode(data: data) {
                 DispatchQueue.main.async {
                     completionHandler(.success(decodedResponse))

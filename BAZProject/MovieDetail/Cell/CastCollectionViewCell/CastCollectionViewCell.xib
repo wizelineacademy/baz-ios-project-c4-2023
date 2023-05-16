@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CastCollectionViewCell" id="gTV-IL-0wX" customClass="CastCollectionViewCell" customModule="BAZProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="214" height="220"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="214" height="220"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-8t-tWG">
+                        <rect key="frame" x="0.0" y="0.0" width="214" height="220"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zWR-1H-vbG">
+                                <rect key="frame" x="67" y="45.666666666666664" width="80" height="77.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Ly7-hL-7e3"/>
+                                    <constraint firstAttribute="width" constant="80" id="tvC-YY-GuD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf0-ms-E0w">
+                                <rect key="frame" x="0.0" y="108" width="214" height="112"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qf0-ms-E0w" secondAttribute="trailing" id="4aA-wB-hY2"/>
+                            <constraint firstItem="Qf0-ms-E0w" firstAttribute="leading" secondItem="QmI-8t-tWG" secondAttribute="leading" id="83e-ge-Xu2"/>
+                            <constraint firstItem="zWR-1H-vbG" firstAttribute="baseline" secondItem="QmI-8t-tWG" secondAttribute="centerY" id="SWs-Gm-L4i"/>
+                            <constraint firstAttribute="bottom" secondItem="Qf0-ms-E0w" secondAttribute="bottom" id="aMB-3q-4yu"/>
+                            <constraint firstItem="zWR-1H-vbG" firstAttribute="centerX" secondItem="QmI-8t-tWG" secondAttribute="centerX" id="obE-7z-QzO"/>
+                            <constraint firstItem="Qf0-ms-E0w" firstAttribute="top" secondItem="zWR-1H-vbG" secondAttribute="bottom" constant="-16" id="riR-g7-6WX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QmI-8t-tWG" secondAttribute="trailing" id="Tti-U0-wXK"/>
+                <constraint firstAttribute="bottom" secondItem="QmI-8t-tWG" secondAttribute="bottom" id="g3f-0m-oQI"/>
+                <constraint firstItem="QmI-8t-tWG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qbw-tJ-tjq"/>
+                <constraint firstItem="QmI-8t-tWG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yik-Cm-Kre"/>
+            </constraints>
+            <size key="customSize" width="214" height="220"/>
+            <connections>
+                <outlet property="imgActor" destination="zWR-1H-vbG" id="EJb-Wr-hVw"/>
+                <outlet property="lblName" destination="Qf0-ms-E0w" id="K4N-jy-Jns"/>
+            </connections>
+            <point key="canvasLocation" x="190.83969465648855" y="9.1549295774647899"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
