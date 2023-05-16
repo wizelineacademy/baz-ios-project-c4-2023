@@ -17,6 +17,7 @@ protocol MovieViewProtocol: AnyObject {
 
 protocol MovieRouterProtocol: AnyObject {
     static func createModule(endpoint: Endpoint) -> UIViewController
+    func goToMovieDetail(of movieID: Int, from view: UIViewController)
 }
 
 protocol MoviePresenterProtocol: AnyObject {
@@ -26,6 +27,7 @@ protocol MoviePresenterProtocol: AnyObject {
     var movies: [Movie]? { get set }
     
     func notifyViewLoaded()
+    func goToMovieDetail(of index: IndexPath, from view: UIViewController)
 }
 
 protocol MovieInteractorOutputProtocol: AnyObject {
@@ -39,8 +41,6 @@ protocol MovieInteractorInputProtocol: AnyObject {
     func fetchMovies()
 }
 
-protocol MovieDataManagerInputProtocol: AnyObject {
-}
 
 protocol MovieRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: MovieRemoteDataManagerOutputProtocol? { get set }
@@ -50,4 +50,6 @@ protocol MovieRemoteDataManagerInputProtocol: AnyObject {
 
 protocol MovieRemoteDataManagerOutputProtocol: AnyObject {
     func moviesFetched(_ movies: [Movie])
+    
+    func handleService(error: Error)
 }

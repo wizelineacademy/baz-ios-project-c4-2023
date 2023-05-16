@@ -12,12 +12,14 @@ import Foundation
 enum MovieMainInteractorMockCalls {
     case fetchMovies
     case moviesFetched
+    case handleService
 }
 
 final class MovieInteractorMock: MovieInteractorInputProtocol, MovieRemoteDataManagerOutputProtocol {
-    
+
     var presenter: MovieInteractorOutputProtocol?
     var remoteDatamanager: MovieRemoteDataManagerInputProtocol?
+    var catchedError: ServiceError?
     var calls: [MovieMainInteractorMockCalls] = []
     
     func fetchMovies() {
@@ -28,5 +30,9 @@ final class MovieInteractorMock: MovieInteractorInputProtocol, MovieRemoteDataMa
         calls.append(.moviesFetched)
     }
     
+    func handleService(error: Error) {
+        self.catchedError = (error as? ServiceError)
+        calls.append(.handleService)
+    }
 }
 

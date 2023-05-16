@@ -58,7 +58,6 @@ final class MoviePresenterTests: XCTestCase {
         XCTAssertEqual(sut?.movies?.count, 0)
         XCTAssertTrue(viewMock.reloadDataWasCalled)
     }
-
 }
 
 

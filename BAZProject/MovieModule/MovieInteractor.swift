@@ -24,5 +24,9 @@ extension  MovieInteractor: MovieRemoteDataManagerOutputProtocol {
     func moviesFetched(_ movies: [Movie]) {
         self.presenter?.moviesFetched(movies: movies)
     }
+    
+    func handleService(error: Error) {
+        print(error)
+    }
 }
 
