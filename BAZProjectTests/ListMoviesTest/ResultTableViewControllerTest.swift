@@ -9,10 +9,17 @@ import XCTest
 @testable import BAZProject
 
 final class ResultTableViewControllerTest: XCTestCase {
+    
+    ///Sut
     private var sut: ResultsTableController!
+    
+    ///Fake list movie
     private var fakeMovies: [ListMovieProtocol]!
+    
+    ///Fake movie Api
     private var fakeApi: FakeMovieApi!
     
+    ///Inicializador de las variables para las unit Test
     override func setUp() {
         super.setUp()
         sut = ResultsTableController()
@@ -20,12 +27,14 @@ final class ResultTableViewControllerTest: XCTestCase {
         fakeApi = FakeMovieApi(resultType: .sucess)
     }
     
+    ///Se  alimina la instancia de las variables para el test
     override func tearDown() {
         super.tearDown()
         sut = nil
         fakeMovies = nil
     }
     
+    ///Test que evalua que lel numero de elementos de la vista sea correcto
     func test_numberOfRowsInSection(){
         guard let url = MovieCategories.topRated.urlRequest else { return }
         fakeApi.fetch(request: url) {[weak self] (result: Result<MovieResult?, Error>) in
@@ -42,6 +51,7 @@ final class ResultTableViewControllerTest: XCTestCase {
         
     }
     
+    ///Test que evalua que la celda del table view controller se crea correctamente 
     func test_tableViewCellForRowAt(){
         guard let url = MovieCategories.topRated.urlRequest else { return }
         fakeApi.fetch(request: url) {[weak self] (result: Result<MovieResult?, Error>) in

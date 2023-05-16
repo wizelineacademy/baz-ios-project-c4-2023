@@ -37,8 +37,6 @@
 		4C9E3F6829F6DE94000B7A96 /* MoviesInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F6729F6DE94000B7A96 /* MoviesInteractorMock.swift */; };
 		4C9E3F6A29F6DFD3000B7A96 /* MoviesRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F6929F6DFD3000B7A96 /* MoviesRouterMock.swift */; };
 		4C9E3F6C29F6FBB8000B7A96 /* MoviesPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F6B29F6FBB8000B7A96 /* MoviesPresenterMock.swift */; };
-		4C9E3F6F29F70C4E000B7A96 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F6E29F70C4E000B7A96 /* NavigationControllerSpy.swift */; };
-		4C9E3F7129F70CB5000B7A96 /* UIVIewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F7029F70CB5000B7A96 /* UIVIewControllerSpy.swift */; };
 		4C9E3F7429F711CC000B7A96 /* FakeMovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F7329F711CC000B7A96 /* FakeMovieApi.swift */; };
 		4C9E3F7729F711E6000B7A96 /* movieResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E3F7629F711E6000B7A96 /* movieResult.json */; };
 		4C9E3F7B29F72054000B7A96 /* TrendingMoviesInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E3F7A29F72054000B7A96 /* TrendingMoviesInteractorTest.swift */; };
@@ -117,8 +115,6 @@
 		4C9E3F6729F6DE94000B7A96 /* MoviesInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInteractorMock.swift; sourceTree = "<group>"; };
 		4C9E3F6929F6DFD3000B7A96 /* MoviesRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRouterMock.swift; sourceTree = "<group>"; };
 		4C9E3F6B29F6FBB8000B7A96 /* MoviesPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenterMock.swift; sourceTree = "<group>"; };
-		4C9E3F6E29F70C4E000B7A96 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
-		4C9E3F7029F70CB5000B7A96 /* UIVIewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerSpy.swift; sourceTree = "<group>"; };
 		4C9E3F7329F711CC000B7A96 /* FakeMovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMovieApi.swift; sourceTree = "<group>"; };
 		4C9E3F7629F711E6000B7A96 /* movieResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movieResult.json; sourceTree = "<group>"; };
 		4C9E3F7A29F72054000B7A96 /* TrendingMoviesInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesInteractorTest.swift; sourceTree = "<group>"; };
@@ -321,15 +317,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		4C9E3F6D29F70C1D000B7A96 /* Spies */ = {
-			isa = PBXGroup;
-			children = (
-				4C9E3F6E29F70C4E000B7A96 /* NavigationControllerSpy.swift */,
-				4C9E3F7029F70CB5000B7A96 /* UIVIewControllerSpy.swift */,
-			);
-			path = Spies;
-			sourceTree = "<group>";
-		};
 		4C9E3F7229F7119A000B7A96 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				4C9E3F7229F7119A000B7A96 /* Fakes */,
-				4C9E3F6D29F70C1D000B7A96 /* Spies */,
 				4C56782829F6D94D00D5FA23 /* Moks */,
 			);
 			path = TestUtils;
@@ -576,7 +562,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C9E3F6F29F70C4E000B7A96 /* NavigationControllerSpy.swift in Sources */,
 				4C9E3F7B29F72054000B7A96 /* TrendingMoviesInteractorTest.swift in Sources */,
 				4C56782A29F6D97800D5FA23 /* MoviesViewControllerMock.swift in Sources */,
 				4C9E3F8129F84B37000B7A96 /* ApiTest.swift in Sources */,
@@ -593,7 +578,6 @@
 				4C9E3F6829F6DE94000B7A96 /* MoviesInteractorMock.swift in Sources */,
 				4C17BCCE2A08A16F00818551 /* MovieDetailPresenterMock.swift in Sources */,
 				4C17BCDB2A08A7FB00818551 /* MovieDetailRouterTest.swift in Sources */,
-				4C9E3F7129F70CB5000B7A96 /* UIVIewControllerSpy.swift in Sources */,
 				4CF0C3252A09CB730019C219 /* EntitiTest.swift in Sources */,
 				4CAAB1792A104752000E6612 /* UserDefaultFake.swift in Sources */,
 				4C56782729F6D8D500D5FA23 /* TrendingMoviesPresenterTest.swift in Sources */,

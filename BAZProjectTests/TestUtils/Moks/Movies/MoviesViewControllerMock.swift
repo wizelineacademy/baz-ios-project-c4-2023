@@ -24,6 +24,14 @@ final class MoviesViewControllerMock: UIViewController, MoviesViewProtocol{
     var searchResultMovies: [BAZProject.ListMovieProtocol]
     
     
+    
+    ///incializador de  MoviesViewControllerMock
+    /// - parameters:
+    ///    - presenter: presneter  con que se inicializa MoviesViewControllerMock
+    ///    - resultsTableController: resultsTableController  que contien el MoviesViewControllerMock
+    ///    - restoredState:restoredState  que contien el MoviesViewControllerMock
+    ///    - movies: movies  que contien el MoviesViewControllerMock
+    ///    - searchResultMovies: searchResultMovies  que contien el MoviesViewControllerMock
     init(presenter: BAZProject.MoviesPresenterProtocol? = nil,
          resultsTableController: BAZProject.ResultsTableController? = nil,
          restoredState: BAZProject.RestorableStateProtocol,
@@ -44,10 +52,12 @@ final class MoviesViewControllerMock: UIViewController, MoviesViewProtocol{
         fatalError("init(coder:) has not been implemented")
     }
 
+    ///metodo que llama loadData del view
     func loadData(movies: [BAZProject.ListMovieProtocol]) {
         calls.append(.loadData)
     }
     
+    ///metodo que llama loadSearchData del view
     func loadSearchData(movies: [BAZProject.ListMovieProtocol]) {
         calls.append(.loadSearchData)
     }

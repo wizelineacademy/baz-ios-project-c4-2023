@@ -9,11 +9,14 @@ import XCTest
 @testable import BAZProject
 
 final class TrendingMoviesViewControllerTest: XCTestCase {
-
+    
+    ///Sut
     private var sut: MoviesViewController!
 
+    ///Fake Movie lis
     private var movies: [ListMovieProtocol]!
     
+    ///Inicializador de las variables para las unit Test
     override func setUp() {
         super.setUp()
         
@@ -26,11 +29,13 @@ final class TrendingMoviesViewControllerTest: XCTestCase {
        
     }
     
+    ///Se  alimina la instancia de las variables para el test
     override func tearDown() {
         super.tearDown()
         sut = nil
     }
     
+    ///Test que evalua que la lista de peliculas se actualiza correctamente
     func test_loadData_callsInteractor() {
         sut.loadData(movies: movies)
         sut.loadView()
@@ -38,6 +43,7 @@ final class TrendingMoviesViewControllerTest: XCTestCase {
         
     }
     
+    ///Test que evalua que la lista de peliculas se actualiza correctamente
     func test_loadSearchData() {
         sut.loadSearchData(movies: movies)
         sut.loadView()

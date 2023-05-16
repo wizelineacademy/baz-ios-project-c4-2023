@@ -13,9 +13,12 @@ enum MovieDetailRouterCalls{
    
 }
 
+///Clase mock de MovieDetailPresenter
 final class MovieDetailRouterMock: MoviewDetailWireframeProtocol{
+    
     var calls: [MoviesPresenterCalls] = []
     
+    ///metodo que llama sendToReviews del router
     func sendToReviews(reviews: [BAZProject.Review]) {
         calls.append(.setMovies)
     }

@@ -10,16 +10,28 @@ import XCTest
 
 final class MovieDetailInteractorTest: XCTestCase {
     
+    ///Sut
     var sut: MovieDetailInteractor!
+    
+    ///MovieApi Fake
     private var fakeMovieApi: FakeMovieApi!
+    
+    ///Fake Presenter
     private var fakePresenter: MovieDetailPresenterMock!
+    
+    ///Real Presenter
     private var presenter: MovieDetailPresenter!
+    
+    ///Fake view
     private var view: MoviewDetailViewProtocol!
     
+    ///movies Fake
     private var movies: Movie = Movie(id: 1, title: "ejemplo", posterPath: "ejemplo", adult: false, backdropPath: "ejemplo", genreIDS: [1,2,3], originalLanguage: "ejemplo", originalTitle: "ejemplo", overview: "ejemplo", popularity: 90.0, releaseDate: "ejemplo", video: false, voteAverage: 9.0, voteCount: 10)
+    
+    ///Lista fake de movies
     private var listMovie: [Movie]!
     
-    
+    ///Inicializador de las variables para las unit Test
     override func setUp() {
         fakeMovieApi = FakeMovieApi(resultType: .sucess)
         sut = MovieDetailInteractor(movieAPI: fakeMovieApi, userDefault: UserDefaultManager())
@@ -31,14 +43,19 @@ final class MovieDetailInteractorTest: XCTestCase {
         sut.presenter = fakePresenter
     }
     
+    ///Se  alimina la instancia de las variables para el test
     override func tearDown() {
         sut = nil
         fakePresenter = nil
         listMovie = nil
+        fakeMovieApi = nil
+        presenter = nil
+        view = nil
+        listMovie = nil
     }
     
 
-    
+    ///Test que evalua que el metodo Similiar_result  del interactor envie la informacion al presenter
     func test_Similiar_result_success() {
         let movieResult = MovieResult(results: listMovie)
 
@@ -49,6 +66,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertTrue(fakePresenter.calls.contains(.setSimilarMovies))
     }
 
+    ///Test que evalua que el metodo Similiar_result  del interactor envie la informacion al presenter
     func test_Similiar_result_failure() {
         let resultError:Result<MovieResult?, Error> = .failure(ApiError.defaultError)
         
@@ -57,6 +75,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertFalse(fakePresenter.calls.contains(.setSimilarMovies))
     }
     
+    ///Test que evalua que el metodo handlerGetRecomendMovieResult  del interactor envie la informacion al presenter
     func test_handlerGetRecomendMovieResult() {
         
         let movieResult = MovieResult(results: listMovie)
@@ -69,6 +88,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         
     }
     
+    ///Test que evalua que el metodo handlerGetRecomendMovieResult  del interactor envie la informacion al presenter
     func test_handlerGetRecomendMovieResult_failure() {
         let resultError:Result<MovieResult?, Error> = .failure(ApiError.defaultError)
         
@@ -77,7 +97,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertFalse(fakePresenter.calls.contains(.setRecomendedMovies))
     }
     
-    
+    ///Test que evalua que el metodo handlerGetCastResult  del interactor envie la informacion al presenter
     func test_handlerGetCastResult(result: Result<CastResult?, Error>) {
         
         let cast = [Cast(adult: false, gender: 0, id: 0, knownForDepartment: "ejemplo", name: "ejemplo", originalName: "ejemplo", popularity: 0.0, creditID: "ejemplo")]
@@ -91,6 +111,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertTrue(fakePresenter.calls.contains(.setCast))
     }
     
+    ///Test que evalua que el metodo handlerGetCastResult  del interactor envie la informacion al presenter
     func test_handlerGetCastResult_failure() {
         let resultError:Result<CastResult?, Error> = .failure(ApiError.defaultError)
         
@@ -99,6 +120,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertFalse(fakePresenter.calls.contains(.setCast))
     }
     
+    ///Test que evalua que el metodo handlerGetReviewResult  del interactor envie la informacion al presenter
     func test_handlerGetReviewResult(result: Result<ReviewResult?, Error>) {
         let autor = AuthorDetails(name: "ejemplo", username: "ejemplo")
         let review = [Review(author: "ejemplo", authorDetails: autor, content: "ejemplo", createdAt: "ejemplo", id: "ejemplo", updatedAt: "ejemplo", url: "ejemplo")]
@@ -112,6 +134,7 @@ final class MovieDetailInteractorTest: XCTestCase {
         XCTAssertTrue(fakePresenter.calls.contains(.setReviews))
     }
     
+    ///Test que evalua que el metodo handlerGetReviewResult  del interactor envie la informacion al presenter
     func test_handlerGetReviewResult_failure() {
         let resultError:Result<ReviewResult?, Error> = .failure(ApiError.defaultError)
         

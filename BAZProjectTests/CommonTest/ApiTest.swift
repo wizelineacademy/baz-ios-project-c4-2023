@@ -8,28 +8,36 @@
 import XCTest
 @testable import BAZProject
 
+///Clase que implementa las prubeas unitarias de MovieApi
 final class ApiTest: XCTestCase {
-
+    
+    ///Movie fake
     private var fakeMovies: [ListMovieProtocol]!
+    
+    ///Sut
     private var sut: FakeMovieApi!
     
+    ///Metodo Inicializador de variables para las pruebas unitarias
     override func setUp() {
         super.setUp()
         fakeMovies = []
         sut = FakeMovieApi(resultType: .sucess)
     }
     
+    ///Metodo que desinicializa  de variables para las pruebas unitarias
     override func tearDown() {
         super.tearDown()
         sut = nil
         fakeMovies = nil
     }
     
+    ///Test del enum de errores de MovieDB
     func test_ErrorApis(){
         let error = ApiError.defaultError
         XCTAssertEqual(error.localizedDescription, "Error por defecto")
     }
     
+    ///Test del metodo fetch para la llamada a MovieDB
     func test_apicall_retrunSucess(){
         let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
         guard let url = MovieCategories.topRated.urlRequest else { return }
@@ -47,23 +55,30 @@ final class ApiTest: XCTestCase {
     
 }
 
-final class ApiTestError: XCTestCase {
-
+///clase que implementa los test para los endpoinst de Movie DB
+final class ApiTestEndpoints: XCTestCase {
+    
+    ///Movie fake
     private var fakeMovies: [ListMovieProtocol]!
+    
+    //Sut
     private var sut: FakeMovieApi!
     
+    ///Metodo que desinicializa  de variables para las pruebas unitarias
     override func setUp() {
         super.setUp()
         fakeMovies = []
         sut = FakeMovieApi(resultType: .fail(ApiError.defaultError))
     }
     
+    ///Metodo que desinicializa  de variables para las pruebas unitarias
     override func tearDown() {
         super.tearDown()
         sut = nil
         fakeMovies = nil
     }
     
+    ///Test de error en el api de Movie DB
     func test_apicall_retrunError(){
         let expectation = XCTestExpectation(description: "Wait for getRemoteImage completion")
         guard let url = MovieCategories.topRated.urlRequest else { return }
@@ -79,6 +94,7 @@ final class ApiTestError: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    ///Test que implementa el retorno del enpoint correctamente
     func test_MoviesCategoriesEnum_returnVariables(){
         let endpointNowPlaying = BAZProject.MovieCategories.nowPlaying
         let endpointTopRated = BAZProject.MovieCategories.topRated
@@ -100,6 +116,8 @@ final class ApiTestError: XCTestCase {
         
     }
     
+    
+    ///Test que implementa el retorno del enpoint de moviewDetail correctamente  
     func test_MovieDetailInfoEnum_returnVariables(){
         let fakeId = "123456789"
         let endpointSimilar = BAZProject.MovieDetailInfo.similar(fakeId)

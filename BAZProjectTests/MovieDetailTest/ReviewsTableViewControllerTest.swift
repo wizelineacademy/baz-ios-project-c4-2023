@@ -9,10 +9,14 @@ import XCTest
 @testable import BAZProject
 
 final class ReviewsTableViewControllerTest: XCTestCase {
-
+    
+    ///Sut
     var sut : ReviewsTableViewController!
+    
+    ///Revies fake
     var reviews: [Review]!
     
+    ///Inicializador de las variables para las unit Test
     override func setUp() {
         sut = ReviewsTableViewController(nibName: ReviewsTableViewController.identifier, bundle: nil)
         reviews = [Review(author: "fakeAutor",
@@ -31,16 +35,20 @@ final class ReviewsTableViewControllerTest: XCTestCase {
                                      url: "fakeAutor2")]
     }
     
+    ///Se  alimina la instancia de las variables para el test
     override func tearDown() {
         sut = nil
+        reviews = nil
     }
     
+    /// Test que evalua si se regresa correctamente el identiicador de celda
     func test_identidier_returnsClassName(){
         let name = "ReviewsTableViewController"
         XCTAssertEqual(ReviewsTableViewController.identifier, name)
         
     }
-    
+   
+    /// Test que evalua si se agrega correctamente la informacion en el TableView
     func test_tableView(){
         sut.reviews = reviews
         let rows = sut.tableView.numberOfRows(inSection: 0)
